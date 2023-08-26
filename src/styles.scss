@@ -1,4 +1,10 @@
+@font-face {
+    font-family: 'Inter';
+    src: url("assets/fonts/inter/Inter-VariableFont_slnt\,wght.ttf");
+}
+
 body {
+    font-family: 'Inter';
     margin: 0;
     background-color: #F6F7F8;
 }
