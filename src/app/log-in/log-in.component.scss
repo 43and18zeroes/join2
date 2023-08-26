@@ -1,12 +1,34 @@
 .intro__overlay {
+    position: relative;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #F6F7F8;
 
     img {
-        width: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: auto;
+        animation: moveToCorner 750ms ease-in-out forwards;
+    }
+
+    @keyframes moveToCorner {
+        0% {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: auto;
+        }
+
+        100% {
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: auto;
+            transform: none;
+        }
     }
 }
