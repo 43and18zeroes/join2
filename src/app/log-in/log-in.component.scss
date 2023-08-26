@@ -1,5 +1,5 @@
 .intro__overlay {
-    position: relative;
+    position: absolute;
     width: 100vw;
     height: 100vh;
     background-color: #F6F7F8;
@@ -30,5 +30,30 @@
             height: auto;
             transform: none;
         }
+    }
+}
+
+.fade-out-after-animation {
+    animation: fadeOut 500ms ease-in-out 750ms forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+header {
+    padding: 75px;
+    display: flex;
+    justify-content: space-between;
+
+    img {
+        width: 100px;
+        height: auto;
     }
 }
