@@ -42,7 +42,7 @@
 }
 
 .fade-out-after-animation {
-    animation: fadeOut 500ms ease-in-out 750ms forwards;
+    animation: fadeOut 500ms ease-in-out 1250ms forwards;
 }
 
 @keyframes fadeOut {
@@ -57,7 +57,7 @@
 }
 
 .display__after__animation {
-    animation: display 0ms ease-in-out 500ms forwards;
+    animation: display 0ms ease-in-out 1000ms forwards;
 }
 
 @keyframes display {
