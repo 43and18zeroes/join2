@@ -1,16 +1,6 @@
 .intro__overlay {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: #F6F7F8;
 
     img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 200px;
-        height: auto;
         animation: moveToCorner 500ms ease-in-out 500ms forwards;
         // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
     }
