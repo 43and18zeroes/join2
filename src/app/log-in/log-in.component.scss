@@ -11,7 +11,7 @@
         transform: translate(-50%, -50%);
         width: 200px;
         height: auto;
-        animation: moveToCorner 750ms ease-in-out 500ms forwards;
+        animation: moveToCorner 500ms ease-in-out 500ms forwards;
     }
 
     @keyframes moveToCorner {
@@ -42,7 +42,7 @@
 }
 
 .fade-out-after-animation {
-    animation: fadeOut 500ms ease-in-out 1250ms forwards;
+    animation: fadeOut 500ms ease-in-out 1000ms forwards;
 }
 
 @keyframes fadeOut {
@@ -57,7 +57,7 @@
 }
 
 .display__after__animation {
-    animation: display 0ms ease-in-out 1000ms forwards;
+    animation: display 0ms ease-in-out 750ms forwards;
 }
 
 @keyframes display {
