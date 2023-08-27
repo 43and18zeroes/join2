@@ -48,6 +48,20 @@
     }
 }
 
+.display__after__animation {
+    animation: display 0ms ease-in-out 500ms forwards;
+}
+
+@keyframes display {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 header {
     padding: 75px;
     display: flex;
