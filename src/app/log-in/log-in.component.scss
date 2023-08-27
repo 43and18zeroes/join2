@@ -12,6 +12,7 @@
         width: 200px;
         height: auto;
         animation: moveToCorner 500ms ease-in-out 500ms forwards;
+        // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
     }
 
     @keyframes moveToCorner {
@@ -43,6 +44,7 @@
 
 .fade-out-after-animation {
     animation: fadeOut 500ms ease-in-out 1000ms forwards;
+    // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
 }
 
 @keyframes fadeOut {
@@ -58,6 +60,7 @@
 
 .display__after__animation {
     animation: display 0ms ease-in-out 750ms forwards;
+    // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
 }
 
 @keyframes display {
