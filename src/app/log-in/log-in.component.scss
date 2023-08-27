@@ -11,7 +11,7 @@
         transform: translate(-50%, -50%);
         width: 200px;
         height: auto;
-        animation: moveToCorner 750ms ease-in-out forwards;
+        animation: moveToCorner 750ms ease-in-out 500ms forwards;
     }
 
     @keyframes moveToCorner {
@@ -23,7 +23,7 @@
             height: auto;
         }
 
-        10% {
+        30% {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
