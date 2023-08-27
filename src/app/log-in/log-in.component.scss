@@ -43,7 +43,7 @@
 }
 
 .fade-out-after-animation {
-    animation: fadeOut 500ms ease-in-out 1000ms forwards;
+    animation: fadeOut 500ms ease 1000ms forwards;
     // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
 }
 
@@ -59,7 +59,7 @@
 }
 
 .display__after__animation {
-    animation: display 0ms ease-in-out 750ms forwards;
+    animation: display 0ms ease 750ms forwards;
     // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
 }
 
