@@ -48,6 +48,19 @@
     }
 }
 
+.login__container {
+    header {
+        padding: 75px;
+        display: flex;
+        justify-content: space-between;
+
+        img {
+            width: 100px;
+            height: auto;
+        }
+    }
+}
+
 .display__after__animation {
     animation: display 0ms ease 750ms forwards;
     // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
@@ -60,16 +73,5 @@
 
     100% {
         opacity: 1;
-    }
-}
-
-header {
-    padding: 75px;
-    display: flex;
-    justify-content: space-between;
-
-    img {
-        width: 100px;
-        height: auto;
     }
 }
