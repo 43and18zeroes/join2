@@ -48,15 +48,36 @@
     }
 }
 
-.login__container {
-    header {
-        padding: 75px;
-        display: flex;
-        justify-content: space-between;
+// .login__container {
+//     header {
+//         padding: 75px;
+//         display: flex;
+//         justify-content: space-between;
 
-        img {
-            width: 100px;
-            height: auto;
+//         img {
+//             width: 100px;
+//             height: auto;
+//         }
+//     }
+// }
+
+.login__container {
+    position: relative;
+    padding: 75px;
+
+    img {
+        width: 100px;
+        height: auto;
+    }
+
+    .signup__cta {
+        position: absolute;
+        top: 75px;
+        right: 75px;
+        display: flex;
+
+        button {
+            margin-left: 35px;
         }
     }
 }
