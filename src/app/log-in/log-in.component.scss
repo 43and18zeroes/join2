@@ -63,6 +63,8 @@
 
 .login__container {
     position: relative;
+    width: calc(100vw - 150px);
+    height: calc(100vh - 150px);
     padding: 75px;
 
     img {
@@ -80,6 +82,15 @@
         button {
             margin-left: 35px;
         }
+    }
+
+    .window {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: fit-content;
+        background-color: white;
     }
 }
 
