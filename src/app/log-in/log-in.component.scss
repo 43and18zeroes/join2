@@ -112,6 +112,14 @@
             border: 1px solid var(--accent-cyan);
             border-radius: 2px;
         }
+
+        .input__container {
+            position: relative;
+
+            .material__symbols__outlined {
+                position: absolute;
+            }
+        }
     }
 }
 
