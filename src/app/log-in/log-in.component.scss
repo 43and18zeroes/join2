@@ -91,7 +91,7 @@
         transform: translate(-50%, -50%);
         width: fit-content;
         background-color: var(--window-white);
-        padding: 48px 155px;
+        padding: 48px;
         border-radius: 30px;
         box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
         display: flex;
@@ -107,7 +107,10 @@
 
         hr {
             width: 150px;
+            height: 0.5px;
+            background-color: var(--accent-cyan);
             border: 1px solid var(--accent-cyan);
+            border-radius: 2px;
         }
     }
 }
