@@ -108,9 +108,10 @@
 
         hr {
             width: 150px;
+            height: 1px;
             background-color: var(--accent-cyan);
             border: 1px solid var(--accent-cyan);
-            border-radius: 2px;
+            border-radius: 4px;
             margin-bottom: 32px;
         }
 
@@ -118,10 +119,11 @@
             position: relative;
 
             .material__symbols__outlined {
+                position: absolute;
                 top: 50%;
                 transform: translate(0%, -50%);
                 right: 21px;
-                position: absolute;
+                font-size: 26px;
                 color: var(--inactive-lite-grey);
             }
 
