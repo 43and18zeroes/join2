@@ -18,7 +18,7 @@
 
         <hr>
 
-        <div class="input__area">
+        <!-- <div class="input__area">
             <div class="input__container">
                 <span class="material__symbols__outlined">
                     mail
@@ -37,20 +37,48 @@
             <div class="incorrect__input">
                 <span style="display:none">Wrong password! Try again.</span>
             </div>
-        </div>
+        </div> -->
 
-        <div>
-            <div>
-                <input type="checkbox">
-                <div>Remember me</div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="input__container">
+                <span class="material__symbols__outlined">
+                    mail
+                </span>
+                <input id="email" placeholder="Email" type="email" formControlName="email">
             </div>
-            <div>I forgot my password</div>
-        </div>
+            <div class="incorrect__input">
+                <span *ngIf="loginForm.controls.email.errors && loginForm.controls.email.errors['required']">Email
+                    required.</span>
+                <span *ngIf="loginForm.controls.email.errors && loginForm.controls.email.errors['email']">Invalid email
+                    address! Try again.</span>
+            </div>
 
-        <div>
-            <button class="standard__btn">Sign up</button>
-            <button>Guest Log in</button>
-        </div>
+            <div class="input__container">
+                <span class="material__symbols__outlined">
+                    lock
+                </span>
+                <input placeholder="Password" id="password" type="password" formControlName="password">
+            </div>
+            <div class="incorrect__input">
+                <span
+                    *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors['required']">Password
+                    required.</span>
+            </div>
+
+            <div>
+                <div>
+                    <input id="rememberMe" type="checkbox" formControlName="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                <div>I forgot my password</div>
+            </div>
+
+            <div>
+                <button type="submit" class="standard__btn">Sign up</button>
+                <button>Guest Log in</button>
+            </div>
+            <div *ngIf="loginError">Email oder Passwort ist falsch.</div>
+        </form>
 
     </div>
 </main>
