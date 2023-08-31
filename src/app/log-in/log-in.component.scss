@@ -118,6 +118,7 @@
 
             .material__symbols__outlined {
                 position: absolute;
+                color: var(--inactive-lite-grey);
             }
 
             input {
@@ -125,7 +126,16 @@
                 height: 40px;
                 border-radius: 10px;
                 font-size: 20px;
+                border: 1px solid var(--inactive-lite-grey);
+                outline: none;
+                color: var(--input-text-black);
+
+                &::placeholder {
+                    color: var(--inactive-lite-grey);
+                }
             }
+
+
         }
     }
 }
