@@ -146,8 +146,10 @@
             }
 
             .incorrect__input {
+                height: 32px;
 
                 span {
+                    font-size: 14px;
                     color: var(--invalid-red);
                 }
             }
