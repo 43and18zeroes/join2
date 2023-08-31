@@ -7,25 +7,32 @@
 
 @font-face {
     font-family: 'Inter';
-    font-weight: 400;
     src: url("assets/fonts/inter/Inter-VariableFont_slnt\,wght.ttf");
 }
 
 @font-face {
     font-family: 'Material Icons Rounded';
+    font-style: normal;
+    font-weight: 400;
     src: url("assets/fonts/material_icons/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190Fjzag.woff2");
 }
 
 .material__symbols__outlined {
     font-family: 'Material Icons Rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'liga';
-    font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 24
 }
 
 body {
