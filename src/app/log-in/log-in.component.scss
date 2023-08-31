@@ -116,6 +116,7 @@
         }
 
         .input__area {
+
             .input__container {
                 position: relative;
 
@@ -142,6 +143,13 @@
                 }
 
 
+            }
+
+            .incorrect__input {
+
+                span {
+                    color: var(--invalid-red);
+                }
             }
         }
     }
