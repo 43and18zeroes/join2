@@ -288,6 +288,12 @@
 
             .login__btns {
                 margin-top: 32px;
+                display: flex;
+                justify-content: center;
+
+                .standard__btn {
+                    margin-right: 35px;
+                }
             }
         }
 
