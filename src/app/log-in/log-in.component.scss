@@ -48,19 +48,6 @@
     }
 }
 
-// .login__container {
-//     header {
-//         padding: 75px;
-//         display: flex;
-//         justify-content: space-between;
-
-//         img {
-//             width: 100px;
-//             height: auto;
-//         }
-//     }
-// }
-
 .display__after__animation {
     animation: display 0ms ease 750ms forwards;
     // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
@@ -129,44 +116,6 @@
             border-radius: 4px;
             margin-bottom: 32px;
         }
-
-        // .input__area {
-
-        //     .input__container {
-        //         position: relative;
-
-        //         .material__symbols__outlined {
-        //             position: absolute;
-        //             top: 50%;
-        //             transform: translate(0%, -50%);
-        //             right: 21px;
-        //             font-size: 26px;
-        //             color: var(--inactive-lite-grey);
-        //         }
-
-        //         input {
-        //             width: 400px;
-        //             padding: 10px 47px 10px 21px;
-        //             border-radius: 10px;
-        //             font-size: 20px;
-        //             border: 1px solid var(--inactive-lite-grey);
-        //             color: var(--input-text-black);
-
-        //             &::placeholder {
-        //                 color: var(--inactive-lite-grey);
-        //             }
-        //         }
-        //     }
-
-        //     .incorrect__input {
-        //         height: 32px;
-
-        //         span {
-        //             font-size: 14px;
-        //             color: var(--invalid-red);
-        //         }
-        //     }
-        // }
 
         form {
 
@@ -300,6 +249,5 @@
                 }
             }
         }
-
     }
 }
