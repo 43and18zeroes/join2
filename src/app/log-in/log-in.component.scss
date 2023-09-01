@@ -64,17 +64,28 @@
 }
 
 .login__container {
-    // position: relative;
+    position: relative;
     // width: calc(100vw - 150px);
     height: calc(100vh - 150px);
     padding: 75px;
     display: flex;
     flex-direction: column;
 
+    @media (width <=1200px) {
+        position: static;
+    }
+
     header {
+        position: absolute;
+        width: calc(100% - 150px);
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+
+        @media (width <=1200px) {
+            position: static;
+            width: 100%;
+        }
 
         img {
             width: 100px;
