@@ -47,8 +47,6 @@
                 <input id="email" placeholder="Email" type="email" formControlName="email">
             </div>
             <div class="incorrect__input">
-                <span *ngIf="loginForm.controls.email.errors && loginForm.controls.email.errors['required']">Email
-                    required.</span>
                 <span *ngIf="loginForm.controls.email.errors && loginForm.controls.email.errors['email']">Invalid email
                     address! Try again.</span>
             </div>
@@ -61,7 +59,7 @@
             </div>
             <div class="incorrect__input">
                 <span
-                    *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors['required']">Password
+                    *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors['password']">Password
                     required.</span>
             </div>
 
