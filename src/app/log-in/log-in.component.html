@@ -57,6 +57,7 @@
                 </span>
                 <input placeholder="Password" id="password" type="password" formControlName="password">
             </div>
+
             <div class="incorrect__input">
                 <span
                     *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors['password']">Password
@@ -65,13 +66,14 @@
 
             <div class="auxiliaries">
                 <div class="remember__me">
-                    <input name="cssCheckbox" id="rememberMe" type="checkbox" formControlName="rememberMe" class="css-checkbox">
+                    <input name="cssCheckbox" id="rememberMe" type="checkbox" formControlName="rememberMe"
+                        class="css-checkbox">
                     <label for="rememberMe">Remember me</label>
                 </div>
                 <div class="forgot__password">I forgot my password</div>
             </div>
 
-            <div login__btns>
+            <div class="login__btns">
                 <button type="submit" class="standard__btn">Log in</button>
                 <button>Guest Log in</button>
             </div>
