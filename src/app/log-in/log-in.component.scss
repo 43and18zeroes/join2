@@ -61,6 +61,21 @@
 //     }
 // }
 
+.display__after__animation {
+    animation: display 0ms ease 750ms forwards;
+    // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+}
+
+@keyframes display {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .login__container {
     position: relative;
     width: calc(100vw - 150px);
@@ -276,20 +291,5 @@
             }
         }
 
-    }
-}
-
-.display__after__animation {
-    animation: display 0ms ease 750ms forwards;
-    // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
-}
-
-@keyframes display {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
     }
 }
