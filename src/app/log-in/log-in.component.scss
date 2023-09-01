@@ -192,17 +192,23 @@
 
             .auxiliaries {
                 display: flex;
-                
-                .remember__me {
+
+                > div {
                     flex-basis: 50%;
                     display: flex;
                     justify-content: center;
                 }
+                
+                .remember__me {
+                    // flex-basis: 50%;
+                    // display: flex;
+                    // justify-content: center;
+                }
 
                 .forgot__password {
-                    flex-basis: 50%;
-                    display: flex;
-                    justify-content: center;
+                    // flex-basis: 50%;
+                    // display: flex;
+                    // justify-content: center;
                 }
             }
         }
