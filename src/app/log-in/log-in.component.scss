@@ -165,6 +165,10 @@
             justify-content: center;
             align-items: center;
 
+            @media (width <=768px) {
+                width: calc(100% - 2 * 115px);
+            }
+
             h1 {
                 font-size: 61px;
                 font-weight: 700;
