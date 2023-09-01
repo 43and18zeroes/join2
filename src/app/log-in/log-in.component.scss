@@ -234,7 +234,7 @@
                         content: " ";
                         display: inline-block;
                         vertical-align: middle;
-                        margin-right: 3px;
+                        margin-right: 8px;
                         width: 16px;
                         height: 16px;
                         background-color: white;
@@ -267,9 +267,7 @@
                 }
 
                 .forgot__password {
-                    // flex-basis: 50%;
-                    // display: flex;
-                    // justify-content: center;
+                    color: var(--accent-cyan);
                 }
             }
 
