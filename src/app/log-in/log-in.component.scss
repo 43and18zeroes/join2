@@ -63,6 +63,39 @@
             }
         }
     }
+
+    @media (width <=576px) {
+        img {
+            animation: moveToCorner 500ms ease-in-out 500ms forwards;
+            // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+        }
+    
+        @keyframes moveToCorner {
+            0% {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 200px;
+                height: auto;
+            }
+    
+            30% {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 200px;
+                height: auto;
+            }
+    
+            100% {
+                top: 16px;
+                left: 16px;
+                width: 64px;
+                height: auto;
+                transform: none;
+            }
+        }
+    }
 }
 
 .fade__out__after__animation {
@@ -112,6 +145,10 @@
         padding: 32px;
     }
 
+    @media (width <=576px) {
+        padding: 16px;
+    }
+
     header {
         position: absolute;
         width: calc(100% - 150px);
@@ -125,7 +162,7 @@
         }
 
         img {
-            width: 100px;
+            width: 64px;
             height: auto;
         }
 
