@@ -200,9 +200,10 @@
                 }
                 
                 .remember__me {
-                    // flex-basis: 50%;
-                    // display: flex;
-                    // justify-content: center;
+                    
+                    input[type="checkbox"] {
+                        border: 2px solid var(--general-text-black);
+                    }
                 }
 
                 .forgot__password {
