@@ -4,58 +4,62 @@
         src="assets/img/auth/intro-j.webp" alt="">
 </div>
 
-<main style="opacity:0;" class="login__container display__after__animation">
+<div style="opacity:0;" class="login__container display__after__animation">
 
-    <img src="assets/img/auth/intro-j.webp" alt="">
+    <header>
+        <img src="assets/img/auth/intro-j.webp" alt="">
 
-    <div class="signup__cta">
-        <div>Not a Join User?</div>
-        <button class="btn__primary">Sign up</button>
-    </div>
+        <div class="signup__cta">
+            <div>Not a Join User?</div>
+            <button class="btn__primary">Sign up</button>
+        </div>
+    </header>
 
-    <div class="window">
-        <h1>Log in</h1>
-        <hr>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div class="input__container">
-                <span class="material__symbols__outlined">
-                    mail
-                </span>
-                <input id="email" placeholder="Email" type="email" formControlName="email">
-            </div>
-            <div class="incorrect__input">
-                <span *ngIf="loginForm.controls.email.errors && loginForm.controls.email.errors['email']">Invalid email
-                    address! Try again.</span>
-            </div>
-
-            <div class="input__container">
-                <span class="material__symbols__outlined">
-                    lock
-                </span>
-                <input placeholder="Password" id="password" type="password" formControlName="password">
-            </div>
-
-            <div class="incorrect__input">
-                <span
-                    *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors['password']">Password
-                    required.</span>
-            </div>
-
-            <div class="auxiliaries">
-                <div class="remember__me">
-                    <input name="cssCheckbox" id="rememberMe" type="checkbox" formControlName="rememberMe"
-                        class="css-checkbox">
-                    <label for="rememberMe">Remember me</label>
+    <main>
+        <div class="window">
+            <h1>Log in</h1>
+            <hr>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="input__container">
+                    <span class="material__symbols__outlined">
+                        mail
+                    </span>
+                    <input id="email" placeholder="Email" type="email" formControlName="email">
                 </div>
-                <div class="forgot__password">I forgot my password</div>
-            </div>
+                <div class="incorrect__input">
+                    <span *ngIf="loginForm.controls.email.errors && loginForm.controls.email.errors['email']">Invalid
+                        email
+                        address! Try again.</span>
+                </div>
 
-            <div class="login__btns">
-                <button type="submit" class="btn__primary">Log in</button>
-                <button class="btn__secondary">Guest Log in</button>
-            </div>
-            <div *ngIf="loginError">Email oder Passwort ist falsch.</div>
-        </form>
+                <div class="input__container">
+                    <span class="material__symbols__outlined">
+                        lock
+                    </span>
+                    <input placeholder="Password" id="password" type="password" formControlName="password">
+                </div>
 
-    </div>
-</main>
+                <div class="incorrect__input">
+                    <span
+                        *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors['password']">Password
+                        required.</span>
+                </div>
+
+                <div class="auxiliaries">
+                    <div class="remember__me">
+                        <input name="cssCheckbox" id="rememberMe" type="checkbox" formControlName="rememberMe"
+                            class="css-checkbox">
+                        <label for="rememberMe">Remember me</label>
+                    </div>
+                    <div class="forgot__password">I forgot my password</div>
+                </div>
+
+                <div class="login__btns">
+                    <button type="submit" class="btn__primary">Log in</button>
+                    <button class="btn__secondary">Guest Log in</button>
+                </div>
+                <div *ngIf="loginError">Email oder Passwort ist falsch.</div>
+            </form>
+        </div>
+    </main>
+</div>
