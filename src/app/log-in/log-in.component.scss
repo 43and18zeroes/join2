@@ -162,8 +162,12 @@
         }
 
         img {
-            width: 64px;
+            width: 100px;
             height: auto;
+
+            @media (width <=576px) {
+                width: 64px;
+            }
         }
 
         .signup__cta {
