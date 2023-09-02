@@ -131,7 +131,6 @@
 
 .login__container {
     position: relative;
-    // width: calc(100vw - 150px);
     height: calc(100vh - 150px);
     padding: 75px;
     display: flex;
@@ -175,9 +174,6 @@
         }
 
         .signup__cta {
-            // position: absolute;
-            // top: 75px;
-            // right: 75px;
             display: flex;
             align-items: center;
 
@@ -201,10 +197,6 @@
         }
 
         .window {
-            // position: absolute;
-            // left: 50%;
-            // top: 50%;
-            // transform: translate(-50%, -50%);
             height: fit-content;
             background-color: var(--window-white);
             padding: 48px 115px;
@@ -247,10 +239,6 @@
 
                 .input__container {
                     position: relative;
-
-                    // @media (width <=576px) {
-                    //     width: 100%;
-                    // }
 
                     .material__symbols__outlined {
                         position: absolute;
