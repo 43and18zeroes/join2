@@ -15,7 +15,7 @@
             </span>
             <h1>Sign up</h1>
             <hr>
-            <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form>
                 <div class="input__container">
                     <span class="material__symbols__outlined">
                         mail
@@ -23,7 +23,7 @@
                     <input id="email" placeholder="Email" type="email" formControlName="email">
                 </div>
                 <div class="incorrect__input">
-                    <span *ngIf="loginForm.controls.email.errors && loginForm.controls.email.errors['email']">Invalid
+                    <span>Invalid
                         email
                         address! Try again.</span>
                 </div>
@@ -36,8 +36,7 @@
                 </div>
 
                 <div class="incorrect__input">
-                    <span
-                        *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors['password']">Password
+                    <span>Password
                         required.</span>
                 </div>
 
@@ -54,9 +53,9 @@
                     <button type="submit" class="btn__primary">Log in</button>
                     <button class="btn__secondary">Guest Log in</button>
                 </div>
-                <div *ngIf="loginError">Email oder Passwort ist falsch.</div>
-                
-            </form> -->
+                <div>Email oder Passwort ist falsch.</div>
+
+            </form>
         </div>
     </main>
 
