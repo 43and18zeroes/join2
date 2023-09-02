@@ -36,7 +36,7 @@
             animation: moveToCorner 500ms ease-in-out 500ms forwards;
             // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
         }
-    
+
         @keyframes moveToCorner {
             0% {
                 top: 50%;
@@ -45,7 +45,7 @@
                 width: 200px;
                 height: auto;
             }
-    
+
             30% {
                 top: 50%;
                 left: 50%;
@@ -53,7 +53,7 @@
                 width: 200px;
                 height: auto;
             }
-    
+
             100% {
                 top: 32px;
                 left: 32px;
@@ -69,7 +69,7 @@
             animation: moveToCorner 500ms ease-in-out 500ms forwards;
             // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
         }
-    
+
         @keyframes moveToCorner {
             0% {
                 top: 50%;
@@ -78,7 +78,7 @@
                 width: 200px;
                 height: auto;
             }
-    
+
             30% {
                 top: 50%;
                 left: 50%;
@@ -86,7 +86,7 @@
                 width: 200px;
                 height: auto;
             }
-    
+
             100% {
                 top: 16px;
                 left: 16px;
@@ -208,6 +208,11 @@
 
             @media (width <=768px) {
                 width: calc(100% - 2 * 115px);
+            }
+
+            @media (width <=576px) {
+                width: calc(100% - 2 * 16px);
+                padding: 32px 16px;
             }
 
             h1 {
@@ -349,10 +354,6 @@
 
                     .btn__primary {
                         margin-right: 35px;
-                    }
-
-                    .btn__secondary {
-
                     }
                 }
             }
