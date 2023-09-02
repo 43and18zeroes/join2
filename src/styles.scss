@@ -59,6 +59,10 @@ body {
     cursor: pointer;
     transition: all 100ms ease-in-out;
 
+    @media (width <=576px) {
+        font-size: 16px;
+    }
+
     &:hover {
         background-color: var(--accent-cyan);
         box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.2);
@@ -73,10 +77,15 @@ body {
     border-radius: 8px;
     border: 1px solid var(--main-slate);
     outline: 0;
-    font-size: 20px;
+    font-size: 21px;
+    font-weight: 700;
     color: var(--main-slate);
     cursor: pointer;
     transition: all 100ms ease-in-out;
+
+    @media (width <=576px) {
+        font-size: 16px;
+    }
 
     &:hover {
         border: 1px solid var(--accent-cyan);
