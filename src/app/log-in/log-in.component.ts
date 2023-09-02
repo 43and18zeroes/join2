@@ -26,7 +26,7 @@ export class LogInComponent implements OnInit {
       sessionStorage.setItem('appLoaded', 'true');
       setTimeout(() => {
         this.showLoadingScreen = false;
-      }, 1500);  // Dieser Timeout bestimmt, wie lange die Ladeanimation angezeigt wird. Hier 3 Sekunden.
+      }, 1500);
     }
   }
 
