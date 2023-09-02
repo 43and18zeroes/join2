@@ -232,8 +232,16 @@
 
             form {
 
+                @media (width <=576px) {
+                    width: 100%;
+                }
+
                 .input__container {
                     position: relative;
+
+                    // @media (width <=576px) {
+                    //     width: 100%;
+                    // }
 
                     .material__symbols__outlined {
                         position: absolute;
@@ -251,6 +259,10 @@
                         font-size: 20px;
                         border: 1px solid var(--inactive-lite-grey);
                         color: var(--input-text-black);
+
+                        @media (width <=576px) {
+                            width: calc(100% - 68px);
+                        }
 
                         &::placeholder {
                             color: var(--inactive-lite-grey);
