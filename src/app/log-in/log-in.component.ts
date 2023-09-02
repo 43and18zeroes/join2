@@ -8,6 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class LogInComponent implements OnInit {
 
+  showLoadingScreen = true;
   loginError = false;
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -19,6 +20,14 @@ export class LogInComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('appLoaded')) {
+      this.showLoadingScreen = false;
+    } else {
+      sessionStorage.setItem('appLoaded', 'true');
+      setTimeout(() => {
+        this.showLoadingScreen = false;
+      }, 1500);  // Dieser Timeout bestimmt, wie lange die Ladeanimation angezeigt wird. Hier 3 Sekunden.
+    }
   }
 
   onSubmit() {
