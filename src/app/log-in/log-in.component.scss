@@ -161,6 +161,10 @@
             width: 100%;
         }
 
+        @media (width <=576px) {
+            margin-bottom: 32px;
+        }
+
         img {
             width: 100px;
             height: auto;
@@ -190,6 +194,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @media (width <=576px) {
+            height: auto;
+            margin-bottom: 32px;
+        }
 
         .window {
             // position: absolute;
@@ -386,6 +395,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @media (width <=576px) {
+            padding-bottom: 32px;
+        }
 
         div {
             margin-right: 35px;
