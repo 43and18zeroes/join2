@@ -359,4 +359,18 @@
             }
         }
     }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        div {
+            margin-right: 35px;
+        }
+
+        button {
+            font-size: 16px;
+        }
+    }
 }
