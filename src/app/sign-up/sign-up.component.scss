@@ -41,16 +41,6 @@
                 width: 64px;
             }
         }
-
-        .signup__cta {
-            display: flex;
-            align-items: center;
-
-            button {
-                font-size: 16px;
-                margin-left: 35px;
-            }
-        }
     }
 
     main {
@@ -274,24 +264,6 @@
                     }
                 }
             }
-        }
-    }
-
-    footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        @media (width <=576px) {
-            padding-bottom: 32px;
-        }
-
-        div {
-            margin-right: 35px;
-        }
-
-        button {
-            font-size: var(--fontsize-btn-mobile);
         }
     }
 }
