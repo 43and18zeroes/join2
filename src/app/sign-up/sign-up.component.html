@@ -10,17 +10,14 @@
 
     <main>
         <div class="window">
-            <span routerLink="/" class="material__symbols__outlined">
-                arrow_back
-            </span>
             <h1>Sign up</h1>
             <hr>
             <form>
                 <div class="input__container">
-                    <span class="material__symbols__outlined">
+                    <span (click)="inputMail.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input id="email" placeholder="Email" type="email" formControlName="email">
+                    <input #inputMail id="email" placeholder="Email" type="email" formControlName="email">
                 </div>
                 <div class="incorrect__input">
                     <span>Invalid
@@ -29,10 +26,11 @@
                 </div>
 
                 <div class="input__container">
-                    <span class="material__symbols__outlined">
+                    <span (click)="inputPassword.focus()" class="material__symbols__outlined">
                         lock
                     </span>
-                    <input placeholder="Password" id="password" type="password" formControlName="password">
+                    <input #inputPassword placeholder="Password" id="password" type="password"
+                        formControlName="password">
                 </div>
 
                 <div class="incorrect__input">
@@ -60,6 +58,6 @@
 
     <footer class="hidden__desktop">
         <div>Not a Join User?</div>
-        <button class="btn__primary">Sign up</button>
+        <button routerLink="/signup" class="btn__primary">Sign up</button>
     </footer>
 </div>

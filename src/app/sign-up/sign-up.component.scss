@@ -1,3 +1,134 @@
+.intro__overlay {
+
+    img {
+        animation: moveToCorner 500ms ease-in-out 500ms forwards;
+        // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+    }
+
+    @keyframes moveToCorner {
+        0% {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: auto;
+        }
+
+        30% {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: auto;
+        }
+
+        100% {
+            top: 75px;
+            left: 75px;
+            width: 100px;
+            height: auto;
+            transform: none;
+        }
+    }
+
+    @media (width <=992px) {
+        img {
+            animation: moveToCorner 500ms ease-in-out 500ms forwards;
+            // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+        }
+
+        @keyframes moveToCorner {
+            0% {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 200px;
+                height: auto;
+            }
+
+            30% {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 200px;
+                height: auto;
+            }
+
+            100% {
+                top: 32px;
+                left: 32px;
+                width: 100px;
+                height: auto;
+                transform: none;
+            }
+        }
+    }
+
+    @media (width <=576px) {
+        img {
+            animation: moveToCorner 500ms ease-in-out 500ms forwards;
+            // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+        }
+
+        @keyframes moveToCorner {
+            0% {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 200px;
+                height: auto;
+            }
+
+            30% {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 200px;
+                height: auto;
+            }
+
+            100% {
+                top: 16px;
+                left: 16px;
+                width: 64px;
+                height: auto;
+                transform: none;
+            }
+        }
+    }
+}
+
+.fade__out__after__animation {
+    animation: fadeOut 500ms ease 1000ms forwards;
+    // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.display__after__animation {
+    animation: display 0ms ease 0ms forwards;
+    // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+}
+
+@keyframes display {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .login__container {
     position: relative;
     height: calc(100vh - 150px);
@@ -86,7 +217,7 @@
             }
 
             h1 {
-                font-size: 61px;
+                font-size: var(--fontsize-auth-headline);
                 font-weight: 700;
                 margin: 0;
             }
@@ -114,24 +245,30 @@
                         top: 50%;
                         transform: translate(0%, -50%);
                         right: 21px;
-                        font-size: 26px;
+                        font-size: var(--fontsize-input-symbol);
                         color: var(--inactive-lite-grey);
                     }
 
                     input {
                         width: 354px;
-                        padding: 10px 47px 10px 21px;
+                        padding: 10px 57px 10px 21px;
                         border-radius: 10px;
-                        font-size: 20px;
+                        font-size: var(--fontsize-body);
                         border: 1px solid var(--inactive-lite-grey);
+                        outline: 0;
                         color: var(--input-text-black);
 
                         @media (width <=576px) {
-                            width: calc(100% - 68px);
+                            width: calc(100% - 78px);
+                            font-size: var(--fontsize-body-mobile);
                         }
 
                         &::placeholder {
                             color: var(--inactive-lite-grey);
+                        }
+
+                        &:focus {
+                            border: 1px solid var(--accent-cyan);
                         }
                     }
                 }
@@ -140,7 +277,7 @@
                     height: 32px;
 
                     span {
-                        font-size: 14px;
+                        font-size: var(--fontsize-incorrect-input);
                         color: var(--invalid-red);
                     }
                 }
@@ -187,7 +324,7 @@
                             display: inline-flex;
                             align-items: center;
                             height: 20px;
-                            color: rgb(0, 0, 0);
+                            color: var(--general-text-black);
                         }
 
                         .css-checkbox+label::before {
@@ -200,7 +337,7 @@
                             background-color: white;
                             border-width: 2px;
                             border-style: solid;
-                            border-color: rgb(42, 54, 71);
+                            border-color: var(--main-slate);
                             border-radius: 3px;
                             box-shadow: none;
                         }
@@ -228,9 +365,16 @@
 
                     .forgot__password {
                         color: var(--accent-cyan);
+                        cursor: pointer;
+                        transition: all 100ms ease-in;
 
                         @media (width <=576px) {
                             margin-bottom: 16px;
+                        }
+
+                        &:hover {
+                            text-decoration: underline;
+                            transform: scale(1.02);
                         }
                     }
                 }
@@ -262,7 +406,7 @@
         }
 
         button {
-            font-size: 16px;
+            font-size: var(--fontsize-btn-mobile);
         }
     }
 }
