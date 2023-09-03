@@ -237,6 +237,11 @@
                     font-size: var(--fontsize-auth-headline);
                     font-weight: 700;
                     margin: 0;
+                    text-align: center;
+
+                    @media (width <=576px) {
+                        font-size: 40px;
+                    }
                 }
             }
 
