@@ -217,7 +217,13 @@
             }
 
             .window__header {
+                width: 100%;
                 display: flex;
+                justify-content: space-between;
+
+                .window__header__side {
+                    width: 45px;
+                }
                 
                 h1 {
                     font-size: var(--fontsize-auth-headline);
