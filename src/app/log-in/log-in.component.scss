@@ -260,6 +260,7 @@
 
                         @media (width <=576px) {
                             width: calc(100% - 78px);
+                            font-size: 16px;
                         }
 
                         &::placeholder {
