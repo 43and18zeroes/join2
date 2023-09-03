@@ -7,6 +7,14 @@
     --input-text-black: #000;
     --window-white: #FFF;
     --background-offwhite: #F6F7F8;
+
+    --fontsize-body: 20px;
+    --fontsize-body-mobile: 16px;
+    --fontsize-auth-headline: 61px;
+    --fontsize-input-symbol: 26px;
+    --fontsize-incorrect-input: 14px;
+    --fontsize-btn: 21px;
+    --fontsize-btn-mobile: 16px;
 }
 
 @font-face {
@@ -41,7 +49,7 @@
 
 body {
     font-family: 'Inter', Arial, sans-serif !important;
-    font-size: 20px;
+    font-size: var(--fontsize-body);
     margin: 0;
     background-color: var(--background-offwhite);
     color: var(--general-text-black);
@@ -53,14 +61,14 @@ body {
     border-radius: 8px;
     border: 0;
     outline: 0;
-    font-size: 21px;
+    font-size: var(--fontsize-btn);
     font-weight: 700;
     color: white;
     cursor: pointer;
     transition: all 100ms ease-in;
 
     @media (width <=576px) {
-        font-size: 16px;
+        font-size: var(--fontsize-btn-mobile);
     }
 
     &:hover {
@@ -77,14 +85,14 @@ body {
     border-radius: 8px;
     border: 1px solid var(--main-slate);
     outline: 0;
-    font-size: 21px;
+    font-size: var(--fontsize-btn);
     font-weight: 700;
     color: var(--main-slate);
     cursor: pointer;
     transition: all 100ms ease-in;
 
     @media (width <=576px) {
-        font-size: 16px;
+        font-size: var(--fontsize-btn-mobile);
     }
 
     &:hover {

@@ -217,7 +217,7 @@
             }
 
             h1 {
-                font-size: 61px;
+                font-size: var(--fontsize-auth-headline);
                 font-weight: 700;
                 margin: 0;
             }
@@ -245,7 +245,7 @@
                         top: 50%;
                         transform: translate(0%, -50%);
                         right: 21px;
-                        font-size: 26px;
+                        font-size: var(--fontsize-input-symbol);
                         color: var(--inactive-lite-grey);
                     }
 
@@ -253,14 +253,14 @@
                         width: 354px;
                         padding: 10px 57px 10px 21px;
                         border-radius: 10px;
-                        font-size: 20px;
+                        font-size: var(--fontsize-body);
                         border: 1px solid var(--inactive-lite-grey);
                         outline: 0;
                         color: var(--input-text-black);
 
                         @media (width <=576px) {
                             width: calc(100% - 78px);
-                            font-size: 16px;
+                            font-size: var(--fontsize-body-mobile);
                         }
 
                         &::placeholder {
@@ -277,7 +277,7 @@
                     height: 32px;
 
                     span {
-                        font-size: 14px;
+                        font-size: var(--fontsize-incorrect-input);
                         color: var(--invalid-red);
                     }
                 }
@@ -406,7 +406,7 @@
         }
 
         button {
-            font-size: 16px;
+            font-size: var(--fontsize-btn-mobile);
         }
     }
 }
