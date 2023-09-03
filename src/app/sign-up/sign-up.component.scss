@@ -221,10 +221,18 @@
                 display: flex;
                 justify-content: space-between;
 
+                @media (width <=768px) {
+                    width: 434px;
+                }
+
+                @media (width <=576px) {
+                    width: 100%;
+                }
+
                 .window__header__side {
                     width: 45px;
                 }
-                
+
                 h1 {
                     font-size: var(--fontsize-auth-headline);
                     font-weight: 700;
