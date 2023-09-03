@@ -255,6 +255,7 @@
                         border-radius: 10px;
                         font-size: 20px;
                         border: 1px solid var(--inactive-lite-grey);
+                        outline: 0;
                         color: var(--input-text-black);
 
                         @media (width <=576px) {
@@ -263,6 +264,10 @@
 
                         &::placeholder {
                             color: var(--inactive-lite-grey);
+                        }
+
+                        &:focus {
+                            border: 1px solid var(--accent-cyan);
                         }
                     }
                 }
