@@ -57,7 +57,7 @@ body {
     font-weight: 700;
     color: white;
     cursor: pointer;
-    transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in;
 
     @media (width <=576px) {
         font-size: 16px;
@@ -81,7 +81,7 @@ body {
     font-weight: 700;
     color: var(--main-slate);
     cursor: pointer;
-    transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in;
 
     @media (width <=576px) {
         font-size: 16px;
