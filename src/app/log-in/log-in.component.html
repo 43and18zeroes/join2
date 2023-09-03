@@ -20,10 +20,10 @@
             <hr>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="input__container">
-                    <span class="material__symbols__outlined">
+                    <span (click)="inputElementMail.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input id="email" placeholder="Email" type="email" formControlName="email">
+                    <input #inputElementMail id="email" placeholder="Email" type="email" formControlName="email">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="loginForm.controls.email.errors && loginForm.controls.email.errors['email']">Invalid
