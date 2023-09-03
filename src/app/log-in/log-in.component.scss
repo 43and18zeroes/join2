@@ -318,7 +318,7 @@
                             display: inline-flex;
                             align-items: center;
                             height: 20px;
-                            color: rgb(0, 0, 0);
+                            color: var(--general-text-black);
                         }
 
                         .css-checkbox+label::before {
@@ -331,7 +331,7 @@
                             background-color: white;
                             border-width: 2px;
                             border-style: solid;
-                            border-color: rgb(42, 54, 71);
+                            border-color: var(--main-slate);
                             border-radius: 3px;
                             box-shadow: none;
                         }
