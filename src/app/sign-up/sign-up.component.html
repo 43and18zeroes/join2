@@ -1,4 +1,4 @@
-<div class="login__container display__after__animation">
+<div class="auth__container display__after__animation">
 
     <header>
         <img src="assets/img/auth/intro-j.webp" alt="">
@@ -26,7 +26,7 @@
                     <span (click)="inputMail.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input #inputMail id="email" placeholder="Email" type="email" formControlName="email">
+                    <input #inputMail id="email" placeholder="Email" type="email">
                 </div>
                 <div class="incorrect__input">
                     <span>Invalid
@@ -38,8 +38,7 @@
                     <span (click)="inputPassword.focus()" class="material__symbols__outlined">
                         lock
                     </span>
-                    <input #inputPassword placeholder="Password" id="password" type="password"
-                        formControlName="password">
+                    <input #inputPassword placeholder="Password" id="password" type="password">
                 </div>
 
                 <div class="incorrect__input">
@@ -49,7 +48,7 @@
 
                 <div class="auxiliaries">
                     <div class="remember__me">
-                        <input name="cssCheckbox" id="rememberMe" type="checkbox" formControlName="rememberMe"
+                        <input name="cssCheckbox" id="rememberMe" type="checkbox"
                             class="css-checkbox">
                         <label for="rememberMe">Remember me</label>
                     </div>
