@@ -17,18 +17,19 @@
                 </h1>
                 <div class="window__header__side"></div>
             </div>
+
             <hr>
+
             <form>
+
                 <div class="input__container">
-                    <span (click)="inputMail.focus()" class="material__symbols__outlined">
-                        mail
+                    <span (click)="signUpUserName.focus()" class="material__symbols__outlined">
+                        person
                     </span>
-                    <input #inputMail id="email" placeholder="Email" type="email">
+                    <input #signUpUserName id="signUpUserName" placeholder="Name" type="text">
                 </div>
                 <div class="incorrect__input">
-                    <span>Invalid
-                        email
-                        address! Try again.</span>
+                    <span>Enter a name with 1 to 16 characters</span>
                 </div>
 
                 <div class="input__container">
@@ -58,6 +59,7 @@
                 </div>
 
             </form>
+
         </div>
     </main>
 </div>
