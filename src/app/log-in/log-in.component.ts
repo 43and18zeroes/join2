@@ -11,8 +11,8 @@ export class LogInComponent implements OnInit {
   showLoadingScreen = true;
   loginError = false;
   loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required],
+    logInEmail: ['', [Validators.required, Validators.email]],
+    logInPassword: ['', Validators.required],
     rememberMe: [false]
 
   });
@@ -32,7 +32,7 @@ export class LogInComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      const { email, password, rememberMe } = this.loginForm.value;
+      const { logInEmail, logInPassword, rememberMe } = this.loginForm.value;
       if (rememberMe) {
         // Handle das Speichern der Session oder eines Tokens, damit der Benutzer eingeloggt bleibt.
       } else {
