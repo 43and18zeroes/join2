@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-log-in',
-  templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.scss']
+  selector: 'auth-app-log-in',
+  templateUrl: './auth-log-in.component.html',
+  styleUrls: ['./auth-log-in.component.scss']
 })
-export class LogInComponent implements OnInit {
+export class AuthLogInComponent implements OnInit {
 
   showLoadingScreen = true;
   loginError = false;
