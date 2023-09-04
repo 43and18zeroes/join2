@@ -1,4 +1,5 @@
-<div id="loadingScreen" *ngIf="showLoadingScreen" style="z-index:999999999;position:absolute;width:100vw;height:100vh;background-color:#F6F7F8;"
+<div id="loadingScreen" *ngIf="showLoadingScreen"
+    style="z-index:999999999;position:absolute;width:100vw;height:100vh;background-color:#F6F7F8;"
     class="intro__overlay fade__out__after__animation">
     <img style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:auto;"
         src="assets/img/auth/intro-j.webp" alt="">
@@ -35,7 +36,8 @@
                     <span (click)="inputPassword.focus()" class="material__symbols__outlined">
                         lock
                     </span>
-                    <input #inputPassword placeholder="Password" id="password" type="password" formControlName="password">
+                    <input #inputPassword id="password" placeholder="Password" type="password"
+                        formControlName="password">
                 </div>
 
                 <div class="incorrect__input">
@@ -57,7 +59,7 @@
                     <button type="submit" class="btn__primary">Log in</button>
                     <button class="btn__secondary">Guest Log in</button>
                 </div>
-                
+
             </form>
         </div>
     </main>

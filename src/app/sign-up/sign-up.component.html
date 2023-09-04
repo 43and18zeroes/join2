@@ -29,25 +29,24 @@
                     <input #signUpUserName id="signUpUserName" placeholder="Name" type="text">
                 </div>
                 <div class="incorrect__input">
-                    <span>Enter a name with 1 to 16 characters</span>
+                    <span>Enter a name with 1 to 16 characters.</span>
                 </div>
 
                 <div class="input__container">
-                    <span (click)="inputPassword.focus()" class="material__symbols__outlined">
-                        lock
+                    <span (click)="signUpEmail.focus()" class="material__symbols__outlined">
+                        mail
                     </span>
-                    <input #inputPassword placeholder="Password" id="password" type="password">
+                    <input #signUpEmail id="password" placeholder="Email" type="email">
                 </div>
-
                 <div class="incorrect__input">
-                    <span>Password
-                        required.</span>
+                    <span>Invalid
+                        email
+                        address! Try again.</span>
                 </div>
 
                 <div class="auxiliaries">
                     <div class="remember__me">
-                        <input name="cssCheckbox" id="rememberMe" type="checkbox"
-                            class="css-checkbox">
+                        <input name="cssCheckbox" id="rememberMe" type="checkbox" class="css-checkbox">
                         <label for="rememberMe">Remember me</label>
                     </div>
                     <div class="forgot__password">I forgot my password</div>
