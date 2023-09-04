@@ -20,43 +20,42 @@
 
             <hr>
 
-            <form>
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
 
-                <div [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="input__container">
+                <div class="input__container">
                     <span (click)="signUpUserName.focus()" class="material__symbols__outlined">
                         person
                     </span>
-                    <input #signUpUserName id="signUpUserName" formControlName="signupName" placeholder="Name" type="text">
+                    <input #signUpUserName id="signUpUserName" formControlName="signUpUserName" placeholder="Name" type="text">
                 </div>
                 <div class="incorrect__input">
-                    <span>Enter a name with 1 to 16 characters.</span>
+                    <span *ngIf="signUpForm.controls.signUpUserName.invalid && signUpForm.controls.signUpUserName.touched">Enter a name with 1 to 16 characters.</span>
                 </div>
 
                 <div class="input__container">
                     <span (click)="signUpEmail.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input #signUpEmail id="signUpEmail" formControlName="signupEmail" placeholder="Email" type="email">
+                    <input #signUpEmail id="signUpEmail" formControlName="signUpEmail" placeholder="Email" type="email">
                 </div>
                 <div class="incorrect__input">
-                    <span>Invalid
+                    <span *ngIf="signUpForm.controls.signUpEmail.invalid && signUpForm.controls.signUpEmail.touched">Invalid
                         email
                         address.</span>
                 </div>
 
                 <div class="input__container">
-                    <span (click)="signupPassword.focus()" class="material__symbols__outlined">
+                    <span (click)="signUpPassword.focus()" class="material__symbols__outlined">
                         lock
                     </span>
-                    <input #signupPassword id="signupPassword" formControlName="signupPassword" placeholder="Email" type="email">
+                    <input #signUpPassword id="signUpPassword" formControlName="signUpPassword" placeholder="Password" type="email">
                 </div>
                 <div class="incorrect__input">
-                    <span>Password must be at least 8 characters long.</span>
+                    <span *ngIf="signUpForm.controls.signUpPassword.invalid && signUpForm.controls.signUpPassword.touched">Password must be at least 8 characters long.</span>
                 </div>
 
                 <div class="login__btns">
                     <button type="submit" class="btn__primary">Log in</button>
-                    <button class="btn__secondary">Guest Log in</button>
                 </div>
 
             </form>
