@@ -45,6 +45,15 @@
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'liga';
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+
+    &:focus {
+        outline: none !important;
+    }
 }
 
 body {
