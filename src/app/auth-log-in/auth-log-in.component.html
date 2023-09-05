@@ -24,7 +24,7 @@
                     <span (click)="logInMail.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input #logInMail id="logInEmail" placeholder="Email" type="email" formControlName="logInEmail">
+                    <input #logInMail id="logInEmail" placeholder="Email" type="email" formControlName="logInEmail" autocomplete="username">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="logInForm.controls.logInEmail.errors && logInForm.controls.logInEmail.errors['logInEmail']">Invalid
@@ -36,7 +36,7 @@
                     <span (click)="logInPassword.focus()" class="material__symbols__outlined">
                         lock
                     </span>
-                    <input #logInPassword id="logInPassword" placeholder="Password" type="password"
+                    <input #logInPassword id="logInPassword" placeholder="Password" type="password" autocomplete="current-password"
                         formControlName="logInPassword">
                 </div>
 
