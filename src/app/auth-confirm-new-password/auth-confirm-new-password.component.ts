@@ -9,7 +9,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class AuthConfirmNewPasswordComponent implements OnInit {
 
   confirmNewPasswordForm = new FormGroup({
-    confirmNewPasswordPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
+    confirmNewPasswordPassword0: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    confirmNewPasswordPassword1: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
   constructor() { }

@@ -9,11 +9,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class AuthLogInComponent implements OnInit {
 
   showLoadingScreen = true;
-  loginError = false;
-  loginForm = this.fb.group({
+  logInError = false;
+  logInForm = this.fb.group({
     logInEmail: ['', [Validators.required, Validators.email]],
     logInPassword: ['', Validators.required],
-    loginRememberMe: [false]
+    logInRememberMe: [false]
 
   });
 
@@ -31,13 +31,13 @@ export class AuthLogInComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      const { logInEmail, logInPassword, loginRememberMe } = this.loginForm.value;
-      if (loginRememberMe) {
+    if (this.logInForm.valid) {
+      const { logInEmail, logInPassword, logInRememberMe } = this.logInForm.value;
+      if (logInRememberMe) {
         // Handle das Speichern der Session oder eines Tokens, damit der Benutzer eingeloggt bleibt.
       } else {
         // Verhalte dich wie gewohnt beim Login.
-        this.loginError = true; // Falls Daten im Backend nicht übereinstimmen
+        this.logInError = true; // Falls Daten im Backend nicht übereinstimmen
       }
     }
   }

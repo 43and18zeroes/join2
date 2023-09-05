@@ -19,7 +19,7 @@
         <div class="window">
             <h1>Log in</h1>
             <hr>
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
                 <div class="input__container">
                     <span (click)="logInMail.focus()" class="material__symbols__outlined">
                         mail
@@ -27,7 +27,7 @@
                     <input #logInMail id="logInEmail" placeholder="Email" type="email" formControlName="logInEmail">
                 </div>
                 <div class="incorrect__input">
-                    <span *ngIf="loginForm.controls.logInEmail.errors && loginForm.controls.logInEmail.errors['logInEmail']">Invalid
+                    <span *ngIf="logInForm.controls.logInEmail.errors && logInForm.controls.logInEmail.errors['logInEmail']">Invalid
                         email
                         address.</span>
                 </div>
@@ -42,15 +42,15 @@
 
                 <div class="incorrect__input">
                     <span
-                        *ngIf="loginForm.controls.logInPassword.errors && loginForm.controls.logInPassword.errors['logInPassword']">Password
+                        *ngIf="logInForm.controls.logInPassword.errors && logInForm.controls.logInPassword.errors['logInPassword']">Password
                         required.</span>
                 </div>
 
                 <div class="auxiliaries">
                     <div class="remember__me">
-                        <input name="cssCheckbox" id="loginRememberMe" type="checkbox" formControlName="loginRememberMe"
+                        <input name="cssCheckbox" id="logInRememberMe" type="checkbox" formControlName="logInRememberMe"
                             class="css-checkbox">
-                        <label for="loginRememberMe">Remember me</label>
+                        <label for="logInRememberMe">Remember me</label>
                     </div>
                     <div routerLink="/auth-password-mail" class="forgot__password">I forgot my password</div>
                 </div>
