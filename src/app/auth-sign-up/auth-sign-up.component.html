@@ -29,7 +29,9 @@
                     <input #signUpUserName id="signUpUserName" formControlName="signUpUserName" placeholder="Name" type="text">
                 </div>
                 <div class="incorrect__input">
-                    <span *ngIf="signUpForm.controls.signUpUserName.invalid && signUpForm.controls.signUpUserName.touched">Enter a name with 1 to 16 characters.</span>
+                    <span *ngIf="signUpForm.controls.signUpUserName.invalid &&
+                        signUpForm.controls.signUpUserName.touched && 
+                        signUpForm.controls.signUpUserName.value">Enter a name with 1 to 16 characters.</span>
                 </div>
 
                 <div class="input__container">
@@ -39,7 +41,9 @@
                     <input #signUpEmail id="signUpEmail" formControlName="signUpEmail" placeholder="Email" type="email">
                 </div>
                 <div class="incorrect__input">
-                    <span *ngIf="signUpForm.controls.signUpEmail.invalid && signUpForm.controls.signUpEmail.touched">Invalid
+                    <span *ngIf="signUpForm.controls.signUpEmail.invalid &&
+                        signUpForm.controls.signUpEmail.touched && 
+                        signUpForm.controls.signUpEmail.value">Invalid
                         email
                         address.</span>
                 </div>
@@ -51,7 +55,9 @@
                     <input #signUpPassword id="signUpPassword" formControlName="signUpPassword" placeholder="Password" type="email">
                 </div>
                 <div class="incorrect__input">
-                    <span *ngIf="signUpForm.controls.signUpPassword.invalid && signUpForm.controls.signUpPassword.touched">Password must be at least 8 characters long.</span>
+                    <span *ngIf="signUpForm.controls.signUpPassword.invalid &&
+                    signUpForm.controls.signUpPassword.touched  && 
+                    signUpForm.controls.signUpPassword.value">Password must be at least 8 characters long.</span>
                 </div>
 
                 <div class="login__btns">
