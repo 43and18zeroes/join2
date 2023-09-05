@@ -11,7 +11,7 @@
         <img src="assets/img/auth/intro-j.webp" alt="" draggable="false">
         <div class="signup__cta hidden__mobile">
             <div>Not a Join User?</div>
-            <button routerLink="/signup" class="btn__primary">Sign up</button>
+            <button routerLink="/auth-signup" class="btn__primary">Sign up</button>
         </div>
     </header>
 
@@ -52,7 +52,7 @@
                             class="css-checkbox">
                         <label for="loginRememberMe">Remember me</label>
                     </div>
-                    <div class="forgot__password">I forgot my password</div>
+                    <div routerLink="/auth-password-mail" class="forgot__password">I forgot my password</div>
                 </div>
 
                 <div class="login__btns">
@@ -66,6 +66,6 @@
 
     <footer class="hidden__desktop">
         <div>Not a Join User?</div>
-        <button routerLink="/signup" class="btn__primary">Sign up</button>
+        <button routerLink="/auth-signup" class="btn__primary">Sign up</button>
     </footer>
 </div>
