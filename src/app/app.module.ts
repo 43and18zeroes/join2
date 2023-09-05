@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthLogInComponent } from './auth-log-in/auth-log-in.component';
 import { AuthSignUpComponent } from './auth-sign-up/auth-sign-up.component';
 import { AuthPasswordMailComponent } from './auth-password-mail/auth-password-mail.component';
+import { AuthConfirmNewPasswordComponent } from './auth-confirm-new-password/auth-confirm-new-password.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AuthPasswordMailComponent } from './auth-password-mail/auth-password-ma
     AppComponent,
     AuthLogInComponent,
     AuthSignUpComponent,
-    AuthPasswordMailComponent
+    AuthPasswordMailComponent,
+    AuthConfirmNewPasswordComponent
   ],
   imports: [
     BrowserModule,
