@@ -52,7 +52,7 @@
                     <span (click)="signUpPassword.focus()" class="material__symbols__outlined">
                         lock
                     </span>
-                    <input #signUpPassword id="signUpPassword" formControlName="signUpPassword" placeholder="Password" type="email">
+                    <input #signUpPassword id="signUpPassword" formControlName="signUpPassword" placeholder="Password" type="password">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="signUpForm.controls.signUpPassword.invalid &&
