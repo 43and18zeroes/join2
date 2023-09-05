@@ -9,7 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class AuthPasswordMailComponent implements OnInit {
 
   passwordMailForm = new FormGroup({
-    passwordMail: new FormControl('', [Validators.required, Validators.email])
+    passwordMailEmail: new FormControl('', [Validators.required, Validators.email])
   });
 
   constructor() { }
