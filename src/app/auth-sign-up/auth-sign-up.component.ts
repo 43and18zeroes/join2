@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { User } from 'src/models/user.class';
 
 @Component({
   selector: 'auth-app-sign-up',
@@ -7,6 +8,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./auth-sign-up.component.scss']
 })
 export class AuthSignUpComponent implements OnInit {
+
+  user = new User();
 
   signUpForm = new FormGroup({
     signUpUserName: new FormControl('', Validators.required),
@@ -22,6 +25,10 @@ export class AuthSignUpComponent implements OnInit {
   onSubmit() {
     console.log(this.signUpForm.value);
     // Hier können Sie z.B. einen Service aufrufen, um die Daten an einen Server zu senden.
+  }
+
+  saveUser() {
+    console.log("Current user is", this.user);
   }
 
 }

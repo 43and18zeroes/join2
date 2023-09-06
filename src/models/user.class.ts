@@ -1,11 +1,11 @@
-export class UserData {
-    private userName: string;
-    private userEmailAddress: string;
-    private userPassword: string;
+export class User {
+    public userName: string;
+    public userEmailAddress: string;
+    public userPassword: string;
 
-    constructor(obj: UserData) {
-        this.userName = obj.userName;
-        this.userEmailAddress = obj.userEmailAddress;
-        this.userPassword = obj.userPassword;
+    constructor() {
+        this.userName = this.userName;
+        this.userEmailAddress = this.userEmailAddress;
+        this.userPassword = this.userPassword;
     }
 }

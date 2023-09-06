@@ -26,7 +26,7 @@
                     <span (click)="signUpUserName.focus()" class="material__symbols__outlined">
                         person
                     </span>
-                    <input #signUpUserName id="signUpUserName" formControlName="signUpUserName" placeholder="Name"
+                    <input [(ngModel)]="user.userName" #signUpUserName id="signUpUserName" formControlName="signUpUserName" placeholder="Name"
                         type="text">
                 </div>
                 <div class="incorrect__input">
@@ -39,7 +39,7 @@
                     <span (click)="signUpEmail.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input #signUpEmail id="signUpEmail" formControlName="signUpEmail" placeholder="Email" type="email" autocomplete="username">
+                    <input [(ngModel)]="user.userEmailAddress" #signUpEmail id="signUpEmail" formControlName="signUpEmail" placeholder="Email" type="email" autocomplete="username">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="signUpForm.controls.signUpEmail.invalid &&
@@ -53,7 +53,7 @@
                     <span (click)="signUpPassword.focus()" class="material__symbols__outlined">
                         lock
                     </span>
-                    <input #signUpPassword id="signUpPassword" formControlName="signUpPassword" placeholder="Password"
+                    <input [(ngModel)]="user.userPassword" #signUpPassword id="signUpPassword" formControlName="signUpPassword" placeholder="Password"
                         type="password" autocomplete="current-password">
                 </div>
                 <div class="incorrect__input">
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="login__btns">
-                    <button type="submit" class="btn__primary">Sign up</button>
+                    <button (click)="saveUser()" type="submit" class="btn__primary">Sign up</button>
                 </div>
 
             </form>
