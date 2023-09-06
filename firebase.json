@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "join2",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

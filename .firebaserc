@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "join2-578f8": {
+      "hosting": {
+        "join2": [
+          "join2-578f8"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "join2-578f8"
+  }
+}
