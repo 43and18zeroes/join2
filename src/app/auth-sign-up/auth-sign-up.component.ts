@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/models/user.class';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'auth-app-sign-up',
@@ -8,6 +11,7 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./auth-sign-up.component.scss']
 })
 export class AuthSignUpComponent implements OnInit {
+
 
   user = new User();
 
@@ -17,7 +21,9 @@ export class AuthSignUpComponent implements OnInit {
     signUpPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
-  constructor() { }
+  constructor(private firestore: AngularFirestore) {
+
+  }
 
   ngOnInit(): void {
   }
@@ -29,6 +35,13 @@ export class AuthSignUpComponent implements OnInit {
 
   saveUser() {
     console.log("Current user is", this.user);
+
+    this.firestore
+      .collection('users')
+      .add(this.user.toJSON())
+      .then((result: any) => {
+        console.log("adding user finished", result);
+      });
   }
 
 }

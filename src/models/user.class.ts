@@ -8,4 +8,12 @@ export class User {
         this.userEmailAddress = this.userEmailAddress;
         this.userPassword = this.userPassword;
     }
+
+    public toJSON() {
+        return {
+            userName: this.userName,
+            userEmailAddress: this.userEmailAddress,
+            userPassword: this.userPassword
+        }
+    }
 }
