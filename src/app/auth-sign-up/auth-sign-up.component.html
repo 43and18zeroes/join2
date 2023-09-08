@@ -20,14 +20,14 @@
 
             <hr>
 
-            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" autocomplete="off">
 
                 <div class="input__container">
                     <span (click)="signUpUserName.focus()" class="material__symbols__outlined">
                         person
                     </span>
                     <input [(ngModel)]="user.userName" #signUpUserName id="signUpUserName" formControlName="signUpUserName" placeholder="Name"
-                        type="text">
+                        type="text" autocomplete="false">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="signUpForm.controls.signUpUserName.invalid &&
@@ -39,7 +39,7 @@
                     <span (click)="signUpEmail.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input [(ngModel)]="user.userEmailAddress" #signUpEmail id="signUpEmail" formControlName="signUpEmail" placeholder="Email" type="email" autocomplete="username">
+                    <input [(ngModel)]="user.userEmailAddress" #signUpEmail id="signUpEmail" formControlName="signUpEmail" placeholder="Email" type="email">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="signUpForm.controls.signUpEmail.invalid &&
@@ -54,7 +54,7 @@
                         lock
                     </span>
                     <input [(ngModel)]="user.userPassword" #signUpPassword id="signUpPassword" formControlName="signUpPassword" placeholder="Password"
-                        type="password" autocomplete="current-password">
+                        type="password">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="signUpForm.controls.signUpPassword.invalid &&
