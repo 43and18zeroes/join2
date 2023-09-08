@@ -17,7 +17,7 @@ export class AuthSignUpComponent implements OnInit {
 
   signUpForm = new FormGroup({
     signUpUserName: new FormControl('', Validators.required),
-    signUpEmail: new FormControl('', [Validators.required, Validators.email]),
+    signUpEmail: new FormControl('', [Validators.required, this.emailValidator]),
     signUpPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
@@ -26,6 +26,12 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  emailValidator(control: FormControl): { [key: string]: any } | null {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const valid = emailRegex.test(control.value);
+    return valid ? null : { invalidEmail: true };
   }
 
   onSubmit() {
