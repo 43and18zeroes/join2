@@ -4,6 +4,7 @@
     padding: 75px;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 
     @media (width <=1200px) {
         position: static;
@@ -160,6 +161,72 @@
                     display: flex;
                     justify-content: center;
                 }
+            }
+        }
+
+        .signup__success {
+            display: none;
+            width: 583px;
+            position: absolute;
+            bottom: 30px;
+            left: 100%;
+            padding: 60px;
+            background-color: #444df2;
+            color: white;
+            font-size: 46px;
+            font-weight: 700;
+            border-radius: 30px;
+            border-bottom-right-radius: 0px;
+            transition: left 200ms ease-in;
+
+            @media (width <=576px) {
+                width: 233px;
+                font-size: 20px;
+                padding: 30px;
+            }
+        }
+
+        .signup__success.is__active {
+            display: flex;
+            animation-name: slideIn;
+            animation-duration: 1.5s;
+
+            @media (width <=576px) {
+                animation-name: slideInResponsive;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                left: 100%;
+                opacity: 1;
+            }
+
+            20% {
+                left: calc(100% - 733px);
+                opacity: 1;
+            }
+
+            100% {
+                left: calc(100% - 733px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes slideInResponsive {
+            0% {
+                left: 100%;
+                opacity: 1;
+            }
+
+            20% {
+                left: calc(100% - 323px);
+                opacity: 1;
+            }
+
+            100% {
+                left: calc(100% - 323px);
+                opacity: 0;
             }
         }
     }

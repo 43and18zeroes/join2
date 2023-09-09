@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/models/user.class';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
@@ -21,6 +21,8 @@ export class AuthSignUpComponent implements OnInit {
     signUpPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
+  @ViewChild('signUpSuccess', { static: false }) signUpSuccess: ElementRef;
+
   constructor(private firestore: AngularFirestore,
     private router: Router) { }
 
@@ -41,9 +43,19 @@ export class AuthSignUpComponent implements OnInit {
       .add(this.user.toJSON())
       .then((result: any) => {
         console.log("adding user finished", result);
-        this.signUpForm.reset();
-        this.router.navigate(['/']);
       });
+    this.signUpForm.reset();
+    this.signUpSuccessAnimation();
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 1600);
+  }
+
+  signUpSuccessAnimation() {
+    this.signUpSuccess.nativeElement.classList.add('is__active');
+    setTimeout(() => {
+      this.signUpSuccess.nativeElement.style.display = "none";
+    }, 1450);
   }
 
 }
