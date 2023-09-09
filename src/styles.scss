@@ -88,6 +88,17 @@ body {
     }
 }
 
+.btn__primary:disabled {
+    cursor: not-allowed;
+
+    &:hover {
+        background-color: var(--main-slate);
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+    }
+}
+
 .btn__secondary {
     padding: 15px 16px;
     background-color: var(--window-white);
