@@ -4,6 +4,7 @@ import { User } from 'src/models/user.class';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'auth-app-sign-up',
@@ -11,7 +12,6 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./auth-sign-up.component.scss']
 })
 export class AuthSignUpComponent implements OnInit {
-
 
   user = new User();
 
@@ -21,9 +21,8 @@ export class AuthSignUpComponent implements OnInit {
     signUpPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
-  constructor(private firestore: AngularFirestore) {
-
-  }
+  constructor(private firestore: AngularFirestore,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -42,6 +41,8 @@ export class AuthSignUpComponent implements OnInit {
       .add(this.user.toJSON())
       .then((result: any) => {
         console.log("adding user finished", result);
+        this.signUpForm.reset();
+        this.router.navigate(['/']);
       });
   }
 
