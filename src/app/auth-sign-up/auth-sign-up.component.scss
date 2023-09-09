@@ -166,14 +166,19 @@
 
         .signup__success {
             display: none;
-            width: 583px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            width: 573px;
             position: absolute;
             bottom: 30px;
             left: 100%;
-            padding: 60px;
-            background-color: #444df2;
+            left: calc(100% - 699px); //width + 30px left + 2 * padding
+            padding: 48px;
+            background-color: var(--main-slate);
             color: white;
-            font-size: 46px;
+            font-size: 40px;
             font-weight: 700;
             border-radius: 30px;
             border-bottom-right-radius: 0px;
@@ -183,6 +188,11 @@
                 width: 233px;
                 font-size: 20px;
                 padding: 30px;
+            }
+
+            span {
+                font-size: inherit;
+                font-weight: inherit;
             }
         }
 
