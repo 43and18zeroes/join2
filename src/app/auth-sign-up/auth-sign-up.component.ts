@@ -35,14 +35,8 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.signUpForm.value);
-    // Hier können Sie z.B. einen Service aufrufen, um die Daten an einen Server zu senden.
-  }
-
-  saveUser() {
     console.log("Current user is", this.user);
     console.log("this.signUpForm", this.signUpForm);
-
     this.firestore
       .collection('users')
       .add(this.user.toJSON())
