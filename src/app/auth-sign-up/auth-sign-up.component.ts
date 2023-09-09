@@ -16,7 +16,7 @@ export class AuthSignUpComponent implements OnInit {
   user = new User();
 
   signUpForm = new FormGroup({
-    signUpUserName: new FormControl('', Validators.required),
+    signUpUserName: new FormControl('', [Validators.required, Validators.maxLength(16)]),
     signUpEmail: new FormControl('', [Validators.required, this.emailValidator]),
     signUpPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
