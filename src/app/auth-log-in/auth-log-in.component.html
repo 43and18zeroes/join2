@@ -26,11 +26,7 @@
                     </span>
                     <input #logInMail id="logInEmail" placeholder="Email" type="email" formControlName="logInEmail" autocomplete="username">
                 </div>
-                <div class="incorrect__input">
-                    <span *ngIf="logInForm.controls.logInEmail.errors && logInForm.controls.logInEmail.errors['logInEmail']">Invalid
-                        email
-                        address.</span>
-                </div>
+                <div class="incorrect__input"></div>
 
                 <div class="input__container">
                     <span (click)="logInPassword.focus()" class="material__symbols__outlined">
@@ -42,8 +38,7 @@
 
                 <div class="incorrect__input">
                     <span
-                        *ngIf="logInForm.controls.logInPassword.errors && logInForm.controls.logInPassword.errors['logInPassword']">Password
-                        required.</span>
+                        *ngIf="logInForm.controls.logInPassword.errors && logInForm.controls.logInPassword.errors['logInPassword']">Incorrect email or password. Please try again.</span>
                 </div>
 
                 <div class="auxiliaries">
