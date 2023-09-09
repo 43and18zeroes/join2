@@ -166,7 +166,7 @@
 
         .signup__success {
             display: none;
-            display: flex;
+            // display: flex;
             justify-content: center;
             align-items: center;
             gap: 24px;
@@ -174,7 +174,8 @@
             position: absolute;
             bottom: 30px;
             left: 100%;
-            left: calc(100% - 699px); //width + 30px left + 2 * padding
+            // left: calc(100% - 699px);
+            //width + 30px left + 2 * padding
             padding: 48px;
             background-color: var(--main-slate);
             color: white;
@@ -213,12 +214,12 @@
             }
 
             20% {
-                left: calc(100% - 733px);
+                left: calc(100% - 699px);
                 opacity: 1;
             }
 
             100% {
-                left: calc(100% - 733px);
+                left: calc(100% - 699px);
                 opacity: 0;
             }
         }
