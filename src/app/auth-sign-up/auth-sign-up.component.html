@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="signup__btns">
-                    <button (click)="saveUser()" type="submit" class="btn__primary">Sign up</button>
+                    <button [disabled]="!signUpForm.valid" (click)="saveUser()" type="submit" class="btn__primary">Sign up</button>
                 </div>
 
             </form>

@@ -41,6 +41,7 @@ export class AuthSignUpComponent implements OnInit {
 
   saveUser() {
     console.log("Current user is", this.user);
+    console.log("this.signUpForm", this.signUpForm);
 
     this.firestore
       .collection('users')
