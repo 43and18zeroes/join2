@@ -58,7 +58,7 @@ export class AuthSignUpComponent implements OnInit {
 
   registerWithEmailAndPassword() {
     console.log(this.signUpForm.value);
-    const userData = Object.assign({email: this.signUpForm.value.signUpEmail, password: this.signUpForm.value.signUpPassword});
+    const userData = Object.assign(this.signUpForm, {email: this.signUpForm.value.signUpEmail, password: this.signUpForm.value.signUpPassword});
     console.log("userData", userData);
     this.authService.registerWithEmailAndPassword(userData).then((res: any) => {
       this.router.navigateByUrl('/');
