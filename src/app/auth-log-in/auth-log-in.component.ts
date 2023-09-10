@@ -50,7 +50,8 @@ export class AuthLogInComponent implements OnInit {
 
   loginWithEmailAndPassword() {
     console.log(this.logInForm.value);
-    const userData = Object.assign({email: this.logInForm.value.logInEmail});
+    // const userData = Object.assign({email: this.logInForm.value.logInEmail});
+    const userData = Object.assign(this.logInForm, {email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword});
 
     this.authService.signWithEmailAndPassword(userData).then((res: any) => {
       this.router.navigateByUrl('main');
