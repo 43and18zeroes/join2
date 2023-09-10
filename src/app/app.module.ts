@@ -14,6 +14,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     AuthLogInComponent,
     AuthSignUpComponent,
     AuthPasswordMailComponent,
-    AuthConfirmNewPasswordComponent
+    AuthConfirmNewPasswordComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
