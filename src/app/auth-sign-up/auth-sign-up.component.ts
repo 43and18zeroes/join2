@@ -49,18 +49,18 @@ export class AuthSignUpComponent implements OnInit {
     //   });
     // this.signUpForm.reset();
 
-    this.registerWithEmailAndPassword();
+    this.signUpWithEmailAndPassword();
     this.authSuccessAnimation();
     setTimeout(() => {
       this.router.navigate(['/']);
     }, 1600);
   }
 
-  registerWithEmailAndPassword() {
+  signUpWithEmailAndPassword() {
     console.log(this.signUpForm.value);
     const userData = Object.assign(this.signUpForm, {email: this.signUpForm.value.signUpEmail, password: this.signUpForm.value.signUpPassword});
     console.log("userData", userData);
-    this.authService.registerWithEmailAndPassword(userData).then((res: any) => {
+    this.authService.signUpWithEmailAndPassword(userData).then((res: any) => {
       this.router.navigateByUrl('/');
     }).catch((error: any) => {
       console.error(error);
