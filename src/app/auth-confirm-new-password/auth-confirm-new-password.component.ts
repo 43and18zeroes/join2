@@ -23,9 +23,9 @@ export class AuthConfirmNewPasswordComponent implements OnInit {
 
   onSubmit() {
     this.authSuccessAnimation();
-    // setTimeout(() => {
-    //   this.router.navigate(['/']);
-    // }, 1600);
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 1600);
   }
 
   authSuccessAnimation() {
