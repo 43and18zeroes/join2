@@ -163,11 +163,9 @@
                 }
             }
         }
-
-        
     }
 
-    .signup__success {
+    .auth__success {
         display: none;
         // display: flex;
         justify-content: center;
@@ -202,7 +200,7 @@
         }
     }
 
-    .signup__success.is__active {
+    .auth__success.is__active {
         display: flex;
         animation-name: slideIn;
         animation-duration: 1.5s;

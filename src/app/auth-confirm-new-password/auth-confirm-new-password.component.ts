@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-confirm-new-password',
@@ -13,12 +14,24 @@ export class AuthConfirmNewPasswordComponent implements OnInit {
     confirmNewPasswordPassword1: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
-  constructor() { }
+  @ViewChild('authSuccess', { static: false }) authSuccess: ElementRef;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    // Hier können Sie z.B. einen Service aufrufen, um die Daten an einen Server zu senden.
+    this.authSuccessAnimation();
+    // setTimeout(() => {
+    //   this.router.navigate(['/']);
+    // }, 1600);
+  }
+
+  authSuccessAnimation() {
+    this.authSuccess.nativeElement.classList.add('is__active');
+    setTimeout(() => {
+      this.authSuccess.nativeElement.style.display = "none";
+    }, 1450);
   }
 }

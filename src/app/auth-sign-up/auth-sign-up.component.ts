@@ -21,7 +21,7 @@ export class AuthSignUpComponent implements OnInit {
     signUpPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
-  @ViewChild('signUpSuccess', { static: false }) signUpSuccess: ElementRef;
+  @ViewChild('authSuccess', { static: false }) authSuccess: ElementRef;
 
   constructor(private firestore: AngularFirestore,
     private router: Router) { }
@@ -45,16 +45,16 @@ export class AuthSignUpComponent implements OnInit {
         console.log("adding user finished", result);
       });
     this.signUpForm.reset();
-    this.signUpSuccessAnimation();
+    this.authSuccessAnimation();
     setTimeout(() => {
       this.router.navigate(['/']);
     }, 1600);
   }
 
-  signUpSuccessAnimation() {
-    this.signUpSuccess.nativeElement.classList.add('is__active');
+  authSuccessAnimation() {
+    this.authSuccess.nativeElement.classList.add('is__active');
     setTimeout(() => {
-      this.signUpSuccess.nativeElement.style.display = "none";
+      this.authSuccess.nativeElement.style.display = "none";
     }, 1450);
   }
 
