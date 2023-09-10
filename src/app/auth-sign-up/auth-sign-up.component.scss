@@ -6,16 +6,16 @@
     flex-direction: column;
     overflow-x: hidden;
 
-    @media (width <=1200px) {
-        position: static;
-    }
+    // @media (width <=1200px) {
+    //     position: static;
+    // }
 
     @media (width <=992px) {
-        padding: 32px;
+        padding: 32px 32px 108px 32px;
     }
 
     @media (width <=576px) {
-        padding: 16px;
+        padding: 16px 16px 134px 16px;
     }
 
     header {
@@ -164,81 +164,85 @@
             }
         }
 
-        .signup__success {
-            display: none;
-            // display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 24px;
-            width: 573px;
-            position: absolute;
-            bottom: 30px;
+        
+    }
+
+    .signup__success {
+        display: none;
+        // display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        width: 573px;
+        position: absolute;
+        bottom: 30px;
+        left: 100%;
+        // left: calc(100% - 699px);
+        //width + 30px left + 2 * padding
+        padding: 48px;
+        background-color: var(--main-slate);
+        color: white;
+        font-size: 40px;
+        font-weight: 700;
+        border-radius: 8px;
+        border-bottom-right-radius: 0px;
+        transition: left 200ms ease-in;
+
+        @media (width <=768px) {
+            // left: calc(100% - 300px);
+            width: 240px;
+            font-size: 16px;
+            padding: 20px 15px;
+            gap: 8px;
+        }
+
+        span {
+            font-size: inherit;
+            font-weight: inherit;
+        }
+    }
+
+    .signup__success.is__active {
+        display: flex;
+        animation-name: slideIn;
+        animation-duration: 1.5s;
+
+        @media (width <=768px) {
+            animation-name: slideInResponsive;
+        }
+    }
+
+    @keyframes slideIn {
+        0% {
             left: 100%;
-            // left: calc(100% - 699px);
-            //width + 30px left + 2 * padding
-            padding: 48px;
-            background-color: var(--main-slate);
-            color: white;
-            font-size: 40px;
-            font-weight: 700;
-            border-radius: 30px;
-            border-bottom-right-radius: 0px;
-            transition: left 200ms ease-in;
-
-            @media (width <=576px) {
-                width: 233px;
-                font-size: 20px;
-                padding: 30px;
-            }
-
-            span {
-                font-size: inherit;
-                font-weight: inherit;
-            }
+            opacity: 1;
         }
 
-        .signup__success.is__active {
-            display: flex;
-            animation-name: slideIn;
-            animation-duration: 1.5s;
-
-            @media (width <=576px) {
-                animation-name: slideInResponsive;
-            }
+        20% {
+            left: calc(100% - 699px);
+            opacity: 1;
         }
 
-        @keyframes slideIn {
-            0% {
-                left: 100%;
-                opacity: 1;
-            }
+        100% {
+            left: calc(100% - 699px);
+            opacity: 0;
+        }
+    }
 
-            20% {
-                left: calc(100% - 699px);
-                opacity: 1;
-            }
-
-            100% {
-                left: calc(100% - 699px);
-                opacity: 0;
-            }
+    @keyframes slideInResponsive {
+        0% {
+            left: 100%;
+            opacity: 1;
         }
 
-        @keyframes slideInResponsive {
-            0% {
-                left: 100%;
-                opacity: 1;
-            }
+        20% {
+            left: calc(100% - 300px);
+            opacity: 1;
+        }
 
-            20% {
-                left: calc(100% - 323px);
-                opacity: 1;
-            }
-
-            100% {
-                left: calc(100% - 323px);
-                opacity: 0;
-            }
+        100% {
+            left: calc(100% - 300px);
+            opacity: 0;
         }
     }
 }
