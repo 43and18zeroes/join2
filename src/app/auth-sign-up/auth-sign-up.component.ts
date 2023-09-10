@@ -1,10 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { User } from 'src/models/user.class';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'auth-app-sign-up',
@@ -24,7 +25,9 @@ export class AuthSignUpComponent implements OnInit {
   @ViewChild('authSuccess', { static: false }) authSuccess: ElementRef;
 
   constructor(private firestore: AngularFirestore,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -36,19 +39,32 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("Current user is", this.user);
-    console.log("this.signUpForm", this.signUpForm);
-    this.firestore
-      .collection('users')
-      .add(this.user.toJSON())
-      .then((result: any) => {
-        console.log("adding user finished", result);
-      });
-    this.signUpForm.reset();
+    // console.log("Current user is", this.user);
+    // console.log("this.signUpForm", this.signUpForm);
+    // this.firestore
+    //   .collection('users')
+    //   .add(this.user.toJSON())
+    //   .then((result: any) => {
+    //     console.log("adding user finished", result);
+    //   });
+    // this.signUpForm.reset();
+
+    this.registerWithEmailAndPassword();
     this.authSuccessAnimation();
     setTimeout(() => {
       this.router.navigate(['/']);
     }, 1600);
+  }
+
+  registerWithEmailAndPassword() {
+    console.log(this.signUpForm.value);
+    const userData = Object.assign({email: this.signUpForm.value.signUpEmail, password: this.signUpForm.value.signUpPassword});
+    console.log("userData", userData);
+    this.authService.registerWithEmailAndPassword(userData).then((res: any) => {
+      this.router.navigateByUrl('/');
+    }).catch((error: any) => {
+      console.error(error);
+    });
   }
 
   authSuccessAnimation() {

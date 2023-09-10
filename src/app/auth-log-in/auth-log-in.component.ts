@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'auth-app-log-in',
@@ -12,12 +14,14 @@ export class AuthLogInComponent implements OnInit {
   logInError = false;
   logInForm = this.fb.group({
     logInEmail: ['', [Validators.required, Validators.email]],
-    logInPassword: ['', Validators.required],
-    logInRememberMe: [false]
+    logInPassword: ['', Validators.required]
+    // logInRememberMe: [false]
 
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router) { }
 
   ngOnInit(): void {
     if (sessionStorage.getItem('appLoaded')) {
@@ -31,15 +35,28 @@ export class AuthLogInComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.logInForm.valid) {
-      const { logInEmail, logInPassword, logInRememberMe } = this.logInForm.value;
-      if (logInRememberMe) {
-        // Handle das Speichern der Session oder eines Tokens, damit der Benutzer eingeloggt bleibt.
-      } else {
-        // Verhalte dich wie gewohnt beim Login.
-        this.logInError = true; // Falls Daten im Backend nicht übereinstimmen
-      }
-    }
+    this.loginWithEmailAndPassword();
+
+    // if (this.logInForm.valid) {
+    //   const { logInEmail, logInPassword, logInRememberMe } = this.logInForm.value;
+    //   if (logInRememberMe) {
+    //     // Handle das Speichern der Session oder eines Tokens, damit der Benutzer eingeloggt bleibt.
+    //   } else {
+    //     // Verhalte dich wie gewohnt beim Login.
+    //     this.logInError = true; // Falls Daten im Backend nicht übereinstimmen
+    //   }
+    // }
+  }
+
+  loginWithEmailAndPassword() {
+    console.log(this.logInForm.value);
+    const userData = Object.assign({email: this.logInForm.value.logInEmail});
+
+    this.authService.signWithEmailAndPassword(userData).then((res: any) => {
+      this.router.navigateByUrl('main');
+    }).catch((error: any) => {
+      console.error(error);
+    });
   }
 
 }
