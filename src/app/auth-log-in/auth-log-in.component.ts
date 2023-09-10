@@ -35,7 +35,7 @@ export class AuthLogInComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loginWithEmailAndPassword();
+    this.signIn();
 
     // if (this.logInForm.valid) {
     //   const { logInEmail, logInPassword, logInRememberMe } = this.logInForm.value;
@@ -48,11 +48,11 @@ export class AuthLogInComponent implements OnInit {
     // }
   }
 
-  loginWithEmailAndPassword() {
+  signIn() {
     console.log(this.logInForm.value);
     const userData = Object.assign(this.logInForm, {email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword});
 
-    this.authService.signWithEmailAndPassword(userData).then((res: any) => {
+    this.authService.signIn(userData).then((res: any) => {
       this.router.navigateByUrl('main');
     }).catch((error: any) => {
       console.error(error);

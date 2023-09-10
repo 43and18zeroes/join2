@@ -17,7 +17,7 @@ export class AuthService {
     return this.afs.createUserWithEmailAndPassword(user.email, user.password);
   }
 
-  signWithEmailAndPassword(user : {email: string, password: string}) {
+  signIn(user : {email: string, password: string}) {
     return this.afs.signInWithEmailAndPassword(user.email, user.password);
   }
 }
