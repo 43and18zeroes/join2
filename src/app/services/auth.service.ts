@@ -13,7 +13,7 @@ export class AuthService {
     return this.afs.signInWithPopup(new GoogleAuthProvider()); 
   }
 
-  signUpWithEmailAndPassword(user : {email: string, password: string}) {
+  signUp(user : {email: string, password: string}) {
     return this.afs.createUserWithEmailAndPassword(user.email, user.password);
   }
 
