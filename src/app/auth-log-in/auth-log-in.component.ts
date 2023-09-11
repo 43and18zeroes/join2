@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class AuthLogInComponent implements OnInit {
   showLoadingScreen = true;
   logInError = false;
   logInForm = this.fb.group({
-    logInEmail: ['', [Validators.required, Validators.email]],
+    logInEmail: ['', [Validators.required, this.emailValidator]],
     logInPassword: ['', Validators.required]
     // logInRememberMe: [false]
 
@@ -32,6 +32,12 @@ export class AuthLogInComponent implements OnInit {
         this.showLoadingScreen = false;
       }, 1500);
     }
+  }
+
+  emailValidator(control: FormControl): { [key: string]: any } | null {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const valid = emailRegex.test(control.value);
+    return valid ? null : { invalidEmail: true };
   }
 
   onSubmit() {
