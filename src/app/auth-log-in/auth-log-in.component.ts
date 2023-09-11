@@ -72,4 +72,7 @@ export class AuthLogInComponent implements OnInit {
     });
   }
 
+  logInGuest() {
+    
+  }
 }
