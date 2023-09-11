@@ -73,6 +73,14 @@ export class AuthLogInComponent implements OnInit {
   }
 
   logInGuest() {
-    
+    const userData = Object.assign({email: "guest@guest.de", password: "123456"});
+    this.authService.signIn(userData).then((res: any) => {
+      this.isSubmitted = true;
+      this.logInFailed = false;
+      this.router.navigateByUrl('main');
+    }).catch((error: any) => {
+      console.error(error);
+      this.logInFailed = true;
+    });
   }
 }
