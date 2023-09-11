@@ -23,6 +23,7 @@ export class AuthSignUpComponent implements OnInit {
   });
 
   isSubmitted = false;
+  emailAdressAlreadyExists = false;
 
   @ViewChild('authSuccess', { static: false }) authSuccess: ElementRef;
 
@@ -41,22 +42,22 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isSubmitted = true;
     this.signUp();
-    this.authSuccessAnimation();
-    setTimeout(() => {
-      this.router.navigate(['/']);
-    }, 1600);
   }
 
   signUp() {
     console.log(this.signUpForm.value);
-    const userData = Object.assign(this.signUpForm, {email: this.signUpForm.value.signUpEmail, password: this.signUpForm.value.signUpPassword});
+    const userData = Object.assign(this.signUpForm, { email: this.signUpForm.value.signUpEmail, password: this.signUpForm.value.signUpPassword });
     console.log("userData", userData);
     this.authService.signUp(userData).then((res: any) => {
-      this.router.navigateByUrl('/');
+      this.isSubmitted = true;
+      this.authSuccessAnimation();
+      setTimeout(() => {
+        this.router.navigate(['/']);
+      }, 1600);
     }).catch((error: any) => {
       console.error(error);
+      this.emailAdressAlreadyExists = true;
     });
   }
 

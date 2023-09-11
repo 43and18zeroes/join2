@@ -47,6 +47,7 @@
                         signUpForm.controls.signUpEmail.value">Invalid
                         email
                         address.</span>
+                        <span *ngIf="emailAdressAlreadyExists">This email adress is already in use.</span>
                 </div>
 
                 <div class="input__container">
