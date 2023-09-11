@@ -39,16 +39,6 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log("Current user is", this.user);
-    // console.log("this.signUpForm", this.signUpForm);
-    // this.firestore
-    //   .collection('users')
-    //   .add(this.user.toJSON())
-    //   .then((result: any) => {
-    //     console.log("adding user finished", result);
-    //   });
-    // this.signUpForm.reset();
-
     this.signUp();
     this.authSuccessAnimation();
     setTimeout(() => {
