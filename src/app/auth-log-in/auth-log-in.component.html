@@ -44,7 +44,7 @@
 
                 <div class="incorrect__input">
                     <span
-                        *ngIf="logInForm.controls.logInPassword.errors && logInForm.controls.logInPassword.errors['logInPassword']">Incorrect
+                        *ngIf="logInFailed">Incorrect
                         email or password. Please try again.</span>
                 </div>
 

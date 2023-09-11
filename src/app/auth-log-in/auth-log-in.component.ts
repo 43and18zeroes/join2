@@ -12,6 +12,8 @@ import { emailValidator } from '../shared/validators/custom-validators';
 export class AuthLogInComponent implements OnInit {
 
   showLoadingScreen = true;
+
+  logInFailed = false;
   logInError = false;
   logInForm = this.fb.group({
     logInEmail: ['', [Validators.required, emailValidator]],
@@ -60,9 +62,11 @@ export class AuthLogInComponent implements OnInit {
     const userData = Object.assign(this.logInForm, {email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword});
 
     this.authService.signIn(userData).then((res: any) => {
+      this.logInFailed = false;
       this.router.navigateByUrl('main');
     }).catch((error: any) => {
       console.error(error);
+      this.logInFailed = true;
     });
   }
 
