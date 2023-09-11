@@ -41,6 +41,10 @@ export class AuthSignUpComponent implements OnInit {
     return valid ? null : { invalidEmail: true };
   }
 
+  mailFocus() {
+    this.emailAdressAlreadyExists = false;
+  }
+
   onSubmit() {
     this.signUp();
   }
