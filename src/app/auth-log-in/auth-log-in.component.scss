@@ -151,6 +151,7 @@
     header {
         position: absolute;
         width: calc(100% - 150px);
+        height: 122.25px;
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -161,6 +162,7 @@
         }
 
         @media (width <=576px) {
+            height: 78.234px;
             margin-bottom: 32px;
         }
 
