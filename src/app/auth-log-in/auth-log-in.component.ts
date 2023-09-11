@@ -19,8 +19,9 @@ export class AuthLogInComponent implements OnInit {
     logInEmail: ['', [Validators.required, emailValidator]],
     logInPassword: ['', Validators.required]
     // logInRememberMe: [false]
-
   });
+
+  isSubmitted = false;
 
   constructor(private authService: AuthService,
     private fb: FormBuilder,
@@ -62,6 +63,7 @@ export class AuthLogInComponent implements OnInit {
     const userData = Object.assign(this.logInForm, {email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword});
 
     this.authService.signIn(userData).then((res: any) => {
+      this.isSubmitted = true;
       this.logInFailed = false;
       this.router.navigateByUrl('main');
     }).catch((error: any) => {
