@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { emailValidator } from '../shared/validators/custom-validators';
 
 @Component({
   selector: 'app-auth-password-mail',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class AuthPasswordMailComponent implements OnInit {
 
   passwordMailForm = new FormGroup({
-    passwordMailEmail: new FormControl('', [Validators.required, Validators.email])
+    passwordMailEmail: new FormControl('', [Validators.required, emailValidator])
   });
 
   @ViewChild('authSuccess', { static: false }) authSuccess: ElementRef;
