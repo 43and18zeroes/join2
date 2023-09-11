@@ -22,6 +22,8 @@ export class AuthSignUpComponent implements OnInit {
     signUpPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
+  isSubmitted = false;
+
   @ViewChild('authSuccess', { static: false }) authSuccess: ElementRef;
 
   constructor(private firestore: AngularFirestore,
@@ -39,6 +41,7 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isSubmitted = true;
     this.signUp();
     this.authSuccessAnimation();
     setTimeout(() => {
