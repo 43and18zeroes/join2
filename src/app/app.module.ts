@@ -16,6 +16,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { MainComponent } from './main/main.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

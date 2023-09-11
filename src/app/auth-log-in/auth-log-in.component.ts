@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { emailValidator } from '../shared/validators/custom-validators';
 
 @Component({
   selector: 'auth-app-log-in',
@@ -13,7 +14,7 @@ export class AuthLogInComponent implements OnInit {
   showLoadingScreen = true;
   logInError = false;
   logInForm = this.fb.group({
-    logInEmail: ['', [Validators.required, this.emailValidator]],
+    logInEmail: ['', [Validators.required, emailValidator]],
     logInPassword: ['', Validators.required]
     // logInRememberMe: [false]
 
@@ -34,11 +35,11 @@ export class AuthLogInComponent implements OnInit {
     }
   }
 
-  emailValidator(control: FormControl): { [key: string]: any } | null {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    const valid = emailRegex.test(control.value);
-    return valid ? null : { invalidEmail: true };
-  }
+  // emailValidator(control: FormControl): { [key: string]: any } | null {
+  //   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  //   const valid = emailRegex.test(control.value);
+  //   return valid ? null : { invalidEmail: true };
+  // }
 
   onSubmit() {
     this.signIn();

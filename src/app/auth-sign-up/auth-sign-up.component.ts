@@ -1,11 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { User } from 'src/models/user.class';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+// import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+// import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { emailValidator } from '../shared/validators/custom-validators';
 
 @Component({
   selector: 'auth-app-sign-up',
@@ -18,7 +19,7 @@ export class AuthSignUpComponent implements OnInit {
 
   signUpForm = new FormGroup({
     signUpUserName: new FormControl('', [Validators.required, Validators.maxLength(16)]),
-    signUpEmail: new FormControl('', [Validators.required, this.emailValidator]),
+    signUpEmail: new FormControl('', [Validators.required, emailValidator]),
     signUpPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
@@ -35,11 +36,11 @@ export class AuthSignUpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  emailValidator(control: FormControl): { [key: string]: any } | null {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    const valid = emailRegex.test(control.value);
-    return valid ? null : { invalidEmail: true };
-  }
+  // emailValidator(control: FormControl): { [key: string]: any } | null {
+  //   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  //   const valid = emailRegex.test(control.value);
+  //   return valid ? null : { invalidEmail: true };
+  // }
 
   mailFocus() {
     this.emailAdressAlreadyExists = false;
