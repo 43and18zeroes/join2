@@ -395,6 +395,28 @@
                     .btn__primary {
                         margin-right: 35px;
                     }
+
+                    .user__attention {
+                        animation: pulse 1.5s infinite;
+                    }
+
+                    @keyframes pulse {
+                        0% {
+                            transform: scale(1);
+                        }
+
+                        50% {
+                            transform: scale(1.05);
+                        }
+
+                        100% {
+                            transform: scale(1);
+                        }
+                    }
+
+                    .user__attention:hover {
+                        animation-play-state: paused;
+                    }
                 }
             }
         }
