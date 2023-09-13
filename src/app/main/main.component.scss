@@ -55,8 +55,9 @@ main {
 }
 
 footer {
+    height: 110px;
+    
     @media (width >768px) {
         display: none;
-        height: 110px;
     }
 }
