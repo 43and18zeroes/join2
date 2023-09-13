@@ -21,7 +21,6 @@ export class MainHeaderComponent implements OnInit {
       this.router.navigateByUrl('/');
       // Sign-out successful.
     }).catch((error) => {
-      // An error happened.
     });
   }
 }
