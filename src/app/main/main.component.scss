@@ -26,15 +26,27 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    
+    header {
+        height: 110px;
+    }
 
     section {
         flex: 1;
         background-color: #7e7e7e;
+        overflow-y: auto;
+
+        @media (width <=768px) {
+            flex: auto;
+            height: calc(100vh - 110px - 110px);
+            overflow-y: auto;
+        }
     }
 }
 
 footer {
     @media (width >768px) {
         display: none;
+        height: 110px;
     }
 }
