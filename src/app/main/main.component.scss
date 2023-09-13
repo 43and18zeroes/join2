@@ -29,6 +29,8 @@ main {
     
     app-main-header {
         height: 110px;
+        display: flex;
+        justify-content: space-between;
     }
 
     section {
