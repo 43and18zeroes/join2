@@ -2,12 +2,24 @@
     display: flex;
     width: 100vw;
     height: 100vh;
+
+    // @media (width <=768px) {
+    //     flex-direction: column-reverse;
+    // }
+
+    @media (width <=768px) {
+        flex-direction: column;
+    }
 }
 
 aside {
     background-color: #2A3647;
     width: 300px;
     height: 100%;
+
+    @media (width <=768px) {
+        display: none;
+    }
 }
 
 main {
@@ -18,5 +30,11 @@ main {
     section {
         flex: 1;
         background-color: #7e7e7e;
+    }
+}
+
+footer {
+    @media (width >768px) {
+        display: none;
     }
 }
