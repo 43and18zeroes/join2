@@ -41,6 +41,16 @@ main {
             height: calc(100vh - 110px - 110px);
             overflow-y: auto;
         }
+
+        .contacts__container {
+            height: 100%;
+            display: flex;
+
+            div {
+                height: 100%;
+                overflow-y: auto;
+            }
+        }
     }
 }
 
