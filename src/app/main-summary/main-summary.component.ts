@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getAuth } from "firebase/auth";
 
 @Component({
   selector: 'app-main-summary',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainSummaryComponent implements OnInit {
 
+  auth = getAuth();
+  user = this.auth.currentUser;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log("currentUser ", this.user);
   }
 
 }
