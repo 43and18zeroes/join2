@@ -18,6 +18,7 @@ import { MainComponent } from './main/main.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { SharedModule } from './shared/shared.module';
 import { MainHeaderComponent } from './main-header/main-header.component';
+import { MainSummaryComponent } from './main-summary/main-summary.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MainHeaderComponent } from './main-header/main-header.component';
     AuthPasswordMailComponent,
     AuthConfirmNewPasswordComponent,
     MainComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
+    MainSummaryComponent
   ],
   imports: [
     BrowserModule,
