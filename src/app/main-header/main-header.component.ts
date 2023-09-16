@@ -14,12 +14,13 @@ export class MainHeaderComponent implements OnInit {
   ngOnInit(): void {
     const auth = getAuth();
     const user = auth.currentUser;
-    console.log("user", user);
-    if (user) {
-      console.log("user", user);
-    } else {
-      // No user is signed in.
-    }
+    auth.onAuthStateChanged(function(user) {
+      if (user != null) {
+        console.log("user2", user);
+      } else {
+        // No user is signed in.
+      }
+    });
   }
 
   logOut() {
