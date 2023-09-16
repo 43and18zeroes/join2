@@ -55,7 +55,6 @@ export class AuthSignUpComponent implements OnInit {
   signUp() {
     // console.log(this.signUpForm.value);
     const userData = Object.assign(this.signUpForm, { userName: this.signUpForm.value.signUpUserName, email: this.signUpForm.value.signUpEmail, password: this.signUpForm.value.signUpPassword });
-    // console.log("userData", userData);
     this.authService.signUp(userData).then((res: any) => {
       this.isSubmitted = true;
       this.createNewUserData();
