@@ -15,6 +15,7 @@ export class MainHeaderComponent implements OnInit {
   currentUserAuth;
   allUserData;
   currentUserData = [];
+  currentUserName;
 
   constructor(private firestore: AngularFirestore,
               private router: Router) { }
@@ -57,6 +58,7 @@ export class MainHeaderComponent implements OnInit {
     }
 
     console.log("this.currentUserData", this.currentUserData);
+    this.currentUserName = this.currentUserData[0].userName;
   }
 
   logOut() {
