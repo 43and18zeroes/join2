@@ -55,12 +55,12 @@
                     <span (click)="signUpPassword.focus()" class="material__symbols__outlined">
                         lock
                     </span>
-                    <input [attr.disabled]="isSubmitted ? true : null" [(ngModel)]="user.userPassword" #signUpPassword id="signUpPassword" formControlName="signUpPassword" placeholder="Password"
+                    <input [attr.disabled]="isSubmitted ? true : null" #signUpPassword id="signUpPassword" formControlName="signUpPassword" placeholder="Password"
                         type="password">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="signUpForm.controls.signUpPassword.invalid &&
-                    signUpForm.controls.signUpPassword.touched  && 
+                    signUpForm.controls.signUpPassword.dirty  && 
                     signUpForm.controls.signUpPassword.value">Password must be at least 6 characters long.</span>
                 </div>
 
