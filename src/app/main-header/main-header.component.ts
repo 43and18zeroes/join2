@@ -12,10 +12,18 @@ export class MainHeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    console.log("user", user);
+    if (user) {
+      console.log("user", user);
+    } else {
+      // No user is signed in.
+    }
   }
 
   logOut() {
-    console.log("logout");
+    // console.log("logout");
     const auth = getAuth();
     signOut(auth).then(() => {
       this.router.navigateByUrl('/');
