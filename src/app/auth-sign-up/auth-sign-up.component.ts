@@ -34,6 +34,8 @@ export class AuthSignUpComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    // this.user.userName = "testUser";
+    // console.log("user", this.user);
   }
 
   // emailValidator(control: FormControl): { [key: string]: any } | null {
@@ -51,11 +53,12 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   signUp() {
-    console.log(this.signUpForm.value);
+    // console.log(this.signUpForm.value);
     const userData = Object.assign(this.signUpForm, { userName: this.signUpForm.value.signUpUserName, email: this.signUpForm.value.signUpEmail, password: this.signUpForm.value.signUpPassword });
-    console.log("userData", userData);
+    // console.log("userData", userData);
     this.authService.signUp(userData).then((res: any) => {
       this.isSubmitted = true;
+      this.createNewUserData();
       this.authSuccessAnimation();
       setTimeout(() => {
         this.router.navigate(['/']);
@@ -64,6 +67,17 @@ export class AuthSignUpComponent implements OnInit {
       // console.error(error);
       this.emailAdressAlreadyExists = true;
     });
+  }
+
+  createNewUserData() {
+    // this.user.userName = "testUser";
+    console.log("user", this.user);
+    this.firestore
+      .collection('user')
+      .add(this.user.toJSON())
+      .then((result: any) => {
+        console.log("Adding user finished", result);
+      })
   }
 
   authSuccessAnimation() {
