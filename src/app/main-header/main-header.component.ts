@@ -9,6 +9,8 @@ import { getAuth, signOut } from "firebase/auth";
 })
 export class MainHeaderComponent implements OnInit {
 
+  currentUserAuth;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -17,10 +19,12 @@ export class MainHeaderComponent implements OnInit {
 
   getCurrentUserAuth() {
     const auth = getAuth();
-    const user = auth.currentUser;
-    auth.onAuthStateChanged(function(user) {
+    auth.onAuthStateChanged((user) => {
       if (user != null) {
-        console.log("user2", user);
+        this.currentUserAuth = user;
+        // console.log("user", user);
+        // const displayUserName = user.email;
+        // console.log("this.displayUserName", displayUserName);
       } else {
         // No user is signed in.
       }
