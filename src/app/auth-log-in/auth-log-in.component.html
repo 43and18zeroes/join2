@@ -24,8 +24,8 @@
                     <span (click)="logInMail.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input [attr.disabled]="isSubmitted ? true : null" #logInMail id="logInEmail" placeholder="Email" type="email" formControlName="logInEmail"
-                        autocomplete="username">
+                    <input [attr.disabled]="isSubmitted ? true : null" #logInMail id="logInEmail" placeholder="Email"
+                        type="email" formControlName="logInEmail" autocomplete="username">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="logInForm.controls.logInEmail.invalid &&
@@ -43,14 +43,14 @@
                 </div>
 
                 <div class="incorrect__input">
-                    <span
-                        *ngIf="logInFailed">Incorrect
+                    <span *ngIf="logInFailed">Incorrect
                         email or password. Please try again.</span>
                 </div>
 
                 <div class="auxiliaries">
                     <div class="remember__me">
-                        <input [attr.disabled]="isSubmitted ? true : null" name="cssCheckbox" id="logInRememberMe" type="checkbox" class="css-checkbox">
+                        <input [attr.disabled]="isSubmitted ? true : null" name="cssCheckbox" id="logInRememberMe"
+                            type="checkbox" class="css-checkbox">
                         <label for="logInRememberMe">Remember me</label>
                     </div>
                     <div routerLink="/auth-password-mail" class="forgot__password">I forgot my password</div>
@@ -58,7 +58,8 @@
 
                 <div class="login__btns">
                     <button type="submit" class="btn__primary">Log in</button>
-                    <button type="button" (click)="logInGuest(); $event.stopPropagation()" class="btn__secondary user__attention">Guest Log in</button>
+                    <button type="button" (click)="logInGuest(); $event.stopPropagation()"
+                        class="btn__secondary user__attention">Guest Log in</button>
                 </div>
 
             </form>
