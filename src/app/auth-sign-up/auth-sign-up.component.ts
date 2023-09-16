@@ -72,7 +72,7 @@ export class AuthSignUpComponent implements OnInit {
     // this.user.userName = "testUser";
     // console.log("user", this.user);
     this.firestore
-      .collection('user')
+      .collection('users')
       .add(this.user.toJSON())
       .then((result: any) => {
         console.log("Adding user finished", result);

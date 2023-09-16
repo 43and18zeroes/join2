@@ -13,7 +13,7 @@ import { getAuth, signOut } from "firebase/auth";
 export class MainHeaderComponent implements OnInit {
 
   currentUserAuth;
-  allUserData;
+  allUsersData;
   currentUserData = [];
   currentUserName;
 
@@ -29,7 +29,7 @@ export class MainHeaderComponent implements OnInit {
     auth.onAuthStateChanged((user) => {
       if (user != null) {
         this.currentUserAuth = user;
-        this.getAllUserData();
+        this.getAllUsersData();
         // console.log("user", user);
         // const displayUserName = user.email;
         // console.log("this.displayUserName", displayUserName);
@@ -39,25 +39,23 @@ export class MainHeaderComponent implements OnInit {
     });
   }
 
-  getAllUserData() {
+  getAllUsersData() {
     this.firestore
-      .collection('user')
+      .collection('users')
       .valueChanges()
       .subscribe((changes: any) => {
         console.log("changes", changes);
-        this.allUserData = changes;
-        this.filterCurrentUserData();
+        this.allUsersData = changes;
+        this.getCurrentUserData();
       })
   }
 
-  filterCurrentUserData() {
-    for (const key in this.allUserData) {
-      if (this.allUserData[key].userEmailAddress === this.currentUserAuth.email) {
-        this.currentUserData.push(this.allUserData[key]);
+  getCurrentUserData() {
+    for (const key in this.allUsersData) {
+      if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
+        this.currentUserData.push(this.allUsersData[key]);
       }
     }
-
-    console.log("this.currentUserData", this.currentUserData);
     this.currentUserName = this.currentUserData[0].userName;
   }
 
