@@ -12,7 +12,7 @@ export class MainHeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    getCurrentUserAuth();
+    this.getCurrentUserAuth();
   }
 
   getCurrentUserAuth() {
