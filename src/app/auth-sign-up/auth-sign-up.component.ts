@@ -63,7 +63,7 @@ export class AuthSignUpComponent implements OnInit {
         this.router.navigate(['/']);
       }, 1600);
     }).catch((error: any) => {
-      // console.error(error);
+      console.error(error);
       this.emailAdressAlreadyExists = true;
     });
   }
