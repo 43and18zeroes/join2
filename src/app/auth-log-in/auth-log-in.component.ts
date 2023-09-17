@@ -43,7 +43,7 @@ export class AuthLogInComponent implements OnInit {
   }
 
   signIn() {
-    console.log("this.logInForm.value.logInRememberMe", this.logInForm.value.logInRememberMe);
+    // console.log("this.logInForm.value.logInRememberMe", this.logInForm.value.logInRememberMe);
     const userData = Object.assign(this.logInForm, {email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword});
 
     this.authService.signIn(userData).then((res: any) => {
