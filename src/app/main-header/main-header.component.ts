@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { getAuth, signOut } from "firebase/auth";
 // import { collection } from 'firebase/firestore';
+import { UserService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-main-header',
@@ -18,7 +19,8 @@ export class MainHeaderComponent implements OnInit {
   currentUserName;
 
   constructor(private firestore: AngularFirestore,
-              private router: Router) { }
+              private router: Router,
+              private userService: UserService) { }
 
   ngOnInit(): void {
     this.getCurrentUserAuth();
@@ -39,15 +41,23 @@ export class MainHeaderComponent implements OnInit {
     });
   }
 
+  // getAllUsersData() {
+  //   this.firestore
+  //     .collection('users')
+  //     .valueChanges()
+  //     .subscribe((changes: any) => {
+  //       console.log("changes", changes);
+  //       this.allUsersData = changes;
+  //       this.getCurrentUserData();
+  //     })
+  // }
+
   getAllUsersData() {
-    this.firestore
-      .collection('users')
-      .valueChanges()
-      .subscribe((changes: any) => {
-        console.log("changes", changes);
-        this.allUsersData = changes;
-        this.getCurrentUserData();
-      })
+    this.userService.getAllUsersData().subscribe((changes: any) => {
+      console.log("changes", changes);
+      this.allUsersData = changes;
+      this.getCurrentUserData();
+    });
   }
 
   getCurrentUserData() {
