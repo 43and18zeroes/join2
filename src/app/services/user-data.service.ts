@@ -9,7 +9,15 @@ export class UserService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getAllUsersData(): Observable<any> {
-    return this.firestore.collection('users').valueChanges();
+  getAllUsersData() {
+    // return this.firestore.collection('users').valueChanges();
+    this.firestore
+      .collection('users')
+      .valueChanges()
+      .subscribe((changes: any) => {
+        let allUsersData = changes;
+        // console.log("allUsersData", allUsersData);
+        localStorage.setItem('users', JSON.stringify(changes));
+      })
   }
 }

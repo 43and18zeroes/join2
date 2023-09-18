@@ -23,7 +23,15 @@ export class MainHeaderComponent implements OnInit {
               private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getAllUsersData();
+    this.getUsersDataFromLocalStorage();
     this.getCurrentUserAuth();
+  }
+
+  getUsersDataFromLocalStorage() {
+    // return JSON.parse(localStorage.getItem('users') || '[]');
+    this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
+    console.log("this.allUsersData", this.allUsersData);
   }
 
   getCurrentUserAuth() {
@@ -31,7 +39,7 @@ export class MainHeaderComponent implements OnInit {
     auth.onAuthStateChanged((user) => {
       if (user != null) {
         this.currentUserAuth = user;
-        this.getAllUsersData();
+        // this.getAllUsersData();
         // console.log("user", user);
         // const displayUserName = user.email;
         // console.log("this.displayUserName", displayUserName);
@@ -42,23 +50,11 @@ export class MainHeaderComponent implements OnInit {
   }
 
   // getAllUsersData() {
-  //   this.firestore
-  //     .collection('users')
-  //     .valueChanges()
-  //     .subscribe((changes: any) => {
-  //       console.log("changes", changes);
-  //       this.allUsersData = changes;
-  //       this.getCurrentUserData();
-  //     })
-  // }
+  //   this.userService.getAllUsersData()
+      // this.allUsersData = changes;
+      // this.getCurrentUserData();
 
-  getAllUsersData() {
-    this.userService.getAllUsersData().subscribe((changes: any) => {
-      console.log("changes", changes);
-      this.allUsersData = changes;
-      this.getCurrentUserData();
-    });
-  }
+  // }
 
   getCurrentUserData() {
     for (const key in this.allUsersData) {
