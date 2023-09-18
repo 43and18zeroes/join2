@@ -23,9 +23,14 @@ export class MainHeaderComponent implements OnInit {
               private userService: UserService) { }
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  async getData() {
+    await this.getCurrentUserAuth();
     this.userService.getAllUsersData();
     this.getUsersDataFromLocalStorage();
-    this.getCurrentUserAuth();
+    this.getCurrentUserData();
   }
 
   getUsersDataFromLocalStorage() {
@@ -34,19 +39,18 @@ export class MainHeaderComponent implements OnInit {
     console.log("this.allUsersData", this.allUsersData);
   }
 
-  getCurrentUserAuth() {
+  getCurrentUserAuth(): Promise<void> {
     const auth = getAuth();
-    auth.onAuthStateChanged((user) => {
-      if (user != null) {
-        this.currentUserAuth = user;
-        // this.getAllUsersData();
-        // console.log("user", user);
-        // const displayUserName = user.email;
-        // console.log("this.displayUserName", displayUserName);
-      } else {
-        // No user is signed in.
-      }
-    });
+    return new Promise((resolve, reject) => {
+      auth.onAuthStateChanged((user) => {
+          if (user != null) {
+              this.currentUserAuth = user;
+              resolve();
+          } else {
+              resolve(); // oder reject(), falls du Fehler behandeln möchtest
+          }
+      });
+  });
   }
 
   // getAllUsersData() {
