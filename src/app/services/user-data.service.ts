@@ -15,8 +15,7 @@ export class UserService {
       .collection('users')
       .valueChanges()
       .subscribe((changes: any) => {
-        let allUsersData = changes;
-        // console.log("allUsersData", allUsersData);
+        localStorage.removeItem('users');
         localStorage.setItem('users', JSON.stringify(changes));
       })
   }
