@@ -33,7 +33,6 @@ export class MainHeaderComponent implements OnInit {
 
   getUsersDataFromLocalStorage() {
     this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
-    console.log("this.allUsersData", this.allUsersData);
   }
 
   getCurrentUserAuth(): Promise<void> {
