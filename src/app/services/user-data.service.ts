@@ -10,7 +10,6 @@ export class UserService {
   constructor(private firestore: AngularFirestore) { }
 
   getAllUsersData() {
-    // return this.firestore.collection('users').valueChanges();
     this.firestore
       .collection('users')
       .valueChanges()

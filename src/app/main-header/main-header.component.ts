@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-// import { Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { getAuth, signOut } from "firebase/auth";
-// import { collection } from 'firebase/firestore';
 import { UserService } from '../services/user-data.service';
 
 @Component({
@@ -19,8 +17,8 @@ export class MainHeaderComponent implements OnInit {
   currentUserName;
 
   constructor(private firestore: AngularFirestore,
-              private router: Router,
-              private userService: UserService) { }
+    private router: Router,
+    private userService: UserService) { }
 
   ngOnInit(): void {
     this.getData();
@@ -34,7 +32,6 @@ export class MainHeaderComponent implements OnInit {
   }
 
   getUsersDataFromLocalStorage() {
-    // return JSON.parse(localStorage.getItem('users') || '[]');
     this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
     console.log("this.allUsersData", this.allUsersData);
   }
@@ -43,22 +40,15 @@ export class MainHeaderComponent implements OnInit {
     const auth = getAuth();
     return new Promise((resolve, reject) => {
       auth.onAuthStateChanged((user) => {
-          if (user != null) {
-              this.currentUserAuth = user;
-              resolve();
-          } else {
-              resolve(); // oder reject(), falls du Fehler behandeln möchtest
-          }
+        if (user != null) {
+          this.currentUserAuth = user;
+          resolve();
+        } else {
+          resolve();
+        }
       });
-  });
+    });
   }
-
-  // getAllUsersData() {
-  //   this.userService.getAllUsersData()
-      // this.allUsersData = changes;
-      // this.getCurrentUserData();
-
-  // }
 
   getCurrentUserData() {
     for (const key in this.allUsersData) {
@@ -70,13 +60,10 @@ export class MainHeaderComponent implements OnInit {
   }
 
   logOut() {
-    // console.log("logout");
     const auth = getAuth();
     signOut(auth).then(() => {
       this.router.navigateByUrl('/');
-      // Sign-out successful.
     }).catch((error) => {
-      // An error happened.
     });
   }
 }
