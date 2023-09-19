@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
 import { emailValidator } from '../shared/validators/custom-validators';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../services/user-data.service';
 
 @Component({
   selector: 'auth-app-log-in',
@@ -11,6 +12,7 @@ import { emailValidator } from '../shared/validators/custom-validators';
 })
 export class AuthLogInComponent implements OnInit {
 
+  allUsersData;
   showLoadingScreen = true;
 
   logInFailed = false;
@@ -25,9 +27,13 @@ export class AuthLogInComponent implements OnInit {
 
   constructor(private authService: AuthService,
     private fb: FormBuilder,
-    private router: Router) { }
+    private router: Router,
+    private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.setAllUsersDataToLocalStorage();
+    this.getAllUsersDataFromLocalStorage();
+    console.log("allUsersData", this.allUsersData);
     if (sessionStorage.getItem('appLoaded')) {
       this.showLoadingScreen = false;
     } else {
@@ -36,6 +42,10 @@ export class AuthLogInComponent implements OnInit {
         this.showLoadingScreen = false;
       }, 1500);
     }
+  }
+
+  getAllUsersDataFromLocalStorage() {
+    this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
   }
 
   onSubmit() {

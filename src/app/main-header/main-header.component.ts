@@ -12,7 +12,7 @@ import { UserService } from '../services/user-data.service';
 export class MainHeaderComponent implements OnInit {
 
   currentUserAuth;
-  allUsersData;
+  // allUsersData;
   currentUserData = [];
   currentUserName;
 
@@ -26,14 +26,15 @@ export class MainHeaderComponent implements OnInit {
 
   async getData() {
     await this.getCurrentUserAuth();
-    this.userService.getAllUsersData();
-    this.getUsersDataFromLocalStorage();
-    this.getCurrentUserData();
+    // this.userService.setAllUsersDataToLocalStorage();
+    // this.getAllUsersDataFromLocalStorage();
+
+    // this.getCurrentUserData();
   }
 
-  getUsersDataFromLocalStorage() {
-    this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
-  }
+  // getAllUsersDataFromLocalStorage() {
+  //   this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
+  // }
 
   getCurrentUserAuth(): Promise<void> {
     const auth = getAuth();
@@ -49,14 +50,14 @@ export class MainHeaderComponent implements OnInit {
     });
   }
 
-  getCurrentUserData() {
-    for (const key in this.allUsersData) {
-      if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
-        this.currentUserData.push(this.allUsersData[key]);
-      }
-    }
-    this.currentUserName = this.currentUserData[0].userName;
-  }
+  // getCurrentUserData() {
+  //   for (const key in this.allUsersData) {
+  //     if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
+  //       this.currentUserData.push(this.allUsersData[key]);
+  //     }
+  //   }
+  //   this.currentUserName = this.currentUserData[0].userName;
+  // }
 
   logOut() {
     const auth = getAuth();

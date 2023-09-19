@@ -8,7 +8,7 @@ export class UserService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getAllUsersData() {
+  setAllUsersDataToLocalStorage() {
     this.firestore
       .collection('users')
       .valueChanges()
