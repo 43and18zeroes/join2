@@ -40,7 +40,6 @@ export class AuthLogInComponent implements OnInit {
   ngOnInit(): void {
     this.userService.setAllUsersDataToLocalStorage();
     this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
-    console.log("allUsersData", this.allUsersData);
     if (sessionStorage.getItem('appLoaded')) {
       this.showLoadingScreen = false;
     } else {
@@ -56,7 +55,6 @@ export class AuthLogInComponent implements OnInit {
   }
 
   signIn() {
-    // console.log("this.logInForm.value.logInRememberMe", this.logInForm.value.logInRememberMe);
     const userData = Object.assign(this.logInForm, {email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword});
 
     this.authService.signIn(userData).then((res: any) => {
@@ -86,7 +84,6 @@ export class AuthLogInComponent implements OnInit {
   async getCurrentUserData() {
     await this.getCurrentUserAuth();
     this.filterCurrentUserData();
-    // this.setUsersDataSessionCache();
   }
 
   getCurrentUserAuth(): Promise<void> {
@@ -109,15 +106,7 @@ export class AuthLogInComponent implements OnInit {
         this.currentUserData.push(this.allUsersData[key]);
       }
     }
-    // this.currentUserName = this.currentUserData[0].userName;
     localStorage.removeItem('currentUserData');
     localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData[0]));
   }
-
-  // setUsersDataSessionCache() {
-  //   this.globalStorage.allUsersData = this.allUsersData;
-  //   this.globalStorage.currentUserAuth = this.currentUserAuth;
-  //   this.globalStorage.currentUserData = this.currentUserData;
-  //   this.globalStorage.currentUserName = this.currentUserName;
-  // }
 }
