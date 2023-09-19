@@ -16,8 +16,6 @@ export class AuthLogInComponent implements OnInit {
 
   allUsersData;
   currentUserAuth;
-  currentUserData = [];
-  currentUserName;
 
   showLoadingScreen = true;
 
@@ -101,12 +99,13 @@ export class AuthLogInComponent implements OnInit {
   }
 
   filterCurrentUserData() {
+    let currentUserData = []
     for (const key in this.allUsersData) {
       if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
-        this.currentUserData.push(this.allUsersData[key]);
+        currentUserData.push(this.allUsersData[key]);
       }
     }
     localStorage.removeItem('currentUserData');
-    localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData[0]));
+    localStorage.setItem('currentUserData', JSON.stringify(currentUserData[0]));
   }
 }
