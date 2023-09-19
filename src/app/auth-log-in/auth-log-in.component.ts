@@ -39,7 +39,7 @@ export class AuthLogInComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.setAllUsersDataToLocalStorage();
-    this.getAllUsersDataFromLocalStorage();
+    this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
     console.log("allUsersData", this.allUsersData);
     if (sessionStorage.getItem('appLoaded')) {
       this.showLoadingScreen = false;
@@ -49,10 +49,6 @@ export class AuthLogInComponent implements OnInit {
         this.showLoadingScreen = false;
       }, 1500);
     }
-  }
-
-  getAllUsersDataFromLocalStorage() {
-    this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
   }
 
   onSubmit() {
