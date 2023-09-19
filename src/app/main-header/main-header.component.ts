@@ -11,46 +11,46 @@ import { UserService } from '../services/user-data.service';
 })
 export class MainHeaderComponent implements OnInit {
 
-  currentUserAuth;
+  // currentUserAuth;
   // allUsersData;
-  currentUserData = [];
-  currentUserName;
+  // currentUserData = [];
+  // currentUserName;
 
   constructor(private firestore: AngularFirestore,
     private router: Router,
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getData();
+    // this.getData();
   }
 
-  async getData() {
-    await this.getCurrentUserAuth();
+  // async getData() {
+    // await this.getCurrentUserAuth();
     // this.userService.setAllUsersDataToLocalStorage();
     // this.getAllUsersDataFromLocalStorage();
 
-    // this.getCurrentUserData();
-  }
+    // this.filterCurrentUserData();
+  // }
 
   // getAllUsersDataFromLocalStorage() {
   //   this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
   // }
 
-  getCurrentUserAuth(): Promise<void> {
-    const auth = getAuth();
-    return new Promise((resolve, reject) => {
-      auth.onAuthStateChanged((user) => {
-        if (user != null) {
-          this.currentUserAuth = user;
-          resolve();
-        } else {
-          resolve();
-        }
-      });
-    });
-  }
+  // getCurrentUserAuth(): Promise<void> {
+  //   const auth = getAuth();
+  //   return new Promise((resolve, reject) => {
+  //     auth.onAuthStateChanged((user) => {
+  //       if (user != null) {
+  //         this.currentUserAuth = user;
+  //         resolve();
+  //       } else {
+  //         resolve();
+  //       }
+  //     });
+  //   });
+  // }
 
-  // getCurrentUserData() {
+  // filterCurrentUserData() {
   //   for (const key in this.allUsersData) {
   //     if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
   //       this.currentUserData.push(this.allUsersData[key]);
