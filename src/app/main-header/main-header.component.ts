@@ -11,10 +11,6 @@ import { UserService } from '../services/user-data.service';
 })
 export class MainHeaderComponent implements OnInit {
 
-  // currentUserAuth;
-  // allUsersData;
-  // currentUserData = [];
-  // currentUserName;
   currentUserData;
 
   constructor(
@@ -23,58 +19,8 @@ export class MainHeaderComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    // this.getData();
-    // this.getUsersDataSessionCache();
     this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
-    console.log("this.currentUserData", this.currentUserData);
   }
-
-  // getUsersDataSessionCache() {
-  //   this.allUsersData = this.globalStorage.allUsersData;
-  //   this.currentUserAuth = this.globalStorage.currentUserAuth;
-  //   this.currentUserData = this.globalStorage.currentUserData;
-  //   this.currentUserName = this.globalStorage.currentUserName;
-
-  //   console.log("this.allUsersData", this.allUsersData);
-  //   console.log("this.currentUserAuth", this.currentUserAuth);
-  //   console.log("this.currentUserData", this.currentUserData);
-  //   console.log("this.currentUserName", this.currentUserName);
-  // }
-
-  // async getData() {
-    // await this.getCurrentUserAuth();
-    // this.userService.setAllUsersDataToLocalStorage();
-    // this.getAllUsersDataFromLocalStorage();
-
-    // this.filterCurrentUserData();
-  // }
-
-  // getAllUsersDataFromLocalStorage() {
-  //   this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
-  // }
-
-  // getCurrentUserAuth(): Promise<void> {
-  //   const auth = getAuth();
-  //   return new Promise((resolve, reject) => {
-  //     auth.onAuthStateChanged((user) => {
-  //       if (user != null) {
-  //         this.currentUserAuth = user;
-  //         resolve();
-  //       } else {
-  //         resolve();
-  //       }
-  //     });
-  //   });
-  // }
-
-  // filterCurrentUserData() {
-  //   for (const key in this.allUsersData) {
-  //     if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
-  //       this.currentUserData.push(this.allUsersData[key]);
-  //     }
-  //   }
-  //   this.currentUserName = this.currentUserData[0].userName;
-  // }
 
   logOut() {
     const auth = getAuth();
