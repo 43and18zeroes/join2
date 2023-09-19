@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { GlobalStorageService } from '../services/global-storage.service';
 import { getAuth, signOut } from "firebase/auth";
 import { Router } from '@angular/router';
 import { UserService } from '../services/user-data.service';
@@ -20,7 +19,6 @@ export class MainHeaderComponent implements OnInit {
 
   constructor(
     private firestore: AngularFirestore,
-    private globalStorage: GlobalStorageService,
     private router: Router,
     private userService: UserService) { }
 

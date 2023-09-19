@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { emailValidator } from '../shared/validators/custom-validators';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { GlobalStorageService } from '../services/global-storage.service';
 import { getAuth } from "firebase/auth";
 import { Router } from '@angular/router';
 import { UserService } from '../services/user-data.service';
@@ -31,7 +30,6 @@ export class AuthLogInComponent implements OnInit {
 
   constructor(private authService: AuthService,
     private fb: FormBuilder,
-    private globalStorage: GlobalStorageService,
     private router: Router,
     private userService: UserService) { }
 
