@@ -47,32 +47,25 @@ export class AuthLogInComponent implements OnInit {
   }
 
   onSubmit() {
-    this.signIn();
-  }
-
-  signIn() {
-    const userData = Object.assign(this.logInForm, {email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword});
-
+    const userData = Object.assign(this.logInForm, { email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword });
     this.authService.signIn(userData).then((res: any) => {
       this.getCurrentUserData();
       this.isSubmitted = true;
       this.logInFailed = false;
       this.router.navigateByUrl('main');
     }).catch((error: any) => {
-      console.error(error);
       this.logInFailed = true;
     });
   }
 
   logInGuest() {
-    const userData = Object.assign(this.logInForm, {email: "gast@gast.de", password: "123456"});
+    const userData = Object.assign(this.logInForm, { email: "gast@gast.de", password: "123456" });
     this.authService.signIn(userData).then((res: any) => {
       this.getCurrentUserData();
       this.isSubmitted = true;
       this.logInFailed = false;
       this.router.navigateByUrl('main');
     }).catch((error: any) => {
-      console.error(error);
       this.logInFailed = true;
     });
   }
