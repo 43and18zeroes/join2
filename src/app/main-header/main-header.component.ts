@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
+import { GlobalStorageService } from '../services/global-storage.service';
 import { getAuth, signOut } from "firebase/auth";
+import { Router } from '@angular/router';
 import { UserService } from '../services/user-data.service';
 
 @Component({
@@ -11,17 +12,32 @@ import { UserService } from '../services/user-data.service';
 })
 export class MainHeaderComponent implements OnInit {
 
-  // currentUserAuth;
-  // allUsersData;
-  // currentUserData = [];
-  // currentUserName;
+  currentUserAuth;
+  allUsersData;
+  currentUserData = [];
+  currentUserName;
 
-  constructor(private firestore: AngularFirestore,
+  constructor(
+    private firestore: AngularFirestore,
+    private globalStorage: GlobalStorageService,
     private router: Router,
     private userService: UserService) { }
 
   ngOnInit(): void {
     // this.getData();
+    this.getUsersDataSessionCache();
+  }
+
+  getUsersDataSessionCache() {
+    this.allUsersData = this.globalStorage.allUsersData;
+    this.currentUserAuth = this.globalStorage.currentUserAuth;
+    this.currentUserData = this.globalStorage.currentUserData;
+    this.currentUserName = this.globalStorage.currentUserName;
+
+    console.log("this.allUsersData", this.allUsersData);
+    console.log("this.currentUserAuth", this.currentUserAuth);
+    console.log("this.currentUserData", this.currentUserData);
+    console.log("this.currentUserName", this.currentUserName);
   }
 
   // async getData() {
