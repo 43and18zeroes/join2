@@ -86,7 +86,7 @@ export class AuthLogInComponent implements OnInit {
   async getCurrentUserData() {
     await this.getCurrentUserAuth();
     this.filterCurrentUserData();
-    this.setUsersDataSessionCache();
+    // this.setUsersDataSessionCache();
   }
 
   getCurrentUserAuth(): Promise<void> {
@@ -109,13 +109,15 @@ export class AuthLogInComponent implements OnInit {
         this.currentUserData.push(this.allUsersData[key]);
       }
     }
-    this.currentUserName = this.currentUserData[0].userName;
+    // this.currentUserName = this.currentUserData[0].userName;
+    localStorage.removeItem('currentUserData');
+    localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData[0]));
   }
 
-  setUsersDataSessionCache() {
-    this.globalStorage.allUsersData = this.allUsersData;
-    this.globalStorage.currentUserAuth = this.currentUserAuth;
-    this.globalStorage.currentUserData = this.currentUserData;
-    this.globalStorage.currentUserName = this.currentUserName;
-  }
+  // setUsersDataSessionCache() {
+  //   this.globalStorage.allUsersData = this.allUsersData;
+  //   this.globalStorage.currentUserAuth = this.currentUserAuth;
+  //   this.globalStorage.currentUserData = this.currentUserData;
+  //   this.globalStorage.currentUserName = this.currentUserName;
+  // }
 }
