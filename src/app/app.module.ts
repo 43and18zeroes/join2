@@ -19,6 +19,9 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { SharedModule } from './shared/shared.module';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { MainSummaryComponent } from './main-summary/main-summary.component';
+import { MainAddTaskComponent } from './main-add-task/main-add-task.component';
+import { MainBoardComponent } from './main-board/main-board.component';
+import { MainContactsComponent } from './main-contacts/main-contacts.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { MainSummaryComponent } from './main-summary/main-summary.component';
     AuthConfirmNewPasswordComponent,
     MainComponent,
     MainHeaderComponent,
-    MainSummaryComponent
+    MainSummaryComponent,
+    MainAddTaskComponent,
+    MainBoardComponent,
+    MainContactsComponent
   ],
   imports: [
     BrowserModule,

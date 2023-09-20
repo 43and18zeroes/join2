@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  aktuellAngezeigt: 'summary' | 'addTask' | 'board' | 'contacts' = 'summary';
+
+  anzeigen(zustand: 'summary' | 'addTask' | 'board' | 'contacts') {
+    this.aktuellAngezeigt = zustand;
+  }
+
   constructor() { }
 
   ngOnInit(): void {
