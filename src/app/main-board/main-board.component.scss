@@ -1,0 +1,18 @@
+.board__container {
+    height: 100%;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    main {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .main__element {
+            overflow-y: auto;
+        }
+    }
+}
