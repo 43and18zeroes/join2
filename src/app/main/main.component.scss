@@ -58,6 +58,7 @@ main {
 
 footer {
     height: 110px;
+    display: flex;
     
     @media (width >768px) {
         display: none;
