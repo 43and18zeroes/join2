@@ -1,22 +1,32 @@
 .board__container {
-    height: 100%;
+    height: calc(100vh - 224px);
     padding: 64px;
+    // display: flex;
+    // flex-direction: column;
 
     header {
+        height: 140px;
         display: flex;
         justify-content: space-between;
     }
 
     main {
-        height: 100%;
+        // height: calc(100vh - 224px);
+        // flex: 1;
+        height: calc(100% - 96px);
         display: flex;
         justify-content: space-between;
 
         .main__element {
-            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            h3 {
+                // height: 32px;
+            }
             
             .column__body {
-                height: 100%;
+                flex: 1;
                 overflow-y: auto;
             }
         }

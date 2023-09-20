@@ -24,8 +24,9 @@ aside {
 
 main {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
+    // height: 100vh;
     
     app-main-header {
         height: 96px;
@@ -34,7 +35,8 @@ main {
     }
 
     section {
-        flex: 1;
+        // flex: 1;
+        height: calc(100vh - 96px);
         background-color: #7e7e7e;
         overflow-y: auto;
 
