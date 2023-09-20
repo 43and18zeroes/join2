@@ -1,0 +1,8 @@
+.contacts__container {
+    height: 100%;
+    display: flex;
+
+    .contacts__list {
+        overflow-y: auto;
+    }
+}
