@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  aktuellAngezeigt: 'summary' | 'addTask' | 'board' | 'contacts' = 'summary';
+  currentlyDisplayed: 'summary' | 'addTask' | 'board' | 'contacts' = 'summary';
 
-  anzeigen(zustand: 'summary' | 'addTask' | 'board' | 'contacts') {
-    this.aktuellAngezeigt = zustand;
+  displayMainSection(condition: 'summary' | 'addTask' | 'board' | 'contacts') {
+    this.currentlyDisplayed = condition;
   }
 
   constructor() { }

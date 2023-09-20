@@ -1,19 +1,19 @@
 <aside>
     JOIN
     <nav>
-        <div (click)="anzeigen('summary')">Summary</div>
-        <div (click)="anzeigen('addTask')">Add Task</div>
-        <div (click)="anzeigen('board')">Board</div>
-        <div (click)="anzeigen('contacts')">Contacts</div>
+        <div (click)="displayMainSection('summary')">Summary</div>
+        <div (click)="displayMainSection('addTask')">Add Task</div>
+        <div (click)="displayMainSection('board')">Board</div>
+        <div (click)="displayMainSection('contacts')">Contacts</div>
     </nav>
 </aside>
 <main>
     <app-main-header></app-main-header>
     <section>
-        <app-main-summary *ngIf="aktuellAngezeigt === 'summary'"></app-main-summary>
-        <app-main-add-task *ngIf="aktuellAngezeigt === 'addTask'"></app-main-add-task>
-        <app-main-board *ngIf="aktuellAngezeigt === 'board'"></app-main-board>
-        <app-main-contacts *ngIf="aktuellAngezeigt === 'contacts'"></app-main-contacts>
+        <app-main-summary *ngIf="currentlyDisplayed === 'summary'"></app-main-summary>
+        <app-main-add-task *ngIf="currentlyDisplayed === 'addTask'"></app-main-add-task>
+        <app-main-board *ngIf="currentlyDisplayed === 'board'"></app-main-board>
+        <app-main-contacts *ngIf="currentlyDisplayed === 'contacts'"></app-main-contacts>
         <!-- <div class="contacts__container">
             <div>
                 <p>AAAAA</p>
