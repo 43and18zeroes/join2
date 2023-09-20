@@ -22,10 +22,14 @@ aside {
     }
 
     nav {
-        
+
         div {
             display: flex;
             justify-content: center;
+        }
+
+        div.active {
+            background-color: black;
         }
     }
 }
@@ -35,7 +39,7 @@ main {
     // display: flex;
     // flex-direction: column;
     // height: 100vh;
-    
+
     app-main-header {
         height: 96px;
         display: flex;
@@ -69,8 +73,12 @@ main {
 footer {
     height: 110px;
     display: flex;
-    
+
     @media (width >768px) {
         display: none;
+    }
+
+    div.active {
+        background-color: black;
     }
 }

@@ -1,10 +1,10 @@
 <aside>
     JOIN
     <nav>
-        <div (click)="displayMainSection('summary')">Summary</div>
-        <div (click)="displayMainSection('addTask')">Add Task</div>
-        <div (click)="displayMainSection('board')">Board</div>
-        <div (click)="displayMainSection('contacts')">Contacts</div>
+        <div [class.active]="currentlyClicked === 'summary'" (click)="displayMainSection('summary')">Summary</div>
+        <div [class.active]="currentlyClicked === 'addTask'" (click)="displayMainSection('addTask')">Add Task</div>
+        <div [class.active]="currentlyClicked === 'board'" (click)="displayMainSection('board')">Board</div>
+        <div [class.active]="currentlyClicked === 'contacts'" (click)="displayMainSection('contacts')">Contacts</div>
     </nav>
 </aside>
 <main>
@@ -50,8 +50,8 @@
     </section>
 </main>
 <footer>
-    <div (click)="displayMainSection('summary')">Summary</div>
-    <div (click)="displayMainSection('addTask')">Add Task</div>
-    <div (click)="displayMainSection('board')">Board</div>
-    <div (click)="displayMainSection('contacts')">Contacts</div>
+    <div [class.active]="currentlyClicked === 'summary'" (click)="displayMainSection('summary')">Summary</div>
+    <div [class.active]="currentlyClicked === 'addTask'" (click)="displayMainSection('addTask')">Add Task</div>
+    <div [class.active]="currentlyClicked === 'board'" (click)="displayMainSection('board')">Board</div>
+    <div [class.active]="currentlyClicked === 'contacts'" (click)="displayMainSection('contacts')">Contacts</div>
 </footer>

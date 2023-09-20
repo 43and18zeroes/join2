@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  currentlyClicked: string = '';
   currentlyDisplayed: 'summary' | 'addTask' | 'board' | 'contacts' = 'summary';
 
   displayMainSection(condition: 'summary' | 'addTask' | 'board' | 'contacts') {
     this.currentlyDisplayed = condition;
+    this.currentlyClicked = condition;
   }
 
   constructor() { }
