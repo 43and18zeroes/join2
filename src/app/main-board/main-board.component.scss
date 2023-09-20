@@ -1,5 +1,6 @@
 .board__container {
     height: 100%;
+    padding: 64px;
 
     header {
         display: flex;
@@ -12,7 +13,12 @@
         justify-content: space-between;
 
         .main__element {
-            overflow-y: auto;
+            height: 100%;
+            
+            .column__body {
+                height: 100%;
+                overflow-y: auto;
+            }
         }
     }
 }
