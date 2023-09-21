@@ -96,6 +96,7 @@ export class AuthLogInComponent implements OnInit {
         currentUserData.push(this.allUsersData[key]);
       }
     }
+    
     localStorage.removeItem('currentUserData');
     localStorage.setItem('currentUserData', JSON.stringify(currentUserData[0]));
   }
