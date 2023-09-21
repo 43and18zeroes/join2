@@ -26,10 +26,12 @@ aside {
         div {
             display: flex;
             justify-content: center;
+            color: #CDCDCD;
         }
 
         div.active {
-            background-color: black;
+            background-color: var(--nav-darkblue-highlight);
+            color: var(--window-white);
         }
     }
 }
@@ -78,7 +80,12 @@ footer {
         display: none;
     }
 
+    div {
+        color: #CDCDCD;
+    }
+
     div.active {
-        background-color: black;
+        background-color: var(--nav-darkblue-highlight);
+        color: var(--window-white);
     }
 }
