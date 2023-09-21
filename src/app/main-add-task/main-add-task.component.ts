@@ -7,9 +7,17 @@ import { Component } from '@angular/core';
 })
 export class MainAddTaskComponent {
 
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  testFunction() {
+    let changes = {userName: 'Kasper', userEmailAddress: 'gast@gast.de'}
+    localStorage.setItem('currentUserData', JSON.stringify(changes));
+    let currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
+    console.log("this.currentUserData", currentUserData);
+  }
 }
