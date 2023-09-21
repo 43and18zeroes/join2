@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class MainContactsComponent {
 
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
