@@ -33,7 +33,6 @@ export class AuthLogInComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.setAllUsersDataToVarAndLocal();
-    // this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
     if (sessionStorage.getItem('appLoaded')) {
       this.showLoadingScreen = false;
     } else {
