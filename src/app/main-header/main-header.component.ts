@@ -35,6 +35,8 @@ export class MainHeaderComponent implements OnInit {
       this.currentUserData = this.userService.currentUserData;
     } else {
       console.log("undefined");
+      // this.userService.setAllUsersDataToVar();
+      // this.identifyCurrentUserData();
     }
   }
 
