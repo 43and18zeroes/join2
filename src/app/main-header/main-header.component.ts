@@ -32,7 +32,7 @@ export class MainHeaderComponent implements OnInit {
     console.log("this.userService.allUsersData", this.userService.allUsersData)
 
     if (this.userService.allUsersData !== undefined) {
-      this.currentUserData = this.userService.currentUserData;
+      this.currentUserData = this.userService.currentUserData[0];
       console.log("this.currentUserData", this.currentUserData)
     } else {
       console.log("undefined");
