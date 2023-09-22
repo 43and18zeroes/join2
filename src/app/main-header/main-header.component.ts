@@ -20,6 +20,7 @@ export class MainHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
+    console.log("this.currentUserData", this.currentUserData);
   }
 
   logOut() {
