@@ -21,6 +21,7 @@ export class MainHeaderComponent implements OnInit {
   ngOnInit(): void {
     if (this.userService.allUsersData !== undefined) {
       this.currentUserData = this.userService.currentUserData[0];
+      console.log("this.currentUserData", this.currentUserData);
     } else {
       this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
     }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-main-add-task',
@@ -9,13 +10,15 @@ export class MainAddTaskComponent {
 
 
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
   testFunction() {
-    let changes = {userName: 'Christoph', userEmailAddress: 'gast@gast.de'}
+    console.log("this.userService.currentUserData[0]", this.userService.currentUserData[0]);
+    this.userService.currentUserData[0] = {userName: 'Peter', userEmailAddress: 'gast@gast.de'};
+    console.log("this.userService.currentUserData[0]", this.userService.currentUserData[0]);
     // localStorage.setItem('currentUserData', JSON.stringify(changes));
     // let currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
     // console.log("this.currentUserData", currentUserData);
