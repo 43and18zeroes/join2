@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { emailValidator } from '../shared/validators/custom-validators';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { getAuth } from "firebase/auth";
 import { Router } from '@angular/router';
 import { UserService } from '../services/user-data.service';
 
@@ -13,8 +12,7 @@ import { UserService } from '../services/user-data.service';
 })
 export class AuthLogInComponent implements OnInit {
 
-  allUsersData;
-  currentUserAuth;
+  // allUsersData;
 
   showLoadingScreen = true;
 
@@ -71,33 +69,7 @@ export class AuthLogInComponent implements OnInit {
   }
 
   async identifyCurrentUserData() {
-    await this.getCurrentUserAuth();
-    this.filterCurrentUserData();
-  }
-
-  getCurrentUserAuth(): Promise<void> {
-    const auth = getAuth();
-    return new Promise((resolve, reject) => {
-      auth.onAuthStateChanged((user) => {
-        if (user != null) {
-          this.currentUserAuth = user;
-          resolve();
-        } else {
-          resolve();
-        }
-      });
-    });
-  }
-
-  filterCurrentUserData() {
-    let currentUserData = []
-    for (const key in this.allUsersData) {
-      if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
-        currentUserData.push(this.allUsersData[key]);
-      }
-    }
-    
-    localStorage.removeItem('currentUserData');
-    localStorage.setItem('currentUserData', JSON.stringify(currentUserData[0]));
+    await this.userService.getCurrentUserAuth();
+    this.userService.filterCurrentUserData();
   }
 }

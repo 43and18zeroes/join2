@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { getAuth } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class UserService {
 
   allUsersData;
+  currentUserAuth;
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -25,5 +27,31 @@ export class UserService {
   // Eine Methode, um auf die Daten von außen zuzugreifen
   getAllUsersData() {
     return this.allUsersData;
+  }
+
+  getCurrentUserAuth(): Promise<void> {
+    const auth = getAuth();
+    return new Promise((resolve, reject) => {
+      auth.onAuthStateChanged((user) => {
+        if (user != null) {
+          this.currentUserAuth = user;
+          resolve();
+        } else {
+          resolve();
+        }
+      });
+    });
+  }
+
+  filterCurrentUserData() {
+    let currentUserData = []
+    for (const key in this.allUsersData) {
+      if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
+        currentUserData.push(this.allUsersData[key]);
+      }
+    }
+    
+    // localStorage.removeItem('currentUserData');
+    // localStorage.setItem('currentUserData', JSON.stringify(currentUserData[0]));
   }
 }
