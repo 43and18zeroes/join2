@@ -34,8 +34,8 @@ export class AuthLogInComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.setAllUsersDataToLocalStorage();
-    this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
+    this.userService.setAllUsersDataToVar();
+    // this.allUsersData = JSON.parse(localStorage.getItem('users') || '[]');
     if (sessionStorage.getItem('appLoaded')) {
       this.showLoadingScreen = false;
     } else {
@@ -49,7 +49,7 @@ export class AuthLogInComponent implements OnInit {
   onSubmit() {
     const userData = Object.assign(this.logInForm, { email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword });
     this.authService.signIn(userData).then((res: any) => {
-      this.getCurrentUserData();
+      this.identifyCurrentUserData();
       this.isSubmitted = true;
       this.logInFailed = false;
       this.router.navigateByUrl('main');
@@ -61,7 +61,7 @@ export class AuthLogInComponent implements OnInit {
   logInGuest() {
     const userData = Object.assign(this.logInForm, { email: "gast@gast.de", password: "123456" });
     this.authService.signIn(userData).then((res: any) => {
-      this.getCurrentUserData();
+      this.identifyCurrentUserData();
       this.isSubmitted = true;
       this.logInFailed = false;
       this.router.navigateByUrl('main');
@@ -70,7 +70,7 @@ export class AuthLogInComponent implements OnInit {
     });
   }
 
-  async getCurrentUserData() {
+  async identifyCurrentUserData() {
     await this.getCurrentUserAuth();
     this.filterCurrentUserData();
   }
