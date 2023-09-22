@@ -13,15 +13,15 @@ export class UserService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  setAllUsersDataToVar() {
+  setAllUsersDataToVarAndLocal() {
     this.firestore
       .collection('users')
       .valueChanges()
       .subscribe((changes: any) => {
         this.allUsersData = changes;
         // console.log("var this.allUsersData", this.allUsersData);
-        // localStorage.removeItem('users');
-        // localStorage.setItem('users', JSON.stringify(changes));
+        localStorage.removeItem('allUsersData');
+        localStorage.setItem('allUsersData', JSON.stringify(changes));
       })
   }
 
