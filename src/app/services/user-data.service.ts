@@ -19,7 +19,6 @@ export class UserService {
       .valueChanges()
       .subscribe((changes: any) => {
         this.allUsersData = changes;
-        console.log("user-data this.allUsersData", this.allUsersData);
         // localStorage.removeItem('users');
         // localStorage.setItem('users', JSON.stringify(changes));
       })
@@ -36,7 +35,6 @@ export class UserService {
       auth.onAuthStateChanged((user) => {
         if (user != null) {
           this.currentUserAuth = user;
-          console.log("user-data this.currentUserAuth", this.currentUserAuth);
           resolve();
         } else {
           resolve();
@@ -48,17 +46,9 @@ export class UserService {
   filterCurrentUserData() {
 
     for (const key in this.allUsersData) {
-
-      console.log("filter this.allUsersData", this.allUsersData);
-      console.log("filter this.allUsersData[key]", this.allUsersData[key]);
-      console.log("filter this.allUsersData[key].userEmailAddress", this.allUsersData[key].userEmailAddress);
-      console.log("filter this.currentUserAuth.email", this.currentUserAuth.email);
-
       if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
         this.currentUserData.push(this.allUsersData[key]);
-        console.log("filter this.currentUserData", this.currentUserData);
       }
-
     }
     
     // localStorage.removeItem('currentUserData');

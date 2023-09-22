@@ -20,8 +20,6 @@ export class MainHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserData = this.userService.currentUserData;
-    console.log("header this.currentUserData", this.currentUserData);
-    console.log("header this.currentUserData", typeof this.currentUserData);
   }
 
   logOut() {
