@@ -19,16 +19,10 @@ export class UserService {
       .valueChanges()
       .subscribe((changes: any) => {
         this.allUsersData = changes;
-        // console.log("var this.allUsersData", this.allUsersData);
         localStorage.removeItem('allUsersData');
         localStorage.setItem('allUsersData', JSON.stringify(changes));
       })
   }
-
-  // Eine Methode, um auf die Daten von außen zuzugreifen
-  // getAllUsersData() {
-  //   return this.allUsersData;
-  // }
 
   getCurrentUserAuth(): Promise<void> {
     const auth = getAuth();
@@ -36,7 +30,6 @@ export class UserService {
       auth.onAuthStateChanged((user) => {
         if (user != null) {
           this.currentUserAuth = user;
-          // console.log("this.currentUserAuth", this.currentUserAuth);
           resolve();
         } else {
           resolve();
@@ -50,17 +43,12 @@ export class UserService {
     for (const key in this.allUsersData) {
       if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
         this.currentUserData.push(this.allUsersData[key]);
-        console.log("var this.currentUserData", this.currentUserData)
       }
     }
-
-    // localStorage.removeItem('currentUserData');
-    // localStorage.setItem('currentUserData', JSON.stringify(currentUserData[0]));
   }
 
-  CurrentUserDataToLocal() {
+  setCurrentUserDataToLocal() {
     localStorage.removeItem('currentUserData');
     localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData[0]));
-    console.log("local this.currentUserData", JSON.stringify(this.currentUserData[0]))
   }
 }

@@ -10,8 +10,6 @@ export class MainBoardComponent {
   constructor() { }
 
   ngOnInit(): void {
-    // let currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
-    // console.log("currentUserData", currentUserData);
   }
 
 }
