@@ -36,7 +36,7 @@ export class UserService {
       auth.onAuthStateChanged((user) => {
         if (user != null) {
           this.currentUserAuth = user;
-          console.log("this.currentUserAuth", this.currentUserAuth);
+          // console.log("this.currentUserAuth", this.currentUserAuth);
           resolve();
         } else {
           resolve();

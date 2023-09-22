@@ -19,13 +19,23 @@ export class MainHeaderComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    if (!this.userService.currentUserData.length) {
-      console.log("this.userService.currentUserData ist leer");
-      this.userService.setAllUsersDataToVar();
-      this.identifyCurrentUserData();
+    // console.log("this.userService.allUsersData", this.userService.allUsersData)
+    // if (this.userService.allUsersData === "undefined") {
+    //   console.log("this.userService.currentUserData ist leer");
+    //   this.userService.setAllUsersDataToVar();
+    //   this.identifyCurrentUserData();
+    // } else {
+    //   this.currentUserData = this.userService.currentUserData;
+    //   console.log("header this.currentUserData", this.currentUserData);
+    // }
+
+    console.log("this.userService.allUsersData", this.userService.allUsersData)
+
+    if (this.userService.allUsersData !== undefined) {
+      this.currentUserData = this.userService.currentUserData;
+    } else {
+      console.log("undefined");
     }
-    this.currentUserData = this.userService.currentUserData;
-    console.log("header this.currentUserData", this.currentUserData);
   }
 
   async identifyCurrentUserData() {
