@@ -9,6 +9,7 @@ export class UserService {
 
   allUsersData;
   currentUserAuth;
+  currentUserData = [];
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -18,16 +19,16 @@ export class UserService {
       .valueChanges()
       .subscribe((changes: any) => {
         this.allUsersData = changes;
-        console.log("this.allUsersData", this.allUsersData);
+        console.log("user-data this.allUsersData", this.allUsersData);
         // localStorage.removeItem('users');
         // localStorage.setItem('users', JSON.stringify(changes));
       })
   }
 
   // Eine Methode, um auf die Daten von außen zuzugreifen
-  getAllUsersData() {
-    return this.allUsersData;
-  }
+  // getAllUsersData() {
+  //   return this.allUsersData;
+  // }
 
   getCurrentUserAuth(): Promise<void> {
     const auth = getAuth();
@@ -35,6 +36,7 @@ export class UserService {
       auth.onAuthStateChanged((user) => {
         if (user != null) {
           this.currentUserAuth = user;
+          console.log("user-data this.currentUserAuth", this.currentUserAuth);
           resolve();
         } else {
           resolve();
@@ -44,11 +46,19 @@ export class UserService {
   }
 
   filterCurrentUserData() {
-    let currentUserData = []
+
     for (const key in this.allUsersData) {
+
+      console.log("filter this.allUsersData", this.allUsersData);
+      console.log("filter this.allUsersData[key]", this.allUsersData[key]);
+      console.log("filter this.allUsersData[key].userEmailAddress", this.allUsersData[key].userEmailAddress);
+      console.log("filter this.currentUserAuth.email", this.currentUserAuth.email);
+
       if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
-        currentUserData.push(this.allUsersData[key]);
+        this.currentUserData.push(this.allUsersData[key]);
+        console.log("filter this.currentUserData", this.currentUserData);
       }
+
     }
     
     // localStorage.removeItem('currentUserData');

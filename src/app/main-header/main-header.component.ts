@@ -19,8 +19,9 @@ export class MainHeaderComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
-    console.log("this.currentUserData", this.currentUserData);
+    this.currentUserData = this.userService.currentUserData;
+    console.log("header this.currentUserData", this.currentUserData);
+    console.log("header this.currentUserData", typeof this.currentUserData);
   }
 
   logOut() {
