@@ -33,8 +33,11 @@ export class MainHeaderComponent implements OnInit {
 
     if (this.userService.allUsersData !== undefined) {
       this.currentUserData = this.userService.currentUserData;
+      console.log("this.currentUserData", this.currentUserData)
     } else {
       console.log("undefined");
+      this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
+      console.log("this.currentUserData", this.currentUserData)
       // this.userService.setAllUsersDataToVar();
       // this.identifyCurrentUserData();
     }

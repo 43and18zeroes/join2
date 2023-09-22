@@ -50,6 +50,7 @@ export class UserService {
     for (const key in this.allUsersData) {
       if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
         this.currentUserData.push(this.allUsersData[key]);
+        console.log("var this.currentUserData", this.currentUserData)
       }
     }
 
@@ -60,5 +61,6 @@ export class UserService {
   CurrentUserDataToLocal() {
     localStorage.removeItem('currentUserData');
     localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData[0]));
+    console.log("local this.currentUserData", JSON.stringify(this.currentUserData[0]))
   }
 }
