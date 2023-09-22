@@ -52,8 +52,13 @@ export class UserService {
         this.currentUserData.push(this.allUsersData[key]);
       }
     }
-    
+
     // localStorage.removeItem('currentUserData');
     // localStorage.setItem('currentUserData', JSON.stringify(currentUserData[0]));
+  }
+
+  CurrentUserDataToLocal() {
+    localStorage.removeItem('currentUserData');
+    localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData[0]));
   }
 }
