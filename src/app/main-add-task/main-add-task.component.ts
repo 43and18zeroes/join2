@@ -16,8 +16,8 @@ export class MainAddTaskComponent {
 
   testFunction() {
     let changes = {userName: 'Christoph', userEmailAddress: 'gast@gast.de'}
-    localStorage.setItem('currentUserData', JSON.stringify(changes));
-    let currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
-    console.log("this.currentUserData", currentUserData);
+    // localStorage.setItem('currentUserData', JSON.stringify(changes));
+    // let currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
+    // console.log("this.currentUserData", currentUserData);
   }
 }

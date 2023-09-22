@@ -19,11 +19,18 @@ export class MainHeaderComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.currentUserData = this.userService.currentUserData;
-
     if (!this.userService.currentUserData.length) {
       console.log("this.userService.currentUserData ist leer");
+      this.userService.setAllUsersDataToVar();
+      this.identifyCurrentUserData();
     }
+    this.currentUserData = this.userService.currentUserData;
+    console.log("header this.currentUserData", this.currentUserData);
+  }
+
+  async identifyCurrentUserData() {
+    await this.userService.getCurrentUserAuth();
+    this.userService.filterCurrentUserData();
   }
 
   logOut() {

@@ -19,6 +19,7 @@ export class UserService {
       .valueChanges()
       .subscribe((changes: any) => {
         this.allUsersData = changes;
+        // console.log("var this.allUsersData", this.allUsersData);
         // localStorage.removeItem('users');
         // localStorage.setItem('users', JSON.stringify(changes));
       })
@@ -35,6 +36,7 @@ export class UserService {
       auth.onAuthStateChanged((user) => {
         if (user != null) {
           this.currentUserAuth = user;
+          console.log("this.currentUserAuth", this.currentUserAuth);
           resolve();
         } else {
           resolve();
