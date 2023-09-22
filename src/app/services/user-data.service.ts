@@ -44,7 +44,7 @@ export class UserService {
   }
 
   filterCurrentUserData() {
-
+    this.currentUserData = [];
     for (const key in this.allUsersData) {
       if (this.allUsersData[key].userEmailAddress === this.currentUserAuth.email) {
         this.currentUserData.push(this.allUsersData[key]);

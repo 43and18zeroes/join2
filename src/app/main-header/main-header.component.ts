@@ -20,6 +20,7 @@ export class MainHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserData = this.userService.currentUserData;
+    console.log("this.userService.currentUserData", this.userService.currentUserData);
   }
 
   logOut() {
