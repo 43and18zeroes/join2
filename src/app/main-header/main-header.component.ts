@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { getAuth, signOut } from "firebase/auth";
+import { MainComponent } from '../main/main.component';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user-data.service';
 
@@ -13,16 +14,18 @@ export class MainHeaderComponent implements OnInit {
   currentUserData;
 
   constructor(
+    public mainComponent: MainComponent,
     private router: Router,
     private userService: UserService) { }
 
   ngOnInit(): void {
-    if (this.userService.allUsersData !== undefined) {
-      this.currentUserData = this.userService.currentUserData[0];
-      console.log("this.currentUserData", this.currentUserData);
-    } else {
-      this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
-    }
+    this.currentUserData = this.mainComponent.currentUserData;
+    // if (this.userService.allUsersData !== undefined) {
+    //   this.currentUserData = this.userService.currentUserData[0];
+    //   console.log("this.currentUserData", this.currentUserData);
+    // } else {
+    //   this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
+    // }
   }
 
   async identifyCurrentUserData() {
