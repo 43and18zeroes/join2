@@ -74,12 +74,13 @@ main {
         height: 96px;
         display: flex;
         justify-content: space-between;
+        background-color: var(--window-white);
     }
 
     section {
         // flex: 1;
         height: calc(100vh - 96px);
-        background-color: #7e7e7e;
+        background-color: var(--background-offwhite);
         overflow-y: auto;
 
         @media (width <=768px) {
