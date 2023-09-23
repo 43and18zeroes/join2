@@ -13,12 +13,21 @@
 }
 
 aside {
-    width: 300px;
+    width: 250px;
     height: 100%;
     background-color: var(--main-slate);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     @media (width <=768px) {
         display: none;
+    }
+
+    img {
+        width: 100px;
+        height: auto;
+        margin-top: 75px;
     }
 
     nav {
