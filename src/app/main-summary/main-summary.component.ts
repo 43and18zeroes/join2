@@ -16,7 +16,9 @@ export class MainSummaryComponent implements OnInit {
     if (this.userService.allUsersData !== undefined) {
       this.currentUserData = this.userService.currentUserData[0];
       console.log("this.currentUserData", this.currentUserData);
-    } else { this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]'); }
+    } else {
+      this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
+    }
   }
 
 }
