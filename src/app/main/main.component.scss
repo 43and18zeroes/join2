@@ -3,10 +3,6 @@
     width: 100vw;
     height: 100vh;
 
-    // @media (width <=768px) {
-    //     flex-direction: column-reverse;
-    // }
-
     @media (width <=768px) {
         flex-direction: column;
     }
@@ -107,13 +103,23 @@ main {
 footer {
     height: 110px;
     display: flex;
+    background-color: var(--main-slate);
 
     @media (width >768px) {
         display: none;
     }
 
-    div {
+    .point {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         color: #CDCDCD;
+        font-size: 18px;
+
+        span {
+            font-size: 50px;
+        }
     }
 
     div.active {

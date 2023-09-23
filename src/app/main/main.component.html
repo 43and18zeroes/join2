@@ -50,8 +50,8 @@
     </section>
 </main>
 <footer>
-    <div [class.active]="currentlyClicked === 'summary'" (click)="displayMainSection('summary')">Summary</div>
-    <div [class.active]="currentlyClicked === 'addTask'" (click)="displayMainSection('addTask')">Add Task</div>
-    <div [class.active]="currentlyClicked === 'board'" (click)="displayMainSection('board')">Board</div>
-    <div [class.active]="currentlyClicked === 'contacts'" (click)="displayMainSection('contacts')">Contacts</div>
+    <div class="point" [class.active]="currentlyClicked === 'summary'" (click)="displayMainSection('summary')"><span class="material__symbols__outlined">space_dashboard</span>Summary</div>
+    <div class="point" [class.active]="currentlyClicked === 'addTask'" (click)="displayMainSection('addTask')"><span class="material__symbols__outlined">edit_square</span>Add Task</div>
+    <div class="point" [class.active]="currentlyClicked === 'board'" (click)="displayMainSection('board')"><span class="material__symbols__outlined">view_week</span>Board</div>
+    <div class="point" [class.active]="currentlyClicked === 'contacts'" (click)="displayMainSection('contacts')"><span class="material__symbols__outlined">account_box</span>Contacts</div>
 </footer>
