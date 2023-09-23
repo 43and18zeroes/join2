@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { getAuth } from "firebase/auth";
+import { UserService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-main-summary',
@@ -8,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainSummaryComponent implements OnInit {
 
-  constructor() { }
+  currentUserData;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    if (this.userService.allUsersData !== undefined) {
+      this.currentUserData = this.userService.currentUserData[0];
+      console.log("this.currentUserData", this.currentUserData);
+    } else { this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]'); }
   }
 
 }
