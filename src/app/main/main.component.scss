@@ -112,6 +112,11 @@ footer {
         display: none;
     }
 
+    @media (width <=390px) {
+        gap: 2px;
+    }
+
+
     .point {
         width: 72px;
         height: fit-content;
