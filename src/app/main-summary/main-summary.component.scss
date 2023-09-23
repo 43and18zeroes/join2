@@ -1,0 +1,16 @@
+.board__container {
+
+    header {
+        display: flex;
+    }
+
+    main {
+        display: flex;
+
+        .main__right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
