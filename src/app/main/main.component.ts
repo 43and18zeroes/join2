@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-main',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+
+  currentUserData;
 
   currentlyDisplayed: string = 'summary';
   currentlyClicked: string = 'summary';
@@ -15,9 +18,16 @@ export class MainComponent implements OnInit {
     this.currentlyClicked = condition;
   }
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    if (this.userService.allUsersData !== undefined) {
+      this.currentUserData = this.userService.currentUserData[0];
+      console.log("main var this.currentUserData", this.currentUserData);
+    } else {
+      this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
+      console.log("main local this.currentUserData", this.currentUserData);
+    }
   }
 
 }

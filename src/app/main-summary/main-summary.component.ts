@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user-data.service';
+import { MainComponent } from '../main/main.component';
+// import { UserService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-main-summary',
@@ -10,15 +11,16 @@ export class MainSummaryComponent implements OnInit {
 
   currentUserData;
 
-  constructor(private userService: UserService) { }
+  constructor(public mainComponent: MainComponent) { }
 
   ngOnInit(): void {
-    if (this.userService.allUsersData !== undefined) {
-      this.currentUserData = this.userService.currentUserData[0];
-      console.log("this.currentUserData", this.currentUserData);
-    } else {
-      this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
-    }
+    this.currentUserData = this.mainComponent.currentUserData;
+    // if (this.userService.allUsersData !== undefined) {
+    //   this.currentUserData = this.userService.currentUserData[0];
+    //   console.log("this.currentUserData", this.currentUserData);
+    // } else {
+    //   this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
+    // }
   }
 
 }
