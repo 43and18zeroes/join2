@@ -84,7 +84,7 @@ main {
 
         @media (width <=768px) {
             flex: auto;
-            height: calc(100vh - 110px - 110px);
+            height: calc(100vh - 110px - 66px);
             overflow-y: auto;
         }
 
@@ -115,7 +115,6 @@ footer {
     @media (width <=390px) {
         gap: 2px;
     }
-
 
     .point {
         width: 72px;
