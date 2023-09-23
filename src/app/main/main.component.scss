@@ -33,7 +33,7 @@ aside {
     nav {
         margin-top: 100px;
 
-        div {
+        .point {
             width: 250px;
             height: 46px;
             display: flex;
@@ -41,7 +41,11 @@ aside {
             color: #CDCDCD;
             font-size: 20px;
             cursor: pointer;
-            transition: background-color 100ms ease-in-out;
+            transition: background-color 75ms ease-in-out;
+
+            .spacer {
+                width: 61px;
+            }
 
             span {
                 margin-right: 10px;
@@ -56,6 +60,10 @@ aside {
         div.active {
             background-color: var(--nav-darkblue-highlight);
             color: var(--window-white);
+
+            &:hover {
+                background-color: var(--nav-darkblue-highlight);
+            }
         }
     }
 }
