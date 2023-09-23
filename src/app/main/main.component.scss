@@ -41,9 +41,14 @@ aside {
             color: #CDCDCD;
             font-size: 20px;
             cursor: pointer;
+            transition: background-color 100ms ease-in-out;
 
             span {
                 margin-right: 10px;
+            }
+
+            &:hover {
+                background-color: #2a3d59;
             }
         }
 
