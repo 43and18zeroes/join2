@@ -31,11 +31,20 @@ aside {
     }
 
     nav {
+        margin-top: 100px;
 
         div {
+            width: 250px;
+            height: 46px;
             display: flex;
-            justify-content: center;
+            align-items: center;
             color: #CDCDCD;
+            font-size: 20px;
+            cursor: pointer;
+
+            span {
+                margin-right: 10px;
+            }
         }
 
         div.active {
