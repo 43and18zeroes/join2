@@ -31,7 +31,7 @@ export class MainHeaderComponent implements OnInit {
   }
 
   getUserNameInitial() {
-    this.currentUserInitial = this.mainComponent.currentUserData.userName[0];
+    this.currentUserInitial = this.mainComponent.currentUserData.userName[0].toUpperCase();
     console.log("this.currentUserInitial", this.currentUserInitial);
   }
 
