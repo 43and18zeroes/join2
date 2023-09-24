@@ -12,10 +12,7 @@ import { UserService } from '../services/user-data.service';
 })
 export class AuthLogInComponent implements OnInit {
 
-  // allUsersData;
-
   showLoadingScreen = true;
-
   logInFailed = false;
   logInError = false;
   logInForm = this.fb.group({
