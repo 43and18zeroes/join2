@@ -2,6 +2,10 @@
     padding: 0 40px 0 64px;
     display: flex;
     align-items: center;
+
+    @media (width <=768px) {
+        // padding: 16px;
+    }
 }
 
 h1 {
