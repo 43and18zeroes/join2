@@ -9,6 +9,7 @@ import { MainComponent } from '../main/main.component';
 })
 export class MainSummaryComponent implements OnInit {
 
+  showGreetingScreen = true;
   currentUserData;
 
   constructor(public mainComponent: MainComponent) { }

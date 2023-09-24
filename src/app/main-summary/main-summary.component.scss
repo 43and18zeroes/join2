@@ -1,3 +1,19 @@
+.fade__out {
+    animation: fadeOut 500ms ease 1000ms forwards;
+    // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
 .summary__container {
     width: calc(100% - 128px);
     height: calc(100% - 128px);
