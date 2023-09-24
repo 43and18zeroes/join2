@@ -19,4 +19,22 @@ h1 {
         font-size: 20px;
         color: #A8A8A8;
     }
+
+    .initial {
+        width: 46px;
+        height: 46px;
+        font-size: 20px;
+        font-weight: 700;
+        border: 2px solid var( --main-slate);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: backgroud-color 75ms ease-in;
+
+        &:hover {
+            background-color: #E1E5EC;
+        }
+    }
 }
