@@ -20,19 +20,7 @@ export class MainHeaderComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    
-    // if (this.userService.allUsersData !== undefined) {
-    //   this.currentUserData = this.userService.currentUserData[0];
-    //   console.log("this.currentUserData", this.currentUserData);
-    // } else {
-    //   this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
-    // }
-    this.getUserNameInitial();
-  }
-
-  getUserNameInitial() {
     this.currentUserInitial = this.mainComponent.currentUserData.userName[0].toUpperCase();
-    console.log("this.currentUserInitial", this.currentUserInitial);
   }
 
   // async identifyCurrentUserData() {
