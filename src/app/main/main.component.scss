@@ -73,11 +73,14 @@ main {
     app-main-header {
         height: 96px;
         display: flex;
+        align-items: center;
         justify-content: space-between;
         background-color: var(--window-white);
+        padding: 0 40px 0 64px;
 
         @media (width <=768px) {
             height: 80px;
+            padding: 0 16px;
         }
     }
 
