@@ -42,6 +42,25 @@
 
     header {
         display: flex;
+
+        .header__left {
+            padding-right: 30px;
+            border-right: 1px solid var(--accent-cyan);
+
+            h2 {
+                font-size: 61px;
+                font-weight: 700;
+                margin: 0;
+            }
+        }
+
+        .header__right {
+            padding-left: 30px;
+            border-left: 1px solid var(--accent-cyan);
+            font-size: 27px;
+            display: flex;
+            align-items: center;
+        }
     }
 
     main {
