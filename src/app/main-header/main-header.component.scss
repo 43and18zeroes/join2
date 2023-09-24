@@ -4,10 +4,6 @@ h1 {
     margin: 0;
 
     @media (width <=992px) {
-        font-size: 18px;
-    }
-
-    @media (width <=768px) {
         display: none;
     }
 }
@@ -17,7 +13,7 @@ img {
     height: 46px;
     display: none;
 
-    @media (width <=768px) {
+    @media (width <=992px) {
         display: inline;
     }
 }

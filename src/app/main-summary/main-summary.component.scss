@@ -1,6 +1,10 @@
-.fade__out {
-    animation: fadeOut 500ms ease 1000ms forwards;
+.greeting__screen {
+    // animation: fadeOut 500ms ease 1000ms forwards;
     // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+
+    @media (width >992px) {
+        display: none;
+    }
 }
 
 @keyframes fadeOut {
