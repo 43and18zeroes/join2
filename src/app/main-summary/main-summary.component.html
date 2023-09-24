@@ -1,5 +1,7 @@
-<div class="greeting__screen" id="greetingScreen" *ngIf="showGreetingScreen"
+<div class="greeting__screen__mobile" id="greetingScreenMobile" *ngIf="showGreetingScreenMobile"
     style="z-index:999999999;position:absolute;width:100%;height:calc(100% - 159px);background-color:#F6F7F8;">
+    <span class="greeting">Good morning,<br>
+        <b class="name">{{currentUserData.userName}}</b></span>
 </div>
 
 <div class="summary__container">

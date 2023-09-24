@@ -1,9 +1,23 @@
-.greeting__screen {
+.greeting__screen__mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     // animation: fadeOut 500ms ease 1000ms forwards;
     // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
 
     @media (width >992px) {
         display: none;
+    }
+
+    span {
+        font-size: 36px;
+        text-align: center;
+
+        b {
+            font-size: 47px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
     }
 }
 
