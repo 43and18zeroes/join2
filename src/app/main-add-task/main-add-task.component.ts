@@ -14,13 +14,4 @@ export class MainAddTaskComponent {
 
   ngOnInit(): void {
   }
-
-  testFunction() {
-    console.log("this.userService.currentUserData[0]", this.userService.currentUserData[0]);
-    this.userService.currentUserData[0] = {userName: 'Peter', userEmailAddress: 'gast@gast.de'};
-    console.log("this.userService.currentUserData[0]", this.userService.currentUserData[0]);
-    // localStorage.setItem('currentUserData', JSON.stringify(changes));
-    // let currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
-    // console.log("this.currentUserData", currentUserData);
-  }
 }

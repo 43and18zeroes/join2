@@ -23,10 +23,8 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     if (this.userService.allUsersData !== undefined) {
       this.currentUserData = this.userService.currentUserData[0];
-      console.log("main var this.currentUserData", this.currentUserData);
     } else {
       this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
-      console.log("main local this.currentUserData", this.currentUserData);
     }
   }
 
