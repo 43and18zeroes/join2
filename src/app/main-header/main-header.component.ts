@@ -12,6 +12,7 @@ import { UserService } from '../services/user-data.service';
 export class MainHeaderComponent implements OnInit {
 
   currentUserData;
+  currentUserInitial;
 
   constructor(
     public mainComponent: MainComponent,
@@ -31,6 +32,8 @@ export class MainHeaderComponent implements OnInit {
 
   getUserNameInitial() {
     this.currentUserData = this.mainComponent.currentUserData;
+    this.currentUserInitial = this.mainComponent.currentUserData.userName[0];
+    console.log("this.currentUserInitial", this.currentUserInitial);
   }
 
   // async identifyCurrentUserData() {
