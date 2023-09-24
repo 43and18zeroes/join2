@@ -20,8 +20,14 @@ h1 {
     }
 
     .help {
-        font-size: 20px;
+        font-size: 22px;
         color: #A8A8A8;
+        border-radius: 50%;
+        transition: transform 100ms ease-in;
+
+        &:hover {
+            transform: scale(1.15);
+        }
     }
 
     .initial {
@@ -34,7 +40,7 @@ h1 {
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: backgroud-color 75ms ease-in;
+        transition: backgroud-color 100ms ease-in;
 
         &:hover {
             background-color: #E1E5EC;
