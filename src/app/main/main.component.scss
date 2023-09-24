@@ -135,8 +135,11 @@ footer {
         color: #CDCDCD;
         font-size: 14px;
         border-radius: 20px;
-        padding: 10px;
+        padding: 14px 10px;
         cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
 
         span {
             font-size: 30px;
