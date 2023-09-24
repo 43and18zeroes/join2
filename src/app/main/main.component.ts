@@ -8,6 +8,7 @@ import { UserService } from '../services/user-data.service';
 })
 export class MainComponent implements OnInit {
 
+  showGreetingScreenMobile = true;
   currentUserData;
 
   currentlyDisplayed: string = 'summary';
@@ -26,6 +27,10 @@ export class MainComponent implements OnInit {
     } else {
       this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
     }
+    setTimeout(() => {
+      this.showGreetingScreenMobile = false;
+      console.log("this.showGreetingScreenMobile", this.showGreetingScreenMobile);
+    }, 2500);
   }
 
 }

@@ -16,6 +16,7 @@ export class MainSummaryComponent implements OnInit {
   constructor(public mainComponent: MainComponent) { }
 
   ngOnInit(): void {
+    this.showGreetingScreenMobile = this.mainComponent.showGreetingScreenMobile;
     this.currentUserData = this.mainComponent.currentUserData;
     if (this.currentUserData.userName !== "Gast") {
       this.currenUserIsGuest = false;
