@@ -51,12 +51,20 @@
 
         .main__left {
             width: 50%;
+
+            @media (width <=992px) {
+                width: 100%;
+            }
         }
 
         .main__right {
             width: 50%;
             display: flex;
             align-items: center;
+
+            @media (width <=992px) {
+                display: none;
+            }
 
             span {
                 font-size: 47px;
