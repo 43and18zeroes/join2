@@ -97,6 +97,22 @@
                     align-items: center;
                     gap: 18px;
                     flex: 1;
+                    cursor: pointer;
+                    transition: all 100ms ease-out;
+
+                    &:hover {
+                        background-color: var(--main-slate);
+                        // transform: scale(1.01);
+
+                        .box__left {
+                            background-color: var(--window-white);
+                            color: var(--main-slate);
+                        }
+
+                        .box__right {
+                            color: var(--window-white);
+                        }
+                    }
 
                     .box__left {
                         width: 69px;
