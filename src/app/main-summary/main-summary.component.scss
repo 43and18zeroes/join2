@@ -75,6 +75,8 @@
 
         .main__left {
             width: 50%;
+            max-width: 771px;
+            max-height: 626px;
 
             @media (width <=992px) {
                 width: 100%;
@@ -124,6 +126,8 @@
 
         .main__right {
             width: 50%;
+            max-width: 771px;
+            max-height: 626px;
             display: flex;
             align-items: center;
 
