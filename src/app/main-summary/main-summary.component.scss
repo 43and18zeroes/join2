@@ -91,6 +91,13 @@
                     display: flex;
                     align-items: center;
 
+                    .box__left {
+                        width: 69px;
+                        height: 69px;
+                        background-color: var(--main-slate);
+                        border-radius: 100px;
+                    }
+
                     .box__right {
                         display: flex;
                         flex-direction: column;
