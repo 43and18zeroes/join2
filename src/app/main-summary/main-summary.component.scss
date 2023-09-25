@@ -96,6 +96,9 @@
                         height: 69px;
                         background-color: var(--main-slate);
                         border-radius: 100px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
 
                     .box__right {
