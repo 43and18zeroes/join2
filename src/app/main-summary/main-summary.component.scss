@@ -85,6 +85,7 @@
 
             .row__number1 {
                 display: flex;
+                gap: 32px;
 
                 .box {
                     background-color: var(--window-white);
@@ -94,6 +95,7 @@
                     display: flex;
                     align-items: center;
                     gap: 18px;
+                    flex: 1;
 
                     .box__left {
                         width: 69px;
