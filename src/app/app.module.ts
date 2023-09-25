@@ -22,6 +22,7 @@ import { MainSummaryComponent } from './main-summary/main-summary.component';
 import { MainAddTaskComponent } from './main-add-task/main-add-task.component';
 import { MainBoardComponent } from './main-board/main-board.component';
 import { MainContactsComponent } from './main-contacts/main-contacts.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { MainContactsComponent } from './main-contacts/main-contacts.component';
     AngularFireAuthModule,
     SharedModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
