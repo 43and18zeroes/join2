@@ -251,6 +251,7 @@
 
                 .row2container {
                     display: flex;
+                    align-items: center;
                     // gap: 32px;
                     background-color: var(--window-white);
                     // padding: 48px;
@@ -323,16 +324,19 @@
 
                     .hr__container {
                         width: 32px;
-                        display: flex;
-                        align-items: center;
+                        height: 102px;
+                        // display: flex;
+                        // align-items: center;
+                        border-left: 2px solid #D1D1D1;
+                        border-right: 2px solid rgba(0, 0, 0, 0)
 
 
-                        hr {
-                            width: 0px;
-                            height: 102px;
-                            border: 0.5px solid #D1D1D1;
-                            border-radius: 50px;
-                        }
+                        // hr {
+                        //     width: 0px;
+                        //     height: 102px;
+                        //     border: 0.5px solid #D1D1D1;
+                        //     border-radius: 50px;
+                        // }
                     }
                 }
             }
