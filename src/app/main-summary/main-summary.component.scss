@@ -182,7 +182,10 @@
 
                     .urgent {
                         display: flex;
+                        justify-content: center;
                         align-items: center;
+                        flex: 1;
+                        margin-right: 48px;
 
                         .box__left {
                             width: 69px;
@@ -226,6 +229,8 @@
                     }
 
                     .box__date {
+                        flex: 1;
+                        margin-left: 48px;
 
                         .date {
                             font-size: 21px;
