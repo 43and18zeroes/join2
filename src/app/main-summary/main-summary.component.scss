@@ -78,11 +78,7 @@
             width: 556px;
             max-height: 570px;
 
-            @media (width <=992px) {
-                width: 556px;
-            }
-
-            .row {
+            .row1 {
                 display: flex;
                 gap: 32px;
 
@@ -146,101 +142,6 @@
             }
 
             .row2 {
-                display: flex;
-                gap: 32px;
-
-                .box {
-                    background-color: var(--window-white);
-                    padding: 48px;
-                    border-radius: 30px;
-                    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    // gap: 18px;
-                    flex: 1;
-                    cursor: pointer;
-                    transition: all 100ms ease-out;
-
-                    &:hover {
-                        background-color: var(--main-slate);
-
-                        .box__left {
-                            background-color: var(--window-white);
-                            color: var(--main-slate);
-                        }
-
-                        .box__right {
-                            color: var(--window-white);
-                        }
-                    }
-
-                    .urgent {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        flex: 1;
-                        margin-right: 48px;
-
-                        .box__left {
-                            width: 69px;
-                            height: 69px;
-                            background-color: var(--main-slate);
-                            border-radius: 100px;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            color: var(--window-white);
-                            font-size: 32px;
-                            margin-right: 18px;
-                        }
-    
-                        .box__right {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-    
-                            .number {
-                                font-weight: 600;
-                                font-size: 64px;
-                            }
-    
-                            .text {
-                                font-size: 20px;
-                            }
-                        }
-                    }
-
-                    .hr__container {
-                        width: 32px;
-
-                        hr {
-                            width: 1px;
-                            height: 102px;
-                            background-color: #D1D1D1;
-                            border: 1px solid #D1D1D1;
-                            border-radius: 50px;
-                        }
-                    }
-
-                    .box__date {
-                        flex: 1;
-                        margin-left: 48px;
-
-                        .date {
-                            font-size: 21px;
-                            font-weight: 700;
-                        }
-
-                        .text {
-                            font-size: 20px;
-                            white-space: nowrap;
-                        }
-                    }
-                }
-            }
-
-            .row2test {
 
                 .row2container {
                     display: flex;
@@ -311,7 +212,7 @@
                         }
                     }
 
-                    .hr__container {
+                    .spacer {
                         width: 32px;
                         height: 102px;
                         border-left: 2px solid #D1D1D1;
