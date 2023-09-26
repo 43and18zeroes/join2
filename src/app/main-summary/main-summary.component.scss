@@ -76,11 +76,13 @@
 
         .main__left {
             // width: 50%;
-            max-width: 771px;
+            // max-width: 771px;
+            width: 556px;
             max-height: 570px;
 
             @media (width <=992px) {
-                width: 100%;
+                // width: 100%;
+                width: 556px;
             }
 
             .row {
