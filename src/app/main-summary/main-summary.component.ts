@@ -12,8 +12,12 @@ export class MainSummaryComponent implements OnInit {
   showGreetingScreenMobile = true;
   currenUserIsGuest = true;
   currentUserData;
+  currentDate = new Date();
+  futureDate = new Date(this.currentDate);
 
-  constructor(public mainComponent: MainComponent) { }
+  constructor(public mainComponent: MainComponent) {
+    this.futureDate.setDate(this.currentDate.getDate() + 8);
+  }
 
   ngOnInit(): void {
     this.showGreetingScreenMobile = this.mainComponent.showGreetingScreenMobile;
