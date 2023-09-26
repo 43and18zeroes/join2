@@ -157,6 +157,18 @@
 
                     &:hover {
                         background-color: var(--main-slate);
+
+                        .box__right {
+                            color: var(--window-white);
+                        }
+
+                        .spacer {
+                            border-left: 2px solid var(--window-white);
+                        }
+
+                        .box__date {
+                            color: var(--window-white);
+                        }
                     }
 
                     .box {
@@ -169,17 +181,14 @@
                         .box__left {
                             width: 69px;
                             height: 69px;
-                            background-color: var(--main-slate);
+                            // background-color: var(--main-slate);
                             border-radius: 100px;
                             display: flex;
                             justify-content: center;
                             align-items: center;
                             color: var(--window-white);
-                            font-size: 32px;
+                            // font-size: 32px;
                             margin-right: 18px;
-                        }
-
-                        .double {
                             background-color: #FF3D00;
                             font-size: 50px;
                             font-weight: 400;
@@ -214,11 +223,13 @@
                             font-size: 21px;
                             font-weight: 700;
                             margin-bottom: 13px;
+                            transition: none;
                         }
 
                         .text {
                             font-size: 16px;
                             white-space: nowrap;
+                            transition: none;
                         }
                     }
 
