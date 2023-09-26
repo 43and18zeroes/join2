@@ -142,6 +142,78 @@
                     }
                 }
             }
+
+            .row2 {
+                display: flex;
+                gap: 32px;
+
+                .box {
+                    background-color: var(--window-white);
+                    padding: 48px;
+                    border-radius: 30px;
+                    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 18px;
+                    flex: 1;
+                    cursor: pointer;
+                    transition: all 100ms ease-out;
+
+                    &:hover {
+                        background-color: var(--main-slate);
+                        // transform: scale(1.01);
+
+                        .box__left {
+                            background-color: var(--window-white);
+                            color: var(--main-slate);
+                        }
+
+                        .box__right {
+                            color: var(--window-white);
+                        }
+                    }
+
+                    .box__left {
+                        width: 69px;
+                        height: 69px;
+                        background-color: var(--main-slate);
+                        border-radius: 100px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: var(--window-white);
+                        font-size: 32px;
+                    }
+
+                    .box__right {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .number {
+                            font-weight: 600;
+                            font-size: 64px;
+                        }
+
+                        .text {
+                            font-size: 20px;
+                        }
+                    }
+
+                    .hr__container {
+                        margin: 0 30px;
+
+                        hr {
+                            height: 64px;
+                            width: 1px;
+                            background-color: var(--accent-cyan);
+                            border: 1px solid var(--accent-cyan);
+                            border-radius: 50px;
+                        }
+                    }
+                }
+            }
         }
 
         .main__right {
