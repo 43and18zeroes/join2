@@ -75,7 +75,7 @@
         flex: 1;
 
         .main__left {
-            width: 50%;
+            // width: 50%;
             max-width: 771px;
             max-height: 570px;
 
@@ -246,7 +246,7 @@
         }
 
         .main__right {
-            width: 50%;
+            flex: 1;
             max-width: 771px;
             max-height: 570px;
             display: flex;
