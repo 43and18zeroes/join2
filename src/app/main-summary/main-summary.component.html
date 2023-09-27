@@ -11,7 +11,7 @@
         <div class="hr__container">
             <hr>
         </div>
-        <span>Key Metrics at a Glance in a nutshell!</span>
+        <span>Key Metrics at a Glance</span>
     </header>
     <main>
 
@@ -52,23 +52,23 @@
 
             <div class="row3">
                 <div class="board row3__box">
-                    <div class="number">1</div>
+                    <div class="number">10</div>
                     <div class="text">To-do</div>
                 </div>
                 <div class="progress row3__box">
-                    <div class="number">1</div>
+                    <div class="number">22</div>
                     <div class="text">To-do</div>
                 </div>
                 <div class="feedback row3__box">
-                    <div class="number">1</div>
+                    <div class="number">99</div>
                     <div class="text">To-do</div>
                 </div>
             </div>
         </div>
 
         <div class="main__right">
-            <span *ngIf="currenUserIsGuest" class="greeting">Good morning!</span>
-            <span *ngIf="!currenUserIsGuest" class="greeting">Good morning,<br>
+            <span *ngIf="currenUserIsGuest">Good morning!</span>
+            <span *ngIf="!currenUserIsGuest">Good morning,<br>
                 <b class="name">{{currentUserData.userName}}</b></span>
         </div>
     </main>
