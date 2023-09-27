@@ -263,6 +263,19 @@
                         background-color: var(--main-slate);
                         color: var(--window-white);
                     }
+
+                    .number {
+
+                        font-weight: 600;
+                        font-size: 64px;
+                        white-space: nowrap;
+                        text-align: center;
+                    }
+
+                    .text {
+                        font-size: 20px;
+                        white-space: nowrap;
+                    }
                 }
             }
         }
