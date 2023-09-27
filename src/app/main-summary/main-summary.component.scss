@@ -77,6 +77,9 @@
         .main__left {
             width: 556px;
             max-height: 570px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
 
             .row1 {
                 display: flex;
