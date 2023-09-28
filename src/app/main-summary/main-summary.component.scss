@@ -195,6 +195,11 @@
                         color: var(--window-white);
                         font-size: var(--main-icon-pen-size-desktop);
                         margin-right: 18px;
+
+                        @media (width <=640px) {
+                            width: var(--main-icon-bg-size-640);
+                            height: var(--main-icon-bg-size-640);
+                        }
                     }
 
                     .done {
@@ -270,6 +275,11 @@
                         background-color: #FF3D00;
                         font-size: var(--main-icon-done-urgent-size-desktop);
                         font-weight: 400;
+
+                        @media (width <=640px) {
+                            width: var(--main-icon-bg-size-640);
+                            height: var(--main-icon-bg-size-640);
+                        }
                     }
 
                     .box__right {
