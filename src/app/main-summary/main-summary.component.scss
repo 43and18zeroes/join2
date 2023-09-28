@@ -232,6 +232,10 @@
                         .text {
                             font-size: var(--main-text-size-desktop);
                             white-space: nowrap;
+
+                            @media (width <=640px) {
+                                font-size: var(--main-text-size-640);
+                            }
                         }
                     }
                 }
@@ -311,6 +315,10 @@
                         .text {
                             font-size: var(--main-text-size-desktop);
                             white-space: nowrap;
+
+                            @media (width <=640px) {
+                                font-size: var(--main-text-size-640);
+                            }
                         }
                     }
                 }
@@ -396,6 +404,10 @@
                     .text {
                         font-size: var(--main-text-size-desktop);
                         white-space: nowrap;
+
+                        @media (width <=640px) {
+                            font-size: var(--main-text-size-640);
+                        }
                     }
                 }
             }

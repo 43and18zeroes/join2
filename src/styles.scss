@@ -31,6 +31,7 @@
     --main-number-size-desktop: 64px;
     --main-number-size-640: calc(var(--main-number-size-desktop) * 0.8);
     --main-text-size-desktop: 20px;
+    --main-text-size-640: calc(var(--main-text-size-desktop) * 0.8);
 }
 
 @font-face {
