@@ -104,6 +104,13 @@
         span {
             font-size: 20px;
         }
+
+        div {
+            width: 96px;
+            border-bottom: 4px solid var(--accent-cyan);
+            border-radius: 5px;
+            margin-top: 8px;
+        }
     }
 
     main {
@@ -126,12 +133,20 @@
                 gap: var(--main-gap-992);
             }
 
+            @media (width <=640px) {
+                gap: var(--main-gap-640);
+            }
+
             .row1 {
                 display: flex;
                 gap: var(--main-gap-desktop);
 
                 @media (width <=992px) {
                     gap: var(--main-gap-992);
+                }
+
+                @media (width <=640px) {
+                    gap: var(--main-gap-640);
                 }
 
                 .box {
@@ -308,6 +323,10 @@
 
                 @media (width <=992px) {
                     gap: var(--main-gap-992);
+                }
+
+                @media (width <=640px) {
+                    gap: var(--main-gap-640);
                 }
 
                 .row3__box {
