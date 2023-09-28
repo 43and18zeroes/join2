@@ -246,7 +246,11 @@
                 }
 
                 .urgent {
-                    width: 207.5px
+                    width: 207.5px;
+
+                    @media (width <=992px) {
+                        width: 213.5px;
+                    }
                 }
 
                 .box__date {
