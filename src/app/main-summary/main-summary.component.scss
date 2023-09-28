@@ -179,6 +179,10 @@
                         }
                     }
 
+                    @media (width <=640px) {
+                        padding: var(--box-padding-640);
+                    }
+
                     .box__left {
                         width: 69px;
                         height: 69px;
@@ -248,6 +252,10 @@
                     align-items: center;
                     padding: var(--box-padding-desktop);
                     transition: all 100ms ease-out;
+
+                    @media (width <=640px) {
+                        padding: var(--box-padding-640);
+                    }
 
                     .box__left {
                         width: 69px;
