@@ -216,7 +216,7 @@
                         }
 
                         .text {
-                            font-size: 20px;
+                            font-size: var(--main-text-size-desktop);
                             white-space: nowrap;
                         }
                     }
@@ -286,7 +286,7 @@
                         }
 
                         .text {
-                            font-size: 20px;
+                            font-size: var(--main-text-size-desktop);
                             white-space: nowrap;
                         }
                     }
@@ -312,7 +312,7 @@
                         transition: none;
                     }
 
-                    .text {
+                    .date__text {
                         font-size: 16px;
                         white-space: nowrap;
                         transition: none;
@@ -367,7 +367,7 @@
                     }
 
                     .text {
-                        font-size: 20px;
+                        font-size: var(--main-text-size-desktop);
                         white-space: nowrap;
                     }
                 }
