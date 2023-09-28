@@ -193,12 +193,12 @@
                         justify-content: center;
                         align-items: center;
                         color: var(--window-white);
-                        font-size: 32px;
+                        font-size: var(--main-icon-pen-size-desktop);
                         margin-right: 18px;
                     }
 
                     .done {
-                        font-size: 50px;
+                        font-size: var(--main-icon-done-urgent-size-desktop);
                         font-weight: 900;
                     }
 
@@ -268,7 +268,7 @@
                         color: var(--window-white);
                         margin-right: 18px;
                         background-color: #FF3D00;
-                        font-size: 50px;
+                        font-size: var(--main-icon-done-urgent-size-desktop);
                         font-weight: 400;
                     }
 
