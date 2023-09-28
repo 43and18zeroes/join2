@@ -185,8 +185,8 @@
                     }
 
                     .box__left {
-                        width: var(--main-icon-size);
-                        height: var(--main-icon-size);
+                        width: var(--main-icon-bg-size-desktop);
+                        height: var(--main-icon-bg-size-desktop);
                         background-color: var(--main-slate);
                         border-radius: 100px;
                         display: flex;
@@ -259,8 +259,8 @@
                     }
 
                     .box__left {
-                        width: var(--main-icon-size);
-                        height: var(--main-icon-size);
+                        width: var(--main-icon-bg-size-desktop);
+                        height: var(--main-icon-bg-size-desktop);
                         // background-color: var(--main-slate);
                         border-radius: 100px;
                         display: flex;
