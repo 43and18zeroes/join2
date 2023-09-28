@@ -156,7 +156,7 @@
                 .box {
                     width: 260px;
                     background-color: var(--window-white);
-                    padding: 40px;
+                    padding: var(--box-padding-desktop);
                     border-radius: 30px;
                     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
                     display: flex;
@@ -246,7 +246,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding: 40px;
+                    padding: var(--box-padding-desktop);
                     transition: all 100ms ease-out;
 
                     .box__left {
