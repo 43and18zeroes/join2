@@ -25,7 +25,7 @@
     --main-icon-bg-size-desktop: 69px;
     --main-icon-bg-size-640: calc(var(--main-icon-bg-size-desktop) * 0.8);
     --main-icon-pen-size-desktop: 32px;
-    --main-icon-pen-size-640: 32px;
+    --main-icon-pen-size-640: calc(var(--main-icon-pen-size-desktop) * 0.8);
     --main-icon-done-urgent-size-desktop: 50px;
     --main-icon-done-urgent-size-640: 50px;
     --main-number-size-desktop: 64px;
