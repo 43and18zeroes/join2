@@ -206,6 +206,10 @@
                     .done {
                         font-size: var(--main-icon-done-urgent-size-desktop);
                         font-weight: 900;
+
+                        @media (width <=640px) {
+                            font-size: var(--main-icon-done-urgent-size-640);
+                        }
                     }
 
                     .box__right {
