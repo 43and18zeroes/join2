@@ -306,6 +306,31 @@
                     font-weight: 700;
                     color: var(--accent-cyan);
                 }
+
+                @media (width <=1400px) {
+                    margin-left: 32px;
+                    font-size: 28px;
+
+                    b {
+                        font-size: 38px;
+                        font-weight: 700;
+                        color: var(--accent-cyan);
+                    }
+                }
+
+                @media (width <=1250px) {
+                    font-size: 22px;
+
+                    b {
+                        font-size: 30px;
+                        font-weight: 700;
+                        color: var(--accent-cyan);
+                    }
+                }
+
+                @media (width <=1200px) {
+                    display: none;
+                }
             }
         }
     }
