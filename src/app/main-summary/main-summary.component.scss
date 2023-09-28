@@ -79,11 +79,19 @@
             max-height: 570px;
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: var(--main-gap-desktop);
+
+            @media (width <=992px) {
+                gap: var(--main-gap-992);
+            }
 
             .row1 {
                 display: flex;
-                gap: 32px;
+                gap: var(--main-gap-desktop);
+
+                @media (width <=992px) {
+                    gap: var(--main-gap-992);
+                }
 
                 .box {
                     width: 260px;
@@ -251,7 +259,11 @@
             .row3 {
                 display: flex;
                 justify-content: space-between;
-                gap: 32px;
+                gap: var(--main-gap-desktop);
+
+                @media (width <=992px) {
+                    gap: var(--main-gap-992);
+                }
 
                 .row3__box {
                     background-color: var(--window-white);
