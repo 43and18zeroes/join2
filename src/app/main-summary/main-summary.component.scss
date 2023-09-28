@@ -181,7 +181,7 @@
                     }
 
                     @media (width <=640px) {
-                        padding: var(--box-padding-640);
+                        padding: var(--main-box-padding-640);
                     }
 
                     .box__left {
@@ -255,7 +255,7 @@
                     transition: all 100ms ease-out;
 
                     @media (width <=640px) {
-                        padding: var(--box-padding-640);
+                        padding: var(--main-box-padding-640);
                     }
 
                     .box__left {
