@@ -223,6 +223,10 @@
                             font-size: var(--main-number-size-desktop);
                             white-space: nowrap;
                             text-align: center;
+
+                            @media (width <=640px) {
+                                font-size: var(--main-number-size-640);
+                            }
                         }
 
                         .text {
@@ -298,6 +302,10 @@
                             font-size: var(--main-number-size-desktop);
                             white-space: nowrap;
                             text-align: center;
+
+                            @media (width <=640px) {
+                                font-size: var(--main-number-size-640);
+                            }
                         }
 
                         .text {
@@ -379,6 +387,10 @@
                         font-size: var(--main-number-size-desktop);
                         white-space: nowrap;
                         text-align: center;
+
+                        @media (width <=640px) {
+                            font-size: var(--main-number-size-640);
+                        }
                     }
 
                     .text {
