@@ -261,13 +261,11 @@
                     .box__left {
                         width: var(--main-icon-bg-size-desktop);
                         height: var(--main-icon-bg-size-desktop);
-                        // background-color: var(--main-slate);
                         border-radius: 100px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         color: var(--window-white);
-                        // font-size: 32px;
                         margin-right: 18px;
                         background-color: #FF3D00;
                         font-size: 50px;
@@ -389,8 +387,6 @@
             }
 
             span {
-                // width: fit-content;
-                // margin-left: 32px;
                 margin-left: 15%;
                 font-size: 47px;
 
