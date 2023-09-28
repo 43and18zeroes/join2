@@ -45,7 +45,7 @@
         padding: 32px 16px 48px 16px;
     }
 
-    header {
+    .header__desktop {
         display: flex;
         align-items: center;
         height: 73px;
@@ -53,6 +53,10 @@
 
         @media (width <=992px) {
             justify-content: center;
+        }
+
+        @media (width <=640px) {
+            display: none;
         }
 
         h2 {
@@ -83,6 +87,22 @@
             @media (width <=992px) {
                 font-size: 25px;
             }
+        }
+    }
+
+    .header__mobile {
+
+        @media (width >640px) {
+            display: none
+        }
+
+        h2 {
+            font-size: 47px;
+            margin: 0 0 8px 0;
+        }
+
+        span {
+            font-size: 20px;
         }
     }
 
