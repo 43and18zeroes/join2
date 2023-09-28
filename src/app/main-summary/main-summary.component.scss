@@ -122,6 +122,10 @@
             justify-content: center;
         }
 
+        @media (width <=640px) {
+            padding-top: 32px;
+        }
+
         .main__left {
             width: 607px;
             max-height: 570px;
