@@ -265,6 +265,10 @@
                             @media (width <=640px) {
                                 font-size: var(--main-number-size-640);
                             }
+
+                            @media (width <=490px) {
+                                font-size: var(--main-number-size-490);
+                            }
                         }
 
                         .text {
@@ -359,6 +363,10 @@
                             @media (width <=640px) {
                                 font-size: var(--main-number-size-640);
                             }
+
+                            @media (width <=490px) {
+                                font-size: var(--main-number-size-490);
+                            }
                         }
 
                         .text {
@@ -452,7 +460,6 @@
                     }
 
                     .number {
-
                         font-weight: 600;
                         font-size: var(--main-number-size-desktop);
                         white-space: nowrap;
@@ -460,6 +467,10 @@
 
                         @media (width <=640px) {
                             font-size: var(--main-number-size-640);
+                        }
+
+                        @media (width <=490px) {
+                            font-size: var(--main-number-size-490);
                         }
                     }
 
