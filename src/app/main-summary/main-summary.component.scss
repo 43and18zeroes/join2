@@ -45,6 +45,10 @@
         padding: 32px 16px 48px 16px;
     }
 
+    @media (width <=640px) {
+        align-items: center;
+    }
+
     .header__desktop {
         display: flex;
         align-items: center;
@@ -91,6 +95,8 @@
     }
 
     .header__mobile {
+
+        width: 453.1px;
 
         @media (width >640px) {
             display: none
