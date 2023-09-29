@@ -29,7 +29,6 @@ export class MainComponent implements OnInit {
     }
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
-      console.log("this.showGreetingScreenMobile", this.showGreetingScreenMobile);
     }, 2500);
   }
 
