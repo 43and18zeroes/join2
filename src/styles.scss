@@ -21,8 +21,10 @@
     --main-gap-desktop: 32px;
     --main-gap-992: 20px;
     --main-gap-640: 12px;
+    
     --main-box-padding-desktop: 40px;
-    --main-box-padding-640: 40px;
+    --main-box-padding-640: 40px 30px;
+
     --main-icon-bg-size-desktop: 69px;
     --main-icon-bg-size-640: calc(var(--main-icon-bg-size-desktop) * var(--main-640));
     --main-icon-pen-size-desktop: 32px;
