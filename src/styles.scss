@@ -40,6 +40,7 @@
     --main-number-size-490: calc(var(--main-number-size-desktop) * var(--main-490));
     --main-text-size-desktop: 20px;
     --main-text-size-640: calc(var(--main-text-size-desktop) * var(--main-640));
+    --main-text-size-490: calc(var(--main-text-size-desktop) * var(--main-490));
 }
 
 @font-face {

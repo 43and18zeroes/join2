@@ -278,6 +278,10 @@
                             @media (width <=640px) {
                                 font-size: var(--main-text-size-640);
                             }
+
+                            @media (width <=490px) {
+                                font-size: var(--main-text-size-490);
+                            }
                         }
                     }
                 }
@@ -375,6 +379,10 @@
 
                             @media (width <=640px) {
                                 font-size: var(--main-text-size-640);
+                            }
+
+                            @media (width <=490px) {
+                                font-size: var(--main-text-size-490);
                             }
                         }
                     }
@@ -480,6 +488,10 @@
 
                         @media (width <=640px) {
                             font-size: var(--main-text-size-640);
+                        }
+
+                        @media (width <=490px) {
+                            font-size: var(--main-text-size-490);
                         }
                     }
                 }
