@@ -124,6 +124,7 @@
 
         @media (width <=640px) {
             padding-top: 32px;
+            width: 453.1px;
         }
 
         .main__left {
@@ -182,6 +183,7 @@
 
                     @media (width <=640px) {
                         padding: var(--main-box-padding-640);
+                        flex: 0;
                     }
 
                     .box__left {
