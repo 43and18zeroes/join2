@@ -234,7 +234,7 @@
                             width: var(--main-icon-bg-size-490);
                             height: var(--main-icon-bg-size-490);
                             font-size: var(--main-icon-pen-size-490);
-                            margin-right: 0px;
+                            margin-right: 11px;
                         }
                     }
 
@@ -350,7 +350,7 @@
                             width: var(--main-icon-bg-size-490);
                             height: var(--main-icon-bg-size-490);
                             font-size: var(--main-icon-done-urgent-size-490);
-                            margin-right: 0px;
+                            margin-right: 11px;
                         }
                     }
 
@@ -425,7 +425,7 @@
                         transition: none;
 
                         @media (width <=490px) {
-                            font-size: calc(16px * 0.7);
+                            font-size: calc(14px);
                         }
                     }
                 }
