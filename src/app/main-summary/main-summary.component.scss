@@ -157,6 +157,10 @@
                 gap: var(--main-gap-640);
             }
 
+            @media (width <=490px) {
+                gap: var(--main-gap-490);
+            }
+
             .row1 {
                 display: flex;
                 gap: var(--main-gap-desktop);
@@ -167,6 +171,10 @@
 
                 @media (width <=640px) {
                     gap: var(--main-gap-640);
+                }
+
+                @media (width <=490px) {
+                    gap: var(--main-gap-490);
                 }
 
                 .box {
@@ -386,6 +394,10 @@
 
                 @media (width <=640px) {
                     gap: var(--main-gap-640);
+                }
+
+                @media (width <=490px) {
+                    gap: var(--main-gap-490);
                 }
 
                 .row3__box {
