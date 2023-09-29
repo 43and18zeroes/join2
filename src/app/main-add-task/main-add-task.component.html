@@ -11,14 +11,21 @@
         <label for="addTaskDescription">Title:</label>
         <textarea id="addTaskDescription" formControlName="description"></textarea>
 
-        <label for="addTaskAssignedTo">Assigned to</label>
+        <div>
+            <label for="addTaskAssignedTo">Assigned to</label>
         <select id="addTaskAssignedTo" formControlName="assignedTo">
             <option value="" selected>Select a contact to assign</option>
             <option value="user0">User 0</option>
             <option value="user1">User 1</option>
             <option value="user2">User 2</option>
         </select>
+        </div>
 
-        <button type="submit" class="btn__primary">Create Task</button>
+        <div class="form__footer">
+            <span>* This field is required</span>
+            <button>Clear</button>
+            <button type="submit" class="btn__primary">Create Task</button>
+        </div>
+        
     </form>
 </div>
