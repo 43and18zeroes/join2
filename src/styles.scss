@@ -18,18 +18,23 @@
     --fontsize-btn-mobile: 16px;
 
     --main-640: 0.95;
+    --main-490: 0.5;
     --main-gap-desktop: 32px;
     --main-gap-992: 20px;
     --main-gap-640: 12px;
     --main-gap-490: 8px;
     --main-box-padding-desktop: 40px;
     --main-box-padding-640: 23px 30px;
+    --main-box-padding-490: 16px 16px;
     --main-icon-bg-size-desktop: 69px;
     --main-icon-bg-size-640: calc(var(--main-icon-bg-size-desktop) * var(--main-640));
+    --main-icon-bg-size-490: calc(var(--main-icon-bg-size-desktop) * var(--main-490));
     --main-icon-pen-size-desktop: 32px;
     --main-icon-pen-size-640: calc(var(--main-icon-pen-size-desktop) * var(--main-640));
+    --main-icon-pen-size-490: calc(var(--main-icon-pen-size-desktop) * var(--main-490));
     --main-icon-done-urgent-size-desktop: 50px;
     --main-icon-done-urgent-size-640: calc(var(--main-icon-done-urgent-size-desktop) * var(--main-640));
+    --main-icon-done-urgent-size-490: calc(var(--main-icon-done-urgent-size-desktop) * var(--main-490));
     --main-number-size-desktop: 64px;
     --main-number-size-640: calc(var(--main-number-size-desktop) * var(--main-640));
     --main-text-size-desktop: 20px;

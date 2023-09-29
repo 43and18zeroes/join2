@@ -208,6 +208,10 @@
                         flex: 0;
                     }
 
+                    @media (width <=490px) {
+                        padding: var(--main-box-padding-490);
+                    }
+
                     .box__left {
                         width: var(--main-icon-bg-size-desktop);
                         height: var(--main-icon-bg-size-desktop);
@@ -225,6 +229,12 @@
                             height: var(--main-icon-bg-size-640);
                             font-size: var(--main-icon-pen-size-640);
                         }
+
+                        @media (width <=490px) {
+                            width: var(--main-icon-bg-size-490);
+                            height: var(--main-icon-bg-size-490);
+                            font-size: var(--main-icon-pen-size-490);
+                        }
                     }
 
                     .done {
@@ -233,6 +243,10 @@
 
                         @media (width <=640px) {
                             font-size: var(--main-icon-done-urgent-size-640);
+                        }
+
+                        @media (width <=490px) {
+                            font-size: var(--main-icon-done-urgent-size-490);
                         }
                     }
 
@@ -300,6 +314,10 @@
                         padding: var(--main-box-padding-640);
                     }
 
+                    @media (width <=490px) {
+                        padding: var(--main-box-padding-490);
+                    }
+
                     .box__left {
                         width: var(--main-icon-bg-size-desktop);
                         height: var(--main-icon-bg-size-desktop);
@@ -316,6 +334,11 @@
                         @media (width <=640px) {
                             width: var(--main-icon-bg-size-640);
                             height: var(--main-icon-bg-size-640);
+                        }
+
+                        @media (width <=490px) {
+                            width: var(--main-icon-bg-size-490);
+                            height: var(--main-icon-bg-size-490);
                         }
                     }
 
@@ -415,6 +438,10 @@
 
                     @media (width <=640px) {
                         padding: var(--main-box-padding-640);
+                    }
+
+                    @media (width <=490px) {
+                        padding: var(--main-box-padding-490);
                     }
 
                     &:hover {
