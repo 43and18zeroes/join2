@@ -102,6 +102,10 @@
             display: none
         }
 
+        @media (width <=490px) {
+            width: 323px;
+        }
+
         h2 {
             font-size: 47px;
             margin: 0 0 8px 0;
@@ -131,6 +135,10 @@
         @media (width <=640px) {
             padding-top: 32px;
             width: 453.1px;
+        }
+
+        @media (width <=490px) {
+            width: 323px;
         }
 
         .main__left {
