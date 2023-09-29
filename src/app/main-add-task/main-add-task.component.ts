@@ -20,7 +20,11 @@ export class MainAddTaskComponent {
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    console.log("submit");
+  onSubmit(): void {
+    if (this.addTaskForm.valid) {
+      // Handle the form submission.
+      const newTask = this.addTaskForm.value;
+      console.log(newTask);
+    }
   }
 }
