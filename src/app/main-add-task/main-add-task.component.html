@@ -1,3 +1,10 @@
 <div class="addtask__container">
+
     <h2>Add Task</h2>
+
+    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+        <label for="title">Title:</label>
+        <input id="title" formControlName="title" required />
+        <button type="submit" class="btn__primary">Create Task</button>
+    </form>
 </div>

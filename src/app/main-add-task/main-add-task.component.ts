@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from '../services/user-data.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main-add-task',
@@ -8,10 +8,19 @@ import { UserService } from '../services/user-data.service';
 })
 export class MainAddTaskComponent {
 
+  addTaskForm: FormGroup;
 
-
-  constructor(private userService: UserService) { }
+  constructor(private fb: FormBuilder) {
+    this.addTaskForm = this.fb.group({
+      title: ['', Validators.required],
+      description: ['']
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    console.log("submit");
   }
 }
