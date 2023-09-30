@@ -443,24 +443,32 @@
                     }
 
                     .date {
-                        font-size: 21px;
+                        font-size: 23px;
                         font-weight: 700;
                         margin-bottom: 13px;
                         transition: none;
                         white-space: nowrap;
 
+                        @media (width <=640px) {
+                            font-size: 18.5px;
+                        }
+
                         @media (width <=490px) {
-                            font-size: calc(21px * 0.8);
+                            font-size: 15px;
                         }
                     }
 
                     .date__text {
-                        font-size: 16px;
+                        font-size: 20px;
                         white-space: nowrap;
                         transition: none;
 
+                        @media (width <=640px) {
+                            font-size: 16px;
+                        }
+
                         @media (width <=490px) {
-                            font-size: calc(14px);
+                            font-size: 13px;
                         }
                     }
                 }
