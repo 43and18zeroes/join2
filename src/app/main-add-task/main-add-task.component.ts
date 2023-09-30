@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class MainAddTaskComponent {
 
   addTaskForm: FormGroup;
+  today: string;
   selectedPriority: string;
 
   constructor(private fb: FormBuilder) {
@@ -21,6 +22,8 @@ export class MainAddTaskComponent {
       category: ['', Validators.required],
       subTask: ['']
     });
+
+    this.today = this.getTodaysDate();
   }
 
   ngOnInit(): void {
@@ -32,6 +35,14 @@ export class MainAddTaskComponent {
       const newTask = this.addTaskForm.value;
       console.log(newTask);
     }
+  }
+
+  getTodaysDate(): string {
+    const now = new Date();
+    const year = now.getFullYear().toString();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0'); // Monat mit führender Null
+    const day = now.getDate().toString().padStart(2, '0'); // Tag mit führender Null
+    return `${year}-${month}-${day}`;
   }
 
   setPriority(priority: string) {
