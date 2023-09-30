@@ -4,27 +4,30 @@
 
     <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
 
-        <div class="form__left">
-            <label for="addTaskTitle">Title:</label>
-            <input id="addTaskTitle" formControlName="title" required />
-            <div class="title__required"></div>
+        <div class="form__body">
 
-            <label for="addTaskDescription">Title:</label>
-            <textarea id="addTaskDescription" formControlName="description"></textarea>
+            <div class="form__left">
+                <label for="addTaskTitle">Title:</label>
+                <input id="addTaskTitle" formControlName="title" required />
+                <div class="title__required"></div>
 
+                <label for="addTaskDescription">Title:</label>
+                <textarea id="addTaskDescription" formControlName="description"></textarea>
 
-            <label for="addTaskAssignedTo">Assigned to</label>
-            <select id="addTaskAssignedTo" formControlName="assignedTo">
-                <option value="">Select a contact to assign</option>
-                <option value="user0">User 0</option>
-                <option value="user1">User 1</option>
-                <option value="user2">User 2</option>
-            </select>
-        </div>
+                <label for="addTaskAssignedTo">Assigned to</label>
+                <select id="addTaskAssignedTo" formControlName="assignedTo">
+                    <option value="">Select a contact to assign</option>
+                    <option value="user0">User 0</option>
+                    <option value="user1">User 1</option>
+                    <option value="user2">User 2</option>
+                </select>
+            </div>
 
-        <div class="form__right">
-            <label for="date">Datum:</label>
-            <input id="date" type="date" formControlName="date">
+            <div class="form__right">
+                <label for="date">Datum:</label>
+                <input id="date" type="date" formControlName="date">
+            </div>
+
         </div>
 
         <div class="form__footer">
