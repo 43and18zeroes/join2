@@ -7,7 +7,7 @@
         <div class="form__body">
 
             <div class="form__left">
-                <label for="addTaskTitle">Title*</label>
+                <label for="addTaskTitle">Title<span class="asterisk">*</span></label>
                 <input id="addTaskTitle" formControlName="title" required />
                 <div class="input__required"></div>
 
@@ -27,7 +27,7 @@
 
             <div class="form__right">
 
-                <label for="addTaskDueDate">Due date*</label>
+                <label for="addTaskDueDate">Due date<span class="asterisk">*</span></label>
                 <input id="addTaskDueDate" formControlName="dueDate" type="date" placeholder="YYYY-MM-DD">
                 <div class="input__required"></div>
 
@@ -36,7 +36,7 @@
                 <button id="addTaskPrioMiddle" type="button" (click)="setPriority('middle')">Middle</button>
                 <button id="addTaskPrioLow" type="button" (click)="setPriority('high')">High</button>
 
-                <label for="addTaskCategory">Category*</label>
+                <label for="addTaskCategory">Category<span class="asterisk">*</span></label>
                 <select id="addTaskCategory" formControlName="category">
                     <option value="">Select a task category</option>
                     <option value="category0">Category 0</option>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="form__footer">
-            <span>* This field is required</span>
+            <span><span class="asterisk">*</span>This field is required</span>
             <button>Clear</button>
             <button type="submit" class="btn__primary">Create Task</button>
         </div>

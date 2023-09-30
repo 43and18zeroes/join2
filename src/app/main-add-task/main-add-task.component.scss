@@ -28,6 +28,10 @@
 
             .form__left {
                 width: 50%;
+
+                textarea {
+                    resize: none;
+                }
             }
 
             hr {
@@ -39,4 +43,8 @@
             }
         }
     }
+}
+
+.asterisk {
+    color: #FF8190;
 }
