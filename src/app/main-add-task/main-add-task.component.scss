@@ -98,7 +98,10 @@
             }
 
             hr {
+                width: 1px;
                 margin: 0 48px 32px 48px;
+                border: none;
+                background-color: var(--inactive-lite-grey);
             }
 
             .form__right {
