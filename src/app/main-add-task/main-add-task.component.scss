@@ -111,7 +111,9 @@
                         justify-content: center;
                         align-items: center;
                         cursor: pointer;
-                        transition: all 100ms ease-in;
+                        transition: box-shadow 100ms ease-in;
+                        transition: -webkit-box-shadow 100ms ease-in;
+                        transition: -moz-box-shadow 100ms ease-in;
 
                         &:hover {
                             box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.2);
@@ -133,6 +135,38 @@
 
                         .green {
                             color: #7AE229;
+                        }
+                    }
+                    .btn__red {
+                        border: 1px solid #FF3D00;
+                        background-color: #FF3D00;
+                        color: #FFF;
+                        font-weight: 600;
+
+                        .material__symbols__outlined{
+                            color: #FFF;
+                        }
+                    }
+    
+                    .btn__yellow {
+                        border: 1px solid #FFA800;
+                        background-color: #FFA800;
+                        color: #FFF;
+                        font-weight: 600;
+
+                        .material__symbols__outlined{
+                            color: #FFF;
+                        }
+                    }
+    
+                    .btn__green {
+                        border: 1px solid #7AE229;
+                        background-color: #7AE229;
+                        color: #FFF;
+                        font-weight: 600;
+
+                        .material__symbols__outlined{
+                            color: #FFF;
                         }
                     }
                 }

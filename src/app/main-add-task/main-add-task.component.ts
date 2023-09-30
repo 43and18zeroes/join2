@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class MainAddTaskComponent {
 
   addTaskForm: FormGroup;
+  selectedPriority: string;
 
   constructor(private fb: FormBuilder) {
     this.addTaskForm = this.fb.group({
@@ -34,6 +35,7 @@ export class MainAddTaskComponent {
   }
 
   setPriority(priority: string) {
+    this.selectedPriority = priority;
     this.addTaskForm.controls['priority'].setValue(priority);
   }
 }
