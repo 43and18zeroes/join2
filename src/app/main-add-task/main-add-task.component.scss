@@ -34,7 +34,7 @@
             }
 
             input {
-                width: 100%;
+                width: calc(100% - 48px);
                 // height: 48px;
                 padding: 10px 21px;
                 border-radius: 10px;
@@ -45,6 +45,18 @@
             }
 
             textarea {
+                width: calc(100% - 48px);
+                height: 100px;
+                padding: 10px 21px;
+                border-radius: 10px;
+                border: 1px solid var(--inactive-lite-grey);
+                font-size: 20px;
+                font-weight: 400;
+                font-family: inherit;
+                margin-bottom: 32px;
+            }
+
+            select {
                 width: 100%;
                 padding: 10px 21px;
                 border-radius: 10px;
@@ -72,7 +84,7 @@
             }
 
             hr {
-                margin: 0 48px;
+                margin: 0 48px 32px 48px;
             }
 
             .form__right {
