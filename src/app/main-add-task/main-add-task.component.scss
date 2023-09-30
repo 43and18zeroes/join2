@@ -73,6 +73,7 @@
 
             button {
                 font-family: inherit;
+                margin-bottom: 32px;
             }
 
             .form__left {
@@ -89,6 +90,10 @@
 
             .form__right {
                 width: 50%;
+
+                .inputs__right {
+                    width: calc(100% - 44px);
+                }
             }
         }
     }
