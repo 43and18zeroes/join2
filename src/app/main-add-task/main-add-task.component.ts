@@ -14,7 +14,8 @@ export class MainAddTaskComponent {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
-      assignedTo: ['']
+      assignedTo: [''],
+      date: ['', Validators.required]
     });
   }
 
