@@ -17,7 +17,8 @@ export class MainAddTaskComponent {
       assignedTo: [''],
       dueDate: ['', Validators.required],
       priority: ['low'],
-      category: ['', Validators.required]
+      category: ['', Validators.required],
+      subTask: ['']
     });
   }
 
