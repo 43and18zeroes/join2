@@ -15,6 +15,10 @@
         font-weight: 700;
         margin: 0;
         margin-bottom: 40px;
+
+        @media (width <=992px) {
+            font-size: 54px;
+        }
     }
 
     form {
@@ -38,9 +42,14 @@
                 padding: 10px 21px;
                 border-radius: 10px;
                 border: 1px solid var(--inactive-lite-grey);
+                outline: 0;
                 font-size: var(--fontsize-body);
                 font-family: inherit;
                 margin-bottom: 32px;
+
+                &:focus {
+                    border: 1px solid var(--accent-cyan);
+                }
             }
 
             textarea {
@@ -49,10 +58,15 @@
                 padding: 10px 21px;
                 border-radius: 10px;
                 border: 1px solid var(--inactive-lite-grey);
+                outline: 0;
                 font-size: 20px;
                 font-weight: 400;
                 font-family: inherit;
                 margin-bottom: 32px;
+
+                &:focus {
+                    border: 1px solid var(--accent-cyan);
+                }
             }
 
             select {
@@ -60,10 +74,15 @@
                 padding: 10px 21px;
                 border-radius: 10px;
                 border: 1px solid var(--inactive-lite-grey);
+                outline: 0;
                 font-size: 20px;
                 font-weight: 400;
                 font-family: inherit;
                 margin-bottom: 32px;
+
+                &:focus {
+                    border: 1px solid var(--accent-cyan);
+                }
             }
 
             option {
