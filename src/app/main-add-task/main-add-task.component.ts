@@ -15,7 +15,8 @@ export class MainAddTaskComponent {
       title: ['', Validators.required],
       description: [''],
       assignedTo: [''],
-      date: ['', Validators.required]
+      dueDate: ['', Validators.required],
+      priority: ['low']
     });
   }
 
@@ -28,5 +29,9 @@ export class MainAddTaskComponent {
       const newTask = this.addTaskForm.value;
       console.log(newTask);
     }
+  }
+
+  setPriority(priority: string) {
+    this.addTaskForm.controls['priority'].setValue(priority);
   }
 }
