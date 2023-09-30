@@ -13,7 +13,8 @@ export class MainAddTaskComponent {
   constructor(private fb: FormBuilder) {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
-      description: ['']
+      description: [''],
+      assignedTo: ['']
     });
   }
 
