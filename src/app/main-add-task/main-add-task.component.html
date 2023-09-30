@@ -4,14 +4,15 @@
 
     <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
 
-        <label for="addTaskTitle">Title:</label>
-        <input id="addTaskTitle" formControlName="title" required />
-        <div class="title__required"></div>
+        <div class="form__left">
+            <label for="addTaskTitle">Title:</label>
+            <input id="addTaskTitle" formControlName="title" required />
+            <div class="title__required"></div>
 
-        <label for="addTaskDescription">Title:</label>
-        <textarea id="addTaskDescription" formControlName="description"></textarea>
+            <label for="addTaskDescription">Title:</label>
+            <textarea id="addTaskDescription" formControlName="description"></textarea>
 
-        <div>
+
             <label for="addTaskAssignedTo">Assigned to</label>
             <select id="addTaskAssignedTo" formControlName="assignedTo">
                 <option value="">Select a contact to assign</option>
@@ -21,11 +22,14 @@
             </select>
         </div>
 
+        <div class="form__right">
+            
+        </div>
+
         <div class="form__footer">
             <span>* This field is required</span>
             <button>Clear</button>
             <button type="submit" class="btn__primary">Create Task</button>
         </div>
-
     </form>
 </div>
