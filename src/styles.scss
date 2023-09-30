@@ -42,6 +42,10 @@
     --main-text-size-desktop: 20px;
     --main-text-size-640: calc(var(--main-text-size-desktop) * var(--main-640));
     --main-text-size-490: calc(var(--main-text-size-desktop) * 0.7);
+
+    --task-prio-urgent: #FF3D00;
+    --task-prio-medium: #FFA800;
+    --task-prio-low: #7AE229;
 }
 
 @font-face {

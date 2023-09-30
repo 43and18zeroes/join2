@@ -105,7 +105,7 @@
                         padding: 10px 16px;
                         border-radius: 10px;
                         border: 1px solid var(--inactive-lite-grey);
-                        background-color: #FFF;
+                        background-color: var(--window-white);
                         font-size: 20px;
                         display: flex;
                         justify-content: center;
@@ -126,22 +126,22 @@
                         }
 
                         .red {
-                            color: #FF3D00;
+                            color: var(--task-prio-urgent);
                         }
 
                         .yellow {
-                            color: #FFA800;
+                            color: var(--task-prio-medium);
                         }
 
                         .green {
-                            color: #7AE229;
+                            color: var(--task-prio-low);
                         }
                     }
                     
                     .btn__red {
-                        border: 1px solid #FF3D00;
-                        background-color: #FF3D00;
-                        color: #FFF;
+                        border: 1px solid var(--task-prio-urgent);
+                        background-color: var(--task-prio-urgent);
+                        color: var(--window-white);
                         font-weight: 600;
 
                         .material__symbols__outlined{
@@ -150,24 +150,24 @@
                     }
     
                     .btn__yellow {
-                        border: 1px solid #FFA800;
-                        background-color: #FFA800;
-                        color: #FFF;
+                        border: 1px solid var(--task-prio-medium);
+                        background-color: var(--task-prio-medium);
+                        color: var(--window-white);
                         font-weight: 600;
 
                         .material__symbols__outlined{
-                            color: #FFF;
+                            color: var(--window-white);
                         }
                     }
     
                     .btn__green {
-                        border: 1px solid #7AE229;
-                        background-color: #7AE229;
-                        color: #FFF;
+                        border: 1px solid var(--task-prio-low);
+                        background-color: var(--task-prio-low);
+                        color: var(--window-white);
                         font-weight: 600;
 
                         .material__symbols__outlined{
-                            color: #FFF;
+                            color: var(--window-white);
                         }
                     }
                 }
