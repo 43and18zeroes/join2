@@ -17,6 +17,7 @@
     }
 
     form {
+        width: 100%;
         
         label {
             display: block;
@@ -24,6 +25,14 @@
 
         .form__body {
             display: flex;
+
+            .form__left {
+                width: 50%;
+            }
+
+            .form__right {
+                width: 50%;
+            }
         }
     }
 }
