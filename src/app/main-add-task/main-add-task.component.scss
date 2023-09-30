@@ -89,14 +89,20 @@
                     width: calc(100% - 44px);
                 }
 
+                .input__date {
+                    height: 24px;
+                }
+
                 .prio__container {
                     display: flex;
                     gap: 16px;
 
                     button {
+                        flex: 1;
+                        min-width: 142px;
                         font-family: inherit;
                         margin-bottom: 32px;
-                        padding: 15px 16px;
+                        padding: 10px 16px;
                         border-radius: 10px;
                         border: 1px solid var(--inactive-lite-grey);
                         background-color: #FFF;
