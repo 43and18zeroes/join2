@@ -35,7 +35,6 @@
 
             input {
                 width: calc(100% - 48px);
-                // height: 48px;
                 padding: 10px 21px;
                 border-radius: 10px;
                 border: 1px solid var(--inactive-lite-grey);
@@ -90,11 +89,27 @@
                     width: calc(100% - 44px);
                 }
 
-                button {
-                    font-family: inherit;
-                    margin-bottom: 32px;
-                    padding: 15px 16px;
-                    font-size: 20px;
+                .prio__container {
+                    display: flex;
+                    gap: 16px;
+
+                    button {
+                        font-family: inherit;
+                        margin-bottom: 32px;
+                        padding: 15px 16px;
+                        border-radius: 10px;
+                        border: 1px solid var(--inactive-lite-grey);
+                        background-color: #FFF;
+                        font-size: 20px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+
+                        .material__symbols__outlined {
+                            margin-left: 8px;
+                        }
+                    }
                 }
             }
         }
