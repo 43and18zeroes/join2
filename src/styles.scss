@@ -1,4 +1,5 @@
 :root {
+    --main-font-family: 'Inter', Arial, sans-serif !important;
     --general-text-black: #000;
     --main-slate: #2A3647;
     --accent-cyan: #29ABE3;
@@ -83,7 +84,7 @@
 }
 
 body {
-    font-family: 'Inter', Arial, sans-serif !important;
+    font-family: var(--main-font-family) !important;
     font-size: var(--fontsize-body);
     margin: 0;
     background-color: var(--background-offwhite);

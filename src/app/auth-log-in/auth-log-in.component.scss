@@ -265,6 +265,7 @@
                         border: 1px solid var(--inactive-lite-grey);
                         outline: 0;
                         color: var(--input-text-black);
+                        font-family: inherit;
 
                         @media (width <=576px) {
                             width: calc(100% - 78px);
