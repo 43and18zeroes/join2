@@ -43,7 +43,7 @@
                 outline: 0;
                 font-size: var(--fontsize-body);
                 font-family: inherit;
-                margin-bottom: 32px;
+                // margin-bottom: 32px;
 
                 &:focus {
                     border: 1px solid var(--accent-cyan);
@@ -60,7 +60,7 @@
                 font-size: 20px;
                 font-weight: 400;
                 font-family: inherit;
-                margin-bottom: 32px;
+                margin-bottom: 30px;
 
                 &:focus {
                     border: 1px solid var(--accent-cyan);
@@ -76,7 +76,7 @@
                 font-size: 20px;
                 font-weight: 400;
                 font-family: inherit;
-                margin-bottom: 32px;
+                // margin-bottom: 32px;
 
                 &:focus {
                     border: 1px solid var(--accent-cyan);
@@ -116,12 +116,13 @@
                 .prio__container {
                     display: flex;
                     gap: 16px;
+                    margin-bottom: 30px;
 
                     button {
                         flex: 1;
                         min-width: 142px;
                         font-family: inherit;
-                        margin-bottom: 32px;
+                        // margin-bottom: 32px;
                         padding: 10px 16px;
                         border-radius: 10px;
                         border: 1px solid var(--inactive-lite-grey);
@@ -191,6 +192,15 @@
                         }
                     }
                 }
+            }
+        }
+
+        .input__required {
+            height: 32px;
+
+            span {
+                font-size: var(--fontsize-incorrect-input);
+                color: var(--invalid-red);
             }
         }
     }

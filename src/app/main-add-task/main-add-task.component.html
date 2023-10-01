@@ -9,7 +9,9 @@
             <div class="form__left">
                 <label for="addTaskTitle">Title<span class="asterisk">*</span></label>
                 <input id="addTaskTitle" formControlName="title" required placeholder="Enter a Title" />
-                <div class="input__required"></div>
+                <div class="input__required">
+                    <!-- <span>This field is required</span> -->
+                </div>
 
                 <label for="addTaskDescription">Description</label>
                 <textarea id="addTaskDescription" formControlName="description"
@@ -30,7 +32,9 @@
 
                 <label for="addTaskDueDate">Due date<span class="asterisk">*</span></label>
                 <input id="addTaskDueDate" formControlName="dueDate" type="date" [min]="today" class="inputs__right input__date">
-                <div class="input__required"></div>
+                <div class="input__required">
+                    <!-- <span>This field is required</span> -->
+                </div>
 
                 <label for="addTaskPrio">Prio</label>
                 <div class="prio__container">
@@ -52,7 +56,9 @@
                     <option value="category1">Category 1</option>
                     <option value="category2">Category 2</option>
                 </select>
-                <div class="input__required"></div>
+                <div class="input__required">
+                    <!-- <span>This field is required</span> -->
+                </div>
 
                 <label for="addTaskSubTask">Subtasks</label>
                 <input id="addTaskSubTask" formControlName="subTask" class="inputs__right">
