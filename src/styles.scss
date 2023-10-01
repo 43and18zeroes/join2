@@ -144,6 +144,11 @@ body {
 
 .btn__secondary__main {
     font-weight: 400;
+
+    .material__symbols__outlined {
+        font-size: 22px !important;
+        margin-left: 8px !important;
+    }
 }
 
 .no__select {
