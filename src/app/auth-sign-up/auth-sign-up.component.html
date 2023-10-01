@@ -27,13 +27,13 @@
                     <span (click)="signUpUserName.focus()" class="material__symbols__outlined">
                         person
                     </span>
-                    <input [attr.disabled]="isSubmitted ? true : null" [(ngModel)]="user.userName" #signUpUserName id="signUpUserName" formControlName="signUpUserName" placeholder="Name"
+                    <input [attr.disabled]="isSubmitted ? true : null" [(ngModel)]="user.userName" #signUpUserName id="signUpUserName" formControlName="signUpUserName" placeholder="First and last name"
                         type="text" autocomplete="false">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="signUpForm.controls.signUpUserName.invalid &&
                         signUpForm.controls.signUpUserName.dirty && 
-                        signUpForm.controls.signUpUserName.value">Enter a name with 1 to 16 characters.</span>
+                        signUpForm.controls.signUpUserName.value">Separate first and last name with a space.</span>
                 </div>
 
                 <div class="input__container">
