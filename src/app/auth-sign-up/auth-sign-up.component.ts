@@ -4,7 +4,7 @@ import { User } from 'src/models/user.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { emailValidator } from '../shared/validators/custom-validators';
+import { emailValidator, signUpUserNameValidator } from '../shared/validators/custom-validators';
 
 @Component({
   selector: 'auth-app-sign-up',
@@ -16,7 +16,7 @@ export class AuthSignUpComponent implements OnInit {
   user = new User();
 
   signUpForm = new FormGroup({
-    signUpUserName: new FormControl('', [Validators.required, Validators.maxLength(32)]),
+    signUpUserName: new FormControl('', [Validators.required, signUpUserNameValidator]),
     signUpEmail: new FormControl('', [Validators.required, emailValidator]),
     signUpPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
