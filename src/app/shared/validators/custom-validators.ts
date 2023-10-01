@@ -7,7 +7,7 @@ export function emailValidator(control: FormControl): { [key: string]: any } | n
 }
 
 export function signUpUserNameValidator(control: FormControl): { [key: string]: any } | null {
-    const nameRegex = /^(?=.{1,32}$)(.{1,31})\s+(.{1,31})$/;
-    const valid = nameRegex.test(control.value);
-    return valid ? null : { invalidName: true };
+    const signUpUserNameRegex = /^(?=.{1,32}$)(.{1,31})\s+(.{1,31})$/;
+    const valid = signUpUserNameRegex.test(control.value);
+    return valid ? null : { invalidSignUpUserNameName: true };
 }
