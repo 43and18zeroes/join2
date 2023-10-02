@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
 
 export function signUpUserNameValidator(control: FormControl): { [key: string]: any } | null {
-    const signUpUserNameRegex = /^[a-zA-ZäöüÄÖÜ\-]+\s[a-zA-ZäöüÄÖÜ\-]+$/;
+    const signUpUserNameRegex = /^[a-zA-ZäöüÄÖÜß\-]+\s[a-zA-ZäöüÄÖÜß\-]+$/;
     const valid = signUpUserNameRegex.test(control.value);
     return valid ? null : { invalidSignUpUserNameName: true };
 }
