@@ -46,18 +46,22 @@ export class AuthSignUpComponent implements OnInit {
     const userName = this.signUpForm.value.signUpUserName;
     const userFirstName = userName.split(' ')[0];
     const userSurName = userName.split(' ')[1];
+    const userInitials = userFirstName.charAt(0).toUpperCase() + userSurName.charAt(0).toUpperCase();
 
     const userData = Object.assign(this.signUpForm, {
       userName: userName,
       userFirstName: userFirstName,
       userSurName: userSurName,
+      userInitials: userInitials,
       email: this.signUpForm.value.signUpEmail,
       password: this.signUpForm.value.signUpPassword
     });
+    
     this.authService.signUp(userData).then((res: any) => {
       this.user.userName = userName;
       this.user.userFirstName = userFirstName;
       this.user.userSurName = userSurName;
+      this.user.userInitials = userInitials;
       this.user.userEmailAddress = this.signUpForm.value.signUpEmail;
 
       this.isSubmitted = true;
