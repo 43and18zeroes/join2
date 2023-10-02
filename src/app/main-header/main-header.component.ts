@@ -27,7 +27,7 @@ export class MainHeaderComponent implements OnInit {
     console.log("userName", userName);
     let nameParts = userName.split(' ');
     if (nameParts.length >= 2) {
-      let initials = nameParts[0].charAt(0) + ' ' + nameParts[1].charAt(0);
+      let initials = nameParts[0].charAt(0) + nameParts[1].charAt(0);
       this.currentUserInitial = initials;
     }
     else {
