@@ -28,7 +28,6 @@ export class MainHeaderComponent implements OnInit {
   let nameParts = userName.split(' ');
   if (nameParts.length >= 2) {
     let initials = nameParts[0].charAt(0) + ' ' + nameParts[1].charAt(0);
-    // initials enthält nun die ersten Buchstaben des Vor- und Nachnamens
     this.currentUserInitial = initials;
   }
   // Sie können hier einen Fallback-Wert zurückgeben, falls der Name nicht in zwei Teile geteilt wurde
