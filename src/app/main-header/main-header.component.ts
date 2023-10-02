@@ -35,11 +35,6 @@ export class MainHeaderComponent implements OnInit {
     }
   }
 
-  // async identifyCurrentUserData() {
-  //   await this.userService.getCurrentUserAuth();
-  //   this.userService.filterCurrentUserData();
-  // }
-
   logOut() {
     const auth = getAuth();
     signOut(auth).then(() => {
