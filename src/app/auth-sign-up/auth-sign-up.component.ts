@@ -46,20 +46,31 @@ export class AuthSignUpComponent implements OnInit {
     const userData = this.getUserData();
     
     this.authService.signUp(userData).then((res: any) => {
-      this.user.userName = userData.userName;
-      this.user.userFirstName = userData.userFirstName;
-      this.user.userSurName = userData.userSurName;
-      this.user.userInitials = userData.userInitials;
-      this.user.userEmailAddress = userData.email;
-
-      this.isSubmitted = true;
-      this.createNewUserData();
-      this.authSuccessAnimation();
-      this.navigateHome();
+      this.populateUser(userData);
+      this.processSuccessfulSignup();
     }).catch((error: any) => {
-      console.error(error);
-      this.emailAdressAlreadyExists = true;
+      this.handleSignupError(error);
     });
+  }
+
+  populateUser(userData) {
+    this.user.userName = userData.userName;
+    this.user.userFirstName = userData.userFirstName;
+    this.user.userSurName = userData.userSurName;
+    this.user.userInitials = userData.userInitials;
+    this.user.userEmailAddress = userData.email;
+  }
+
+  processSuccessfulSignup() {
+    this.isSubmitted = true;
+    this.createNewUserData();
+    this.authSuccessAnimation();
+    this.navigateHome();
+  }
+
+  handleSignupError(error: any) {
+    console.error(error);
+    this.emailAdressAlreadyExists = true;
   }
 
   getUserData() {
