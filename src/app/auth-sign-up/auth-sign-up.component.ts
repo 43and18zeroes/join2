@@ -43,37 +43,45 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   signUp() {
+    const userData = this.getUserData();
+    
+    this.authService.signUp(userData).then((res: any) => {
+      this.user.userName = userData.userName;
+      this.user.userFirstName = userData.userFirstName;
+      this.user.userSurName = userData.userSurName;
+      this.user.userInitials = userData.userInitials;
+      this.user.userEmailAddress = userData.email;
+
+      this.isSubmitted = true;
+      this.createNewUserData();
+      this.authSuccessAnimation();
+      this.navigateHome();
+    }).catch((error: any) => {
+      console.error(error);
+      this.emailAdressAlreadyExists = true;
+    });
+  }
+
+  getUserData() {
     const userName = this.signUpForm.value.signUpUserName;
     const userFirstName = userName.split(' ')[0];
     const userSurName = userName.split(' ')[1];
     const userInitials = userFirstName.charAt(0).toUpperCase() + userSurName.charAt(0).toUpperCase();
 
-    const userData = Object.assign(this.signUpForm, {
+    return {
       userName: userName,
       userFirstName: userFirstName,
       userSurName: userSurName,
       userInitials: userInitials,
       email: this.signUpForm.value.signUpEmail,
       password: this.signUpForm.value.signUpPassword
-    });
-    
-    this.authService.signUp(userData).then((res: any) => {
-      this.user.userName = userName;
-      this.user.userFirstName = userFirstName;
-      this.user.userSurName = userSurName;
-      this.user.userInitials = userInitials;
-      this.user.userEmailAddress = this.signUpForm.value.signUpEmail;
+    };
+  }
 
-      this.isSubmitted = true;
-      this.createNewUserData();
-      this.authSuccessAnimation();
-      setTimeout(() => {
-        this.router.navigate(['/']);
-      }, 1600);
-    }).catch((error: any) => {
-      console.error(error);
-      this.emailAdressAlreadyExists = true;
-    });
+  navigateHome() {
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 1600);
   }
 
   createNewUserData() {
