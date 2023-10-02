@@ -26,8 +26,6 @@ export class MainHeaderComponent implements OnInit {
     let userName = this.mainComponent.currentUserData.userName;
     console.log("userName", userName);
   let nameParts = userName.split(' ');
-
-  // Überprüfen Sie, ob der Name in zwei Teile geteilt wurde
   if (nameParts.length >= 2) {
     let initials = nameParts[0].charAt(0) + ' ' + nameParts[1].charAt(0);
     // initials enthält nun die ersten Buchstaben des Vor- und Nachnamens
