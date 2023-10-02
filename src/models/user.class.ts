@@ -1,19 +1,19 @@
 export class User {
     public userName: string;
+    public userFirstName: string;
     public userEmailAddress: string;
-    // public userPassword: string;
 
     constructor() {
         this.userName = this.userName;
+        this.userFirstName = this.userFirstName;
         this.userEmailAddress = this.userEmailAddress;
-        // this.userPassword = this.userPassword;
     }
 
     public toJSON() {
         return {
             userName: this.userName,
+            userFirstName: this.userFirstName,
             userEmailAddress: this.userEmailAddress,
-            // userPassword: this.userPassword
         }
     }
 }
