@@ -11,7 +11,6 @@ import { UserService } from '../services/user-data.service';
 })
 export class MainHeaderComponent implements OnInit {
 
-  currentUserData;
   currentUserInitial;
 
   constructor(
@@ -20,7 +19,26 @@ export class MainHeaderComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.currentUserInitial = this.mainComponent.currentUserData.userName[0].toUpperCase();
+    // this.currentUserInitial = this.mainComponent.currentUserData.userName[0].toUpperCase();
+    this.getInitials();
+  }
+
+  getInitials() {
+    let userName = this.mainComponent.currentUserData.userName;
+    console.log("userName", userName);
+    // let userName = this.mainComponent.currentUserData.userName;
+  let nameParts = userName.split(' '); // teilt den String am Leerzeichen
+
+  // Überprüfen Sie, ob der Name in zwei Teile geteilt wurde
+  if (nameParts.length >= 2) {
+    let initials = nameParts[0].charAt(0) + ' ' + nameParts[1].charAt(0);
+    // initials enthält nun die ersten Buchstaben des Vor- und Nachnamens
+    this.currentUserInitial = initials;
+  }
+  // Sie können hier einen Fallback-Wert zurückgeben, falls der Name nicht in zwei Teile geteilt wurde
+  else {
+    this.currentUserInitial = '';
+  }
   }
 
   // async identifyCurrentUserData() {
