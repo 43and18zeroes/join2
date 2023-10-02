@@ -25,7 +25,7 @@ export class MainHeaderComponent implements OnInit {
   getInitials() {
     let userName = this.mainComponent.currentUserData.userName;
     console.log("userName", userName);
-  let nameParts = userName.split(' '); // teilt den String am Leerzeichen
+  let nameParts = userName.split(' ');
 
   // Überprüfen Sie, ob der Name in zwei Teile geteilt wurde
   if (nameParts.length >= 2) {
