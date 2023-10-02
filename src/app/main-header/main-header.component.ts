@@ -19,14 +19,12 @@ export class MainHeaderComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    console.log("this.mainComponent.currentUserData.userInitials", this.mainComponent.currentUserData.userInitials)
     this.currentUserInitial = this.mainComponent.currentUserData.userInitials;
     // this.getInitials();
   }
 
   // getInitials() {
   //   let userName = this.mainComponent.currentUserData.userName;
-  //   console.log("userName", userName);
   //   let nameParts = userName.split(' ');
   //   if (nameParts.length >= 2) {
   //     let initials = nameParts[0].charAt(0).toUpperCase() + nameParts[1].charAt(0).toUpperCase();
