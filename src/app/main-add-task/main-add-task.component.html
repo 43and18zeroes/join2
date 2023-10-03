@@ -29,9 +29,7 @@
                 <div class="select">
                     <select id="addTaskAssignedTo" formControlName="assignedTo">
                         <option value="">Select a contact to assign</option>
-                        <option value="user0">User 0</option>
-                        <option value="user1">User 1</option>
-                        <option value="user2">User 2</option>
+                        <option *ngFor="let user of allUsersData">{{ user.userInitials }} {{ user.userName }}</option>
                     </select>
                     <div class="select_arrow">
                     </div>
