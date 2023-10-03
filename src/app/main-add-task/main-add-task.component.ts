@@ -16,12 +16,13 @@ export class MainAddTaskComponent {
 
   title: string = 'Select a contact to assign';
   showDropdown: boolean = false;
-  options: any[] = [
-    { name: 'Option 1', selected: false },
-    { name: 'Option 2', selected: false },
-    { name: 'Option 3', selected: false },
-    // ... mehr Optionen
-  ];
+  selectedUsers: any[] = [];
+  // options: any[] = [
+  //   { name: 'Option 1', selected: false },
+  //   { name: 'Option 2', selected: false },
+  //   { name: 'Option 3', selected: false },
+  //   // ... mehr Optionen
+  // ];
 
   today: string;
   selectedPriority: string;
@@ -54,10 +55,18 @@ export class MainAddTaskComponent {
 
   selectOption(user: any) {
     if (user) {
-        user.selected = !user.selected;
+      user.selected = !user.selected;
+      if (user.selected) {
+        this.selectedUsers.push(user);
+      } else {
+        const index = this.selectedUsers.indexOf(user);
+        if (index !== -1) {
+          this.selectedUsers.splice(index, 1);
+        }
+      }
     }
-    // Sie können hier auch weitere Logik hinzufügen, falls notwendig
-}
+    console.log("selectedUsers", this.selectedUsers);
+  }
 
   getTodaysDate(): string {
     const now = new Date();
