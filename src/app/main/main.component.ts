@@ -11,8 +11,8 @@ export class MainComponent implements OnInit {
   showGreetingScreenMobile = true;
   currentUserData;
 
-  currentlyDisplayed: string = 'addTask';
-  currentlyClicked: string = 'addTask';
+  currentlyDisplayed: string = 'summary';
+  currentlyClicked: string = 'summary';
 
   displayMainSection(condition: 'summary' | 'addTask' | 'board' | 'contacts') {
     this.currentlyDisplayed = condition;
