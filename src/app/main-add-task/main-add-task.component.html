@@ -48,12 +48,10 @@
                         <span class="arrow">&#9660;</span>
                     </div>
                     <div class="options" *ngIf="showDropdown">
-                        <!-- Current user option -->
                         <div (click)="selectOption(currentUserData)">
                             {{ currentUserData.userInitials }} {{ currentUserData.userName }} (You)
                             <input type="checkbox" [checked]="currentUserData.selected" readonly />
                         </div>
-                        <!-- All other users -->
                         <ng-container *ngFor="let user of allUsersData">
                             <div *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
                                 (click)="selectOption(user)" [class.selected]="user.selected">

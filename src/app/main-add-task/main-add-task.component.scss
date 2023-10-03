@@ -165,17 +165,18 @@
 
             .custom-select {
                 position: relative;
+                
 
-                .selected-option,
-                .options div {
+                .selected-option {
                     display: flex;
                     justify-content: space-between;
                     padding: 5px 10px;
                     border: 1px solid black;
+                    cursor: pointer;
                 }
 
-                .selected-option {
-                    cursor: pointer;
+                .arrow {
+                    margin-left: 10px;
                 }
 
                 .options {
@@ -184,18 +185,30 @@
                     left: 0;
                     right: 0;
                     z-index: 1;
+                    border: 1px solid black;
                     border-top: none;
+                    background-color: white; // Damit die Dropdown-Liste immer sichtbar ist
 
                     div {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 5px 10px;
                         cursor: pointer;
+
+                        &:hover {
+                            background-color: #f7f7f7; // Ein Hover-Effekt für bessere Benutzererfahrung
+                        }
 
                         &.selected {
                             background-color: red;
                         }
+
+                        input[type="checkbox"] {
+                            margin-left: 10px;
+                        }
                     }
                 }
             }
-
 
             option {
                 font-family: inherit;
