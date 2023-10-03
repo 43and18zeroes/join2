@@ -4,6 +4,7 @@ export class User {
     public userSurName: string;
     public userInitials: string;
     public userEmailAddress: string;
+    public userColor: string;
 
     constructor() {
         this.userName = this.userName;
@@ -11,6 +12,7 @@ export class User {
         this.userSurName = this.userSurName;
         this.userInitials = this.userInitials;
         this.userEmailAddress = this.userEmailAddress;
+        this.userColor = this.userColor;
     }
 
     public toJSON() {
@@ -20,6 +22,7 @@ export class User {
             userSurName: this.userSurName,
             userInitials: this.userInitials,
             userEmailAddress: this.userEmailAddress,
+            userColor: this.userColor,
         }
     }
 }

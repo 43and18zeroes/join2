@@ -59,6 +59,7 @@ export class AuthSignUpComponent implements OnInit {
     this.user.userSurName = userData.userSurName;
     this.user.userInitials = userData.userInitials;
     this.user.userEmailAddress = userData.email;
+    this.user.userColor = this.generateColorFromInitials(this.user.userInitials);
   }
 
   processSuccessfulSignup() {
@@ -88,6 +89,27 @@ export class AuthSignUpComponent implements OnInit {
       password: this.signUpForm.value.signUpPassword
     };
   }
+
+  generateColorFromInitials(initials: string): string {
+    // Liste von attraktiven und modernen Farben
+    const colors = [
+        '#FF5733', '#33FF57', '#5733FF', '#33FFF5', '#F533FF', '#FFC300', '#DAF7A6',
+        '#FFC3A0', '#FF5733', '#C70039', '#9C27B0', '#673AB7', '#3F51B5', '#03A9F4',
+        '#00BCD4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107',
+        '#FF9800', '#FF5722', '#795548', '#9E9E9E', '#607D8B', '#B71C1C', '#880E4F',
+        '#4A148C', '#311B92', '#1A237E', '#0D47A1', '#01579B', '#006064', '#004D40',
+        '#1B5E20', '#33691E', '#827717', '#F57F17', '#E65100', '#BF360C', '#3E2723',
+        '#212121', '#263238', '#DD2C00', '#004D40'
+    ];
+
+    // ASCII-Werte der Initialen berechnen
+    const charCodes = initials.split('').map(char => char.charCodeAt(0));
+    const sum = charCodes.reduce((acc, curr) => acc + curr, 0);
+
+    // Eine Farbe aus der Liste basierend auf den Initialen auswählen
+    const colorIndex = sum % colors.length;
+    return colors[colorIndex];
+}
 
   navigateHome() {
     setTimeout(() => {
