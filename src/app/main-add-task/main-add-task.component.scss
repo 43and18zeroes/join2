@@ -166,11 +166,12 @@
             .assign__select {
                 position: relative;
 
-
                 .header {
                     display: flex;
                     justify-content: space-between;
-                    padding: 5px 10px;
+                    align-items: center;
+                    padding: 10px 16px;
+                    background-color: var(--window-white);
                     border: 1px solid black;
                     cursor: pointer;
 
