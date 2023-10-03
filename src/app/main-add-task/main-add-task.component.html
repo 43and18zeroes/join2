@@ -42,10 +42,12 @@
                 </div>
 
                 <label for="addTaskAssignedTo">Assigned to</label>
-                <div class="custom-select">
-                    <div class="selected-option" (click)="toggleDropdown()">
+                <div class="assign__select">
+                    <div class="header" (click)="toggleDropdown()">
                         <span>{{ title }}</span>
-                        <span class="arrow">&#9660;</span>
+                        <span class="material__symbols__outlined">
+                            arrow_drop_down
+                            </span>
                     </div>
                     <div class="options" *ngIf="showDropdown">
                         <div (click)="selectOption(currentUserData)" [class.selected]="currentUserData.selected">
@@ -59,6 +61,7 @@
                                 <input type="checkbox" [checked]="user.selected" readonly />
                             </div>
                         </ng-container>
+                        <button>Add new contact<span class="material__symbols__outlined">person_add</span></button>
                     </div>
                 </div>
 

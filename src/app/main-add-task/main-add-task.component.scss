@@ -163,20 +163,20 @@
                 }
             }
 
-            .custom-select {
+            .assign__select {
                 position: relative;
                 
 
-                .selected-option {
+                .header {
                     display: flex;
                     justify-content: space-between;
                     padding: 5px 10px;
                     border: 1px solid black;
                     cursor: pointer;
-                }
 
-                .arrow {
-                    margin-left: 10px;
+                    .material__symbols__outlined {
+                        font-size: 30px;
+                    }
                 }
 
                 .options {
