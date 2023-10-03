@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainComponent } from '../main/main.component';
 
@@ -16,6 +16,8 @@ export class MainAddTaskComponent {
 
   showAssignedDropdown: boolean = false;
   @ViewChild('selectedOptionRef') selectedOptionRef: ElementRef;
+  @ViewChild('customSelectRef') customSelectRef: ElementRef;
+  private globalClickListener: Function;
   selectedUsers: any[] = [];
 
   today: string;
@@ -23,7 +25,8 @@ export class MainAddTaskComponent {
 
   constructor(
     private fb: FormBuilder,
-    public mainComponent: MainComponent) {
+    public mainComponent: MainComponent,
+    private renderer: Renderer2) {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
@@ -41,6 +44,16 @@ export class MainAddTaskComponent {
     this.allUsersData = this.mainComponent.allUsersData;
     this.currentUserData = this.mainComponent.currentUserData;
     console.log("this.currentUserData add task", this.currentUserData);
+
+    this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
+      if (!this.customSelectRef.nativeElement.contains(event.target)) {
+        this.closeDropdown();
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.globalClickListener();  // Listener entfernen, um Memory-Leaks zu vermeiden
   }
 
   toggleDropdown() {
@@ -65,7 +78,11 @@ export class MainAddTaskComponent {
 
   preventFocusLoss(event: MouseEvent) {
     event.preventDefault();
-}
+  }
+
+  closeDropdown() {
+    this.showAssignedDropdown = false;  // oder was auch immer Ihr Mechanismus zum Schließen des Dropdowns ist
+  }
 
   getTodaysDate(): string {
     const now = new Date();
