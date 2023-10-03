@@ -41,19 +41,29 @@
                     </div>
                 </div>
 
+                <label for="addTaskAssignedTo">Assigned to</label>
                 <div class="custom-select">
                     <div class="selected-option" (click)="toggleDropdown()">
                         <span>{{ title }}</span>
                         <span class="arrow">&#9660;</span>
                     </div>
                     <div class="options" *ngIf="showDropdown">
-                        <div *ngFor="let option of options; let i = index" [class.selected]="option.selected"
-                            (click)="selectOption(i)">
-                            {{ option.name }}
-                            <input type="checkbox" [checked]="option.selected" readonly />
+                        <!-- Current user option -->
+                        <div (click)="selectOption(currentUserData)">
+                            {{ currentUserData.userInitials }} {{ currentUserData.userName }} (You)
+                            <input type="checkbox" [checked]="currentUserData.selected" readonly />
                         </div>
+                        <!-- All other users -->
+                        <ng-container *ngFor="let user of allUsersData">
+                            <div *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
+                                (click)="selectOption(user)" [class.selected]="user.selected">
+                                {{ user.userInitials }} {{ user.userName }}
+                                <input type="checkbox" [checked]="user.selected" readonly />
+                            </div>
+                        </ng-container>
                     </div>
                 </div>
+
 
             </div>
 

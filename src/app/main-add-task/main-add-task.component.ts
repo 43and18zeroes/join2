@@ -52,9 +52,12 @@ export class MainAddTaskComponent {
     this.showDropdown = !this.showDropdown;
   }
 
-  selectOption(index: number) {
-    this.options[index].selected = !this.options[index].selected;
-  }
+  selectOption(user: any) {
+    if (user) {
+        user.selected = !user.selected;
+    }
+    // Sie können hier auch weitere Logik hinzufügen, falls notwendig
+}
 
   getTodaysDate(): string {
     const now = new Date();
