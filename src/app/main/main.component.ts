@@ -26,11 +26,9 @@ export class MainComponent implements OnInit {
     if (this.userService.allUsersData !== undefined) {
       this.currentUserData = this.userService.currentUserData[0];
       this.allUsersData = this.userService.allUsersData;
-      console.log("allUsersData from var", this.allUsersData)
     } else {
       this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
       this.allUsersData = JSON.parse(localStorage.getItem('allUsersData') || '[]');
-      console.log("allUsersData from service", this.allUsersData)
     }
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
