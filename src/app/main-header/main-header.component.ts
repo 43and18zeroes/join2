@@ -11,7 +11,7 @@ import { UserService } from '../services/user-data.service';
 })
 export class MainHeaderComponent implements OnInit {
 
-  currentUserInitial;
+  currentUserInitials;
 
   constructor(
     public mainComponent: MainComponent,
@@ -19,7 +19,7 @@ export class MainHeaderComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.currentUserInitial = this.mainComponent.currentUserData.userInitials;
+    this.currentUserInitials = this.mainComponent.currentUserData.userInitials;
     // this.getInitials();
   }
 
