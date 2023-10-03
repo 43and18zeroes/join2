@@ -14,7 +14,7 @@ export class MainAddTaskComponent {
 
   addTaskForm: FormGroup;
 
-  title: string = 'Wähle eine Option';
+  title: string = 'Select a contact to assign';
   showDropdown: boolean = false;
   options: any[] = [
     { name: 'Option 1', selected: false },
