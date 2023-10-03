@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MainComponent } from '../main/main.component';
 
 @Component({
   selector: 'app-main-add-task',
@@ -12,7 +13,11 @@ export class MainAddTaskComponent {
   today: string;
   selectedPriority: string;
 
-  constructor(private fb: FormBuilder) {
+  allUsersData;
+
+  constructor(
+    private fb: FormBuilder,
+    public mainComponent: MainComponent) {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
@@ -27,6 +32,8 @@ export class MainAddTaskComponent {
   }
 
   ngOnInit(): void {
+    this.allUsersData = this.mainComponent.allUsersData;
+    console.log("this.allUsersData add task", this.allUsersData);
   }
 
   onSubmit(): void {
