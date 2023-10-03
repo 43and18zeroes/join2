@@ -9,12 +9,22 @@ import { MainComponent } from '../main/main.component';
 })
 export class MainAddTaskComponent {
 
-  addTaskForm: FormGroup;
-  today: string;
-  selectedPriority: string;
-
   allUsersData;
   currentUserData;
+
+  addTaskForm: FormGroup;
+
+  title: string = 'Wähle eine Option';
+  showDropdown: boolean = false;
+  options: any[] = [
+    { name: 'Option 1', selected: false },
+    { name: 'Option 2', selected: false },
+    { name: 'Option 3', selected: false },
+    // ... mehr Optionen
+  ];
+
+  today: string;
+  selectedPriority: string;
 
   constructor(
     private fb: FormBuilder,
@@ -38,12 +48,12 @@ export class MainAddTaskComponent {
     console.log("this.currentUserData add task", this.currentUserData);
   }
 
-  onSubmit(): void {
-    if (this.addTaskForm.valid) {
-      // Handle the form submission.
-      const newTask = this.addTaskForm.value;
-      console.log(newTask);
-    }
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  selectOption(index: number) {
+    this.options[index].selected = !this.options[index].selected;
   }
 
   getTodaysDate(): string {
@@ -57,5 +67,13 @@ export class MainAddTaskComponent {
   setPriority(priority: string) {
     this.selectedPriority = priority;
     this.addTaskForm.controls['priority'].setValue(priority);
+  }
+
+  onSubmit(): void {
+    if (this.addTaskForm.valid) {
+      // Handle the form submission.
+      const newTask = this.addTaskForm.value;
+      console.log(newTask);
+    }
   }
 }

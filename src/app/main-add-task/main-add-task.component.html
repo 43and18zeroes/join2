@@ -7,6 +7,7 @@
         <div class="form__body">
 
             <div class="form__left">
+
                 <label for="addTaskTitle">Title<span class="asterisk">*</span></label>
                 <input id="addTaskTitle" formControlName="title" required placeholder="Enter a Title" />
                 <div class="input__required">
@@ -29,13 +30,28 @@
                 <div class="select">
                     <select id="addTaskAssignedTo" formControlName="assignedTo">
                         <option value="">Select a contact to assign</option>
-                        <option value="">{{ currentUserData.userInitials }} {{ currentUserData.userName }} (You)</option>
+                        <option value="">{{ currentUserData.userInitials }} {{ currentUserData.userName }} (You)
+                        </option>
                         <ng-container *ngFor="let user of allUsersData">
-                            <option *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress" 
-                                    [value]="user.userInitials">{{ user.userInitials }} {{ user.userName }}</option>
+                            <option *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
+                                [value]="user.userInitials">{{ user.userInitials }} {{ user.userName }}</option>
                         </ng-container>
                     </select>
                     <div class="select_arrow">
+                    </div>
+                </div>
+
+                <div class="custom-select">
+                    <div class="selected-option" (click)="toggleDropdown()">
+                        <span>{{ title }}</span>
+                        <span class="arrow">&#9660;</span>
+                    </div>
+                    <div class="options" *ngIf="showDropdown">
+                        <div *ngFor="let option of options; let i = index" [class.selected]="option.selected"
+                            (click)="selectOption(i)">
+                            {{ option.name }}
+                            <input type="checkbox" [checked]="option.selected" readonly />
+                        </div>
                     </div>
                 </div>
 
@@ -102,8 +118,8 @@
             <span><span class="asterisk">*</span>This field is required</span>
             <div class="footer__right">
                 <button class="btn__secondary btn__secondary__main">Clear <span class="material__symbols__outlined">
-                    close
-                </span></button>
+                        close
+                    </span></button>
                 <button type="submit" class="btn__primary">Create Task <span class="material__symbols__outlined">
                         check
                     </span></button>
