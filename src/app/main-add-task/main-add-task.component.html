@@ -30,7 +30,10 @@
                     <select id="addTaskAssignedTo" formControlName="assignedTo">
                         <option value="">Select a contact to assign</option>
                         <option value="">{{ currentUserData.userInitials }} {{ currentUserData.userName }}</option>
-                        <option *ngFor="let user of allUsersData">{{ user.userInitials }} {{ user.userName }}</option>
+                        <ng-container *ngFor="let user of allUsersData">
+                            <option *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress" 
+                                    [value]="user.userInitials">{{ user.userInitials }} {{ user.userName }}</option>
+                        </ng-container>
                     </select>
                     <div class="select_arrow">
                     </div>
