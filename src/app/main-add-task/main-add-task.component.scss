@@ -165,7 +165,7 @@
 
             .assign__select {
                 position: relative;
-                
+
 
                 .header {
                     display: flex;
@@ -187,26 +187,33 @@
                     z-index: 1;
                     border: 1px solid black;
                     border-top: none;
-                    background-color: white; // Damit die Dropdown-Liste immer sichtbar ist
+                    background-color: white;
 
-                    div {
-                        display: flex;
-                        justify-content: space-between;
-                        padding: 5px 10px;
-                        cursor: pointer;
+                    .options__body {
+                        height: 100px;
+                        overflow-y: auto;
 
-                        &:hover {
-                            background-color: #f7f7f7; // Ein Hover-Effekt für bessere Benutzererfahrung
-                        }
+                        div {
+                            display: flex;
+                            justify-content: space-between;
+                            padding: 5px 10px;
+                            cursor: pointer;
 
-                        &.selected {
-                            background-color: red;
-                        }
+                            &:hover {
+                                background-color: #f7f7f7; // Ein Hover-Effekt für bessere Benutzererfahrung
+                            }
 
-                        input[type="checkbox"] {
-                            margin-left: 10px;
+                            &.selected {
+                                background-color: red;
+                            }
+
+                            input[type="checkbox"] {
+                                margin-left: 10px;
+                            }
                         }
                     }
+
+
                 }
             }
 

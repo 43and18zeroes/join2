@@ -47,20 +47,22 @@
                         <span>Select a contact to assign</span>
                         <span class="material__symbols__outlined">
                             arrow_drop_down
-                            </span>
+                        </span>
                     </div>
                     <div class="options" *ngIf="showAssignedDropdown">
-                        <div (click)="selectOption(currentUserData)" [class.selected]="currentUserData.selected">
-                            {{ currentUserData.userInitials }} {{ currentUserData.userName }} (You)
-                            <input type="checkbox" [checked]="currentUserData.selected" readonly />
-                        </div>
-                        <ng-container *ngFor="let user of allUsersData">
-                            <div *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
-                                (click)="selectOption(user)" [class.selected]="user.selected">
-                                {{ user.userInitials }} {{ user.userName }}
-                                <input type="checkbox" [checked]="user.selected" readonly />
+                        <div class="options__body">
+                            <div (click)="selectOption(currentUserData)" [class.selected]="currentUserData.selected">
+                                {{ currentUserData.userInitials }} {{ currentUserData.userName }} (You)
+                                <input type="checkbox" [checked]="currentUserData.selected" readonly />
                             </div>
-                        </ng-container>
+                            <ng-container *ngFor="let user of allUsersData">
+                                <div *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
+                                    (click)="selectOption(user)" [class.selected]="user.selected">
+                                    {{ user.userInitials }} {{ user.userName }}
+                                    <input type="checkbox" [checked]="user.selected" readonly />
+                                </div>
+                            </ng-container>
+                        </div>
                         <button>Add new contact<span class="material__symbols__outlined">person_add</span></button>
                     </div>
                 </div>
