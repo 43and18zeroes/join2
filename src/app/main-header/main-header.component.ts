@@ -20,20 +20,7 @@ export class MainHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserInitials = this.mainComponent.currentUserData.userInitials;
-    // this.getInitials();
   }
-
-  // getInitials() {
-  //   let userName = this.mainComponent.currentUserData.userName;
-  //   let nameParts = userName.split(' ');
-  //   if (nameParts.length >= 2) {
-  //     let initials = nameParts[0].charAt(0).toUpperCase() + nameParts[1].charAt(0).toUpperCase();
-  //     this.currentUserInitial = initials;
-  //   }
-  //   else {
-  //     this.currentUserInitial = '';
-  //   }
-  // }
 
   logOut() {
     const auth = getAuth();
