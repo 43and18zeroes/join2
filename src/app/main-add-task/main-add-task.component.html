@@ -48,7 +48,7 @@
                         <span class="arrow">&#9660;</span>
                     </div>
                     <div class="options" *ngIf="showDropdown">
-                        <div (click)="selectOption(currentUserData)">
+                        <div (click)="selectOption(currentUserData)" [class.selected]="currentUserData.selected">
                             {{ currentUserData.userInitials }} {{ currentUserData.userName }} (You)
                             <input type="checkbox" [checked]="currentUserData.selected" readonly />
                         </div>
