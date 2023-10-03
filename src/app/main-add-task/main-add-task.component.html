@@ -43,7 +43,7 @@
 
                 <label for="addTaskAssignedTo">Assigned to</label>
                 <div class="assign__select">
-                    <div class="header" (click)="toggleDropdown()">
+                    <div class="header" (click)="toggleDropdown()" tabindex="0" #selectedOptionRef>
                         <span>Select a contact to assign</span>
                         <span class="material__symbols__outlined">
                             arrow_drop_down
@@ -51,13 +51,13 @@
                     </div>
                     <div class="options" *ngIf="showAssignedDropdown">
                         <div class="options__body">
-                            <div (click)="selectOption(currentUserData)" [class.selected]="currentUserData.selected">
+                            <div (click)="selectOption(currentUserData)" (mousedown)="preventFocusLoss($event)"  [class.selected]="currentUserData.selected">
                                 {{ currentUserData.userInitials }} {{ currentUserData.userName }} (You)
                                 <input type="checkbox" [checked]="currentUserData.selected" readonly />
                             </div>
                             <ng-container *ngFor="let user of allUsersData">
                                 <div *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
-                                    (click)="selectOption(user)" [class.selected]="user.selected">
+                                    (click)="selectOption(user)" (mousedown)="preventFocusLoss($event)"  [class.selected]="user.selected">
                                     {{ user.userInitials }} {{ user.userName }}
                                     <input type="checkbox" [checked]="user.selected" readonly />
                                 </div>

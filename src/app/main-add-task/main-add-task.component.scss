@@ -179,6 +179,11 @@
                     // border: 1px solid black;
                     cursor: pointer;
 
+                    &:focus {
+                        outline: none; // Entfernt den Standardbrowser-Fokus
+                        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); // Fügt einen blauen Schatten als Fokus-Effekt hinzu
+                    }
+
                     .material__symbols__outlined {
                         font-size: 30px;
                     }

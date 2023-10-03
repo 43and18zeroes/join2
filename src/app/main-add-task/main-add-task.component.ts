@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainComponent } from '../main/main.component';
 
@@ -15,6 +15,7 @@ export class MainAddTaskComponent {
   addTaskForm: FormGroup;
 
   showAssignedDropdown: boolean = false;
+  @ViewChild('selectedOptionRef') selectedOptionRef: ElementRef;
   selectedUsers: any[] = [];
 
   today: string;
@@ -58,8 +59,13 @@ export class MainAddTaskComponent {
         }
       }
     }
+    this.selectedOptionRef.nativeElement.focus();
     console.log("selectedUsers", this.selectedUsers);
   }
+
+  preventFocusLoss(event: MouseEvent) {
+    event.preventDefault();
+}
 
   getTodaysDate(): string {
     const now = new Date();
