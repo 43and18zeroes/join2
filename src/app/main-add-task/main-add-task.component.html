@@ -44,12 +44,12 @@
                 <label for="addTaskAssignedTo">Assigned to</label>
                 <div class="assign__select">
                     <div class="header" (click)="toggleDropdown()">
-                        <span>{{ title }}</span>
+                        <span>Select a contact to assign</span>
                         <span class="material__symbols__outlined">
                             arrow_drop_down
                             </span>
                     </div>
-                    <div class="options" *ngIf="showDropdown">
+                    <div class="options" *ngIf="showAssignedDropdown">
                         <div (click)="selectOption(currentUserData)" [class.selected]="currentUserData.selected">
                             {{ currentUserData.userInitials }} {{ currentUserData.userName }} (You)
                             <input type="checkbox" [checked]="currentUserData.selected" readonly />

@@ -14,15 +14,8 @@ export class MainAddTaskComponent {
 
   addTaskForm: FormGroup;
 
-  title: string = 'Select a contact to assign';
-  showDropdown: boolean = false;
+  showAssignedDropdown: boolean = false;
   selectedUsers: any[] = [];
-  // options: any[] = [
-  //   { name: 'Option 1', selected: false },
-  //   { name: 'Option 2', selected: false },
-  //   { name: 'Option 3', selected: false },
-  //   // ... mehr Optionen
-  // ];
 
   today: string;
   selectedPriority: string;
@@ -50,7 +43,7 @@ export class MainAddTaskComponent {
   }
 
   toggleDropdown() {
-    this.showDropdown = !this.showDropdown;
+    this.showAssignedDropdown = !this.showAssignedDropdown;
   }
 
   selectOption(user: any) {
