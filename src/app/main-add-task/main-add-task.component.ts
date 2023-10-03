@@ -14,6 +14,7 @@ export class MainAddTaskComponent {
   selectedPriority: string;
 
   allUsersData;
+  currentUserData;
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +34,8 @@ export class MainAddTaskComponent {
 
   ngOnInit(): void {
     this.allUsersData = this.mainComponent.allUsersData;
-    console.log("this.allUsersData add task", this.allUsersData);
+    this.currentUserData = this.mainComponent.currentUserData;
+    console.log("this.currentUserData add task", this.currentUserData);
   }
 
   onSubmit(): void {
