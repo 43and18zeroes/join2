@@ -30,6 +30,20 @@ export class MainComponent implements OnInit {
       this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
       this.allUsersData = JSON.parse(localStorage.getItem('allUsersData') || '[]');
     }
+
+    console.log("allUsersData", this.allUsersData)
+    this.allUsersData.sort((a, b) => {
+      if (a.userFirstName.toLowerCase() < b.userFirstName.toLowerCase()) {
+        return -1;
+      }
+      if (a.userFirstName.toLowerCase() > b.userFirstName.toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    });
+    console.log("allUsersData", this.allUsersData)
+
+
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
     }, 2500);
