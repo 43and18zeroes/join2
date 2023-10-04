@@ -208,9 +208,10 @@
                             justify-content: space-between;
                             padding: 10px 16px;
                             cursor: pointer;
+                            transition: background-color 100ms ease-in;
 
                             &:hover {
-                                background-color: #f7f7f7; // Ein Hover-Effekt für bessere Benutzererfahrung
+                                background-color: #EEEEEE; // Ein Hover-Effekt für bessere Benutzererfahrung
                             }
 
                             &.selected {
