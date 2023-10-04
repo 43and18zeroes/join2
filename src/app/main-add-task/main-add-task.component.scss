@@ -203,7 +203,7 @@
                         height: 100px;
                         overflow-y: auto;
 
-                        div {
+                        .option__container {
                             display: flex;
                             justify-content: space-between;
                             padding: 10px 16px;
@@ -217,17 +217,27 @@
                                 background-color: red;
                             }
 
-                            .initials {
-                                width: 30px;
-                                height: 29px;
-                                font-size: 15px;
-                                font-weight: 300;
-                                color: var(--window-white);
-                                border-radius: 50px;
+                            .option__left {
                                 display: flex;
-                                justify-content: center;
                                 align-items: center;
-                                padding-bottom: 1px;
+
+                                .initials {
+                                    width: 30px;
+                                    height: 30px;
+                                    font-size: 11.5px;
+                                    font-weight: 300;
+                                    color: var(--window-white);
+                                    border-radius: 50px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    // padding-bottom: 1px;
+                                }
+
+                                .name {
+                                    font-size: 18px;
+                                    margin-left: 8px;
+                                }
                             }
 
                             input[type="checkbox"] {

@@ -51,22 +51,22 @@
                     </div>
                     <div class="options" *ngIf="showAssignedDropdown">
                         <div class="options__body">
-                            <div (click)="selectOption(currentUserData)" (mousedown)="preventFocusLoss($event)"
+                            <div class="option__container" (click)="selectOption(currentUserData)" (mousedown)="preventFocusLoss($event)"
                                 [class.selected]="currentUserData.selected">
-                                <div class="options__left">
+                                <div class="option__left">
                                     <span class="initials"
                                         [ngStyle]="{'background-color': currentUserData.userColor}">{{
-                                        currentUserData.userInitials }}</span>{{ currentUserData.userName }} (You)
+                                        currentUserData.userInitials }}</span><span class="name">{{ currentUserData.userName }} (You)</span>
                                 </div>
                                 <input type="checkbox" [checked]="currentUserData.selected" readonly />
                             </div>
                             <ng-container *ngFor="let user of allUsersData">
                                 <div *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
-                                    (click)="selectOption(user)" (mousedown)="preventFocusLoss($event)"
+                                    class="option__container" (click)="selectOption(user)" (mousedown)="preventFocusLoss($event)"
                                     [class.selected]="user.selected">
-                                    <div class="options__left"><span class="initials"
+                                    <div class="option__left"><span class="initials"
                                             [ngStyle]="{'background-color': user.userColor}">{{ user.userInitials
-                                            }}</span>{{ user.userName }}</div>
+                                            }}</span><span class="name">{{ user.userName }}</span></div>
                                     <input type="checkbox" [checked]="user.selected" readonly />
                                 </div>
                             </ng-container>
