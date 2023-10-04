@@ -52,13 +52,13 @@
                     <div class="options" *ngIf="showAssignedDropdown">
                         <div class="options__body">
                             <div (click)="selectOption(currentUserData)" (mousedown)="preventFocusLoss($event)"  [class.selected]="currentUserData.selected">
-                                <span class="initials">{{ currentUserData.userInitials }}</span>{{ currentUserData.userName }} (You)
+                                <span class="initials" [ngStyle]="{'background-color': currentUserData.userColor}">{{ currentUserData.userInitials }}</span>{{ currentUserData.userName }} (You)
                                 <input type="checkbox" [checked]="currentUserData.selected" readonly />
                             </div>
                             <ng-container *ngFor="let user of allUsersData">
                                 <div *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
                                     (click)="selectOption(user)" (mousedown)="preventFocusLoss($event)"  [class.selected]="user.selected">
-                                    <span class="initials">{{ user.userInitials }}</span>{{ user.userName }}
+                                    <span class="initials" [ngStyle]="{'background-color': user.userColor}">{{ user.userInitials }}</span>{{ user.userName }}
                                     <input type="checkbox" [checked]="user.selected" readonly />
                                 </div>
                             </ng-container>
