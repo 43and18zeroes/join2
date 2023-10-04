@@ -211,6 +211,25 @@
                         height: 100px;
                         overflow-y: auto;
 
+                        /* Firefox */
+                        scrollbar-width: auto;
+                        scrollbar-color: #a8a8a8 #ffffff;
+
+                        /* Chrome, Edge, and Safari */
+                        &::-webkit-scrollbar {
+                            width: 9px;
+                        }
+
+                        &::-webkit-scrollbar-track {
+                            background: #ffffff;
+                        }
+
+                        &::-webkit-scrollbar-thumb {
+                            background-color: #a8a8a8;
+                            border-radius: 12px;
+                            border: 2px solid #ffffff;
+                        }
+
                         .option__container {
                             display: flex;
                             justify-content: space-between;
