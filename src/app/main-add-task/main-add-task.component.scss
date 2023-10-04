@@ -218,7 +218,16 @@
                             }
 
                             .initials {
+                                width: 30px;
+                                height: 29px;
+                                font-size: 15px;
+                                font-weight: 300;
+                                color: var(--window-white);
                                 border-radius: 50px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                padding-bottom: 1px;
                             }
 
                             input[type="checkbox"] {
