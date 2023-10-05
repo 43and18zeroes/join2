@@ -56,11 +56,11 @@ export class MainAddTaskComponent {
     this.globalClickListener();  // Listener entfernen, um Memory-Leaks zu vermeiden
   }
 
-  toggleDropdown() {
+  assignToggleDropdown() {
     this.showAssignedDropdown = !this.showAssignedDropdown;
   }
 
-  selectOption(user: any) {
+  assignSelectOption(user: any) {
     if (user) {
       user.selected = !user.selected;
       if (user.selected) {
@@ -73,10 +73,9 @@ export class MainAddTaskComponent {
       }
     }
     this.selectedOptionRef.nativeElement.focus();
-    console.log("selectedUsers", this.selectedUsers);
   }
 
-  preventFocusLoss(event: MouseEvent) {
+  assignPreventFocusLoss(event: MouseEvent) {
     event.preventDefault();
   }
 
