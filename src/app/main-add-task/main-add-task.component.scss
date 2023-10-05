@@ -261,6 +261,7 @@
 
                             input[type="checkbox"] {
                                 width: 16px;
+                                cursor: pointer;
                             }
                         }
                     }
@@ -448,8 +449,6 @@
                         background-color: white;
                         display: flex;
                         flex-direction: column;
-                        gap: 2px;
-                        margin-top: 2px;
 
                         .option {
                             padding: 10px 16px;
