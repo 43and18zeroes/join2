@@ -18,29 +18,6 @@
                 <textarea id="addTaskDescription" formControlName="description"
                     placeholder="Enter a Description"></textarea>
 
-                <!-- <label for="addTaskAssignedTo">Assigned to</label>
-                <select id="addTaskAssignedTo" formControlName="assignedTo">
-                    <option value="">Select a contact to assign</option>
-                    <option value="user0">User 0</option>
-                    <option value="user1">User 1</option>
-                    <option value="user2">User 2</option>
-                </select> -->
-
-                <label for="addTaskAssignedTo">Assigned to</label>
-                <div class="select">
-                    <select id="addTaskAssignedTo" formControlName="assignedTo">
-                        <option value="">Select a contact to assign</option>
-                        <option value="">{{ currentUserData.userInitials }} {{ currentUserData.userName }} (You)
-                        </option>
-                        <ng-container *ngFor="let user of allUsersData">
-                            <option *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
-                                [value]="user.userInitials">{{ user.userInitials }} {{ user.userName }}</option>
-                        </ng-container>
-                    </select>
-                    <div class="select_arrow">
-                    </div>
-                </div>
-
                 <label for="addTaskAssignedTo">Assigned to</label>
                 <div class="assign__select" #customSelectRef>
                     <div class="header" (click)="toggleDropdown()" tabindex="0" #selectedOptionRef>

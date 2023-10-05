@@ -224,7 +224,7 @@
                             transition: background-color 100ms ease-in;
 
                             &:hover {
-                                background-color: #EEEEEE; // Ein Hover-Effekt für bessere Benutzererfahrung
+                                background-color: #EEEEEE;
                             }
 
                             &.selected {
@@ -247,7 +247,6 @@
                                     display: flex;
                                     justify-content: center;
                                     align-items: center;
-                                    // padding-bottom: 1px;
                                 }
 
                                 .name {
@@ -324,7 +323,6 @@
                         flex: 1;
                         min-width: 142px;
                         font-family: inherit;
-                        // margin-bottom: 32px;
                         padding: 10px 16px;
                         border-radius: 10px;
                         border: 1px solid var(--inactive-lite-grey);
