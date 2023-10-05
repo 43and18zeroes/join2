@@ -107,14 +107,14 @@
                 <label for="addTaskCategory">Category<span class="asterisk">*</span></label>
                 <div class="category__select" #customSelectRef>
                     <div class="header" (click)="categoryToggleDropdown()" tabindex="0" #categorySelectedOptionRef>
-                        <span>Select a task category</span>
+                        <span>{{ addTaskForm.controls['category'].value || 'Select a task category' }}</span>
                         <span class="material__symbols__outlined">
                             arrow_drop_down
                         </span>
                     </div>
                     <div class="options" *ngIf="showCategoryDropdown">
-                        <div class="option">Cat1</div>
-                        <div class="option">Cat2</div>
+                        <div class="option" (click)="selectCategory('Technical Task')">Technical Task</div>
+                        <div class="option" (click)="selectCategory('User Story')">User Story</div>
                     </div>
                 </div>
 

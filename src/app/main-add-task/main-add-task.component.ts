@@ -99,6 +99,11 @@ export class MainAddTaskComponent {
     this.showCategoryDropdown = !this.showCategoryDropdown;
   }
 
+  selectCategory(category: string) {
+    this.addTaskForm.controls['category'].setValue(category);
+    this.categoryToggleDropdown();
+  }
+
   onSubmit(): void {
     if (this.addTaskForm.valid) {
       // Handle the form submission.
