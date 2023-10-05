@@ -99,21 +99,6 @@ export class MainAddTaskComponent {
     this.showCategoryDropdown = !this.showCategoryDropdown;
   }
 
-  categorySelectOption(user: any) {
-    if (user) {
-      user.selected = !user.selected;
-      if (user.selected) {
-        this.selectedUsers.push(user);
-      } else {
-        const index = this.selectedUsers.indexOf(user);
-        if (index !== -1) {
-          this.selectedUsers.splice(index, 1);
-        }
-      }
-    }
-    this.categorySelectedOptionRef.nativeElement.focus();
-  }
-
   onSubmit(): void {
     if (this.addTaskForm.valid) {
       // Handle the form submission.
