@@ -197,6 +197,10 @@
                     .options__body {
                         height: 125px;
                         overflow-y: auto;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2px;
+                        margin-top: 2px;
 
                         /* Firefox */
                         scrollbar-width: auto;
