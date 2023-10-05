@@ -11,17 +11,16 @@ export class MainAddTaskComponent {
 
   allUsersData;
   currentUserData;
-
   addTaskForm: FormGroup;
-
   showAssignedDropdown: boolean = false;
-  @ViewChild('selectedOptionRef') selectedOptionRef: ElementRef;
+  @ViewChild('assignSelectedOptionRef') assignSelectedOptionRef: ElementRef;
   @ViewChild('customSelectRef') customSelectRef: ElementRef;
   private globalClickListener: Function;
   selectedUsers: any[] = [];
-
   today: string;
   selectedPriority: string;
+  showCategoryDropdown: boolean = false;
+  @ViewChild('categorySelectedOptionRef') categorySelectedOptionRef: ElementRef;
 
   constructor(
     private fb: FormBuilder,
@@ -72,7 +71,7 @@ export class MainAddTaskComponent {
         }
       }
     }
-    this.selectedOptionRef.nativeElement.focus();
+    this.assignSelectedOptionRef.nativeElement.focus();
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
@@ -94,6 +93,25 @@ export class MainAddTaskComponent {
   setPriority(priority: string) {
     this.selectedPriority = priority;
     this.addTaskForm.controls['priority'].setValue(priority);
+  }
+
+  categoryToggleDropdown() {
+    this.showCategoryDropdown = !this.showCategoryDropdown;
+  }
+
+  categorySelectOption(user: any) {
+    if (user) {
+      user.selected = !user.selected;
+      if (user.selected) {
+        this.selectedUsers.push(user);
+      } else {
+        const index = this.selectedUsers.indexOf(user);
+        if (index !== -1) {
+          this.selectedUsers.splice(index, 1);
+        }
+      }
+    }
+    this.categorySelectedOptionRef.nativeElement.focus();
   }
 
   onSubmit(): void {

@@ -20,7 +20,7 @@
 
                 <label for="addTaskAssignedTo">Assigned to</label>
                 <div class="assign__select" #customSelectRef>
-                    <div class="header" (click)="assignToggleDropdown()" tabindex="0" #selectedOptionRef>
+                    <div class="header" (click)="assignToggleDropdown()" tabindex="0" #assignSelectedOptionRef>
                         <span>Select a contact to assign</span>
                         <span class="material__symbols__outlined">
                             arrow_drop_down
@@ -28,19 +28,21 @@
                     </div>
                     <div class="options" *ngIf="showAssignedDropdown">
                         <div class="options__body">
-                            <div class="option__container" (click)="assignSelectOption(currentUserData)" (mousedown)="assignPreventFocusLoss($event)"
+                            <div class="option__container" (click)="assignSelectOption(currentUserData)"
+                                (mousedown)="assignPreventFocusLoss($event)"
                                 [class.selected]="currentUserData.selected">
                                 <div class="option__left">
                                     <span class="initials"
                                         [ngStyle]="{'background-color': currentUserData.userColor}">{{
-                                        currentUserData.userInitials }}</span><span class="name">{{ currentUserData.userName }} (You)</span>
+                                        currentUserData.userInitials }}</span><span class="name">{{
+                                        currentUserData.userName }} (You)</span>
                                 </div>
                                 <input type="checkbox" [checked]="currentUserData.selected" readonly />
                             </div>
                             <ng-container *ngFor="let user of allUsersData">
                                 <div *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
-                                    class="option__container" (click)="assignSelectOption(user)" (mousedown)="assignPreventFocusLoss($event)"
-                                    [class.selected]="user.selected">
+                                    class="option__container" (click)="assignSelectOption(user)"
+                                    (mousedown)="assignPreventFocusLoss($event)" [class.selected]="user.selected">
                                     <div class="option__left"><span class="initials"
                                             [ngStyle]="{'background-color': user.userColor}">{{ user.userInitials
                                             }}</span><span class="name">{{ user.userName }}</span></div>
@@ -48,7 +50,8 @@
                                 </div>
                             </ng-container>
                         </div>
-                        <button class="btn__primary">Add new contact<span class="material__symbols__outlined">person_add</span></button>
+                        <button class="btn__primary">Add new contact<span
+                                class="material__symbols__outlined">person_add</span></button>
                     </div>
                 </div>
 
@@ -90,7 +93,7 @@
                     <option value="category2">Category 2</option>
                 </select> -->
 
-                <label for="addTaskCategory">Category<span class="asterisk">*</span></label>
+                <!-- <label for="addTaskCategory">Category<span class="asterisk">*</span></label>
                 <div class="select">
                     <select id="addTaskCategory" formControlName="category">
                         <option value="">Select a task category</option>
@@ -99,9 +102,28 @@
                     </select>
                     <div class="select_arrow">
                     </div>
+                </div> -->
+
+                <label for="addTaskCategory">Category<span class="asterisk">*</span></label>
+                <div class="category__select" #customSelectRef>
+                    <div class="header" (click)="categoryToggleDropdown()" tabindex="0" #categorySelectedOptionRef>
+                        <span>Select a task category</span>
+                        <span class="material__symbols__outlined">
+                            arrow_drop_down
+                        </span>
+                    </div>
+                    <div class="options">
+                        <div class="options__body">
+                            <div class="option__container">
+                                Cat1
+                            </div>
+                            <div class="option__container">
+                                Cat2
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                
+
                 <div class="input__required">
                     <!-- <span>This field is required</span> -->
                 </div>
