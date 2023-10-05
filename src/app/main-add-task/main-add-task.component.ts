@@ -14,7 +14,7 @@ export class MainAddTaskComponent {
   addTaskForm: FormGroup;
   showAssignedDropdown: boolean = false;
   @ViewChild('assignSelectedOptionRef') assignSelectedOptionRef: ElementRef;
-  @ViewChild('customSelectRef') customSelectRef: ElementRef;
+  @ViewChild('assignSelectRef') assignSelectRef: ElementRef;
   private globalClickListener: Function;
   selectedUsers: any[] = [];
   today: string;
@@ -45,7 +45,7 @@ export class MainAddTaskComponent {
     console.log("this.currentUserData add task", this.currentUserData);
 
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
-      if (!this.customSelectRef.nativeElement.contains(event.target)) {
+      if (!this.assignSelectRef.nativeElement.contains(event.target)) {
         this.closeDropdown();
       }
     });
