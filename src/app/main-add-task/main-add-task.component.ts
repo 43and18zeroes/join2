@@ -42,8 +42,6 @@ export class MainAddTaskComponent {
   ngOnInit(): void {
     this.allUsersData = this.mainComponent.allUsersData;
     this.currentUserData = this.mainComponent.currentUserData;
-    console.log("this.currentUserData add task", this.currentUserData);
-
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
       if (!this.assignSelectRef.nativeElement.contains(event.target)) {
         this.closeDropdown();
