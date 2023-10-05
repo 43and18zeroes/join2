@@ -246,7 +246,8 @@
                             }
 
                             &.selected {
-                                background-color: red;
+                                background-color: var(--main-slate);
+                                color: var(--window-white);
                             }
 
                             .option__left {
