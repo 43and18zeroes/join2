@@ -481,12 +481,21 @@
                 .subtask__container {
                     position: relative;
 
-                    .add_symbol {
+                    .add__symbol {
                         position: absolute;
-                        right: 0;
+                        right: 8px;
                         top: 50%;
                         transform: translateY(-50%);
                         font-size: 30px;
+                        width: 30px;
+
+                        border-radius: 50px;
+                        transition: background-color 100ms ease-in;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: #EEEEEE;
+                        }
                     }
                 }
             }
