@@ -123,8 +123,8 @@
                 </div>
 
                 <label for="subTask">Subtasks</label>
-                <div class="subtask__container">
-                    <input id="subTask" formControlName="subTask" class="inputs__right">
+                <div class="subtask__container" (onclick)="focusSubTaskInput()">
+                    <input id="subTask" formControlName="subTask" class="inputs__right" #subTaskInput>
                     <div class="material__symbols__outlined add__symbol">add</div>
                 </div>
 

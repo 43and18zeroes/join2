@@ -22,6 +22,8 @@ export class MainAddTaskComponent {
   showCategoryDropdown: boolean = false;
   @ViewChild('categorySelect') categorySelect: ElementRef;
   @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
+  subTaskInputHasFocus: boolean = false;
+  @ViewChild('subTaskInput') subTaskInput: ElementRef;
 
   constructor(
     private fb: FormBuilder,
@@ -116,6 +118,11 @@ export class MainAddTaskComponent {
     this.addTaskForm.controls['category'].setValue(category);
     this.categoryToggleDropdown();
     // this.categorySelect.nativeElement.focus();
+  }
+
+  focusSubTaskInput() {
+    this.subTaskInput.nativeElement.focus();
+    console.log('focusSubTaskInput() wurde aufgerufen.');
   }
 
   onSubmit(): void {
