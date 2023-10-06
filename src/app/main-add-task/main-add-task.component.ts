@@ -74,7 +74,6 @@ export class MainAddTaskComponent {
 
   assignPreventFocusLoss(event: MouseEvent) {
     event.preventDefault();
-    // this.categorySelect.nativeElement.focus();
   }
 
   categoryPreventFocusLoss(event: MouseEvent) {
