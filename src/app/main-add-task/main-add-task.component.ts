@@ -125,6 +125,10 @@ export class MainAddTaskComponent {
     this.subTaskInput.nativeElement.focus();
   }
 
+  onSubTaskBlur() {
+    this.subTaskInputHasFocus = false;
+  }
+
   onSubmit(): void {
     if (this.addTaskForm.valid) {
       // Handle the form submission.

@@ -124,7 +124,7 @@
 
                 <label for="subTask">Subtasks</label>
                 <div class="subtask__container" (click)="focusSubTaskInput()">
-                    <input id="subTask" formControlName="subTask" class="inputs__right" #subTaskInput>
+                    <input id="subTask" formControlName="subTask" class="inputs__right" #subTaskInput (blur)="onSubTaskBlur()">
                     <div *ngIf="!subTaskInputHasFocus" class="material__symbols__outlined add__symbol">add</div>
                     <div *ngIf="subTaskInputHasFocus" class="handler__symbols">
                         <div class="material__symbols__outlined">clear</div>
