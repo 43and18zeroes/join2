@@ -21,6 +21,7 @@ export class MainAddTaskComponent {
   selectedPriority: string;
   showCategoryDropdown: boolean = false;
   @ViewChild('categorySelect') categorySelect: ElementRef;
+  @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
 
   constructor(
     private fb: FormBuilder,
@@ -45,6 +46,11 @@ export class MainAddTaskComponent {
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
       if (!this.assignSelectRef.nativeElement.contains(event.target)) {
         this.closeDropdown();
+      }
+    });
+    this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
+      if (!this.categorySelectRef.nativeElement.contains(event.target)) {
+        this.categoryCloseDropdown();
       }
     });
   }
@@ -83,6 +89,10 @@ export class MainAddTaskComponent {
 
   closeDropdown() {
     this.showAssignedDropdown = false;  // oder was auch immer Ihr Mechanismus zum Schließen des Dropdowns ist
+  }
+
+  categoryCloseDropdown() {
+    this.showCategoryDropdown = false;  // oder was auch immer Ihr Mechanismus zum Schließen des Dropdowns ist
   }
 
   getTodaysDate(): string {
