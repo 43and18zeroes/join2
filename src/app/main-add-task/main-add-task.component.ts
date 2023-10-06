@@ -125,10 +125,6 @@ export class MainAddTaskComponent {
     this.subTaskInput.nativeElement.focus();
   }
 
-  onSubTaskBlur() {
-    this.subTaskInputHasFocus = false;
-  }
-
   subTaskInputClear() {
     // Setze den Wert des Inputs auf einen leeren String
     this.subTaskInput.nativeElement.value = '';
