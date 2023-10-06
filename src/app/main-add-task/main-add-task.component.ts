@@ -20,7 +20,7 @@ export class MainAddTaskComponent {
   today: string;
   selectedPriority: string;
   showCategoryDropdown: boolean = false;
-  @ViewChild('categorySelectedOptionRef') categorySelectedOptionRef: ElementRef;
+  @ViewChild('categorySelect') categorySelect: ElementRef;
 
   constructor(
     private fb: FormBuilder,

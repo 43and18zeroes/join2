@@ -105,16 +105,16 @@
                 </div> -->
 
                 <label for="addTaskCategory">Category<span class="asterisk">*</span></label>
-                <div class="category__select" #customSelectRef>
-                    <div class="header" (click)="categoryToggleDropdown()" tabindex="0" #categorySelectedOptionRef>
+                <div class="category__select">
+                    <div class="header" (click)="categoryToggleDropdown()" tabindex="0" #categorySelect>
                         <span>{{ addTaskForm.controls['category'].value || 'Select a task category' }}</span>
                         <span class="material__symbols__outlined">
                             arrow_drop_down
                         </span>
                     </div>
                     <div class="options" *ngIf="showCategoryDropdown">
-                        <div class="option" (click)="selectCategory('Technical Task')">Technical Task</div>
-                        <div class="option" (click)="selectCategory('User Story')">User Story</div>
+                        <div class="option" (mousedown)="assignPreventFocusLoss($event)" (click)="selectCategory('Technical Task')">Technical Task</div>
+                        <div class="option" (mousedown)="assignPreventFocusLoss($event)" (click)="selectCategory('User Story')">User Story</div>
                     </div>
                 </div>
 
