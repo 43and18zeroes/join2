@@ -129,6 +129,12 @@ export class MainAddTaskComponent {
     this.subTaskInputHasFocus = false;
   }
 
+  subTaskInputClear() {
+    // Setze den Wert des Inputs auf einen leeren String
+    this.subTaskInput.nativeElement.value = '';
+    this.subTaskInputHasFocus = false;
+  }
+
   onSubmit(): void {
     if (this.addTaskForm.valid) {
       // Handle the form submission.
