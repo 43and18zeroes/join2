@@ -122,7 +122,6 @@ export class MainAddTaskComponent {
 
   focusSubTaskInput() {
     this.subTaskInput.nativeElement.focus();
-    console.log('focusSubTaskInput() wurde aufgerufen.');
   }
 
   onSubmit(): void {
