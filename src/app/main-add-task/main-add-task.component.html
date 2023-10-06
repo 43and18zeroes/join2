@@ -19,7 +19,7 @@
                     placeholder="Enter a Description"></textarea>
 
                 <label for="addTaskAssignedTo">Assigned to</label>
-                <div class="assign__select" #assignSelectRef>
+                <div class="assign__select no__select" #assignSelectRef>
                     <div class="header" (click)="assignToggleDropdown()" tabindex="0" #assignSelectedOptionRef>
                         <span>Select a contact to assign</span>
                         <span class="material__symbols__outlined">
@@ -105,7 +105,7 @@
                 </div> -->
 
                 <label for="addTaskCategory">Category<span class="asterisk">*</span></label>
-                <div class="category__select" #categorySelectRef>
+                <div class="category__select no__select" #categorySelectRef>
                     <div class="header" (click)="categoryToggleDropdown()" tabindex="0" #categorySelect>
                         <span>{{ addTaskForm.controls['category'].value || 'Select a task category' }}</span>
                         <span class="material__symbols__outlined">
