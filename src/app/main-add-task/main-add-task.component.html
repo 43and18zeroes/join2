@@ -113,8 +113,8 @@
                         </span>
                     </div>
                     <div class="options" *ngIf="showCategoryDropdown">
-                        <div class="option" (mousedown)="assignPreventFocusLoss($event)" (click)="selectCategory('Technical Task')">Technical Task</div>
-                        <div class="option" (mousedown)="assignPreventFocusLoss($event)" (click)="selectCategory('User Story')">User Story</div>
+                        <div class="option" (mousedown)="categoryPreventFocusLoss($event)" (click)="selectCategory('Technical Task')">Technical Task</div>
+                        <div class="option" (mousedown)="categoryPreventFocusLoss($event)" (click)="selectCategory('User Story')">User Story</div>
                     </div>
                 </div>
 

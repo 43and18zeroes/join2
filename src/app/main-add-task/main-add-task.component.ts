@@ -74,6 +74,12 @@ export class MainAddTaskComponent {
 
   assignPreventFocusLoss(event: MouseEvent) {
     event.preventDefault();
+    // this.categorySelect.nativeElement.focus();
+  }
+
+  categoryPreventFocusLoss(event: MouseEvent) {
+    event.preventDefault();
+    this.categorySelect.nativeElement.focus();
   }
 
   closeDropdown() {
@@ -100,6 +106,7 @@ export class MainAddTaskComponent {
   selectCategory(category: string) {
     this.addTaskForm.controls['category'].setValue(category);
     this.categoryToggleDropdown();
+    // this.categorySelect.nativeElement.focus();
   }
 
   onSubmit(): void {
