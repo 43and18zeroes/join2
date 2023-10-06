@@ -484,6 +484,13 @@
                     .material__symbols__outlined {
                         font-size: 30px;
                         width: 30px;
+                        border-radius: 50px;
+                        transition: background-color 100ms ease-in;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: #EEEEEE;
+                        }
                     }
 
                     .add__symbol {
@@ -491,12 +498,17 @@
                         right: 8px;
                         top: 50%;
                         transform: translateY(-50%);
-                        border-radius: 50px;
-                        transition: background-color 100ms ease-in;
-                        cursor: pointer;
+                    }
 
-                        &:hover {
-                            background-color: #EEEEEE;
+                    .handler__symbols {
+                        position: absolute;
+                        right: 8px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        display: flex;
+
+                        hr {
+                            margin: 0 8px;
                         }
                     }
                 }
