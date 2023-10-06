@@ -121,6 +121,7 @@ export class MainAddTaskComponent {
   }
 
   focusSubTaskInput() {
+    this.subTaskInputHasFocus = true;
     this.subTaskInput.nativeElement.focus();
   }
 
