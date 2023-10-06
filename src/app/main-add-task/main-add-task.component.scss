@@ -344,7 +344,7 @@
                         transition: box-shadow 100ms ease-in;
                         transition: -webkit-box-shadow 100ms ease-in;
                         transition: -moz-box-shadow 100ms ease-in;
-                        
+
                         &:focus {
                             border: 1px solid var(--accent-cyan) !important;
                             outline: 0;
@@ -475,6 +475,18 @@
                                 color: var(--window-white);
                             }
                         }
+                    }
+                }
+
+                .subtask__container {
+                    position: relative;
+
+                    .add_symbol {
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        font-size: 30px;
                     }
                 }
             }
