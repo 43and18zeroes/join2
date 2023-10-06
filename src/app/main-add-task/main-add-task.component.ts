@@ -45,7 +45,7 @@ export class MainAddTaskComponent {
     this.currentUserData = this.mainComponent.currentUserData;
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
       if (!this.assignSelectRef.nativeElement.contains(event.target)) {
-        this.closeDropdown();
+        this.assignCloseDropdown();
       }
     });
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
@@ -87,7 +87,7 @@ export class MainAddTaskComponent {
     this.categorySelect.nativeElement.focus();
   }
 
-  closeDropdown() {
+  assignCloseDropdown() {
     this.showAssignedDropdown = false;  // oder was auch immer Ihr Mechanismus zum Schließen des Dropdowns ist
   }
 
