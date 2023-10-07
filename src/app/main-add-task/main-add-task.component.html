@@ -137,7 +137,7 @@
                         <div class="subtask__left">&#8226; {{ subTask }}</div>
                         <div classList="subtask__right">
                             <div class="material__symbols__outlined">edit</div>
-                            <div class="material__symbols__outlined">delete</div>
+                            <div (click)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
                         </div>
                     </div>
                 </div>

@@ -151,6 +151,16 @@ export class MainAddTaskComponent {
     }
   }
 
+  subTaskDelete(subTask) {
+    for (let i = 0; i < this.subTasksArray.length; i++) {
+      if (this.subTasksArray[i] === subTask) {
+        this.subTasksArray.splice(i, 1); // Entfernt das Element an Position i
+        break; // Beende die Schleife, da das Element gefunden und entfernt wurde
+      }
+    }
+    console.log("this.subTasksArray", this.subTasksArray);
+  }
+
   onSubmit(): void {
     if (this.addTaskForm.valid) {
       // Handle the form submission.
