@@ -134,7 +134,11 @@
                 </div>
                 <div *ngIf="subTasksArray.length > 0" class="subtasks__display">
                     <div *ngFor="let subTask of subTasksArray" class="subtask">
-                        <li>{{ subTask }}</li>
+                        <div class="subtask__left">&#8226; {{ subTask }}</div>
+                        <div classList="subtask__right">
+                            <div class="material__symbols__outlined">edit</div>
+                            <div class="material__symbols__outlined">delete</div>
+                        </div>
                     </div>
                 </div>
             </div>

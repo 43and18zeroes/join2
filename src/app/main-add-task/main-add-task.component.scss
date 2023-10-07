@@ -534,6 +534,14 @@
                         }
                     }
                 }
+
+                .subtasks__display {
+
+                    .subtask {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
             }
         }
 
