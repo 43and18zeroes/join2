@@ -144,7 +144,7 @@ export class MainAddTaskComponent {
     const subTaskValue = this.subTasksInput.nativeElement.value;
     if (subTaskValue) {
       this.subTasksArray.push(subTaskValue);
-      this.addTaskForm.controls['subTasks'].setValue(this.subTasksArray);
+      this.setSubtasksForm();
       this.subTasksInput.nativeElement.value = "";
       this.subTasksInputCheckValue();
       this.subTasksInput.nativeElement.focus();
@@ -158,7 +158,12 @@ export class MainAddTaskComponent {
         break; // Beende die Schleife, da das Element gefunden und entfernt wurde
       }
     }
-    console.log("this.subTasksArray", this.subTasksArray);
+    this.setSubtasksForm();
+  }
+
+  setSubtasksForm() {
+    this.addTaskForm.controls['subTasks'].setValue(this.subTasksArray);
+    console.log("this.addTaskForm.value.subTasks", this.addTaskForm.value.subTasks);
   }
 
   onSubmit(): void {
