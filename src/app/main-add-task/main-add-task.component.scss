@@ -481,7 +481,11 @@
                 .subtasks__container {
                     position: relative;
 
-                    .material__symbols__outlined {
+                    .add__symbol {
+                        position: absolute;
+                        right: 8px;
+                        top: 50%;
+                        transform: translateY(-50%);
                         font-size: 30px;
                         width: 30px;
                         border-radius: 50px;
@@ -493,13 +497,6 @@
                         }
                     }
 
-                    .add__symbol {
-                        position: absolute;
-                        right: 8px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                    }
-
                     .handler__symbols {
                         position: absolute;
                         right: 8px;
@@ -507,12 +504,33 @@
                         transform: translateY(-50%);
                         display: flex;
 
+                        button {
+                            width: 30px;
+                            height: 30px;
+                            border: 0;
+                            border-radius: 50px;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: rgba(0, 0, 0, 0);
+                            transition: background-color 100ms ease-in;
+
+                            &:hover {
+                                background-color: #EEEEEE;
+                            }
+                        }
+
                         hr {
                             margin: 0 8px;
                         }
 
                         .check__disabled {
                             cursor: not-allowed;
+
+                            &:hover {
+                                background-color: rgba(0, 0, 0, 0);
+                            }
                         }
                     }
                 }
