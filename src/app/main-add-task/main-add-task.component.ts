@@ -26,8 +26,8 @@ export class MainAddTaskComponent {
   @ViewChild('subTasksInput') subTasksInput: ElementRef;
   subTasksInputEmpty: boolean = true;
   subTasksArray: string[] = [];
-  currentlyEditingSubtask: string | null = null;
-  @ViewChild('editSubTaskCurrentInput') editSubTaskCurrentInput: ElementRef;
+  subTaskCurrentlyEditing: string | null = null;
+  @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
 
   constructor(
     private fb: FormBuilder,
@@ -163,20 +163,20 @@ export class MainAddTaskComponent {
     this.setSubtasksForm();
   }
 
-  editSubtask(subTask: string): void {
-    this.currentlyEditingSubtask = subTask;
+  subTaskEdit(subTask: string): void {
+    this.subTaskCurrentlyEditing = subTask;
   }
 
-  saveEditedSubtask(index: number): void {
+  subTaskSaveEdited(index: number): void {
     if (this.subTasksArray[index] !== undefined) {
-      this.subTasksArray[index] = this.editSubTaskCurrentInput.nativeElement.value; // Optional: Entfernen von Leerzeichen am Anfang und Ende
+      this.subTasksArray[index] = this.subTaskEditCurrentInput.nativeElement.value; // Optional: Entfernen von Leerzeichen am Anfang und Ende
     }
-    this.currentlyEditingSubtask = null;
+    this.subTaskCurrentlyEditing = null;
     this.setSubtasksForm();
   }
 
   cancelEditSubtask(): void {
-    this.currentlyEditingSubtask = null;
+    this.subTaskCurrentlyEditing = null;
   }
 
   setSubtasksForm() {
