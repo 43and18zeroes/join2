@@ -26,6 +26,7 @@ export class MainAddTaskComponent {
   @ViewChild('subTasksInput') subTasksInput: ElementRef;
   subTasksInputEmpty: boolean = true;
   subTasksArray: string[] = [];
+  currentlyEditingSubtask: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -159,6 +160,22 @@ export class MainAddTaskComponent {
       }
     }
     this.setSubtasksForm();
+  }
+
+  editSubtask(subTask: string): void {
+    this.currentlyEditingSubtask = subTask;
+  }
+
+  saveEditedSubtask(index: number): void {
+    if (this.subTasksArray[index] !== undefined) {
+      this.subTasksArray[index] = this.subTasksArray[index].trim(); // Optional: Entfernen von Leerzeichen am Anfang und Ende
+    }
+    this.currentlyEditingSubtask = null;
+    this.setSubtasksForm();
+  }
+
+  cancelEditSubtask(): void {
+    this.currentlyEditingSubtask = null;
   }
 
   setSubtasksForm() {

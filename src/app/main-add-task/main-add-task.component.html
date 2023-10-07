@@ -132,14 +132,18 @@
                         <button (mousedown)="assignPreventFocusLoss($event)" [disabled]="subTasksInputEmpty" [ngClass]="{'check__disabled': subTasksInputEmpty}" (click)="confirmSubTask()" class="material__symbols__outlined">check</button>
                     </div>
                 </div>
-                
                 <div *ngIf="subTasksArray.length > 0" class="subtasks__display">
-                    <div *ngFor="let subTask of subTasksArray" class="subtask">
-                        <div class="subtask__left">&#8226; {{ subTask }}</div>
-                        <div classList="subtask__right">
-                            <div class="material__symbols__outlined">edit</div>
-                            <div (click)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
-                        </div>
+                    <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask">
+                        <ng-container *ngIf="currentlyEditingSubtask !== subTask">
+                            <div class="subtask__left">&#8226; {{ subTask }}</div>
+                            <div classList="subtask__right">
+                                <div class="material__symbols__outlined" (click)="editSubtask(subTask)">edit</div>
+                                <div (click)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="currentlyEditingSubtask === subTask">
+                            <input (keyup.enter)="saveEditedSubtask(i)" class="edit-subtask-input">
+                        </ng-container>
                     </div>
                 </div>
             </div>
