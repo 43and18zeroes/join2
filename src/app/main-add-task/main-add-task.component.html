@@ -133,7 +133,9 @@
                     </div>
                 </div>
                 <div *ngIf="subTasksArray.length > 0" class="subtasks__display">
-                    <div *ngFor="let subTask of subTasksArray" class="subtask">{{ subTask }}</div>
+                    <div *ngFor="let subTask of subTasksArray" class="subtask">
+                        <li>{{ subTask }}</li>
+                    </div>
                 </div>
             </div>
 

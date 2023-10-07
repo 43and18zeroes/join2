@@ -146,7 +146,6 @@ export class MainAddTaskComponent {
       this.subTasksArray.push(subTaskValue);
       this.addTaskForm.controls['subTasks'].setValue(this.subTasksArray);
       this.subTasksInput.nativeElement.value = "";
-      console.log("this.addTaskForm", this.addTaskForm);
       this.subTasksInputCheckValue();
       this.subTasksInput.nativeElement.focus();
     }
