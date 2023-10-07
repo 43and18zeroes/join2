@@ -38,7 +38,7 @@ export class MainAddTaskComponent {
       dueDate: ['', Validators.required],
       priority: ['low'],
       category: ['', Validators.required],
-      subTasks: ['']
+      subTasks: []
     });
 
     this.today = this.getTodaysDate();
@@ -144,8 +144,9 @@ export class MainAddTaskComponent {
     const subTaskValue = this.subTasksInput.nativeElement.value;
     if (subTaskValue) {
       this.subTasksArray.push(subTaskValue);
+      this.addTaskForm.controls['subTasks'].setValue(this.subTasksArray);
       this.subTasksInput.nativeElement.value = "";
-      console.log("this.subTasksArray", this.subTasksArray);
+      console.log("this.addTaskForm", this.addTaskForm);
       this.subTasksInputCheckValue();
       this.subTasksInput.nativeElement.focus();
     }
