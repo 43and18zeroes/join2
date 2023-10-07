@@ -22,8 +22,8 @@ export class MainAddTaskComponent {
   showCategoryDropdown: boolean = false;
   @ViewChild('categorySelect') categorySelect: ElementRef;
   @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
-  subTaskInputHasFocus: boolean = false;
-  @ViewChild('subTaskInput') subTaskInput: ElementRef;
+  subTasksInputHasFocus: boolean = false;
+  @ViewChild('subTasksInput') subTasksInput: ElementRef;
 
   constructor(
     private fb: FormBuilder,
@@ -36,7 +36,7 @@ export class MainAddTaskComponent {
       dueDate: ['', Validators.required],
       priority: ['low'],
       category: ['', Validators.required],
-      subTask: ['']
+      subTasks: ['']
     });
 
     this.today = this.getTodaysDate();
@@ -120,15 +120,15 @@ export class MainAddTaskComponent {
     // this.categorySelect.nativeElement.focus();
   }
 
-  subTaskInputFocus() {
-    this.subTaskInputHasFocus = true;
-    this.subTaskInput.nativeElement.focus();
+  subTasksInputFocus() {
+    this.subTasksInputHasFocus = true;
+    this.subTasksInput.nativeElement.focus();
   }
 
-  subTaskInputClear() {
+  subTasksInputClear() {
     // Setze den Wert des Inputs auf einen leeren String
-    this.subTaskInput.nativeElement.value = '';
-    this.subTaskInputHasFocus = false;
+    this.subTasksInput.nativeElement.value = '';
+    this.subTasksInputHasFocus = false;
   }
 
   onSubmit(): void {

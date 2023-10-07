@@ -122,12 +122,12 @@
                     <!-- <span>This field is required</span> -->
                 </div>
 
-                <label for="subTask">Subtasks</label>
-                <div class="subtask__container">
-                    <input (click)="subTaskInputFocus()" formControlName="subTask" class="inputs__right" #subTaskInput  placeholder="Add new subtask">
-                    <div *ngIf="!subTaskInputHasFocus" (click)="subTaskInputFocus()" class="material__symbols__outlined add__symbol">add</div>
-                    <div *ngIf="subTaskInputHasFocus" class="handler__symbols">
-                        <div (click)="subTaskInputClear()" class="material__symbols__outlined">clear</div>
+                <label for="subTasks">Subtasks</label>
+                <div class="subtasks__container">
+                    <input (click)="subTasksInputFocus()" formControlName="subTasks" class="inputs__right" #subTasksInput  placeholder="Add new subtask">
+                    <div *ngIf="!subTasksInputHasFocus" (click)="subTasksInputFocus()" class="material__symbols__outlined add__symbol">add</div>
+                    <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
+                        <div (click)="subTasksInputClear()" class="material__symbols__outlined">clear</div>
                         <hr>
                         <div class="material__symbols__outlined">check</div>
                     </div>
