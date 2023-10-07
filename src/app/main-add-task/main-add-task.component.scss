@@ -510,6 +510,10 @@
                         hr {
                             margin: 0 8px;
                         }
+
+                        .check__disabled {
+                            cursor: not-allowed;
+                        }
                     }
                 }
             }

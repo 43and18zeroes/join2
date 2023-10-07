@@ -140,19 +140,6 @@ export class MainAddTaskComponent {
     this.subTasksInputCheckValue();
   }
 
-  // confirmSubTask() {
-  //   const subTaskValue = this.addTaskForm.get('subTasks').value;
-  //   if (subTaskValue) {
-  //       // Add the subtask to the array
-  //       this.subTasks.unshift(subTaskValue); // Add to the beginning of the array
-  //       // Clear the input and reset focus
-  //       this.addTaskForm.get('subTasks').reset('');
-  //       this.subTasksInputHasFocus = false;
-  //       console.log("this.subTasks", this.subTasks);
-  //       console.log("this.addTaskForm", this.addTaskForm);
-  //   }
-  // }
-
   confirmSubTask() {
     const subTaskValue = this.subTasksInput.nativeElement.value;
     if (subTaskValue) {

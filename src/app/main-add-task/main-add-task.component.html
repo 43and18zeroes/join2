@@ -129,7 +129,7 @@
                     <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
                         <div (mousedown)="assignPreventFocusLoss($event)" (click)="subTasksInputClear()" class="material__symbols__outlined">clear</div>
                         <hr>
-                        <button (mousedown)="assignPreventFocusLoss($event)" [disabled]="subTasksInputEmpty" (click)="confirmSubTask()" class="material__symbols__outlined">check</button>
+                        <button (mousedown)="assignPreventFocusLoss($event)" [disabled]="subTasksInputEmpty" [ngClass]="{'check__disabled': subTasksInputEmpty}" (click)="confirmSubTask()" class="material__symbols__outlined">check</button>
                     </div>
                 </div>
 
