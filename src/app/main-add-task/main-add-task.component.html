@@ -129,7 +129,7 @@
                     <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
                         <div (click)="subTasksInputClear()" class="material__symbols__outlined">clear</div>
                         <hr>
-                        <div class="material__symbols__outlined">check</div>
+                        <div (click)="confirmSubTask()" class="material__symbols__outlined">check</div>
                     </div>
                 </div>
 

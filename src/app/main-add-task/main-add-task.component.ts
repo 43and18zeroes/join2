@@ -24,6 +24,7 @@ export class MainAddTaskComponent {
   @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
   subTasksInputHasFocus: boolean = false;
   @ViewChild('subTasksInput') subTasksInput: ElementRef;
+  subTasksArray: string[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -117,7 +118,6 @@ export class MainAddTaskComponent {
   selectCategory(category: string) {
     this.addTaskForm.controls['category'].setValue(category);
     this.categoryToggleDropdown();
-    // this.categorySelect.nativeElement.focus();
   }
 
   subTasksInputFocus() {
@@ -126,9 +126,30 @@ export class MainAddTaskComponent {
   }
 
   subTasksInputClear() {
-    // Setze den Wert des Inputs auf einen leeren String
     this.subTasksInput.nativeElement.value = '';
     this.subTasksInputHasFocus = false;
+  }
+
+  // confirmSubTask() {
+  //   const subTaskValue = this.addTaskForm.get('subTasks').value;
+  //   if (subTaskValue) {
+  //       // Add the subtask to the array
+  //       this.subTasks.unshift(subTaskValue); // Add to the beginning of the array
+  //       // Clear the input and reset focus
+  //       this.addTaskForm.get('subTasks').reset('');
+  //       this.subTasksInputHasFocus = false;
+  //       console.log("this.subTasks", this.subTasks);
+  //       console.log("this.addTaskForm", this.addTaskForm);
+  //   }
+  // }
+
+  confirmSubTask() {
+    const subTaskValue = this.subTasksInput.nativeElement.value;
+    console.log("subTaskValue", subTaskValue)
+    if (subTaskValue) {
+      this.subTasksArray.push(subTaskValue);
+      console.log("this.subTasksArray", this.subTasksArray)
+    }
   }
 
   onSubmit(): void {
