@@ -24,6 +24,7 @@ export class MainAddTaskComponent {
   @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
   subTasksInputHasFocus: boolean = false;
   @ViewChild('subTasksInput') subTasksInput: ElementRef;
+  subTasksInputEmpty: boolean = true;
   subTasksArray: string[] = [];
 
   constructor(
@@ -125,9 +126,18 @@ export class MainAddTaskComponent {
     this.subTasksInput.nativeElement.focus();
   }
 
+  subTasksInputCheckValue() {
+    if (this.subTasksInput.nativeElement.value == '') {
+      this.subTasksInputEmpty = true;
+    } else {
+      this.subTasksInputEmpty = false;
+    }
+  }
+
   subTasksInputClear() {
     this.subTasksInput.nativeElement.value = '';
     this.subTasksInputHasFocus = false;
+    this.subTasksInputCheckValue();
   }
 
   // confirmSubTask() {
@@ -148,7 +158,9 @@ export class MainAddTaskComponent {
     if (subTaskValue) {
       this.subTasksArray.push(subTaskValue);
       this.subTasksInput.nativeElement.value = "";
-      console.log("this.subTasksArray", this.subTasksArray)
+      console.log("this.subTasksArray", this.subTasksArray);
+      this.subTasksInputCheckValue();
+      this.subTasksInput.nativeElement.focus();
     }
   }
 
