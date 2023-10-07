@@ -132,7 +132,9 @@
                         <button (mousedown)="assignPreventFocusLoss($event)" [disabled]="subTasksInputEmpty" [ngClass]="{'check__disabled': subTasksInputEmpty}" (click)="confirmSubTask()" class="material__symbols__outlined">check</button>
                     </div>
                 </div>
-
+                <div *ngIf="subTasksArray.length > 0" class="subtasks__display">
+                    <div *ngFor="let subTask of subTasksArray" class="subtask">{{ subTask }}</div>
+                </div>
             </div>
 
         </div>
