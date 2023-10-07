@@ -145,9 +145,9 @@ export class MainAddTaskComponent {
 
   confirmSubTask() {
     const subTaskValue = this.subTasksInput.nativeElement.value;
-    console.log("subTaskValue", subTaskValue)
     if (subTaskValue) {
       this.subTasksArray.push(subTaskValue);
+      this.subTasksInput.nativeElement.value = "";
       console.log("this.subTasksArray", this.subTasksArray)
     }
   }
