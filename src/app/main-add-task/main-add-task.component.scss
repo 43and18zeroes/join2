@@ -536,10 +536,20 @@
                 }
 
                 .subtasks__display {
+                    margin-top: 16px;
 
                     .subtask {
                         display: flex;
                         justify-content: space-between;
+                        font-size: 18px;
+                        padding-left: 24px;
+                        margin-bottom: 8px;
+                        cursor: pointer;
+                        transition: background-color 100ms ease-in;
+
+                        &:hover {
+                            background-color: #EEEEEE;
+                        }
 
                         .subtask__edit {
                             position: relative;
