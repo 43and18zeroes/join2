@@ -165,7 +165,7 @@
                             <ng-container *ngIf="subTaskCurrentlyEditing === subTask">
                                 <div class="subtask__edit">
                                     <input class="subtask__edit__input" value="{{ subTask }}"
-                                        (keyup.enter)="subTaskSaveEdited(i)" #subTaskEditCurrentInput>
+                                        (keydown.enter)="subTaskSaveEdited(i)" #subTaskEditCurrentInput>
                                     <div class="handler__symbols">
                                         <button (click)="subTaskDelete(subTask)"
                                             class="material__symbols__outlined">delete</button>
