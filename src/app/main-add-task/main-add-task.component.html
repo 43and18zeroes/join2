@@ -134,15 +134,15 @@
                 </div>
                 <div *ngIf="subTasksArray.length > 0" class="subtasks__display">
                     <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask">
-                        <ng-container *ngIf="subTaskCurrentlyEditing !== subTask">
+                        <ng-container class="subtask__single__display" *ngIf="subTaskCurrentlyEditing !== subTask">
                             <div class="subtask__left">&#8226; {{ subTask }} </div>
                             <div classList="subtask__right">
                                 <div class="material__symbols__outlined" (click)="subTaskEdit(subTask)">edit</div>
                                 <div (click)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
                             </div>
                         </ng-container>
-                        <ng-container *ngIf="subTaskCurrentlyEditing === subTask">
-                            <input value="{{ subTask }}" (keyup.enter)="subTaskSaveEdited(i)" class="edit__subtask__input" #subTaskEditCurrentInput>
+                        <ng-container class="subtask__edit" *ngIf="subTaskCurrentlyEditing === subTask">
+                            <input class="subtask__edit__input" value="{{ subTask }}" (keyup.enter)="subTaskSaveEdited(i)" #subTaskEditCurrentInput>
                         </ng-container>
                     </div>
                 </div>

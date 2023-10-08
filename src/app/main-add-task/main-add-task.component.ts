@@ -25,7 +25,7 @@ export class MainAddTaskComponent {
   subTasksInputHasFocus: boolean = false;
   @ViewChild('subTasksInput') subTasksInput: ElementRef;
   subTasksInputEmpty: boolean = true;
-  subTasksArray: string[] = [];
+  subTasksArray: string[] = ['Test0', 'Test1'];
   subTaskCurrentlyEditing: string | null = null;
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
 
