@@ -153,7 +153,7 @@
                 <div class="form__right">
                     <div *ngIf="subTasksArray.length > 0" class="subtasks__display">
     
-                        <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask">
+                        <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask" (click)="subTaskEdit(subTask)">
                             <ng-container *ngIf="subTaskCurrentlyEditing !== subTask">
                                 <div class="subtask__left">&#8226; {{ subTask }} </div>
                                 <div class="subtask__right">
