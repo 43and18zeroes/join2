@@ -145,8 +145,9 @@
                     <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask">
                         <ng-container *ngIf="subTaskCurrentlyEditing !== subTask">
                             <div class="subtask__left">&#8226; {{ subTask }} </div>
-                            <div classList="subtask__right">
+                            <div class="subtask__right">
                                 <div class="material__symbols__outlined" (click)="subTaskEdit(subTask)">edit</div>
+                                <hr>
                                 <div (click)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
                             </div>
                         </ng-container>
