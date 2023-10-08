@@ -166,9 +166,10 @@ export class MainAddTaskComponent {
 
   subTaskEdit(subTask: string): void {
     this.subTaskCurrentlyEditing = subTask;
-    this.subTask.nativeElement.classList.add('subtask__edit__class');
+    // this.subTask.nativeElement.classList.add('subtask__edit__class');
     setTimeout(() => {
       this.subTaskEditCurrentInput.nativeElement.focus();
+      this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.add('subtask__edit__class');
     }, 10);
   }
 
@@ -177,6 +178,7 @@ export class MainAddTaskComponent {
       this.subTasksArray[index] = this.subTaskEditCurrentInput.nativeElement.value; // Optional: Entfernen von Leerzeichen am Anfang und Ende
     }
     this.subTaskCurrentlyEditing = null;
+    this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.remove('subtask__edit__class');
     this.setSubtasksForm();
   }
 
