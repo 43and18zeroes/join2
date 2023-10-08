@@ -26,6 +26,7 @@ export class MainAddTaskComponent {
   @ViewChild('subTasksInput') subTasksInput: ElementRef;
   subTasksInputEmpty: boolean = true;
   subTasksArray: string[] = ['Test0', 'Test1'];
+  @ViewChild('subTask') subTask: ElementRef;
   subTaskCurrentlyEditing: string | null = null;
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
 
@@ -165,6 +166,7 @@ export class MainAddTaskComponent {
 
   subTaskEdit(subTask: string): void {
     this.subTaskCurrentlyEditing = subTask;
+    this.subTask.nativeElement.classList.add('subtask__edit__class');
     setTimeout(() => {
       this.subTaskEditCurrentInput.nativeElement.focus();
     }, 10);
