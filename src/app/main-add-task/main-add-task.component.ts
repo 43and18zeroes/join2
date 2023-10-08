@@ -182,6 +182,11 @@ export class MainAddTaskComponent {
     this.setSubtasksForm();
   }
 
+  subTaskEditInputBlur(i, event: Event): void {
+    this.subTaskSaveEdited(i);
+    this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.remove('subtask__edit__class');
+  }
+
   cancelEditSubtask(): void {
     this.subTaskCurrentlyEditing = null;
   }
