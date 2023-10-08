@@ -113,8 +113,10 @@
                         </span>
                     </div>
                     <div class="options" *ngIf="showCategoryDropdown">
-                        <div class="option" (mousedown)="categoryPreventFocusLoss($event)" (click)="selectCategory('Technical Task')">Technical Task</div>
-                        <div class="option" (mousedown)="categoryPreventFocusLoss($event)" (click)="selectCategory('User Story')">User Story</div>
+                        <div class="option" (mousedown)="categoryPreventFocusLoss($event)"
+                            (click)="selectCategory('Technical Task')">Technical Task</div>
+                        <div class="option" (mousedown)="categoryPreventFocusLoss($event)"
+                            (click)="selectCategory('User Story')">User Story</div>
                     </div>
                 </div>
 
@@ -124,27 +126,43 @@
 
                 <label for="subTasks">Subtasks</label>
                 <div class="subtasks__container">
-                    <input (keydown.enter)="confirmSubTask()" (input)="subTasksInputCheckValue()" (click)="subTasksInputFocus()" formControlName="subTasks" class="inputs__right" #subTasksInput placeholder="Add new subtask">
-                    <div *ngIf="!subTasksInputHasFocus" (click)="subTasksInputFocus()" class="material__symbols__outlined add__symbol">add</div>
+                    <input (keydown.enter)="confirmSubTask()" (input)="subTasksInputCheckValue()"
+                        (click)="subTasksInputFocus()" formControlName="subTasks" class="inputs__right" #subTasksInput
+                        placeholder="Add new subtask">
+                    <div *ngIf="!subTasksInputHasFocus" (click)="subTasksInputFocus()"
+                        class="material__symbols__outlined add__symbol">add</div>
                     <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
-                        <button (mousedown)="assignPreventFocusLoss($event)" (click)="subTasksInputClear()" class="material__symbols__outlined">clear</button>
+                        <button (mousedown)="assignPreventFocusLoss($event)" (click)="subTasksInputClear()"
+                            class="material__symbols__outlined">clear</button>
                         <hr>
-                        <button (mousedown)="assignPreventFocusLoss($event)" [disabled]="subTasksInputEmpty" [ngClass]="{'check__disabled': subTasksInputEmpty}" (click)="confirmSubTask()" class="material__symbols__outlined">check</button>
+                        <button (mousedown)="assignPreventFocusLoss($event)" [disabled]="subTasksInputEmpty"
+                            [ngClass]="{'check__disabled': subTasksInputEmpty}" (click)="confirmSubTask()"
+                            class="material__symbols__outlined">check</button>
                     </div>
                 </div>
                 <div *ngIf="subTasksArray.length > 0" class="subtasks__display">
+
                     <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask">
-                        <ng-container class="subtask__single__display" *ngIf="subTaskCurrentlyEditing !== subTask">
+                        <ng-container *ngIf="subTaskCurrentlyEditing !== subTask">
                             <div class="subtask__left">&#8226; {{ subTask }} </div>
                             <div classList="subtask__right">
                                 <div class="material__symbols__outlined" (click)="subTaskEdit(subTask)">edit</div>
                                 <div (click)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
                             </div>
                         </ng-container>
-                        <ng-container class="subtask__edit" *ngIf="subTaskCurrentlyEditing === subTask">
-                            <input class="subtask__edit__input" value="{{ subTask }}" (keyup.enter)="subTaskSaveEdited(i)" #subTaskEditCurrentInput>
+                        <ng-container *ngIf="subTaskCurrentlyEditing === subTask">
+                            <div class="subtask__edit">
+                                <input class="subtask__edit__input" value="{{ subTask }}"
+                                    (keyup.enter)="subTaskSaveEdited(i)" #subTaskEditCurrentInput>
+                                <div class="handler__symbols">
+                                    <button class="material__symbols__outlined">clear</button>
+                                    <hr>
+                                    <button class="material__symbols__outlined">check</button>
+                                </div>
+                            </div>
                         </ng-container>
                     </div>
+
                 </div>
             </div>
 

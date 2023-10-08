@@ -540,6 +540,22 @@
                     .subtask {
                         display: flex;
                         justify-content: space-between;
+
+                        .subtask__edit {
+                            position: relative;
+                            width: 100%;
+                            height: 46px;
+                            
+                            .subtask__edit__input {
+                                position: absolute;
+                            }
+
+                            .handler__symbols {
+                                position: absolute;
+                                right: 0;
+                                display: flex;
+                            }
+                        }
                     }
                 }
             }
