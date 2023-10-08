@@ -34,13 +34,13 @@
         .form__body__container {
             .form__body {
                 display: flex;
-    
+
                 label {
                     display: block;
                     font-size: var(--fontsize-body);
                     margin-bottom: 8px;
                 }
-    
+
                 input {
                     width: calc(100% - 34px);
                     padding: 10px 16px;
@@ -49,12 +49,12 @@
                     outline: 0;
                     font-size: var(--fontsize-body);
                     font-family: inherit;
-    
+
                     &:focus {
                         border: 1px solid var(--accent-cyan);
                     }
                 }
-    
+
                 textarea {
                     width: calc(100% - 34px);
                     height: 100px;
@@ -66,17 +66,17 @@
                     font-weight: 400;
                     font-family: inherit;
                     margin-bottom: 28px;
-    
+
                     &:focus {
                         border: 1px solid var(--accent-cyan);
                     }
                 }
-    
+
                 // .select {
                 //     position: relative;
                 //     display: inline-block;
                 //     width: 100%;
-    
+
                 //     select {
                 //         font-family: 'Arial';
                 //         display: inline-block;
@@ -92,22 +92,22 @@
                 //         appearance: none;
                 //         -webkit-appearance: none;
                 //         -moz-appearance: none;
-    
+
                 //         &::-ms-expand {
                 //             display: none;
                 //         }
-    
-    
+
+
                 //         &:focus {
                 //             border: 1px solid var(--accent-cyan);
                 //         }
-    
+
                 //         &:disabled {
                 //             opacity: 0.5;
                 //             pointer-events: none;
                 //         }
                 //     }
-    
+
                 //     &_arrow {
                 //         position: absolute;
                 //         top: 20px;
@@ -116,26 +116,26 @@
                 //         border-style: solid;
                 //         border-width: 8px 5px 0px 5px;
                 //         border-color: #000000 transparent transparent transparent;
-    
+
                 //         &:hover,
                 //         &:focus {
                 //             border-top-color: #000000;
                 //         }
-    
+
                 //         &:disabled {
                 //             border-top-color: #cccccc;
                 //         }
                 //     }
-    
+
                 //     select {
-    
+
                 //         &:hover,
                 //         &:focus {
                 //             ~.select_arrow {
                 //                 border-top-color: #000000;
                 //             }
                 //         }
-    
+
                 //         &:disabled {
                 //             ~.select_arrow {
                 //                 border-top-color: #cccccc;
@@ -143,11 +143,11 @@
                 //         }
                 //     }
                 // }
-    
+
                 .assign__select {
                     position: relative;
                     cursor: pointer;
-    
+
                     .header {
                         z-index: 10;
                         position: relative;
@@ -160,26 +160,26 @@
                         border: 1px solid #A8A8A8;
                         border-radius: 10px;
                         background-color: var(--window-white);
-    
+
                         &:focus {
                             // outline: none;
                             // box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); // Fügt einen blauen Schatten als Fokus-Effekt hinzu
                             border: 1px solid var(--accent-cyan);
                         }
-    
+
                         .material__symbols__outlined {
                             font-size: 30px;
                             width: 30px;
                             padding-left: 1px;
                             border-radius: 50px;
                             transition: background-color 100ms ease-in;
-    
+
                             &:hover {
                                 background-color: #EEEEEE;
                             }
                         }
                     }
-    
+
                     .options {
                         position: absolute;
                         // top: 100%;
@@ -193,7 +193,7 @@
                         border-bottom-left-radius: 10px;
                         border-bottom-right-radius: 10px;
                         background-color: white;
-    
+
                         .options__body {
                             height: 125px;
                             overflow-y: auto;
@@ -202,26 +202,26 @@
                             // gap: 2px;
                             margin-top: 1px;
                             cursor: default;
-    
+
                             /* Firefox */
                             scrollbar-width: auto;
                             scrollbar-color: #a8a8a8 #ffffff;
-    
+
                             /* Chrome, Edge, and Safari */
                             &::-webkit-scrollbar {
                                 width: 9px;
                             }
-    
+
                             &::-webkit-scrollbar-track {
                                 background: #ffffff;
                             }
-    
+
                             &::-webkit-scrollbar-thumb {
                                 background-color: #a8a8a8;
                                 border-radius: 12px;
                                 border: 2px solid #ffffff;
                             }
-    
+
                             .option__container {
                                 display: flex;
                                 justify-content: space-between;
@@ -231,20 +231,20 @@
                                 border-radius: 10px;
                                 transition: background-color 100ms ease-in;
                                 cursor: pointer;
-    
+
                                 &:hover {
                                     background-color: #EEEEEE;
                                 }
-    
+
                                 &.selected {
                                     background-color: var(--main-slate);
                                     color: var(--window-white);
                                 }
-    
+
                                 .option__left {
                                     display: flex;
                                     align-items: center;
-    
+
                                     .initials {
                                         width: 26px;
                                         height: 26px;
@@ -257,20 +257,20 @@
                                         justify-content: center;
                                         align-items: center;
                                     }
-    
+
                                     .name {
                                         font-size: 18px;
                                         margin-left: 8px;
                                     }
                                 }
-    
+
                                 input[type="checkbox"] {
                                     width: 16px;
                                     cursor: pointer;
                                 }
                             }
                         }
-    
+
                         button {
                             width: calc(100% - 16px);
                             // height: 50px;
@@ -284,7 +284,7 @@
                             // font-size: 20px;
                             // font-weight: 600;
                             margin: 8px;
-    
+
                             span {
                                 //     margin-left: 16px;
                                 font-weight: 500 !important;
@@ -293,46 +293,46 @@
                         }
                     }
                 }
-    
+
                 option {
                     font-family: inherit;
                 }
-    
+
                 .form__left {
                     width: 50%;
-    
+
                     textarea {
                         resize: none;
                     }
                 }
-    
+
                 hr {
                     width: 1px;
                     margin: 0 48px 0 48px;
                     border: none;
                     background-color: var(--inactive-lite-grey);
                 }
-    
+
                 .form__body__2__hr {
                     background-color: #f6f7f8;
                 }
-    
+
                 .form__right {
                     width: 50%;
-    
+
                     .inputs__right {
                         width: calc(100% - 34px);
                     }
-    
+
                     .input__date {
                         height: 24px;
                     }
-    
+
                     .prio__container {
                         display: flex;
                         gap: 16px;
                         margin-bottom: 30px;
-    
+
                         button {
                             flex: 1;
                             min-width: 142px;
@@ -360,12 +360,12 @@
                             @media (width <=1100px) {
                                 padding: 10px 8px 10px 8px;
                             }
-    
+
                             &:focus {
                                 // border: 1px solid var(--accent-cyan) !important;
                                 outline: 0;
                             }
-    
+
                             &:hover {
                                 box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.2);
                                 -webkit-box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.2);
@@ -377,7 +377,7 @@
                                     display: none;
                                 }
                             }
-    
+
                             .material__symbols__outlined {
                                 margin-left: 8px;
 
@@ -390,58 +390,58 @@
                                     font-size: 30px;
                                 }
                             }
-    
+
                             .red {
                                 color: var(--task-prio-urgent);
                             }
-    
+
                             .yellow {
                                 color: var(--task-prio-medium);
                             }
-    
+
                             .green {
                                 color: var(--task-prio-low);
                             }
                         }
-    
+
                         .btn__red {
                             border: 1px solid var(--task-prio-urgent);
                             background-color: var(--task-prio-urgent);
                             color: var(--window-white);
                             font-weight: 600;
-    
+
                             .material__symbols__outlined {
                                 color: #FFF;
                             }
                         }
-    
+
                         .btn__yellow {
                             border: 1px solid var(--task-prio-medium);
                             background-color: var(--task-prio-medium);
                             color: var(--window-white);
                             font-weight: 600;
-    
+
                             .material__symbols__outlined {
                                 color: var(--window-white);
                             }
                         }
-    
+
                         .btn__green {
                             border: 1px solid var(--task-prio-low);
                             background-color: var(--task-prio-low);
                             color: var(--window-white);
                             font-weight: 600;
-    
+
                             .material__symbols__outlined {
                                 color: var(--window-white);
                             }
                         }
                     }
-    
+
                     .category__select {
                         position: relative;
                         cursor: pointer;
-    
+
                         .header {
                             z-index: 10;
                             position: relative;
@@ -454,26 +454,26 @@
                             border: 1px solid #A8A8A8;
                             border-radius: 10px;
                             background-color: var(--window-white);
-    
+
                             &:focus {
                                 // outline: none;
                                 // box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); // Fügt einen blauen Schatten als Fokus-Effekt hinzu
                                 border: 1px solid var(--accent-cyan);
                             }
-    
+
                             .material__symbols__outlined {
                                 font-size: 30px;
                                 width: 30px;
                                 padding-left: 1px;
                                 border-radius: 50px;
                                 transition: background-color 100ms ease-in;
-    
+
                                 &:hover {
                                     background-color: #EEEEEE;
                                 }
                             }
                         }
-    
+
                         .options {
                             position: absolute;
                             // top: 100%;
@@ -489,18 +489,18 @@
                             background-color: white;
                             display: flex;
                             flex-direction: column;
-    
+
                             .option {
                                 padding: 9px 16px;
                                 border-radius: 10px;
                                 transition: background-color 100ms ease-in;
                                 border-top: 1px solid var(--window-white);
                                 border-bottom: 1px solid var(--window-white);
-    
+
                                 &:hover {
                                     background-color: #EEEEEE;
                                 }
-    
+
                                 &.selected {
                                     background-color: var(--main-slate);
                                     color: var(--window-white);
@@ -508,10 +508,10 @@
                             }
                         }
                     }
-    
+
                     .subtasks__container {
                         position: relative;
-    
+
                         .add__symbol {
                             position: absolute;
                             right: 8px;
@@ -522,19 +522,19 @@
                             border-radius: 50px;
                             transition: background-color 100ms ease-in;
                             cursor: pointer;
-    
+
                             &:hover {
                                 background-color: #EEEEEE;
                             }
                         }
-    
+
                         .handler__symbols {
                             position: absolute;
                             right: 8px;
                             top: 50%;
                             transform: translateY(-50%);
                             display: flex;
-    
+
                             button {
                                 width: 30px;
                                 height: 30px;
@@ -546,29 +546,29 @@
                                 align-items: center;
                                 background-color: rgba(0, 0, 0, 0);
                                 transition: background-color 100ms ease-in;
-    
+
                                 &:hover {
                                     background-color: #EEEEEE;
                                 }
                             }
-    
+
                             hr {
                                 margin: 0 8px;
                             }
-    
+
                             .check__disabled {
                                 cursor: not-allowed;
-    
+
                                 &:hover {
                                     background-color: rgba(0, 0, 0, 0);
                                 }
                             }
                         }
                     }
-    
+
                     .subtasks__display {
                         margin-top: 16px;
-    
+
                         .subtask {
                             display: flex;
                             justify-content: space-between;
@@ -578,32 +578,41 @@
                             border-radius: 8px;
                             cursor: pointer;
                             transition: background-color 100ms ease-in;
-    
+
                             &:hover {
                                 background-color: #EEEEEE;
+
+                                .subtask__right {
+
+                                    .material__symbols__outlined {
+                                        color: #000;
+                                    }
+                                }
                             }
-    
+
                             .subtask__right {
                                 display: flex;
-    
+
                                 .material__symbols__outlined {
                                     font-size: 20px;
+                                    color: #f6f7f8;
+                                    transition: color 100ms ease-in;
                                 }
-    
+
                                 hr {
                                     margin: 0 8px;
                                 }
                             }
-    
+
                             .subtask__edit {
                                 position: relative;
                                 width: 100%;
                                 height: 46px;
-                                
+
                                 .subtask__edit__input {
                                     position: absolute;
                                 }
-    
+
                                 .handler__symbols {
                                     position: absolute;
                                     right: 0;
