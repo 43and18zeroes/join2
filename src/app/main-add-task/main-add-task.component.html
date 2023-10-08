@@ -155,7 +155,7 @@
                                 <input class="subtask__edit__input" value="{{ subTask }}"
                                     (keyup.enter)="subTaskSaveEdited(i)" #subTaskEditCurrentInput>
                                 <div class="handler__symbols">
-                                    <button class="material__symbols__outlined">clear</button>
+                                    <button (click)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</button>
                                     <hr>
                                     <button (click)="subTaskSaveEdited(i)" class="material__symbols__outlined">check</button>
                                 </div>
