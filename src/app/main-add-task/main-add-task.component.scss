@@ -349,6 +349,13 @@
                             transition: box-shadow 100ms ease-in;
                             transition: -webkit-box-shadow 100ms ease-in;
                             transition: -moz-box-shadow 100ms ease-in;
+
+                            @media (width <=1400px) {
+                                height: 46px;
+                                min-width: fit-content;
+                                padding: 10px 4px 10px 8px;
+                                font-size: 18px;
+                            }
     
                             &:focus {
                                 border: 1px solid var(--accent-cyan) !important;
@@ -363,6 +370,11 @@
     
                             .material__symbols__outlined {
                                 margin-left: 8px;
+
+                                @media (width <=1400px) {
+                                    font-size: 18px;
+                                    margin-left: 4px;
+                                }
                             }
     
                             .red {
