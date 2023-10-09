@@ -190,9 +190,9 @@ export class MainAddTaskComponent {
   //   // this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.remove('subtask__edit__class');
   // }
 
-  // cancelEditSubtask(): void {
-  //   this.subTaskCurrentlyEditing = null;
-  // }
+  subTaskEditCancel(): void {
+    this.subTaskCurrentlyEditing = null;
+  }
 
   setSubtasksForm() {
     this.addTaskForm.controls['subTasks'].setValue(this.subTasksArray);
