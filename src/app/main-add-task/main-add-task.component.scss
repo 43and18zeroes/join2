@@ -628,6 +628,17 @@
                                     position: absolute;
                                     display: flex;
                                     right: 16px;
+
+                                    .material__symbols__outlined {
+                                        width: 34px;
+                                        height: 28px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        font-size: 20px;
+                                        cursor: pointer;
+                                        transition: color 100ms ease-in;
+                                    }
                                 }
                             }
                         }
