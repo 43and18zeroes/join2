@@ -164,23 +164,23 @@ export class MainAddTaskComponent {
   //   this.setSubtasksForm();
   // }
 
-  // subTaskEdit(subTask: string): void {
-  //   this.subTaskCurrentlyEditing = subTask;
-  //   // this.subTask.nativeElement.classList.add('subtask__edit__class');
-  //   setTimeout(() => {
-  //     this.subTaskEditCurrentInput.nativeElement.focus();
-  //     this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.add('subtask__edit__class');
-  //   }, 10);
-  // }
+  subTaskEdit(subTask: string): void {
+    this.subTaskCurrentlyEditing = subTask;
+    // this.subTask.nativeElement.classList.add('subtask__edit__class');
+    // setTimeout(() => {
+    //   this.subTaskEditCurrentInput.nativeElement.focus();
+    //   this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.add('subtask__edit__class');
+    // }, 10);
+  }
 
-  // subTaskSaveEdited(index: number): void {
-  //   if (this.subTasksArray[index] !== undefined) {
-  //     this.subTasksArray[index] = this.subTaskEditCurrentInput.nativeElement.value; // Optional: Entfernen von Leerzeichen am Anfang und Ende
-  //   }
-  //   this.subTaskCurrentlyEditing = null;
-  //   this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.remove('subtask__edit__class');
-  //   this.setSubtasksForm();
-  // }
+  subTaskSaveEdited(index: number): void {
+    if (this.subTasksArray[index] !== undefined) {
+      // this.subTasksArray[index] = this.subTaskEditCurrentInput.nativeElement.value; // Optional: Entfernen von Leerzeichen am Anfang und Ende
+    }
+    this.subTaskCurrentlyEditing = null;
+    // this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.remove('subtask__edit__class');
+    this.setSubtasksForm();
+  }
 
   // subTaskEditInputBlur(i, event: Event): void {
   //   this.subTaskSaveEdited(i);
