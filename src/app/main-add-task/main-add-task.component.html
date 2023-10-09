@@ -181,7 +181,7 @@
                         </div>
                     </div> -->
 
-                    <div *ngIf="subTasksArray.length > 0" class="subtasks__container">
+                    <div *ngIf="subTasksArray.length > 0" class="subtasks__display__container">
                         <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask">
 
                             <div *ngIf="subTaskCurrentlyEditing !== subTask" (click)="subTaskEdit(subTask)" class="subtask__display">

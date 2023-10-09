@@ -566,6 +566,27 @@
                         }
                     }
 
+                    .subtasks__display__container {
+                        margin-top: 16px;
+                        
+                        .subtask {
+
+                            .subtask__display {
+
+                                .subtask__display__text {
+                                    font-size: 18px;
+                                }
+                            }
+
+                            .subtask__edit {
+
+                                input {
+                                    font-size: 18px;
+                                }
+                            }
+                        }
+                    }
+
                     // .subtasks__display {
                     //     margin-top: 16px;
 
