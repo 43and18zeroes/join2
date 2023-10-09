@@ -151,8 +151,8 @@
                 </div>
                 <hr class="form__body__2__hr">
                 <div class="form__right">
+
                     <div *ngIf="subTasksArray.length > 0" class="subtasks__display">
-    
                         <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask" (click)="subTaskEdit(subTask)" #subTask>
                             <ng-container *ngIf="subTaskCurrentlyEditing !== subTask">
                                 <div class="subtask__left">&#8226; {{ subTask }} </div>
@@ -176,8 +176,8 @@
                                 </div>
                             </ng-container>
                         </div>
-    
                     </div>
+                    
                 </div>
             </div>
         </div>
