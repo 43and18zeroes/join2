@@ -16,7 +16,7 @@ export class MainAddTaskComponent {
   @ViewChild('assignSelectedOptionRef') assignSelectedOptionRef: ElementRef;
   @ViewChild('assignSelectRef') assignSelectRef: ElementRef;
   private globalClickListener: Function;
-  private subTastEditClickListener: Function;
+  // private subTastEditClickListener: Function;
   selectedUsers: any[] = [];
   today: string;
   selectedPriority: string;
@@ -65,7 +65,7 @@ export class MainAddTaskComponent {
 
   ngOnDestroy() {
     this.globalClickListener();  // Listener entfernen, um Memory-Leaks zu vermeiden
-    this.subTastEditClickListener();  // Listener entfernen, um Memory-Leaks zu vermeiden
+    // this.subTastEditClickListener();  // Listener entfernen, um Memory-Leaks zu vermeiden
   }
 
   assignToggleDropdown() {
@@ -159,9 +159,9 @@ export class MainAddTaskComponent {
   }
 
   subTaskDelete(subTask) {
-    if(this.subTaskCurrentlyEditing !== null) {
-      this.subTastEditClickListener();
-    }
+    // if(this.subTaskCurrentlyEditing !== null) {
+    //   this.subTastEditClickListener();
+    // }
     for (let i = 0; i < this.subTasksArray.length; i++) {
       if (this.subTasksArray[i] === subTask) {
         this.subTasksArray.splice(i, 1); // Entfernt das Element an Position i
@@ -175,7 +175,7 @@ export class MainAddTaskComponent {
     this.subTaskCurrentlyEditing = subTask;
     setTimeout(() => {
       this.subTaskEditCurrentInput.nativeElement.focus();
-      this.subTaskEventListener();
+      // this.subTaskEventListener();
     }, 10);
     // this.subTask.nativeElement.classList.add('subtask__edit__class');
     // setTimeout(() => {
@@ -184,15 +184,15 @@ export class MainAddTaskComponent {
     // }, 10);
   }
 
-  subTaskEventListener() {
-    this.subTastEditClickListener = this.renderer.listen('document', 'click', (event) => {
-      if (this.subTaskEditCurrentInput) {
-        if (!this.subTaskEditCurrentInput.nativeElement.contains(event.target)) {
-          this.subTaskEditCancel();
-        }
-      }
-    });
-  }
+  // subTaskEventListener() {
+  //   this.subTastEditClickListener = this.renderer.listen('document', 'click', (event) => {
+  //     if (this.subTaskEditCurrentInput) {
+  //       if (!this.subTaskEditCurrentInput.nativeElement.contains(event.target)) {
+  //         this.subTaskEditCancel();
+  //       }
+  //     }
+  //   });
+  // }
 
   subTaskSaveEdited(index: number): void {
     if (this.subTasksArray[index] !== undefined) {
@@ -201,7 +201,7 @@ export class MainAddTaskComponent {
     this.subTaskCurrentlyEditing = null;
     // this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.remove('subtask__edit__class');
     this.setSubtasksForm();
-    this.subTastEditClickListener();
+    // this.subTastEditClickListener();
   }
 
   // subTaskEditInputBlur(i, event: Event): void {
@@ -211,7 +211,7 @@ export class MainAddTaskComponent {
 
   subTaskEditCancel(): void {
     this.subTaskCurrentlyEditing = null;
-    this.subTastEditClickListener();
+    // this.subTastEditClickListener();
   }
 
   setSubtasksForm() {
