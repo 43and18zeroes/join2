@@ -136,6 +136,7 @@ export class MainAddTaskComponent {
       this.subTasksInputEmpty = true;
     } else {
       this.subTasksInputEmpty = false;
+      this.subTasksInputHasFocus = true;
     }
   }
 
