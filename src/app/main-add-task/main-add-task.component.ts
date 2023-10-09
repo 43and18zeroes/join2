@@ -152,12 +152,16 @@ export class MainAddTaskComponent {
       this.subTasksArray.push(subTaskValue);
       this.setSubtasksForm();
       this.subTasksInput.nativeElement.value = "";
+      this.subTasksInputHasFocus = false;
       this.subTasksInputCheckValue();
-      this.subTasksInput.nativeElement.focus();
+      // this.subTasksInput.nativeElement.focus();
     }
   }
 
   subTaskDelete(subTask) {
+    if(this.subTaskCurrentlyEditing !== null) {
+      this.subTastEditClickListener();
+    }
     for (let i = 0; i < this.subTasksArray.length; i++) {
       if (this.subTasksArray[i] === subTask) {
         this.subTasksArray.splice(i, 1); // Entfernt das Element an Position i
@@ -165,7 +169,6 @@ export class MainAddTaskComponent {
       }
     }
     this.setSubtasksForm();
-    this.subTastEditClickListener();
   }
 
   subTaskEdit(subTask: string): void {
