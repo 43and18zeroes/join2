@@ -568,20 +568,41 @@
 
                     .subtasks__display__container {
                         margin-top: 16px;
-                        
+
                         .subtask {
 
                             .subtask__display {
+                                position: relative;
+                                padding: 6px 16px;
+
+                                &:hover {
+                                    background-color: #EEEEEE;
+                                }
 
                                 .subtask__display__text {
+                                    position: absolute;
                                     font-size: 18px;
+                                }
+
+                                .subtask__display__right {
+                                    position: absolute;
+                                    display: flex;
+                                    right: 0;
                                 }
                             }
 
                             .subtask__edit {
+                                position: relative;
 
                                 input {
+                                    position: absolute;
                                     font-size: 18px;
+                                }
+
+                                .subtask__edit__right {
+                                    position: absolute;
+                                    display: flex;
+                                    right: 0;
                                 }
                             }
                         }
