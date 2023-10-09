@@ -166,6 +166,9 @@ export class MainAddTaskComponent {
 
   subTaskEdit(subTask: string): void {
     this.subTaskCurrentlyEditing = subTask;
+    setTimeout(() => {
+      this.subTaskEditCurrentInput.nativeElement.focus();
+    }, 10);
     // this.subTask.nativeElement.classList.add('subtask__edit__class');
     // setTimeout(() => {
     //   this.subTaskEditCurrentInput.nativeElement.focus();
