@@ -616,7 +616,11 @@
                                         align-items: center;
                                         font-size: 20px;
                                         color: #f6f7f8;
-                                        transition: color 100ms ease-in;
+                                        transition: all 100ms ease-in;
+
+                                        &:hover {
+                                            transform: scale(1.1);
+                                        }
                                     }
 
                                     hr {
