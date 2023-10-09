@@ -572,7 +572,10 @@
                         .subtask {
 
                             .subtask__display {
+                                height: 30px;
                                 position: relative;
+                                display: flex;
+                                align-items: center;
 
                                 &:hover {
                                     background-color: #EEEEEE;
@@ -591,11 +594,19 @@
                             }
 
                             .subtask__edit {
+                                height: 30px;
                                 position: relative;
+                                display: flex;
+                                align-items: center;
 
                                 input {
                                     position: absolute;
                                     font-size: 18px;
+                                    padding: 0;
+                                    border-radius: 0;
+                                    border-left: 0;
+                                    border-top: 0;
+                                    border-right: 0;
                                 }
 
                                 .subtask__edit__right {
