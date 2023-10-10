@@ -26,7 +26,7 @@ export class MainAddTaskComponent {
   subTasksInputHasFocus: boolean = false;
   @ViewChild('subTasksInput') subTasksInput: ElementRef;
   subTasksInputEmpty: boolean = true;
-  subTasksArray: string[] = ['Test0', 'Test1'];
+  subTasksArray: string[] = ['Test0'];
   // @ViewChild('subTask') subTask: ElementRef;
   subTaskCurrentlyEditing: string | null = null;
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
@@ -155,6 +155,7 @@ export class MainAddTaskComponent {
       this.subTasksInputHasFocus = false;
       this.subTasksInputCheckValue();
       // this.subTasksInput.nativeElement.focus();
+      this.subTaskCheckAmount();
     }
   }
 
@@ -169,6 +170,15 @@ export class MainAddTaskComponent {
       }
     }
     this.setSubtasksForm();
+    this.subTaskCheckAmount();
+  }
+
+  subTaskCheckAmount() {
+    if (this.subTasksArray.length >= 2) {
+      this.subTasksInput.nativeElement.disabled = true;
+    } else {
+      this.subTasksInput.nativeElement.disabled = false;
+    }
   }
 
   subTaskEdit(subTask: string): void {
