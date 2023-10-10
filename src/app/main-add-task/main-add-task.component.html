@@ -156,32 +156,6 @@
                 <hr class="form__body__2__hr">
                 <div class="form__right">
 
-                    <!-- <div *ngIf="subTasksArray.length > 0" class="subtasks__display">
-                        <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask" (click)="subTaskEdit(subTask)" #subTask>
-                            <ng-container *ngIf="subTaskCurrentlyEditing !== subTask">
-                                <div class="subtask__left">&#8226; {{ subTask }} </div>
-                                <div class="subtask__right">
-                                    <div class="material__symbols__outlined" (click)="subTaskEdit(subTask)">edit</div>
-                                    <hr>
-                                    <div (click)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
-                                </div>
-                            </ng-container>
-                            <ng-container *ngIf="subTaskCurrentlyEditing === subTask">
-                                <div class="subtask__edit">
-                                    <input class="subtask__edit__input" value="{{ subTask }}"
-                                        (keydown.enter)="subTaskSaveEdited(i)" (blur)="subTaskEditInputBlur(i, $event)" #subTaskEditCurrentInput>
-                                    <div class="handler__symbols">
-                                        <button (click)="subTaskDelete(subTask)"
-                                            class="material__symbols__outlined">delete</button>
-                                        <hr>
-                                        <button (mouseup)="subTaskSaveEdited(i)"
-                                            class="material__symbols__outlined">check</button>
-                                    </div>
-                                </div>
-                            </ng-container>
-                        </div>
-                    </div> -->
-
                     <div *ngIf="subTasksArray.length > 0" class="subtasks__display__container">
                         <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask">
 
