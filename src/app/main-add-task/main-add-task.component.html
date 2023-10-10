@@ -132,7 +132,7 @@
                     <div class="subtasks__container">
                         <input (keydown.enter)="confirmSubTask()" (input)="subTasksInputCheckValue()"
                             (click)="subTasksInputFocus()" formControlName="subTasks" class="inputs__right"
-                            #subTasksInput placeholder="Add new subtask">
+                            #subTasksInput [placeholder]="subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'">
                         <div *ngIf="!subTasksInputHasFocus" (click)="subTasksInputFocus()"
                             class="material__symbols__outlined add__symbol">add</div>
                         <div *ngIf="subTasksInputHasFocus" class="handler__symbols">

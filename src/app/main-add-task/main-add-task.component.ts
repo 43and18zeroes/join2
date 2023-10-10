@@ -26,6 +26,7 @@ export class MainAddTaskComponent {
   subTasksInputHasFocus: boolean = false;
   @ViewChild('subTasksInput') subTasksInput: ElementRef;
   subTasksInputEmpty: boolean = true;
+  subTasksMaxReached: boolean = false;
   subTasksArray: string[] = ['Test0'];
   // @ViewChild('subTask') subTask: ElementRef;
   subTaskCurrentlyEditing: string | null = null;
@@ -176,8 +177,10 @@ export class MainAddTaskComponent {
   subTaskCheckAmount() {
     if (this.subTasksArray.length >= 2) {
       this.subTasksInput.nativeElement.disabled = true;
+      this.subTasksMaxReached = true;
     } else {
       this.subTasksInput.nativeElement.disabled = false;
+      this.subTasksMaxReached = false;
     }
   }
 
