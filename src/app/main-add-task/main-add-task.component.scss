@@ -512,6 +512,12 @@
                     .subtasks__container {
                         position: relative;
 
+                        .red__placeholder {
+                            &::placeholder {
+                                color: var(--invalid-red);
+                            }
+                        }
+
                         .add__symbol {
                             position: absolute;
                             right: 8px;
