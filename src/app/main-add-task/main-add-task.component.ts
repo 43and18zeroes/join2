@@ -230,7 +230,6 @@ export class MainAddTaskComponent {
 
   subTaskEditCancel(): void {
     this.subTaskCurrentlyEditing = null;
-    // this.subTastEditClickListener();
   }
 
   setSubtasksForm() {
