@@ -16,7 +16,6 @@ export class MainAddTaskComponent {
   @ViewChild('assignSelectedOptionRef') assignSelectedOptionRef: ElementRef;
   @ViewChild('assignSelectRef') assignSelectRef: ElementRef;
   private globalClickListener: Function;
-  // private subTastEditClickListener: Function;
   selectedUsers: any[] = [];
   today: string;
   selectedPriority: string;
@@ -28,7 +27,6 @@ export class MainAddTaskComponent {
   subTasksInputEmpty: boolean = true;
   subTasksMaxReached: boolean = false;
   subTasksArray: string[] = ['Test0'];
-  // @ViewChild('subTask') subTask: ElementRef;
   subTaskCurrentlyEditing: string | null = null;
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
 
@@ -65,8 +63,7 @@ export class MainAddTaskComponent {
   }
 
   ngOnDestroy() {
-    this.globalClickListener();  // Listener entfernen, um Memory-Leaks zu vermeiden
-    // this.subTastEditClickListener();  // Listener entfernen, um Memory-Leaks zu vermeiden
+    this.globalClickListener();
   }
 
   assignToggleDropdown() {
@@ -98,18 +95,18 @@ export class MainAddTaskComponent {
   }
 
   assignCloseDropdown() {
-    this.showAssignedDropdown = false;  // oder was auch immer Ihr Mechanismus zum Schließen des Dropdowns ist
+    this.showAssignedDropdown = false;
   }
 
   categoryCloseDropdown() {
-    this.showCategoryDropdown = false;  // oder was auch immer Ihr Mechanismus zum Schließen des Dropdowns ist
+    this.showCategoryDropdown = false;
   }
 
   getTodaysDate(): string {
     const now = new Date();
     const year = now.getFullYear().toString();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0'); // Monat mit führender Null
-    const day = now.getDate().toString().padStart(2, '0'); // Tag mit führender Null
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
     return `${year}-${month}-${day}`;
   }
 
@@ -155,19 +152,15 @@ export class MainAddTaskComponent {
       this.subTasksInput.nativeElement.value = "";
       this.subTasksInputHasFocus = false;
       this.subTasksInputCheckValue();
-      // this.subTasksInput.nativeElement.focus();
       this.subTaskCheckAmount();
     }
   }
 
   subTaskDelete(subTask) {
-    // if(this.subTaskCurrentlyEditing !== null) {
-    //   this.subTastEditClickListener();
-    // }
     for (let i = 0; i < this.subTasksArray.length; i++) {
       if (this.subTasksArray[i] === subTask) {
-        this.subTasksArray.splice(i, 1); // Entfernt das Element an Position i
-        break; // Beende die Schleife, da das Element gefunden und entfernt wurde
+        this.subTasksArray.splice(i, 1);
+        break;
       }
     }
     this.setSubtasksForm();
@@ -188,39 +181,16 @@ export class MainAddTaskComponent {
     this.subTaskCurrentlyEditing = subTask;
     setTimeout(() => {
       this.subTaskEditCurrentInput.nativeElement.focus();
-      // this.subTaskEventListener();
     }, 10);
-    // this.subTask.nativeElement.classList.add('subtask__edit__class');
-    // setTimeout(() => {
-    //   this.subTaskEditCurrentInput.nativeElement.focus();
-    //   this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.add('subtask__edit__class');
-    // }, 10);
   }
-
-  // subTaskEventListener() {
-  //   this.subTastEditClickListener = this.renderer.listen('document', 'click', (event) => {
-  //     if (this.subTaskEditCurrentInput) {
-  //       if (!this.subTaskEditCurrentInput.nativeElement.contains(event.target)) {
-  //         this.subTaskEditCancel();
-  //       }
-  //     }
-  //   });
-  // }
 
   subTaskSaveEdited(index: number): void {
     if (this.subTasksArray[index] !== undefined) {
-      this.subTasksArray[index] = this.subTaskEditCurrentInput.nativeElement.value; // Optional: Entfernen von Leerzeichen am Anfang und Ende
+      this.subTasksArray[index] = this.subTaskEditCurrentInput.nativeElement.value;
     }
     this.subTaskCurrentlyEditing = null;
-    // this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.remove('subtask__edit__class');
     this.setSubtasksForm();
-    // this.subTastEditClickListener();
   }
-
-  // subTaskEditInputBlur(i, event: Event): void {
-  //   this.subTaskSaveEdited(i);
-  //   // this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.remove('subtask__edit__class');
-  // }
 
   subTaskInputEditBlur() {
     if (this.subTaskEditCurrentInput && !this.subTaskEditCurrentInput.nativeElement.contains(document.activeElement)) {
