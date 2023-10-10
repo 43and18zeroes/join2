@@ -213,7 +213,9 @@ export class MainAddTaskComponent {
     if (this.addTaskForm.valid) {
       // Handle the form submission.
       const newTask = this.addTaskForm.value;
-      console.log(newTask);
+      console.log("VALID TASK", newTask);
+    } else {
+      console.log("INVALID TASK", this.addTaskForm.value);
     }
   }
 }
