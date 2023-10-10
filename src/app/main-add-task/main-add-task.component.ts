@@ -144,14 +144,14 @@ export class MainAddTaskComponent {
     this.subTasksInputCheckValue();
   }
 
-  onEnterPressed(event: Event) {
+  subTaskInputEnterPressed(event: Event) {
     if (event instanceof KeyboardEvent && event.key === 'Enter') {
       event.preventDefault();
-      this.confirmSubTask();
+      this.subTaskInputConfirm();
     }
   }
 
-  confirmSubTask() {
+  subTaskInputConfirm() {
     const subTaskValue = this.subTasksInput.nativeElement.value;
     if (subTaskValue) {
       this.subTasksArray.push(subTaskValue);
