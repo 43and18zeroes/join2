@@ -209,6 +209,12 @@ export class MainAddTaskComponent {
   //   // this.subTaskEditCurrentInput.nativeElement.parentElement.parentElement.classList.remove('subtask__edit__class');
   // }
 
+  subTaskInputEditBlur() {
+    if (this.subTaskEditCurrentInput && !this.subTaskEditCurrentInput.nativeElement.contains(document.activeElement)) {
+      this.subTaskEditCancel();
+    }
+  }
+
   subTaskEditCancel(): void {
     this.subTaskCurrentlyEditing = null;
     // this.subTastEditClickListener();

@@ -192,17 +192,17 @@
                                 <div class="subtask__display__right">
                                     <div class="material__symbols__outlined">edit</div>
                                     <hr>
-                                    <div (click)="subTaskDelete(subTask)" class="material__symbols__outlined">delete
+                                    <div (mousedown)="subTaskDelete(subTask)" class="material__symbols__outlined">delete
                                     </div>
                                 </div>
                             </div>
 
                             <div *ngIf="subTaskCurrentlyEditing === subTask" class="subtask__edit">
-                                <input (keydown.enter)="subTaskSaveEdited(i)" type="text" name="" id="" value="{{ subTask }}" #subTaskEditCurrentInput>
+                                <input (keydown.enter)="subTaskSaveEdited(i)" type="text" name="" id="" value="{{ subTask }}" #subTaskEditCurrentInput (blur)="subTaskInputEditBlur()">
                                 <div class="subtask__edit__right">
-                                    <div (click)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
+                                    <div (mousedown)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
                                     <hr>
-                                    <div (click)="subTaskSaveEdited(i)" class="material__symbols__outlined">check
+                                    <div (mousedown)="subTaskSaveEdited(i)" class="material__symbols__outlined">check
                                     </div>
                                 </div>
                             </div>
