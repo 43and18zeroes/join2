@@ -221,23 +221,20 @@ export class MainAddTaskComponent {
   }
 
   onSubmit(): void {
-    // if (this.addTaskForm.valid) {
-    const untrimmedTask = this.addTaskForm.value;
-    const trimmedTask = untrimmedTask;
-    trimmedTask.title = untrimmedTask.title.trim();
-    trimmedTask.description = untrimmedTask.description.trim();
-    this.addAssignedTo(trimmedTask)
-    if (trimmedTask.subTasks === null) {
-      trimmedTask.subTasks = [];
+    if (this.addTaskForm.valid) {
+      const untrimmedTask = this.addTaskForm.value;
+      const trimmedTask = untrimmedTask;
+      trimmedTask.title = untrimmedTask.title.trim();
+      trimmedTask.description = untrimmedTask.description.trim();
+      this.addAssignedTo(trimmedTask)
+      if (trimmedTask.subTasks === null) {
+        trimmedTask.subTasks = [];
+      }
+      console.log("trimmedTask with mail", trimmedTask);
     }
-    console.log("trimmedTask with mail", trimmedTask);
-
-    // this.addAssignedTo();
-    // }
-    // else 
-    // {
-    //   console.log("INVALID TASK", this.addTaskForm.value);
-    // }
+    else {
+      console.log("INVALID TASK", this.addTaskForm.value);
+    }
   }
 
   addAssignedTo(trimmedTask) {
