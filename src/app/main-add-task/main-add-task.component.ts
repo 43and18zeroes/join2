@@ -222,7 +222,6 @@ export class MainAddTaskComponent {
 
   onSubmit(): void {
     // if (this.addTaskForm.valid) {
-    // Handle the form submission.
     const untrimmedTask = this.addTaskForm.value;
     const trimmedTask = untrimmedTask;
     trimmedTask.title = untrimmedTask.title.trim();
