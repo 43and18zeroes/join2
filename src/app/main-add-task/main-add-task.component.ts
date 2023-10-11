@@ -242,11 +242,13 @@ export class MainAddTaskComponent {
   }
 
   addAssignedTo(trimmedTask) {
+    let assignedMailAdresses = [];
     for (const item of this.selectedUsers) {
       if (item.userEmailAddress) {
-        trimmedTask.assignedTo.push(item.userEmailAddress);
+        assignedMailAdresses.push(item.userEmailAddress);
       }
     }
+    trimmedTask.assignedTo = assignedMailAdresses;
     return trimmedTask;
   }
 
