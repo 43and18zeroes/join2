@@ -223,10 +223,23 @@ export class MainAddTaskComponent {
   onSubmit(): void {
     if (this.addTaskForm.valid) {
       // Handle the form submission.
-      const newTask = this.addTaskForm.value;
-      console.log("VALID TASK", newTask);
+      const untrimmedTask = this.addTaskForm.value;
+      console.log("VALID TASK", untrimmedTask);
+      this.newTaskTrim(untrimmedTask);
     } else {
       console.log("INVALID TASK", this.addTaskForm.value);
     }
+  }
+
+  newTaskTrim(untrimmedTask) {
+    console.log("untrimmedTask", untrimmedTask);
+    const trimmedTask = untrimmedTask;
+    trimmedTask.title = untrimmedTask.title.trim();
+    trimmedTask.description = untrimmedTask.description.trim();
+    trimmedTask.assignedTo = untrimmedTask.assignedTo;
+    trimmedTask.dueDate = untrimmedTask.dueDate;
+    trimmedTask.priority = untrimmedTask.priority;
+    trimmedTask.category = untrimmedTask.category;
+    console.log("trimmedTask", trimmedTask);
   }
 }
