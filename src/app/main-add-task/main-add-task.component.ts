@@ -233,10 +233,6 @@ export class MainAddTaskComponent {
       if (trimmedTask.subTasks === null) {
         trimmedTask.subTasks = [];
       }
-      console.log("trimmedTask with mail", trimmedTask);
-    }
-    else {
-      console.log("INVALID TASK", this.addTaskForm.value);
     }
   }
 
@@ -270,7 +266,6 @@ export class MainAddTaskComponent {
   }
 
   clearForm() {
-    console.log("this.addTaskForm", this.addTaskForm.value);
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
@@ -280,18 +275,14 @@ export class MainAddTaskComponent {
       category: ['', Validators.required],
       subTasks: []
     });
-    console.log("this.addTaskForm", this.addTaskForm.value);
     this.currentUserData.selected = false;
     this.allUsersData.forEach(user => user.selected = false);
     this.selectedPriority = 'undefined';
-
     this.subTasksArray = [];
-
     this.subTasksInput.nativeElement.value = "";
     this.subTasksInputHasFocus = false;
     this.subTasksInputCheckValue();
     this.subTaskCheckAmount();
-
     this.titleValid = true;
     this.dateValid = true;
     this.categoryValid = true;
