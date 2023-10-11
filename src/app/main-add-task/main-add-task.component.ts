@@ -270,6 +270,17 @@ export class MainAddTaskComponent {
   }
 
   clearForm() {
+    console.log("this.addTaskForm", this.addTaskForm.value);
+    this.addTaskForm = this.fb.group({
+      title: ['', Validators.required],
+      description: [''],
+      assignedTo: [[]],
+      dueDate: ['', Validators.required],
+      priority: ['low'],
+      category: ['', Validators.required],
+      subTasks: []
+    });
+    console.log("this.addTaskForm", this.addTaskForm.value);
     this.currentUserData.selected = false;
     this.allUsersData.forEach(user => user.selected = false);
   }
