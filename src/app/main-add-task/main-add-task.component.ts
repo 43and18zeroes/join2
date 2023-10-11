@@ -283,6 +283,7 @@ export class MainAddTaskComponent {
     console.log("this.addTaskForm", this.addTaskForm.value);
     this.currentUserData.selected = false;
     this.allUsersData.forEach(user => user.selected = false);
+    this.selectedPriority = 'undefined';
     this.titleValid = true;
     this.dateValid = true;
     this.categoryValid = true;
