@@ -220,8 +220,6 @@ export class MainAddTaskComponent {
   setSubtasksForm() {
     this.addTaskForm.controls['subTasks'].setValue(this.subTasksArray);
     this.subTasksInput.nativeElement.value = '';
-    console.log("this.subTasksArray", this.subTasksArray);
-    console.log("this.addTaskForm.value.subTasks", this.addTaskForm.value.subTasks);
   }
 
   onSubmit(): void {
@@ -248,15 +246,11 @@ export class MainAddTaskComponent {
     } else {
       this.titleValid = true;
     }
-
-    console.log("this.addTaskForm.value.category", this.addTaskForm.value.category)
-
     if (this.addTaskForm.value.dueDate) {
       this.dateValid = true;
     } else {
       this.dateValid = false;
     }
-
     if (this.addTaskForm.value.category === "") {
       this.categoryValid = false;
     } else {
@@ -275,13 +269,7 @@ export class MainAddTaskComponent {
     return trimmedTask;
   }
 
-  // newTaskTrim(untrimmedTask) {
-  //   const trimmedTask = untrimmedTask;
-
-  //   trimmedTask.assignedTo = untrimmedTask.assignedTo;
-  //   trimmedTask.dueDate = untrimmedTask.dueDate;
-  //   trimmedTask.priority = untrimmedTask.priority;
-  //   trimmedTask.category = untrimmedTask.category;
-  //   trimmedTask.subTasks = untrimmedTask.subTasks;
-  // }
+  clearForm() {
+    console.log("clear form")
+  }
 }
