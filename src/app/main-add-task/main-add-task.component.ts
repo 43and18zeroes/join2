@@ -223,10 +223,14 @@ export class MainAddTaskComponent {
   onSubmit(): void {
     console.log("this.selectedUsers", this.selectedUsers);
     // if (this.addTaskForm.valid) {
-      // Handle the form submission.
-      const untrimmedTask = this.addTaskForm.value;
-      untrimmedTask.assignedTo = this.selectedUsers;
-      this.newTaskTrim(untrimmedTask);
+    // Handle the form submission.
+    const untrimmedTask = this.addTaskForm.value;
+    console.log("untrimmedTask", untrimmedTask);
+    const trimmedTask = untrimmedTask;
+    trimmedTask.title = untrimmedTask.title.trim();
+    trimmedTask.description = untrimmedTask.description.trim();
+    console.log("trimmedTask", trimmedTask);
+
     // }
     // else 
     // {
@@ -234,13 +238,13 @@ export class MainAddTaskComponent {
     // }
   }
 
-  newTaskTrim(untrimmedTask) {
-    const trimmedTask = untrimmedTask;
-    trimmedTask.title = untrimmedTask.title.trim();
-    trimmedTask.description = untrimmedTask.description.trim();
-    trimmedTask.assignedTo = untrimmedTask.assignedTo;
-    trimmedTask.dueDate = untrimmedTask.dueDate;
-    trimmedTask.priority = untrimmedTask.priority;
-    trimmedTask.category = untrimmedTask.category;
-  }
+  // newTaskTrim(untrimmedTask) {
+  //   const trimmedTask = untrimmedTask;
+
+  //   trimmedTask.assignedTo = untrimmedTask.assignedTo;
+  //   trimmedTask.dueDate = untrimmedTask.dueDate;
+  //   trimmedTask.priority = untrimmedTask.priority;
+  //   trimmedTask.category = untrimmedTask.category;
+  //   trimmedTask.subTasks = untrimmedTask.subTasks;
+  // }
 }
