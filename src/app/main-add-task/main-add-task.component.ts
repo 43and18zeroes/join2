@@ -31,6 +31,8 @@ export class MainAddTaskComponent {
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
 
   titleValid: boolean = true;
+  dateValid: boolean = true;
+  categoryValid: boolean = true;
 
   constructor(
     private fb: FormBuilder,
@@ -245,6 +247,14 @@ export class MainAddTaskComponent {
       this.titleValid = false;
     } else {
       this.titleValid = true;
+    }
+
+    console.log("this.addTaskForm.value.dueDate", this.addTaskForm.value.dueDate)
+
+    if (this.addTaskForm.value.dueDate) {
+      this.dateValid = true;
+    } else {
+      this.dateValid = false;
     }
   }
 
