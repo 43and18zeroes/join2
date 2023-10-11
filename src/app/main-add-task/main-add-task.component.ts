@@ -249,12 +249,18 @@ export class MainAddTaskComponent {
       this.titleValid = true;
     }
 
-    console.log("this.addTaskForm.value.dueDate", this.addTaskForm.value.dueDate)
+    console.log("this.addTaskForm.value.category", this.addTaskForm.value.category)
 
     if (this.addTaskForm.value.dueDate) {
       this.dateValid = true;
     } else {
       this.dateValid = false;
+    }
+
+    if (this.addTaskForm.value.category === "") {
+      this.categoryValid = false;
+    } else {
+      this.categoryValid = true;
     }
   }
 

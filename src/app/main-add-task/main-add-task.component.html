@@ -125,7 +125,7 @@
                     </div>
 
                     <div class="input__required">
-                        <!-- <span>This field is required</span> -->
+                        <span *ngIf="!categoryValid">This field is required</span>
                     </div>
 
                     <label for="subTasks">Subtasks</label>
