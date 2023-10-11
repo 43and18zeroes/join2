@@ -156,7 +156,7 @@ export class MainAddTaskComponent {
   }
 
   subTaskInputConfirm() {
-    const subTaskValue = this.subTasksInput.nativeElement.value;
+    const subTaskValue = this.subTasksInput.nativeElement.value.trim();
     if (subTaskValue) {
       this.subTasksArray.push(subTaskValue);
       this.setSubtasksForm();
