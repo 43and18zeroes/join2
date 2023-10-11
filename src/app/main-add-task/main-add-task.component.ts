@@ -285,9 +285,12 @@ export class MainAddTaskComponent {
     this.allUsersData.forEach(user => user.selected = false);
     this.selectedPriority = 'undefined';
 
+    this.subTasksArray = [];
+
     this.subTasksInput.nativeElement.value = "";
     this.subTasksInputHasFocus = false;
     this.subTasksInputCheckValue();
+    this.subTaskCheckAmount();
 
     this.titleValid = true;
     this.dateValid = true;
