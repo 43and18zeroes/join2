@@ -37,7 +37,7 @@ export class MainAddTaskComponent {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
-      assignedTo: [''],
+      assignedTo: [[]],
       dueDate: ['', Validators.required],
       priority: ['low'],
       category: ['', Validators.required],
@@ -221,21 +221,39 @@ export class MainAddTaskComponent {
   }
 
   onSubmit(): void {
-    console.log("this.selectedUsers", this.selectedUsers);
     // if (this.addTaskForm.valid) {
     // Handle the form submission.
     const untrimmedTask = this.addTaskForm.value;
-    console.log("untrimmedTask", untrimmedTask);
     const trimmedTask = untrimmedTask;
     trimmedTask.title = untrimmedTask.title.trim();
     trimmedTask.description = untrimmedTask.description.trim();
-    console.log("trimmedTask", trimmedTask);
 
+    console.log("this.selectedUsers", this.selectedUsers)
+
+    for (const item of this.selectedUsers) {
+      if (item.userEmailAddress) {
+        console.log("item.userEmailAddress", item.userEmailAddress)
+        trimmedTask.assignedTo.push(item.userEmailAddress);
+      }
+    }
+
+    console.log("trimmedTask with mail", trimmedTask);
+
+    // this.addAssignedTo();
     // }
     // else 
     // {
     //   console.log("INVALID TASK", this.addTaskForm.value);
     // }
+  }
+
+  addAssignedTo() {
+    const assignedTo = this.selectedUsers;
+    for (const item of assignedTo) {
+      if (item.userEmailAddress) {
+        // userEmailAddresses.push(item.userEmailAddress);
+      }
+    }
   }
 
   // newTaskTrim(untrimmedTask) {
