@@ -221,18 +221,20 @@ export class MainAddTaskComponent {
   }
 
   onSubmit(): void {
-    if (this.addTaskForm.valid) {
+    console.log("this.selectedUsers", this.selectedUsers);
+    // if (this.addTaskForm.valid) {
       // Handle the form submission.
       const untrimmedTask = this.addTaskForm.value;
-      console.log("VALID TASK", untrimmedTask);
+      untrimmedTask.assignedTo = this.selectedUsers;
       this.newTaskTrim(untrimmedTask);
-    } else {
-      console.log("INVALID TASK", this.addTaskForm.value);
-    }
+    // }
+    // else 
+    // {
+    //   console.log("INVALID TASK", this.addTaskForm.value);
+    // }
   }
 
   newTaskTrim(untrimmedTask) {
-    console.log("untrimmedTask", untrimmedTask);
     const trimmedTask = untrimmedTask;
     trimmedTask.title = untrimmedTask.title.trim();
     trimmedTask.description = untrimmedTask.description.trim();
@@ -240,6 +242,5 @@ export class MainAddTaskComponent {
     trimmedTask.dueDate = untrimmedTask.dueDate;
     trimmedTask.priority = untrimmedTask.priority;
     trimmedTask.category = untrimmedTask.category;
-    console.log("trimmedTask", trimmedTask);
   }
 }
