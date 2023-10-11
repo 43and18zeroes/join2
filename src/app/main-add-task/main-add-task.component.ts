@@ -270,6 +270,7 @@ export class MainAddTaskComponent {
   }
 
   clearForm() {
-    console.log("clear form")
+    this.currentUserData.selected = false;
+    this.allUsersData.forEach(user => user.selected = false);
   }
 }
