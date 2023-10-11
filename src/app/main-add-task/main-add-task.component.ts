@@ -30,6 +30,8 @@ export class MainAddTaskComponent {
   subTaskCurrentlyEditing: string | null = null;
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
 
+  titleValid: boolean = false;
+
   constructor(
     private fb: FormBuilder,
     public mainComponent: MainComponent,
@@ -221,6 +223,7 @@ export class MainAddTaskComponent {
   }
 
   onSubmit(): void {
+    this.checkRequiredInputs();
     if (this.addTaskForm.valid) {
       const untrimmedTask = this.addTaskForm.value;
       const trimmedTask = untrimmedTask;
@@ -234,6 +237,14 @@ export class MainAddTaskComponent {
     }
     else {
       console.log("INVALID TASK", this.addTaskForm.value);
+    }
+  }
+
+  checkRequiredInputs() {
+    if (this.addTaskForm.value.title === "") {
+      this.titleValid = false;
+    } else {
+      this.titleValid = true;
     }
   }
 
