@@ -30,7 +30,7 @@ export class MainAddTaskComponent {
   subTaskCurrentlyEditing: string | null = null;
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
 
-  titleValid: boolean = false;
+  titleValid: boolean = true;
 
   constructor(
     private fb: FormBuilder,
