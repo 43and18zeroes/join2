@@ -226,11 +226,10 @@ export class MainAddTaskComponent {
     const trimmedTask = untrimmedTask;
     trimmedTask.title = untrimmedTask.title.trim();
     trimmedTask.description = untrimmedTask.description.trim();
-
-    console.log("this.selectedUsers", this.selectedUsers)
-
     this.addAssignedTo(trimmedTask)
-
+    if (trimmedTask.subTasks === null) {
+      trimmedTask.subTasks = [];
+    }
     console.log("trimmedTask with mail", trimmedTask);
 
     // this.addAssignedTo();
