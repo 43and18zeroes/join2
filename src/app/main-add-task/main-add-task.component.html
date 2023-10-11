@@ -2,7 +2,7 @@
 
     <h2>Add Task</h2>
 
-    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()"  (keydown.enter)="formGroupEnterKey($event)">
 
         <div class="form__body__container">
             <div class="form__body">

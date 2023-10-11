@@ -66,6 +66,10 @@ export class MainAddTaskComponent {
     this.globalClickListener();
   }
 
+  formGroupEnterKey(event: Event): void {
+    event.preventDefault();
+  }
+
   assignToggleDropdown() {
     this.showAssignedDropdown = !this.showAssignedDropdown;
   }
