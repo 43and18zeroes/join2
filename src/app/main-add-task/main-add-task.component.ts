@@ -229,12 +229,7 @@ export class MainAddTaskComponent {
 
     console.log("this.selectedUsers", this.selectedUsers)
 
-    for (const item of this.selectedUsers) {
-      if (item.userEmailAddress) {
-        console.log("item.userEmailAddress", item.userEmailAddress)
-        trimmedTask.assignedTo.push(item.userEmailAddress);
-      }
-    }
+    this.addAssignedTo(trimmedTask)
 
     console.log("trimmedTask with mail", trimmedTask);
 
@@ -246,13 +241,13 @@ export class MainAddTaskComponent {
     // }
   }
 
-  addAssignedTo() {
-    const assignedTo = this.selectedUsers;
-    for (const item of assignedTo) {
+  addAssignedTo(trimmedTask) {
+    for (const item of this.selectedUsers) {
       if (item.userEmailAddress) {
-        // userEmailAddresses.push(item.userEmailAddress);
+        trimmedTask.assignedTo.push(item.userEmailAddress);
       }
     }
+    return trimmedTask;
   }
 
   // newTaskTrim(untrimmedTask) {
