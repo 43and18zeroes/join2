@@ -280,6 +280,7 @@ export class MainAddTaskComponent {
     });
     this.currentUserData.selected = false;
     this.allUsersData.forEach(user => user.selected = false);
+    this.selectedUsers = [];
     this.selectedPriority = 'undefined';
     this.subTasksArray = [];
     this.subTasksInput.nativeElement.value = "";
@@ -293,7 +294,7 @@ export class MainAddTaskComponent {
 
   sendNewTaskToBackend(trimmedTask) {
     this.firestore
-      .collection('allTasks')
+      .collection('tasks')
       .add(trimmedTask)
       .then((result: any) => {
         console.log("Task to backend", result);
