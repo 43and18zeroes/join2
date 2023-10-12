@@ -1,6 +1,7 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainComponent } from '../main/main.component';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-main-add-task',
@@ -35,6 +36,7 @@ export class MainAddTaskComponent {
   categoryValid: boolean = true;
 
   constructor(
+    private firestore: AngularFirestore,
     private fb: FormBuilder,
     public mainComponent: MainComponent,
     private renderer: Renderer2) {
@@ -233,6 +235,7 @@ export class MainAddTaskComponent {
       if (trimmedTask.subTasks === null) {
         trimmedTask.subTasks = [];
       }
+      this.sendNewTaskToBackend(trimmedTask);
     }
   }
 
@@ -286,5 +289,14 @@ export class MainAddTaskComponent {
     this.titleValid = true;
     this.dateValid = true;
     this.categoryValid = true;
+  }
+
+  sendNewTaskToBackend(trimmedTask) {
+    this.firestore
+      .collection('allTasks')
+      .add(trimmedTask)
+      .then((result: any) => {
+        console.log("Task to backend", result);
+      })
   }
 }
