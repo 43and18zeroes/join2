@@ -1,5 +1,4 @@
 .addtask__container {
-    // width: calc(100% - 96px);
     max-width: 1300px;
     height: calc(100% - 112px);
     padding: 48px 48px 64px 48px;
@@ -72,78 +71,6 @@
                     }
                 }
 
-                // .select {
-                //     position: relative;
-                //     display: inline-block;
-                //     width: 100%;
-
-                //     select {
-                //         font-family: 'Arial';
-                //         display: inline-block;
-                //         width: 100%;
-                //         padding: 10px 16px;
-                //         outline: 0;
-                //         border: 1px solid #A8A8A8;
-                //         border-radius: 10px;
-                //         background: #FFF;
-                //         font-family: inherit;
-                //         font-size: var(--fontsize-body);
-                //         color: #000;
-                //         appearance: none;
-                //         -webkit-appearance: none;
-                //         -moz-appearance: none;
-
-                //         &::-ms-expand {
-                //             display: none;
-                //         }
-
-
-                //         &:focus {
-                //             border: 1px solid var(--accent-cyan);
-                //         }
-
-                //         &:disabled {
-                //             opacity: 0.5;
-                //             pointer-events: none;
-                //         }
-                //     }
-
-                //     &_arrow {
-                //         position: absolute;
-                //         top: 20px;
-                //         right: 16px;
-                //         pointer-events: none;
-                //         border-style: solid;
-                //         border-width: 8px 5px 0px 5px;
-                //         border-color: #000000 transparent transparent transparent;
-
-                //         &:hover,
-                //         &:focus {
-                //             border-top-color: #000000;
-                //         }
-
-                //         &:disabled {
-                //             border-top-color: #cccccc;
-                //         }
-                //     }
-
-                //     select {
-
-                //         &:hover,
-                //         &:focus {
-                //             ~.select_arrow {
-                //                 border-top-color: #000000;
-                //             }
-                //         }
-
-                //         &:disabled {
-                //             ~.select_arrow {
-                //                 border-top-color: #cccccc;
-                //             }
-                //         }
-                //     }
-                // }
-
                 .assign__select {
                     position: relative;
                     cursor: pointer;
@@ -162,8 +89,6 @@
                         background-color: var(--window-white);
 
                         &:focus {
-                            // outline: none;
-                            // box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); // Fügt einen blauen Schatten als Fokus-Effekt hinzu
                             border: 1px solid var(--accent-cyan);
                         }
 
@@ -182,7 +107,6 @@
 
                     .options {
                         position: absolute;
-                        // top: 100%;
                         top: 38px;
                         padding-top: 8px;
                         left: 0;
@@ -199,7 +123,6 @@
                             overflow-y: auto;
                             display: flex;
                             flex-direction: column;
-                            // gap: 2px;
                             margin-top: 1px;
                             cursor: default;
 
@@ -273,20 +196,11 @@
 
                         button {
                             width: calc(100% - 16px);
-                            // height: 50px;
-                            // font-family: inherit;
-                            // background-color: var(--main-slate);
-                            // border-radius: 10px;
-                            // color: var(--window-white);
                             display: flex;
                             justify-content: center;
-                            // align-items: center;
-                            // font-size: 20px;
-                            // font-weight: 600;
                             margin: 8px;
 
                             span {
-                                //     margin-left: 16px;
                                 font-weight: 500 !important;
                                 font-size: 26px !important;
                             }
@@ -362,7 +276,6 @@
                             }
 
                             &:focus {
-                                // border: 1px solid var(--accent-cyan) !important;
                                 outline: 0;
                             }
 
@@ -456,8 +369,6 @@
                             background-color: var(--window-white);
 
                             &:focus {
-                                // outline: none;
-                                // box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); // Fügt einen blauen Schatten als Fokus-Effekt hinzu
                                 border: 1px solid var(--accent-cyan);
                             }
 
@@ -476,7 +387,6 @@
 
                         .options {
                             position: absolute;
-                            // top: 100%;
                             top: 38px;
                             padding-top: 8px;
                             left: 0;
@@ -632,7 +542,6 @@
                                     hr {
                                         height: 20px;
                                         margin: 0;
-                                        // background-color: #A8A8A8;
                                         background-color: #f6f7f8;
                                         transition: background-color 100ms ease-in;
                                     }
@@ -687,85 +596,6 @@
                             }
                         }
                     }
-
-                    // .subtasks__display {
-                    //     margin-top: 16px;
-
-                    //     .subtask {
-                    //         display: flex;
-                    //         justify-content: space-between;
-                    //         font-size: 18px;
-                    //         padding: 6px 16px 6px 24px;
-                    //         margin-bottom: 4px;
-                    //         border-radius: 8px;
-                    //         cursor: pointer;
-                    //         transition: background-color 100ms ease-in;
-
-                    //         &:hover {
-                    //             background-color: #EEEEEE;
-
-                    //             .subtask__right {
-
-                    //                 .material__symbols__outlined {
-                    //                     color: #000;
-                    //                 }
-
-                    //                 hr {
-                    //                     background-color: #A8A8A8;
-                    //                     ;
-                    //                 }
-                    //             }
-                    //         }
-
-                    //         .subtask__right {
-                    //             display: flex;
-
-                    //             .material__symbols__outlined {
-                    //                 font-size: 20px;
-                    //                 color: #f6f7f8;
-                    //                 transition: color 100ms ease-in;
-                    //             }
-
-                    //             hr {
-                    //                 margin: 0 8px;
-                    //                 background-color: #f6f7f8;
-                    //                 transition: background-color 100ms ease-in;
-                    //             }
-                    //         }
-
-                    //         .subtask__edit {
-                    //             position: relative;
-                    //             width: 100%;
-                    //             height: 24px;
-                    //             padding: 0;
-
-                    //             .subtask__edit__input {
-                    //                 position: absolute;
-                    //                 padding: 2px 12px;
-                    //                 border-radius: 0;
-                    //                 border-left: 0;
-                    //                 border-top: 0;
-                    //                 border-right: 0;
-                    //                 font-size: 18px;
-                    //             }
-
-                    //             .handler__symbols {
-                    //                 position: absolute;
-                    //                 right: 0;
-                    //                 display: flex;
-                    //             }
-                    //         }
-                    //     }
-
-                    //     .subtask__edit__class {
-                    //         padding: 4px 16px 5px 16px;
-
-                    //         &:hover {
-                    //             background-color: initial;
-                    //             cursor: initial;
-                    //         }
-                    //     }
-                    // }
                 }
             }
         }
