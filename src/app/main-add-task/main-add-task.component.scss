@@ -390,6 +390,10 @@
                                 padding: 10px 4px 10px 8px;
                             }
 
+                            @media (width <=576px) {
+                                height: 40px;
+                            }
+
                             &:focus {
                                 outline: 0;
                             }
@@ -409,6 +413,10 @@
                                     display: block;
                                     font-size: var(--fontsize-body);
                                 }
+
+                                @media (width <=576px) {
+                                    display: none;
+                                }
                             }
 
                             .material__symbols__outlined {
@@ -426,6 +434,10 @@
 
                                 @media (width <=768px) {
                                     margin-left: 8px;
+                                }
+
+                                @media (width <=576px) {
+                                    margin-left: 0px;
                                 }
                             }
 
