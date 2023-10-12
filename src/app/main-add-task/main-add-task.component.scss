@@ -265,6 +265,10 @@
                     textarea {
                         resize: none;
                     }
+
+                    @media (width <=768px) {
+                        width: 100%;
+                    }
                 }
 
                 hr {
@@ -686,6 +690,14 @@
                             }
                         }
                     }
+
+                    @media (width <=768px) {
+                        width: 100%;
+                    }
+                }
+
+                @media (width <=768px) {
+                    flex-direction: column;
                 }
             }
         }
