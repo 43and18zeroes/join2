@@ -386,7 +386,7 @@
                             }
 
                             @media (width <=768px) {
-                                height: 40px;
+                                height: 46px;
                                 padding: 10px 4px 10px 8px;
                             }
 
@@ -404,6 +404,11 @@
                                 @media (width <=1100px) {
                                     display: none;
                                 }
+
+                                @media (width <=768px) {
+                                    display: block;
+                                    font-size: var(--fontsize-body);
+                                }
                             }
 
                             .material__symbols__outlined {
@@ -417,6 +422,10 @@
                                 @media (width <=1100px) {
                                     margin-left: 0px;
                                     font-size: 30px;
+                                }
+
+                                @media (width <=768px) {
+                                    margin-left: 8px;
                                 }
                             }
 
