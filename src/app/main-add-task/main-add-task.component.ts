@@ -298,5 +298,6 @@ export class MainAddTaskComponent {
       .then((result: any) => {
         console.log("Task to backend", result);
       })
+      this.clearForm();
   }
 }
