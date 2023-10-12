@@ -172,7 +172,7 @@
                             .option__container {
                                 display: flex;
                                 justify-content: space-between;
-                                padding: 9px 16px;
+                                padding: 9px 12px;
                                 border-top: 1px solid var(--window-white);
                                 border-bottom: 1px solid var(--window-white);
                                 border-radius: 10px;
@@ -206,8 +206,10 @@
                                     }
 
                                     .name {
-                                        font-size: 18px;
-                                        margin-left: 8px;
+                                        font-size: 16px;
+                                        letter-spacing: -1px;
+                                        margin-left: 6px;
+                                        flex: 1;
                                     }
                                 }
 
