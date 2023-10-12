@@ -56,6 +56,10 @@
                     @media (width <=992px) {
                         font-size: var(--fontsize-body);
                     }
+
+                    @media (width <=576px) {
+                        font-size: var(--fontsize-body-mobile);
+                    }
                 }
 
                 input {
@@ -77,6 +81,11 @@
 
                     @media (width <=992px) {
                         font-size: var(--fontsize-body);
+                    }
+
+                    @media (width <=576px) {
+                        height: 18px;
+                        font-size: var(--fontsize-body-mobile);
                     }
                 }
 
@@ -102,6 +111,11 @@
 
                     @media (width <=992px) {
                         font-size: var(--fontsize-body);
+                    }
+
+                    @media (width <=576px) {
+                        height: 80px;
+                        font-size: var(--fontsize-body-mobile);
                     }
                 }
 
@@ -151,6 +165,14 @@
 
                             span {
                                 font-size: var(--fontsize-body);
+                            }
+                        }
+
+                        @media (width <=576px) {
+                            height: 18px;
+
+                            span {
+                                font-size: var(--fontsize-body-mobile);
                             }
                         }
                     }
@@ -304,6 +326,10 @@
                         @media (width <=992px) {
                             height: 24px;
                         }
+
+                        @media (width <=576px) {
+                            height: 18px;
+                        }
                     }
 
                     .prio__container {
@@ -342,6 +368,11 @@
 
                             @media (width <=992px) {
                                 height: 46px;
+                                padding: 10px 4px 10px 8px;
+                            }
+
+                            @media (width <=768px) {
+                                height: 40px;
                                 padding: 10px 4px 10px 8px;
                             }
 
