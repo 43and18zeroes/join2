@@ -1,3 +1,7 @@
+:host {
+    --font-size-1100: 17px;
+}
+
 .addtask__container {
     max-width: 1300px;
     height: calc(100% - 112px);
@@ -101,6 +105,12 @@
 
                             &:hover {
                                 background-color: #EEEEEE;
+                            }
+                        }
+
+                        @media (width <=1100px) {
+                            span {
+                                font-size: var(--font-size-1100);
                             }
                         }
                     }
