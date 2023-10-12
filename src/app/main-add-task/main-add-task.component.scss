@@ -495,6 +495,11 @@
                                 height: 24px;
                                 font-size: var(--fontsize-body);
                             }
+
+                            @media (width <=576px) {
+                                height: 18px;
+                                font-size: var(--fontsize-body-mobile);
+                            }
                         }
 
                         .options {
@@ -536,6 +541,11 @@
                                 @media (width <=992px) {
                                     height: 24px;
                                     font-size: var(--fontsize-body);
+                                }
+
+                                @media (width <=576px) {
+                                    height: 18px;
+                                    font-size: var(--fontsize-body-mobile);
                                 }
                             }
                         }
