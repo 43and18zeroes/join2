@@ -707,6 +707,10 @@
                                     @media (width <=992px) {
                                         font-size: 18px;
                                     }
+
+                                    @media (width <=576px) {
+                                        font-size: 14.5px;
+                                    }
                                 }
 
                                 .subtask__display__right {
