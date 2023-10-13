@@ -230,10 +230,7 @@ export class MainAddTaskComponent {
     this.checkRequiredInputs();
     if (this.addTaskForm.valid) {
       this.formSubmitted = true;
-      const untrimmedTask = this.addTaskForm.value;
-      const trimmedTask = untrimmedTask;
-      trimmedTask.title = untrimmedTask.title.trim();
-      trimmedTask.description = untrimmedTask.description.trim();
+      const trimmedTask = this.trimTask();
       this.addAssignedTo(trimmedTask)
       if (trimmedTask.subTasks === null) {
         trimmedTask.subTasks = [];
@@ -244,6 +241,14 @@ export class MainAddTaskComponent {
         this.mainComponent.displayMainSection('board');
       }, 1500);
     }
+  }
+
+  trimTask() {
+    const untrimmedTask = this.addTaskForm.value;
+    const trimmedTask = this.addTaskForm.value;
+    trimmedTask.title = untrimmedTask.title.trim();
+    trimmedTask.description = untrimmedTask.description.trim();
+    return trimmedTask;
   }
 
   checkRequiredInputs() {
@@ -306,6 +311,6 @@ export class MainAddTaskComponent {
       .then((result: any) => {
         console.log("Task to backend", trimmedTask);
       })
-      this.clearForm();
+    this.clearForm();
   }
 }
