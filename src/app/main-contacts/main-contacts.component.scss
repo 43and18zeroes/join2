@@ -1,9 +1,22 @@
+:host {
+    --contacts-header-height: 100px;
+}
+
 .contacts__container {
     height: 100%;
     display: flex;
 
     .contacts__list {
-        width: 456px;
-        overflow-y: auto;
+        height: 100%;
+
+        .contacts__header {
+            height: var(--contacts-header-height);
+        }
+
+        .contacts__entries {
+            height: calc(100% - var(--contacts-header-height));
+            width: 456px;
+            overflow-y: auto;
+        }
     }
 }
