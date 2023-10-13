@@ -31,6 +31,7 @@ export class MainAddTaskComponent {
   subTaskCurrentlyEditing: string | null = null;
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
   @ViewChild('submitBtn') submitBtn: ElementRef;
+  formSubmitted: boolean = false;
 
   titleValid: boolean = true;
   dateValid: boolean = true;
@@ -228,6 +229,7 @@ export class MainAddTaskComponent {
   onSubmit(): void {
     this.checkRequiredInputs();
     if (this.addTaskForm.valid) {
+      this.formSubmitted = true;
       const untrimmedTask = this.addTaskForm.value;
       const trimmedTask = untrimmedTask;
       trimmedTask.title = untrimmedTask.title.trim();

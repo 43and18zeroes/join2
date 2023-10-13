@@ -2,7 +2,7 @@
 
     <h2>Add Task</h2>
 
-    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()"  (keydown.enter)="formGroupEnterKey($event)">
+    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()"  (keydown.enter)="formGroupEnterKey($event)" [ngClass]="{ 'form__disabled': formSubmitted }">
 
         <div class="form__body__container">
             <div class="form__body">
