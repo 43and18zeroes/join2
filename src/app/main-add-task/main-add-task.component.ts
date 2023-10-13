@@ -227,15 +227,7 @@ export class MainAddTaskComponent {
   }
 
   clearForm() {
-    this.addTaskForm = this.fb.group({
-      title: ['', Validators.required],
-      description: [''],
-      assignedTo: [[]],
-      dueDate: ['', Validators.required],
-      priority: ['low'],
-      category: ['', Validators.required],
-      subTasks: []
-    });
+    this.resetFormModel();
     this.currentUserData.selected = false;
     this.allUsersData.forEach(user => user.selected = false);
     this.selectedUsers = [];
@@ -245,6 +237,22 @@ export class MainAddTaskComponent {
     this.subTasksInputHasFocus = false;
     this.subTasksInputCheckValue();
     this.subTaskCheckAmount();
+    this.resetFormValidators();
+  }
+
+  resetFormModel() {
+    this.addTaskForm = this.fb.group({
+      title: ['', Validators.required],
+      description: [''],
+      assignedTo: [[]],
+      dueDate: ['', Validators.required],
+      priority: ['low'],
+      category: ['', Validators.required],
+      subTasks: []
+    });
+  }
+
+  resetFormValidators() {
     this.titleValid = true;
     this.dateValid = true;
     this.categoryValid = true;
