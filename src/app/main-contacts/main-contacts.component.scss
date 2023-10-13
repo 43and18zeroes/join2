@@ -10,7 +10,18 @@
         height: 100%;
 
         .contacts__header {
-            height: var(--contacts-header-height);
+
+            button {
+                width: calc(100% - 16px);
+                display: flex;
+                justify-content: center;
+                margin: 8px;
+
+                span {
+                    font-weight: 500 !important;
+                    font-size: 26px !important;
+                }
+            }
         }
 
         .contacts__entries {
