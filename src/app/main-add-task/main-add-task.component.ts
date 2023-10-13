@@ -30,6 +30,7 @@ export class MainAddTaskComponent {
   subTasksArray: string[] = [];
   subTaskCurrentlyEditing: string | null = null;
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
+  @ViewChild('submitBtn') submitBtn: ElementRef;
 
   titleValid: boolean = true;
   dateValid: boolean = true;
@@ -236,6 +237,7 @@ export class MainAddTaskComponent {
         trimmedTask.subTasks = [];
       }
       this.sendNewTaskToBackend(trimmedTask);
+      this.submitBtnSuccess();
     }
   }
 
@@ -300,5 +302,9 @@ export class MainAddTaskComponent {
         console.log("Task to backend", result);
       })
       this.clearForm();
+  }
+
+  submitBtnSuccess() {
+    this.submitBtn.nativeElement.classList.add("btn__success");
   }
 }
