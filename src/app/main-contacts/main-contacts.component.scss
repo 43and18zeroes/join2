@@ -1,13 +1,31 @@
-:host {
-    --contacts-header-height: 100px;
-}
-
 .contacts__container {
     height: 100%;
     display: flex;
 
     .contacts__list {
         height: 100%;
+
+        /* ===== Scrollbar CSS ===== */
+        /* Firefox */
+        * {
+            scrollbar-width: auto;
+            scrollbar-color: #a8a8a8 #f6f7f8;
+        }
+
+        /* Chrome, Edge, and Safari */
+        *::-webkit-scrollbar {
+            width: 14px;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: #f6f7f8;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background-color: #a8a8a8;
+            border-radius: 10px;
+            border: 3px solid #f6f7f8;
+        }
 
         .contacts__header {
 
@@ -25,7 +43,8 @@
         }
 
         .contacts__entries {
-            height: calc(100% - var(--contacts-header-height));
+
+            height: calc(100% - 72px);
             width: 456px;
             overflow-y: auto;
         }
