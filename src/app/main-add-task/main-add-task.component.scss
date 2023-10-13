@@ -810,8 +810,18 @@
             padding-top: 24px;
             padding-bottom: 64px;
 
-            span {
+            @media (width <=576px) {
+                flex-direction: column;
+            }
+
+            .required {
                 font-size: 16px;
+
+                @media (width <=576px) {
+                    font-size: 14px;
+                    align-self: flex-start;
+                    margin-bottom: 16px;
+                }
             }
 
             .footer__right {
