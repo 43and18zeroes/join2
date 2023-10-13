@@ -226,64 +226,6 @@ export class MainAddTaskComponent {
     this.subTasksInput.nativeElement.value = '';
   }
 
-  onSubmit(): void {
-    this.checkRequiredInputs();
-    if (this.addTaskForm.valid) {
-      this.formSubmitted = true;
-      const trimmedTask = this.trimTask();
-      this.addAssignedTo(trimmedTask)
-      if (trimmedTask.subTasks === null) {
-        trimmedTask.subTasks = [];
-      }
-      this.sendNewTaskToBackend(trimmedTask);
-      this.onSubmitOutro();
-    }
-  }
-
-  trimTask() {
-    const untrimmedTask = this.addTaskForm.value;
-    const trimmedTask = this.addTaskForm.value;
-    trimmedTask.title = untrimmedTask.title.trim();
-    trimmedTask.description = untrimmedTask.description.trim();
-    return trimmedTask;
-  }
-
-  checkRequiredInputs() {
-    if (this.addTaskForm.value.title === "") {
-      this.titleValid = false;
-    } else {
-      this.titleValid = true;
-    }
-    if (this.addTaskForm.value.dueDate) {
-      this.dateValid = true;
-    } else {
-      this.dateValid = false;
-    }
-    if (this.addTaskForm.value.category === "") {
-      this.categoryValid = false;
-    } else {
-      this.categoryValid = true;
-    }
-  }
-
-  addAssignedTo(trimmedTask) {
-    let assignedMailAdresses = [];
-    for (const item of this.selectedUsers) {
-      if (item.userEmailAddress) {
-        assignedMailAdresses.push(item.userEmailAddress);
-      }
-    }
-    trimmedTask.assignedTo = assignedMailAdresses;
-    return trimmedTask;
-  }
-
-  onSubmitOutro() {
-    this.submitBtn.nativeElement.classList.add("btn__success");
-    setTimeout(() => {
-      this.mainComponent.displayMainSection('board');
-    }, 1500);
-  }
-
   clearForm() {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
@@ -308,6 +250,57 @@ export class MainAddTaskComponent {
     this.categoryValid = true;
   }
 
+  onSubmit(): void {
+    this.checkRequiredInputs();
+    if (this.addTaskForm.valid) {
+      this.formSubmitted = true;
+      const trimmedTask = this.trimTask();
+      this.addAssignedTo(trimmedTask)
+      if (trimmedTask.subTasks === null) {
+        trimmedTask.subTasks = [];
+      }
+      this.sendNewTaskToBackend(trimmedTask);
+      this.onSubmitOutro();
+    }
+  }
+
+  checkRequiredInputs() {
+    if (this.addTaskForm.value.title === "") {
+      this.titleValid = false;
+    } else {
+      this.titleValid = true;
+    }
+    if (this.addTaskForm.value.dueDate) {
+      this.dateValid = true;
+    } else {
+      this.dateValid = false;
+    }
+    if (this.addTaskForm.value.category === "") {
+      this.categoryValid = false;
+    } else {
+      this.categoryValid = true;
+    }
+  }
+
+  trimTask() {
+    const untrimmedTask = this.addTaskForm.value;
+    const trimmedTask = this.addTaskForm.value;
+    trimmedTask.title = untrimmedTask.title.trim();
+    trimmedTask.description = untrimmedTask.description.trim();
+    return trimmedTask;
+  }
+
+  addAssignedTo(trimmedTask) {
+    let assignedMailAdresses = [];
+    for (const item of this.selectedUsers) {
+      if (item.userEmailAddress) {
+        assignedMailAdresses.push(item.userEmailAddress);
+      }
+    }
+    trimmedTask.assignedTo = assignedMailAdresses;
+    return trimmedTask;
+  }
+
   sendNewTaskToBackend(trimmedTask) {
     this.firestore
       .collection('tasks')
@@ -316,5 +309,12 @@ export class MainAddTaskComponent {
         console.log("Task to backend", trimmedTask);
       })
     this.clearForm();
+  }
+
+  onSubmitOutro() {
+    this.submitBtn.nativeElement.classList.add("btn__success");
+    setTimeout(() => {
+      this.mainComponent.displayMainSection('board');
+    }, 1500);
   }
 }
