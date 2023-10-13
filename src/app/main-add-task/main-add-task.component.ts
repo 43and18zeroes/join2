@@ -299,7 +299,7 @@ export class MainAddTaskComponent {
       .collection('tasks')
       .add(trimmedTask)
       .then((result: any) => {
-        console.log("Task to backend", result);
+        console.log("Task to backend", trimmedTask);
       })
       this.clearForm();
   }
