@@ -236,10 +236,7 @@ export class MainAddTaskComponent {
         trimmedTask.subTasks = [];
       }
       this.sendNewTaskToBackend(trimmedTask);
-      this.submitBtn.nativeElement.classList.add("btn__success");
-      setTimeout(() => {
-        this.mainComponent.displayMainSection('board');
-      }, 1500);
+      this.onSubmitOutro();
     }
   }
 
@@ -278,6 +275,13 @@ export class MainAddTaskComponent {
     }
     trimmedTask.assignedTo = assignedMailAdresses;
     return trimmedTask;
+  }
+
+  onSubmitOutro() {
+    this.submitBtn.nativeElement.classList.add("btn__success");
+    setTimeout(() => {
+      this.mainComponent.displayMainSection('board');
+    }, 1500);
   }
 
   clearForm() {
