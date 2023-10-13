@@ -239,7 +239,10 @@ export class MainAddTaskComponent {
         trimmedTask.subTasks = [];
       }
       this.sendNewTaskToBackend(trimmedTask);
-      this.submitBtnSuccess();
+      this.submitBtn.nativeElement.classList.add("btn__success");
+      setTimeout(() => {
+        this.mainComponent.displayMainSection('board');
+      }, 1500);
     }
   }
 
@@ -304,9 +307,5 @@ export class MainAddTaskComponent {
         console.log("Task to backend", trimmedTask);
       })
       this.clearForm();
-  }
-
-  submitBtnSuccess() {
-    this.submitBtn.nativeElement.classList.add("btn__success");
   }
 }
