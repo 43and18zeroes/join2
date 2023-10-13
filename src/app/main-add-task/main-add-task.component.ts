@@ -265,21 +265,12 @@ export class MainAddTaskComponent {
   }
 
   checkRequiredInputs() {
-    if (this.addTaskForm.value.title === "") {
-      this.titleValid = false;
-    } else {
-      this.titleValid = true;
-    }
-    if (this.addTaskForm.value.dueDate) {
-      this.dateValid = true;
-    } else {
-      this.dateValid = false;
-    }
-    if (this.addTaskForm.value.category === "") {
-      this.categoryValid = false;
-    } else {
-      this.categoryValid = true;
-    }
+    if (this.addTaskForm.value.title === "") this.titleValid = false;
+    else this.titleValid = true;
+    if (this.addTaskForm.value.dueDate) this.dateValid = true;
+    else this.dateValid = false;
+    if (this.addTaskForm.value.category === "") this.categoryValid = false;
+    else this.categoryValid = true;
   }
 
   trimTask() {
