@@ -1,4 +1,6 @@
 <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
-    <input [(ngModel)]="contact.contactName" formControlName="contactName">
-    <button></button>
+    <input [(ngModel)]="contact.contactName" formControlName="contactName" placeholder="Name">
+    <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress" placeholder="Email">
+    <input [(ngModel)]="contact.contactPhoneNumber" formControlName="contactPhoneNumber" placeholder="Phone">
+    <button>Save</button>
 </form>

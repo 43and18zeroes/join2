@@ -17,7 +17,9 @@ export class MainDialogAddContactComponent {
   constructor(public dialog: MatDialog,
     private fb: FormBuilder,) {
       this.addUserForm = this.fb.group({
-        contactName: ['']
+        contactName: [''],
+        contactEmailAddress: [''],
+        contactPhoneNumber: ['']
       });
     }
 
