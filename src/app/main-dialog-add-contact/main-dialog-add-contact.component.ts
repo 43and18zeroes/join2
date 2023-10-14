@@ -79,7 +79,7 @@ export class MainDialogAddContactComponent {
     console.log("New user to backend", this.contact);
     this.firestore
       .collection('contacts')
-      .add(this.contact)
+      .add(this.contact.toJSON())
       .then((result: any) => {
         console.log("New user to backend", this.contact);
       })

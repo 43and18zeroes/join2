@@ -12,8 +12,8 @@ export class Contact {
         this.contactFirstName = this.contactFirstName;
         this.contactSurName = this.contactSurName;
         this.contactInitials = this.contactInitials;
-        this.contactEmailAddress = this.contactEmailAddress;
-        this.contactPhoneNumber = this.contactPhoneNumber;
+        this.contactEmailAddress = this.contactEmailAddress || null;
+        this.contactPhoneNumber = this.contactPhoneNumber || null;
         this.contactColor = this.contactColor;
     }
 
