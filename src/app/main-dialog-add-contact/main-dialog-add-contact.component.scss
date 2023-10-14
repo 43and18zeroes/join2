@@ -4,6 +4,7 @@
     display: flex;
     
     .left {
+        width: 594px;
         background-color: var(--main-slate);
         padding-left: 48px;
     }
@@ -13,7 +14,8 @@
         flex: 1;
 
         .right__header {
-            
+            display: flex;
+            justify-content: flex-end;
         }
     }
 }
