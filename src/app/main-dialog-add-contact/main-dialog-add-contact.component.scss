@@ -5,5 +5,15 @@
     
     .left {
         background-color: var(--main-slate);
+        padding-left: 48px;
+    }
+
+    .right {
+        background-color: #FFF;
+        flex: 1;
+
+        .right__header {
+            
+        }
     }
 }

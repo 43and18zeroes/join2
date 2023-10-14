@@ -256,9 +256,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .popup__contact__add {
     width: 1212px;
     height: 592px;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .mdc-dialog__surface {
     border-radius: 30px !important;
-    padding: 48px;
+    // padding: 48px;
+    background-color: rgba(0, 0, 0, 0) !important;
 }
