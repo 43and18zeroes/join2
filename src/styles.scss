@@ -254,5 +254,10 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .popup__contact__add {
-    width: 1000px;
+    width: 1212px;
+    height: 592px;
+}
+
+.mdc-dialog__surface {
+    border-radius: 30px !important;
 }
