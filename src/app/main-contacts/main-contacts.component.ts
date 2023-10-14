@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 
 @Component({
   selector: 'app-main-contacts',
@@ -7,9 +9,12 @@ import { Component } from '@angular/core';
 })
 export class MainContactsComponent {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openAddUserDialog() {
+    this.dialog.open(MainDialogAddContactComponent);
+  }
 }

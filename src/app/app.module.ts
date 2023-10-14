@@ -23,6 +23,8 @@ import { MainAddTaskComponent } from './main-add-task/main-add-task.component';
 import { MainBoardComponent } from './main-board/main-board.component';
 import { MainContactsComponent } from './main-contacts/main-contacts.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { MainDialogAddContactComponent } from './main-dialog-add-contact/main-dialog-add-contact.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     MainSummaryComponent,
     MainAddTaskComponent,
     MainBoardComponent,
-    MainContactsComponent
+    MainContactsComponent,
+    MainDialogAddContactComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    SharedModule
+    SharedModule,
+    MatDialogModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
