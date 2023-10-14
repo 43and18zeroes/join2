@@ -45,7 +45,7 @@ export class MainAddTaskComponent {
     public mainComponent: MainComponent,
     private renderer: Renderer2,
     public dialog: MatDialog
-    ) {
+  ) {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
@@ -308,6 +308,7 @@ export class MainAddTaskComponent {
   }
 
   sendNewTaskToBackend(trimmedTask) {
+    console.log("trimmedTask", trimmedTask)
     this.firestore
       .collection('tasks')
       .add(trimmedTask)

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Contact } from 'src/models/contact.class';
@@ -33,14 +34,17 @@ export class MainDialogAddContactComponent {
     '#FFCA68', '#773311'
   ];
 
-  constructor(public dialog: MatDialog,
-    private fb: FormBuilder,) {
-      this.addUserForm = this.fb.group({
-        contactName: [''],
-        contactEmailAddress: [''],
-        contactPhoneNumber: ['']
-      });
-    }
+  constructor(
+    public dialog: MatDialog,
+    private fb: FormBuilder,
+    private firestore: AngularFirestore,
+  ) {
+    this.addUserForm = this.fb.group({
+      contactName: [''],
+      contactEmailAddress: [''],
+      contactPhoneNumber: ['']
+    });
+  }
 
   ngOnInit(): void {
 
@@ -48,7 +52,9 @@ export class MainDialogAddContactComponent {
 
   onSubmit() {
     this.getContactData();
-    console.log("contact", this.contact);
+    console.log("New user to backend", this.contact);
+    // const contactJSON = this.contact;
+    this.sendNewUserDataToBackend();
   }
 
   getContactData() {
@@ -67,5 +73,15 @@ export class MainDialogAddContactComponent {
     const charCodes = initials.split('').map(char => char.charCodeAt(0));
     const sum = charCodes.reduce((acc, curr) => acc + curr, 0);
     return sum % this.colors.length;
+  }
+
+  sendNewUserDataToBackend() {
+    console.log("New user to backend", this.contact);
+    this.firestore
+      .collection('tasks')
+      .add(this.contact.toJSON())
+      .then((result: any) => {
+        console.log("New user to backend", this.contact);
+      })
   }
 }
