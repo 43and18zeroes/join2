@@ -1,2 +1,4 @@
-<p>main-dialog-add-contact works!</p>
-<input [(ngModel)]="contact.contactName" formControlName="contactName">
+<form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+    <input [(ngModel)]="contact.contactName" formControlName="contactName">
+    <button></button>
+</form>

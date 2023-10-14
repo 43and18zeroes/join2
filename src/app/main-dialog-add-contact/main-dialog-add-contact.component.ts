@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Contact } from 'src/models/contact.class';
 
@@ -11,13 +12,20 @@ export class MainDialogAddContactComponent {
 
   contact = new Contact();
 
-  constructor(public dialog: MatDialog) {}
+  addUserForm: FormGroup;
+
+  constructor(public dialog: MatDialog,
+    private fb: FormBuilder,) {
+      this.addUserForm = this.fb.group({
+        contactName: ['']
+      });
+    }
 
   ngOnInit(): void {
 
   }
 
   onSubmit() {
-    
+    console.log("contact", this.contact);
   }
 }
