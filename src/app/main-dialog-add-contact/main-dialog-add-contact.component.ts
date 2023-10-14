@@ -50,6 +50,10 @@ export class MainDialogAddContactComponent {
 
   }
 
+  closeDialog() {
+    this.dialog.closeAll();
+  }
+
   onSubmit() {
     this.getContactData();
     console.log("New user to backend", this.contact);
