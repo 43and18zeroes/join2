@@ -35,5 +35,6 @@ export class MainDialogAddContactComponent {
   getContactData() {
     this.contact.contactFirstName = this.contact.contactName.split(' ')[0];
     this.contact.contactSurName = this.contact.contactName.split(' ')[1];
+    this.contact.contactInitials = this.contact.contactFirstName.charAt(0).toUpperCase() + this.contact.contactSurName.charAt(0).toUpperCase();
   }
 }
