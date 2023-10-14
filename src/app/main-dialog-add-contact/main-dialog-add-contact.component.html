@@ -1,6 +1,26 @@
-<form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
-    <input [(ngModel)]="contact.contactName" formControlName="contactName" placeholder="Name">
-    <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress" placeholder="Email">
-    <input [(ngModel)]="contact.contactPhoneNumber" formControlName="contactPhoneNumber" placeholder="Phone">
-    <button>Save</button>
-</form>
+<div class="add__contact__container">
+
+    <div class="left">
+        <div class="left__content">
+            <img src="" alt="">
+            <h2>Add contact</h2>
+            <div>Tasks are better with a team!</div>
+        </div>
+    </div>
+
+    <div class="right">
+        <header>X</header>
+        <body>
+            <img src="" alt="">
+            <div class="add__user__form">
+                <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+                    <input [(ngModel)]="contact.contactName" formControlName="contactName" placeholder="Name">
+                    <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress" placeholder="Email">
+                    <input [(ngModel)]="contact.contactPhoneNumber" formControlName="contactPhoneNumber" placeholder="Phone">
+                    <button>Save</button>
+                </form>
+            </div>
+        </body>
+    </div>
+
+</div>
