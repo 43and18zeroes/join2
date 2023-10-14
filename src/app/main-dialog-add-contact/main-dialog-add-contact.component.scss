@@ -6,16 +6,27 @@
     .left {
         width: 594px;
         background-color: var(--main-slate);
-        padding-left: 48px;
+        padding: 48px;
     }
 
     .right {
         background-color: #FFF;
         flex: 1;
+        padding: 48px;
 
         .right__header {
             display: flex;
             justify-content: flex-end;
+            
+            .hover__area {
+                width: 30px;
+                height: 30px;
+            }
+
+            span {
+                font-size: 25px;
+                color: var(--main-slate)
+            }
         }
     }
 }
