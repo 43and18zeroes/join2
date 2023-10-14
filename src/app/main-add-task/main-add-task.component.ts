@@ -105,7 +105,9 @@ export class MainAddTaskComponent {
   }
 
   openAddUserDialog() {
-    this.dialog.open(MainDialogAddContactComponent);
+    this.dialog.open(MainDialogAddContactComponent, {
+      panelClass: 'popup__contact__add'
+    });
   }
 
   categoryPreventFocusLoss(event: MouseEvent) {

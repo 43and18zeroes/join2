@@ -15,6 +15,8 @@ export class MainContactsComponent {
   }
 
   openAddUserDialog() {
-    this.dialog.open(MainDialogAddContactComponent);
+    this.dialog.open(MainDialogAddContactComponent, {
+      panelClass: 'popup__contact__add'
+    });
   }
 }
