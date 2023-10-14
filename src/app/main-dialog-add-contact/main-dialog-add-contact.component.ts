@@ -28,6 +28,12 @@ export class MainDialogAddContactComponent {
   }
 
   onSubmit() {
+    this.getContactData();
     console.log("contact", this.contact);
+  }
+
+  getContactData() {
+    this.contact.contactFirstName = this.contact.contactName.split(' ')[0];
+    this.contact.contactSurName = this.contact.contactName.split(' ')[1];
   }
 }
