@@ -2,6 +2,8 @@ import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainComponent } from '../main/main.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main-add-task',
@@ -41,7 +43,9 @@ export class MainAddTaskComponent {
     private firestore: AngularFirestore,
     private fb: FormBuilder,
     public mainComponent: MainComponent,
-    private renderer: Renderer2) {
+    private renderer: Renderer2,
+    public dialog: MatDialog
+    ) {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
@@ -51,7 +55,6 @@ export class MainAddTaskComponent {
       category: ['', Validators.required],
       subTasks: []
     });
-
     this.today = this.getTodaysDate();
   }
 
@@ -99,6 +102,10 @@ export class MainAddTaskComponent {
 
   assignPreventFocusLoss(event: MouseEvent) {
     event.preventDefault();
+  }
+
+  openAddUserDialog() {
+    this.dialog.open(MainDialogAddContactComponent);
   }
 
   categoryPreventFocusLoss(event: MouseEvent) {
