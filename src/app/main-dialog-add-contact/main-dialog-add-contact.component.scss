@@ -93,6 +93,10 @@
                 flex: 1;
                 display: flex;
                 flex-direction: column;
+
+                .form__footer {
+                    display: flex;
+                }
             }
         }
     }
