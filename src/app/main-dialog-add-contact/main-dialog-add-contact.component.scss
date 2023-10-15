@@ -109,7 +109,7 @@
                     }
 
                     input {
-                        width: 354px;
+                        width: calc(100% - 80px);
                         padding: 10px 57px 10px 21px;
                         border-radius: 10px;
                         font-size: var(--fontsize-body);
@@ -148,6 +148,7 @@
 
                     button {
                         font-size: 20px;
+                        white-space: nowrap;
                     }
                 }
             }
