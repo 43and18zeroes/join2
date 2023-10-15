@@ -32,11 +32,15 @@
                 font-weight: 300;
             }
 
-            div {
+            .line {
                 width: 76px;
                 border-bottom: 3px solid var(--accent-cyan);
                 border-radius: 5px;
                 margin-top: 8px;
+            }
+
+            .spacer {
+                height: 69px;
             }
         }
     }
