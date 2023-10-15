@@ -5,15 +5,10 @@
         <div class="left__content">
             <img src="assets/img/main/popups/j-white.webp" alt="Main join logo" draggable="false">
             <h2>Add contact</h2>
-            <div>Tasks are better with a team!</div>
-
-            <header class="header__mobile">
-                <h2>Join 360</h2>
-                <span>Key Metrics at a Glance</span>
-                <div></div>
-            </header>
+            <span>Tasks are better with a team!</span>
+            <div></div>
         </div>
-        
+
     </div>
 
     <div class="right">
@@ -28,8 +23,10 @@
             <div class="add__user__form">
                 <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
                     <input [(ngModel)]="contact.contactName" formControlName="contactName" placeholder="Name">
-                    <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress" placeholder="Email">
-                    <input [(ngModel)]="contact.contactPhoneNumber" formControlName="contactPhoneNumber" placeholder="Phone">
+                    <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress"
+                        placeholder="Email">
+                    <input [(ngModel)]="contact.contactPhoneNumber" formControlName="contactPhoneNumber"
+                        placeholder="Phone">
                     <button>Save</button>
                 </form>
             </div>
