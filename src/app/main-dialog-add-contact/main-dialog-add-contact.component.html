@@ -39,7 +39,7 @@
                         #contactName placeholder="Name">
                 </div>
                 <div class="incorrect__input">
-                    <span>Separate first and last name with a space.</span>
+                    <span *ngIf="addContactForm.controls.contactName.dirty">Separate first and last name with a space.</span>
                 </div>
 
                 <div class="input__container">
@@ -50,7 +50,7 @@
                         placeholder="Email" #contactEmailAddress placeholder="Email">
                 </div>
                 <div class="incorrect__input">
-                    <span>Invalid
+                    <span *ngIf="addContactForm.controls.contactEmailAddress.dirty" >Invalid
                         email
                         address.</span>
                 </div>
@@ -63,7 +63,7 @@
                         placeholder="Phone" #contactPhoneNumber placeholder="Phone">
                 </div>
                 <div class="incorrect__input">
-                    <span>Invalid
+                    <span *ngIf="addContactForm.controls.contactPhoneNumber.dirty">Invalid
                         phone number.</span>
                 </div>
 
