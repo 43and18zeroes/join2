@@ -204,6 +204,11 @@
                     span {
                         font-size: var(--fontsize-incorrect-input);
                         color: var(--invalid-red);
+
+                        @media (width <=480px) {
+                            font-size: 13px;
+                            letter-spacing: -0.5px;
+                        }
                     }
                 }
 
