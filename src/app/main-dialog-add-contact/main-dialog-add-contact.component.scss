@@ -96,7 +96,6 @@
 
                 .input__container {
                     position: relative;
-                    margin-bottom: 26px;
 
                     .material__symbols__outlined {
                         position: absolute;
@@ -130,6 +129,15 @@
                         &:focus {
                             border: 1px solid var(--accent-cyan);
                         }
+                    }
+                }
+
+                .incorrect__input {
+                    height: 32px;
+
+                    span {
+                        font-size: var(--fontsize-incorrect-input);
+                        color: var(--invalid-red);
                     }
                 }
 
