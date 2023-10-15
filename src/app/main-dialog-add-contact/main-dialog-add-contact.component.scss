@@ -7,6 +7,30 @@
         width: 594px;
         background-color: var(--main-slate);
         padding: 48px;
+
+        .header__mobile {
+            width: 453.1px;
+    
+            @media (width <=490px) {
+                width: 323px;
+            }
+    
+            h2 {
+                font-size: 47px;
+                margin: 0 0 8px 0;
+            }
+    
+            span {
+                font-size: 20px;
+            }
+    
+            div {
+                width: 96px;
+                border-bottom: 4px solid var(--accent-cyan);
+                border-radius: 5px;
+                margin-top: 8px;
+            }
+        }
     }
 
     .right {
