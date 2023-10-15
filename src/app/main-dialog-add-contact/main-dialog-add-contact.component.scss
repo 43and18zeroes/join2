@@ -135,6 +135,11 @@
 
                 .form__footer {
                     display: flex;
+                    gap: 20px;
+
+                    button {
+                        font-size: 20px;
+                    }
                 }
             }
         }

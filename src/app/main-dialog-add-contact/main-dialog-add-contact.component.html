@@ -29,25 +29,28 @@
                     <span (click)="contactName.focus()" class="material__symbols__outlined">
                         person
                     </span>
-                    <input [(ngModel)]="contact.contactName" formControlName="contactName" placeholder="Name" #contactName placeholder="Name">
+                    <input [(ngModel)]="contact.contactName" formControlName="contactName" placeholder="Name"
+                        #contactName placeholder="Name">
                 </div>
 
                 <div class="input__container">
                     <span (click)="contactEmailAddress.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress" placeholder="Email" #contactEmailAddress placeholder="Name">
+                    <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress"
+                        placeholder="Email" #contactEmailAddress placeholder="Name">
                 </div>
 
                 <div class="input__container">
                     <span (click)="contactPhoneNumber.focus()" class="material__symbols__outlined">
                         phone
                     </span>
-                    <input [(ngModel)]="contact.contactPhoneNumber" formControlName="contactPhoneNumber" placeholder="Phone" #contactPhoneNumber placeholder="Phone">
+                    <input [(ngModel)]="contact.contactPhoneNumber" formControlName="contactPhoneNumber"
+                        placeholder="Phone" #contactPhoneNumber placeholder="Phone">
                 </div>
 
                 <div class="form__footer">
-                    <button type="button" class="btn__secondary btn__secondary__main">Cancel <span
+                    <button  (click)="closeDialog()" type="button" class="btn__secondary btn__secondary__main">Cancel <span
                             class="material__symbols__outlined">
                             close
                         </span></button>
