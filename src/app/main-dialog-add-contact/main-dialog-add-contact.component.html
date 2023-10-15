@@ -1,7 +1,6 @@
 <div class="add__contact__container">
 
     <div class="left">
-
         <div class="left__content">
             <img src="assets/img/main/popups/j-white.webp" alt="Main join logo" draggable="false">
             <h2>Add contact</h2>
@@ -9,18 +8,21 @@
             <div class="line"></div>
             <div class="spacer"></div>
         </div>
-
     </div>
 
     <div class="right">
+
         <div class="right__header">
             <div (click)="closeDialog()" class="hover__area no__select">
                 <div class="transform__circle"></div>
                 <span class="material__symbols__outlined single__icon">close</span>
             </div>
         </div>
-        <div>
+
+        <div class="right__body">
+
             <img src="" alt="">
+
             <div class="add__user__form">
                 <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
                     <input [(ngModel)]="contact.contactName" formControlName="contactName" placeholder="Name">
@@ -31,7 +33,9 @@
                     <button>Save</button>
                 </form>
             </div>
+
         </div>
+        
     </div>
 
 </div>

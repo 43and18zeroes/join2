@@ -4,7 +4,7 @@
     display: flex;
 
     .left {
-        width: 594px;
+        width: fit-content;
         height: calc(100% - 96px);
         background-color: var(--main-slate);
         padding: 48px;
