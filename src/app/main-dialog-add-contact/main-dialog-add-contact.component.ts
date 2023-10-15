@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Contact } from 'src/models/contact.class';
-import { signUpUserNameValidator } from '../shared/validators/custom-validators';
+import { emailValidator, signUpUserNameValidator } from '../shared/validators/custom-validators';
 
 @Component({
   selector: 'app-main-dialog-add-contact',
@@ -15,7 +15,7 @@ export class MainDialogAddContactComponent {
   contact = new Contact();
   addContactForm = this.fb.group({
     contactName: ['', [Validators.required, signUpUserNameValidator]],
-    contactEmailAddress: [''],
+    contactEmailAddress: ['', [Validators.required, emailValidator]],
     contactPhoneNumber: ['']
   });
 

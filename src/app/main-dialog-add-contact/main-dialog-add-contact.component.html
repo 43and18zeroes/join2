@@ -51,7 +51,8 @@
                         placeholder="Email" #contactEmailAddress placeholder="Email">
                 </div>
                 <div class="incorrect__input">
-                    <span *ngIf="addContactForm.controls.contactEmailAddress.dirty" >Invalid
+                    <span *ngIf="addContactForm.controls.contactEmailAddress.invalid &&
+                    addContactForm.controls.contactEmailAddress.dirty" >Invalid
                         email
                         address.</span>
                 </div>
