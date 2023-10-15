@@ -23,7 +23,7 @@
 
             <div class="material__symbols__outlined symbol__person">person</div>
 
-            <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="addContactForm" (ngSubmit)="onSubmit()">
 
                 <div class="input__container">
                     <span (click)="contactName.focus()" class="material__symbols__outlined">
@@ -33,9 +33,7 @@
                         #contactName placeholder="Name">
                 </div>
                 <div class="incorrect__input">
-                    <span *ngIf="addUserForm.controls">Invalid
-                        email
-                        address.</span>
+                    <span>Separate first and last name with a space.</span>
                 </div>
 
                 <div class="input__container">
@@ -43,7 +41,12 @@
                         mail
                     </span>
                     <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress"
-                        placeholder="Email" #contactEmailAddress placeholder="Name">
+                        placeholder="Email" #contactEmailAddress placeholder="Email">
+                </div>
+                <div class="incorrect__input">
+                    <span>Invalid
+                        email
+                        address.</span>
                 </div>
 
                 <div class="input__container">
@@ -52,6 +55,11 @@
                     </span>
                     <input [(ngModel)]="contact.contactPhoneNumber" formControlName="contactPhoneNumber"
                         placeholder="Phone" #contactPhoneNumber placeholder="Phone">
+                </div>
+                <div class="incorrect__input">
+                    <span>Invalid
+                        phone number.
+                    .</span>
                 </div>
 
                 <div class="form__footer">

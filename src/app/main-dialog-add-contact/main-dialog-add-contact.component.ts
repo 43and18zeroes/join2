@@ -12,7 +12,11 @@ import { Contact } from 'src/models/contact.class';
 export class MainDialogAddContactComponent {
 
   contact = new Contact();
-  addUserForm: FormGroup;
+  addContactForm = this.fb.group({
+    contactName: ['', Validators.required],
+    contactEmailAddress: [''],
+    contactPhoneNumber: ['']
+  });
 
   private colors: string[] = [
     '#003366', '#004080', '#00509E', '#0055A4', '#005FB3', '#006633',
@@ -38,16 +42,10 @@ export class MainDialogAddContactComponent {
     public dialog: MatDialog,
     private fb: FormBuilder,
     private firestore: AngularFirestore,
-  ) {
-    this.addUserForm = this.fb.group({
-      contactName: ['', Validators.required],
-      contactEmailAddress: [''],
-      contactPhoneNumber: ['']
-    });
-  }
+  ) { }
 
   ngOnInit(): void {
-    console.log("addUserForm", this.addUserForm.value)
+    console.log("addContactForm", this.addContactForm.value)
   }
 
   closeDialog() {
@@ -56,7 +54,7 @@ export class MainDialogAddContactComponent {
 
   onSubmit() {
     this.getContactData();
-    this.sendNewUserDataToBackend();
+    this.sendNewContactDataToBackend();
   }
 
   getContactData() {
@@ -77,7 +75,7 @@ export class MainDialogAddContactComponent {
     return sum % this.colors.length;
   }
 
-  sendNewUserDataToBackend() {
+  sendNewContactDataToBackend() {
     this.firestore
       .collection('contacts')
       .add(this.contact.toJSON())
