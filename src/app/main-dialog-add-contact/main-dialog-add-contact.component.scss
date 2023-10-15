@@ -4,7 +4,8 @@
     display: flex;
 
     @media (width <=1100px) {
-        flex-direction: column;;
+        flex-direction: column;
+        ;
     }
 
     .left {
@@ -15,6 +16,31 @@
 
         @media (width <=1100px) {
             width: auto;
+        }
+
+        .mobile__header {
+            display: none;
+
+            @media (width <=1100px) {
+                display: flex;
+                justify-content: flex-end;
+
+                .hover__area {
+                    width: 30px;
+                    height: 30px;
+
+                    &:hover {
+                        .transform__circle {
+                            background-color: var(--accent-cyan);
+                        }
+                    }
+                }
+
+                span {
+                    font-size: 25px;
+                    color: #FFF;
+                }
+            }
         }
 
         .left__content {
