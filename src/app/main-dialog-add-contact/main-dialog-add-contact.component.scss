@@ -211,8 +211,8 @@
                     display: flex;
                     gap: 20px;
 
-                    @media (width <=480px) {
-                        flex-direction: column-reverse;
+                    @media (width <=576px) {
+                        justify-content: center;
                     }
 
                     button {
@@ -225,6 +225,12 @@
 
                         @media (width <=480px) {
                             width: fit-content;
+                        }
+                    }
+
+                    @media (width <=576px) {
+                        .btn__secondary {
+                            display: none;
                         }
                     }
                 }

@@ -257,6 +257,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 970px;
     height: 474px;
     background-color: rgba(0, 0, 0, 0);
+
+    @media (width <=1100px) {
+        height: fit-content;
+    }
 }
 
 .mdc-dialog__surface {
