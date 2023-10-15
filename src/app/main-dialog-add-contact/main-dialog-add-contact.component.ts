@@ -56,8 +56,6 @@ export class MainDialogAddContactComponent {
 
   onSubmit() {
     this.getContactData();
-    console.log("New user to backend", this.contact);
-    // const contactJSON = this.contact;
     this.sendNewUserDataToBackend();
   }
 
@@ -80,7 +78,6 @@ export class MainDialogAddContactComponent {
   }
 
   sendNewUserDataToBackend() {
-    console.log("New user to backend", this.contact);
     this.firestore
       .collection('contacts')
       .add(this.contact.toJSON())
