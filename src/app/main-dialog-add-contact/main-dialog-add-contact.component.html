@@ -29,8 +29,13 @@
                     <span (click)="contactName.focus()" class="material__symbols__outlined">
                         person
                     </span>
-                    <input [(ngModel)]="contact.contactName" formControlName="contactName" placeholder="Name"
+                    <input [(ngModel)]="contact.contactName" id="contactName" formControlName="contactName" placeholder="Name"
                         #contactName placeholder="Name">
+                </div>
+                <div class="incorrect__input">
+                    <span *ngIf="addUserForm.controls">Invalid
+                        email
+                        address.</span>
                 </div>
 
                 <div class="input__container">

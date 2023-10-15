@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Contact } from 'src/models/contact.class';
 
@@ -40,14 +40,14 @@ export class MainDialogAddContactComponent {
     private firestore: AngularFirestore,
   ) {
     this.addUserForm = this.fb.group({
-      contactName: [''],
+      contactName: ['', Validators.required],
       contactEmailAddress: [''],
       contactPhoneNumber: ['']
     });
   }
 
   ngOnInit(): void {
-
+    console.log("addUserForm", this.addUserForm.value)
   }
 
   closeDialog() {
