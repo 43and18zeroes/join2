@@ -23,7 +23,6 @@
 
             <div class="material__symbols__outlined symbol__person">person</div>
 
-            <div class="add__user__form">
                 <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
                     <input [(ngModel)]="contact.contactName" formControlName="contactName" placeholder="Name">
                     <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress"
@@ -32,7 +31,6 @@
                         placeholder="Phone">
                     <button>Save</button>
                 </form>
-            </div>
 
         </div>
         

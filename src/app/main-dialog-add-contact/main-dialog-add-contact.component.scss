@@ -50,6 +50,8 @@
         background-color: #FFF;
         flex: 1;
         padding: 48px;
+        display: flex;
+        flex-direction: column;
 
         .right__header {
             display: flex;
@@ -67,6 +69,11 @@
         }
 
         .right__body {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 58px;
 
             .symbol__person {
                 width: 92px;
@@ -80,6 +87,12 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+            }
+
+            form {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
             }
         }
     }
