@@ -63,6 +63,7 @@ export class MainDialogAddContactComponent {
     this.contact.contactSurName = this.contact.contactName.split(' ')[1];
     this.contact.contactInitials = this.contact.contactFirstName.charAt(0).toUpperCase() + this.contact.contactSurName.charAt(0).toUpperCase();
     this.contact.contactColor = this.generateColorFromInitials(this.contact.contactInitials);
+    this.contact.contactPhoneNumber = this.contact.contactPhoneNumber.replace(/\s/g, '');
   }
 
   private generateColorFromInitials(initials: string): string {
