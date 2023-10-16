@@ -240,6 +240,10 @@
                     }
                 }
             }
+
+            .form__disabled {
+                pointer-events: none;
+            }
         }
     }
 }

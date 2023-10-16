@@ -43,6 +43,8 @@ export class MainDialogAddContactComponent {
   contactEmailAddressValid: boolean = true;
   contactPhoneNumberValid: boolean = true;
 
+  addUserFormSubmitted: boolean = false;
+
   constructor(
     public dialog: MatDialog,
     private fb: FormBuilder,
@@ -60,6 +62,7 @@ export class MainDialogAddContactComponent {
   onSubmit() {
     this.checkSingleInputs();
     if (this.addContactForm.valid) {
+      this.addUserFormSubmitted = true;
       this.getContactData();
       this.sendNewContactDataToBackend();
     } else {

@@ -29,7 +29,7 @@
 
             <div class="material__symbols__outlined symbol__person">person</div>
 
-            <form [formGroup]="addContactForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="addContactForm" (ngSubmit)="onSubmit()" [ngClass]="{ 'form__disabled': addUserFormSubmitted }">
 
                 <div class="input__container">
                     <span (click)="contactName.focus()" class="material__symbols__outlined">
