@@ -39,6 +39,10 @@ export class MainDialogAddContactComponent {
     '#FFCA68', '#773311'
   ];
 
+  contactNameValid: boolean = true;
+  contactEmailAddressValid: boolean = true;
+  contactPhoneNumberValid: boolean = true;
+
   constructor(
     public dialog: MatDialog,
     private fb: FormBuilder,
@@ -54,11 +58,24 @@ export class MainDialogAddContactComponent {
   }
 
   onSubmit() {
+    this.checkSingleInputs();
     if (this.addContactForm.valid) {
       this.getContactData();
       this.sendNewContactDataToBackend();
     } else {
       console.log("form not valid");
+    }
+  }
+
+  checkSingleInputs() {
+    if (!this.contact.contactName) {
+      this.contactNameValid = false;
+    }
+    if (!this.contact.contactEmailAddress) {
+      this.contactEmailAddressValid = false;
+    }
+    if (!this.contact.contactPhoneNumber) {
+      this.contactPhoneNumberValid = false;
     }
   }
 

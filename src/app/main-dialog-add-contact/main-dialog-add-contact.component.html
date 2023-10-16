@@ -40,7 +40,7 @@
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="addContactForm.controls.contactName.invalid &&
-                    addContactForm.controls.contactName.dirty">Separate first and last name with a space.</span>
+                    addContactForm.controls.contactName.dirty || !contactNameValid">Separate first and last name with a space.</span>
                 </div>
 
                 <div class="input__container">
