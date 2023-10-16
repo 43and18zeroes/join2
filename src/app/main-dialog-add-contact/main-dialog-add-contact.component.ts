@@ -54,8 +54,12 @@ export class MainDialogAddContactComponent {
   }
 
   onSubmit() {
-    this.getContactData();
-    this.sendNewContactDataToBackend();
+    if (this.addContactForm.valid) {
+      this.getContactData();
+      this.sendNewContactDataToBackend();
+    } else {
+      console.log("form not valid")
+    }
   }
 
   getContactData() {
