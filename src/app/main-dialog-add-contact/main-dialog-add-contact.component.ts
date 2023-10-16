@@ -68,15 +68,12 @@ export class MainDialogAddContactComponent {
   }
 
   checkSingleInputs() {
-    if (!this.contact.contactName) {
-      this.contactNameValid = false;
-    }
-    if (!this.contact.contactEmailAddress) {
-      this.contactEmailAddressValid = false;
-    }
-    if (!this.contact.contactPhoneNumber) {
-      this.contactPhoneNumberValid = false;
-    }
+    if (!this.contact.contactName) this.contactNameValid = false;
+    else this.contactNameValid = true;
+    if (!this.contact.contactEmailAddress) this.contactEmailAddressValid = false;
+    else this.contactEmailAddressValid = true;
+    if (!this.contact.contactPhoneNumber) this.contactPhoneNumberValid = false;
+    else this.contactPhoneNumberValid = true;
   }
 
   getContactData() {
