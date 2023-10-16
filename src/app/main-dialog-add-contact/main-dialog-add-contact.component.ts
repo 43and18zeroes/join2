@@ -39,6 +39,8 @@ export class MainDialogAddContactComponent {
     '#FFCA68', '#773311'
   ];
 
+  formValid: boolean = true;
+
   constructor(
     public dialog: MatDialog,
     private fb: FormBuilder,
@@ -58,7 +60,8 @@ export class MainDialogAddContactComponent {
       this.getContactData();
       this.sendNewContactDataToBackend();
     } else {
-      console.log("form not valid")
+      console.log("form not valid");
+      this.formValid = false;
     }
   }
 
