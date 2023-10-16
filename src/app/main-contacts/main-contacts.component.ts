@@ -12,7 +12,7 @@ export class MainContactsComponent {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.openAddUserDialog();
+    
   }
 
   openAddUserDialog() {
