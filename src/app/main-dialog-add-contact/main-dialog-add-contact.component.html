@@ -65,7 +65,8 @@
                         placeholder="Phone" #contactPhoneNumber placeholder="Phone">
                 </div>
                 <div class="incorrect__input">
-                    <span *ngIf="addContactForm.controls.contactPhoneNumber.dirty">Invalid
+                    <span *ngIf="addContactForm.controls.contactPhoneNumber.invalid &&
+                    addContactForm.controls.contactPhoneNumber.dirty">Invalid
                         phone number.</span>
                 </div>
 
