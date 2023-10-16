@@ -273,9 +273,8 @@ export class MainAddTaskComponent {
       this.formSubmitted = true;
       const trimmedTask = this.trimTask();
       this.addAssignedTo(trimmedTask)
-      if (trimmedTask.subTasks === null) {
-        trimmedTask.subTasks = [];
-      }
+      if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
+      if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask.subTasks);
       this.sendNewTaskToBackend(trimmedTask);
       this.onSubmitOutro();
     }
@@ -307,6 +306,10 @@ export class MainAddTaskComponent {
     }
     trimmedTask.assignedTo = assignedMailAdresses;
     return trimmedTask;
+  }
+
+  addSubtasksStatuses(subTasks) {
+    console.log("subTasks", subTasks);
   }
 
   sendNewTaskToBackend(trimmedTask) {
