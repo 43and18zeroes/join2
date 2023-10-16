@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -42,8 +42,8 @@ export class MainDialogAddContactComponent {
   contactNameValid: boolean = true;
   contactEmailAddressValid: boolean = true;
   contactPhoneNumberValid: boolean = true;
-
   addUserFormSubmitted: boolean = false;
+  @ViewChild('newUserSubmitBtn') newUserSubmitBtn: ElementRef;
 
   constructor(
     public dialog: MatDialog,
@@ -65,6 +65,7 @@ export class MainDialogAddContactComponent {
       this.addUserFormSubmitted = true;
       this.getContactData();
       this.sendNewContactDataToBackend();
+      this.addNewUserOutro();
     } else {
       console.log("form not valid");
     }
@@ -106,4 +107,12 @@ export class MainDialogAddContactComponent {
         console.log("New user to backend", this.contact);
       })
   }
+
+  addNewUserOutro() {
+    this.newUserSubmitBtn.nativeElement.classList.add("btn__success");
+    setTimeout(() => {
+      this.dialog.closeAll();
+    }, 1500);
+  }
+
 }
