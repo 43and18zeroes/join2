@@ -13,6 +13,7 @@ export class MainComponent implements OnInit {
   allUsersData;
   allContactsData;
   allTasksData;
+  usersAndContactsMerged;
 
   currentlyDisplayed: string = 'contacts';
   currentlyClicked: string = 'contacts';
@@ -28,6 +29,7 @@ export class MainComponent implements OnInit {
     this.getUsersDataMain();
     this.getContactsDataMain();
     this.getTasksDataMain();
+    this.mergeUsersAndContactsData();
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
     }, 2500);
@@ -83,8 +85,33 @@ export class MainComponent implements OnInit {
     } else {
       this.allTasksData = JSON.parse(localStorage.getItem('allTasksData') || '[]');
     }
-
-    console.log("this.allTasksData", this.allTasksData)
   }
 
+  mergeUsersAndContactsData() {
+    console.log("allContactsData", this.allContactsData);
+
+    const keyMappings = {
+      contactInitials: 'userInitials',
+      contactSurName: 'userSurName',
+      contactName: 'userName',
+      contactFirstName: 'userFirstName',
+      contactColor: 'userColor',
+      contactEmailAddress: 'userEmailAddress',
+      contactPhoneNumber: 'userPhoneNumber'
+    };
+
+    const adjustedArray1 = this.allContactsData.map(obj => {
+      const adjustedObj = {};
+      for (const key in obj) {
+        if (keyMappings[key]) {
+          adjustedObj[keyMappings[key]] = obj[key];
+        } else {
+          adjustedObj[key] = obj[key];
+        }
+      }
+      return adjustedObj;
+    });
+
+    console.log("adjustedArray1", adjustedArray1);
+  }
 }
