@@ -54,7 +54,8 @@ export class MainAddTaskComponent {
       priority: ['low'],
       category: ['', Validators.required],
       subTasks: [],
-      subTasksCompleted: []
+      subTasksCompleted: [],
+      taskStatus: 'todo'
     });
     this.today = this.getTodaysDate();
   }
@@ -259,7 +260,8 @@ export class MainAddTaskComponent {
       priority: ['low'],
       category: ['', Validators.required],
       subTasks: [],
-      subTasksCompleted: []
+      subTasksCompleted: [],
+      taskStatus: 'todo'
     });
   }
 
