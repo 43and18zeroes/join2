@@ -113,5 +113,26 @@ export class MainComponent implements OnInit {
     });
 
     console.log("adjustedArray1", adjustedArray1);
+
+    this.usersAndContactsMerged = adjustedArray1.concat(this.allUsersData);
+
+    console.log("this.usersAndContactsMerged", this.usersAndContactsMerged);
+
+    this.sortUsersAndContactsMerged();
   }
+
+  sortUsersAndContactsMerged() {
+    this.usersAndContactsMerged.sort((a, b) => {
+      if (a.userFirstName.toLowerCase() < b.userFirstName.toLowerCase()) {
+        return -1;
+      }
+      if (a.userFirstName.toLowerCase() > b.userFirstName.toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    });
+
+    console.log("usersAndContactsMerged sorted", this.usersAndContactsMerged)
+  }
+
 }
