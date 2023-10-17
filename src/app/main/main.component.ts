@@ -42,17 +42,6 @@ export class MainComponent implements OnInit {
     this.sortUsersData();
   }
 
-  getContactsDataMain() {
-    if (this.userService.allContactsData !== undefined) {
-      this.allContactsData = this.userService.allContactsData;
-    } else {
-      this.allContactsData = JSON.parse(localStorage.getItem('allContactsData') || '[]');
-    }
-
-    console.log("allContactsData", this.allContactsData)
-    // this.sortContactsData();
-  }
-
   private sortUsersData(): void {
     this.allUsersData.sort((a, b) => {
       if (a.userFirstName.toLowerCase() < b.userFirstName.toLowerCase()) {
@@ -63,5 +52,30 @@ export class MainComponent implements OnInit {
       }
       return 0;
     });
+  }
+
+  getContactsDataMain() {
+    if (this.userService.allContactsData !== undefined) {
+      this.allContactsData = this.userService.allContactsData;
+    } else {
+      this.allContactsData = JSON.parse(localStorage.getItem('allContactsData') || '[]');
+    }
+
+    console.log("allContactsData", this.allContactsData)
+    this.sortContactsData();
+  }
+
+  sortContactsData() {
+    this.allContactsData.sort((a, b) => {
+      if (a.contactFirstName.toLowerCase() < b.contactFirstName.toLowerCase()) {
+        return -1;
+      }
+      if (a.contactFirstName.toLowerCase() > b.contactFirstName.toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    });
+
+    console.log("sorted allContactsData", this.allContactsData)
   }
 }
