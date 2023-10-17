@@ -258,7 +258,8 @@ export class MainAddTaskComponent {
       dueDate: ['', Validators.required],
       priority: ['low'],
       category: ['', Validators.required],
-      subTasks: []
+      subTasks: [],
+      subTasksCompleted: []
     });
   }
 
