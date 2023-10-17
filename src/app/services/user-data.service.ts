@@ -8,6 +8,7 @@ import { getAuth } from "firebase/auth";
 export class UserService {
 
   allUsersData;
+  allContactsData;
   currentUserAuth;
   currentUserData = [];
 
@@ -15,6 +16,7 @@ export class UserService {
 
   setAllDataToVarAndLocal() {
     this.setAllUsersDataToVarAndLocal();
+    this.setAllContactsDataToVarAndLocal();
   }
 
   setAllUsersDataToVarAndLocal() {
@@ -25,6 +27,17 @@ export class UserService {
         this.allUsersData = changes;
         localStorage.removeItem('allUsersData');
         localStorage.setItem('allUsersData', JSON.stringify(changes));
+      })
+  }
+
+  setAllContactsDataToVarAndLocal() {
+    this.firestore
+      .collection('contacts')
+      .valueChanges()
+      .subscribe((changes: any) => {
+        this.allContactsData = changes;
+        localStorage.removeItem('allContactsData');
+        localStorage.setItem('allContactsData', JSON.stringify(changes));
       })
   }
 
