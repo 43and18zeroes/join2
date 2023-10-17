@@ -30,7 +30,6 @@ export class MainAddTaskComponent {
   subTasksInputEmpty: boolean = true;
   subTasksMaxReached: boolean = false;
   subTasksArray: string[] = [];
-  subTasksCompleted: string[] = [];
   subTaskCurrentlyEditing: string | null = null;
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
   @ViewChild('submitBtn') submitBtn: ElementRef;
@@ -54,7 +53,8 @@ export class MainAddTaskComponent {
       dueDate: ['', Validators.required],
       priority: ['low'],
       category: ['', Validators.required],
-      subTasks: []
+      subTasks: [],
+      subTasksCompleted: []
     });
     this.today = this.getTodaysDate();
   }
@@ -275,7 +275,7 @@ export class MainAddTaskComponent {
       const trimmedTask = this.trimTask();
       this.addAssignedTo(trimmedTask)
       if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
-      if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask.subTasks);
+      if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
       this.sendNewTaskToBackend(trimmedTask);
       this.onSubmitOutro();
     }
@@ -309,12 +309,13 @@ export class MainAddTaskComponent {
     return trimmedTask;
   }
 
-  addSubtasksStatuses(subTasks) {
-    console.log("subTasks", subTasks);
-    for (let index = 0; index < subTasks.length; index++) {
-      this.subTasksCompleted.push("false");
+  addSubtasksStatuses(trimmedTask) {
+    let subTasksCompleted = [];
+    for (let index = 0; index < trimmedTask.subTasks.length; index++) {
+      subTasksCompleted.push("false");
     }
-    console.log("subTasksCompleted", this.subTasksCompleted);
+    trimmedTask.subTasksCompleted = subTasksCompleted;
+    return trimmedTask;
   }
 
   sendNewTaskToBackend(trimmedTask) {
