@@ -276,6 +276,7 @@ export class MainAddTaskComponent {
       this.addAssignedTo(trimmedTask)
       if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
       if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
+      else trimmedTask.subTasksCompleted = [];
       this.sendNewTaskToBackend(trimmedTask);
       this.onSubmitOutro();
     }
