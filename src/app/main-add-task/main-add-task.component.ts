@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class MainAddTaskComponent {
 
-  allUsersData;
+  allUsersAndContacts;
   currentUserData;
   addTaskForm: FormGroup;
   showAssignedDropdown: boolean = false;
@@ -61,7 +61,7 @@ export class MainAddTaskComponent {
   }
 
   ngOnInit(): void {
-    this.allUsersData = this.mainComponent.allUsersData;
+    this.allUsersAndContacts = this.mainComponent.usersAndContactsMerged;
     this.currentUserData = this.mainComponent.currentUserData;
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
       if (!this.assignSelectRef.nativeElement.contains(event.target)) {
@@ -240,7 +240,7 @@ export class MainAddTaskComponent {
   clearForm() {
     this.resetFormModel();
     this.currentUserData.selected = false;
-    this.allUsersData.forEach(user => user.selected = false);
+    this.allUsersAndContacts.forEach(user => user.selected = false);
     this.selectedUsers = [];
     this.selectedPriority = 'undefined';
     this.subTasksArray = [];

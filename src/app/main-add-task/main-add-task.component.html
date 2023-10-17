@@ -40,7 +40,7 @@
                                     </div>
                                     <input type="checkbox" [checked]="currentUserData.selected" readonly />
                                 </div>
-                                <ng-container *ngFor="let user of allUsersData">
+                                <ng-container *ngFor="let user of allUsersAndContacts">
                                     <div *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
                                         class="option__container" (click)="assignSelectOption(user)"
                                         (mousedown)="assignPreventFocusLoss($event)" [class.selected]="user.selected">
