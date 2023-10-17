@@ -9,6 +9,7 @@ export class UserService {
 
   allUsersData;
   allContactsData;
+  allTasksData;
   currentUserAuth;
   currentUserData = [];
 
@@ -17,6 +18,7 @@ export class UserService {
   setAllDataToVarAndLocal() {
     this.setAllUsersDataToVarAndLocal();
     this.setAllContactsDataToVarAndLocal();
+    this.setAllTasksDataToVarAndLocal();
   }
 
   setAllUsersDataToVarAndLocal() {
@@ -38,6 +40,17 @@ export class UserService {
         this.allContactsData = changes;
         localStorage.removeItem('allContactsData');
         localStorage.setItem('allContactsData', JSON.stringify(changes));
+      })
+  }
+
+  setAllTasksDataToVarAndLocal() {
+    this.firestore
+      .collection('tasks')
+      .valueChanges()
+      .subscribe((changes: any) => {
+        this.allTasksData = changes;
+        localStorage.removeItem('allTasksData');
+        localStorage.setItem('allTasksData', JSON.stringify(changes));
       })
   }
 

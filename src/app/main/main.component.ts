@@ -12,6 +12,7 @@ export class MainComponent implements OnInit {
   currentUserData;
   allUsersData;
   allContactsData;
+  allTasksData;
 
   currentlyDisplayed: string = 'contacts';
   currentlyClicked: string = 'contacts';
@@ -26,6 +27,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.getUsersDataMain();
     this.getContactsDataMain();
+    this.getTasksDataMain();
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
     }, 2500);
@@ -60,8 +62,6 @@ export class MainComponent implements OnInit {
     } else {
       this.allContactsData = JSON.parse(localStorage.getItem('allContactsData') || '[]');
     }
-
-    console.log("allContactsData", this.allContactsData)
     this.sortContactsData();
   }
 
@@ -75,7 +75,16 @@ export class MainComponent implements OnInit {
       }
       return 0;
     });
-
-    console.log("sorted allContactsData", this.allContactsData)
   }
+
+  getTasksDataMain() {
+    if (this.userService.allTasksData !== undefined) {
+      this.allTasksData = this.userService.allTasksData;
+    } else {
+      this.allTasksData = JSON.parse(localStorage.getItem('allTasksData') || '[]');
+    }
+
+    console.log("this.allTasksData", this.allTasksData)
+  }
+
 }
