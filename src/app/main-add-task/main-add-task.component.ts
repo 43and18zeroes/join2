@@ -30,6 +30,7 @@ export class MainAddTaskComponent {
   subTasksInputEmpty: boolean = true;
   subTasksMaxReached: boolean = false;
   subTasksArray: string[] = [];
+  subTasksCompleted: string[] = [];
   subTaskCurrentlyEditing: string | null = null;
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
   @ViewChild('submitBtn') submitBtn: ElementRef;
@@ -310,6 +311,10 @@ export class MainAddTaskComponent {
 
   addSubtasksStatuses(subTasks) {
     console.log("subTasks", subTasks);
+    for (let index = 0; index < subTasks.length; index++) {
+      this.subTasksCompleted.push("false");
+    }
+    console.log("subTasksCompleted", this.subTasksCompleted);
   }
 
   sendNewTaskToBackend(trimmedTask) {
