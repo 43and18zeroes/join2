@@ -13,6 +13,10 @@ export class UserService {
 
   constructor(private firestore: AngularFirestore) { }
 
+  setAllDataToVarAndLocal() {
+    this.setAllUsersDataToVarAndLocal();
+  }
+
   setAllUsersDataToVarAndLocal() {
     this.firestore
       .collection('users')

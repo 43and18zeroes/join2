@@ -29,7 +29,7 @@ export class AuthLogInComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.setAllUsersDataToVarAndLocal();
+    this.userService.setAllDataToVarAndLocal();
     if (sessionStorage.getItem('appLoaded')) {
       this.showLoadingScreen = false;
     } else {
