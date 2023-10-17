@@ -550,6 +550,7 @@
                     .text {
                         font-size: var(--main-text-size-desktop);
                         white-space: nowrap;
+                        text-align: center;
 
                         @media (width <=640px) {
                             font-size: var(--main-text-size-640);
