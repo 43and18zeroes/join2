@@ -88,28 +88,9 @@ export class MainComponent implements OnInit {
   }
 
   mergeUsersAndContactsData() {
-    console.log("allContactsData", this.allContactsData);
-
     const keyMappings = this.defineMapping();
-
-    const adjustedArray1 = this.allContactsData.map(obj => {
-      const adjustedObj = {};
-      for (const key in obj) {
-        if (keyMappings[key]) {
-          adjustedObj[keyMappings[key]] = obj[key];
-        } else {
-          adjustedObj[key] = obj[key];
-        }
-      }
-      return adjustedObj;
-    });
-
-    console.log("adjustedArray1", adjustedArray1);
-
+    const adjustedArray1 = this.adjustArray(keyMappings);
     this.usersAndContactsMerged = adjustedArray1.concat(this.allUsersData);
-
-    console.log("this.usersAndContactsMerged", this.usersAndContactsMerged);
-
     this.sortUsersAndContactsMerged();
   }
 
@@ -125,6 +106,20 @@ export class MainComponent implements OnInit {
     };
   }
 
+  adjustArray(keyMappings) {
+    return this.allContactsData.map(obj => {
+      const adjustedObj = {};
+      for (const key in obj) {
+        if (keyMappings[key]) {
+          adjustedObj[keyMappings[key]] = obj[key];
+        } else {
+          adjustedObj[key] = obj[key];
+        }
+      }
+      return adjustedObj;
+    });
+  }
+
   sortUsersAndContactsMerged() {
     this.usersAndContactsMerged.sort((a, b) => {
       if (a.userFirstName.toLowerCase() < b.userFirstName.toLowerCase()) {
@@ -135,8 +130,6 @@ export class MainComponent implements OnInit {
       }
       return 0;
     });
-
-    console.log("usersAndContactsMerged sorted", this.usersAndContactsMerged)
   }
 
 }
