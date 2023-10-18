@@ -108,10 +108,18 @@ export class UserService {
     });
   }
 
+  addToContactsData(newContact) {
+    this.allContactsData.push(newContact);
+    localStorage.removeItem('allContactsData');
+    localStorage.setItem('allContactsData', JSON.stringify(this.allContactsData));
+    this.sortContactsData();
+    this.mergeUsersAndContactsData();
+  }
+
   getTasksDataMain() {
     if (!(this.allTasksData !== undefined)) {
       this.allTasksData = JSON.parse(localStorage.getItem('allTasksData') || '[]');
-    } 
+    }
   }
 
   filterCurrentUserData() {

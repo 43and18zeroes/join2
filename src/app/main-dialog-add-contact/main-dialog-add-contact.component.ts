@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Contact } from 'src/models/contact.class';
 import { emailValidator, signUpUserNameValidator, phoneValidator } from '../shared/validators/custom-validators';
+import { UserService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-main-dialog-add-contact',
@@ -49,6 +50,7 @@ export class MainDialogAddContactComponent {
     public dialog: MatDialog,
     private fb: FormBuilder,
     private firestore: AngularFirestore,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +66,7 @@ export class MainDialogAddContactComponent {
     if (this.addContactForm.valid) {
       this.addUserFormSubmitted = true;
       this.getContactData();
+      this.userService.addToContactsData(this.contact);
       this.sendNewContactDataToBackend();
       this.addNewUserOutro();
     } else {
