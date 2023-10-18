@@ -4,6 +4,7 @@ import { MainComponent } from '../main/main.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UserService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-main-add-task',
@@ -44,7 +45,8 @@ export class MainAddTaskComponent {
     private fb: FormBuilder,
     public mainComponent: MainComponent,
     private renderer: Renderer2,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private userService: UserService
   ) {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
@@ -61,7 +63,7 @@ export class MainAddTaskComponent {
   }
 
   ngOnInit(): void {
-    this.allUsersAndContacts = this.mainComponent.usersAndContactsMerged;
+    this.allUsersAndContacts = this.userService.usersAndContactsMerged;
     this.currentUserData = this.mainComponent.currentUserData;
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
       if (!this.assignSelectRef.nativeElement.contains(event.target)) {

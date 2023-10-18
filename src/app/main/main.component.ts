@@ -13,7 +13,6 @@ export class MainComponent implements OnInit {
   allUsersData;
   allContactsData;
   allTasksData;
-  usersAndContactsMerged;
 
   currentlyDisplayed: string = 'contacts';
   currentlyClicked: string = 'contacts';
@@ -29,7 +28,7 @@ export class MainComponent implements OnInit {
     this.getUsersDataMain();
     this.getContactsDataMain();
     this.getTasksDataMain();
-    this.mergeUsersAndContactsData();
+    this.userService.mergeUsersAndContactsData();
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
     }, 2500);
@@ -85,51 +84,6 @@ export class MainComponent implements OnInit {
     } else {
       this.allTasksData = JSON.parse(localStorage.getItem('allTasksData') || '[]');
     }
-  }
-
-  mergeUsersAndContactsData() {
-    const keyMappings = this.defineMapping();
-    const adjustedArray1 = this.adjustArray(keyMappings);
-    this.usersAndContactsMerged = adjustedArray1.concat(this.allUsersData);
-    this.sortUsersAndContactsMerged();
-  }
-
-  defineMapping() {
-    return {
-      contactInitials: 'userInitials',
-      contactSurName: 'userSurName',
-      contactName: 'userName',
-      contactFirstName: 'userFirstName',
-      contactColor: 'userColor',
-      contactEmailAddress: 'userEmailAddress',
-      contactPhoneNumber: 'userPhoneNumber'
-    };
-  }
-
-  adjustArray(keyMappings) {
-    return this.allContactsData.map(obj => {
-      const adjustedObj = {};
-      for (const key in obj) {
-        if (keyMappings[key]) {
-          adjustedObj[keyMappings[key]] = obj[key];
-        } else {
-          adjustedObj[key] = obj[key];
-        }
-      }
-      return adjustedObj;
-    });
-  }
-
-  sortUsersAndContactsMerged() {
-    this.usersAndContactsMerged.sort((a, b) => {
-      if (a.userFirstName.toLowerCase() < b.userFirstName.toLowerCase()) {
-        return -1;
-      }
-      if (a.userFirstName.toLowerCase() > b.userFirstName.toLowerCase()) {
-        return 1;
-      }
-      return 0;
-    });
   }
 
 }

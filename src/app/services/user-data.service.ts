@@ -12,6 +12,7 @@ export class UserService {
   allTasksData;
   currentUserAuth;
   currentUserData = [];
+  usersAndContactsMerged;
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -80,5 +81,50 @@ export class UserService {
   setCurrentUserDataToLocal() {
     localStorage.removeItem('currentUserData');
     localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData[0]));
+  }
+
+  mergeUsersAndContactsData() {
+    const keyMappings = this.defineMapping();
+    const adjustedArray1 = this.adjustArray(keyMappings);
+    this.usersAndContactsMerged = adjustedArray1.concat(this.allUsersData);
+    this.sortUsersAndContactsMerged();
+  }
+
+  defineMapping() {
+    return {
+      contactInitials: 'userInitials',
+      contactSurName: 'userSurName',
+      contactName: 'userName',
+      contactFirstName: 'userFirstName',
+      contactColor: 'userColor',
+      contactEmailAddress: 'userEmailAddress',
+      contactPhoneNumber: 'userPhoneNumber'
+    };
+  }
+
+  adjustArray(keyMappings) {
+    return this.allContactsData.map(obj => {
+      const adjustedObj = {};
+      for (const key in obj) {
+        if (keyMappings[key]) {
+          adjustedObj[keyMappings[key]] = obj[key];
+        } else {
+          adjustedObj[key] = obj[key];
+        }
+      }
+      return adjustedObj;
+    });
+  }
+
+  sortUsersAndContactsMerged() {
+    this.usersAndContactsMerged.sort((a, b) => {
+      if (a.userFirstName.toLowerCase() < b.userFirstName.toLowerCase()) {
+        return -1;
+      }
+      if (a.userFirstName.toLowerCase() > b.userFirstName.toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    });
   }
 }
