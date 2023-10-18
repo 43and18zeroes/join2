@@ -90,15 +90,7 @@ export class MainComponent implements OnInit {
   mergeUsersAndContactsData() {
     console.log("allContactsData", this.allContactsData);
 
-    const keyMappings = {
-      contactInitials: 'userInitials',
-      contactSurName: 'userSurName',
-      contactName: 'userName',
-      contactFirstName: 'userFirstName',
-      contactColor: 'userColor',
-      contactEmailAddress: 'userEmailAddress',
-      contactPhoneNumber: 'userPhoneNumber'
-    };
+    const keyMappings = this.defineMapping();
 
     const adjustedArray1 = this.allContactsData.map(obj => {
       const adjustedObj = {};
@@ -119,6 +111,18 @@ export class MainComponent implements OnInit {
     console.log("this.usersAndContactsMerged", this.usersAndContactsMerged);
 
     this.sortUsersAndContactsMerged();
+  }
+
+  defineMapping() {
+    return {
+      contactInitials: 'userInitials',
+      contactSurName: 'userSurName',
+      contactName: 'userName',
+      contactFirstName: 'userFirstName',
+      contactColor: 'userColor',
+      contactEmailAddress: 'userEmailAddress',
+      contactPhoneNumber: 'userPhoneNumber'
+    };
   }
 
   sortUsersAndContactsMerged() {
