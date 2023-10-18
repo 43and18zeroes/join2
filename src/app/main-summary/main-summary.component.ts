@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainComponent } from '../main/main.component';
-// import { UserService } from '../services/user-data.service';
+import { UserService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-main-summary',
@@ -15,13 +15,17 @@ export class MainSummaryComponent implements OnInit {
   currentDate = new Date();
   futureDate = new Date(this.currentDate);
 
-  constructor(public mainComponent: MainComponent) {
+  constructor(
+    public mainComponent: MainComponent,
+    private userService: UserService
+    )
+    {
     this.futureDate.setDate(this.currentDate.getDate() + 8);
   }
 
   ngOnInit(): void {
     this.showGreetingScreenMobile = this.mainComponent.showGreetingScreenMobile;
-    this.currentUserData = this.mainComponent.currentUserData;
+    this.currentUserData = this.userService.currentUserData;
     if (this.currentUserData.userName !== "Gast") {
       this.currenUserIsGuest = false;
     }

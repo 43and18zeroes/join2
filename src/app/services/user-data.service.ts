@@ -11,7 +11,7 @@ export class UserService {
   allContactsData;
   allTasksData;
   currentUserAuth;
-  currentUserData = [];
+  currentUserData;
   usersAndContactsMerged;
 
   constructor(private firestore: AngularFirestore) { }
@@ -67,6 +67,51 @@ export class UserService {
         }
       });
     });
+  }
+
+  getUsersDataMain() {
+    if ((!this.allUsersData !== undefined)) {
+      this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
+      this.allUsersData = JSON.parse(localStorage.getItem('allUsersData') || '[]');
+    }
+    this.sortUsersData();
+  }
+
+  private sortUsersData(): void {
+    this.allUsersData.sort((a, b) => {
+      if (a.userFirstName.toLowerCase() < b.userFirstName.toLowerCase()) {
+        return -1;
+      }
+      if (a.userFirstName.toLowerCase() > b.userFirstName.toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  getContactsDataMain() {
+    if (!(this.allContactsData !== undefined)) {
+      this.allContactsData = JSON.parse(localStorage.getItem('allContactsData') || '[]');
+    }
+    this.sortContactsData();
+  }
+
+  sortContactsData() {
+    this.allContactsData.sort((a, b) => {
+      if (a.contactFirstName.toLowerCase() < b.contactFirstName.toLowerCase()) {
+        return -1;
+      }
+      if (a.contactFirstName.toLowerCase() > b.contactFirstName.toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  getTasksDataMain() {
+    if (!(this.allTasksData !== undefined)) {
+      this.allTasksData = JSON.parse(localStorage.getItem('allTasksData') || '[]');
+    } 
   }
 
   filterCurrentUserData() {
