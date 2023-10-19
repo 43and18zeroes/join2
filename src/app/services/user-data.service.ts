@@ -117,7 +117,7 @@ export class UserService {
   }
 
   getTasksDataMain() {
-    if (!(this.allTasksData !== undefined)) {
+    if (!this.allTasksData) {
       this.allTasksData = JSON.parse(localStorage.getItem('allTasksData') || '[]');
     }
   }
