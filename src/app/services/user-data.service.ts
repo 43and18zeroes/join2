@@ -70,7 +70,7 @@ export class UserService {
   }
 
   getUsersDataMain() {
-    if ((!this.allUsersData !== undefined)) {
+    if (!this.allUsersData) {
       this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
       this.allUsersData = JSON.parse(localStorage.getItem('allUsersData') || '[]');
     }
@@ -129,11 +129,12 @@ export class UserService {
         this.currentUserData.push(this.allUsersData[key]);
       }
     }
+    this.currentUserData = this.currentUserData[0];
   }
 
   setCurrentUserDataToLocal() {
     localStorage.removeItem('currentUserData');
-    localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData[0]));
+    localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData));
   }
 
   mergeUsersAndContactsData() {
