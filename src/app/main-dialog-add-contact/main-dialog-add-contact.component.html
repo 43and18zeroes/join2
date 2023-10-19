@@ -75,7 +75,7 @@
                             class="material__symbols__outlined">
                             close
                         </span></button>
-                    <button type="submit" class="btn__primary" #newUserSubmitBtn>Create contact <span class="material__symbols__outlined">
+                    <button [disabled]="addUserFormSubmitted" type="submit" class="btn__primary" #newUserSubmitBtn>Create contact <span class="material__symbols__outlined">
                             check
                         </span></button>
                 </div>
