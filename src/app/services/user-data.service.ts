@@ -90,7 +90,7 @@ export class UserService {
   }
 
   getContactsDataMain() {
-    if (!(this.allContactsData !== undefined)) {
+    if (!this.allContactsData) {
       this.allContactsData = JSON.parse(localStorage.getItem('allContactsData') || '[]');
     }
     this.sortContactsData();
