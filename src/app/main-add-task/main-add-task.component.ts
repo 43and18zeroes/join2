@@ -86,6 +86,7 @@ export class MainAddTaskComponent {
   }
 
   assignToggleDropdown() {
+    this.allUsersAndContacts = this.userService.usersAndContactsMerged;
     this.showAssignedDropdown = !this.showAssignedDropdown;
   }
 
