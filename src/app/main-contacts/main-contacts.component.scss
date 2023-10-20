@@ -52,10 +52,12 @@
 
                 .alphabet__header {
                     height: 56px;
-                    margin-left: 35px;
+                    padding-left: 35px;
+                    margin: 5px;
                     display: flex;
                     align-items: center;
                     font-size: var(--fontsize-body);
+                    border-bottom: 1px solid #D1D1D1;
                 }
             }
         }
