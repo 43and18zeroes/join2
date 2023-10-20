@@ -67,6 +67,7 @@ export class MainDialogAddContactComponent {
       this.addUserFormSubmitted = true;
       this.getContactData();
       this.userService.addToContactsData(this.contact);
+      this.userService.generateUsersAndContactsLists();
       this.sendNewContactDataToBackend();
       this.addNewUserOutro();
     } else {

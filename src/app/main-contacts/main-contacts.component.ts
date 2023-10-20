@@ -17,7 +17,6 @@ export class MainContactsComponent {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.renderUsersAndContactsIntoContactsComponent();
     this.alphabet = this.userService.alphabet;
     this.groupedContacts = this.userService.groupedContacts;
   }

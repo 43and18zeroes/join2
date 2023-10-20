@@ -185,12 +185,8 @@ export class UserService {
     });
   }
 
-  renderUsersAndContactsIntoContactsComponent() {
-    this.groupUsersAndContactsByFirstLetter();
-  }
-
-  groupUsersAndContactsByFirstLetter() {
-    console.log("usersAndContactsMerged", this.usersAndContactsMerged)
+  generateUsersAndContactsLists() {
+    this.groupedContacts = {};
     this.usersAndContactsMerged.forEach(index => {
       const firstLetter = index.userFirstName.charAt(0).toUpperCase();
       if (!this.groupedContacts[firstLetter]) {

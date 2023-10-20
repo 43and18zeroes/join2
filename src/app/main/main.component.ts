@@ -29,6 +29,7 @@ export class MainComponent implements OnInit {
     this.userService.getContactsDataMain();
     this.userService.getTasksDataMain();
     this.userService.mergeUsersAndContactsData();
+    this.userService.generateUsersAndContactsLists();
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
     }, 2500);
