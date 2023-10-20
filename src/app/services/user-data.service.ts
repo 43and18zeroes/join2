@@ -65,7 +65,9 @@ export class UserService {
         if (user != null) {
           this.currentUserAuth = user;
           resolve();
-        } else {
+        }
+        else
+        {
           resolve();
         }
       });
