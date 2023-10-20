@@ -44,10 +44,20 @@
         }
 
         .contacts__entries {
-
             height: calc(100% - 72px);
             width: 456px;
             overflow-y: auto;
+
+            .data__loop {
+
+                .alphabet__header {
+                    height: 56px;
+                    margin-left: 35px;
+                    display: flex;
+                    align-items: center;
+                    font-size: var(--fontsize-body);
+                }
+            }
         }
     }
 

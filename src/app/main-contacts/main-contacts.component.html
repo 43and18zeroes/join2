@@ -8,14 +8,23 @@
         </div>
 
         <div class="contacts__entries">
-            <div *ngFor="let letter of alphabet">
+            <div *ngFor="let letter of alphabet" class="data__loop">
                 <ng-container *ngIf="hasContactsForLetter(letter)">
-                    <h2>{{ letter }}</h2>
-                    <ul>
+                    <div class="alphabet__header">{{ letter }}</div>
+                    <div class="alphabet__body">
+                        <div class="single__entry" *ngFor="let index of groupedContacts[letter]">
+                            <div class="entry__initials">{{ index.userInitials }}</div>
+                            <div class="entry__right">
+                                <div class="entry__name">{{ index.userName }}</div>
+                                <div class="entry__mail">{{ index.userEmailAddress }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <ul>
                         <li *ngFor="let index of groupedContacts[letter]">
                             {{ index.userName }} - {{ index.email }}
                         </li>
-                    </ul>
+                    </ul> -->
                 </ng-container>
             </div>
         </div>
