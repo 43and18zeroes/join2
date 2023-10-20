@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 import { UserService } from '../services/user-data.service';
-import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-main-contacts',
@@ -32,6 +31,9 @@ export class MainContactsComponent {
       // Hier können Sie auf das Ergebnis zugreifen oder was auch immer Sie nach dem Schließen des Dialogs tun möchten
       this.groupedContacts = this.userService.groupedContacts;
     });
+  }
 
+  hasContactsForLetter(letter: string): boolean {
+    return !!this.groupedContacts[letter];
   }
 }
