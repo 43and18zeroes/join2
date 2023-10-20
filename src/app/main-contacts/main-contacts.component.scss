@@ -5,6 +5,8 @@
 
     .contacts__list {
         height: 100%;
+        padding-top: 20px;
+        padding-left: 50px;
 
         /* ===== Scrollbar CSS ===== */
         /* Firefox */
@@ -29,12 +31,12 @@
         }
 
         .contacts__header {
+            padding-right: 36px;
 
             button {
                 width: calc(100% - 16px);
                 display: flex;
                 justify-content: center;
-                margin: 8px;
 
                 span {
                     font-weight: 500 !important;
@@ -45,8 +47,9 @@
 
         .contacts__entries {
             height: calc(100% - 72px);
-            width: 456px;
+            width: 368px;
             overflow-y: auto;
+            padding-right: 36px;
 
             .data__loop {
 
