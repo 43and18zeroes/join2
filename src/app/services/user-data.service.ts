@@ -14,6 +14,9 @@ export class UserService {
   currentUserData;
   usersAndContactsMerged;
 
+  alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  groupedContacts = {};
+
   constructor(private firestore: AngularFirestore) { }
 
   setAllDataToVarAndLocal() {
@@ -179,6 +182,21 @@ export class UserService {
         return 1;
       }
       return 0;
+    });
+  }
+
+  renderUsersAndContactsIntoContactsComponent() {
+    this.groupUsersAndContactsByFirstLetter();
+  }
+
+  groupUsersAndContactsByFirstLetter() {
+    console.log("usersAndContactsMerged", this.usersAndContactsMerged)
+    this.usersAndContactsMerged.forEach(index => {
+      const firstLetter = index.userFirstName.charAt(0).toUpperCase();
+      if (!this.groupedContacts[firstLetter]) {
+        this.groupedContacts[firstLetter] = [];
+      }
+      this.groupedContacts[firstLetter].push(index);
     });
   }
 }

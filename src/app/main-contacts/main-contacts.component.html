@@ -8,6 +8,15 @@
         </div>
 
         <div class="contacts__entries">
+            <div *ngFor="let letter of alphabet">
+                <h2>{{ letter }}</h2>
+                <ul>
+                    <li *ngFor="let index of groupedContacts[letter]">
+                        {{ index.userName }} - {{ index.email }}
+                    </li>
+                </ul>
+            </div>
+            <!-- <p>AAAAA</p>
             <p>AAAAA</p>
             <p>AAAAA</p>
             <p>AAAAA</p>
@@ -26,8 +35,7 @@
             <p>AAAAA</p>
             <p>AAAAA</p>
             <p>AAAAA</p>
-            <p>AAAAA</p>
-            <p>AAAAA</p>
+            <p>AAAAA</p> -->
         </div>
 
     </div>
