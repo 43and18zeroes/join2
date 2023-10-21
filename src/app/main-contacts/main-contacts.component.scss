@@ -72,7 +72,7 @@
                         font-weight: 400;
                         border-radius: 10px;
                         cursor: pointer;
-                        transition: background-color 100ms ease-in;
+                        transition: background-color 50ms ease-in;
 
                         &:hover {
                             // background: linear-gradient(to bottom, #f3f3f3, #e9e9e9);
@@ -108,7 +108,13 @@
                     }
 
                     .active__class {
+                        transition: background-color 0ms ease-in;
                         background-color: var(--main-slate);
+
+                        &:hover {
+                            // background: linear-gradient(to bottom, #f3f3f3, #e9e9e9);
+                            background-color: var(--main-slate);
+                        }
                     }
                 }
             }
