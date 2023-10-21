@@ -242,6 +242,12 @@
                             padding: 8px 16px 8px 0;
                             gap: 8px;
                             cursor: pointer;
+                            transition: all 100ms ease-in;
+
+                            &:hover {
+                                color: var(--accent-cyan);
+                                transform: scale(1.01);
+                            }
                         }
                     }
                 }
