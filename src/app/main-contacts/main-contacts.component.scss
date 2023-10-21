@@ -64,9 +64,22 @@
                 }
 
                 .alphabet__body {
-                    
+
                     .single__entry {
                         display: flex;
+
+                        .entry__initials {
+                            width: 26px;
+                            height: 26px;
+                            border: 2px solid white;
+                            font-size: 11.5px;
+                            font-weight: 300;
+                            color: var(--window-white);
+                            border-radius: 50px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
                     }
                 }
             }
