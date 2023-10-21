@@ -4,7 +4,7 @@
     display: flex;
 
     .contacts__list {
-        height: 100%;
+        height: calc(100% - 20px);
         padding-top: 20px;
         padding-left: 50px;
 
@@ -46,7 +46,7 @@
         }
 
         .contacts__entries {
-            height: calc(100% - 72px);
+            height: calc(100% - 56px);
             width: 368px;
             overflow-y: auto;
             padding-right: 36px;
@@ -90,7 +90,7 @@
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            margin-left: 25px;
+                            margin-left: 26px;
                         }
 
                         .entry__right {
