@@ -252,6 +252,33 @@
                     }
                 }
             }
+
+            h3 {
+                height: 74px;
+                font-size: 20px;
+                font-weight: 400;
+                display: flex;
+                align-items: center;
+            }
+
+            .contact__info {
+
+                .mail {
+
+                    h4 {
+                        font-size: 16px;
+                        font-weight: 700;
+                        margin-bottom: 12px;
+                    }
+
+                    a {
+                        color: #007CEE;
+                        font-size: 16px;
+                        font-weight: 400;
+                        text-decoration: none;
+                    }
+                }
+            }
         }
     }
 }
