@@ -12,8 +12,7 @@
                 <ng-container *ngIf="hasContactsForLetter(letter)">
                     <div class="alphabet__header">{{ letter }}</div>
                     <div class="alphabet__body">
-                        <div (click)="displayContactDetails(index)" class="single__entry"
-                            *ngFor="let index of groupedContacts[letter]">
+                        <div *ngFor="let index of groupedContacts[letter]; let i = index;" (click)="displayContactDetails(index, letter, i)" class="single__entry" [ngClass]="{'active__class': letter && i}">
                             <div class="entry__initials" [ngStyle]="{'background-color': index.userColor}">{{
                                 index.userInitials }}</div>
                             <div class="entry__right">

@@ -13,6 +13,7 @@ export class MainContactsComponent {
   alphabet;
   groupedContacts;
 
+  selectedContactId: string | null = null;
   showContactDetails: boolean = false;
   clickedContactData;
 
@@ -40,8 +41,11 @@ export class MainContactsComponent {
     return !!this.groupedContacts[letter];
   }
 
-  displayContactDetails(contactData) {
+  displayContactDetails(contactData, letter: string, index: number) {
+    console.log("letter", letter)
+    console.log("index", index)
     this.showContactDetails = true;
     this.clickedContactData = contactData;
+    // this.selectedContactId = `${letter}-${index}`;
   }
 }
