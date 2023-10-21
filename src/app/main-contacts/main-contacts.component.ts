@@ -13,6 +13,9 @@ export class MainContactsComponent {
   alphabet;
   groupedContacts;
 
+  showContactDetails: boolean = false;
+  clickedContactData;
+
   constructor(public dialog: MatDialog,
     private userService: UserService) { }
 
@@ -35,5 +38,10 @@ export class MainContactsComponent {
 
   hasContactsForLetter(letter: string): boolean {
     return !!this.groupedContacts[letter];
+  }
+
+  displayContactDetails(contactData) {
+    this.showContactDetails = true;
+    this.clickedContactData = contactData;
   }
 }

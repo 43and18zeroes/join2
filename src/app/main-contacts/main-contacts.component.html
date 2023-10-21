@@ -12,8 +12,10 @@
                 <ng-container *ngIf="hasContactsForLetter(letter)">
                     <div class="alphabet__header">{{ letter }}</div>
                     <div class="alphabet__body">
-                        <div class="single__entry" *ngFor="let index of groupedContacts[letter]">
-                            <div class="entry__initials" [ngStyle]="{'background-color': index.userColor}">{{ index.userInitials }}</div>
+                        <div (click)="displayContactDetails(index)" class="single__entry"
+                            *ngFor="let index of groupedContacts[letter]">
+                            <div class="entry__initials" [ngStyle]="{'background-color': index.userColor}">{{
+                                index.userInitials }}</div>
                             <div class="entry__right">
                                 <div class="entry__name">{{ index.userName }}</div>
                                 <div class="entry__mail">{{ index.userEmailAddress }}</div>
@@ -41,6 +43,16 @@
             <div></div>
         </header>
 
+        <div *ngIf="showContactDetails" class="contact__details__body">
+            <div class="details__header">
+                <div class="entry__initials" [ngStyle]="{'background-color': clickedContactData.userColor}">{{ clickedContactData.userInitials }}
+                </div>
+                <div class="entry__right">
+                    <div class="entry__name">{{ clickedContactData.userName }}</div>
+                    <div class="entry__mail">{{ clickedContactData.userEmailAddress }}</div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
