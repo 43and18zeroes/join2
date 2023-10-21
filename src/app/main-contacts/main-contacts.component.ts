@@ -52,4 +52,8 @@ export class MainContactsComponent {
   isActive(letter: string, index: number): boolean {
     return this.selectedContactId === `${letter}-${index}`;
   }
+
+  deleteUserOrContact(profile) {
+    this.userService.deleteUserOrContact(profile.userEmailAddress);
+  }
 }

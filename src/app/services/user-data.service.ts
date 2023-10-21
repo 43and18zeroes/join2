@@ -197,4 +197,8 @@ export class UserService {
       this.groupedContacts[firstLetter].push(index);
     });
   }
+
+  deleteUserOrContact(emailToDelete) {
+    console.log("allUsersData", this.allUsersData);
+  }
 }
