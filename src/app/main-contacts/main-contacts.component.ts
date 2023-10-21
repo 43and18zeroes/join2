@@ -42,10 +42,12 @@ export class MainContactsComponent {
   }
 
   displayContactDetails(contactData, letter: string, index: number) {
-    console.log("letter", letter)
-    console.log("index", index)
     this.showContactDetails = true;
     this.clickedContactData = contactData;
-    // this.selectedContactId = `${letter}-${index}`;
+    this.selectedContactId = `${letter}-${index}`;
+  }
+
+  isActive(letter: string, index: number): boolean {
+    return this.selectedContactId === `${letter}-${index}`;
   }
 }
