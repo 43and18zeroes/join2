@@ -66,19 +66,36 @@
                 .alphabet__body {
 
                     .single__entry {
+                        height: 78px;
                         display: flex;
+                        align-items: center;
+                        font-weight: 400;
 
                         .entry__initials {
-                            width: 26px;
-                            height: 26px;
+                            width: 38px;
+                            height: 38px;
                             border: 2px solid white;
-                            font-size: 11.5px;
+                            font-size: 15px;
                             font-weight: 300;
                             color: var(--window-white);
                             border-radius: 50px;
                             display: flex;
                             justify-content: center;
                             align-items: center;
+                            margin-left: 25px;
+                        }
+
+                        .entry__right {
+                            margin-left: 35px;
+
+                            .entry__name {
+                                margin-bottom: 4px;
+                            }
+
+                            .entry__mail {
+                                color: #007CEE;
+                                font-size: 18px;
+                            }
                         }
                     }
                 }
