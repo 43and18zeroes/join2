@@ -29,7 +29,7 @@
 
             <div class="material__symbols__outlined symbol__person">person</div>
 
-            <form [formGroup]="editContactForm" (ngSubmit)="onSubmit()" [ngClass]="{ 'form__disabled': addUserFormSubmitted }">
+            <form [formGroup]="editContactForm" (ngSubmit)="onSubmit()" [ngClass]="{ 'form__disabled': editUserFormSubmitted }">
 
                 <div class="input__container">
                     <span (click)="contactName.focus()" class="material__symbols__outlined">
@@ -75,7 +75,7 @@
                             class="material__symbols__outlined">
                             close
                         </span></button>
-                    <button [disabled]="addUserFormSubmitted" type="submit" class="btn__primary" #newUserSubmitBtn>Save changes <span class="material__symbols__outlined">
+                    <button [disabled]="editUserFormSubmitted" type="submit" class="btn__primary" #newUserSubmitBtn>Save changes <span class="material__symbols__outlined">
                             check
                         </span></button>
                 </div>
