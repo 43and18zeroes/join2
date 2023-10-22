@@ -53,7 +53,7 @@ export class MainContactsComponent {
     return this.selectedContactId === `${letter}-${index}`;
   }
 
-  deleteUserOrContact(profile) {
-    this.userService.deleteUserOrContact(profile.userEmailAddress);
-  }
+  // deleteUserOrContact(profile) {
+  //   this.userService.deleteUserOrContact(profile.userEmailAddress);
+  // }
 }

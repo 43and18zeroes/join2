@@ -198,34 +198,25 @@ export class UserService {
     });
   }
 
-  deleteUserOrContact(emailToDelete) {
-    console.log("allUsersData", this.allUsersData);
-    console.log("allContactsData", this.allContactsData);
+  // deleteUserOrContact(emailToDelete) {
+  //   console.log("allUsersData", this.allUsersData);
+  //   console.log("allContactsData", this.allContactsData);
 
-    let deleteUserIndex = -1;
+  //   let deleteUserIndex = -1;
 
-    for (let i = 0; i < this.allUsersData.length; i++) {
-      if (this.allUsersData[i].userEmailAddress === emailToDelete) {
-        deleteUserIndex = i;
-        break; // Beendet die Schleife, wenn das Element gefunden wurde
-      }
-    }
+  //   for (let i = 0; i < this.allUsersData.length; i++) {
+  //     if (this.allUsersData[i].userEmailAddress === emailToDelete) {
+  //       deleteUserIndex = i;
+  //       break; // Beendet die Schleife, wenn das Element gefunden wurde
+  //     }
+  //   }
 
-    if (deleteUserIndex !== -1) {
-      this.allUsersData.splice(deleteUserIndex, 1);
-      this.mergeUsersAndContactsData();
-      this.generateUsersAndContactsLists();
-    } else {
-      console.warn('Kein Nutzer mit der angegebenen E-Mail gefunden!');
-    }
-
-    // const index = this.allUsersData.findIndex(user => user.userEmailAddress === emailToDelete);
-    // if (index !== -1) {
-    //   this.allUsersData.splice(index, 1);
-    //   this.mergeUsersAndContactsData();
-    //   this.generateUsersAndContactsLists();
-    // } else {
-    //   console.warn('Kein Nutzer mit der angegebenen E-Mail gefunden!');
-    // }
-  }
+  //   if (deleteUserIndex !== -1) {
+  //     this.allUsersData.splice(deleteUserIndex, 1);
+  //     this.mergeUsersAndContactsData();
+  //     this.generateUsersAndContactsLists();
+  //   } else {
+  //     console.warn('Kein Nutzer mit der angegebenen E-Mail gefunden!');
+  //   }
+  // }
 }
