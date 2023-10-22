@@ -6,6 +6,7 @@ export class Contact {
     public contactEmailAddress: string;
     public contactPhoneNumber: string;
     public contactColor: string;
+    public type: string;
 
     constructor() {
         this.contactName = this.contactName;
@@ -15,6 +16,7 @@ export class Contact {
         this.contactEmailAddress = this.contactEmailAddress || null;
         this.contactPhoneNumber = this.contactPhoneNumber || null;
         this.contactColor = this.contactColor;
+        this.type = this.type;
     }
 
     public toJSON() {
@@ -25,7 +27,8 @@ export class Contact {
             contactInitials: this.contactInitials,
             contactEmailAddress: this.contactEmailAddress,
             contactPhoneNumber: this.contactPhoneNumber,
-            contactColor: this.contactColor
+            contactColor: this.contactColor,
+            type: this.type
         }
     }
 }
