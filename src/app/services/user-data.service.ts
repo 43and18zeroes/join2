@@ -124,6 +124,22 @@ export class UserService {
   updateToContactsData(updatedContact) {
     console.log("updated contact", updatedContact);
     console.log("this.allContactsData", this.allContactsData);
+
+    for (let i = 0; i < this.allContactsData.length; i++) {
+      if (this.allContactsData[i].contactEmailAddress === updatedContact.contactEmailAddress) {
+        this.allContactsData[i].contactColor = updatedContact.contactColor;
+        this.allContactsData[i].contactFirstName = updatedContact.contactFirstName;
+        this.allContactsData[i].contactSurName = updatedContact.contactSurName;
+        this.allContactsData[i].contactInitials = updatedContact.contactInitials;
+        this.allContactsData[i].contactName = updatedContact.contactName;
+        this.allContactsData[i].contactPhoneNumber = updatedContact.contactPhoneNumber;
+        console.log("this.allContactsData[i]", this.allContactsData[i])
+      }
+    }
+    localStorage.removeItem('allContactsData');
+    localStorage.setItem('allContactsData', JSON.stringify(this.allContactsData));
+    this.sortContactsData();
+    this.mergeUsersAndContactsData();
   }
 
   getTasksDataMain() {
