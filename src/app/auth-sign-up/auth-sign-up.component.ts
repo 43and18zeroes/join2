@@ -164,12 +164,22 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   createNewUserData() {
+    const userData = this.user.toJSON();
+    delete userData.firebaseId;
+
     this.firestore
       .collection('users')
-      .add(this.user.toJSON())
-      .then((result: any) => {
-        console.log("Adding user finished", result);
+      .add(userData)
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+        return docRef.update({ firebaseId: docRef.id });
       })
+      .then(() => {
+        console.log('Document successfully updated with firebaseId!');
+      })
+      .catch((error) => {
+        console.error("Error adding or updating document: ", error);
+      });
   }
 
   authSuccessAnimation() {

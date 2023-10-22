@@ -6,6 +6,7 @@ export class User {
     public userEmailAddress: string;
     public userColor: string;
     public type: string;
+    public firebaseId: string;
 
     constructor() {
         this.userName = this.userName;
@@ -15,6 +16,7 @@ export class User {
         this.userEmailAddress = this.userEmailAddress;
         this.userColor = this.userColor;
         this.type = this.type;
+        this.firebaseId = this.firebaseId;
     }
 
     public toJSON() {
@@ -26,6 +28,7 @@ export class User {
             userEmailAddress: this.userEmailAddress,
             userColor: this.userColor,
             type: this.type,
+            firebaseId: this.firebaseId
         }
     }
 }
