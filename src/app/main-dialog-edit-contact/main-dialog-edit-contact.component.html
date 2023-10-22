@@ -48,7 +48,7 @@
                         mail
                     </span>
                     <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress"
-                        placeholder="Email" #contactEmailAddress placeholder="Email">
+                        placeholder="Email" #contactEmailAddress placeholder="Email" class="email__input">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="editContactForm.controls.contactEmailAddress.invalid &&

@@ -16,7 +16,7 @@ export class MainDialogEditContactComponent {
   contact = new Contact();
   editContactForm = this.fb.group({
     contactName: ['', [Validators.required, signUpUserNameValidator]],
-    contactEmailAddress: ['', [Validators.required, emailValidator]],
+    contactEmailAddress: [{value: '', disabled: true}],
     contactPhoneNumber: ['', [Validators.required, phoneValidator]]
   });
 
