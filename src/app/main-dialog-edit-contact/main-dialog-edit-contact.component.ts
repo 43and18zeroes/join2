@@ -68,6 +68,16 @@ export class MainDialogEditContactComponent {
       this.editUserFormSubmitted = true;
       this.getContactData();
       console.log(this.contact)
+      if (this.contact.type === "userFromContacts") {
+        console.log("data to contacts collection");
+        this.userService.updateToContactsData(this.contact);
+      } else if (this.contact.type === "userSignUp") {
+        console.log("data to users collection");
+      } else {
+        console.log("incorrect contact.type")
+      }
+      this.userService.generateUsersAndContactsLists();
+      this.addNewUserOutro();
     }
   }
 
@@ -95,5 +105,12 @@ export class MainDialogEditContactComponent {
     const charCodes = initials.split('').map(char => char.charCodeAt(0));
     const sum = charCodes.reduce((acc, curr) => acc + curr, 0);
     return sum % this.colors.length;
+  }
+
+  addNewUserOutro() {
+    this.newUserSubmitBtn.nativeElement.classList.add("btn__success");
+    setTimeout(() => {
+      this.dialog.closeAll();
+    }, 1500);
   }
 }

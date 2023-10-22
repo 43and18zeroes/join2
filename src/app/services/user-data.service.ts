@@ -121,6 +121,11 @@ export class UserService {
     this.mergeUsersAndContactsData();
   }
 
+  updateToContactsData(updatedContact) {
+    console.log("updated contact", updatedContact);
+    console.log("this.allContactsData", this.allContactsData);
+  }
+
   getTasksDataMain() {
     if (!this.allTasksData) {
       this.allTasksData = JSON.parse(localStorage.getItem('allTasksData') || '[]');
