@@ -58,9 +58,10 @@ export class MainContactsComponent {
   //   this.userService.deleteUserOrContact(profile.userEmailAddress);
   // }
 
-  editContact() {
+  editContact(clickedContactData) {
     const dialogRef = this.dialog.open(MainDialogEditContactComponent, {
       panelClass: 'popup__contact__add'
     });
+    dialogRef.componentInstance.contact = clickedContactData;
   }
 }

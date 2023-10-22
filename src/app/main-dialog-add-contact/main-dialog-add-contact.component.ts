@@ -54,7 +54,6 @@ export class MainDialogAddContactComponent {
   ) { }
 
   ngOnInit(): void {
-    console.log("addContactForm", this.addContactForm.value)
   }
 
   closeDialog() {

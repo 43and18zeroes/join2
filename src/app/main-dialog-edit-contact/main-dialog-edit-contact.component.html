@@ -1,1 +1,88 @@
-<p>main-dialog-edit-contact works!</p>
+<div class="add__contact__container">
+
+    <div class="left">
+        <div class="mobile__header">
+            <div (click)="closeDialog()" class="hover__area no__select">
+                <div class="transform__circle"></div>
+                <span class="material__symbols__outlined single__icon">close</span>
+            </div>
+        </div>
+        <div class="left__content">
+            <img src="assets/img/main/popups/j-white.webp" alt="Main join logo" draggable="false">
+            <h2>Add contact</h2>
+            <span>Tasks are better with a team!</span>
+            <div class="line"></div>
+            <div class="spacer"></div>
+        </div>
+    </div>
+
+    <div class="right">
+
+        <div class="right__header">
+            <div (click)="closeDialog()" class="hover__area no__select">
+                <div class="transform__circle"></div>
+                <span class="material__symbols__outlined single__icon">close</span>
+            </div>
+        </div>
+
+        <div class="right__body">
+
+            <div class="material__symbols__outlined symbol__person">person</div>
+
+            <form [formGroup]="editContactForm" (ngSubmit)="onSubmit()" [ngClass]="{ 'form__disabled': addUserFormSubmitted }">
+
+                <div class="input__container">
+                    <span (click)="contactName.focus()" class="material__symbols__outlined">
+                        person
+                    </span>
+                    <input [(ngModel)]="contact.contactName" id="contactName" formControlName="contactName" placeholder="Name"
+                        #contactName placeholder="Name">
+                </div>
+                <div class="incorrect__input">
+                    <span *ngIf="editContactForm.controls.contactName.invalid &&
+                    editContactForm.controls.contactName.dirty || !contactNameValid">Separate first and last name with a space.</span>
+                </div>
+
+                <div class="input__container">
+                    <span (click)="contactEmailAddress.focus()" class="material__symbols__outlined">
+                        mail
+                    </span>
+                    <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress"
+                        placeholder="Email" #contactEmailAddress placeholder="Email">
+                </div>
+                <div class="incorrect__input">
+                    <span *ngIf="editContactForm.controls.contactEmailAddress.invalid &&
+                    editContactForm.controls.contactEmailAddress.dirty || !contactEmailAddressValid" >Invalid
+                        email
+                        address.</span>
+                </div>
+
+                <div class="input__container">
+                    <span (click)="contactPhoneNumber.focus()" class="material__symbols__outlined">
+                        phone
+                    </span>
+                    <input [(ngModel)]="contact.contactPhoneNumber" formControlName="contactPhoneNumber"
+                        placeholder="Phone" #contactPhoneNumber placeholder="Phone">
+                </div>
+                <div class="incorrect__input">
+                    <span *ngIf="editContactForm.controls.contactPhoneNumber.invalid &&
+                    editContactForm.controls.contactPhoneNumber.dirty || !contactPhoneNumberValid">Invalid
+                        phone number.</span>
+                </div>
+
+                <div class="form__footer">
+                    <button  (click)="closeDialog()" type="button" class="btn__secondary btn__secondary__main">Cancel <span
+                            class="material__symbols__outlined">
+                            close
+                        </span></button>
+                    <button [disabled]="addUserFormSubmitted" type="submit" class="btn__primary" #newUserSubmitBtn>Create contact <span class="material__symbols__outlined">
+                            check
+                        </span></button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
