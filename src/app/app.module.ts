@@ -25,6 +25,7 @@ import { MainContactsComponent } from './main-contacts/main-contacts.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MainDialogAddContactComponent } from './main-dialog-add-contact/main-dialog-add-contact.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MainDialogEditContactComponent } from './main-dialog-edit-contact/main-dialog-edit-contact.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MainAddTaskComponent,
     MainBoardComponent,
     MainContactsComponent,
-    MainDialogAddContactComponent
+    MainDialogAddContactComponent,
+    MainDialogEditContactComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 import { UserService } from '../services/user-data.service';
+import { MainDialogEditContactComponent } from '../main-dialog-edit-contact/main-dialog-edit-contact.component';
 
 @Component({
   selector: 'app-main-contacts',
@@ -56,4 +57,10 @@ export class MainContactsComponent {
   // deleteUserOrContact(profile) {
   //   this.userService.deleteUserOrContact(profile.userEmailAddress);
   // }
+
+  editContact() {
+    const dialogRef = this.dialog.open(MainDialogEditContactComponent, {
+      panelClass: 'popup__contact__add'
+    });
+  }
 }
