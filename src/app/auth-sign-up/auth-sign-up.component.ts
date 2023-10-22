@@ -113,6 +113,7 @@ export class AuthSignUpComponent implements OnInit {
     this.user.userInitials = userData.userInitials;
     this.user.userEmailAddress = userData.email;
     this.user.userColor = this.generateColorFromInitials(this.user.userInitials);
+    this.user.type = "userSignUp";
   }
 
   processSuccessfulSignup() {
@@ -132,6 +133,7 @@ export class AuthSignUpComponent implements OnInit {
     const userFirstName = userName.split(' ')[0];
     const userSurName = userName.split(' ')[1];
     const userInitials = userFirstName.charAt(0).toUpperCase() + userSurName.charAt(0).toUpperCase();
+    const type = "userSignUp"
 
     return {
       userName: userName,
@@ -139,7 +141,8 @@ export class AuthSignUpComponent implements OnInit {
       userSurName: userSurName,
       userInitials: userInitials,
       email: this.signUpForm.value.signUpEmail,
-      password: this.signUpForm.value.signUpPassword
+      password: this.signUpForm.value.signUpPassword,
+      type: type
     };
   }
 
