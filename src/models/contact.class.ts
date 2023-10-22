@@ -7,6 +7,7 @@ export class Contact {
     public contactPhoneNumber: string;
     public contactColor: string;
     public type: string;
+    public firebaseId: string;
 
     constructor() {
         this.contactName = this.contactName;
@@ -17,6 +18,7 @@ export class Contact {
         this.contactPhoneNumber = this.contactPhoneNumber || null;
         this.contactColor = this.contactColor;
         this.type = this.type;
+        this.firebaseId = this.firebaseId;
     }
 
     public toJSON() {
@@ -28,7 +30,8 @@ export class Contact {
             contactEmailAddress: this.contactEmailAddress,
             contactPhoneNumber: this.contactPhoneNumber,
             contactColor: this.contactColor,
-            type: this.type
+            type: this.type,
+            firebaseId: this.firebaseId
         }
     }
 }

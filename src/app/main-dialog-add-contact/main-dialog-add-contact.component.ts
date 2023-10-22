@@ -104,12 +104,24 @@ export class MainDialogAddContactComponent {
   }
 
   sendNewContactDataToBackend() {
+    const contactData = this.contact.toJSON();
+    delete contactData.firebaseId;
+
     this.firestore
       .collection('contacts')
-      .add(this.contact.toJSON())
-      .then((result: any) => {
-        console.log("New user to backend", this.contact);
+      .add(contactData)
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+
+        // Jetzt können Sie das Dokument aktualisieren und die "firebaseId" hinzufügen
+        return docRef.update({ firebaseId: docRef.id });
       })
+      .then(() => {
+        console.log('Document successfully updated with firebaseId!');
+      })
+      .catch((error) => {
+        console.error("Error adding or updating document: ", error);
+      });
   }
 
   addNewUserOutro() {
