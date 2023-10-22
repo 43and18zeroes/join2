@@ -34,8 +34,6 @@ export class MainContactsComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      // Hier können Sie auf das Ergebnis zugreifen oder was auch immer Sie nach dem Schließen des Dialogs tun möchten
       this.groupedContacts = this.userService.groupedContacts;
     });
   }
@@ -54,10 +52,6 @@ export class MainContactsComponent {
     return this.selectedContactId === `${letter}-${index}`;
   }
 
-  // deleteUserOrContact(profile) {
-  //   this.userService.deleteUserOrContact(profile.userEmailAddress);
-  // }
-
   editContact(clickedContactData) {
     const dialogRef = this.dialog.open(MainDialogEditContactComponent, {
       panelClass: 'popup__contact__add'
@@ -66,5 +60,8 @@ export class MainContactsComponent {
     clickedContactData.contactEmailAddress = clickedContactData.userEmailAddress;
     clickedContactData.contactPhoneNumber = clickedContactData.userPhoneNumber;
     dialogRef.componentInstance.contact = clickedContactData;
+    dialogRef.afterClosed().subscribe((result) => {
+      this.groupedContacts = this.userService.groupedContacts;
+    });
   }
 }
