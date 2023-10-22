@@ -35,6 +35,7 @@ export class MainDialogEditContactComponent {
 
   ngOnInit(): void {
     console.log("contact", this.contact)
+    // this.contact.contactName = this.contact.userEmailAddress;
   }
 
   closeDialog() {

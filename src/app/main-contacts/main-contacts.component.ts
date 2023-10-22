@@ -62,6 +62,9 @@ export class MainContactsComponent {
     const dialogRef = this.dialog.open(MainDialogEditContactComponent, {
       panelClass: 'popup__contact__add'
     });
+    clickedContactData.contactName = clickedContactData.userName;
+    clickedContactData.contactEmailAddress = clickedContactData.userEmailAddress;
+    clickedContactData.contactPhoneNumber = clickedContactData.userPhoneNumber;
     dialogRef.componentInstance.contact = clickedContactData;
   }
 }
