@@ -65,10 +65,7 @@ export class MainDialogAddContactComponent {
     if (this.addContactForm.valid) {
       this.addUserFormSubmitted = true;
       this.getContactData();
-      this.userService.addToContactsData(this.contact);
-      this.userService.generateUsersAndContactsLists();
       this.sendNewContactDataToBackend();
-      this.addNewUserOutro();
     } else {
       console.log("form not valid");
     }
@@ -112,12 +109,16 @@ export class MainDialogAddContactComponent {
       .add(contactData)
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
+        this.contact.firebaseId = docRef.id;
 
         // Jetzt können Sie das Dokument aktualisieren und die "firebaseId" hinzufügen
         return docRef.update({ firebaseId: docRef.id });
       })
       .then(() => {
         console.log('Document successfully updated with firebaseId!');
+        this.userService.addToContactsData(this.contact);
+      this.userService.generateUsersAndContactsLists();
+      this.addNewUserOutro();
       })
       .catch((error) => {
         console.error("Error adding or updating document: ", error);
