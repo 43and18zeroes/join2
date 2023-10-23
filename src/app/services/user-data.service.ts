@@ -66,8 +66,7 @@ export class UserService {
           this.currentUserAuth = user;
           resolve();
         }
-        else
-        {
+        else {
           resolve();
         }
       });
@@ -132,12 +131,32 @@ export class UserService {
         this.allContactsData[i].contactPhoneNumber = updatedContact.contactPhoneNumber;
       }
     }
+    console.log("updatedContact", updatedContact)
+    this.deleteUnnecessaryValues(updatedContact);
+    console.log("updatedContact", updatedContact)
     this.updateContactBackend(updatedContact);
     localStorage.removeItem('allContactsData');
     localStorage.setItem('allContactsData', JSON.stringify(this.allContactsData));
     this.sortContactsData();
     this.mergeUsersAndContactsData();
     console.log("updated contact", updatedContact);
+  }
+
+  deleteUnnecessaryValues(updatedContact) {
+    const keysToDelete = [
+      'userColor',
+      'userEmailAddress',
+      'userFirstName',
+      'userInitials',
+      'userName',
+      'userPhoneNumber',
+      'userSurName',
+      'updatedContact'
+    ]
+    keysToDelete.forEach(key => {
+      delete updatedContact[key]
+    })
+    return updatedContact;
   }
 
   updateContactBackend(updatedContact) {
