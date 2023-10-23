@@ -131,9 +131,7 @@ export class UserService {
         this.allContactsData[i].contactPhoneNumber = updatedContact.contactPhoneNumber;
       }
     }
-    console.log("updatedContact", updatedContact)
     this.deleteUnnecessaryValues(updatedContact);
-    console.log("updatedContact", updatedContact)
     this.updateContactBackend(updatedContact);
     localStorage.removeItem('allContactsData');
     localStorage.setItem('allContactsData', JSON.stringify(this.allContactsData));
@@ -164,6 +162,10 @@ export class UserService {
       .collection('contacts')
       .doc(updatedContact.firebaseId)
       .update(updatedContact);
+  }
+
+  updateToUsersData(updatedContact) {
+    console.log("updatedContact", updatedContact);
   }
 
   getTasksDataMain() {

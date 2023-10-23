@@ -17,7 +17,7 @@ export class MainDialogEditContactComponent {
   editContactForm = this.fb.group({
     contactName: ['', [Validators.required, signUpUserNameValidator]],
     contactEmailAddress: [{value: '', disabled: true}],
-    contactPhoneNumber: ['', [Validators.required, phoneValidator]]
+    contactPhoneNumber: ['']
   });
 
   private colors: string[] = [
@@ -73,6 +73,7 @@ export class MainDialogEditContactComponent {
         this.userService.updateToContactsData(this.contact);
       } else if (this.contact.type === "userSignUp") {
         console.log("data to users collection");
+        this.userService.updateToUsersData(this.contact);
       } else {
         console.log("incorrect contact.type")
       }
@@ -84,8 +85,8 @@ export class MainDialogEditContactComponent {
   checkSingleInputs() {
     if (!this.contact.contactName) this.contactNameValid = false;
     else this.contactNameValid = true;
-    if (!this.contact.contactPhoneNumber) this.contactPhoneNumberValid = false;
-    else this.contactPhoneNumberValid = true;
+    // if (!this.contact.contactPhoneNumber) this.contactPhoneNumberValid = false;
+    // else this.contactPhoneNumberValid = true;
   }
 
   getContactData() {
@@ -93,7 +94,11 @@ export class MainDialogEditContactComponent {
     this.contact.contactSurName = this.contact.contactName.split(' ')[1];
     this.contact.contactInitials = this.contact.contactFirstName.charAt(0).toUpperCase() + this.contact.contactSurName.charAt(0).toUpperCase();
     this.contact.contactColor = this.generateColorFromInitials(this.contact.contactInitials);
-    this.contact.contactPhoneNumber = this.contact.contactPhoneNumber.replace(/\s/g, '');
+    if(this.contact.contactPhoneNumber) {
+      this.contact.contactPhoneNumber = this.contact.contactPhoneNumber.replace(/\s/g, '');
+    } else {
+      this.contact.contactPhoneNumber = '';
+    }
   }
 
   private generateColorFromInitials(initials: string): string {
