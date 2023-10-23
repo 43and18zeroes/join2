@@ -53,6 +53,8 @@ export class MainContactsComponent {
   }
 
   editContact(clickedContactData) {
+    console.log("editContact clickedContactData", clickedContactData)
+    const clickedContactDataID = clickedContactData.firebaseId;
     const dialogRef = this.dialog.open(MainDialogEditContactComponent, {
       panelClass: 'popup__contact__add'
     });
@@ -62,6 +64,21 @@ export class MainContactsComponent {
     dialogRef.componentInstance.contact = clickedContactData;
     dialogRef.afterClosed().subscribe((result) => {
       this.groupedContacts = this.userService.groupedContacts;
+      this.findEditedContactData(clickedContactDataID);
     });
+  }
+
+  findEditedContactData(clickedContactDataID) {
+    for (const key in this.groupedContacts) {
+      if (this.groupedContacts.hasOwnProperty(key)) {
+        const elementArray = this.groupedContacts[key];
+        for (const element of elementArray) { 
+          if (element.firebaseId === clickedContactDataID) {
+            console.log(element);
+            this.clickedContactData = element;
+          }
+        }
+      }
+    }
   }
 }

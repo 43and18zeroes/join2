@@ -326,7 +326,6 @@ export class MainAddTaskComponent {
   }
 
   sendNewTaskToBackend(trimmedTask) {
-    console.log("trimmedTask", trimmedTask)
     this.firestore
       .collection('tasks')
       .add(trimmedTask)
