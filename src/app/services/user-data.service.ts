@@ -251,18 +251,7 @@ export class UserService {
   //   });
   // }
 
-  generateUsersLists() {
-    this.groupedContacts = {};
-    this.allUsersData.forEach(index => {
-      if (index.userEmailAddress !== this.currentUserData.userEmailAddress) {
-        const firstLetter = index.userFirstName.charAt(0).toUpperCase();
-        if (!this.groupedContacts[firstLetter]) {
-          this.groupedContacts[firstLetter] = [];
-        }
-        this.groupedContacts[firstLetter].push(index);
-      }
-    });
-  }
+  
 
   // generateUsersAndContactsLists() {
   //   this.groupedContacts = {};

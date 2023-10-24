@@ -14,6 +14,7 @@ export class MainContactsComponent {
   alphabet;
   groupedContacts;
   currentUserData;
+  allUsersData;
 
   selectedContactId: string | null = null;
   showContactDetails: boolean = false;
@@ -23,10 +24,25 @@ export class MainContactsComponent {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.generateUsersLists();
-    this.alphabet = this.userService.alphabet;
-    this.groupedContacts = this.userService.groupedContacts;
+    this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
+    this.generateUsersLists();
+    this.alphabet = this.userService.alphabet;
+    this.groupedContacts;
+    this.currentUserData = this.userService.currentUserData;
+  }
+
+  generateUsersLists() {
+    this.groupedContacts = {};
+    this.allUsersData.forEach(index => {
+      if (index.userEmailAddress !== this.currentUserData.userEmailAddress) {
+        const firstLetter = index.userFirstName.charAt(0).toUpperCase();
+        if (!this.groupedContacts[firstLetter]) {
+          this.groupedContacts[firstLetter] = [];
+        }
+        this.groupedContacts[firstLetter].push(index);
+      }
+    });
   }
 
   openAddUserDialog(): void {
@@ -35,7 +51,7 @@ export class MainContactsComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.groupedContacts = this.userService.groupedContacts;
+      this.generateUsersLists();
     });
   }
 
@@ -61,7 +77,7 @@ export class MainContactsComponent {
     });
     dialogRef.componentInstance.user = clickedContactData;
     dialogRef.afterClosed().subscribe((result) => {
-      this.groupedContacts = this.userService.groupedContacts;
+      this.generateUsersLists();
       this.findEditedContactData(clickedContactDataID);
     });
   }
