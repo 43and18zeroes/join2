@@ -77,6 +77,7 @@ export class MainDialogEditContactComponent {
       } else {
         console.log("incorrect contact.type")
       }
+      
       this.userService.generateUsersAndContactsLists();
       this.addNewUserOutro();
     }
