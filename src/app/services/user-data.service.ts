@@ -134,6 +134,7 @@ export class UserService {
       .collection('users')
       .doc(updatedUser.firebaseId)
       .update(updatedUser);
+      this.setAllUsersDataToVarAndLocal();
   }
 
   // updateToContactsData(updatedContact) {
