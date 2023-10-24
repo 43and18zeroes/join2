@@ -11,7 +11,7 @@ import { MainDialogEditContactComponent } from '../main-dialog-edit-contact/main
 })
 export class MainContactsComponent {
 
-  alphabet;
+  alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');;
   groupedContacts;
   currentUserData;
   allUsersData;
@@ -27,7 +27,6 @@ export class MainContactsComponent {
     this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
     this.generateUsersLists();
-    this.alphabet = this.userService.alphabet;
     this.groupedContacts;
     this.currentUserData = this.userService.currentUserData;
   }

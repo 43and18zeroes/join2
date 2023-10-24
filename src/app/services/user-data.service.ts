@@ -8,14 +8,9 @@ import { getAuth } from "firebase/auth";
 export class UserService {
 
   allUsersData;
-  // allContactsData;
   allTasksData;
   currentUserAuth;
   currentUserData;
-  // usersAndContactsMerged;
-
-  alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-  groupedContacts = {};
 
   constructor(private firestore: AngularFirestore) { }
 
