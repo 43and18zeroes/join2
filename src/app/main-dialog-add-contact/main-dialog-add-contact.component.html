@@ -44,11 +44,11 @@
                 </div>
 
                 <div class="input__container">
-                    <span (click)="contactEmailAddress.focus()" class="material__symbols__outlined">
+                    <span (click)="userEmailAddress.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input [(ngModel)]="user.userEmailAddress" formControlName="contactEmailAddress"
-                        placeholder="Email" #contactEmailAddress placeholder="Email">
+                    <input [(ngModel)]="user.userEmailAddress" formControlName="userEmailAddress"
+                        placeholder="Email" #userEmailAddress placeholder="Email">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="addUserForm.controls.userEmailAddress.invalid &&
@@ -58,11 +58,11 @@
                 </div>
 
                 <div class="input__container">
-                    <span (click)="contactPhoneNumber.focus()" class="material__symbols__outlined">
+                    <span (click)="userPhoneNumber.focus()" class="material__symbols__outlined">
                         phone
                     </span>
-                    <input [(ngModel)]="user.userPhoneNumber" formControlName="contactPhoneNumber"
-                        placeholder="Phone" #contactPhoneNumber placeholder="Phone">
+                    <input [(ngModel)]="user.userPhoneNumber" formControlName="userPhoneNumber"
+                        placeholder="Phone" #userPhoneNumber placeholder="Phone">
                 </div>
                 <div class="incorrect__input">
                     <span *ngIf="addUserForm.controls.userPhoneNumber.invalid &&

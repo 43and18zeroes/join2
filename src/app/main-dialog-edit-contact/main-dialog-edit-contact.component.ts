@@ -2,7 +2,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Contact } from 'src/models/contact.class';
+// import { Contact } from 'src/models/contact.class';
+import { User } from 'src/models/user.class';
 import { emailValidator, signUpUserNameValidator, phoneValidator } from '../shared/validators/custom-validators';
 import { UserService } from '../services/user-data.service';
 
@@ -13,11 +14,11 @@ import { UserService } from '../services/user-data.service';
 })
 export class MainDialogEditContactComponent {
 
-  contact = new Contact();
-  editContactForm = this.fb.group({
-    contactName: ['', [Validators.required, signUpUserNameValidator]],
-    contactEmailAddress: [{value: '', disabled: true}],
-    contactPhoneNumber: ['']
+  user = new User();
+  editUserForm = this.fb.group({
+    userName: ['', [Validators.required, signUpUserNameValidator]],
+    userEmailAddress: [{value: '', disabled: true}],
+    userPhoneNumber: ['']
   });
 
   private colors: string[] = [
@@ -40,9 +41,9 @@ export class MainDialogEditContactComponent {
     '#FFCA68', '#773311'
   ];
 
-  contactNameValid: boolean = true;
-  contactEmailAddressValid: boolean = true;
-  contactPhoneNumberValid: boolean = true;
+  userNameValid: boolean = true;
+  userEmailAddressValid: boolean = true;
+  userPhoneNumberValid: boolean = true;
   editUserFormSubmitted: boolean = false;
   @ViewChild('newUserSubmitBtn') newUserSubmitBtn: ElementRef;
 
@@ -54,8 +55,7 @@ export class MainDialogEditContactComponent {
   ) { }
 
   ngOnInit(): void {
-    console.log("contact", this.contact)
-    // this.contact.contactName = this.contact.userEmailAddress;
+    console.log("user", this.user)
   }
 
   closeDialog() {
@@ -64,41 +64,31 @@ export class MainDialogEditContactComponent {
 
   onSubmit() {
     this.checkSingleInputs();
-    if (this.editContactForm.valid) {
+    if (this.editUserForm.valid) {
       this.editUserFormSubmitted = true;
-      this.getContactData();
-      console.log(this.contact)
-      if (this.contact.type === "userFromContacts") {
-        console.log("data to contacts collection");
-        this.userService.updateToContactsData(this.contact);
-      } else if (this.contact.type === "userSignUp") {
-        console.log("data to users collection");
-        this.userService.updateToUsersData(this.contact);
-      } else {
-        console.log("incorrect contact.type")
-      }
-      
-      this.userService.generateUsersAndContactsLists();
+      this.getUserData();
+      // this.userService.updateToUsersData(this.user);
+      // this.userService.generateUsersList();
       this.addNewUserOutro();
     }
   }
 
   checkSingleInputs() {
-    if (!this.contact.contactName) this.contactNameValid = false;
-    else this.contactNameValid = true;
-    // if (!this.contact.contactPhoneNumber) this.contactPhoneNumberValid = false;
-    // else this.contactPhoneNumberValid = true;
+    if (!this.user.userName) this.userNameValid = false;
+    else this.userNameValid = true;
+    // if (!this.user.userPhoneNumber) this.userPhoneNumberValid = false;
+    // else this.userPhoneNumberValid = true;
   }
 
-  getContactData() {
-    this.contact.contactFirstName = this.contact.contactName.split(' ')[0];
-    this.contact.contactSurName = this.contact.contactName.split(' ')[1];
-    this.contact.contactInitials = this.contact.contactFirstName.charAt(0).toUpperCase() + this.contact.contactSurName.charAt(0).toUpperCase();
-    this.contact.contactColor = this.generateColorFromInitials(this.contact.contactInitials);
-    if(this.contact.contactPhoneNumber) {
-      this.contact.contactPhoneNumber = this.contact.contactPhoneNumber.replace(/\s/g, '');
+  getUserData() {
+    this.user.userFirstName = this.user.userName.split(' ')[0];
+    this.user.userSurName = this.user.userName.split(' ')[1];
+    this.user.userInitials = this.user.userFirstName.charAt(0).toUpperCase() + this.user.userSurName.charAt(0).toUpperCase();
+    this.user.userColor = this.generateColorFromInitials(this.user.userInitials);
+    if(this.user.userPhoneNumber) {
+      this.user.userPhoneNumber = this.user.userPhoneNumber.replace(/\s/g, '');
     } else {
-      this.contact.contactPhoneNumber = '';
+      this.user.userPhoneNumber = '';
     }
   }
 

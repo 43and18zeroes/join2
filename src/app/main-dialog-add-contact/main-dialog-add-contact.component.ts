@@ -65,8 +65,8 @@ export class MainDialogAddContactComponent {
     this.checkSingleInputs();
     if (this.addUserForm.valid) {
       this.addUserFormSubmitted = true;
-      this.getContactData();
-      this.sendNewContactDataToBackend();
+      this.getUserData();
+      this.sendNewUserDataToBackend();
     } else {
       console.log("form not valid");
     }
@@ -81,7 +81,7 @@ export class MainDialogAddContactComponent {
     else this.userPhoneNumberValid = true;
   }
 
-  getContactData() {
+  getUserData() {
     this.user.userFirstName = this.user.userName.split(' ')[0];
     this.user.userSurName = this.user.userName.split(' ')[1];
     this.user.userInitials = this.user.userFirstName.charAt(0).toUpperCase() + this.user.userSurName.charAt(0).toUpperCase();
@@ -101,12 +101,12 @@ export class MainDialogAddContactComponent {
     return sum % this.colors.length;
   }
 
-  sendNewContactDataToBackend() {
+  sendNewUserDataToBackend() {
     const userData = this.user.toJSON();
     delete userData.firebaseId;
 
     this.firestore
-      .collection('contacts')
+      .collection('users')
       .add(userData)
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
@@ -117,8 +117,8 @@ export class MainDialogAddContactComponent {
       })
       .then(() => {
         console.log('Document successfully updated with firebaseId!');
-        this.userService.addToContactsData(this.user);
-      this.userService.generateUsersAndContactsLists();
+        this.userService.addToUsersData(this.user);
+      // this.userService.generateUsersAndContactsLists();
       this.addNewUserOutro();
       })
       .catch((error) => {

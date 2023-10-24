@@ -29,44 +29,44 @@
 
             <div class="material__symbols__outlined symbol__person">person</div>
 
-            <form [formGroup]="editContactForm" (ngSubmit)="onSubmit()" [ngClass]="{ 'form__disabled': editUserFormSubmitted }">
+            <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()" [ngClass]="{ 'form__disabled': editUserFormSubmitted }">
 
                 <div class="input__container">
-                    <span (click)="contactName.focus()" class="material__symbols__outlined">
+                    <span (click)="userName.focus()" class="material__symbols__outlined">
                         person
                     </span>
-                    <input [(ngModel)]="contact.contactName" id="contactName" formControlName="contactName" placeholder="Name"
-                        #contactName placeholder="Name">
+                    <input [(ngModel)]="user.userName" id="userName" formControlName="userName" placeholder="Name"
+                        #userName placeholder="Name">
                 </div>
                 <div class="incorrect__input">
-                    <span *ngIf="editContactForm.controls.contactName.invalid &&
-                    editContactForm.controls.contactName.dirty || !contactNameValid">Separate first and last name with a space.</span>
+                    <span *ngIf="editUserForm.controls.userName.invalid &&
+                    editUserForm.controls.userName.dirty || !userNameValid">Separate first and last name with a space.</span>
                 </div>
 
                 <div class="input__container">
-                    <span (click)="contactEmailAddress.focus()" class="material__symbols__outlined">
+                    <span (click)="userEmailAddress.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input [(ngModel)]="contact.contactEmailAddress" formControlName="contactEmailAddress"
-                        placeholder="Email" #contactEmailAddress placeholder="Email" class="email__input">
+                    <input [(ngModel)]="user.userEmailAddress" formControlName="userEmailAddress"
+                        placeholder="Email" #userEmailAddress placeholder="Email" class="email__input">
                 </div>
                 <div class="incorrect__input">
-                    <span *ngIf="editContactForm.controls.contactEmailAddress.invalid &&
-                    editContactForm.controls.contactEmailAddress.dirty || !contactEmailAddressValid" >Invalid
+                    <span *ngIf="editUserForm.controls.userEmailAddress.invalid &&
+                    editUserForm.controls.userEmailAddress.dirty || !userEmailAddressValid" >Invalid
                         email
                         address.</span>
                 </div>
 
                 <div class="input__container">
-                    <span (click)="contactPhoneNumber.focus()" class="material__symbols__outlined">
+                    <span (click)="userPhoneNumber.focus()" class="material__symbols__outlined">
                         phone
                     </span>
-                    <input [(ngModel)]="contact.contactPhoneNumber" formControlName="contactPhoneNumber"
-                        placeholder="Phone" #contactPhoneNumber placeholder="Phone">
+                    <input [(ngModel)]="user.userPhoneNumber" formControlName="userPhoneNumber"
+                        placeholder="Phone" #userPhoneNumber placeholder="Phone">
                 </div>
                 <div class="incorrect__input">
-                    <span *ngIf="editContactForm.controls.contactPhoneNumber.invalid &&
-                    editContactForm.controls.contactPhoneNumber.dirty || !contactPhoneNumberValid">Invalid
+                    <span *ngIf="editUserForm.controls.userPhoneNumber.invalid &&
+                    editUserForm.controls.userPhoneNumber.dirty || !userPhoneNumberValid">Invalid
                         phone number.</span>
                 </div>
 

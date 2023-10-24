@@ -26,10 +26,10 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUsersDataMain();
-    this.userService.getContactsDataMain();
+    // this.userService.getContactsDataMain();
     this.userService.getTasksDataMain();
-    this.userService.mergeUsersAndContactsData();
-    this.userService.generateUsersAndContactsLists();
+    // this.userService.mergeUsersAndContactsData();
+    // this.userService.generateUsersAndContactsLists();
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
     }, 2500);

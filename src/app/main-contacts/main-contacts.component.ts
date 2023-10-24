@@ -61,7 +61,7 @@ export class MainContactsComponent {
     clickedContactData.contactName = clickedContactData.userName;
     clickedContactData.contactEmailAddress = clickedContactData.userEmailAddress;
     clickedContactData.contactPhoneNumber = clickedContactData.userPhoneNumber;
-    dialogRef.componentInstance.contact = clickedContactData;
+    dialogRef.componentInstance.user = clickedContactData;
     dialogRef.afterClosed().subscribe((result) => {
       this.groupedContacts = this.userService.groupedContacts;
       this.findEditedContactData(clickedContactDataID);

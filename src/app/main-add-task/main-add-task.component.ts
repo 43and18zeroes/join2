@@ -13,7 +13,7 @@ import { UserService } from '../services/user-data.service';
 })
 export class MainAddTaskComponent {
 
-  allUsersAndContacts;
+  allUsersData;
   currentUserData;
   addTaskForm: FormGroup;
   showAssignedDropdown: boolean = false;
@@ -63,7 +63,7 @@ export class MainAddTaskComponent {
   }
 
   ngOnInit(): void {
-    this.allUsersAndContacts = this.userService.usersAndContactsMerged;
+    this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
       if (!this.assignSelectRef.nativeElement.contains(event.target)) {
@@ -86,7 +86,7 @@ export class MainAddTaskComponent {
   }
 
   assignToggleDropdown() {
-    this.allUsersAndContacts = this.userService.usersAndContactsMerged;
+    this.allUsersData = this.userService.allUsersData;
     this.showAssignedDropdown = !this.showAssignedDropdown;
   }
 
@@ -243,7 +243,7 @@ export class MainAddTaskComponent {
   clearForm() {
     this.resetFormModel();
     this.currentUserData.selected = false;
-    this.allUsersAndContacts.forEach(user => user.selected = false);
+    this.allUsersData.forEach(user => user.selected = false);
     this.selectedUsers = [];
     this.selectedPriority = 'undefined';
     this.subTasksArray = [];
