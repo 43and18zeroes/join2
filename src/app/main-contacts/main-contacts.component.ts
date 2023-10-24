@@ -25,7 +25,7 @@ export class MainContactsComponent {
     this.alphabet = this.userService.alphabet;
     this.groupedContacts = this.userService.groupedContacts;
 
-    this.displayContactDetails(this.groupedContacts['A'][0], "A", 0)
+    // this.displayContactDetails(this.groupedContacts['A'][0], "A", 0)
   }
 
   openAddUserDialog(): void {
