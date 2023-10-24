@@ -22,10 +22,9 @@ export class MainContactsComponent {
     private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.generateUsersLists();
     this.alphabet = this.userService.alphabet;
     this.groupedContacts = this.userService.groupedContacts;
-
-    // this.displayContactDetails(this.groupedContacts['A'][0], "A", 0)
   }
 
   openAddUserDialog(): void {

@@ -242,6 +242,17 @@ export class UserService {
   //   });
   // }
 
+  generateUsersLists() {
+    this.groupedContacts = {};
+    this.allUsersData.forEach(index => {
+      const firstLetter = index.userFirstName.charAt(0).toUpperCase();
+      if (!this.groupedContacts[firstLetter]) {
+        this.groupedContacts[firstLetter] = [];
+      }
+      this.groupedContacts[firstLetter].push(index);
+    });
+  }
+
   // generateUsersAndContactsLists() {
   //   this.groupedContacts = {};
   //   this.usersAndContactsMerged.forEach(index => {
