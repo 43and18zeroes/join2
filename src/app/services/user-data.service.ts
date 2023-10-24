@@ -128,6 +128,14 @@ export class UserService {
   //   this.mergeUsersAndContactsData();
   // }
 
+  updateToUsersData(updatedUser) {
+    console.log("updateToUsersData", updatedUser);
+    this.firestore
+      .collection('users')
+      .doc(updatedUser.firebaseId)
+      .update(updatedUser);
+  }
+
   // updateToContactsData(updatedContact) {
   //   for (let i = 0; i < this.allContactsData.length; i++) {
   //     if (this.allContactsData[i].contactEmailAddress === updatedContact.contactEmailAddress) {

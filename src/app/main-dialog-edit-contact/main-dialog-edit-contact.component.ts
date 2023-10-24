@@ -67,7 +67,7 @@ export class MainDialogEditContactComponent {
     if (this.editUserForm.valid) {
       this.editUserFormSubmitted = true;
       this.getUserData();
-      // this.userService.updateToUsersData(this.user);
+      this.userService.updateToUsersData(this.user);
       // this.userService.generateUsersList();
       this.addNewUserOutro();
     }
