@@ -2,7 +2,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Contact } from 'src/models/contact.class';
+// import { Contact } from 'src/models/contact.class';
+import { User } from 'src/models/user.class';
 import { emailValidator, signUpUserNameValidator, phoneValidator } from '../shared/validators/custom-validators';
 import { UserService } from '../services/user-data.service';
 
@@ -13,11 +14,11 @@ import { UserService } from '../services/user-data.service';
 })
 export class MainDialogAddContactComponent {
 
-  contact = new Contact();
-  addContactForm = this.fb.group({
-    contactName: ['', [Validators.required, signUpUserNameValidator]],
-    contactEmailAddress: ['', [Validators.required, emailValidator]],
-    contactPhoneNumber: ['', [Validators.required, phoneValidator]]
+  user = new User();
+  addUserForm = this.fb.group({
+    userName: ['', [Validators.required, signUpUserNameValidator]],
+    userEmailAddress: ['', [Validators.required, emailValidator]],
+    userPhoneNumber: ['', [Validators.required, phoneValidator]]
   });
 
   private colors: string[] = [
@@ -40,9 +41,9 @@ export class MainDialogAddContactComponent {
     '#FFCA68', '#773311'
   ];
 
-  contactNameValid: boolean = true;
-  contactEmailAddressValid: boolean = true;
-  contactPhoneNumberValid: boolean = true;
+  userNameValid: boolean = true;
+  userEmailAddressValid: boolean = true;
+  userPhoneNumberValid: boolean = true;
   addUserFormSubmitted: boolean = false;
   @ViewChild('newUserSubmitBtn') newUserSubmitBtn: ElementRef;
 
@@ -62,7 +63,7 @@ export class MainDialogAddContactComponent {
 
   onSubmit() {
     this.checkSingleInputs();
-    if (this.addContactForm.valid) {
+    if (this.addUserForm.valid) {
       this.addUserFormSubmitted = true;
       this.getContactData();
       this.sendNewContactDataToBackend();
@@ -72,21 +73,21 @@ export class MainDialogAddContactComponent {
   }
 
   checkSingleInputs() {
-    if (!this.contact.contactName) this.contactNameValid = false;
-    else this.contactNameValid = true;
-    if (!this.contact.contactEmailAddress) this.contactEmailAddressValid = false;
-    else this.contactEmailAddressValid = true;
-    if (!this.contact.contactPhoneNumber) this.contactPhoneNumberValid = false;
-    else this.contactPhoneNumberValid = true;
+    if (!this.user.userName) this.userNameValid = false;
+    else this.userNameValid = true;
+    if (!this.user.userEmailAddress) this.userEmailAddressValid = false;
+    else this.userEmailAddressValid = true;
+    if (!this.user.userPhoneNumber) this.userPhoneNumberValid = false;
+    else this.userPhoneNumberValid = true;
   }
 
   getContactData() {
-    this.contact.contactFirstName = this.contact.contactName.split(' ')[0];
-    this.contact.contactSurName = this.contact.contactName.split(' ')[1];
-    this.contact.contactInitials = this.contact.contactFirstName.charAt(0).toUpperCase() + this.contact.contactSurName.charAt(0).toUpperCase();
-    this.contact.contactColor = this.generateColorFromInitials(this.contact.contactInitials);
-    this.contact.contactPhoneNumber = this.contact.contactPhoneNumber.replace(/\s/g, '');
-    this.contact.type = "userFromContacts";
+    this.user.userFirstName = this.user.userName.split(' ')[0];
+    this.user.userSurName = this.user.userName.split(' ')[1];
+    this.user.userInitials = this.user.userFirstName.charAt(0).toUpperCase() + this.user.userSurName.charAt(0).toUpperCase();
+    this.user.userColor = this.generateColorFromInitials(this.user.userInitials);
+    this.user.userPhoneNumber = this.user.userPhoneNumber.replace(/\s/g, '');
+    this.user.type = "userFromContacts";
   }
 
   private generateColorFromInitials(initials: string): string {
@@ -101,22 +102,22 @@ export class MainDialogAddContactComponent {
   }
 
   sendNewContactDataToBackend() {
-    const contactData = this.contact.toJSON();
-    delete contactData.firebaseId;
+    const userData = this.user.toJSON();
+    delete userData.firebaseId;
 
     this.firestore
       .collection('contacts')
-      .add(contactData)
+      .add(userData)
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
-        this.contact.firebaseId = docRef.id;
+        this.user.firebaseId = docRef.id;
 
         // Jetzt können Sie das Dokument aktualisieren und die "firebaseId" hinzufügen
         return docRef.update({ firebaseId: docRef.id });
       })
       .then(() => {
         console.log('Document successfully updated with firebaseId!');
-        this.userService.addToContactsData(this.contact);
+        this.userService.addToContactsData(this.user);
       this.userService.generateUsersAndContactsLists();
       this.addNewUserOutro();
       })

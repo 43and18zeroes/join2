@@ -5,6 +5,7 @@ export class User {
     public userInitials: string;
     public userEmailAddress: string;
     public userColor: string;
+    public userPhoneNumber: string;
     public type: string;
     public firebaseId: string;
 
@@ -15,6 +16,7 @@ export class User {
         this.userInitials = this.userInitials;
         this.userEmailAddress = this.userEmailAddress;
         this.userColor = this.userColor;
+        this.userPhoneNumber = this.userPhoneNumber;
         this.type = this.type;
         this.firebaseId = this.firebaseId;
     }
@@ -27,6 +29,7 @@ export class User {
             userInitials: this.userInitials,
             userEmailAddress: this.userEmailAddress,
             userColor: this.userColor,
+            userPhoneNumber: this.userPhoneNumber,
             type: this.type,
             firebaseId: this.firebaseId
         }
