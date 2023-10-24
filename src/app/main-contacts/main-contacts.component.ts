@@ -13,6 +13,7 @@ export class MainContactsComponent {
 
   alphabet;
   groupedContacts;
+  currentUserData;
 
   selectedContactId: string | null = null;
   showContactDetails: boolean = false;
@@ -25,6 +26,7 @@ export class MainContactsComponent {
     this.userService.generateUsersLists();
     this.alphabet = this.userService.alphabet;
     this.groupedContacts = this.userService.groupedContacts;
+    this.currentUserData = this.userService.currentUserData;
   }
 
   openAddUserDialog(): void {

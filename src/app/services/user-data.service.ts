@@ -134,7 +134,7 @@ export class UserService {
       .collection('users')
       .doc(updatedUser.firebaseId)
       .update(updatedUser);
-      this.setAllUsersDataToVarAndLocal();
+    this.setAllUsersDataToVarAndLocal();
   }
 
   // updateToContactsData(updatedContact) {
@@ -254,11 +254,13 @@ export class UserService {
   generateUsersLists() {
     this.groupedContacts = {};
     this.allUsersData.forEach(index => {
-      const firstLetter = index.userFirstName.charAt(0).toUpperCase();
-      if (!this.groupedContacts[firstLetter]) {
-        this.groupedContacts[firstLetter] = [];
+      if (index.userEmailAddress !== this.currentUserData.userEmailAddress) {
+        const firstLetter = index.userFirstName.charAt(0).toUpperCase();
+        if (!this.groupedContacts[firstLetter]) {
+          this.groupedContacts[firstLetter] = [];
+        }
+        this.groupedContacts[firstLetter].push(index);
       }
-      this.groupedContacts[firstLetter].push(index);
     });
   }
 
