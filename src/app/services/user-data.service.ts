@@ -123,9 +123,8 @@ export class UserService {
   //   this.mergeUsersAndContactsData();
   // }
 
-  updateToUsersData(updatedUser) {
-    this.updateAllUsersData(updatedUser);
-    console.log("updateToUsersData", updatedUser);
+  updateUser(updatedUser) {
+    this.updateAllUsersDataVar(updatedUser);
     this.firestore
       .collection('users')
       .doc(updatedUser.firebaseId)
@@ -133,9 +132,7 @@ export class UserService {
       this.setAllUsersDataToVarAndLocal();
   }
 
-  updateAllUsersData(updatedUser) {
-    console.log("updateAllUsersData updatedUser", updatedUser)
-    console.log("updateAllUsersData allUsersData", this.allUsersData)
+  updateAllUsersDataVar(updatedUser) {
     for (let index = 0; index < this.allUsersData.length; index++) {
       if (this.allUsersData[index].userEmailAddress === updatedUser.userEmailAddress) {
         this.allUsersData[index] = updatedUser;
