@@ -74,7 +74,7 @@ export class MainContactsComponent {
     const dialogRef = this.dialog.open(MainDialogEditContactComponent, {
       panelClass: 'popup__contact__add'
     });
-    dialogRef.componentInstance.user = clickedContactData;
+    dialogRef.componentInstance.user = {...clickedContactData};
     dialogRef.afterClosed().subscribe((result) => {
       this.generateUsersLists();
       this.findEditedContactData(clickedContactDataID);

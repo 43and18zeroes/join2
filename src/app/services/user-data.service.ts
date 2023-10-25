@@ -124,12 +124,24 @@ export class UserService {
   // }
 
   updateToUsersData(updatedUser) {
+    this.updateAllUsersData(updatedUser);
     console.log("updateToUsersData", updatedUser);
     this.firestore
       .collection('users')
       .doc(updatedUser.firebaseId)
       .update(updatedUser);
-    this.setAllUsersDataToVarAndLocal();
+      this.setAllUsersDataToVarAndLocal();
+  }
+
+  updateAllUsersData(updatedUser) {
+    console.log("updateAllUsersData updatedUser", updatedUser)
+    console.log("updateAllUsersData allUsersData", this.allUsersData)
+    for (let index = 0; index < this.allUsersData.length; index++) {
+      if (this.allUsersData[index].userEmailAddress === updatedUser.userEmailAddress) {
+        this.allUsersData[index] = updatedUser;
+      }
+      
+    }
   }
 
   // updateToContactsData(updatedContact) {
