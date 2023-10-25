@@ -100,6 +100,7 @@ export class MainContactsComponent {
     this.userService.deleteContact(clickedContactData);
     this.generateUsersLists();
     this.showContactDetails = false;
+    this.selectedContactId = null;
   }
 
   findEditedContactData(clickedContactDataID) {
