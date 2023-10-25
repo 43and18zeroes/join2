@@ -52,6 +52,8 @@ export class MainContactsComponent {
       console.log("this.idLastUserAdded", this.userService.idLastUserAdded);
       this.generateUsersLists();
       this.highlightNewContact(this.userService.idLastUserAdded);
+      this.showContactDetails = true;
+      this.clickedContactData = this.userService.lastUserAdded;
     });
   }
 
