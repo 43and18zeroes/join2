@@ -50,7 +50,7 @@
                     <div class="details__name">{{ clickedContactData.userName }}</div>
                     <div class="details__btns">
                         <div (click)="editContact(clickedContactData)" class="details__edit__btn"><span class="material__symbols__outlined">edit</span> Edit</div>
-                        <div class="details__delete__btn"><span class="material__symbols__outlined">delete</span> Delete</div>
+                        <div (click)="deleteContact(clickedContactData)" class="details__delete__btn"><span class="material__symbols__outlined">delete</span> Delete</div>
                     </div>
                 </div>
             </div>
