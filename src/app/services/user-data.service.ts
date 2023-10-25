@@ -151,11 +151,15 @@ export class UserService {
 
   updateUser(updatedUser) {
     this.updateAllUsersDataVar(updatedUser);
+    this.updateUserDataBackend(updatedUser);
+    this.setAllUsersDataToVarAndLocal();
+  }
+
+  updateUserDataBackend(updatedUser) {
     this.firestore
       .collection('users')
       .doc(updatedUser.firebaseId)
       .update(updatedUser);
-      this.setAllUsersDataToVarAndLocal();
   }
 
   updateAllUsersDataVar(updatedUser) {
