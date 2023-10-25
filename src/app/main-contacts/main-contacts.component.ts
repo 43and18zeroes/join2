@@ -24,10 +24,8 @@ export class MainContactsComponent {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
     this.generateUsersLists();
-    this.currentUserData = this.userService.currentUserData;
   }
 
   generateUsersLists() {
