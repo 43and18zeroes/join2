@@ -76,7 +76,7 @@ export class UserService {
     this.sortUsersData();
   }
 
-  private sortUsersData(): void {
+  public sortUsersData(): void {
     this.allUsersData.sort((a, b) => {
       if (a.userFirstName.toLowerCase() < b.userFirstName.toLowerCase()) {
         return -1;
