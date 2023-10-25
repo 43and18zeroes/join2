@@ -27,11 +27,11 @@ export class MainContactsComponent {
     this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
     this.generateUsersLists();
-    this.groupedContacts;
     this.currentUserData = this.userService.currentUserData;
   }
 
   generateUsersLists() {
+    this.allUsersData = this.userService.allUsersData;
     this.groupedContacts = {};
     this.allUsersData.forEach(index => {
       if (index.userEmailAddress !== this.currentUserData.userEmailAddress) {
