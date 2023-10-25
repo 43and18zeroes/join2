@@ -88,6 +88,8 @@ export class MainContactsComponent {
           if (element.firebaseId === clickedContactDataID) {
             console.log("findEditedContactData", element);
             this.clickedContactData = element;
+            this.selectedContactId = `${key}-${elementArray.indexOf(element)}`;
+            return;
           }
         }
       }
