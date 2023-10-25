@@ -49,6 +49,7 @@ export class MainContactsComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      console.log("this.idLastUserAdded", this.userService.idLastUserAdded);
       this.generateUsersLists();
     });
   }
