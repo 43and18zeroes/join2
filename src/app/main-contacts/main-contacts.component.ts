@@ -49,9 +49,8 @@ export class MainContactsComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("this.idLastUserAdded", this.userService.idLastUserAdded);
       this.generateUsersLists();
-      this.highlightNewContact(this.userService.idLastUserAdded);
+      this.highlightNewContact(this.userService.lastUserAdded.firebaseId);
       this.showContactDetails = true;
       this.clickedContactData = this.userService.lastUserAdded;
     });

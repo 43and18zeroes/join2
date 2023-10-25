@@ -12,7 +12,6 @@ export class UserService {
   currentUserAuth;
   currentUserData;
   lastUserAdded;
-  idLastUserAdded;
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -133,7 +132,7 @@ export class UserService {
         console.log("Document written with ID: ", docRef.id);
         addedUser.firebaseId = docRef.id;
         this.lastUserAdded = addedUser;
-        this.idLastUserAdded = addedUser.firebaseId;
+        // this.idLastUserAdded = addedUser.firebaseId;
         return docRef.update({ firebaseId: docRef.id });
       })
       .then(() => {
