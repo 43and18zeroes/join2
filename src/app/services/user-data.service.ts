@@ -165,8 +165,34 @@ export class UserService {
       if (this.allUsersData[index].userEmailAddress === updatedUser.userEmailAddress) {
         this.allUsersData[index] = updatedUser;
       }
-      
     }
+  }
+
+  deleteContact(userToDelete) {
+    this.deleteFromVar(userToDelete);
+    this.deleteFromBackend(userToDelete);
+    this.setAllUsersDataToVarAndLocal();
+  }
+
+  deleteFromVar(userToDelete) {
+    for (let index = 0; index < this.allUsersData.length; index++) {
+      if (this.allUsersData[index].userEmailAddress === userToDelete.userEmailAddress) {
+        this.allUsersData.splice(index, 1);
+      }
+    }
+  }
+
+  deleteFromBackend(userToDelete) {
+    this.firestore
+      .collection('users')
+      .doc(userToDelete.firebaseId)
+      .delete()
+      .then(() => {
+        console.log("Benutzer erfolgreich gelöscht!");
+      })
+      .catch((error) => {
+        console.error("Fehler beim Löschen des Benutzers: ", error);
+      });;
   }
 
   // updateToContactsData(updatedContact) {
@@ -283,7 +309,7 @@ export class UserService {
   //   });
   // }
 
-  
+
 
   // generateUsersAndContactsLists() {
   //   this.groupedContacts = {};

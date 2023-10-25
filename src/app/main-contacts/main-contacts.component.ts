@@ -97,7 +97,9 @@ export class MainContactsComponent {
   }
 
   deleteContact(clickedContactData) {
-    
+    this.userService.deleteContact(clickedContactData);
+    this.generateUsersLists();
+    this.showContactDetails = false;
   }
 
   findEditedContactData(clickedContactDataID) {
