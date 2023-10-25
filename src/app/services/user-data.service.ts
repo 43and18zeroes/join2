@@ -116,14 +116,14 @@ export class UserService {
   // }
 
   addUser(addedUser) {
-    this.addToUsersData(addedUser);
-    this.sendNewUserDataToBackend(addedUser);
+    this.addToUsersDataVar(addedUser);
+    this.addUserDataBackend(addedUser);
+    this.setAllUsersDataToVarAndLocal();
   }
 
-  sendNewUserDataToBackend(addedUser) {
+  addUserDataBackend(addedUser) {
     const userData = addedUser.toJSON();
     delete userData.firebaseId;
-
     this.firestore
       .collection('users')
       .add(userData)
@@ -140,13 +140,8 @@ export class UserService {
       });
   }
 
-  addToUsersData(addedUser) {
+  addToUsersDataVar(addedUser) {
     this.allUsersData.push(addedUser);
-    this.setAllUsersDataToVarAndLocal();
-    // localStorage.removeItem('allUsersData');
-    // localStorage.setItem('allUsersData', JSON.stringify(this.allUsersData));
-    // this.sortContactsData();
-    // this.mergeUsersAndContactsData();
   }
 
   updateUser(updatedUser) {
