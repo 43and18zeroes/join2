@@ -66,7 +66,8 @@ export class MainDialogAddContactComponent {
     if (this.addUserForm.valid) {
       this.addUserFormSubmitted = true;
       this.getUserData();
-      this.sendNewUserDataToBackend();
+      this.userService.addUser(this.user);
+      this.addNewUserOutro();
     } else {
       console.log("form not valid");
     }
@@ -99,31 +100,6 @@ export class MainDialogAddContactComponent {
     const charCodes = initials.split('').map(char => char.charCodeAt(0));
     const sum = charCodes.reduce((acc, curr) => acc + curr, 0);
     return sum % this.colors.length;
-  }
-
-  sendNewUserDataToBackend() {
-    const userData = this.user.toJSON();
-    delete userData.firebaseId;
-
-    this.firestore
-      .collection('users')
-      .add(userData)
-      .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-        this.user.firebaseId = docRef.id;
-
-        // Jetzt können Sie das Dokument aktualisieren und die "firebaseId" hinzufügen
-        return docRef.update({ firebaseId: docRef.id });
-      })
-      .then(() => {
-        console.log('Document successfully updated with firebaseId!');
-        this.userService.addToUsersData(this.user);
-      // this.userService.generateUsersAndContactsLists();
-      this.addNewUserOutro();
-      })
-      .catch((error) => {
-        console.error("Error adding or updating document: ", error);
-      });
   }
 
   addNewUserOutro() {

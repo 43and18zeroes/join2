@@ -69,6 +69,8 @@ export class MainDialogEditContactComponent {
       this.getUserData();
       this.userService.updateUser(this.user);
       this.addNewUserOutro();
+    } else {
+      console.log("form not valid");
     }
   }
 

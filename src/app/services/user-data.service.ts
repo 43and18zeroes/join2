@@ -107,14 +107,6 @@ export class UserService {
   //   });
   // }
 
-  addToUsersData(newContact) {
-    this.allUsersData.push(newContact);
-    localStorage.removeItem('allUsersData');
-    localStorage.setItem('allUsersData', JSON.stringify(this.allUsersData));
-    // this.sortContactsData();
-    // this.mergeUsersAndContactsData();
-  }
-
   // addToContactsData(newContact) {
   //   this.allContactsData.push(newContact);
   //   localStorage.removeItem('allContactsData');
@@ -122,6 +114,40 @@ export class UserService {
   //   this.sortContactsData();
   //   this.mergeUsersAndContactsData();
   // }
+
+  addUser(addedUser) {
+    this.addToUsersData(addedUser);
+    this.sendNewUserDataToBackend(addedUser);
+  }
+
+  sendNewUserDataToBackend(addedUser) {
+    const userData = addedUser.toJSON();
+    delete userData.firebaseId;
+
+    this.firestore
+      .collection('users')
+      .add(userData)
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+        addedUser.firebaseId = docRef.id;
+        return docRef.update({ firebaseId: docRef.id });
+      })
+      .then(() => {
+        console.log('Document successfully updated with firebaseId!');
+      })
+      .catch((error) => {
+        console.error("Error adding or updating document: ", error);
+      });
+  }
+
+  addToUsersData(addedUser) {
+    this.allUsersData.push(addedUser);
+    this.setAllUsersDataToVarAndLocal();
+    // localStorage.removeItem('allUsersData');
+    // localStorage.setItem('allUsersData', JSON.stringify(this.allUsersData));
+    // this.sortContactsData();
+    // this.mergeUsersAndContactsData();
+  }
 
   updateUser(updatedUser) {
     this.updateAllUsersDataVar(updatedUser);
