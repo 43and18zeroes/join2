@@ -52,17 +52,18 @@ export class MainContactsComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       this.generateUsersLists();
-      this.highlightNewContact(this.userService.lastUserAdded.firebaseId);
+      // this.highlightNewContact(this.userService.lastUserAdded.firebaseId);
+      this.highlightNewContact(this.userService.lastUserAdded);
       this.showContactDetails = true;
       this.clickedContactData = this.userService.lastUserAdded;
     });
   }
 
-  highlightNewContact(newContactId: string) {
+  highlightNewContact(newContactId) {
     for (const key in this.groupedContacts) {
       if (this.groupedContacts.hasOwnProperty(key)) {
         const elementArray = this.groupedContacts[key];
-        const foundElement = elementArray.find(element => element.firebaseId === newContactId);
+        const foundElement = elementArray.find(element => element.firebaseId === newContactId.firebaseId);
         if (foundElement) {
           this.selectedContactId = `${key}-${elementArray.indexOf(foundElement)}`;
           this.clickedContactData = foundElement; // Optional, wenn Sie die Kontaktdetails auch anzeigen möchten
