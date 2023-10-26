@@ -1,5 +1,5 @@
-<div class="overlay" #successAnimationOverlay>
-    <div class="success__message" #successAnimationText>
+<div class="overlay" [class.active]="isDeletionSuccessful">
+    <div class="success__message" [class.show]="isDeletionSuccessful">
         User deleted <span class="material__symbols__outlined">check</span>
     </div>
 </div>

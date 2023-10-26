@@ -20,8 +20,7 @@ export class MainContactsComponent {
   showContactDetails: boolean = false;
   clickedContactData;
 
-  @ViewChild('successAnimationOverlay', { static: false }) successAnimationOverlayRef: ElementRef;
-  @ViewChild('successAnimationText', { static: false }) successAnimationText: ElementRef;
+  isDeletionSuccessful: boolean = false;
 
   constructor(public dialog: MatDialog,
     private userService: UserService) { }
@@ -108,11 +107,9 @@ export class MainContactsComponent {
   }
 
   displayDeletionSuccessfulAnimation() {
-    this.successAnimationOverlayRef.nativeElement.classList.add('active');
-    this.successAnimationText.nativeElement.classList.add('show');
+    this.isDeletionSuccessful = true;
     setTimeout(() => {
-      this.successAnimationOverlayRef.nativeElement.classList.remove('active');
-      this.successAnimationText.nativeElement.classList.remove('show');
+      this.isDeletionSuccessful = false;
     }, 1500);
   }
 
