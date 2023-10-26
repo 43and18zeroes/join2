@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 import { UserService } from '../services/user-data.service';
@@ -19,6 +19,9 @@ export class MainContactsComponent {
   selectedContactId: string | null = null;
   showContactDetails: boolean = false;
   clickedContactData;
+
+  @ViewChild('successAnimationOverlay', { static: false }) successAnimationOverlayRef: ElementRef;
+  @ViewChild('successAnimationText', { static: false }) successAnimationText: ElementRef;
 
   constructor(public dialog: MatDialog,
     private userService: UserService) { }
@@ -105,14 +108,11 @@ export class MainContactsComponent {
   }
 
   displayDeletionSuccessfulAnimation() {
-    var overlay = document.querySelector('.overlay');
-    var message = document.querySelector('.success__message');
-
-    overlay.classList.add('active');
-    message.classList.add('show');
-    setTimeout(function () {
-      message.classList.remove('show');
-      overlay.classList.remove('active');
+    this.successAnimationOverlayRef.nativeElement.classList.add('active');
+    this.successAnimationText.nativeElement.classList.add('show');
+    setTimeout(() => {
+      this.successAnimationOverlayRef.nativeElement.classList.remove('active');
+      this.successAnimationText.nativeElement.classList.remove('show');
     }, 1500);
   }
 
