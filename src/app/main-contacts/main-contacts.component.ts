@@ -95,8 +95,11 @@ export class MainContactsComponent {
     });
     dialogRef.componentInstance.user = { ...clickedContactData };
     dialogRef.afterClosed().subscribe((result) => {
-      this.generateUsersLists();
-      this.findEditedContactData(clickedContactDataID);
+      if (this.userService.userUpdatedSuccessfully) {
+        this.generateUsersLists();
+        this.findEditedContactData(clickedContactDataID);
+        this.userService.userUpdatedSuccessfully = false;
+      }
     });
   }
 
