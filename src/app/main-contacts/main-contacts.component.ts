@@ -89,7 +89,7 @@ export class MainContactsComponent {
     const dialogRef = this.dialog.open(MainDialogEditContactComponent, {
       panelClass: 'popup__contact__add'
     });
-    dialogRef.componentInstance.user = {...clickedContactData};
+    dialogRef.componentInstance.user = { ...clickedContactData };
     dialogRef.afterClosed().subscribe((result) => {
       this.generateUsersLists();
       this.findEditedContactData(clickedContactDataID);
@@ -101,13 +101,26 @@ export class MainContactsComponent {
     this.generateUsersLists();
     this.showContactDetails = false;
     this.selectedContactId = null;
+    this.displayDeletionSuccessfulAnimation();
+  }
+
+  displayDeletionSuccessfulAnimation() {
+    var overlay = document.querySelector('.overlay');
+    var message = document.querySelector('.success__message');
+
+    overlay.classList.add('active');
+    message.classList.add('show');
+    setTimeout(function () {
+      message.classList.remove('show');
+      overlay.classList.remove('active');
+    }, 1500);
   }
 
   findEditedContactData(clickedContactDataID) {
     for (const key in this.groupedContacts) {
       if (this.groupedContacts.hasOwnProperty(key)) {
         const elementArray = this.groupedContacts[key];
-        for (const element of elementArray) { 
+        for (const element of elementArray) {
           if (element.firebaseId === clickedContactDataID) {
             console.log("findEditedContactData", element);
             this.clickedContactData = element;

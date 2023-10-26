@@ -1,3 +1,10 @@
+<div class="overlay">
+    <div class="success__message">
+        <span class="material__symbols__outlined">check</span>
+        Benutzer erfolgreich gelöscht!
+    </div>
+</div>
+
 <div class="contacts__container">
 
     <div class="contacts__list">
@@ -12,7 +19,9 @@
                 <ng-container *ngIf="hasContactsForLetter(letter)">
                     <div class="alphabet__header">{{ letter }}</div>
                     <div class="alphabet__body">
-                        <div *ngFor="let index of groupedContacts[letter]; let i = index;" (click)="displayContactDetails(index, letter, i)" class="single__entry" [ngClass]="{'active__class': isActive(letter, i)}">
+                        <div *ngFor="let index of groupedContacts[letter]; let i = index;"
+                            (click)="displayContactDetails(index, letter, i)" class="single__entry"
+                            [ngClass]="{'active__class': isActive(letter, i)}">
                             <div class="entry__initials" [ngStyle]="{'background-color': index.userColor}">{{
                                 index.userInitials }}</div>
                             <div class="entry__right">
@@ -44,13 +53,16 @@
 
         <div *ngIf="showContactDetails" class="contact__details__body">
             <div class="details__header">
-                <div class="details__initials" [ngStyle]="{'background-color': clickedContactData.userColor}">{{ clickedContactData.userInitials }}
+                <div class="details__initials" [ngStyle]="{'background-color': clickedContactData.userColor}">{{
+                    clickedContactData.userInitials }}
                 </div>
                 <div class="details__header__right">
                     <div class="details__name">{{ clickedContactData.userName }}</div>
                     <div class="details__btns">
-                        <div (click)="editContact(clickedContactData)" class="details__edit__btn"><span class="material__symbols__outlined">edit</span> Edit</div>
-                        <div (click)="deleteContact(clickedContactData)" class="details__delete__btn"><span class="material__symbols__outlined">delete</span> Delete</div>
+                        <div (click)="editContact(clickedContactData)" class="details__edit__btn"><span
+                                class="material__symbols__outlined">edit</span> Edit</div>
+                        <div (click)="deleteContact(clickedContactData)" class="details__delete__btn"><span
+                                class="material__symbols__outlined">delete</span> Delete</div>
                     </div>
                 </div>
             </div>
@@ -58,11 +70,13 @@
             <div class="contact__info">
                 <div class="mail">
                     <h4>Email</h4>
-                    <a href="mailto:{{ clickedContactData.userEmailAddress }}" target="_blank">{{ clickedContactData.userEmailAddress }}</a>
+                    <a href="mailto:{{ clickedContactData.userEmailAddress }}" target="_blank">{{
+                        clickedContactData.userEmailAddress }}</a>
                 </div>
                 <div class="mail">
                     <h4>Phone</h4>
-                    <a href="tel:+{{ clickedContactData.userPhoneNumber }}" target="_blank">{{ clickedContactData.userPhoneNumber }}</a>
+                    <a href="tel:+{{ clickedContactData.userPhoneNumber }}" target="_blank">{{
+                        clickedContactData.userPhoneNumber }}</a>
                 </div>
             </div>
         </div>
