@@ -136,22 +136,24 @@
             gap: 58px;
 
             .symbol__person {
-                width: 92px;
-                height: 92px;
+                width: 116px;
+                height: 116px;
                 border-radius: 50%;
                 border: 2px solid #FFF;
                 box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
                 background-color: #D1D1D1;
-                font-size: 50px;
+                font-size: 47px;
+                font-weight: 500;
                 color: #FFF;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 margin-bottom: 50px;
+                cursor: default;
 
                 @media (width <=1100px) {
                     position: absolute;
-                    top: -144px;
+                    top: -156px;
                 }
             }
 

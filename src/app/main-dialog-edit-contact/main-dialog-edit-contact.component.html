@@ -27,7 +27,11 @@
 
         <div class="right__body">
 
-            <div class="material__symbols__outlined symbol__person">person</div>
+            <!-- <div class="material__symbols__outlined symbol__person">person</div> -->
+
+            <div class="symbol__person" [ngStyle]="{'background-color': user.userColor}">{{
+                user.userInitials }}
+            </div>
 
             <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()" [ngClass]="{ 'form__disabled': editUserFormSubmitted }">
 
