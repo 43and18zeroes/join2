@@ -14,6 +14,7 @@ export class UserService {
   lastUserAdded;
   userAddedSuccessfully = false;
   userUpdatedSuccessfully = false;
+  userDeletedSuccessfully = false;
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -176,6 +177,7 @@ export class UserService {
     this.deleteFromVar(userToDelete);
     this.deleteFromBackend(userToDelete);
     this.setAllUsersDataToVarAndLocal();
+    this.userDeletedSuccessfully = true;
   }
 
   deleteFromVar(userToDelete) {

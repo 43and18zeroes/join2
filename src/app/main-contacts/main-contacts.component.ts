@@ -95,11 +95,15 @@ export class MainContactsComponent {
     });
     dialogRef.componentInstance.user = { ...clickedContactData };
     dialogRef.afterClosed().subscribe((result) => {
-      if (this.userService.userUpdatedSuccessfully) {
+      if (this.userService.userDeletedSuccessfully) {
+        this.showContactDetails = false;
+      }
+      if (this.userService.userUpdatedSuccessfully || this.userService.userDeletedSuccessfully) {
         this.generateUsersLists();
         this.findEditedContactData(clickedContactDataID);
-        this.userService.userUpdatedSuccessfully = false;
       }
+      this.userService.userUpdatedSuccessfully = false;
+      this.userService.userDeletedSuccessfully = false;
     });
   }
 
@@ -109,6 +113,7 @@ export class MainContactsComponent {
     this.showContactDetails = false;
     this.selectedContactId = null;
     this.displayDeletionSuccessfulAnimation();
+    this.userService.userDeletedSuccessfully = false;
   }
 
   displayDeletionSuccessfulAnimation() {

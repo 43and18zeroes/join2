@@ -104,6 +104,11 @@ export class MainDialogEditContactComponent {
     return sum % this.colors.length;
   }
 
+  deleteContact(userToDelete) {
+    this.userService.deleteContact(userToDelete);
+    this.closeDialog();
+  }
+
   addNewUserOutro() {
     this.newUserSubmitBtn.nativeElement.classList.add("btn__success");
     setTimeout(() => {
