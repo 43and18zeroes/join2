@@ -49,21 +49,22 @@ export class MainContactsComponent {
     const dialogRef = this.dialog.open(MainDialogAddContactComponent, {
       panelClass: 'popup__contact__add'
     });
-
     dialogRef.afterClosed().subscribe((result) => {
-      this.generateUsersLists();
-      // this.highlightNewContact(this.userService.lastUserAdded.firebaseId);
-      this.highlightNewContact(this.userService.lastUserAdded);
-      this.showContactDetails = true;
-      this.clickedContactData = this.userService.lastUserAdded;
+      if (this.userService.userAddedSuccessfully) {
+        this.generateUsersLists();
+        this.highlightNewContact(this.userService.lastUserAdded.firebaseId);
+        this.showContactDetails = true;
+        this.clickedContactData = this.userService.lastUserAdded;
+        this.userService.userAddedSuccessfully = false;
+      }
     });
   }
 
-  highlightNewContact(newContactId) {
+  highlightNewContact(newContactId: string) {
     for (const key in this.groupedContacts) {
       if (this.groupedContacts.hasOwnProperty(key)) {
         const elementArray = this.groupedContacts[key];
-        const foundElement = elementArray.find(element => element.firebaseId === newContactId.firebaseId);
+        const foundElement = elementArray.find(element => element.firebaseId === newContactId);
         if (foundElement) {
           this.selectedContactId = `${key}-${elementArray.indexOf(foundElement)}`;
           this.clickedContactData = foundElement; // Optional, wenn Sie die Kontaktdetails auch anzeigen möchten

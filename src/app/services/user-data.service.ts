@@ -12,6 +12,7 @@ export class UserService {
   currentUserAuth;
   currentUserData;
   lastUserAdded;
+  userAddedSuccessfully = false;
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -120,6 +121,7 @@ export class UserService {
     this.addToUsersDataVar(addedUser);
     this.addUserDataBackend(addedUser);
     this.setAllUsersDataToVarAndLocal();
+    this.userAddedSuccessfully = true;
   }
 
   addUserDataBackend(addedUser) {
