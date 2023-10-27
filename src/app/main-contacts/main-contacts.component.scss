@@ -309,6 +309,8 @@
 }
 
 .success__message {
+    font-family: var(--main-font-family);
+    font-weight: 700;
     background-color: #007000;
     color: white;
     padding: 15px 16px;
@@ -324,7 +326,7 @@
     box-sizing: border-box;
 
     span {
-        font-weight: 500 !important;
+        font-weight: 700 !important;
         font-size: 26px !important;
         margin-left: 8px !important;
     }

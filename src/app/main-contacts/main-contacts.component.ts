@@ -20,7 +20,7 @@ export class MainContactsComponent {
   showContactDetails: boolean = false;
   clickedContactData;
 
-  isDeletionSuccessful: boolean = false;
+  displayDeletionAnimation: boolean = false;
 
   constructor(public dialog: MatDialog,
     private userService: UserService) { }
@@ -117,9 +117,9 @@ export class MainContactsComponent {
   }
 
   displayDeletionSuccessfulAnimation() {
-    this.isDeletionSuccessful = true;
+    this.displayDeletionAnimation = true;
     setTimeout(() => {
-      this.isDeletionSuccessful = false;
+      this.displayDeletionAnimation = false;
     }, 1500);
   }
 
