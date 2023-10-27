@@ -111,8 +111,11 @@ export class MainAddTaskComponent {
   }
 
   openAddUserDialog() {
-    this.dialog.open(MainDialogAddContactComponent, {
+    const dialogRef = this.dialog.open(MainDialogAddContactComponent, {
       panelClass: 'popup__contact__add'
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.userService.sortUsersData();
     });
   }
 
