@@ -48,6 +48,12 @@
             <h2>Contacts</h2>
             <span>Better with a team</span>
             <div></div>
+
+            <div (click)="deactiveContactDetails()" class="hover__area no__select">
+                <div class="transform__circle"></div>
+                <span class="material__symbols__outlined single__icon">arrow_back</span>
+            </div>
+
         </header>
 
         <div *ngIf="showContactDetails" class="contact__details__body">

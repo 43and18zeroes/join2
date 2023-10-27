@@ -92,6 +92,10 @@ export class MainContactsComponent {
     this.selectedContactId = `${letter}-${index}`;
   }
 
+  deactiveContactDetails() {
+    this.showContactDetails = false;
+  }
+
   isActive(letter: string, index: number): boolean {
     return this.selectedContactId === `${letter}-${index}`;
   }
