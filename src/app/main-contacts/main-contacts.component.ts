@@ -28,6 +28,8 @@ export class MainContactsComponent {
   ngOnInit(): void {
     this.currentUserData = this.userService.currentUserData;
     this.generateUsersLists();
+
+    this.displayContactDetails(this.groupedContacts['A'][0], 'A', 0);
   }
 
   generateUsersLists() {
