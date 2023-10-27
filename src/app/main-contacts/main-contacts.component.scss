@@ -222,6 +222,11 @@
 
             .details__header {
                 display: flex;
+                gap: 16px;
+
+                @media (width <=1300px) {
+                    flex-direction: column;
+                }
 
                 .details__initials {
                     width: 116px;
@@ -243,6 +248,10 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
+
+                    @media (width <=1300px) {
+                        margin-left: 0;
+                    }
 
                     .details__name {
                         font-size: 47px;
