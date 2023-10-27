@@ -63,6 +63,7 @@ export class MainAddTaskComponent {
   }
 
   ngOnInit(): void {
+    this.userService.sortUsersData();
     this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
