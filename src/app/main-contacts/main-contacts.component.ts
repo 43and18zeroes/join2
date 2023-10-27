@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 import { UserService } from '../services/user-data.service';
@@ -19,6 +19,13 @@ export class MainContactsComponent {
   showContactDetails: boolean = false;
   clickedContactData;
 
+  isLargeScreen: boolean = window.innerWidth > 1100;
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.isLargeScreen = window.innerWidth > 1100;
+  }
+
+
   displayDeletionAnimation: boolean = false;
 
   constructor(public dialog: MatDialog,
@@ -28,7 +35,7 @@ export class MainContactsComponent {
     this.currentUserData = this.userService.currentUserData;
     this.generateUsersLists();
 
-    this.displayContactDetails(this.groupedContacts['A'][0], 'A', 0);
+    // this.displayContactDetails(this.groupedContacts['A'][0], 'A', 0);
   }
 
   generateUsersLists() {
