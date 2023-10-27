@@ -15,7 +15,6 @@ export class MainContactsComponent {
   groupedContacts;
   currentUserData;
   allUsersData;
-
   selectedContactId: string | null = null;
   showContactDetails: boolean = false;
   clickedContactData;
