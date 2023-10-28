@@ -1,11 +1,20 @@
 <div class="board__container">
     <header>
+
         <h2>Board</h2>
+
         <div class="header__right">
-            <input type="text">
-            <button>Add task</button>
+            <div class="input__container">
+                <span (click)="searchBar.focus()" class="material__symbols__outlined">
+                    search
+                </span>
+                <input placeholder="Find Task" #searchBar placeholder="Name">
+            </div>
+            <button type="button">Add task</button>
         </div>
+
     </header>
+    
     <main>
         <div class="main__element">
             <h3>To do</h3>
