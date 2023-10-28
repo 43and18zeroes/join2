@@ -91,24 +91,24 @@
         }
     }
 
-    main {
-        height: calc(100% - 96px);
-        display: flex;
-        justify-content: space-between;
+    // main {
+    //     height: calc(100% - 96px);
+    //     display: flex;
+    //     justify-content: space-between;
 
-        .main__element {
-            display: flex;
-            flex-direction: column;
+    //     .main__element {
+    //         display: flex;
+    //         flex-direction: column;
 
-            h3 {
-                font-size: 20px;
-                font-weight: 700;
-            }
+    //         h3 {
+    //             font-size: 20px;
+    //             font-weight: 700;
+    //         }
 
-            .column__body {
-                flex: 1;
-                overflow-y: auto;
-            }
-        }
-    }
+    //         .column__body {
+    //             flex: 1;
+    //             overflow-y: auto;
+    //         }
+    //     }
+    // }
 }
