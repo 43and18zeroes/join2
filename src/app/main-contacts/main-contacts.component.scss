@@ -167,9 +167,13 @@
             padding-right: 24px;
         }
 
-        // @media (width >1100px) {
-        //     display: block;
-        // }
+        @media (width <=1100px) {
+            padding-right: 40px;
+        }
+
+        @media (width <=992px) {
+            padding: 32px 16px;
+        }
 
         .header__desktop {
             display: flex;
@@ -225,6 +229,12 @@
                 display: none
             }
 
+            @media (width <=1100px) {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+
             @media (width <=490px) {
                 width: 323px;
             }
@@ -252,10 +262,14 @@
             }
 
             .arrow {
-                font-size: 40px;
-
-                @media (width >=1100px) {
+                width: 56.25px;
+                height: 56.25px;
+                @media (width >1100px) {
                     display: none;
+                }
+
+                .single__icon {
+                    font-size: 50px;
                 }
             }
         }
