@@ -14,11 +14,11 @@
         h2 {
             font-size: var(--fontsize-h2-desktop);
             margin: 0 0 40px 0;
-    
+
             @media (width <=992px) {
                 font-size: var(--fontsize-h2-992);
             }
-    
+
             @media (width <=640px) {
                 font-size: 47px;
                 margin: 0 0 32px 0;
@@ -29,23 +29,37 @@
             height: 48px;
             display: flex;
             gap: 16px;
-            
+
             .input__container {
                 position: relative;
 
                 .material__symbols__outlined {
                     position: absolute;
+                    font-size: var(--fontsize-input-symbol);
+                    color: var(--main-slate);
+                    cursor: text;
+                }
+
+                .magnifier {
                     top: calc(50% + 0.5px);
                     transform: translate(0%, -50%);
                     right: 21px;
+                }
+
+                .pipe {
+                    position: absolute;
+                    top: calc(50% + 0px);
+                    transform: translate(0%, -50%);
+                    right: 60px;
                     font-size: var(--fontsize-input-symbol);
+                    font-weight: 200;
                     color: var(--inactive-lite-grey);
                     cursor: text;
                 }
 
                 input {
-                    width: calc(100% - 80px);
-                    padding: 11px 57px 11px 21px;
+                    width: calc(100% - 110px);
+                    padding: 11px 87px 11px 21px;
                     border-radius: 10px;
                     font-size: var(--fontsize-body);
                     border: 1px solid var(--inactive-lite-grey);
@@ -83,7 +97,7 @@
                 font-size: 20px;
                 font-weight: 700;
             }
-            
+
             .column__body {
                 flex: 1;
                 overflow-y: auto;
