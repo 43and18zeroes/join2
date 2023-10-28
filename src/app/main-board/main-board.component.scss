@@ -1,8 +1,6 @@
 .board__container {
     height: calc(100vh - 224px);
-    padding: 64px;
-    // display: flex;
-    // flex-direction: column;
+    padding: 48px;
 
     @media (width <=992px) {
         height: calc(100vh - 304px);
@@ -12,11 +10,23 @@
         height: 140px;
         display: flex;
         justify-content: space-between;
+
+        h2 {
+            font-size: var(--fontsize-h2-desktop);
+            margin: 0 0 40px 0;
+    
+            @media (width <=992px) {
+                font-size: var(--fontsize-h2-992);
+            }
+    
+            @media (width <=640px) {
+                font-size: 47px;
+                margin: 0 0 32px 0;
+            }
+        }
     }
 
     main {
-        // height: calc(100vh - 224px);
-        // flex: 1;
         height: calc(100% - 96px);
         display: flex;
         justify-content: space-between;
