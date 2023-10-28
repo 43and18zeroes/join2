@@ -151,7 +151,6 @@
     }
 
     .contacts__details {
-        // display: none;
         height: calc(100% - 2 * 96px);
         width: 100%;
         padding: 96px 48px;
@@ -172,6 +171,7 @@
         }
 
         @media (width <=992px) {
+            height: calc(100% - 2 * 32px);
             padding: 32px 16px;
         }
 
@@ -235,9 +235,9 @@
                 justify-content: space-between;
             }
 
-            @media (width <=490px) {
-                width: 323px;
-            }
+            // @media (width <=490px) {
+            //     width: 323px;
+            // }
 
             .header__mobile__left {
                 h2 {
