@@ -344,7 +344,8 @@
                 align-items: center;
 
                 @media (width <=1300px) {
-                    margin: 0;
+                    height: fit-content;
+                    margin: 24px 0 0 0;
                 }
             }
 
