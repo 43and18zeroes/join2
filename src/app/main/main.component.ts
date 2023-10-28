@@ -14,8 +14,8 @@ export class MainComponent implements OnInit {
   allContactsData;
   allTasksData;
 
-  currentlyDisplayed: string = 'contacts';
-  currentlyClicked: string = 'contacts';
+  currentlyDisplayed: string = 'board';
+  currentlyClicked: string = 'board';
 
   displayMainSection(condition: 'summary' | 'board' | 'addTask' | 'contacts') {
     this.currentlyDisplayed = condition;
