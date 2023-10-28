@@ -26,13 +26,16 @@
         }
 
         .header__right {
+            height: 48px;
+            display: flex;
+            gap: 16px;
             
             .input__container {
                 position: relative;
 
                 .material__symbols__outlined {
                     position: absolute;
-                    top: 50%;
+                    top: calc(50% + 0.5px);
                     transform: translate(0%, -50%);
                     right: 21px;
                     font-size: var(--fontsize-input-symbol);
@@ -42,7 +45,7 @@
 
                 input {
                     width: calc(100% - 80px);
-                    padding: 10px 57px 10px 21px;
+                    padding: 11px 57px 11px 21px;
                     border-radius: 10px;
                     font-size: var(--fontsize-body);
                     border: 1px solid var(--inactive-lite-grey);
