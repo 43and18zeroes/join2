@@ -243,16 +243,16 @@
                 h2 {
                     font-size: 61px;
                     margin: 0 0 8px 0;
-    
+
                     @media (width <=992px) {
                         font-size: 47px;
                     }
                 }
-    
+
                 span {
                     font-size: 20px;
                 }
-    
+
                 .line {
                     width: 96px;
                     border-bottom: 4px solid var(--accent-cyan);
@@ -264,6 +264,7 @@
             .arrow {
                 width: 50px;
                 height: 50px;
+
                 @media (width >1100px) {
                     display: none;
                 }
@@ -280,10 +281,6 @@
                 display: flex;
                 gap: 16px;
 
-                @media (width <=1300px) {
-                    flex-direction: column;
-                }
-
                 .details__initials {
                     width: 116px;
                     height: 116px;
@@ -297,6 +294,13 @@
                     justify-content: center;
                     align-items: center;
                     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+
+                    @media (width <=1300px) {
+                        width: 76px;
+                        height: 76px;
+                        min-width: 76px;
+                        font-size: 31px;
+                    }
                 }
 
                 .details__header__right {
@@ -312,6 +316,11 @@
                     .details__name {
                         font-size: 47px;
                         font-weight: 500;
+
+                        @media (width <=1300px) {
+                            font-size: 36px;
+                        font-weight: 700;
+                        }
                     }
 
                     .details__btns {
