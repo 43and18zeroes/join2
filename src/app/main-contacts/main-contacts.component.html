@@ -60,8 +60,10 @@
 
         <div *ngIf="showContactDetails" class="contact__details__body">
             <div class="details__header">
-                <div class="details__initials" [ngStyle]="{'background-color': clickedContactData.userColor}">{{
-                    clickedContactData.userInitials }}
+                <div class="header__left">
+                    <div class="details__initials" [ngStyle]="{'background-color': clickedContactData.userColor}">{{
+                        clickedContactData.userInitials }}
+                    </div>
                 </div>
                 <div class="details__header__right">
                     <div class="details__name">{{ clickedContactData.userName }}</div>
