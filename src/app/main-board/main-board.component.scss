@@ -32,6 +32,7 @@
 
             .input__container {
                 position: relative;
+                margin-left: 48px;
 
                 .material__symbols__outlined {
                     position: absolute;
@@ -80,6 +81,10 @@
                         border: 1px solid var(--accent-cyan);
                     }
                 }
+            }
+
+            button {
+                min-width: 152px;
             }
         }
     }
