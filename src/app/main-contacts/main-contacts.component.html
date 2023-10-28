@@ -75,6 +75,12 @@
                     </div>
                 </div>
             </div>
+            <div class="details__btns__mobile">
+                <div (click)="editContact(clickedContactData)" class="details__edit__btn"><span
+                        class="material__symbols__outlined">edit</span> Edit</div>
+                <div (click)="deleteContact(clickedContactData)" class="details__delete__btn"><span
+                        class="material__symbols__outlined">delete</span> Delete</div>
+            </div>
             <h3>Contact Information</h3>
             <div class="contact__info">
                 <div class="mail">

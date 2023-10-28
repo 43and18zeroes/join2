@@ -333,6 +333,10 @@
                         font-weight: 400;
                         display: flex;
 
+                        @media (width <=576px) {
+                            display: none;
+                        }
+
                         div {
                             display: flex;
                             align-items: center;
@@ -346,6 +350,31 @@
                                 transform: scale(1.01);
                             }
                         }
+                    }
+                }
+            }
+
+            .details__btns__mobile {
+                font-size: 16px;
+                font-weight: 400;
+                display: none;
+                margin-top: 16px;
+
+                @media (width <=576px) {
+                    display: flex;
+                }
+
+                div {
+                    display: flex;
+                    align-items: center;
+                    padding: 8px 16px 8px 0;
+                    gap: 8px;
+                    cursor: pointer;
+                    transition: all 100ms ease-in;
+
+                    &:hover {
+                        color: var(--accent-cyan);
+                        transform: scale(1.01);
                     }
                 }
             }
