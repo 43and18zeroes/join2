@@ -1,6 +1,6 @@
 .board__container {
     height: calc(100vh - 224px);
-    padding: 48px;
+    padding: 48px 40px 48px 48px;
 
     @media (width <=992px) {
         height: calc(100vh - 304px);
