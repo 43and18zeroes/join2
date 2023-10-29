@@ -197,6 +197,8 @@
                     }
 
                     .card__footer {
+                        display: flex;
+                        justify-content: space-between;
 
                         .assigned__users {
                             display: flex;
@@ -228,6 +230,18 @@
                             .purple {
                                 background-color: #462F8A;
                             }
+                        }
+
+                        .btn__red {
+                            color: var(--task-prio-urgent);
+                        }
+
+                        .btn__yellow {
+                            color: var(--task-prio-medium);
+                        }
+
+                        .btn__green {
+                            color: var(--task-prio-low);
                         }
                     }
                 }
