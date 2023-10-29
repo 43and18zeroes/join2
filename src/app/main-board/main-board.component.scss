@@ -1,6 +1,6 @@
 .board__container {
     height: calc(100vh - 224px);
-    padding: 48px 40px 48px 48px;
+    padding: 48px 0 48px 48px;
 
     @media (width <=992px) {
         height: calc(100vh - 304px);
@@ -12,6 +12,7 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 40px;
+        margin-right: 40px;
 
         h2 {
             font-size: var(--fontsize-h2-desktop);
@@ -92,8 +93,10 @@
     }
 
     main {
+        width: calc(100vw - 350px);
         display: flex;
         gap: 26px;
+        overflow-x: auto;
 
         section {
             width: 244px;
@@ -121,6 +124,7 @@
             .section__body {
                 height: calc(100vh - 299px);
                 overflow-y: auto;
+                overflow-x: hidden;
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
@@ -167,6 +171,7 @@
 
                         .progressbar {
                             width: 100%;
+                            min-width: 129px;
                             height: 8px;
                             background-color: #F4F4F4;
                             border-radius: 16px;
