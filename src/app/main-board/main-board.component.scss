@@ -154,6 +154,7 @@
                     .task__subtasks {
                         display: flex;
                         align-items: center;
+                        margin-bottom: 24px;
 
                         .progressbar {
                             width: 100%;
@@ -210,6 +211,10 @@
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
+
+                                &:not(:first-child) {
+                                    margin-left: -7px;
+                                }
                             }
 
                             .orange {
