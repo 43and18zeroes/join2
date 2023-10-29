@@ -119,6 +119,8 @@
             }
 
             .section__body {
+                height: calc(100vh - 299px);
+                overflow-y: auto;
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
