@@ -92,6 +92,8 @@
     }
 
     main {
+        display: flex;
+        gap: 26px;
 
         section {
             width: 244px;
@@ -112,6 +114,7 @@
                     border: 3px solid #42526E;
                     border-radius: 8px;
                     font-weight: 600;
+                    cursor: pointer;
                 }
             }
 
