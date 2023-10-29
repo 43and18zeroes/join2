@@ -135,6 +135,7 @@
                     }
 
                     .card__body {
+                        margin-bottom: 24px;
 
                         .task__title {
                             font-weight: 700;
@@ -143,11 +144,16 @@
 
                         .task__description {
                             color: #A8A8A8;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            max-width: 200px;
                         }
                     }
 
                     .task__subtasks {
                         display: flex;
+                        align-items: center;
 
                         .progressbar {
                             width: 100%;
@@ -182,6 +188,11 @@
                             }
                         }
 
+                        .progress__text {
+                            white-space: nowrap;
+                            margin-left: 11px;
+                            font-size: 12px;
+                        }
                     }
                 }
             }
