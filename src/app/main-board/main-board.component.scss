@@ -145,6 +145,44 @@
                             color: #A8A8A8;
                         }
                     }
+
+                    .task__subtasks {
+                        display: flex;
+
+                        .progressbar {
+                            width: 100%;
+                            height: 8px;
+                            background-color: #F4F4F4;
+                            border-radius: 16px;
+                            overflow: hidden;
+
+                            .filler {
+                                height: 100%;
+                                background-color: #4589FF;
+                                transition: width 0.3s ease;
+                                border-radius: 16px;
+                            }
+                        }
+
+                        .progressbar.empty {
+                            .filler {
+                                width: 0%;
+                            }
+                        }
+
+                        .progressbar.half {
+                            .filler {
+                                width: 50%;
+                            }
+                        }
+
+                        .progressbar.full {
+                            .filler {
+                                width: 100%;
+                            }
+                        }
+
+                    }
                 }
             }
         }
