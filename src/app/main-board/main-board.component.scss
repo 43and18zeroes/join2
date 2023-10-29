@@ -115,7 +115,7 @@
                 }
             }
 
-            .to__do__body {
+            .section__body {
 
                 .task__card {
                     background-color: white;
@@ -192,6 +192,37 @@
                             white-space: nowrap;
                             margin-left: 11px;
                             font-size: 12px;
+                        }
+                    }
+
+                    .card__footer {
+
+                        .assigned__users {
+                            display: flex;
+
+                            .user__container {
+                                width: 30px;
+                                height: 30px;
+                                border: 1px solid white;
+                                border-radius: 50%;
+                                font-size: 12px;
+                                color: white;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+
+                            .orange {
+                                background-color: #FF7A00;
+                            }
+
+                            .green {
+                                background-color: #1FD7C1;
+                            }
+
+                            .purple {
+                                background-color: #462F8A;
+                            }
                         }
                     }
                 }
