@@ -219,17 +219,22 @@
                                 }
                             }
 
-                            .orange {
+                            .user__orange {
                                 background-color: #FF7A00;
                             }
 
-                            .green {
+                            .user__green {
                                 background-color: #1FD7C1;
                             }
 
-                            .purple {
+                            .user__purple {
                                 background-color: #462F8A;
                             }
+                        }
+
+                        .task__card__prio {
+                            font-weight: 700;
+                            font-size: 30px;
                         }
 
                         .btn__red {
