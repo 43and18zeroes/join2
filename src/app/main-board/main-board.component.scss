@@ -124,7 +124,7 @@
             }
 
             .section__body {
-                height: calc(100vh - 310px);
+                height: calc(100vh - 296px);
                 overflow-y: auto;
                 overflow-x: hidden;
                 display: flex;
@@ -269,7 +269,7 @@
             }
 
             .has-horizontal-scroll {
-                height: 350px; /* Erhöhte Höhe */
+                height: calc(100vh - 310px);
             }
         }
     }
