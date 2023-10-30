@@ -54,5 +54,8 @@ export class MainBoardComponent {
         event.currentIndex,
       );
     }
+
+    console.log("todo", this.todo);
+    console.log("done", this.done);
   }
 }
