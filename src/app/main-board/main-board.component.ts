@@ -27,16 +27,13 @@ export class MainBoardComponent {
 
   private checkForHorizontalScroll() {
     const mainElement: HTMLDivElement = this.mainContainer.nativeElement;
-
     this.sectionBodys.forEach((sectionBody: ElementRef) => {
       const divElement: HTMLDivElement = sectionBody.nativeElement;
       if (mainElement.scrollWidth > mainElement.clientWidth) {
-        divElement.classList.add('has-horizontal-scroll');
-        console.log("bar vorhanden")
+        divElement.classList.add('has__horizontal__scroll');
       }
       else {
-        divElement.classList.remove('has-horizontal-scroll');
-        console.log("bar nicht vorhanden")
+        divElement.classList.remove('has__horizontal__scroll');
       }
     });
   }
