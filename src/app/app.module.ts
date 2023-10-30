@@ -26,6 +26,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MainDialogAddContactComponent } from './main-dialog-add-contact/main-dialog-add-contact.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MainDialogEditContactComponent } from './main-dialog-edit-contact/main-dialog-edit-contact.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { MainDialogEditContactComponent } from './main-dialog-edit-contact/main-
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     SharedModule,
-    MatDialogModule
+    MatDialogModule,
+    DragDropModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

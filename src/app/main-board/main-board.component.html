@@ -32,9 +32,11 @@
                 </span>
             </div>
 
-            <div class="section__body" #sectionBody>
+            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+                class="example-list" (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
 
-                <div class="task__card">
+                <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                <div cdkDrag class="task__card">
 
                     <div class="task__cat">Test Category</div>
 
@@ -74,7 +76,8 @@
                         </div>
                         <!-- <div class="material__symbols__outlined btn__green">keyboard_double_arrow_down</div>
                         <div class="material__symbols__outlined btn__yellow">double_arrow</div> -->
-                        <div class="material__symbols__outlined task__card__prio btn__red">keyboard_double_arrow_up</div>
+                        <div class="material__symbols__outlined task__card__prio btn__red">keyboard_double_arrow_up
+                        </div>
                     </div>
                 </div>
 
@@ -91,8 +94,9 @@
                 </span>
             </div>
 
-            <div class="section__body" #sectionBody>
-
+            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+                class="example-list" (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
+                <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
             </div>
 
         </section>
@@ -106,7 +110,7 @@
                 </span>
             </div>
 
-            <div class="section__body" #sectionBody>                
+            <div class="section__body" #sectionBody>
 
             </div>
 
