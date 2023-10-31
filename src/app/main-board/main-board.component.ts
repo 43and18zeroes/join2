@@ -74,8 +74,6 @@ export class MainBoardComponent {
 
     this.updateTaskStatus();
     this.newAllTasksData = [...this.todo, ...this.inprogress];
-    // this.setAllTasksDataToLocal();
-    // this.setAllTasksDataToBackend();
   }
 
   updateTaskStatus() {
@@ -88,9 +86,4 @@ export class MainBoardComponent {
       element.taskStatus = "inprogress";
     }
   }
-
-  // setAllTasksDataToLocal() {
-  //   localStorage.removeItem('allUsersData');
-  //   localStorage.setItem('allUsersData', JSON.stringify(this.newAllTasksData));
-  // }
 }
