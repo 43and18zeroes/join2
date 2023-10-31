@@ -30,7 +30,6 @@ export class MainBoardComponent {
   ngOnInit(): void {
     this.allTasksData = this.userService.allTasksData;
     console.log("this.allTasksData", this.allTasksData);
-    console.log("this.todo", this.todo);
     this.convertDataToLists();
   }
 
@@ -45,7 +44,6 @@ export class MainBoardComponent {
         this.todo.push(element);
       }
     }
-    console.log("this.todo", this.todo)
   }
 
   private checkForHorizontalScroll() {
@@ -73,7 +71,23 @@ export class MainBoardComponent {
       );
     }
 
-    console.log("todo", this.todo);
-    console.log("done", this.done);
+    this.updateTaskStatus();
+    this.convertListsToData();
+  }
+
+  updateTaskStatus() {
+    for (let index = 0; index < this.todo.length; index++) {
+      const element = this.todo[index];
+      element.taskStatus = "todo";
+    }
+    for (let index = 0; index < this.inprogress.length; index++) {
+      const element = this.inprogress[index];
+      element.taskStatus = "inprogress";
+    }
+  }
+
+  convertListsToData() {
+    console.log("new todo", this.todo);
+    console.log("new done", this.inprogress);
   }
 }
