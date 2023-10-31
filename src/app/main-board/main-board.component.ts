@@ -89,5 +89,7 @@ export class MainBoardComponent {
   convertListsToData() {
     console.log("new todo", this.todo);
     console.log("new done", this.inprogress);
+    const newAllTasksData = [...this.todo, ...this.inprogress];
+    console.log("newAllTasksData", newAllTasksData);
   }
 }
