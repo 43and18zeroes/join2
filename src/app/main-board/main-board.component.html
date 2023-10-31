@@ -35,21 +35,17 @@
             <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[inprogressList, awaitfeedbackList, doneList]"
                 class="example-list" (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
 
-                <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.category}}</div>
-                <div cdkDrag class="task__card">
+                <!-- <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.category}}</div> -->
+                <div cdkDrag class="task__card example-box" *ngFor="let item of todo" cdkDrag>
 
-                    <div class="task__cat">Test Category</div>
+                    <div class="task__cat">{{ item.category }}</div>
 
                     <div class="card__body">
                         <div class="task__title">
-                            Kochwelt Page & Recipe Recommender
+                            {{ item.title }}
                         </div>
                         <div class="task__description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            {{ item.description }}
                         </div>
                     </div>
 
