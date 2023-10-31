@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
+import { UserService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-main-board',
@@ -8,18 +9,23 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList }
 })
 export class MainBoardComponent {
 
+  allTasksData;
+
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.checkForHorizontalScroll();
   }
 
   @ViewChild('mainContainer') mainContainer: ElementRef;
-  // @ViewChild('sectionBody') sectionBody: ElementRef;
   @ViewChildren('sectionBody') sectionBodys: QueryList<ElementRef>;
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.allTasksData = this.userService.allTasksData;
+    console.log("this.allTasksData", this.allTasksData);
   }
 
   ngAfterViewInit() {
