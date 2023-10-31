@@ -74,7 +74,7 @@ export class MainBoardComponent {
 
     this.updateTaskStatus();
     this.newAllTasksData = [...this.todo, ...this.inprogress];
-    this.setAllTasksDataToLocal();
+    // this.setAllTasksDataToLocal();
     // this.setAllTasksDataToBackend();
   }
 
@@ -89,8 +89,8 @@ export class MainBoardComponent {
     }
   }
 
-  setAllTasksDataToLocal() {
-    localStorage.removeItem('allUsersData');
-    localStorage.setItem('allUsersData', JSON.stringify(this.newAllTasksData));
-  }
+  // setAllTasksDataToLocal() {
+  //   localStorage.removeItem('allUsersData');
+  //   localStorage.setItem('allUsersData', JSON.stringify(this.newAllTasksData));
+  // }
 }
