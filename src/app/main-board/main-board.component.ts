@@ -10,6 +10,10 @@ import { UserService } from '../services/user-data.service';
 export class MainBoardComponent {
 
   allTasksData;
+  todo = [];
+  inprogress = [];
+  awaitfeedback = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -26,10 +30,22 @@ export class MainBoardComponent {
   ngOnInit(): void {
     this.allTasksData = this.userService.allTasksData;
     console.log("this.allTasksData", this.allTasksData);
+    console.log("this.todo", this.todo);
+    this.convertDataToLists();
   }
 
   ngAfterViewInit() {
     this.checkForHorizontalScroll();
+  }
+
+  convertDataToLists() {
+    for (let index = 0; index < this.allTasksData.length; index++) {
+      const element = this.allTasksData[index];
+      if (element.taskStatus === "todo") {
+        this.todo.push(element);
+      }
+    }
+    console.log("this.todo", this.todo)
   }
 
   private checkForHorizontalScroll() {
@@ -44,14 +60,6 @@ export class MainBoardComponent {
       }
     });
   }
-
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
-  inprogress = [];
-
-  awaitfeedback = [];
-
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
