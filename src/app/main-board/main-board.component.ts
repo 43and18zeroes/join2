@@ -41,6 +41,8 @@ export class MainBoardComponent {
 
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
+  inprogress = [];
+
   done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
 
   drop(event: CdkDragDrop<string[]>) {
