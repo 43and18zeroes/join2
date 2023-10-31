@@ -331,12 +331,29 @@ export class MainAddTaskComponent {
   }
 
   sendNewTaskToBackend(trimmedTask) {
+    // this.firestore
+    //   .collection('tasks')
+    //   .add(trimmedTask)
+    //   .then((result: any) => {
+    //     console.log("Task to backend", trimmedTask);
+    //   })
+
+    delete trimmedTask.firebaseId;
     this.firestore
       .collection('tasks')
       .add(trimmedTask)
-      .then((result: any) => {
-        console.log("Task to backend", trimmedTask);
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+        trimmedTask.firebaseId = docRef.id;
+        return docRef.update({ firebaseId: docRef.id });
       })
+    .then(() => {
+      console.log('Document successfully updated with firebaseId!');
+    })
+    .catch((error) => {
+      console.error("Error adding or updating document: ", error);
+    });
+
     this.clearForm();
   }
 
