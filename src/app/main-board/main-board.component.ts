@@ -43,6 +43,8 @@ export class MainBoardComponent {
 
   inprogress = [];
 
+  awaitfeedback = [];
+
   done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
 
   drop(event: CdkDragDrop<string[]>) {
