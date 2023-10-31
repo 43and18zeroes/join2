@@ -10,6 +10,7 @@ import { UserService } from '../services/user-data.service';
 export class MainBoardComponent {
 
   allTasksData;
+  newAllTasksData;
   todo = [];
   inprogress = [];
   awaitfeedback = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
@@ -72,7 +73,9 @@ export class MainBoardComponent {
     }
 
     this.updateTaskStatus();
-    this.convertListsToData();
+    this.newAllTasksData = [...this.todo, ...this.inprogress];
+    this.setAllTasksDataToLocal();
+    this.setAllTasksDataToBackend();
   }
 
   updateTaskStatus() {
@@ -86,8 +89,12 @@ export class MainBoardComponent {
     }
   }
 
-  convertListsToData() {
-    const newAllTasksData = [...this.todo, ...this.inprogress];
-    console.log("newAllTasksData", newAllTasksData);
+  setAllTasksDataToLocal() {
+    localStorage.removeItem('allUsersData');
+    localStorage.setItem('allUsersData', JSON.stringify(this.newAllTasksData));
+  }
+
+  setAllTasksDataToBackend() {
+    console.log("this.newAllTasksData", this.newAllTasksData)
   }
 }
