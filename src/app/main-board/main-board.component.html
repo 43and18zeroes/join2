@@ -32,8 +32,9 @@
                 </span>
             </div>
 
-            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[inprogressList, awaitfeedbackList, doneList]"
-                class="example-list" (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
+            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                [cdkDropListConnectedTo]="[inprogressList, awaitfeedbackList, doneList]" class="example-list"
+                (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
 
                 <!-- <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.category}}</div> -->
                 <div cdkDrag class="task__card example-box" *ngFor="let item of todo" cdkDrag>
@@ -90,9 +91,49 @@
                 </span>
             </div>
 
-            <div cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogress" [cdkDropListConnectedTo]="[todoList, awaitfeedbackList, doneList]"
-                class="example-list" (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
-                <div class="example-box" *ngFor="let item of inprogress" cdkDrag>{{item.category}}</div>
+            <div cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogress"
+                [cdkDropListConnectedTo]="[todoList, awaitfeedbackList, doneList]" class="example-list"
+                (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
+                <div cdkDrag class="task__card example-box" *ngFor="let item of inprogress" cdkDrag>
+
+                    <div class="task__cat">{{ item.category }}</div>
+
+                    <div class="card__body">
+                        <div class="task__title">
+                            {{ item.title }}
+                        </div>
+                        <div class="task__description">
+                            {{ item.description }}
+                        </div>
+                    </div>
+
+                    <div class="task__subtasks">
+                        <!-- <div class="progressbar empty">
+                            <div class="filler"></div>
+                        </div> -->
+
+                        <div class="progressbar half">
+                            <div class="filler"></div>
+                        </div>
+
+                        <!-- <div class="progressbar full">
+                            <div class="filler"></div>
+                        </div> -->
+                        <div class="progress__text">1/2 Subtasks</div>
+                    </div>
+
+                    <div class="card__footer">
+                        <div class="assigned__users">
+                            <div class="user__container user__orange">AM</div>
+                            <div class="user__container user__green">EM</div>
+                            <div class="user__container user__purple">MB</div>
+                        </div>
+                        <!-- <div class="material__symbols__outlined btn__green">keyboard_double_arrow_down</div>
+                        <div class="material__symbols__outlined btn__yellow">double_arrow</div> -->
+                        <div class="material__symbols__outlined task__card__prio btn__red">keyboard_double_arrow_up
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </section>
@@ -106,8 +147,9 @@
                 </span>
             </div>
 
-            <div cdkDropList #awaitfeedbackList="cdkDropList" [cdkDropListData]="awaitfeedback" [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]"
-                class="example-list" (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
+            <div cdkDropList #awaitfeedbackList="cdkDropList" [cdkDropListData]="awaitfeedback"
+                [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]" class="example-list"
+                (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
                 <div class="example-box" *ngFor="let item of awaitfeedback" cdkDrag>{{item}}</div>
             </div>
 
@@ -122,8 +164,9 @@
                 </span>
             </div>
 
-            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList, awaitfeedbackList, inprogressList]"
-                class="example-list" (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
+            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+                [cdkDropListConnectedTo]="[todoList, awaitfeedbackList, inprogressList]" class="example-list"
+                (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
                 <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
             </div>
 
