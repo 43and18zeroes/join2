@@ -68,8 +68,17 @@ export class MainBoardComponent {
   }
 
   sortTasksInColumns() {
-    this.todo.sort((a, b) => a.taskColumnOrdner - b.taskColumnOrdner);
-    this.inprogress.sort((a, b) => a.taskColumnOrdner - b.taskColumnOrdner);
+    const customSort = (a, b) => {
+      // Wenn 'a' keine 'taskColumnOrdner' Eigenschaft hat, wird es vor 'b' gestellt
+      if (a.taskColumnOrdner === undefined) return -1;
+      // Wenn 'b' keine 'taskColumnOrdner' Eigenschaft hat, wird es vor 'a' gestellt
+      if (b.taskColumnOrdner === undefined) return 1;
+      // Andernfalls sortieren Sie normal
+      return a.taskColumnOrdner - b.taskColumnOrdner;
+    };
+
+    this.todo.sort(customSort);
+    this.inprogress.sort(customSort);
   }
 
   private checkForHorizontalScroll() {
