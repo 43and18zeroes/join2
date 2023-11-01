@@ -66,12 +66,8 @@ export class MainBoardComponent {
     const mainElement: HTMLDivElement = this.mainContainer.nativeElement;
     this.sectionBodys.forEach((sectionBody: ElementRef) => {
       const divElement: HTMLDivElement = sectionBody.nativeElement;
-      if (mainElement.scrollWidth > mainElement.clientWidth) {
-        divElement.classList.add('has__horizontal__scroll');
-      }
-      else {
-        divElement.classList.remove('has__horizontal__scroll');
-      }
+      if (mainElement.scrollWidth > mainElement.clientWidth) divElement.classList.add('has__horizontal__scroll');
+      else divElement.classList.remove('has__horizontal__scroll');
     });
   }
 
