@@ -51,7 +51,7 @@
                         </div>
                     </div>
 
-                    <div class="task__subtasks">
+                    <div *ngIf="item.subTasks.length > 0" class="task__subtasks">
                         <!-- <div class="progressbar empty">
                             <div class="filler"></div>
                         </div> -->
@@ -109,7 +109,7 @@
                         </div>
                     </div>
 
-                    <div class="task__subtasks">
+                    <div *ngIf="item.subTasks.length > 0" class="task__subtasks">
                         <!-- <div class="progressbar empty">
                             <div class="filler"></div>
                         </div> -->

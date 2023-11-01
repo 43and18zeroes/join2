@@ -40,6 +40,7 @@ export class MainBoardComponent {
 
   ngOnInit(): void {
     this.allTasksData = this.userService.allTasksData;
+    console.log("allTasksData", this.allTasksData)
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
   }
