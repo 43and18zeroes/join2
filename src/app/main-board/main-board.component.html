@@ -39,7 +39,8 @@
                 <!-- <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.category}}</div> -->
                 <div cdkDrag class="task__card example-box" *ngFor="let item of todo" cdkDrag>
 
-                    <div class="task__cat">{{ item.category }}</div>
+                    <div class="task__cat" [ngClass]="{'category__tech': item.category === 'Technical Task',
+                    'category__user': item.category === 'User Story'}">{{ item.category }}</div>
 
                     <div class="card__body">
                         <div class="task__title">
@@ -96,7 +97,8 @@
                 (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
                 <div cdkDrag class="task__card example-box" *ngFor="let item of inprogress" cdkDrag>
 
-                    <div class="task__cat">{{ item.category }}</div>
+                    <div class="task__cat" [ngClass]="{'category__tech': item.category === 'Technical Task',
+                    'category__user': item.category === 'User Story'}">{{ item.category }}</div>
 
                     <div class="card__body">
                         <div class="task__title">

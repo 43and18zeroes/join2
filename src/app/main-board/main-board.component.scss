@@ -12,8 +12,15 @@
         border-radius: 8px;
         font-weight: 400;
         color: white;
-        background-color: #0038FF;
         margin-bottom: 24px;
+    }
+
+    .category__tech {
+        background-color: #1FD7C1;
+    }
+
+    .category__user {
+        background-color: #0038FF;
     }
 
     .card__body {
