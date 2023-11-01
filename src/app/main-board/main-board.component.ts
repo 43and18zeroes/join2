@@ -69,11 +69,8 @@ export class MainBoardComponent {
 
   sortTasksInColumns() {
     const customSort = (a, b) => {
-      // Wenn 'a' keine 'taskColumnOrdner' Eigenschaft hat, wird es vor 'b' gestellt
       if (a.taskColumnOrdner === undefined) return -1;
-      // Wenn 'b' keine 'taskColumnOrdner' Eigenschaft hat, wird es vor 'a' gestellt
       if (b.taskColumnOrdner === undefined) return 1;
-      // Andernfalls sortieren Sie normal
       return a.taskColumnOrdner - b.taskColumnOrdner;
     };
 
@@ -125,20 +122,20 @@ export class MainBoardComponent {
   overwriteAllTasksDataBackend(newAllTasksData) {
     const tasksCollection = this.firestore.collection('tasks');
 
-    // 1. Alle bestehenden Dokumente löschen
+    // Delete tasks collection backend
     tasksCollection.get().toPromise().then(querySnapshot => {
       const batch = this.firestore.firestore.batch();
       querySnapshot.docs.forEach(doc => {
         batch.delete(doc.ref);
       });
 
-      // 2. Neue Aufgaben hinzufügen
+      // Add new tasks
       newAllTasksData.forEach(task => {
         const docRef = tasksCollection.ref.doc(); // Neue ID für jedes Dokument erstellen
         batch.set(docRef, task);
       });
 
-      // 3. Batch ausführen
+      // Execute
       return batch.commit();
     }).then(() => {
       console.log('All tasks overwritten successfully');
