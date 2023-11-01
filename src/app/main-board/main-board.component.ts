@@ -85,12 +85,10 @@ export class MainBoardComponent {
 
   updateTaskStatus() {
     for (let index = 0; index < this.todo.length; index++) {
-      const element = this.todo[index];
-      element.taskStatus = "todo";
+      this.todo[index].taskStatus = "todo";
     }
     for (let index = 0; index < this.inprogress.length; index++) {
-      const element = this.inprogress[index];
-      element.taskStatus = "inprogress";
+      this.inprogress[index].taskStatus = "inprogress";
     }
   }
 
