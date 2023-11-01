@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from '../services/user-data.service';
 
 @Component({
@@ -25,6 +26,7 @@ export class MainBoardComponent {
   @ViewChildren('sectionBody') sectionBodys: QueryList<ElementRef>;
 
   constructor(
+    private firestore: AngularFirestore,
     private userService: UserService
   ) { }
 
@@ -85,5 +87,12 @@ export class MainBoardComponent {
       const element = this.inprogress[index];
       element.taskStatus = "inprogress";
     }
+  }
+
+  overwriteAllTasksDataBackend(newAllTasksData) {
+    this.firestore
+      .collection('tasks')
+      .doc(newAllTasksData)
+      .update(newAllTasksData);
   }
 }
