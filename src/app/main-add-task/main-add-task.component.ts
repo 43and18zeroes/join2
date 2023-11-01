@@ -324,7 +324,7 @@ export class MainAddTaskComponent {
   addSubtasksStatuses(trimmedTask) {
     let subTasksCompleted = [];
     for (let index = 0; index < trimmedTask.subTasks.length; index++) {
-      subTasksCompleted.push("false");
+      subTasksCompleted.push(false);
     }
     trimmedTask.subTasksCompleted = subTasksCompleted;
     return trimmedTask;

@@ -82,7 +82,7 @@ export class MainBoardComponent {
   }
 
   countSubtasksCompleted(obj: any): number {
-    return Object.values(obj).filter(value => value === 'true').length;
+    return Object.values(obj).filter(value => value === true).length;
   }
 
   private checkForHorizontalScroll() {
