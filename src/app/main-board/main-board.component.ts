@@ -33,6 +33,7 @@ export class MainBoardComponent {
   ngOnInit(): void {
     this.allTasksData = this.userService.allTasksData;
     this.convertTasksDataToLists();
+    this.sortTasksInColumns();
   }
 
   ngAfterViewInit() {
@@ -50,6 +51,17 @@ export class MainBoardComponent {
           break;
       }
     });
+  }
+
+  sortTasksInColumns() {
+    console.log("pre sort this.todo", this.todo);
+    console.log("pre sort this.inprogress", this.inprogress);
+
+    this.todo.sort((a, b) => a.taskColumnOrdner - b.taskColumnOrdner);
+    this.inprogress.sort((a, b) => a.taskColumnOrdner - b.taskColumnOrdner);
+
+    console.log("after sort this.todo", this.todo);
+    console.log("after sort this.inprogress", this.inprogress);
   }
 
   private checkForHorizontalScroll() {
@@ -79,8 +91,11 @@ export class MainBoardComponent {
   }
 
   updateStatusForList(list, status) {
+    let taskColumnOrdner = 0;
     list.forEach(task => {
       task.taskStatus = status;
+      task.taskColumnOrdner = taskColumnOrdner;
+      taskColumnOrdner++;
     });
   }
 
