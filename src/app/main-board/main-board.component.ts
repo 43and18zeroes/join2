@@ -76,6 +76,7 @@ export class MainBoardComponent {
   saveBoardStatus() {
     this.updateTasksStatus();
     this.newAllTasksData = [...this.todo, ...this.inprogress];
+    this.setNewTasksDataToLocal(this.newAllTasksData);
     this.overwriteAllTasksDataBackend(this.newAllTasksData);
   }
 
@@ -91,6 +92,11 @@ export class MainBoardComponent {
       task.taskColumnOrdner = taskColumnOrdner;
       taskColumnOrdner++;
     });
+  }
+
+  setNewTasksDataToLocal(newAllTasksData) {
+    localStorage.removeItem('allTasksData');
+    localStorage.setItem('allTasksData', JSON.stringify(newAllTasksData));
   }
 
   overwriteAllTasksDataBackend(newAllTasksData) {
