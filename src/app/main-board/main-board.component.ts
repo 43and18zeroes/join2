@@ -40,26 +40,16 @@ export class MainBoardComponent {
   }
 
   convertTasksDataToLists() {
-    this.convertTodoToList();
-    this.convertInprogressToList();
-  }
-
-  convertTodoToList() {
-    for (let index = 0; index < this.allTasksData.length; index++) {
-      const element = this.allTasksData[index];
-      if (element.taskStatus === "todo") {
-        this.todo.push(element);
+    this.allTasksData.forEach(task => {
+      switch (task.taskStatus) {
+        case "todo":
+          this.todo.push(task);
+          break;
+        case "inprogress":
+          this.inprogress.push(task);
+          break;
       }
-    }
-  }
-
-  convertInprogressToList() {
-    for (let index = 0; index < this.allTasksData.length; index++) {
-      const element = this.allTasksData[index];
-      if (element.taskStatus === "inprogress") {
-        this.inprogress.push(element);
-      }
-    }
+    });
   }
 
   private checkForHorizontalScroll() {
