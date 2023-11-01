@@ -78,42 +78,44 @@ export class MainBoardComponent {
   }
 
   saveBoardStatus() {
-    this.updateTaskStatus();
+    this.updateTasksStatus();
     this.newAllTasksData = [...this.todo, ...this.inprogress];
     this.overwriteAllTasksDataBackend(this.newAllTasksData);
   }
 
-  updateTaskStatus() {
-    for (let index = 0; index < this.todo.length; index++) {
-      this.todo[index].taskStatus = "todo";
-    }
-    for (let index = 0; index < this.inprogress.length; index++) {
-      this.inprogress[index].taskStatus = "inprogress";
-    }
+  updateTasksStatus() {
+    this.updateStatusForList(this.todo, "todo");
+    this.updateStatusForList(this.inprogress, "inprogress");
+  }
+
+  updateStatusForList(list, status) {
+    list.forEach(task => {
+      task.taskStatus = status;
+    });
   }
 
   overwriteAllTasksDataBackend(newAllTasksData) {
     const tasksCollection = this.firestore.collection('tasks');
-  
-  // 1. Alle bestehenden Dokumente löschen
-  tasksCollection.get().toPromise().then(querySnapshot => {
-    const batch = this.firestore.firestore.batch();
-    querySnapshot.docs.forEach(doc => {
-      batch.delete(doc.ref);
-    });
 
-    // 2. Neue Aufgaben hinzufügen
-    newAllTasksData.forEach(task => {
-      const docRef = tasksCollection.ref.doc(); // Neue ID für jedes Dokument erstellen
-      batch.set(docRef, task);
-    });
+    // 1. Alle bestehenden Dokumente löschen
+    tasksCollection.get().toPromise().then(querySnapshot => {
+      const batch = this.firestore.firestore.batch();
+      querySnapshot.docs.forEach(doc => {
+        batch.delete(doc.ref);
+      });
 
-    // 3. Batch ausführen
-    return batch.commit();
-  }).then(() => {
-    console.log('All tasks overwritten successfully');
-  }).catch(err => {
-    console.error('Error overwriting tasks: ', err);
-  });
+      // 2. Neue Aufgaben hinzufügen
+      newAllTasksData.forEach(task => {
+        const docRef = tasksCollection.ref.doc(); // Neue ID für jedes Dokument erstellen
+        batch.set(docRef, task);
+      });
+
+      // 3. Batch ausführen
+      return batch.commit();
+    }).then(() => {
+      console.log('All tasks overwritten successfully');
+    }).catch(err => {
+      console.error('Error overwriting tasks: ', err);
+    });
   }
 }
