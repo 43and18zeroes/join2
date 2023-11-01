@@ -13,10 +13,14 @@ export class MainBoardComponent {
 
   allTasksData;
   newAllTasksData;
+
   todo = [];
   inprogress = [];
   awaitfeedback = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
   done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+
+  subTasksComplete;
+  subTasksAmount;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -75,6 +79,10 @@ export class MainBoardComponent {
 
     this.todo.sort(customSort);
     this.inprogress.sort(customSort);
+  }
+
+  countSubtasksCompleted(obj: any): number {
+    return Object.values(obj).filter(value => value === 'true').length;
   }
 
   private checkForHorizontalScroll() {
