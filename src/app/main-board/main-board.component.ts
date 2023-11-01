@@ -76,6 +76,7 @@ export class MainBoardComponent {
 
     this.updateTaskStatus();
     this.newAllTasksData = [...this.todo, ...this.inprogress];
+    this.overwriteAllTasksDataBackend(this.newAllTasksData);
   }
 
   updateTaskStatus() {
@@ -90,9 +91,27 @@ export class MainBoardComponent {
   }
 
   overwriteAllTasksDataBackend(newAllTasksData) {
-    this.firestore
-      .collection('tasks')
-      .doc(newAllTasksData)
-      .update(newAllTasksData);
+    const tasksCollection = this.firestore.collection('tasks');
+  
+  // 1. Alle bestehenden Dokumente löschen
+  tasksCollection.get().toPromise().then(querySnapshot => {
+    const batch = this.firestore.firestore.batch();
+    querySnapshot.docs.forEach(doc => {
+      batch.delete(doc.ref);
+    });
+
+    // 2. Neue Aufgaben hinzufügen
+    newAllTasksData.forEach(task => {
+      const docRef = tasksCollection.ref.doc(); // Neue ID für jedes Dokument erstellen
+      batch.set(docRef, task);
+    });
+
+    // 3. Batch ausführen
+    return batch.commit();
+  }).then(() => {
+    console.log('All tasks overwritten successfully');
+  }).catch(err => {
+    console.error('Error overwriting tasks: ', err);
+  });
   }
 }
