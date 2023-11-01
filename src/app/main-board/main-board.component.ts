@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from '../services/user-data.service';
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-main-board',
@@ -27,13 +28,26 @@ export class MainBoardComponent {
 
   constructor(
     private firestore: AngularFirestore,
-    private userService: UserService
-  ) { }
+    private userService: UserService,
+    private router: Router
+  ) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart && event.id === 1) {
+        this.onBrowserRefresh();
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.allTasksData = this.userService.allTasksData;
+    console.log('Init');
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
+  }
+
+  onBrowserRefresh() {
+    this.allTasksData = JSON.parse(localStorage.getItem('allTasksData') || '[]');
+    console.log('Browser wurde aktualisiert!');
   }
 
   ngAfterViewInit() {
