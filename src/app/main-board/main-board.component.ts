@@ -40,14 +40,12 @@ export class MainBoardComponent {
 
   ngOnInit(): void {
     this.allTasksData = this.userService.allTasksData;
-    console.log('Init');
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
   }
 
   onBrowserRefresh() {
     this.allTasksData = JSON.parse(localStorage.getItem('allTasksData') || '[]');
-    console.log('Browser wurde aktualisiert!');
   }
 
   ngAfterViewInit() {
