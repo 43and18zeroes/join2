@@ -72,17 +72,12 @@ export class MainBoardComponent {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
+    if (event.previousContainer === event.container) moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    else transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+    this.saveBoardStatus();
+  }
 
+  saveBoardStatus() {
     this.updateTaskStatus();
     this.newAllTasksData = [...this.todo, ...this.inprogress];
     this.overwriteAllTasksDataBackend(this.newAllTasksData);
