@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList, CdkDragStart } from '@angular/cdk/drag-drop';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from '../services/user-data.service';
 import { Router, NavigationStart } from '@angular/router';
@@ -21,6 +21,8 @@ export class MainBoardComponent {
 
   subTasksComplete;
   subTasksAmount;
+
+  dragActive: boolean = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -95,7 +97,13 @@ export class MainBoardComponent {
     });
   }
 
+  onDragStarted(event: CdkDragStart, item: string) {
+    console.log('Drag started for item:', item);
+    this.dragActive = true; // Setzt die Variable auf das aktuelle Element
+  }
+
   drop(event: CdkDragDrop<string[]>) {
+    this.dragActive = false;
     if (event.previousContainer === event.container) moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     else transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     this.saveBoardStatus();
