@@ -12,6 +12,7 @@ import { Router, NavigationStart } from '@angular/router';
 export class MainBoardComponent {
 
   allTasksData;
+  allUsersData;
   newAllTasksData;
 
   todo = [];
@@ -46,7 +47,9 @@ export class MainBoardComponent {
 
   ngOnInit(): void {
     this.allTasksData = this.userService.allTasksData;
-    console.log("allTasksData", this.allTasksData)
+    this.allUsersData = this.userService.allUsersData;
+    console.log("allTasksData", this.allTasksData);
+    console.log("allUsersData", this.allUsersData);
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
   }
@@ -82,6 +85,16 @@ export class MainBoardComponent {
 
     this.todo.sort(customSort);
     this.inprogress.sort(customSort);
+  }
+
+  getUserInitials(assignedUserEmail) {
+    for (let index = 0; index < this.allUsersData.length; index++) {
+      const element = this.allUsersData[index];
+      console.log(element);
+      if (element.userEmailAddress === assignedUserEmail) {
+        return element.userInitials;
+      }
+    }
   }
 
   countSubtasksCompleted(obj: any): number {
