@@ -70,10 +70,8 @@
 
                     <div class="card__footer">
                         <div class="assigned__users">
-                            <div *ngFor="let mail of item.assignedTo" [ngStyle]="{'background-color': getUserColor(mail)}" class="user__container user__orange">{{ getUserInitials(mail) }}</div>
+                            <div *ngFor="let mail of item.assignedTo | slice:0:5" [ngStyle]="{'background-color': getUserColor(mail)}" class="user__container user__orange">{{ getUserInitials(mail) }}</div>
                         </div>
-                        <!-- <div class="material__symbols__outlined btn__green">keyboard_double_arrow_down</div>
-                        <div class="material__symbols__outlined btn__yellow">double_arrow</div> -->
                         <div *ngIf="item.priority === 'urgent'"
                             class="material__symbols__outlined task__card__prio prio__red">keyboard_double_arrow_up
                         </div>
@@ -136,10 +134,8 @@
 
                     <div class="card__footer">
                         <div class="assigned__users">
-                            <div *ngFor="let mail of item.assignedTo" [ngStyle]="{'background-color': getUserColor(mail)}" class="user__container user__orange">{{ getUserInitials(mail) }}</div>
+                            <div *ngFor="let mail of item.assignedTo | slice:0:5" [ngStyle]="{'background-color': getUserColor(mail)}" class="user__container user__orange">{{ getUserInitials(mail) }}</div>
                         </div>
-                        <!-- <div class="material__symbols__outlined btn__green">keyboard_double_arrow_down</div>
-                        <div class="material__symbols__outlined btn__yellow">double_arrow</div> -->
                         <div *ngIf="item.priority === 'urgent'"
                             class="material__symbols__outlined task__card__prio prio__red">keyboard_double_arrow_up
                         </div>
