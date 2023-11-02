@@ -55,6 +55,7 @@ export class MainBoardComponent {
 
   ngAfterViewInit() {
     this.checkForHorizontalScroll();
+    this.saveBoardStatus();
   }
 
   convertTasksDataToLists() {
