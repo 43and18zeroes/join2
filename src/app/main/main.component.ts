@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
     private userService: UserService,
     private mainCommService: MainCommunicationService
   ) {
-    this.mainCommService.displaySectionObservable.subscribe((section) => {
+    this.mainCommService.displayBoardObservable.subscribe((section) => {
       this.displayMainSection('board');
     });
   }

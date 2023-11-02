@@ -5,17 +5,17 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class MainCommunicationService {
-  private displaySection = new BehaviorSubject('default');
+  private displayBoard = new BehaviorSubject('default');
 
   constructor() { }
 
   // Andere Komponenten können dieses Observable abonnieren
-  get displaySectionObservable() {
-    return this.displaySection.asObservable();
+  get displayBoardObservable() {
+    return this.displayBoard.asObservable();
   }
 
   // Diese Methode benachrichtigt alle Abonnenten über die Änderung
-  displayMainSection(section) {
-    this.displaySection.next(section);
+  displayMainBoard(board) {
+    this.displayBoard.next(board);
   }
 }
