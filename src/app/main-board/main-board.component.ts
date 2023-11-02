@@ -87,10 +87,19 @@ export class MainBoardComponent {
     this.inprogress.sort(customSort);
   }
 
-  getUserInitials(assignedUserEmail) {
+  getUserColor(assignedUserEmail) {
     for (let index = 0; index < this.allUsersData.length; index++) {
       const element = this.allUsersData[index];
       console.log(element);
+      if (element.userEmailAddress === assignedUserEmail) {
+        return element.userColor;
+      }
+    }
+  }
+
+  getUserInitials(assignedUserEmail) {
+    for (let index = 0; index < this.allUsersData.length; index++) {
+      const element = this.allUsersData[index];
       if (element.userEmailAddress === assignedUserEmail) {
         return element.userInitials;
       }
