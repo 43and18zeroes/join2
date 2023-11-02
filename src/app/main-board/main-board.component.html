@@ -103,6 +103,9 @@
             <div cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogress"
                 [cdkDropListConnectedTo]="[todoList, awaitfeedbackList, doneList]"
                 (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
+
+                <div *ngIf="inprogress.length === 0" class="task__card__ghost">No tasks To do</div>
+                
                 <div cdkDrag class="task__card" *ngFor="let item of inprogress" cdkDrag>
 
                     <div class="task__cat" [ngClass]="{'category__tech': item.category === 'Technical Task',
