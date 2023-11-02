@@ -35,7 +35,6 @@ export class MainAddTaskComponent {
   @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
   @ViewChild('submitBtn') submitBtn: ElementRef;
   formSubmitted: boolean = false;
-
   titleValid: boolean = true;
   dateValid: boolean = true;
   categoryValid: boolean = true;
