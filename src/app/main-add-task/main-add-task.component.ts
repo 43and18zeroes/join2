@@ -1,6 +1,7 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MainComponent } from '../main/main.component';
+// import { MainComponent } from '../main/main.component';
+import { MainCommunicationService } from '../services/main-communication.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -42,7 +43,8 @@ export class MainAddTaskComponent {
   constructor(
     private firestore: AngularFirestore,
     private fb: FormBuilder,
-    public mainComponent: MainComponent,
+    // public mainComponent: MainComponent,
+    private mainCommService: MainCommunicationService,
     private renderer: Renderer2,
     public dialog: MatDialog,
     private userService: UserService
@@ -352,7 +354,8 @@ export class MainAddTaskComponent {
   onSubmitOutro() {
     this.submitBtn.nativeElement.classList.add("btn__success");
     setTimeout(() => {
-      this.mainComponent.displayMainSection('board');
+      // this.mainComponent.displayMainSection('board');
+      this.mainCommService.displayMainSection('board');
     }, 1500);
   }
 }

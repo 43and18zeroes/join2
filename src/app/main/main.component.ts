@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user-data.service';
+import { MainCommunicationService } from '../services/main-communication.service';
 
 @Component({
   selector: 'app-main',
@@ -22,7 +23,14 @@ export class MainComponent implements OnInit {
     this.currentlyClicked = condition;
   }
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private mainCommService: MainCommunicationService
+  ) {
+    this.mainCommService.displaySectionObservable.subscribe((section) => {
+      this.displayMainSection('board');
+    });
+  }
 
   ngOnInit(): void {
     this.userService.getUsersDataMain();
@@ -35,4 +43,5 @@ export class MainComponent implements OnInit {
     }, 2500);
   }
 
+  
 }
