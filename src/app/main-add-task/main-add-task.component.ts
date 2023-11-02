@@ -331,13 +331,6 @@ export class MainAddTaskComponent {
   }
 
   sendNewTaskToBackend(trimmedTask) {
-    // this.firestore
-    //   .collection('tasks')
-    //   .add(trimmedTask)
-    //   .then((result: any) => {
-    //     console.log("Task to backend", trimmedTask);
-    //   })
-
     delete trimmedTask.firebaseId;
     this.firestore
       .collection('tasks')

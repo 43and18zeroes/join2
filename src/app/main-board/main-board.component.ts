@@ -3,6 +3,8 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList, 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from '../services/user-data.service';
 import { Router, NavigationStart } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MainAddTaskComponent } from '../main-add-task/main-add-task.component';
 
 @Component({
   selector: 'app-main-board',
@@ -36,7 +38,8 @@ export class MainBoardComponent {
   constructor(
     private firestore: AngularFirestore,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart && event.id === 1) {
@@ -61,6 +64,14 @@ export class MainBoardComponent {
   ngAfterViewInit() {
     this.checkForHorizontalScroll();
     this.saveBoardStatus();
+  }
+
+  openAddTaskDialog(category) {
+    const dialogRef = this.dialog.open(MainAddTaskComponent, {
+      panelClass: 'popup__contact__add'
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+    });
   }
 
   convertTasksDataToLists() {
