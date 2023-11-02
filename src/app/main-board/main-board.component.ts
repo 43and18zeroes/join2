@@ -101,7 +101,6 @@ export class MainBoardComponent {
   getUserColor(assignedUserEmail) {
     for (let index = 0; index < this.allUsersData.length; index++) {
       const element = this.allUsersData[index];
-      console.log(element);
       if (element.userEmailAddress === assignedUserEmail) {
         return element.userColor;
       }
@@ -131,7 +130,6 @@ export class MainBoardComponent {
   }
 
   onDragStarted(event: CdkDragStart, item: string) {
-    console.log('Drag started for item:', item);
     this.dragActive = true; // Setzt die Variable auf das aktuelle Element
   }
 

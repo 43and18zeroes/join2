@@ -14,7 +14,7 @@
                 </span>
                 <input placeholder="Find Task" #searchBar placeholder="Name">
             </div>
-            <button class="btn__primary" type="button">Add task <span class="material__symbols__outlined">
+            <button (click)="openAddTaskDialog(todo)" class="btn__primary" type="button">Add task <span class="material__symbols__outlined">
                     add
                 </span></button>
         </div>
