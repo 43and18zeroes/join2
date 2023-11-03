@@ -360,6 +360,7 @@ export class MainDialogAddTaskComponent {
     setTimeout(() => {
       // this.mainComponent.displayMainSection('board');
       // this.mainCommService.displayMainBoard('board');
+      this.dialog.closeAll();
     }, 1500);
   }
 }
