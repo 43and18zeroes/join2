@@ -72,6 +72,7 @@ export class MainBoardComponent {
       panelClass: 'popup__task__add'
     });
     dialogRef.afterClosed().subscribe((result) => {
+      this.ngOnInit();
     });
   }
 
