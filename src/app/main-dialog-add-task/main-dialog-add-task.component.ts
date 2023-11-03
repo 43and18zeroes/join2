@@ -68,7 +68,7 @@ export class MainDialogAddTaskComponent {
   }
 
   ngOnInit(): void {
-    console.log("this.data.category", this.data.category)
+    console.log("this.data.taskStatus", this.data.taskStatus)
     this.userService.sortUsersData();
     this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;

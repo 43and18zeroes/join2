@@ -67,14 +67,14 @@ export class MainBoardComponent {
     this.saveBoardStatus();
   }
 
-  openAddTaskDialog(category) {
+  openAddTaskDialog(taskStatus) {
     const dialogRef = this.dialog.open(MainDialogAddTaskComponent, {
       panelClass: 'popup__task__add',
-      data: { category: category }
+      data: { taskStatus: taskStatus }
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.saveBoardStatus();
-      this.ngOnInit();
+      // this.saveBoardStatus();
+      // this.ngOnInit();
     });
   }
 
