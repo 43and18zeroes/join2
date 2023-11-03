@@ -62,7 +62,7 @@ export class MainDialogAddTaskComponent {
       category: ['', Validators.required],
       subTasks: [],
       subTasksCompleted: [],
-      taskStatus: 'todo'
+      taskStatus: this.data.taskStatus
     });
     this.today = this.getTodaysDate();
   }
