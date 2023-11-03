@@ -14,7 +14,7 @@
                 </span>
                 <input placeholder="Find Task" #searchBar placeholder="Name">
             </div>
-            <button (click)="openAddTaskDialog(todo)" class="btn__primary" type="button">Add task <span class="material__symbols__outlined">
+            <button (click)="openAddTaskDialog('todo')" class="btn__primary" type="button">Add task <span class="material__symbols__outlined">
                     add
                 </span></button>
         </div>
@@ -27,7 +27,7 @@
 
             <div class="section__header">
                 <h3>To do</h3>
-                <span class="material__symbols__outlined">
+                <span (click)="openAddTaskDialog('todo')" class="material__symbols__outlined">
                     add
                 </span>
             </div>
@@ -91,7 +91,7 @@
 
             <div class="section__header">
                 <h3>In progress</h3>
-                <span class="material__symbols__outlined">
+                <span (click)="openAddTaskDialog('inprogress')" class="material__symbols__outlined">
                     add
                 </span>
             </div>

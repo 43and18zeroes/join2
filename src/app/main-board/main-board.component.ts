@@ -69,7 +69,8 @@ export class MainBoardComponent {
 
   openAddTaskDialog(category) {
     const dialogRef = this.dialog.open(MainDialogAddTaskComponent, {
-      panelClass: 'popup__task__add'
+      panelClass: 'popup__task__add',
+      data: { category: category }
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.saveBoardStatus();

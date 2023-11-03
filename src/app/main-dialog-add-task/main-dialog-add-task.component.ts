@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { MainComponent } from '../main/main.component';
 import { MainCommunicationService } from '../services/main-communication.service';
@@ -6,6 +6,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../services/user-data.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main-dialog-add-task',
@@ -47,7 +48,10 @@ export class MainDialogAddTaskComponent {
     private mainCommService: MainCommunicationService,
     private renderer: Renderer2,
     public dialog: MatDialog,
-    private userService: UserService
+    private userService: UserService,
+
+    public dialogRef: MatDialogRef<MainDialogAddTaskComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
@@ -64,6 +68,7 @@ export class MainDialogAddTaskComponent {
   }
 
   ngOnInit(): void {
+    console.log("this.data.category", this.data.category)
     this.userService.sortUsersData();
     this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
