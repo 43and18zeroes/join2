@@ -355,7 +355,7 @@ export class MainDialogAddTaskComponent {
     this.submitBtn.nativeElement.classList.add("btn__success");
     setTimeout(() => {
       // this.mainComponent.displayMainSection('board');
-      this.mainCommService.displayMainBoard('board');
+      // this.mainCommService.displayMainBoard('board');
     }, 1500);
   }
 }

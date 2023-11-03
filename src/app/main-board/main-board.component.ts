@@ -69,7 +69,7 @@ export class MainBoardComponent {
 
   openAddTaskDialog(category) {
     const dialogRef = this.dialog.open(MainDialogAddTaskComponent, {
-      panelClass: 'popup__contact__add'
+      panelClass: 'popup__task__add'
     });
     dialogRef.afterClosed().subscribe((result) => {
     });
