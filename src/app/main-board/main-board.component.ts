@@ -5,6 +5,7 @@ import { UserService } from '../services/user-data.service';
 import { Router, NavigationStart } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MainAddTaskComponent } from '../main-add-task/main-add-task.component';
+import { MainDialogAddTaskComponent } from '../main-dialog-add-task/main-dialog-add-task.component';
 
 @Component({
   selector: 'app-main-board',
@@ -67,7 +68,7 @@ export class MainBoardComponent {
   }
 
   openAddTaskDialog(category) {
-    const dialogRef = this.dialog.open(MainAddTaskComponent, {
+    const dialogRef = this.dialog.open(MainDialogAddTaskComponent, {
       panelClass: 'popup__contact__add'
     });
     dialogRef.afterClosed().subscribe((result) => {

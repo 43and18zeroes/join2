@@ -27,6 +27,7 @@ import { MainDialogAddContactComponent } from './main-dialog-add-contact/main-di
 import { MatDialogModule } from '@angular/material/dialog';
 import { MainDialogEditContactComponent } from './main-dialog-edit-contact/main-dialog-edit-contact.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MainDialogAddTaskComponent } from './main-dialog-add-task/main-dialog-add-task.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MainBoardComponent,
     MainContactsComponent,
     MainDialogAddContactComponent,
-    MainDialogEditContactComponent
+    MainDialogEditContactComponent,
+    MainDialogAddTaskComponent
   ],
   imports: [
     BrowserModule,
