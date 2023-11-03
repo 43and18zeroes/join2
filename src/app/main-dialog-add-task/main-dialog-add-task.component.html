@@ -1,7 +1,10 @@
 <div class="addtask__container">
 
     <h2>Add Task</h2>
-
+    <div (click)="closeDialog()" class="hover__area no__select">
+        <div class="transform__circle"></div>
+        <span class="material__symbols__outlined single__icon">close</span>
+    </div>
     <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()"  (keydown.enter)="formGroupEnterKey($event)" [ngClass]="{ 'form__disabled': formSubmitted }">
 
         <div class="form__body__container">

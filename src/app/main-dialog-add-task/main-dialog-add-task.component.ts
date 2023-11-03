@@ -83,6 +83,10 @@ export class MainDialogAddTaskComponent {
     this.globalClickListener();
   }
 
+  closeDialog() {
+    this.dialog.closeAll();
+  }
+
   formGroupEnterKey(event: Event): void {
     event.preventDefault();
   }
