@@ -74,11 +74,7 @@ export class MainBoardComponent {
     });
     dialogRef.afterClosed().subscribe((result) => {
       // this.saveBoardStatus();
-      // this.ngOnInit();
       this.allTasksData = this.userService.allTasksData;
-      this.allUsersData = this.userService.allUsersData;
-      console.log("allTasksData", this.allTasksData);
-      console.log("allUsersData", this.allUsersData);
       this.convertTasksDataToLists();
       this.sortTasksInColumns();
     });
@@ -105,7 +101,6 @@ export class MainBoardComponent {
       if (b.taskColumnOrdner === undefined) return 1;
       return a.taskColumnOrdner - b.taskColumnOrdner;
     };
-
     this.todo.sort(customSort);
     this.inprogress.sort(customSort);
   }
