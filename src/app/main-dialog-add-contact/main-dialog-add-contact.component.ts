@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 // import { Contact } from 'src/models/contact.class';
 import { User } from 'src/models/user.class';
 import { emailValidator, signUpUserNameValidator, phoneValidator } from '../shared/validators/custom-validators';
@@ -49,6 +50,7 @@ export class MainDialogAddContactComponent {
 
   constructor(
     public dialog: MatDialog,
+    public dialogRef: MatDialogRef<MainDialogAddContactComponent>,
     private fb: FormBuilder,
     private firestore: AngularFirestore,
     private userService: UserService
@@ -58,7 +60,7 @@ export class MainDialogAddContactComponent {
   }
 
   closeDialog() {
-    this.dialog.closeAll();
+    this.dialogRef.close();
   }
 
   onSubmit() {
