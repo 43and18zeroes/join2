@@ -300,24 +300,24 @@ body {
     /* ===== Scrollbar CSS ===== */
     /* Firefox */
     * {
-        scrollbar-width: auto;
-        scrollbar-color: #a8a8a8 #f6f7f8;
+        scrollbar-width: 1px;
+        scrollbar-color: rgba(0, 0, 0, 0);
     }
 
     /* Chrome, Edge, and Safari */
     *::-webkit-scrollbar {
-        width: 14px;
+        width: 1px;
         height: 14px;
     }
 
     *::-webkit-scrollbar-track {
-        background: #f6f7f8;
+        background: rgba(0, 0, 0, 0);
     }
 
     *::-webkit-scrollbar-thumb {
-        background-color: #a8a8a8;
+        background-color: rgba(0, 0, 0, 0);
         border-radius: 10px;
-        border: 3px solid #f6f7f8;
+        border: 3px solid rgba(0, 0, 0, 0);
     }
 
 
