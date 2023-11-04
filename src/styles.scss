@@ -292,12 +292,12 @@ body {
 }
 
 .popup__task__add {
-    width: 970px;
-    height: fit-content;
+    width: 1116px;
+    height: 870px;
     background-color: rgba(0, 0, 0, 0);
 
     @media (width <=1100px) {
-        height: fit-content;
+        height: 870px;
     }
 }
 
