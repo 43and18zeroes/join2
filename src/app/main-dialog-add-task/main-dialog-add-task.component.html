@@ -1,11 +1,14 @@
 <div class="addtask__container">
 
-    <h2>Add Task</h2>
-    <div (click)="closeDialog()" class="hover__area no__select">
-        <div class="transform__circle"></div>
-        <span class="material__symbols__outlined single__icon">close</span>
-    </div>
-    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()"  (keydown.enter)="formGroupEnterKey($event)" [ngClass]="{ 'form__disabled': formSubmitted }">
+    <header>
+        <h2>Add Task</h2>
+        <div (click)="closeDialog()" class="hover__area no__select">
+            <div class="transform__circle"></div>
+            <span class="material__symbols__outlined single__icon">close</span>
+        </div>
+    </header>
+    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()" (keydown.enter)="formGroupEnterKey($event)"
+        [ngClass]="{ 'form__disabled': formSubmitted }">
 
         <div class="form__body__container">
             <div class="form__body">
@@ -54,8 +57,8 @@
                                     </div>
                                 </ng-container>
                             </div>
-                            <button type="button" (click)="openAddUserDialog()" class="btn__primary">Add new contact<span
-                                    class="material__symbols__outlined">person_add</span></button>
+                            <button type="button" (click)="openAddUserDialog()" class="btn__primary">Add new
+                                contact<span class="material__symbols__outlined">person_add</span></button>
                         </div>
                     </div>
 
@@ -70,7 +73,7 @@
                     <input id="addTaskDueDate" formControlName="dueDate" type="date" [min]="today"
                         class="inputs__right input__date">
                     <div class="input__required">
-                        <span  *ngIf="!dateValid">This field is required</span>
+                        <span *ngIf="!dateValid">This field is required</span>
                     </div>
 
                     <label for="addTaskPrio">Prio</label>
@@ -115,14 +118,14 @@
                     <label for="subTasks">Subtasks</label>
                     <div class="subtasks__container">
                         <input (keydown.enter)="subTaskInputEnterPressed($event)" (input)="subTasksInputCheckValue()"
-                            (click)="subTasksInputFocus()" class="inputs__right"
-                            #subTasksInput [placeholder]="subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'"
+                            (click)="subTasksInputFocus()" class="inputs__right" #subTasksInput
+                            [placeholder]="subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'"
                             [ngClass]="{ 'red__placeholder': subTasksMaxReached }">
                         <div *ngIf="!subTasksInputHasFocus && !subTasksMaxReached" (click)="subTasksInputFocus()"
                             class="material__symbols__outlined add__symbol">add</div>
                         <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
-                            <button (mousedown)="assignPreventFocusLoss($event)"  [disabled]="subTasksInputEmpty"
-                            [ngClass]="{'check__disabled': subTasksInputEmpty}" (click)="subTasksInputClear()"
+                            <button (mousedown)="assignPreventFocusLoss($event)" [disabled]="subTasksInputEmpty"
+                                [ngClass]="{'check__disabled': subTasksInputEmpty}" (click)="subTasksInputClear()"
                                 class="material__symbols__outlined">clear</button>
                             <hr>
                             <button (mousedown)="assignPreventFocusLoss($event)" [disabled]="subTasksInputEmpty"
@@ -144,7 +147,8 @@
                     <div *ngIf="subTasksArray.length > 0" class="subtasks__display__container">
                         <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask">
 
-                            <div *ngIf="subTaskCurrentlyEditing !== subTask" (click)="subTaskEdit(subTask)" class="subtask__display">
+                            <div *ngIf="subTaskCurrentlyEditing !== subTask" (click)="subTaskEdit(subTask)"
+                                class="subtask__display">
                                 <div class="subtask__display__text">
                                     &#8226; {{ subTask }}
                                 </div>
@@ -157,9 +161,11 @@
                             </div>
 
                             <div *ngIf="subTaskCurrentlyEditing === subTask" class="subtask__edit">
-                                <input (keydown.enter)="subTaskSaveEdited(i)" type="text" name="" id="" value="{{ subTask }}" #subTaskEditCurrentInput (blur)="subTaskInputEditBlur()">
+                                <input (keydown.enter)="subTaskSaveEdited(i)" type="text" name="" id=""
+                                    value="{{ subTask }}" #subTaskEditCurrentInput (blur)="subTaskInputEditBlur()">
                                 <div class="subtask__edit__right">
-                                    <div (mousedown)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
+                                    <div (mousedown)="subTaskDelete(subTask)" class="material__symbols__outlined">delete
+                                    </div>
                                     <hr>
                                     <div (mousedown)="subTaskSaveEdited(i)" class="material__symbols__outlined">check
                                     </div>
@@ -177,10 +183,12 @@
         <div class="form__footer">
             <span class="required"><span class="asterisk">*</span>This field is required</span>
             <div class="footer__right">
-                <button type="reset" (click)="clearForm()" class="btn__secondary btn__secondary__main">Clear <span class="material__symbols__outlined">
+                <button type="reset" (click)="clearForm()" class="btn__secondary btn__secondary__main">Clear <span
+                        class="material__symbols__outlined">
                         close
                     </span></button>
-                <button type="submit" class="btn__primary" #submitBtn>Create Task <span class="material__symbols__outlined">
+                <button type="submit" class="btn__primary" #submitBtn>Create Task <span
+                        class="material__symbols__outlined">
                         check
                     </span></button>
             </div>

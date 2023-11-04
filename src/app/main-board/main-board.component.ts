@@ -56,6 +56,7 @@ export class MainBoardComponent {
     console.log("allUsersData", this.allUsersData);
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
+    this.openAddTaskDialog('todo')
   }
 
   onBrowserRefresh() {
