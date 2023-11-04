@@ -296,6 +296,31 @@ body {
     height: 870px;
     background-color: rgba(0, 0, 0, 0);
 
+    
+    /* ===== Scrollbar CSS ===== */
+    /* Firefox */
+    * {
+        scrollbar-width: auto;
+        scrollbar-color: #a8a8a8 #f6f7f8;
+    }
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+        width: 14px;
+        height: 14px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: #f6f7f8;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: #a8a8a8;
+        border-radius: 10px;
+        border: 3px solid #f6f7f8;
+    }
+
+
     @media (width <=992px) {
         max-width: 90vw !important;
         letter-spacing: -0.8px;
