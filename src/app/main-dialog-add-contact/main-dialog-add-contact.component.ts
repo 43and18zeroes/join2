@@ -107,7 +107,7 @@ export class MainDialogAddContactComponent {
   addNewUserOutro() {
     this.newUserSubmitBtn.nativeElement.classList.add("btn__success");
     setTimeout(() => {
-      this.dialog.closeAll();
+      this.closeDialog();
     }, 1500);
   }
 
