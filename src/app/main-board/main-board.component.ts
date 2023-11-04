@@ -75,10 +75,18 @@ export class MainBoardComponent {
     dialogRef.afterClosed().subscribe((result) => {
       // this.saveBoardStatus();
       // this.ngOnInit();
+      this.allTasksData = this.userService.allTasksData;
+      this.allUsersData = this.userService.allUsersData;
+      console.log("allTasksData", this.allTasksData);
+      console.log("allUsersData", this.allUsersData);
+      this.convertTasksDataToLists();
+      this.sortTasksInColumns();
     });
   }
 
   convertTasksDataToLists() {
+    this.todo = [];
+    this.inprogress = [];
     this.allTasksData.forEach(task => {
       switch (task.taskStatus) {
         case "todo":
