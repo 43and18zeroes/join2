@@ -34,6 +34,16 @@
                 margin: 0 0 32px 0;
             }
         }
+
+        .hover__area {
+            width: 30px;
+            height: 30px;
+        }
+
+        span {
+            font-size: 25px;
+            color: var(--main-slate)
+        }
     }
 
     form {
