@@ -605,9 +605,9 @@
                     .subtasks__container {
                         position: relative;
 
-                        .red__placeholder {
+                        .grey__placeholder {
                             &::placeholder {
-                                color: var(--invalid-red);
+                                color: #808080;
                             }
                         }
 
