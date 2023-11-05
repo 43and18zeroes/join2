@@ -14,4 +14,8 @@ export class TaskDetailsCommService {
   setEditMode(value: boolean) {
     this.editMode.next(value);
   }
+
+  unsetEditMode() {
+    this.editMode.next(false);
+  }
 }
