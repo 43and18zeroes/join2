@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TaskDetailsCommService } from '../task-details-comm.service';
+import { TaskDetailsCommService } from '../services/task-details-comm.service';
 
 @Component({
   selector: 'app-main-dialog-task-details-and-edit-edit-view',
