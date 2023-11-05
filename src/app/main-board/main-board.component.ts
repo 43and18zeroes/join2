@@ -70,6 +70,7 @@ export class MainBoardComponent {
 
   openAddTaskDialog(taskStatus) {
     // this.saveBoardStatus();
+    this.updateTasksStatus();
     const dialogRef = this.dialog.open(MainDialogAddTaskComponent, {
       panelClass: 'popup__task__add',
       data: { taskStatus: taskStatus }
