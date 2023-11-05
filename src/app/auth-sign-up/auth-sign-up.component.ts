@@ -113,6 +113,7 @@ export class AuthSignUpComponent implements OnInit {
     this.user.userInitials = userData.userInitials;
     this.user.userEmailAddress = userData.email;
     this.user.userColor = this.generateColorFromInitials(this.user.userInitials);
+    this.user.userPhoneNumber = "";
     this.user.type = "userSignUp";
   }
 
