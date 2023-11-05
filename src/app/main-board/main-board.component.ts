@@ -69,15 +69,15 @@ export class MainBoardComponent {
   }
 
   openAddTaskDialog(taskStatus) {
-    this.saveBoardStatus();
+    // this.saveBoardStatus();
     const dialogRef = this.dialog.open(MainDialogAddTaskComponent, {
       panelClass: 'popup__task__add',
       data: { taskStatus: taskStatus }
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.allTasksData = this.userService.allTasksData;
-      this.convertTasksDataToLists();
-      this.sortTasksInColumns();
+      // this.allTasksData = this.userService.allTasksData;
+      // this.convertTasksDataToLists();
+      // this.sortTasksInColumns();
     });
   }
 
