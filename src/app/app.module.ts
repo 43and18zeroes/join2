@@ -28,6 +28,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MainDialogEditContactComponent } from './main-dialog-edit-contact/main-dialog-edit-contact.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MainDialogAddTaskComponent } from './main-dialog-add-task/main-dialog-add-task.component';
+import { MainDialogTaskDetailsAndEditComponent } from './main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
+import { MainDialogTaskDetailsAndEditTaskViewComponent } from './main-dialog-task-details-and-edit-task-view/main-dialog-task-details-and-edit-task-view.component';
+import { MainDialogTaskDetailsAndEditEditViewComponent } from './main-dialog-task-details-and-edit-edit-view/main-dialog-task-details-and-edit-edit-view.component';
 
 
 @NgModule({
@@ -45,7 +48,10 @@ import { MainDialogAddTaskComponent } from './main-dialog-add-task/main-dialog-a
     MainContactsComponent,
     MainDialogAddContactComponent,
     MainDialogEditContactComponent,
-    MainDialogAddTaskComponent
+    MainDialogAddTaskComponent,
+    MainDialogTaskDetailsAndEditComponent,
+    MainDialogTaskDetailsAndEditTaskViewComponent,
+    MainDialogTaskDetailsAndEditEditViewComponent
   ],
   imports: [
     BrowserModule,
