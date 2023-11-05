@@ -203,7 +203,7 @@ export class MainBoardComponent {
   viewTaskDetails(taskData) {
     // const clickedContactDataID = clickedContactData.firebaseId;
     const dialogRef = this.dialog.open(MainDialogTaskDetailsAndEditComponent, {
-      panelClass: 'popup__contact__add'
+      panelClass: 'popup__task__details'
     });
     // dialogRef.componentInstance.user = { ...clickedContactData };
     dialogRef.afterClosed().subscribe((result) => {

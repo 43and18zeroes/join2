@@ -333,6 +333,13 @@ body {
     }
 }
 
+.popup__task__details {
+    width: 525px;
+    height: 870px;
+    background-color: white !important;
+    border-radius: 30px !important;
+}
+
 .mdc-dialog__surface {
     border-radius: 30px !important;
     // padding: 48px;
