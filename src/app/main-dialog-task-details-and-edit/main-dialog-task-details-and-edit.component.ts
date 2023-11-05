@@ -10,17 +10,17 @@ import { TaskDetailsCommService } from '../task-details-comm.service';
 export class MainDialogTaskDetailsAndEditComponent {
 
   editMode: boolean = false;
-  private subscription: Subscription;
+  private subscriptionEditMode: Subscription;
 
   constructor(private taskDetailsCommService: TaskDetailsCommService) {
-    this.subscription = this.taskDetailsCommService.editMode$.subscribe(value => {
+    this.subscriptionEditMode = this.taskDetailsCommService.editMode$.subscribe(value => {
       this.editMode = value;
     });
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.subscriptionEditMode) {
+      this.subscriptionEditMode.unsubscribe();
     }
   }
 }

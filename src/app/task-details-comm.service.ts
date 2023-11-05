@@ -11,8 +11,8 @@ export class TaskDetailsCommService {
 
   constructor() { }
 
-  setEditMode(value: boolean) {
-    this.editMode.next(value);
+  setEditMode() {
+    this.editMode.next(true);
   }
 
   unsetEditMode() {

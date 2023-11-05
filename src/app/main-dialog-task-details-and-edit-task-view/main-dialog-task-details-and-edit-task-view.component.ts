@@ -10,7 +10,7 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
 
   constructor(private taskDetailsCommService: TaskDetailsCommService) {}
 
-  toggleEditMode() {
-    this.taskDetailsCommService.setEditMode(true);
+  setEditMode() {
+    this.taskDetailsCommService.setEditMode();
   }
 }
