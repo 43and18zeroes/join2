@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskDetailsCommService } from '../task-details-comm.service';
 
 @Component({
   selector: 'app-main-dialog-task-details-and-edit-task-view',
@@ -7,7 +8,9 @@ import { Component } from '@angular/core';
 })
 export class MainDialogTaskDetailsAndEditTaskViewComponent {
 
+  constructor(private taskDetailsCommService: TaskDetailsCommService) {}
+
   toggleEditMode() {
-    
+    this.taskDetailsCommService.setEditMode(true);
   }
 }

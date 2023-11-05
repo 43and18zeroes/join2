@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { TaskDetailsCommService } from '../task-details-comm.service';
 
 @Component({
   selector: 'app-main-dialog-task-details-and-edit',
@@ -8,5 +10,17 @@ import { Component } from '@angular/core';
 export class MainDialogTaskDetailsAndEditComponent {
 
   editMode: boolean = false;
+  private subscription: Subscription;
 
+  constructor(private taskDetailsCommService: TaskDetailsCommService) {
+    this.subscription = this.taskDetailsCommService.editMode$.subscribe(value => {
+      this.editMode = value;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 }
