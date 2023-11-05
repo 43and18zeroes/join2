@@ -6,6 +6,7 @@ import { Router, NavigationStart } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MainAddTaskComponent } from '../main-add-task/main-add-task.component';
 import { MainDialogAddTaskComponent } from '../main-dialog-add-task/main-dialog-add-task.component';
+import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
 
 @Component({
   selector: 'app-main-board',
@@ -196,6 +197,26 @@ export class MainBoardComponent {
       console.log('All tasks overwritten successfully');
     }).catch(err => {
       console.error('Error overwriting tasks: ', err);
+    });
+  }
+
+  viewTaskDetails(taskData) {
+    // const clickedContactDataID = clickedContactData.firebaseId;
+    const dialogRef = this.dialog.open(MainDialogTaskDetailsAndEditComponent, {
+      panelClass: 'popup__contact__add'
+    });
+    // dialogRef.componentInstance.user = { ...clickedContactData };
+    dialogRef.afterClosed().subscribe((result) => {
+      // if (this.userService.userDeletedSuccessfully) {
+      //   this.showContactDetails = false;
+      //   this.displayDeletionSuccessfulAnimation();
+      // }
+      // if (this.userService.userUpdatedSuccessfully || this.userService.userDeletedSuccessfully) {
+      //   this.generateUsersLists();
+      //   this.findEditedContactData(clickedContactDataID);
+      // }
+      // this.userService.userUpdatedSuccessfully = false;
+      // this.userService.userDeletedSuccessfully = false;
     });
   }
 }
