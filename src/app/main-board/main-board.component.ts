@@ -75,9 +75,9 @@ export class MainBoardComponent {
       data: { taskStatus: taskStatus }
     });
     dialogRef.afterClosed().subscribe((result) => {
-      // this.allTasksData = this.userService.allTasksData;
-      // this.convertTasksDataToLists();
-      // this.sortTasksInColumns();
+      this.allTasksData = this.userService.allTasksData;
+      this.convertTasksDataToLists();
+      this.sortTasksInColumns();
     });
   }
 
