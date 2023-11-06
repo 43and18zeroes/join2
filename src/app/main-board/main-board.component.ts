@@ -55,6 +55,7 @@ export class MainBoardComponent {
     this.allUsersData = this.userService.allUsersData;
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
+    this.renumberTasksColumnOrder();
     // this.openTaskDetails(this.todo[0])
   }
 
@@ -69,15 +70,15 @@ export class MainBoardComponent {
 
   openAddTaskDialog(taskStatus) {
     // this.saveBoardStatus();
-    this.updateTasksStatus();
+    // this.updateTasksStatus();
     const dialogRef = this.dialog.open(MainDialogAddTaskComponent, {
       panelClass: 'popup__task__add',
       data: { taskStatus: taskStatus }
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.allTasksData = this.userService.allTasksData;
-      this.convertTasksDataToLists();
-      this.sortTasksInColumns();
+      // this.allTasksData = this.userService.allTasksData;
+      // this.convertTasksDataToLists();
+      // this.sortTasksInColumns();
     });
   }
 
@@ -149,25 +150,39 @@ export class MainBoardComponent {
   }
 
   saveBoardStatus() {
-    this.updateTasksStatus();
-    this.newAllTasksData = [...this.todo, ...this.inprogress];
-    this.setNewTasksDataToLocal(this.newAllTasksData);
-    this.overwriteAllTasksDataBackend(this.newAllTasksData);
+    // this.updateTasksStatus();
+    // this.newAllTasksData = [...this.todo, ...this.inprogress];
+    // this.setNewTasksDataToLocal(this.newAllTasksData);
+    // this.overwriteAllTasksDataBackend(this.newAllTasksData);
   }
 
-  updateTasksStatus() {
-    this.updateStatusForList(this.todo, "todo");
-    this.updateStatusForList(this.inprogress, "inprogress");
+  renumberTasksColumnOrder() {
+    this.renumberTasksColumnOrderForList(this.todo, "todo");
+    this.renumberTasksColumnOrderForList(this.inprogress, "inprogress");
   }
 
-  updateStatusForList(list, status) {
-    let taskColumnOrder = 1;
-    list.forEach(task => {
-      task.taskStatus = status;
-      task.taskColumnOrder = taskColumnOrder;
-      taskColumnOrder++;
-    });
-  }
+  renumberTasksColumnOrderForList(list, status) {
+      let taskColumnOrder = 1;
+      list.forEach(task => {
+        task.taskStatus = status;
+        task.taskColumnOrder = taskColumnOrder;
+        taskColumnOrder++;
+      });
+    }
+
+  // updateTasksStatus() {
+  //   this.updateStatusForList(this.todo, "todo");
+  //   this.updateStatusForList(this.inprogress, "inprogress");
+  // }
+
+  // updateStatusForList(list, status) {
+  //   let taskColumnOrder = 1;
+  //   list.forEach(task => {
+  //     task.taskStatus = status;
+  //     task.taskColumnOrder = taskColumnOrder;
+  //     taskColumnOrder++;
+  //   });
+  // }
 
   setNewTasksDataToLocal(newAllTasksData) {
     localStorage.removeItem('allTasksData');
