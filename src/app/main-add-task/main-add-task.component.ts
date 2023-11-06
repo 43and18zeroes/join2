@@ -270,7 +270,8 @@ export class MainAddTaskComponent {
       category: ['', Validators.required],
       subTasks: [],
       subTasksCompleted: [],
-      taskStatus: 'todo'
+      taskStatus: 'todo',
+      taskColumnOrder: 0
     });
   }
 
