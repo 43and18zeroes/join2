@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TaskDetailsCommService } from '../services/task-details-comm.service';
 import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
 import { FormBuilder } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-main-dialog-task-details-and-edit-edit-view',
@@ -11,20 +12,22 @@ import { FormBuilder } from '@angular/forms';
 export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   taskData;
+  updatedTaskData;
   editTaskForm = this.fb.group({
-    category: [''],
+    // category: [''],
     title: [''],
-    desciption: [''],
-    dueDate: [''],
-    priority: [''],
-    assignedTo: [[]],
-    subTasks: [],
-    subTasksCompleted: []
+    // desciption: [''],
+    // dueDate: [''],
+    // priority: [''],
+    // assignedTo: [[]],
+    // subTasks: [],
+    // subTasksCompleted: []
   });
 
   constructor(private taskDetailsCommService: TaskDetailsCommService,
     public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private firestore: AngularFirestore) { }
 
   ngOnInit() {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
@@ -32,8 +35,15 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   onSubmit() {
-    // Update changes
+    this.updateTask();
     // Update Successful Animation
     this.taskDetailsCommService.unsetEditMode();
+  }
+
+  updateTask() {
+    this.firestore
+      .collection('tasks')
+      // .doc(updatedUser.firebaseId)
+      // .update(updatedUser);
   }
 }
