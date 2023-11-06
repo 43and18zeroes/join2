@@ -35,17 +35,6 @@ export class UserService {
       })
   }
 
-  // setAllContactsDataToVarAndLocal() {
-  //   this.firestore
-  //     .collection('contacts')
-  //     .valueChanges()
-  //     .subscribe((changes: any) => {
-  //       this.allContactsData = changes;
-  //       localStorage.removeItem('allContactsData');
-  //       localStorage.setItem('allContactsData', JSON.stringify(changes));
-  //     })
-  // }
-
   setAllTasksDataToVarAndLocal() {
     this.firestore
       .collection('tasks')
