@@ -161,7 +161,7 @@ export class MainBoardComponent {
   }
 
   updateStatusForList(list, status) {
-    let taskColumnOrder = 0;
+    let taskColumnOrder = 1;
     list.forEach(task => {
       task.taskStatus = status;
       task.taskColumnOrder = taskColumnOrder;
