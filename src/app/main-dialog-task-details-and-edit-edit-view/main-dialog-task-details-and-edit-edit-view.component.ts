@@ -31,19 +31,25 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   ngOnInit() {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
+    this.updatedTaskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
     console.log("this.taskData", this.taskData);
   }
 
   onSubmit() {
+    this.getUpdatedData();
     this.updateTask();
     // Update Successful Animation
     this.taskDetailsCommService.unsetEditMode();
   }
 
+  getUpdatedData() {
+    this.updatedTaskData.title = this.taskData.title;
+  }
+
   updateTask() {
-    this.firestore
-      .collection('tasks')
-      // .doc(updatedUser.firebaseId)
-      // .update(updatedUser);
+    // this.firestore
+    //   .collection('tasks')
+    //   .doc(this.updatedTaskData.firebaseId)
+    //   .update(this.updatedTaskData);
   }
 }
