@@ -12,6 +12,8 @@ export class MainDialogTaskDetailsAndEditComponent {
   editMode: boolean = false;
   private subscriptionEditMode: Subscription;
 
+  taskData;
+
   constructor(private taskDetailsCommService: TaskDetailsCommService) {
     this.subscriptionEditMode = this.taskDetailsCommService.editMode$.subscribe(value => {
       this.editMode = value;

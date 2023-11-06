@@ -206,7 +206,7 @@ export class MainBoardComponent {
     const dialogRef = this.dialog.open(MainDialogTaskDetailsAndEditComponent, {
       panelClass: 'popup__task__details'
     });
-    // dialogRef.componentInstance.user = { ...clickedContactData };
+    dialogRef.componentInstance.taskData = { ...taskData };
     dialogRef.afterClosed().subscribe((result) => {
       // if (this.userService.userDeletedSuccessfully) {
       //   this.showContactDetails = false;

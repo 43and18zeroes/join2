@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskDetailsCommService } from '../services/task-details-comm.service';
+import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
 
 @Component({
   selector: 'app-main-dialog-task-details-and-edit-task-view',
@@ -8,7 +9,15 @@ import { TaskDetailsCommService } from '../services/task-details-comm.service';
 })
 export class MainDialogTaskDetailsAndEditTaskViewComponent {
 
-  constructor(private taskDetailsCommService: TaskDetailsCommService) {}
+  taskData;
+
+  constructor(private taskDetailsCommService: TaskDetailsCommService,
+              public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent) {}
+
+  ngOnInit() {
+    this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
+    console.log("this.taskData", this.taskData);
+  }
 
   setEditMode() {
     this.taskDetailsCommService.setEditMode();
