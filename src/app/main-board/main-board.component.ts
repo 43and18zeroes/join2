@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MainAddTaskComponent } from '../main-add-task/main-add-task.component';
 import { MainDialogAddTaskComponent } from '../main-dialog-add-task/main-dialog-add-task.component';
 import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
+import { BoardCommService } from '../services/board-comm.service';
 
 @Component({
   selector: 'app-main-board',
@@ -41,7 +42,8 @@ export class MainBoardComponent {
     private firestore: AngularFirestore,
     private userService: UserService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public boardCommService: BoardCommService
   ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart && event.id === 1) {
@@ -58,7 +60,16 @@ export class MainBoardComponent {
     this.sortTasksInColumns();
     this.renumberTasksColumnOrder();
     this.backendTasksColumnOrder();
+    this.boardCommService.reloadAfterNewTask = this.reloadAfterNewTask.bind(this)
     // this.openTaskDetails(this.todo[0])
+  }
+
+  reloadAfterNewTask() {
+    this.allTasksData = this.userService.allTasksData;
+    this.convertTasksDataToLists();
+    this.sortTasksInColumns();
+    this.renumberTasksColumnOrder();
+    this.backendTasksColumnOrder();
   }
 
   onBrowserRefresh() {

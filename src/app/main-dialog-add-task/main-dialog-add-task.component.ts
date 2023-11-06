@@ -7,6 +7,7 @@ import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-d
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../services/user-data.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { BoardCommService } from '../services/board-comm.service';
 
 @Component({
   selector: 'app-main-dialog-add-task',
@@ -49,7 +50,7 @@ export class MainDialogAddTaskComponent {
     private renderer: Renderer2,
     public dialog: MatDialog,
     private userService: UserService,
-
+    public boardCommService: BoardCommService,
     public dialogRef: MatDialogRef<MainDialogAddTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -367,6 +368,7 @@ export class MainDialogAddTaskComponent {
     setTimeout(() => {
       // this.mainComponent.displayMainSection('board');
       // this.mainCommService.displayMainBoard('board');
+      this.boardCommService.reloadAfterNewTask();
       this.dialog.closeAll();
     }, 1500);
   }
