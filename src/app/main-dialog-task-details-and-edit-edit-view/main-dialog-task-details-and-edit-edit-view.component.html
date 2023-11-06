@@ -1,4 +1,17 @@
-<button (click)="submitChanges()" class="btn__primary">Ok <span
-    class="material__symbols__outlined">
-    check
-</span></button>
+<div class="task__edit__container">
+    <div class="input__container">
+        <span (click)="userName.focus()" class="material__symbols__outlined">
+            person
+        </span>
+        <input [(ngModel)]="taskData.title" id="userName" formControlName="userName" placeholder="Name" #userName
+            placeholder="Name">
+    </div>
+    <div class="incorrect__input">
+        <!-- <span *ngIf="editUserForm.controls.userName.invalid &&
+        editUserForm.controls.userName.dirty || !userNameValid">Separate first and last name with a space.</span> -->
+    </div>
+
+    <button (click)="submitChanges()" class="btn__primary">Ok <span class="material__symbols__outlined">
+            check
+        </span></button>
+</div>
