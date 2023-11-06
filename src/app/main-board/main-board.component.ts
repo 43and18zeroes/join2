@@ -98,9 +98,9 @@ export class MainBoardComponent {
 
   sortTasksInColumns() {
     const customSort = (a, b) => {
-      if (a.taskColumnOrdner === undefined) return -1;
-      if (b.taskColumnOrdner === undefined) return 1;
-      return a.taskColumnOrdner - b.taskColumnOrdner;
+      if (a.taskColumnOrder === undefined) return -1;
+      if (b.taskColumnOrder === undefined) return 1;
+      return a.taskColumnOrder - b.taskColumnOrder;
     };
     this.todo.sort(customSort);
     this.inprogress.sort(customSort);
@@ -161,11 +161,11 @@ export class MainBoardComponent {
   }
 
   updateStatusForList(list, status) {
-    let taskColumnOrdner = 0;
+    let taskColumnOrder = 0;
     list.forEach(task => {
       task.taskStatus = status;
-      task.taskColumnOrdner = taskColumnOrdner;
-      taskColumnOrdner++;
+      task.taskColumnOrder = taskColumnOrder;
+      taskColumnOrder++;
     });
   }
 
