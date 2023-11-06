@@ -334,6 +334,7 @@ export class MainAddTaskComponent {
   }
 
   sendNewTaskToBackend(trimmedTask) {
+    console.log("trimmedTask", trimmedTask)
     delete trimmedTask.firebaseId;
     this.firestore
       .collection('tasks')

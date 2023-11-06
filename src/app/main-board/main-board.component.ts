@@ -52,6 +52,7 @@ export class MainBoardComponent {
 
   ngOnInit(): void {
     this.allTasksData = this.userService.allTasksData;
+    console.log("this.allTasksData", this.allTasksData);
     this.allUsersData = this.userService.allUsersData;
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
@@ -105,6 +106,7 @@ export class MainBoardComponent {
     };
     this.todo.sort(customSort);
     this.inprogress.sort(customSort);
+    console.log("this.allTasksData", this.allTasksData);
   }
 
   getUserColor(assignedUserEmail) {
