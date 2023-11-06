@@ -55,7 +55,7 @@ export class MainBoardComponent {
     this.allUsersData = this.userService.allUsersData;
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
-    this.openTaskDetails(this.todo[0])
+    // this.openTaskDetails(this.todo[0])
   }
 
   onBrowserRefresh() {
@@ -64,7 +64,7 @@ export class MainBoardComponent {
 
   ngAfterViewInit() {
     this.checkForHorizontalScroll();
-    this.saveBoardStatus();
+    // this.saveBoardStatus();
   }
 
   openAddTaskDialog(taskStatus) {
