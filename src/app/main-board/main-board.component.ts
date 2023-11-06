@@ -57,6 +57,7 @@ export class MainBoardComponent {
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
     this.renumberTasksColumnOrder();
+    this.backendTasksColumnOrder();
     // this.openTaskDetails(this.todo[0])
   }
 
@@ -164,13 +165,31 @@ export class MainBoardComponent {
   }
 
   renumberTasksColumnOrderForList(list, status) {
-      let taskColumnOrder = 1;
-      list.forEach(task => {
-        task.taskStatus = status;
-        task.taskColumnOrder = taskColumnOrder;
-        taskColumnOrder++;
-      });
+    let taskColumnOrder = 1;
+    list.forEach(task => {
+      task.taskStatus = status;
+      task.taskColumnOrder = taskColumnOrder;
+      taskColumnOrder++;
+    });
+  }
+
+  backendTasksColumnOrder() {
+    for (let index = 0; index < this.todo.length; index++) {
+      const element = this.todo[index];
+      this.firestore
+      .collection('tasks')
+      .doc(element.firebaseId)
+      .update(element);
     }
+
+    for (let index = 0; index < this.inprogress.length; index++) {
+      const element = this.inprogress[index];
+      this.firestore
+      .collection('tasks')
+      .doc(element.firebaseId)
+      .update(element);
+    }
+  }
 
   // updateTasksStatus() {
   //   this.updateStatusForList(this.todo, "todo");
