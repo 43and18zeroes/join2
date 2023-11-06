@@ -57,6 +57,7 @@ export class MainBoardComponent {
     console.log("allUsersData", this.allUsersData);
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
+    this.openTaskDetails(this.todo[0])
   }
 
   onBrowserRefresh() {
@@ -200,7 +201,7 @@ export class MainBoardComponent {
     });
   }
 
-  viewTaskDetails(taskData) {
+  openTaskDetails(taskData) {
     // const clickedContactDataID = clickedContactData.firebaseId;
     const dialogRef = this.dialog.open(MainDialogTaskDetailsAndEditComponent, {
       panelClass: 'popup__task__details'
