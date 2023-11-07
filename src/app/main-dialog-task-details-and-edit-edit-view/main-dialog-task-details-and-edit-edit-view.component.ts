@@ -45,8 +45,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     
     setTimeout(() => {
       this.taskDetailsCommService.unsetEditMode();
-      this.boardCommService.reloadAfterNewTask();
-      this.boardCommService.setNewTasksDataToLocal();
+      // this.boardCommService.setNewTasksDataToLocal();
+      // this.boardCommService.reloadAfterNewTask();
     }, 1500);
   }
 
