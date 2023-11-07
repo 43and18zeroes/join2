@@ -33,5 +33,6 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
   deleteTask() {
     this.boardCommService.taskToDelete = this.taskData;
     this.boardCommService.deleteTask();
+    this.closeDialog();
   }
 }
