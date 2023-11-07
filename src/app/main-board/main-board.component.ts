@@ -161,6 +161,10 @@ export class MainBoardComponent {
     if (event.previousContainer === event.container) moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     else transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     // this.saveBoardStatus();
+    this.renumberTasksColumnOrder();
+    this.newAllTasksData = [...this.todo, ...this.inprogress];
+    this.setNewTasksDataToLocal();
+    this.backendTasksColumnOrder();
     console.log("this.todo", this.todo);
     console.log("this.inprogress", this.inprogress);
   }
@@ -184,6 +188,11 @@ export class MainBoardComponent {
       task.taskColumnOrder = taskColumnOrder;
       taskColumnOrder++;
     });
+  }
+
+  setNewTasksDataToLocal() {
+    localStorage.removeItem('allTasksData');
+    localStorage.setItem('allTasksData', JSON.stringify(this.newAllTasksData));
   }
 
   backendTasksColumnOrder() {
@@ -218,10 +227,10 @@ export class MainBoardComponent {
   //   });
   // }
 
-  setNewTasksDataToLocal(newAllTasksData) {
-    localStorage.removeItem('allTasksData');
-    localStorage.setItem('allTasksData', JSON.stringify(newAllTasksData));
-  }
+  // setNewTasksDataToLocal(newAllTasksData) {
+  //   localStorage.removeItem('allTasksData');
+  //   localStorage.setItem('allTasksData', JSON.stringify(newAllTasksData));
+  // }
 
   overwriteAllTasksDataBackend(newAllTasksData) {
     const tasksCollection = this.firestore.collection('tasks');
