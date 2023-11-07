@@ -56,6 +56,12 @@
 
             .prio {
                 display: flex;
+
+                div {
+                    font-size: 24px;
+                    font-weight: 700;
+                    margin-left: 6px;
+                }
             }
 
             .prio__red {

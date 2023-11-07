@@ -22,12 +22,12 @@
         <tr>
             <td class="head">Priority:</td>
             <td class="content prio">{{ taskData.priority }}
-                <div *ngIf="taskData.priority === 'urgent'" class="material__symbols__outlined task__card__prio prio__red">
+                <div *ngIf="taskData.priority === 'urgent'" class="material__symbols__outlined prio__red">
                     keyboard_double_arrow_up
                 </div>
                 <div *ngIf="taskData.priority === 'medium'"
-                    class="material__symbols__outlined task__card__prio prio__yellow">double_arrow</div>
-                <div *ngIf="taskData.priority === 'low'" class="material__symbols__outlined task__card__prio prio__green">
+                    class="material__symbols__outlined prio__yellow">double_arrow</div>
+                <div *ngIf="taskData.priority === 'low'" class="material__symbols__outlined prio__green">
                     keyboard_double_arrow_down
                 </div>
             </td>
