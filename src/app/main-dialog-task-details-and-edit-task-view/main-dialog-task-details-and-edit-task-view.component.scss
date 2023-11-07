@@ -1,5 +1,5 @@
 .task__view__container {
-    padding:  48px 40px;
+    padding: 48px 40px;
 
     header {
         display: flex;
@@ -18,7 +18,7 @@
         .category__tech {
             background-color: #1FD7C1;
         }
-    
+
         .category__user {
             background-color: #0038FF;
         }
@@ -36,10 +36,12 @@
 
     h2 {
         font-size: 61px;
-        margin: 25px 0;
+        margin: 25px 0 15px 0;
     }
 
     .dateprio {
+        border-collapse: separate;
+        border-spacing: 0 20px;
 
         tr {
 
@@ -50,6 +52,22 @@
 
             .content {
                 text-transform: capitalize;
+            }
+
+            .prio {
+                display: flex;
+            }
+
+            .prio__red {
+                color: var(--task-prio-urgent);
+            }
+
+            .prio__yellow {
+                color: var(--task-prio-medium);
+            }
+
+            .prio__green {
+                color: var(--task-prio-low);
             }
         }
     }
@@ -63,11 +81,11 @@
         font-size: 16px;
         font-weight: 400;
         display: flex;
-    
+
         @media (width <=576px) {
             display: none;
         }
-    
+
         div {
             display: flex;
             align-items: center;
@@ -75,7 +93,7 @@
             gap: 8px;
             cursor: pointer;
             transition: all 100ms ease-in;
-    
+
             &:hover {
                 color: var(--accent-cyan);
                 transform: scale(1.01);

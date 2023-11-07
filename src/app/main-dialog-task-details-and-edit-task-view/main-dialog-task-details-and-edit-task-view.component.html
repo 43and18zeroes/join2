@@ -11,19 +11,29 @@
 
     <h2>{{ taskData.title }}</h2>
 
-    <p class="description">{{ taskData.description }}</p>
-
     <table class="dateprio">
+        <tr>
+            <td class="description" colspan="2">{{ taskData.description }}</td>
+        </tr>
         <tr>
             <td class="head">Due date:</td>
             <td class="content">{{ taskData.dueDate }}</td>
         </tr>
         <tr>
             <td class="head">Priority:</td>
-            <td class="content">{{ taskData.priority }}</td>
+            <td class="content prio">{{ taskData.priority }}
+                <div *ngIf="taskData.priority === 'urgent'" class="material__symbols__outlined task__card__prio prio__red">
+                    keyboard_double_arrow_up
+                </div>
+                <div *ngIf="taskData.priority === 'medium'"
+                    class="material__symbols__outlined task__card__prio prio__yellow">double_arrow</div>
+                <div *ngIf="taskData.priority === 'low'" class="material__symbols__outlined task__card__prio prio__green">
+                    keyboard_double_arrow_down
+                </div>
+            </td>
         </tr>
     </table>
-    
+
     <div class="details__btns">
         <div (click)="deleteTask()" class="details__delete__btn"><span class="material__symbols__outlined">delete</span>
             Delete</div>
