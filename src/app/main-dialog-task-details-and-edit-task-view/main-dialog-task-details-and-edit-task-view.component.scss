@@ -78,9 +78,11 @@
         }
     }
 
-    .description {
-        font-weight: 400;
-        font-size: 20px;
+    .assigned {
+
+        .assigned__head {
+            color: #42526E;
+        }
     }
 
     .details__btns {
