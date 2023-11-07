@@ -40,17 +40,20 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   onSubmit() {
     this.updatedTaskData.title = this.taskData.title;
-    this.updateTask();
+    this.boardCommService.updatedTaskData = this.updatedTaskData;
+    this.boardCommService.updateSingleTaskVar();
+    this.updateTaskSingleBackend();
     // Update Successful Animation
+    this.boardCommService.reloadAfterNewTask();
     this.taskDetailsCommService.unsetEditMode();
     setTimeout(() => {
       
       // this.boardCommService.setNewTasksDataToLocal();
-      // this.boardCommService.reloadAfterNewTask();
+      
     }, 1500);
   }
 
-  updateTask() {
+  updateTaskSingleBackend() {
     console.log("this.updatedTaskData", this.updatedTaskData)
     this.firestore
       .collection('tasks')

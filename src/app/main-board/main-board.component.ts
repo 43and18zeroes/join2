@@ -60,6 +60,7 @@ export class MainBoardComponent {
     this.backendTasksColumnOrder();
     this.boardCommService.reloadAfterNewTask = this.reloadAfterNewTask.bind(this);
     this.boardCommService.setNewTasksDataToLocal = this.setNewTasksDataToLocal.bind(this);
+    this.boardCommService.updateSingleTaskVar = this.updateSingleTaskVar.bind(this);
     // this.openTaskDetails(this.todo[0])
   }
 
@@ -270,5 +271,17 @@ export class MainBoardComponent {
       // this.userService.userUpdatedSuccessfully = false;
       // this.userService.userDeletedSuccessfully = false;
     });
+  }
+
+  updateSingleTaskVar() {
+    const updatedTaskData = this.boardCommService.updatedTaskData;
+    console.log("updatedTaskData", updatedTaskData)
+    for (let index = 0; index < this.allTasksData.length; index++) {
+      const element = this.allTasksData[index];
+      if (element.firebaseId === updatedTaskData.firebaseId) {
+        this.allTasksData[index] = updatedTaskData;
+        console.log("this.allTasksData[index]", this.allTasksData[index])
+      }
+    }
   }
 }
