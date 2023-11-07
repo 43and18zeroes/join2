@@ -79,9 +79,34 @@
     }
 
     .assigned {
+        border-collapse: separate;
+        border-spacing: 0 10px;
 
         .assigned__head {
             color: #42526E;
+        }
+
+        .assignee {
+
+            .assignee__initials {
+                padding-left: 12px;
+
+                div {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    color: white;
+                    font-size: 18px;
+                    font-weight: 400;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            .assignee__names {
+                padding-left: 16px;
+            }
         }
     }
 
