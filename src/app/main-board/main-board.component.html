@@ -102,7 +102,7 @@
 
                 <div *ngIf="inprogress.length === 0 && dragActive === false" class="task__card__ghost">No tasks In progress</div>
 
-                <div cdkDrag (cdkDragStarted)="onDragStarted($event, item)" class="task__card" *ngFor="let item of inprogress" cdkDrag>
+                <div (click)="openTaskDetails(item)" cdkDrag (cdkDragStarted)="onDragStarted($event, item)" class="task__card" *ngFor="let item of inprogress" cdkDrag>
 
                     <div class="task__cat" [ngClass]="{'category__tech': item.category === 'Technical Task',
                     'category__user': item.category === 'User Story'}">{{ item.category }}</div>
