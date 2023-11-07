@@ -60,8 +60,6 @@ export class MainBoardComponent {
     this.renumberTasksColumnOrder();
     this.backendTasksColumnOrder();
     this.boardCommService.reloadAfterNewTask = this.reloadAfterNewTask.bind(this)
-    console.log("this.todo", this.todo);
-    console.log("this.inprogress", this.inprogress);
     // this.openTaskDetails(this.todo[0])
   }
 
@@ -160,13 +158,10 @@ export class MainBoardComponent {
     this.dragActive = false;
     if (event.previousContainer === event.container) moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     else transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-    // this.saveBoardStatus();
     this.renumberTasksColumnOrder();
     this.newAllTasksData = [...this.todo, ...this.inprogress];
     this.setNewTasksDataToLocal();
     this.backendTasksColumnOrder();
-    console.log("this.todo", this.todo);
-    console.log("this.inprogress", this.inprogress);
   }
 
   // saveBoardStatus() {
@@ -232,30 +227,30 @@ export class MainBoardComponent {
   //   localStorage.setItem('allTasksData', JSON.stringify(newAllTasksData));
   // }
 
-  overwriteAllTasksDataBackend(newAllTasksData) {
-    const tasksCollection = this.firestore.collection('tasks');
+  // overwriteAllTasksDataBackend(newAllTasksData) {
+  //   const tasksCollection = this.firestore.collection('tasks');
 
-    // Delete tasks collection backend
-    tasksCollection.get().toPromise().then(querySnapshot => {
-      const batch = this.firestore.firestore.batch();
-      querySnapshot.docs.forEach(doc => {
-        batch.delete(doc.ref);
-      });
+  //   // Delete tasks collection backend
+  //   tasksCollection.get().toPromise().then(querySnapshot => {
+  //     const batch = this.firestore.firestore.batch();
+  //     querySnapshot.docs.forEach(doc => {
+  //       batch.delete(doc.ref);
+  //     });
 
-      // Add new tasks
-      newAllTasksData.forEach(task => {
-        const docRef = tasksCollection.ref.doc(); // Neue ID für jedes Dokument erstellen
-        batch.set(docRef, task);
-      });
+  //     // Add new tasks
+  //     newAllTasksData.forEach(task => {
+  //       const docRef = tasksCollection.ref.doc(); // Neue ID für jedes Dokument erstellen
+  //       batch.set(docRef, task);
+  //     });
 
-      // Execute
-      return batch.commit();
-    }).then(() => {
-      console.log('All tasks overwritten successfully');
-    }).catch(err => {
-      console.error('Error overwriting tasks: ', err);
-    });
-  }
+  //     // Execute
+  //     return batch.commit();
+  //   }).then(() => {
+  //     console.log('All tasks overwritten successfully');
+  //   }).catch(err => {
+  //     console.error('Error overwriting tasks: ', err);
+  //   });
+  // }
 
   openTaskDetails(taskData) {
     // const clickedContactDataID = clickedContactData.firebaseId;
