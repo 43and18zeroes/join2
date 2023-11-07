@@ -286,14 +286,6 @@ export class MainBoardComponent {
   }
 
   deleteTask() {
-    // const array = this.allTasksData;
-    // for (let index = 0; index < this.allTasksData.length; index++) {
-    //   const element = this.allTasksData[index];
-    //   this.firestore
-    //     .collection('tasks')
-    //     .doc(element.firebaseId)
-    //     .delete();
-    // }
     const taskToDelete = this.boardCommService.taskToDelete;
     for (let index = 0; index < this.allTasksData.length; index++) {
       const element = this.allTasksData[index];
