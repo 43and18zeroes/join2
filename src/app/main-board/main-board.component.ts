@@ -58,7 +58,8 @@ export class MainBoardComponent {
     this.sortTasksInColumns();
     this.renumberTasksColumnOrder();
     this.backendTasksColumnOrder();
-    this.boardCommService.reloadAfterNewTask = this.reloadAfterNewTask.bind(this)
+    this.boardCommService.reloadAfterNewTask = this.reloadAfterNewTask.bind(this);
+    this.boardCommService.setNewTasksDataToLocal = this.setNewTasksDataToLocal.bind(this);
     // this.openTaskDetails(this.todo[0])
   }
 

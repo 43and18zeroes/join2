@@ -10,4 +10,8 @@ export class BoardCommService {
   public reloadAfterNewTask(): void {
     console.log('Diese Funktion wurde über den SharedService aufgerufen');
   }
+
+  public setNewTasksDataToLocal(): void {
+    console.log('Diese Funktion wurde über den SharedService aufgerufen');
+  }
 }

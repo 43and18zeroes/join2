@@ -3,6 +3,7 @@ import { TaskDetailsCommService } from '../services/task-details-comm.service';
 import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
 import { FormBuilder } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { BoardCommService } from '../services/board-comm.service';
 
 @Component({
   selector: 'app-main-dialog-task-details-and-edit-edit-view',
@@ -24,27 +25,29 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     // subTasksCompleted: []
   });
 
-  constructor(private taskDetailsCommService: TaskDetailsCommService,
+  constructor(
+    private taskDetailsCommService: TaskDetailsCommService,
     public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent,
     private fb: FormBuilder,
-    private firestore: AngularFirestore) { }
+    private firestore: AngularFirestore,
+    public boardCommService: BoardCommService
+  ) { }
 
   ngOnInit() {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
     this.updatedTaskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
-    console.log("this.taskData", this.taskData);
   }
 
   onSubmit() {
-    this.getUpdatedData();
+    this.updatedTaskData.title = this.taskData.title;
     this.updateTask();
     // Update Successful Animation
-    this.taskDetailsCommService.unsetEditMode();
-  }
-
-  getUpdatedData() {
-    console.log("this.taskData.title", this.taskData.title)
-    this.updatedTaskData.title = this.taskData.title;
+    
+    setTimeout(() => {
+      this.taskDetailsCommService.unsetEditMode();
+      this.boardCommService.reloadAfterNewTask();
+      this.boardCommService.setNewTasksDataToLocal();
+    }, 1500);
   }
 
   updateTask() {
