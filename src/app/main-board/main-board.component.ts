@@ -166,10 +166,10 @@ export class MainBoardComponent {
   }
 
   // saveBoardStatus() {
-    // this.updateTasksStatus();
-    // this.newAllTasksData = [...this.todo, ...this.inprogress];
-    // this.setNewTasksDataToLocal(this.newAllTasksData);
-    // this.overwriteAllTasksDataBackend(this.newAllTasksData);
+  // this.updateTasksStatus();
+  // this.newAllTasksData = [...this.todo, ...this.inprogress];
+  // this.setNewTasksDataToLocal(this.newAllTasksData);
+  // this.overwriteAllTasksDataBackend(this.newAllTasksData);
   // }
 
   renumberTasksColumnOrder() {
@@ -196,17 +196,17 @@ export class MainBoardComponent {
     for (let index = 0; index < this.todo.length; index++) {
       const element = this.todo[index];
       this.firestore
-      .collection('tasks')
-      .doc(element.firebaseId)
-      .update(element);
+        .collection('tasks')
+        .doc(element.firebaseId)
+        .update(element);
     }
 
     for (let index = 0; index < this.inprogress.length; index++) {
       const element = this.inprogress[index];
       this.firestore
-      .collection('tasks')
-      .doc(element.firebaseId)
-      .update(element);
+        .collection('tasks')
+        .doc(element.firebaseId)
+        .update(element);
     }
   }
 
@@ -286,14 +286,27 @@ export class MainBoardComponent {
   }
 
   deleteTask() {
+    // const array = this.allTasksData;
+    // for (let index = 0; index < this.allTasksData.length; index++) {
+    //   const element = this.allTasksData[index];
+    //   this.firestore
+    //     .collection('tasks')
+    //     .doc(element.firebaseId)
+    //     .delete();
+    // }
     const taskToDelete = this.boardCommService.taskToDelete;
     for (let index = 0; index < this.allTasksData.length; index++) {
       const element = this.allTasksData[index];
       if (element.firebaseId === taskToDelete.firebaseId) {
         console.log("deleted:", this.allTasksData[index]);
+        this.firestore
+          .collection('tasks')
+          .doc(this.allTasksData[index].firebaseId)
+          .delete();
         this.allTasksData.splice(index, 1);
       }
     }
     this.reloadAfterNewTask();
+    this.setNewTasksDataToLocal();
   }
 }
