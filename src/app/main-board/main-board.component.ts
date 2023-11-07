@@ -18,7 +18,6 @@ export class MainBoardComponent {
 
   allTasksData;
   allUsersData;
-  newAllTasksData;
 
   todo = [];
   inprogress = [];
@@ -159,7 +158,6 @@ export class MainBoardComponent {
     if (event.previousContainer === event.container) moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     else transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     this.renumberTasksColumnOrder();
-    this.newAllTasksData = [...this.todo, ...this.inprogress];
     this.setNewTasksDataToLocal();
     this.backendTasksColumnOrder();
   }
@@ -186,8 +184,9 @@ export class MainBoardComponent {
   }
 
   setNewTasksDataToLocal() {
+    const newAllTasksData = [...this.todo, ...this.inprogress];
     localStorage.removeItem('allTasksData');
-    localStorage.setItem('allTasksData', JSON.stringify(this.newAllTasksData));
+    localStorage.setItem('allTasksData', JSON.stringify(newAllTasksData));
   }
 
   backendTasksColumnOrder() {
