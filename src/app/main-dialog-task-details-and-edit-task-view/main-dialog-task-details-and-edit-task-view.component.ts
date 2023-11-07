@@ -3,6 +3,7 @@ import { TaskDetailsCommService } from '../services/task-details-comm.service';
 import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
 import { BoardCommService } from '../services/board-comm.service';
 import { MatDialog } from '@angular/material/dialog';
+import { UserService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-main-dialog-task-details-and-edit-task-view',
@@ -12,18 +13,39 @@ import { MatDialog } from '@angular/material/dialog';
 export class MainDialogTaskDetailsAndEditTaskViewComponent {
 
   taskData;
+  allUsersData;
 
   constructor(private taskDetailsCommService: TaskDetailsCommService,
               public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent,
               public boardCommService: BoardCommService,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog,
+              private userService: UserService) {}
 
   ngOnInit() {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
+    this.allUsersData = this.userService.allUsersData;
   }
 
   closeDialog() {
     this.dialog.closeAll();
+  }
+
+  getUserColor(assignedUserEmail) {
+    for (let index = 0; index < this.allUsersData.length; index++) {
+      const element = this.allUsersData[index];
+      if (element.userEmailAddress === assignedUserEmail) {
+        return element.userColor;
+      }
+    }
+  }
+
+  getUserInitials(assignedUserEmail) {
+    for (let index = 0; index < this.allUsersData.length; index++) {
+      const element = this.allUsersData[index];
+      if (element.userEmailAddress === assignedUserEmail) {
+        return element.userInitials;
+      }
+    }
   }
 
   setEditMode() {
