@@ -290,15 +290,17 @@ export class MainBoardComponent {
     for (let index = 0; index < this.allTasksData.length; index++) {
       const element = this.allTasksData[index];
       if (element.firebaseId === taskToDelete.firebaseId) {
-        console.log("deleted:", this.allTasksData[index]);
+        this.allTasksData.splice(index, 1);
+        console.log("deleted:", element);
         this.firestore
           .collection('tasks')
-          .doc(this.allTasksData[index].firebaseId)
+          .doc(element.firebaseId)
           .delete();
-        this.allTasksData.splice(index, 1);
       }
     }
-    this.reloadAfterNewTask();
-    this.setNewTasksDataToLocal();
+    setTimeout(() => {
+      this.reloadAfterNewTask();
+      this.setNewTasksDataToLocal();
+    }, 1000);
   }
 }
