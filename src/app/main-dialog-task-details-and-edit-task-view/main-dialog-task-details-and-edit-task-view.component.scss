@@ -5,6 +5,24 @@
         display: flex;
         justify-content: space-between;
 
+        .task__cat {
+            width: fit-content;
+            padding: 4px 16px;
+            border-radius: 8px;
+            font-size: 23px;
+            font-weight: 400;
+            color: white;
+            text-shadow: 0 0 1px black;
+        }
+
+        .category__tech {
+            background-color: #1FD7C1;
+        }
+    
+        .category__user {
+            background-color: #0038FF;
+        }
+
         .hover__area {
             width: 30px;
             height: 30px;
