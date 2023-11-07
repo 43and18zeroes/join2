@@ -54,13 +54,14 @@ export class MainBoardComponent {
 
   ngOnInit(): void {
     this.allTasksData = this.userService.allTasksData;
-    console.log("this.allTasksData", this.allTasksData);
     this.allUsersData = this.userService.allUsersData;
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
     this.renumberTasksColumnOrder();
     this.backendTasksColumnOrder();
     this.boardCommService.reloadAfterNewTask = this.reloadAfterNewTask.bind(this)
+    console.log("this.todo", this.todo);
+    console.log("this.inprogress", this.inprogress);
     // this.openTaskDetails(this.todo[0])
   }
 
@@ -118,7 +119,6 @@ export class MainBoardComponent {
     };
     this.todo.sort(customSort);
     this.inprogress.sort(customSort);
-    console.log("this.allTasksData", this.allTasksData);
   }
 
   getUserColor(assignedUserEmail) {
@@ -160,15 +160,17 @@ export class MainBoardComponent {
     this.dragActive = false;
     if (event.previousContainer === event.container) moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     else transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-    this.saveBoardStatus();
+    // this.saveBoardStatus();
+    console.log("this.todo", this.todo);
+    console.log("this.inprogress", this.inprogress);
   }
 
-  saveBoardStatus() {
+  // saveBoardStatus() {
     // this.updateTasksStatus();
     // this.newAllTasksData = [...this.todo, ...this.inprogress];
     // this.setNewTasksDataToLocal(this.newAllTasksData);
     // this.overwriteAllTasksDataBackend(this.newAllTasksData);
-  }
+  // }
 
   renumberTasksColumnOrder() {
     this.renumberTasksColumnOrderForList(this.todo, "todo");
