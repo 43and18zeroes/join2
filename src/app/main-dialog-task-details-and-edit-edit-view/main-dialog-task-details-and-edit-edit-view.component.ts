@@ -43,13 +43,15 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   getUpdatedData() {
+    console.log("this.taskData.title", this.taskData.title)
     this.updatedTaskData.title = this.taskData.title;
   }
 
   updateTask() {
-    // this.firestore
-    //   .collection('tasks')
-    //   .doc(this.updatedTaskData.firebaseId)
-    //   .update(this.updatedTaskData);
+    console.log("this.updatedTaskData", this.updatedTaskData)
+    this.firestore
+      .collection('tasks')
+      .doc(this.updatedTaskData.firebaseId)
+      .update(this.updatedTaskData);
   }
 }
