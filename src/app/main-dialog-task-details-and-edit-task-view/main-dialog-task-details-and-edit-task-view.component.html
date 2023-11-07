@@ -1,12 +1,19 @@
 <div class="task__view__container">
 
-    <div class="task__cat" [ngClass]="{'category__tech': taskData.category === 'Technical Task',
-                    'category__user': taskData.category === 'User Story'}">{{ taskData.category }}</div>
+    <header>
+        <div class="task__cat" [ngClass]="{'category__tech': taskData.category === 'Technical Task',
+    'category__user': taskData.category === 'User Story'}">{{ taskData.category }}</div>
+        <div (click)="closeDialog()" class="hover__area no__select">
+            <div class="transform__circle"></div>
+            <span class="material__symbols__outlined single__icon">close</span>
+        </div>
+    </header>
+
+    <h2>{{ taskData.title }}</h2>
+    
     <div class="details__btns">
-
-        <h2>{{ taskData.title }}</h2>
-
-        <div (click)="deleteTask()" class="details__delete__btn"><span class="material__symbols__outlined">delete</span> Delete</div>
+        <div (click)="deleteTask()" class="details__delete__btn"><span class="material__symbols__outlined">delete</span>
+            Delete</div>
         <div (click)="setEditMode()" class="details__edit__btn"><span class="material__symbols__outlined">edit</span>
             Edit
         </div>
