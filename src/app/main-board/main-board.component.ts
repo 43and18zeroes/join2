@@ -285,7 +285,7 @@ export class MainBoardComponent {
     }
   }
 
-  deleteTask() {
+  deleteTask1() {
     const taskToDelete = this.boardCommService.taskToDelete;
     for (let index = 0; index < this.allTasksData.length; index++) {
       const element = this.allTasksData[index];
@@ -302,5 +302,26 @@ export class MainBoardComponent {
       this.reloadAfterNewTask();
       this.setNewTasksDataToLocal();
     }, 1000);
+  }
+
+  async deleteTask() {
+    const taskToDelete = this.boardCommService.taskToDelete;
+    for (let index = 0; index < this.allTasksData.length; index++) {
+      const element = this.allTasksData[index];
+      if (element.firebaseId === taskToDelete.firebaseId) {
+        this.allTasksData.splice(index, 1);
+        try {
+          await this.firestore
+          .collection('tasks')
+          .doc(element.firebaseId)
+          .delete();
+
+        this.reloadAfterNewTask();
+        this.setNewTasksDataToLocal();
+        } catch {
+          console.error("Error deleting document: ", Error);
+        }
+      }
+    }
   }
 }
