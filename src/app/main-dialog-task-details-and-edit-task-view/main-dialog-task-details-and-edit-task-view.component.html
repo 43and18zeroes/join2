@@ -12,6 +12,17 @@
     <h2>{{ taskData.title }}</h2>
 
     <p class="description">{{ taskData.description }}</p>
+
+    <table class="dateprio">
+        <tr>
+            <td class="head">Due date:</td>
+            <td class="content">{{ taskData.dueDate }}</td>
+        </tr>
+        <tr>
+            <td class="head">Priority:</td>
+            <td class="content">{{ taskData.priority }}</td>
+        </tr>
+    </table>
     
     <div class="details__btns">
         <div (click)="deleteTask()" class="details__delete__btn"><span class="material__symbols__outlined">delete</span>

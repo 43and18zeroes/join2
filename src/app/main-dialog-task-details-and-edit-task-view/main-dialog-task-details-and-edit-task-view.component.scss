@@ -39,6 +39,21 @@
         margin: 25px 0;
     }
 
+    .dateprio {
+
+        tr {
+
+            .head {
+                color: #42526E;
+                width: 120px;
+            }
+
+            .content {
+                text-transform: capitalize;
+            }
+        }
+    }
+
     .description {
         font-weight: 400;
         font-size: 20px;
