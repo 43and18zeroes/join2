@@ -42,9 +42,9 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.updatedTaskData.title = this.taskData.title;
     this.updateTask();
     // Update Successful Animation
-    
+    this.taskDetailsCommService.unsetEditMode();
     setTimeout(() => {
-      this.taskDetailsCommService.unsetEditMode();
+      
       // this.boardCommService.setNewTasksDataToLocal();
       // this.boardCommService.reloadAfterNewTask();
     }, 1500);
