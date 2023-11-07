@@ -6,7 +6,7 @@
 
         <h2>{{ taskData.title }}</h2>
 
-        <div class="details__delete__btn"><span class="material__symbols__outlined">delete</span> Delete</div>
+        <div (click)="deleteTask()" class="details__delete__btn"><span class="material__symbols__outlined">delete</span> Delete</div>
         <div (click)="setEditMode()" class="details__edit__btn"><span class="material__symbols__outlined">edit</span>
             Edit
         </div>

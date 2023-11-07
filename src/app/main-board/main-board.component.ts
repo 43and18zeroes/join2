@@ -61,6 +61,7 @@ export class MainBoardComponent {
     this.boardCommService.reloadAfterNewTask = this.reloadAfterNewTask.bind(this);
     this.boardCommService.setNewTasksDataToLocal = this.setNewTasksDataToLocal.bind(this);
     this.boardCommService.updateSingleTaskVar = this.updateSingleTaskVar.bind(this);
+    this.boardCommService.deleteTask = this.deleteTask.bind(this);
     // this.openTaskDetails(this.todo[0])
   }
 
@@ -275,7 +276,6 @@ export class MainBoardComponent {
 
   updateSingleTaskVar() {
     const updatedTaskData = this.boardCommService.updatedTaskData;
-    console.log("updatedTaskData", updatedTaskData)
     for (let index = 0; index < this.allTasksData.length; index++) {
       const element = this.allTasksData[index];
       if (element.firebaseId === updatedTaskData.firebaseId) {
@@ -283,5 +283,17 @@ export class MainBoardComponent {
         console.log("this.allTasksData[index]", this.allTasksData[index])
       }
     }
+  }
+
+  deleteTask() {
+    const taskToDelete = this.boardCommService.taskToDelete;
+    for (let index = 0; index < this.allTasksData.length; index++) {
+      const element = this.allTasksData[index];
+      if (element.firebaseId === taskToDelete.firebaseId) {
+        console.log("deleted:", this.allTasksData[index]);
+        this.allTasksData.splice(index, 1);
+      }
+    }
+    this.reloadAfterNewTask();
   }
 }

@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class BoardCommService {
 
   updatedTaskData;
+  taskToDelete;
 
   constructor() { }
 
@@ -18,6 +19,10 @@ export class BoardCommService {
   }
 
   public updateSingleTaskVar(): void {
+    console.log('Diese Funktion wurde über den SharedService aufgerufen');
+  }
+
+  public deleteTask(): void {
     console.log('Diese Funktion wurde über den SharedService aufgerufen');
   }
 }
