@@ -34,7 +34,7 @@
         </tr>
     </table>
 
-    <table class="assigned">
+    <table *ngIf="taskData.assignedTo.length > 0" class="assigned">
         <tr>
             <td class="assigned__head" colspan="2">
                 Assigned To:
