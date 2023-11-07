@@ -48,6 +48,15 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     }
   }
 
+  getUserName(assignedUserEmail) {
+    for (let index = 0; index < this.allUsersData.length; index++) {
+      const element = this.allUsersData[index];
+      if (element.userEmailAddress === assignedUserEmail) {
+        return element.userName;
+      }
+    }
+  }
+
   setEditMode() {
     this.taskDetailsCommService.setEditMode();
   }

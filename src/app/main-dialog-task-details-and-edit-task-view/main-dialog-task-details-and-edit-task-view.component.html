@@ -41,7 +41,12 @@
             </td>
         </tr>
         <tr class="assignee" *ngFor="let mail of taskData.assignedTo">
-            <div class="assignee__initials" [ngStyle]="{'background-color': getUserColor(mail)}">{{ getUserInitials(mail) }}</div>
+            <td class="assignee__initials">
+                <div [ngStyle]="{'background-color': getUserColor(mail)}">{{ getUserInitials(mail) }}</div>
+            </td>
+            <td class="assignee__names">
+                {{ getUserName(mail) }}
+            </td>
         </tr>
     </table>
 
