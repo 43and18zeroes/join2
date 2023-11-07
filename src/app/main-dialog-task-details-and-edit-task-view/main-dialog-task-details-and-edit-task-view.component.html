@@ -40,8 +40,8 @@
                 Assigned To:
             </td>
         </tr>
-        <tr class="assignee">
-
+        <tr class="assignee" *ngFor="let mail of taskData.assignedTo">
+            {{ mail }}
         </tr>
     </table>
 
