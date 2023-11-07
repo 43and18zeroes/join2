@@ -101,6 +101,15 @@ export class MainDialogAddTaskComponent {
   assignToggleDropdown() {
     this.allUsersData = this.userService.allUsersData;
     this.showAssignedDropdown = !this.showAssignedDropdown;
+    for (let index = 0; index < this.selectedUsers.length; index++) {
+      const selectedUser = this.selectedUsers[index];
+      for (let index = 0; index < this.allUsersData.length; index++) {
+        const allUser = this.allUsersData[index];
+        if (selectedUser.userEmailAddress === allUser.userEmailAddress) {
+          allUser.selected = true;
+        }
+      }
+    }
   }
 
   assignSelectOption(user: any) {
