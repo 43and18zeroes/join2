@@ -58,6 +58,25 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     }
   }
 
+  assignSelectOption(user: any) {
+    // if (user) {
+    //   user.selected = !user.selected;
+    //   if (user.selected) {
+    //     this.selectedUsers.push(user);
+    //   } else {
+    //     const index = this.selectedUsers.indexOf(user);
+    //     if (index !== -1) {
+    //       this.selectedUsers.splice(index, 1);
+    //     }
+    //   }
+    // }
+    // this.assignSelectedOptionRef.nativeElement.focus();
+  }
+
+  clickSubTask(subTask, index) {
+
+  }
+
   setEditMode() {
     this.taskDetailsCommService.setEditMode();
   }
