@@ -40,22 +40,29 @@
     }
 
     .dateprio {
-        border-collapse: separate;
-        border-spacing: 0 20px;
+        // border-collapse: separate;
+        // border-spacing: 0 20px;
 
         tr {
+
+            .description {
+                padding-bottom: 10px;
+            }
 
             .head {
                 color: #42526E;
                 width: 120px;
+                // padding-bottom: 10px;
             }
 
             .content {
-                text-transform: capitalize;
+                padding-bottom: 10px;
             }
 
             .prio {
                 display: flex;
+                text-transform: capitalize;
+                padding-bottom: 8px;
 
                 div {
                     font-size: 24px;
@@ -79,8 +86,8 @@
     }
 
     .assigned {
-        border-collapse: separate;
-        border-spacing: 0 10px;
+        // border-collapse: separate;
+        // border-spacing: 0 10px;
 
         .assigned__head {
             color: #42526E;
