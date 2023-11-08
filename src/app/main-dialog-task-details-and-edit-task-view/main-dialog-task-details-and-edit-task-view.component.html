@@ -43,13 +43,25 @@
                 Assigned To:
             </td>
         </tr>
-        <!-- <tr class="head__spacer"></tr> -->
         <tr class="assignee" *ngFor="let mail of taskData.assignedTo">
             <td class="assignee__initials">
                 <div [ngStyle]="{'background-color': getUserColor(mail)}">{{ getUserInitials(mail) }}</div>
             </td>
             <td class="assignee__names">
                 {{ getUserName(mail) }}
+            </td>
+        </tr>
+    </table>
+
+    <table *ngIf="taskData.subTasks.length > 0" class="subtasks__table">
+        <tr>
+            <td class="subtasks__head">
+                Subtasks:
+            </td>
+        </tr>
+        <tr class="subtasks" *ngFor="let subTask of taskData.subTasks">
+            <td>
+                {{ subTask }}
             </td>
         </tr>
     </table>
