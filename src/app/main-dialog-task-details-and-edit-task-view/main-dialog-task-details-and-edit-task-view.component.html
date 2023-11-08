@@ -53,22 +53,16 @@
         </tr>
     </table>
 
-    <table *ngIf="taskData.subTasks.length > 0" class="subtasks__table">
-        <tr>
-            <td class="subtasks__head">
-                Subtasks:
-            </td>
-        </tr>
-        <tr class="subtasks" *ngFor="let subTask of taskData.subTasks; index as i">
-            <td>
-                <div (click)="toggleSubTask(i)" class="sub__check">
-                    <input name="cssCheckbox" id="{{ subTask }}" type="checkbox" class="css-checkbox"
-                        [checked]="taskData.subTasksCompleted[i] === true">
-                    <label for="{{ subTask }}">{{ subTask }}</label>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <div *ngIf="taskData.subTasks.length > 0" class="subtasks">
+        <h3>Subtasks:</h3>
+        <div *ngFor="let subTask of taskData.subTasks; index as i" class="subtasks__list">
+            <div (click)="toggleSubTask(i)" class="sub__check">
+                <input name="cssCheckbox" id="{{ subTask }}" type="checkbox" class="css-checkbox"
+                    [checked]="taskData.subTasksCompleted[i] === true">
+                <label for="{{ subTask }}">{{ subTask }}</label>
+            </div>
+        </div>
+    </div>
 
     <div class="details__btns">
         <div (click)="deleteTask()" class="details__delete__btn"><span class="material__symbols__outlined">delete</span>
