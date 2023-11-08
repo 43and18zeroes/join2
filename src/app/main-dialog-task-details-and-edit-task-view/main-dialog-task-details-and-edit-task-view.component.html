@@ -27,8 +27,8 @@
                 <div *ngIf="taskData.priority === 'urgent'" class="material__symbols__outlined prio__red">
                     keyboard_double_arrow_up
                 </div>
-                <div *ngIf="taskData.priority === 'medium'"
-                    class="material__symbols__outlined prio__yellow">double_arrow</div>
+                <div *ngIf="taskData.priority === 'medium'" class="material__symbols__outlined prio__yellow">
+                    double_arrow</div>
                 <div *ngIf="taskData.priority === 'low'" class="material__symbols__outlined prio__green">
                     keyboard_double_arrow_down
                 </div>
@@ -61,9 +61,9 @@
         </tr>
         <tr class="subtasks" *ngFor="let subTask of taskData.subTasks; index as i">
             <td>
-                <div (click)="clickSubTask(subTask, i)" class="sub__check">
-                    <input name="cssCheckbox" id="{{ subTask }}"
-                        type="checkbox" class="css-checkbox" [checked]="taskData.subTasksCompleted[i] === true">
+                <div (click)="toggleSubTask(i)" class="sub__check">
+                    <input name="cssCheckbox" id="{{ subTask }}" type="checkbox" class="css-checkbox"
+                        [checked]="taskData.subTasksCompleted[i] === true">
                     <label for="{{ subTask }}">{{ subTask }}</label>
                 </div>
             </td>

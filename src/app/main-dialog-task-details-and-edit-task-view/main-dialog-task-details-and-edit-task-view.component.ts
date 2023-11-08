@@ -73,8 +73,13 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     // this.assignSelectedOptionRef.nativeElement.focus();
   }
 
-  clickSubTask(subTask, index) {
-
+  toggleSubTask(i) {
+    if (this.taskData.subTasksCompleted[i]) {
+      this.taskData.subTasksCompleted[i] = false;
+    } else {
+      this.taskData.subTasksCompleted[i] = true;
+    }
+    console.log("this.taskData.subTasksCompleted", this.taskData.subTasksCompleted);
   }
 
   setEditMode() {
