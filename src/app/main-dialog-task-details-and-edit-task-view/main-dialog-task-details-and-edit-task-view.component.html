@@ -61,7 +61,13 @@
         </tr>
         <tr class="subtasks" *ngFor="let subTask of taskData.subTasks">
             <td>
-                {{ subTask }}
+
+                <div class="sub__check">
+                    <input name="cssCheckbox" id="{{ subTask }}"
+                        type="checkbox" class="css-checkbox">
+                    <label for="{{ subTask }}">{{ subTask }}</label>
+                </div>
+
             </td>
         </tr>
     </table>
