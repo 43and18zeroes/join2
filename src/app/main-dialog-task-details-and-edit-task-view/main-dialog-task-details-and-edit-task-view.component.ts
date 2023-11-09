@@ -64,7 +64,7 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     this.taskData.subTasksCompleted[index] = !this.taskData.subTasksCompleted[index];
     console.log("this.taskData.subTasksCompleted", this.taskData.subTasksCompleted)
     this.boardCommService.subTaskCompletedChange = true;
-    this.boardCommService.subTasksNew = this.taskData.subTasksCompleted;
+    this.boardCommService.updatedTaskData = this.taskData;
   }
 
   setEditMode() {

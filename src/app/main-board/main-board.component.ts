@@ -265,7 +265,7 @@ export class MainBoardComponent {
     dialogRef.componentInstance.taskData = { ...taskData };
     dialogRef.afterClosed().subscribe((result) => {
       if (this.boardCommService.subTaskCompletedChange) {
-        this.boardCommService.updateCompletedSubtasks();
+        this.updateSingleTaskVar();
         this.reloadAfterNewTask();
         this.setNewTasksDataToLocal();
         this.boardCommService.subTaskCompletedChange = false;
