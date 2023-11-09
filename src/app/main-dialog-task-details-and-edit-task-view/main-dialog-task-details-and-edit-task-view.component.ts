@@ -14,6 +14,7 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
 
   taskData;
   allUsersData;
+  newSubTasksCompleted;
 
   constructor(private taskDetailsCommService: TaskDetailsCommService,
     public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent,
@@ -59,9 +60,11 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     }
   }
 
-  toggleCheckbox(index: number): void {
+  toggleSubTaksk(index: number): void {
     this.taskData.subTasksCompleted[index] = !this.taskData.subTasksCompleted[index];
     console.log("this.taskData.subTasksCompleted", this.taskData.subTasksCompleted)
+    this.boardCommService.subTaskCompletedChange = true;
+    this.boardCommService.subTasksNew = this.taskData.subTasksCompleted;
   }
 
   setEditMode() {

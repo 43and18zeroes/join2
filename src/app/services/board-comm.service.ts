@@ -7,6 +7,8 @@ export class BoardCommService {
 
   updatedTaskData;
   taskToDelete;
+  subTaskCompletedChange: boolean = false;
+  subTasksNew;
 
   constructor() { }
 
@@ -24,5 +26,9 @@ export class BoardCommService {
 
   public deleteTask(): void {
     console.log('Diese Funktion wurde über den SharedService aufgerufen');
+  }
+
+  updateCompletedSubtasks() {
+    console.log("this.subTasksNew", this.subTasksNew)
   }
 }

@@ -264,6 +264,12 @@ export class MainBoardComponent {
     });
     dialogRef.componentInstance.taskData = { ...taskData };
     dialogRef.afterClosed().subscribe((result) => {
+      if (this.boardCommService.subTaskCompletedChange) {
+        this.boardCommService.updateCompletedSubtasks();
+        this.reloadAfterNewTask();
+        this.setNewTasksDataToLocal();
+        this.boardCommService.subTaskCompletedChange = false;
+      }
       // if (this.userService.userDeletedSuccessfully) {
       //   this.showContactDetails = false;
       //   this.displayDeletionSuccessfulAnimation();
@@ -286,25 +292,6 @@ export class MainBoardComponent {
         console.log("this.allTasksData[index]", this.allTasksData[index])
       }
     }
-  }
-
-  deleteTask1() {
-    const taskToDelete = this.boardCommService.taskToDelete;
-    for (let index = 0; index < this.allTasksData.length; index++) {
-      const element = this.allTasksData[index];
-      if (element.firebaseId === taskToDelete.firebaseId) {
-        this.allTasksData.splice(index, 1);
-        console.log("deleted:", element);
-        this.firestore
-          .collection('tasks')
-          .doc(element.firebaseId)
-          .delete();
-      }
-    }
-    setTimeout(() => {
-      this.reloadAfterNewTask();
-      this.setNewTasksDataToLocal();
-    }, 1000);
   }
 
   async deleteTask() {
