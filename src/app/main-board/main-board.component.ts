@@ -260,7 +260,8 @@ export class MainBoardComponent {
   openTaskDetails(taskData) {
     // const clickedContactDataID = clickedContactData.firebaseId;
     const dialogRef = this.dialog.open(MainDialogTaskDetailsAndEditComponent, {
-      panelClass: 'popup__task__details'
+      panelClass: 'popup__task__details',
+      autoFocus: false
     });
     dialogRef.componentInstance.taskData = { ...taskData };
     dialogRef.afterClosed().subscribe((result) => {
