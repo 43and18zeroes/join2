@@ -16,15 +16,16 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
   allUsersData;
 
   constructor(private taskDetailsCommService: TaskDetailsCommService,
-              public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent,
-              public boardCommService: BoardCommService,
-              public dialog: MatDialog,
-              private userService: UserService) {}
+    public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent,
+    public boardCommService: BoardCommService,
+    public dialog: MatDialog,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
     this.allUsersData = this.userService.allUsersData;
     console.log("taskData", this.taskData)
+    console.log("this.taskData.subTasksCompleted", this.taskData.subTasksCompleted)
   }
 
   closeDialog() {
@@ -56,6 +57,11 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
         return element.userName;
       }
     }
+  }
+
+  toggleCheckbox(index: number): void {
+    this.taskData.subTasksCompleted[index] = !this.taskData.subTasksCompleted[index];
+    console.log("this.taskData.subTasksCompleted", this.taskData.subTasksCompleted)
   }
 
   setEditMode() {

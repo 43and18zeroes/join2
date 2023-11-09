@@ -53,7 +53,10 @@
         </tr>
     </table>
 
-    
+    <div *ngFor="let subTask of taskData.subTasks; let i = index">
+        <input type="checkbox" [checked]="taskData.subTasksCompleted[i]" (click)="toggleCheckbox(i)">
+        <label (click)="toggleCheckbox(i)">{{subTask}}</label>
+    </div>
 
     <div class="details__btns">
         <div (click)="deleteTask()" class="details__delete__btn"><span class="material__symbols__outlined">delete</span>
