@@ -57,7 +57,7 @@
                             <div class="filler"></div>
                         </div> -->
 
-                        <div class="progressbar half">
+                        <div class="progressbar" [ngClass]="determineSubtaskProgress(item.subTasksCompleted)">
                             <div class="filler"></div>
                         </div>
 
@@ -121,7 +121,7 @@
                             <div class="filler"></div>
                         </div> -->
 
-                        <div class="progressbar half">
+                        <div class="progressbar" [ngClass]="determineSubtaskProgress(item.subTasksCompleted)">
                             <div class="filler"></div>
                         </div>
 

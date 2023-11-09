@@ -124,6 +124,21 @@ export class MainBoardComponent {
     this.inprogress.sort(customSort);
   }
 
+  determineSubtaskProgress(subTasksCompleted) {
+    console.log("subTasks", subTasksCompleted)
+    const subTaskCount = subTasksCompleted.length;
+    const trueCount = subTasksCompleted.filter(Boolean).length;
+    console.log("subTaskCount", subTaskCount)
+    console.log("trueCount", trueCount)
+    if (trueCount === 0) {
+      return 'empty';
+    } else if (subTaskCount === trueCount) {
+      return 'full';
+    } else {
+      return 'half';
+    }
+  }
+
   getUserColor(assignedUserEmail) {
     for (let index = 0; index < this.allUsersData.length; index++) {
       const element = this.allUsersData[index];
