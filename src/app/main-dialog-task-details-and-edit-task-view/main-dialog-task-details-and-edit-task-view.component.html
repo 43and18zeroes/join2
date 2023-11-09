@@ -53,8 +53,13 @@
         </tr>
     </table>
 
-    <div (click)="toggleSubTaksk(i)" *ngFor="let subTask of taskData.subTasks; let i = index" class="no__select">
+    <!-- <div (click)="toggleSubTaksk(i)" *ngFor="let subTask of taskData.subTasks; let i = index" class="no__select">
         <input type="checkbox" [checked]="taskData.subTasksCompleted[i]">
+        <label></label>
+    </div> -->
+
+    <div (click)="toggleSubTaksk(i)" *ngFor="let subTask of taskData.subTasks; let i = index" class="subtasks no__select">
+        <input type="checkbox" [checked]="taskData.subTasksCompleted[i]" class="css-checkbox">
         <label>{{ subTask }}</label>
     </div>
 
