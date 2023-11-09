@@ -8,6 +8,7 @@ import { MainAddTaskComponent } from '../main-add-task/main-add-task.component';
 import { MainDialogAddTaskComponent } from '../main-dialog-add-task/main-dialog-add-task.component';
 import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
 import { BoardCommService } from '../services/board-comm.service';
+import { TaskDataService } from '../services/task-data.service';
 
 @Component({
   selector: 'app-main-board',
@@ -42,7 +43,8 @@ export class MainBoardComponent {
     private userService: UserService,
     private router: Router,
     public dialog: MatDialog,
-    public boardCommService: BoardCommService
+    public boardCommService: BoardCommService,
+    public taskDataService: TaskDataService
   ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart && event.id === 1) {
@@ -52,7 +54,7 @@ export class MainBoardComponent {
   }
 
   ngOnInit(): void {
-    this.allTasksData = this.userService.allTasksData;
+    this.allTasksData = this.taskDataService.allTasksData;
     this.allUsersData = this.userService.allUsersData;
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
@@ -66,7 +68,7 @@ export class MainBoardComponent {
   }
 
   reloadAfterNewTask() {
-    this.allTasksData = this.userService.allTasksData;
+    this.allTasksData = this.taskDataService.allTasksData;
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
     this.renumberTasksColumnOrder();

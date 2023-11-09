@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../services/user-data.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { BoardCommService } from '../services/board-comm.service';
+import { TaskDataService } from '../services/task-data.service';
 
 @Component({
   selector: 'app-main-dialog-add-task',
@@ -51,6 +52,7 @@ export class MainDialogAddTaskComponent {
     public dialog: MatDialog,
     private userService: UserService,
     public boardCommService: BoardCommService,
+    public taskDataService: TaskDataService,
     public dialogRef: MatDialogRef<MainDialogAddTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -310,7 +312,7 @@ export class MainDialogAddTaskComponent {
       if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
       else trimmedTask.subTasksCompleted = [];
       this.sendNewTaskToBackend(trimmedTask);
-      this.userService.setAllTasksDataToVarAndLocal();
+      this.taskDataService.setAllTasksDataToVarAndLocal();
       this.onSubmitOutro();
     }
   }

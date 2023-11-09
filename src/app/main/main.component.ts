@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user-data.service';
 import { MainCommunicationService } from '../services/main-communication.service';
+import { TaskDataService } from '../services/task-data.service';
 
 @Component({
   selector: 'app-main',
@@ -25,7 +26,8 @@ export class MainComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private mainCommService: MainCommunicationService
+    private mainCommService: MainCommunicationService,
+    public taskDataService: TaskDataService
   ) {
     this.mainCommService.displayBoardObservable.subscribe((section) => {
       this.displayMainSection('board');
@@ -35,7 +37,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUsersDataMain();
     // this.userService.getContactsDataMain();
-    this.userService.getTasksDataMain();
+    this.taskDataService.getTasksDataMain();
     // this.userService.mergeUsersAndContactsData();
     // this.userService.generateUsersAndContactsLists();
     setTimeout(() => {

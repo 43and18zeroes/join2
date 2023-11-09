@@ -6,6 +6,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../services/user-data.service';
+import { TaskDataService } from '../services/task-data.service';
 
 @Component({
   selector: 'app-main-add-task',
@@ -47,7 +48,8 @@ export class MainAddTaskComponent {
     private mainCommService: MainCommunicationService,
     private renderer: Renderer2,
     public dialog: MatDialog,
-    private userService: UserService
+    private userService: UserService,
+    public taskDataService: TaskDataService
   ) {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
@@ -300,7 +302,7 @@ export class MainAddTaskComponent {
       if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
       else trimmedTask.subTasksCompleted = [];
       this.sendNewTaskToBackend(trimmedTask);
-      this.userService.setAllTasksDataToVarAndLocal();
+      this.taskDataService.setAllTasksDataToVarAndLocal();
       this.onSubmitOutro();
     }
   }

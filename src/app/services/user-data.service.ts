@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { getAuth } from "firebase/auth";
+import { TaskDataService } from '../services/task-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,6 @@ import { getAuth } from "firebase/auth";
 export class UserService {
 
   allUsersData;
-  allTasksData;
   currentUserAuth;
   currentUserData;
   lastUserAdded;
@@ -16,12 +16,16 @@ export class UserService {
   userUpdatedSuccessfully = false;
   userDeletedSuccessfully = false;
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor
+    (
+      private firestore: AngularFirestore,
+      public taskDataService: TaskDataService
+    ) { }
 
   setAllDataToVarAndLocal() {
     this.setAllUsersDataToVarAndLocal();
     // this.setAllContactsDataToVarAndLocal();
-    this.setAllTasksDataToVarAndLocal();
+    this.taskDataService.setAllTasksDataToVarAndLocal();
   }
 
   setAllUsersDataToVarAndLocal() {
@@ -32,17 +36,6 @@ export class UserService {
         this.allUsersData = changes;
         localStorage.removeItem('allUsersData');
         localStorage.setItem('allUsersData', JSON.stringify(changes));
-      })
-  }
-
-  setAllTasksDataToVarAndLocal() {
-    this.firestore
-      .collection('tasks')
-      .valueChanges()
-      .subscribe((changes: any) => {
-        this.allTasksData = changes;
-        localStorage.removeItem('allTasksData');
-        localStorage.setItem('allTasksData', JSON.stringify(changes));
       })
   }
 
@@ -237,12 +230,6 @@ export class UserService {
   // updateToUsersData(updatedContact) {
   //   console.log("updatedContact", updatedContact);
   // }
-
-  getTasksDataMain() {
-    if (!this.allTasksData) {
-      this.allTasksData = JSON.parse(localStorage.getItem('allTasksData') || '[]');
-    }
-  }
 
   filterCurrentUserData() {
     this.currentUserData = [];
