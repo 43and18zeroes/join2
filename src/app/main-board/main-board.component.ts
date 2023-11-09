@@ -268,6 +268,7 @@ export class MainBoardComponent {
         this.updateSingleTaskVar();
         // this.reloadAfterNewTask();
         this.setNewTasksDataToLocal();
+        this.updateSingleTaskBackend();
         this.boardCommService.subTaskCompletedChange = false;
       }
       // if (this.userService.userDeletedSuccessfully) {
@@ -292,6 +293,14 @@ export class MainBoardComponent {
         console.log("this.allTasksData[index]", this.allTasksData[index])
       }
     }
+  }
+
+  updateSingleTaskBackend() {
+    const updatedTaskData = this.boardCommService.updatedTaskData;
+    this.firestore
+      .collection('tasks')
+      .doc(updatedTaskData.firebaseId)
+      .update(updatedTaskData);
   }
 
   async deleteTask() {
