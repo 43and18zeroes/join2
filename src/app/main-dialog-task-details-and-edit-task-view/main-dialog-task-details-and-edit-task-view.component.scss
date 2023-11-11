@@ -136,8 +136,8 @@
                 }
 
                 div {
-                    width: 35px;
-                    height: 35px;
+                    width: 45px;
+                    height: 45px;
                     border-radius: 50%;
                     color: white;
                     font-size: 18px;
@@ -147,6 +147,8 @@
                     align-items: center;
 
                     @media (width <=576px) {
+                        width: 35px;
+                        height: 35px;
                         font-size: 14px;
                     }
                 }
@@ -257,10 +259,10 @@
         display: flex;
         justify-content: flex-end;
         align-items: flex-end;
-        padding-bottom: 48px;
+        padding-bottom: 36px;
 
         @media (width <=576px) {
-            padding-bottom: 34px;
+            padding-bottom: 24px;
         }
 
         div {
