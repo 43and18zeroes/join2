@@ -1,5 +1,8 @@
 .task__view__container {
+    height: calc(100vh - 149px);
     padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
 
     header {
         display: flex;
@@ -193,9 +196,12 @@
     }
 
     .details__btns {
+        flex: 1;
         font-size: 16px;
         font-weight: 400;
         display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
 
         @media (width <=576px) {
             display: none;
