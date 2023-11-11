@@ -43,6 +43,8 @@
     }
 
     .dateprio {
+        margin-bottom: 8px;
+        
         .spacer {
             height: 10px;
         }
@@ -81,9 +83,9 @@
 
     .assigned {
 
-        .head__spacer {
-            height: 8px;
-        }
+        // .head__spacer {
+        //     height: 8px;
+        // }
 
         .assigned__head {
             color: #42526E;
@@ -118,14 +120,14 @@
 
     .subtasks__header {
         color: #42526E;
-        margin-top: 10px;
+        // margin-top: 10px;
     }
 
     .subtasks__container {
         margin-left: 24px;
 
         .subtasks {
-            margin-top: 5px;
+            margin-top: 10px;
 
             .css-checkbox {
                 position: absolute;
