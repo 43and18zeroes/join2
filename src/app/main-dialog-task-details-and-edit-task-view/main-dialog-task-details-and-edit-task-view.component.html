@@ -58,9 +58,13 @@
         <label></label>
     </div> -->
 
-    <div (click)="toggleSubTaksk(i)" *ngFor="let subTask of taskData.subTasks; let i = index" class="subtasks no__select">
-        <input type="checkbox" [checked]="taskData.subTasksCompleted[i]" class="css-checkbox">
-        <label>{{ subTask }}</label>
+    <div *ngIf="taskData.subTasks.length > 0" class="subtasks__container">
+        <h3>Subtasks:</h3>
+        <div (click)="toggleSubTaksk(i)" *ngFor="let subTask of taskData.subTasks; let i = index"
+            class="subtasks no__select">
+            <input type="checkbox" [checked]="taskData.subTasksCompleted[i]" class="css-checkbox">
+            <label>{{ subTask }}</label>
+        </div>
     </div>
 
     <div class="details__btns">

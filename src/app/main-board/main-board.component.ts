@@ -125,11 +125,8 @@ export class MainBoardComponent {
   }
 
   determineSubtaskProgress(subTasksCompleted) {
-    console.log("subTasks", subTasksCompleted)
     const subTaskCount = subTasksCompleted.length;
     const trueCount = subTasksCompleted.filter(Boolean).length;
-    console.log("subTaskCount", subTaskCount)
-    console.log("trueCount", trueCount)
     if (trueCount === 0) {
       return 'empty';
     } else if (subTaskCount === trueCount) {
