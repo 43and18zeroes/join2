@@ -29,9 +29,9 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     console.log("this.taskData.subTasksCompleted", this.taskData.subTasksCompleted)
 
 
-    setTimeout(() => {
-      this.setEditMode();
-    }, 1);
+    // setTimeout(() => {
+    //   this.setEditMode();
+    // }, 1);
   }
 
   closeDialog() {
