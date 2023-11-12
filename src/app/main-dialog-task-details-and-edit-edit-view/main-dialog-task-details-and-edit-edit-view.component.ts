@@ -20,16 +20,17 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   taskData;
   updatedTaskData;
-  editTaskForm = this.fb.group({
+  // editTaskForm = this.fb.group({
     // category: [''],
-    title: [''],
+    // title: [''],
     // desciption: [''],
     // dueDate: [''],
     // priority: [''],
     // assignedTo: [[]],
     // subTasks: [],
     // subTasksCompleted: []
-  });
+  // });
+  editTaskForm;
 
   allUsersData;
   currentUserData;
@@ -71,7 +72,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     public dialogRef: MatDialogRef<MainDialogAddTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.addTaskForm = this.fb.group({
+    this.editTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
       assignedTo: [[]],

@@ -24,7 +24,7 @@
             <span class="material__symbols__outlined single__icon">close</span>
         </div>
     </header>
-    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()" (keydown.enter)="formGroupEnterKey($event)"
+    <form [formGroup]="editTaskForm" (ngSubmit)="onSubmit()" (keydown.enter)="formGroupEnterKey($event)"
         [ngClass]="{ 'form__disabled': formSubmitted }">
 
         <div class="form__body__container">
@@ -115,7 +115,7 @@
                     <label for="addTaskCategory">Category<span class="asterisk">*</span></label>
                     <div class="category__select no__select" #categorySelectRef>
                         <div class="header" (click)="categoryToggleDropdown()" tabindex="0" #categorySelect>
-                            <span>{{ addTaskForm.controls['category'].value || 'Select a task category' }}</span>
+                            <span>{{ editTaskForm.controls['category'].value || 'Select a task category' }}</span>
                             <span class="material__symbols__outlined">
                                 arrow_drop_down
                             </span>
