@@ -27,6 +27,8 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     this.allUsersData = this.userService.allUsersData;
     console.log("taskData", this.taskData)
     console.log("this.taskData.subTasksCompleted", this.taskData.subTasksCompleted)
+
+    this.setEditMode();
   }
 
   closeDialog() {

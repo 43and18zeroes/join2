@@ -66,7 +66,7 @@ export class MainBoardComponent {
     this.boardCommService.setNewTasksDataToLocal = this.setNewTasksDataToLocal.bind(this);
     this.boardCommService.updateSingleTaskVar = this.updateSingleTaskVar.bind(this);
     this.boardCommService.deleteTask = this.deleteTask.bind(this);
-    // this.openTaskDetails(this.todo[0])
+    this.openTaskDetails(this.todo[0])
   }
 
   reloadAfterNewTask() {
