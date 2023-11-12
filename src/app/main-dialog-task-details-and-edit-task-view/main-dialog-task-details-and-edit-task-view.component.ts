@@ -25,13 +25,11 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
   ngOnInit() {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
     this.allUsersData = this.userService.allUsersData;
-    console.log("taskData", this.taskData)
-    console.log("this.taskData.subTasksCompleted", this.taskData.subTasksCompleted)
 
 
-    // setTimeout(() => {
-    //   this.setEditMode();
-    // }, 1);
+    setTimeout(() => {
+      this.setEditMode();
+    }, 1);
   }
 
   closeDialog() {
@@ -67,7 +65,6 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
 
   toggleSubTaksk(index: number): void {
     this.taskData.subTasksCompleted[index] = !this.taskData.subTasksCompleted[index];
-    console.log("this.taskData.subTasksCompleted", this.taskData.subTasksCompleted)
     this.boardCommService.subTaskCompletedChange = true;
     this.boardCommService.updatedTaskData = this.taskData;
   }
