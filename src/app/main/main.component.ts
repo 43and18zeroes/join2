@@ -16,8 +16,8 @@ export class MainComponent implements OnInit {
   allContactsData;
   allTasksData;
 
-  currentlyDisplayed: string = 'board';
-  currentlyClicked: string = 'board';
+  currentlyDisplayed: string = 'contacts';
+  currentlyClicked: string = 'contacts';
 
   displayMainSection(condition: 'summary' | 'board' | 'addTask' | 'contacts') {
     this.currentlyDisplayed = condition;
@@ -30,7 +30,9 @@ export class MainComponent implements OnInit {
     public taskDataService: TaskDataService
   ) {
     this.mainCommService.displayBoardObservable.subscribe((section) => {
-      this.displayMainSection('board');
+      if  (section !== 'default') {
+        this.displayMainSection('board');
+      }
     });
   }
 

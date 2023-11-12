@@ -156,10 +156,15 @@ export class UserService {
   }
 
   deleteContact(userToDelete) {
+    this.deleteFromTasks(userToDelete);
     this.deleteFromVar(userToDelete);
     this.deleteFromBackend(userToDelete);
     this.setAllUsersDataToVarAndLocal();
     this.userDeletedSuccessfully = true;
+  }
+
+  deleteFromTasks(userToDelete) {
+    console.log("this.taskDataService.allTasksData", this.taskDataService.allTasksData);
   }
 
   deleteFromVar(userToDelete) {
