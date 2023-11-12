@@ -17,10 +17,10 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
   newSubTasksCompleted;
 
   constructor(private taskDetailsCommService: TaskDetailsCommService,
-    public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent,
-    public boardCommService: BoardCommService,
-    public dialog: MatDialog,
-    private userService: UserService) { }
+              public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent,
+              public boardCommService: BoardCommService,
+              public dialog: MatDialog,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
