@@ -25,7 +25,6 @@ export class MainContactsComponent {
     this.isLargeScreen = window.innerWidth > 1100;
   }
 
-
   displayDeletionAnimation: boolean = false;
 
   constructor(public dialog: MatDialog,

@@ -38,6 +38,8 @@ export class MainBoardComponent {
   @ViewChild('mainContainer') mainContainer: ElementRef;
   @ViewChildren('sectionBody') sectionBodys: QueryList<ElementRef>;
 
+  displayDeletionAnimation: boolean = false;
+
   constructor(
     private firestore: AngularFirestore,
     private userService: UserService,
@@ -317,6 +319,7 @@ export class MainBoardComponent {
   }
 
   async deleteTask() {
+    this.displayDeletionSuccessfulAnimation();
     const taskToDelete = this.boardCommService.taskToDelete;
     for (let index = 0; index < this.allTasksData.length; index++) {
       const element = this.allTasksData[index];
@@ -335,5 +338,12 @@ export class MainBoardComponent {
         }
       }
     }
+  }
+
+  displayDeletionSuccessfulAnimation() {
+    this.displayDeletionAnimation = true;
+    setTimeout(() => {
+      this.displayDeletionAnimation = false;
+    }, 1500);
   }
 }
