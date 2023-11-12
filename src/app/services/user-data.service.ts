@@ -171,10 +171,26 @@ export class UserService {
       const singleTask = this.taskDataService.allTasksData[index];
       console.log("singleTask", singleTask)
       if (singleTask.assignedTo.includes(userToDelete.userEmailAddress)) {
+        const updatedAssignedTo = singleTask.assignedTo.filter(email => email !== userToDelete.userEmailAddress);
+        singleTask.assignedTo = updatedAssignedTo;
         tasksToUpdate.push(singleTask);
       }
     }
     console.log("tasksToUpdate", tasksToUpdate)
+
+
+    tasksToUpdate.forEach(element => {
+      this.firestore
+        .collection('tasks')
+        .doc(element.firebaseId)
+        .update(element)
+        .then(() => {
+          console.log('Aufgabe erfolgreich aktualisiert');
+        })
+        .catch((error) => {
+          console.error('Fehler beim Aktualisieren der Aufgabe: ', error);
+        });
+    });
   }
 
   deleteFromVar(userToDelete) {
