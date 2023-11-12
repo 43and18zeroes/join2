@@ -122,6 +122,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
         this.selectedUsers.push(singleUser);
       }
     }
+    console.log("this.selectedUsers", this.selectedUsers)
   }
 
   closeDialog() {
@@ -142,6 +143,9 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
         if (selectedUser.userEmailAddress === allUser.userEmailAddress) {
           allUser.selected = true;
         }
+        if (selectedUser.userEmailAddress === this.currentUserData.userEmailAddress) {
+          this.currentUserData.selected = true;
+        }
       }
     }
   }
@@ -159,6 +163,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
+    console.log("this.selectedUsers", this.selectedUsers)
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
