@@ -106,10 +106,22 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
         this.categoryCloseDropdown();
       }
     });
+
+    this.determineAssignees();
   }
 
   ngOnDestroy() {
     this.globalClickListener();
+  }
+
+  determineAssignees() {
+    for (let index = 0; index < this.allUsersData.length; index++) {
+      const singleUser = this.allUsersData[index];
+      if (this.taskData.assignedTo.includes(singleUser.userEmailAddress)) {
+        console.log("singleUser", singleUser)
+        this.selectedUsers.push(singleUser);
+      }
+    }
   }
 
   closeDialog() {
