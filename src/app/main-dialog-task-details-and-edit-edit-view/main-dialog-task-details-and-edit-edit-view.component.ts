@@ -34,7 +34,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   allUsersData;
   currentUserData;
-  addTaskForm: FormGroup;
+  // addTaskForm: FormGroup;
   showAssignedDropdown: boolean = false;
   @ViewChild('assignSelectedOptionRef') assignSelectedOptionRef: ElementRef;
   @ViewChild('assignSelectRef') assignSelectRef: ElementRef;
@@ -195,7 +195,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   setPriority(priority: string) {
     this.selectedPriority = priority;
-    this.addTaskForm.controls['priority'].setValue(priority);
+    this.editTaskForm.controls['priority'].setValue(priority);
   }
 
   categoryToggleDropdown() {
@@ -203,7 +203,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   selectCategory(category: string) {
-    this.addTaskForm.controls['category'].setValue(category);
+    this.editTaskForm.controls['category'].setValue(category);
     this.categoryToggleDropdown();
   }
 
@@ -293,7 +293,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   setSubtasksForm() {
-    this.addTaskForm.controls['subTasks'].setValue(this.subTasksArray);
+    this.editTaskForm.controls['subTasks'].setValue(this.subTasksArray);
     this.subTasksInput.nativeElement.value = '';
   }
 
@@ -312,7 +312,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   resetFormModel() {
-    this.addTaskForm = this.fb.group({
+    this.editTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
       assignedTo: [[]],
@@ -335,7 +335,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   onSubmit(): void {
     this.checkRequiredInputs();
-    if (this.addTaskForm.valid) {
+    if (this.editTaskForm.valid) {
       this.formSubmitted = true;
       const trimmedTask = this.trimTask();
       this.addAssignedTo(trimmedTask)
@@ -349,17 +349,17 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   checkRequiredInputs() {
-    if (this.addTaskForm.value.title === "") this.titleValid = false;
+    if (this.editTaskForm.value.title === "") this.titleValid = false;
     else this.titleValid = true;
-    if (this.addTaskForm.value.dueDate) this.dateValid = true;
+    if (this.editTaskForm.value.dueDate) this.dateValid = true;
     else this.dateValid = false;
-    if (this.addTaskForm.value.category === "") this.categoryValid = false;
+    if (this.editTaskForm.value.category === "") this.categoryValid = false;
     else this.categoryValid = true;
   }
 
   trimTask() {
-    const untrimmedTask = this.addTaskForm.value;
-    const trimmedTask = this.addTaskForm.value;
+    const untrimmedTask = this.editTaskForm.value;
+    const trimmedTask = this.editTaskForm.value;
     trimmedTask.title = untrimmedTask.title.trim();
     trimmedTask.description = untrimmedTask.description.trim();
     return trimmedTask;
@@ -407,15 +407,16 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   onSubmitOutro() {
     this.submitBtn.nativeElement.classList.add("btn__success");
-    setTimeout(() => {
+    // setTimeout(() => {
       // this.mainComponent.displayMainSection('board');
       // this.mainCommService.displayMainBoard('board');
-      this.boardCommService.reloadAfterNewTask();
-      this.dialog.closeAll();
-    }, 1500);
+    //   this.boardCommService.reloadAfterNewTask();
+    //   this.dialog.closeAll();
+    // }, 1500);
 
 
     this.updatedTaskData.title = this.taskData.title;
+    this.updatedTaskData.desciption = this.taskData.desciption;
     this.boardCommService.updatedTaskData = this.updatedTaskData;
     this.boardCommService.updateSingleTaskVar();
     this.updateTaskSingleBackend();

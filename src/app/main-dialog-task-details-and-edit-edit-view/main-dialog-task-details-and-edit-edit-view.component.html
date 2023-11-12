@@ -1,21 +1,4 @@
 <div class="task__edit__container">
-    <form [formGroup]="editTaskForm" (ngSubmit)="onSubmit()">
-        <div class="input__container">
-            <span (click)="userName.focus()" class="material__symbols__outlined">
-                person
-            </span>
-            <input [(ngModel)]="taskData.title" id="title" formControlName="title" placeholder="Name" #userName
-                placeholder="Title" #title>
-        </div>
-        <div class="incorrect__input">
-            <!-- <span *ngIf="editUserForm.controls.userName.invalid &&
-        editUserForm.controls.userName.dirty || !userNameValid">Separate first and last name with a space.</span> -->
-        </div>
-
-        <button type="submit" class="btn__primary">Ok <span class="material__symbols__outlined">
-                check
-            </span></button>
-    </form>
 
     <header>
         <h2>Add Task</h2>
@@ -24,6 +7,7 @@
             <span class="material__symbols__outlined single__icon">close</span>
         </div>
     </header>
+    
     <form [formGroup]="editTaskForm" (ngSubmit)="onSubmit()" (keydown.enter)="formGroupEnterKey($event)"
         [ngClass]="{ 'form__disabled': formSubmitted }">
 
