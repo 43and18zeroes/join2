@@ -156,29 +156,27 @@ export class UserService {
   }
 
   deleteContact(userToDelete) {
-    this.deleteFromTasks(userToDelete);
+    this.identifyTaskWithContact(userToDelete);
     this.deleteFromVar(userToDelete);
     this.deleteFromBackend(userToDelete);
     this.setAllUsersDataToVarAndLocal();
     this.userDeletedSuccessfully = true;
   }
 
-  deleteFromTasks(userToDelete) {
-    console.log("userToDelete", userToDelete)
-    console.log("this.taskDataService.allTasksData", this.taskDataService.allTasksData);
+  identifyTaskWithContact(userToDelete) {
     let tasksToUpdate = [];
     for (let index = 0; index < this.taskDataService.allTasksData.length; index++) {
       const singleTask = this.taskDataService.allTasksData[index];
-      console.log("singleTask", singleTask)
       if (singleTask.assignedTo.includes(userToDelete.userEmailAddress)) {
         const updatedAssignedTo = singleTask.assignedTo.filter(email => email !== userToDelete.userEmailAddress);
         singleTask.assignedTo = updatedAssignedTo;
         tasksToUpdate.push(singleTask);
       }
     }
-    console.log("tasksToUpdate", tasksToUpdate)
+    this.updateBackendWithTasks(tasksToUpdate);
+  }
 
-
+  updateBackendWithTasks(tasksToUpdate) {
     tasksToUpdate.forEach(element => {
       this.firestore
         .collection('tasks')
