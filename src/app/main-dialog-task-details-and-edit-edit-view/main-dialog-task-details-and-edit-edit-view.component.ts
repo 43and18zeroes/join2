@@ -86,23 +86,13 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       taskColumnOrder: 0
     });
     this.today = this.getTodaysDate();
-  }
-
-  updateTaskSingleBackend() {
-    console.log("this.updatedTaskData", this.updatedTaskData)
-    this.firestore
-      .collection('tasks')
-      .doc(this.updatedTaskData.firebaseId)
-      .update(this.updatedTaskData);
-  }
-
-  
+  }  
 
   ngOnInit(): void {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
     this.updatedTaskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
 
-    // console.log("this.data.taskStatus", this.data.taskStatus)
+    console.log("this.taskData", this.taskData)
     this.userService.sortUsersData();
     this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
@@ -428,5 +418,13 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       // this.boardCommService.setNewTasksDataToLocal();
 
     }, 1500);
+  }
+
+  updateTaskSingleBackend() {
+    console.log("this.updatedTaskData", this.updatedTaskData)
+    this.firestore
+      .collection('tasks')
+      .doc(this.updatedTaskData.firebaseId)
+      .update(this.updatedTaskData);
   }
 }
