@@ -164,7 +164,21 @@ export class UserService {
   }
 
   deleteFromTasks(userToDelete) {
+    console.log("userToDelete", userToDelete)
     console.log("this.taskDataService.allTasksData", this.taskDataService.allTasksData);
+    let tasksToUpdate;
+    for (let index = 0; index < this.taskDataService.allTasksData.length; index++) {
+      const allTasks = this.taskDataService.allTasksData[index];
+      console.log("allTasks", allTasks)
+      for (let index = 0; index < allTasks.length; index++) {
+        const singleTask = allTasks[index];
+        console.log("singleTask", singleTask)
+        if (singleTask.assignedTo.includes(userToDelete.userEmailAddress)) {
+          tasksToUpdate.push(singleTask);
+        }
+      }
+    }
+    console.log("tasksToUpdate", tasksToUpdate)
   }
 
   deleteFromVar(userToDelete) {
