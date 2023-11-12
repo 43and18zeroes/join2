@@ -375,7 +375,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.32);
+    background: rgba(0, 0, 0, 0);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -414,7 +414,7 @@ body {
     }
 
     &.show {
-        animation: delSlideFadeIn 0.4s forwards;
+        animation: delSlideFadeIn 0.4s, delFadeOut 0.8s 0.4s forwards;
     }
 }
 
@@ -427,5 +427,18 @@ body {
     100% {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@keyframes delFadeOut {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+        // transform: scale(1);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0;
+        // transform: scale(1.1);
     }
 }
