@@ -1,11 +1,11 @@
 .task__view__container {
-    height: calc(100vh - 101px);
+    height: calc(100% - 48px);
     padding: 48px 40px 0 40px;
     display: flex;
     flex-direction: column;
 
     @media (width <=576px) {
-        height: calc(100vh - 87px);
+        height: calc(100% - 34px);
         padding: 34px 24px 0 24px;
     }
 
