@@ -111,7 +111,13 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.getDueDate();
     this.getPriority();
     this.getCategory();
-    this.getSubTasks();
+
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.getSubTasks();
+    });
   }
 
   ngOnDestroy() {
@@ -160,6 +166,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
         subTasks: this.taskData.subTasks
       });
       this.subTasksArray = this.taskData.subTasks;
+      this.subTaskCheckAmount();
     }
   }
 
