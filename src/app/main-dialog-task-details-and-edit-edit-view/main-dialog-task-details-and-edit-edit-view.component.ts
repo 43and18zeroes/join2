@@ -92,7 +92,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
     this.updatedTaskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
 
-    console.log("this.taskData", this.taskData)
+
     this.userService.sortUsersData();
     this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
@@ -129,11 +129,9 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     for (let index = 0; index < this.allUsersData.length; index++) {
       const singleUser = this.allUsersData[index];
       if (this.taskData.assignedTo.includes(singleUser.userEmailAddress)) {
-        console.log("singleUser", singleUser)
         this.selectedUsers.push(singleUser);
       }
     }
-    console.log("this.selectedUsers", this.selectedUsers)
   }
 
   getDueDate() {
@@ -209,7 +207,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
-    console.log("this.selectedUsers", this.selectedUsers)
   }
 
   assignPreventFocusLoss(event: MouseEvent) {

@@ -308,6 +308,7 @@ export class MainBoardComponent {
         console.log("this.allTasksData[index]", this.allTasksData[index])
       }
     }
+    this.setNewTasksDataToLocal();
   }
 
   updateSingleTaskBackend() {
