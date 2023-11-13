@@ -77,7 +77,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       description: [''],
       assignedTo: [[]],
       dueDate: ['', Validators.required],
-      priority: ['low'],
+      priority: [''],
       category: ['', Validators.required],
       subTasks: [],
       subTasksCompleted: [],
@@ -108,7 +108,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     });
 
     this.determineAssignees();
-    this.determineDueDate();
+    this.getDueDate();
+    this.getPriority();
   }
 
   ngOnDestroy() {
@@ -126,11 +127,20 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     console.log("this.selectedUsers", this.selectedUsers)
   }
 
-  determineDueDate() {
+  getDueDate() {
     if (this.taskData && this.taskData.dueDate) {
       this.editTaskForm.patchValue({
         dueDate: this.taskData.dueDate
       });
+    }
+  }
+
+  getPriority() {
+    if (this.taskData.priority) {
+      this.editTaskForm.patchValue({
+        priority: this.taskData.priority
+      });
+      this.selectedPriority = this.taskData.priority;
     }
   }
 
