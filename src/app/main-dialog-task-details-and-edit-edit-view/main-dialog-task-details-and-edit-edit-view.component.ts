@@ -170,6 +170,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   closeDialog() {
+    this.taskDetailsCommService.unsetEditMode();
     this.dialog.closeAll();
   }
 
