@@ -107,15 +107,16 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       }
     });
 
-    this.determineAssignees();
-    this.getDueDate();
-    this.getPriority();
-    this.getCategory();
+
 
   }
 
   ngAfterViewInit() {
     setTimeout(() => {
+      this.determineAssignees();
+      this.getDueDate();
+      this.getPriority();
+      this.getCategory();
       this.getSubTasks();
     });
   }
