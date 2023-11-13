@@ -393,10 +393,25 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       const trimmedTask = this.trimTask();
       this.addAssignedTo(trimmedTask)
       if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
-      if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
-      else trimmedTask.subTasksCompleted = [];
-      this.sendNewTaskToBackend(trimmedTask);
-      this.taskDataService.setAllTasksDataToVarAndLocal();
+      // if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
+      // else trimmedTask.subTasksCompleted = [];
+      // this.sendNewTaskToBackend(trimmedTask);
+      // this.taskDataService.setAllTasksDataToVarAndLocal();
+
+      this.updatedTaskData.title = this.taskData.title;
+      this.updatedTaskData.description = this.taskData.description;
+      this.updatedTaskData.assignedTo = this.taskData.assignedTo;
+      this.updatedTaskData.dueDate = this.taskData.dueDate;
+      this.updatedTaskData.priority = this.taskData.priority;
+      this.updatedTaskData.category = this.taskData.category;
+      this.updatedTaskData.subTasks = this.taskData.subTasks;
+      this.updatedTaskData.subTasksCompleted = this.taskData.subTasksCompleted;
+      this.boardCommService.updatedTaskData = this.updatedTaskData;
+      this.boardCommService.updateSingleTaskVar();
+      this.updateTaskSingleBackend();
+      this.boardCommService.reloadAfterNewTask();
+      this.taskDetailsCommService.unsetEditMode();
+
       this.onSubmitOutro();
     }
   }
@@ -466,16 +481,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     //   this.boardCommService.reloadAfterNewTask();
     //   this.dialog.closeAll();
     // }, 1500);
-
-
-    this.updatedTaskData.title = this.taskData.title;
-    this.updatedTaskData.desciption = this.taskData.desciption;
-    this.boardCommService.updatedTaskData = this.updatedTaskData;
-    this.boardCommService.updateSingleTaskVar();
-    this.updateTaskSingleBackend();
-    // Update Successful Animation
-    this.boardCommService.reloadAfterNewTask();
-    this.taskDetailsCommService.unsetEditMode();
     setTimeout(() => {
 
       // this.boardCommService.setNewTasksDataToLocal();
