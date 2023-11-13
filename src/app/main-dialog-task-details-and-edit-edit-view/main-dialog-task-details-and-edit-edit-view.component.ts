@@ -23,7 +23,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   // editTaskForm = this.fb.group({
   // category: [''],
   // title: [''],
-  // desciption: [''],
+  // description: [''],
   // dueDate: [''],
   // priority: [''],
   // assignedTo: [[]],

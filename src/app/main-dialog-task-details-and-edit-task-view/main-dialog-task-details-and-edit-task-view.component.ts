@@ -27,9 +27,9 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     this.allUsersData = this.userService.allUsersData;
 
 
-    setTimeout(() => {
-      this.setEditMode();
-    }, 1);
+    // setTimeout(() => {
+    //   this.setEditMode();
+    // }, 1);
   }
 
   closeDialog() {
