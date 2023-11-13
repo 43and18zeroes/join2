@@ -110,6 +110,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.determineAssignees();
     this.getDueDate();
     this.getPriority();
+    this.getCategory();
   }
 
   ngOnDestroy() {
@@ -141,6 +142,14 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
         priority: this.taskData.priority
       });
       this.selectedPriority = this.taskData.priority;
+    }
+  }
+
+  getCategory() {
+    if (this.taskData.category) {
+      this.editTaskForm.patchValue({
+        category: this.taskData.category
+      });
     }
   }
 
