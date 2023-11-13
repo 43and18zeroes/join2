@@ -1,7 +1,7 @@
 <div class="task__edit__container">
 
     <header>
-        <h2>Add Task</h2>
+        <h2>Edit Task</h2>
         <div (click)="closeDialog()" class="hover__area no__select">
             <div class="transform__circle"></div>
             <span class="material__symbols__outlined single__icon">close</span>
@@ -71,7 +71,9 @@
                 <div class="form__right">
 
                     <label for="addTaskDueDate">Due date<span class="asterisk">*</span></label>
-                    <input id="addTaskDueDate" formControlName="dueDate" type="date" [min]="today"
+                    <!-- <input id="addTaskDueDate" formControlName="dueDate" type="date" [min]="today"
+                        class="inputs__right input__date"> -->
+                    <input id="addTaskDueDate" formControlName="dueDate" type="date"
                         class="inputs__right input__date">
                     <div class="input__required">
                         <span *ngIf="!dateValid">This field is required</span>

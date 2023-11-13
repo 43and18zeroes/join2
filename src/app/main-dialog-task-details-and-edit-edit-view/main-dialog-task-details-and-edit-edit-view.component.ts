@@ -21,14 +21,14 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   taskData;
   updatedTaskData;
   // editTaskForm = this.fb.group({
-    // category: [''],
-    // title: [''],
-    // desciption: [''],
-    // dueDate: [''],
-    // priority: [''],
-    // assignedTo: [[]],
-    // subTasks: [],
-    // subTasksCompleted: []
+  // category: [''],
+  // title: [''],
+  // desciption: [''],
+  // dueDate: [''],
+  // priority: [''],
+  // assignedTo: [[]],
+  // subTasks: [],
+  // subTasksCompleted: []
   // });
   editTaskForm;
 
@@ -86,7 +86,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       taskColumnOrder: 0
     });
     this.today = this.getTodaysDate();
-  }  
+  }
 
   ngOnInit(): void {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
@@ -108,6 +108,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     });
 
     this.determineAssignees();
+    this.determineDueDate();
   }
 
   ngOnDestroy() {
@@ -123,6 +124,14 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       }
     }
     console.log("this.selectedUsers", this.selectedUsers)
+  }
+
+  determineDueDate() {
+    if (this.taskData && this.taskData.dueDate) {
+      this.editTaskForm.patchValue({
+        dueDate: this.taskData.dueDate
+      });
+    }
   }
 
   closeDialog() {
@@ -415,8 +424,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   onSubmitOutro() {
     this.submitBtn.nativeElement.classList.add("btn__success");
     // setTimeout(() => {
-      // this.mainComponent.displayMainSection('board');
-      // this.mainCommService.displayMainBoard('board');
+    // this.mainComponent.displayMainSection('board');
+    // this.mainCommService.displayMainBoard('board');
     //   this.boardCommService.reloadAfterNewTask();
     //   this.dialog.closeAll();
     // }, 1500);
