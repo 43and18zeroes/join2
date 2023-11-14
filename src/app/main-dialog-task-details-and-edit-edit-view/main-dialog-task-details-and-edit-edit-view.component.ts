@@ -400,14 +400,13 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.updatedTaskData.description = this.taskData.description;
       this.updatedTaskData.assignedTo = this.taskData.assignedTo;
       this.updatedTaskData.dueDate = this.editTaskForm.value.dueDate;
-      this.updatedTaskData.priority = this.taskData.priority;
+      this.updatedTaskData.priority = this.editTaskForm.value.priority;
       this.updatedTaskData.category = this.taskData.category;
       this.updatedTaskData.subTasks = this.taskData.subTasks;
       this.updatedTaskData.subTasksCompleted = this.taskData.subTasksCompleted;
       this.boardCommService.updatedTaskData = this.updatedTaskData;
       this.boardCommService.updateSingleTaskVar();
       this.updateTaskSingleBackend();
-      this.boardCommService.reloadAfterNewTask();
       this.taskDetailsCommService.unsetEditMode();
 
       this.onSubmitOutro();
@@ -479,18 +478,16 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     //   this.boardCommService.reloadAfterNewTask();
     //   this.dialog.closeAll();
     // }, 1500);
-    setTimeout(() => {
 
-      // this.boardCommService.setNewTasksDataToLocal();
-
-    }, 1500);
   }
 
-  updateTaskSingleBackend() {
+  async updateTaskSingleBackend() {
     console.log("this.updatedTaskData", this.updatedTaskData)
-    this.firestore
+    await this.firestore
       .collection('tasks')
       .doc(this.updatedTaskData.firebaseId)
       .update(this.updatedTaskData);
+
+      this.boardCommService.reloadAfterNewTask();
   }
 }
