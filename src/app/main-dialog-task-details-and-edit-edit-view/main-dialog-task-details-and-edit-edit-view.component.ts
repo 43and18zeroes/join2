@@ -118,7 +118,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.getPriority();
       this.getCategory();
       this.getSubTasks();
-      console.log("this.selectedUsers", this.selectedUsers)
     });
   }
 
@@ -225,6 +224,10 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       } else {
         console.log("error")
       }
+      console.log("this.taskData.assignedTo", this.taskData.assignedTo)
+      this.taskData.assignedTo = this.selectedUsers.map(user => user.userEmailAddress);
+      console.log("this.taskData.assignedTo", this.taskData.assignedTo)
+      // this.taskData.assignedTo = this.selectedUsers;
     }
 
     console.log("this.selectedUsers", this.selectedUsers)
