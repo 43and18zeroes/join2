@@ -399,7 +399,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.updatedTaskData.title = this.taskData.title;
       this.updatedTaskData.description = this.taskData.description;
       this.updatedTaskData.assignedTo = this.taskData.assignedTo;
-      this.updatedTaskData.dueDate = this.taskData.dueDate;
+      this.updatedTaskData.dueDate = this.editTaskForm.value.dueDate;
       this.updatedTaskData.priority = this.taskData.priority;
       this.updatedTaskData.category = this.taskData.category;
       this.updatedTaskData.subTasks = this.taskData.subTasks;
