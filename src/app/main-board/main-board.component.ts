@@ -308,7 +308,8 @@ export class MainBoardComponent {
         console.log("this.allTasksData[index]", this.allTasksData[index])
       }
     }
-    this.setNewTasksDataToLocal();
+    localStorage.removeItem('allTasksData');
+    localStorage.setItem('allTasksData', JSON.stringify(this.allTasksData));
   }
 
   updateSingleTaskBackend() {
