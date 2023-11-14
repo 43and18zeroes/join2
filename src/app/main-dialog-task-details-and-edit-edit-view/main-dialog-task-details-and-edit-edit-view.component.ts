@@ -118,6 +118,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.getPriority();
       this.getCategory();
       this.getSubTasks();
+      console.log("this.selectedUsers", this.selectedUsers)
     });
   }
 
@@ -196,18 +197,37 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   assignSelectOption(user: any) {
+    // if (user) {
+    //   user.selected = !user.selected;
+    //   if (user.selected) {
+    //     this.selectedUsers.push(user);
+    //   } else {
+    //     const index = this.selectedUsers.indexOf(user);
+    //     if (index !== -1) {
+    //       this.selectedUsers.splice(index, 1);
+    //     }
+    //   }
+    // }
+    // this.assignSelectedOptionRef.nativeElement.focus();
+
+    console.log("this.selectedUsers", this.selectedUsers)
+
     if (user) {
+      const index = this.selectedUsers.findIndex(u => u.firebaseId === user.firebaseId);
+      console.log("index", index);
+
       user.selected = !user.selected;
+
       if (user.selected) {
         this.selectedUsers.push(user);
+      } else if (!user.selected && index !== -1) {
+        this.selectedUsers.splice(index, 1);
       } else {
-        const index = this.selectedUsers.indexOf(user);
-        if (index !== -1) {
-          this.selectedUsers.splice(index, 1);
-        }
+        console.log("error")
       }
     }
-    this.assignSelectedOptionRef.nativeElement.focus();
+
+    console.log("this.selectedUsers", this.selectedUsers)
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
