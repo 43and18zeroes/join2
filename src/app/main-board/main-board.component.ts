@@ -82,7 +82,6 @@ export class MainBoardComponent {
 
   ngAfterViewInit() {
     this.checkForHorizontalScroll();
-    // this.saveBoardStatus();
   }
 
   openAddTaskDialog(taskStatus) {
