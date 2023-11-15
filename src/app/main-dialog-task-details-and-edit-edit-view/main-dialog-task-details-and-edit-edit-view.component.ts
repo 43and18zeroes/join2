@@ -388,11 +388,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.checkRequiredInputs();
     if (this.editTaskForm.valid) {
       this.formSubmitted = true;
-      const trimmedTask = this.trimTask();
-      this.addAssignedTo(trimmedTask)
-      if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
-      // if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
-      // else trimmedTask.subTasksCompleted = [];
+      // const trimmedTask = this.trimTask();
+      
       // this.sendNewTaskToBackend(trimmedTask);
       // this.taskDataService.setAllTasksDataToVarAndLocal();
 
@@ -402,11 +399,16 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.updatedTaskData.dueDate = this.editTaskForm.value.dueDate;
       this.updatedTaskData.priority = this.editTaskForm.value.priority;
       this.updatedTaskData.category = this.editTaskForm.value.category;
-
-      
       this.updatedTaskData.subTasks = this.taskData.subTasks;
-      this.updatedTaskData.subTasksCompleted = this.taskData.subTasksCompleted;
+      // this.updatedTaskData.subTasksCompleted = this.taskData.subTasksCompleted;
 
+      const trimmedTask = this.trimTask();
+      this.addAssignedTo(trimmedTask)
+      if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
+      if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
+      else trimmedTask.subTasksCompleted = [];
+
+      this.updatedTaskData = trimmedTask;
 
       this.boardCommService.updatedTaskData = this.updatedTaskData;
       this.boardCommService.updateSingleTaskVar();
@@ -427,8 +429,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   trimTask() {
-    const untrimmedTask = this.editTaskForm.value;
-    const trimmedTask = this.editTaskForm.value;
+    const untrimmedTask = this.updatedTaskData;
+    const trimmedTask = this.updatedTaskData;
     trimmedTask.title = untrimmedTask.title.trim();
     trimmedTask.description = untrimmedTask.description.trim();
     return trimmedTask;
