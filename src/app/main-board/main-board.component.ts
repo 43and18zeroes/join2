@@ -85,19 +85,18 @@ export class MainBoardComponent {
 
   ngAfterViewInit() {
     this.checkForHorizontalScroll();
-    this.removeSearchFilter();
   }
 
   searchTasks() {
     if (this.searchBar.nativeElement.value === "") {
-      this.removeSearchFilter();
+      this.taskCards.forEach((taskCard: ElementRef) => {
+        taskCard.nativeElement.classList.remove("d-none");
+      });
+    } else {
+      this.taskCards.forEach((taskCard: ElementRef) => {
+        taskCard.nativeElement.classList.add("d-none");
+      });
     }
-  }
-
-  removeSearchFilter() {
-    this.taskCards.forEach((taskCard: ElementRef) => {
-      taskCard.nativeElement.classList.remove("d-none");
-    });
   }
 
   openAddTaskDialog(taskStatus) {
