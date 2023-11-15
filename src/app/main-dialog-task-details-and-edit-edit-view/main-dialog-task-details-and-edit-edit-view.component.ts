@@ -294,7 +294,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.subTasksInputHasFocus = false;
       this.subTasksInputCheckValue();
       this.subTaskCheckAmount();
-      this.updateSubTasksStatus();
+      this.updateSubTasksCompleted();
     }
   }
 
@@ -302,21 +302,20 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     for (let i = 0; i < this.subTasksArray.length; i++) {
       if (this.subTasksArray[i] === subTask) {
         this.subTasksArray.splice(i, 1);
+        this.deleteSubTasksCompleted(i);
         break;
       }
     }
     this.setSubtasksForm();
     this.subTaskCheckAmount();
-    this.deleteSubTasksStatus();
-    this.updateSubTasksStatus();
   }
 
-  deleteSubTasksStatus() {
-    
+  deleteSubTasksCompleted(i) {
+    this.updatedTaskData.subTasksCompleted.splice(i, 1);
   }
 
-  updateSubTasksStatus() {
-    console.log("this.subTasksArray", this.subTasksArray);
+  updateSubTasksCompleted() {
+    this.updatedTaskData.subTasksCompleted.push(false);
   }
 
   subTaskCheckAmount() {
