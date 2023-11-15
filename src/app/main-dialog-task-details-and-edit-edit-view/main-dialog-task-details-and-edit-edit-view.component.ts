@@ -294,6 +294,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.subTasksInputHasFocus = false;
       this.subTasksInputCheckValue();
       this.subTaskCheckAmount();
+      this.updateSubTasksStatus();
     }
   }
 
@@ -306,6 +307,16 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     }
     this.setSubtasksForm();
     this.subTaskCheckAmount();
+    this.deleteSubTasksStatus();
+    this.updateSubTasksStatus();
+  }
+
+  deleteSubTasksStatus() {
+    
+  }
+
+  updateSubTasksStatus() {
+    console.log("this.subTasksArray", this.subTasksArray);
   }
 
   subTaskCheckAmount() {
@@ -405,8 +416,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       const trimmedTask = this.trimTask();
       this.addAssignedTo(trimmedTask)
       if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
-      if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
-      else trimmedTask.subTasksCompleted = [];
+      // if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
+      // else trimmedTask.subTasksCompleted = [];
 
       this.updatedTaskData = trimmedTask;
 
@@ -447,14 +458,14 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     return trimmedTask;
   }
 
-  addSubtasksStatuses(trimmedTask) {
-    let subTasksCompleted = [];
-    for (let index = 0; index < trimmedTask.subTasks.length; index++) {
-      subTasksCompleted.push(false);
-    }
-    trimmedTask.subTasksCompleted = subTasksCompleted;
-    return trimmedTask;
-  }
+  // addSubtasksStatuses(trimmedTask) {
+    // let subTasksCompleted = [];
+    // for (let index = 0; index < trimmedTask.subTasks.length; index++) {
+    //   subTasksCompleted.push(false);
+    // }
+    // trimmedTask.subTasksCompleted = subTasksCompleted;
+    // return trimmedTask;
+  // }
 
   sendNewTaskToBackend(trimmedTask) {
     delete trimmedTask.firebaseId;
