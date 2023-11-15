@@ -38,6 +38,9 @@ export class MainBoardComponent {
   @ViewChild('mainContainer') mainContainer: ElementRef;
   @ViewChildren('sectionBody') sectionBodys: QueryList<ElementRef>;
 
+  @ViewChild('searchBar') searchBar: ElementRef;
+  @ViewChildren('taskCard') taskCards: QueryList<ElementRef>;
+
   displayDeletionAnimation: boolean = false;
 
   constructor(
@@ -82,6 +85,19 @@ export class MainBoardComponent {
 
   ngAfterViewInit() {
     this.checkForHorizontalScroll();
+    this.removeSearchFilter();
+  }
+
+  searchTasks() {
+    if (this.searchBar.nativeElement.value === "") {
+      this.removeSearchFilter();
+    }
+  }
+
+  removeSearchFilter() {
+    this.taskCards.forEach((taskCard: ElementRef) => {
+      taskCard.nativeElement.classList.remove("d-none");
+    });
   }
 
   openAddTaskDialog(taskStatus) {
