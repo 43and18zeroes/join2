@@ -401,7 +401,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.updatedTaskData.assignedTo = this.taskData.assignedTo;
       this.updatedTaskData.dueDate = this.editTaskForm.value.dueDate;
       this.updatedTaskData.priority = this.editTaskForm.value.priority;
-      this.updatedTaskData.category = this.taskData.category;
+      this.updatedTaskData.category = this.editTaskForm.value.category;
       this.updatedTaskData.subTasks = this.taskData.subTasks;
       this.updatedTaskData.subTasksCompleted = this.taskData.subTasksCompleted;
       this.boardCommService.updatedTaskData = this.updatedTaskData;
