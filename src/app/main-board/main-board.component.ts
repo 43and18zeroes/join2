@@ -22,8 +22,8 @@ export class MainBoardComponent {
 
   todo = [];
   inprogress = [];
-  awaitfeedback = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  awaitfeedback = [];
+  done = [];
 
   subTasksComplete;
   subTasksAmount;
@@ -66,7 +66,6 @@ export class MainBoardComponent {
     this.boardCommService.setNewTasksDataToLocal = this.setNewTasksDataToLocal.bind(this);
     this.boardCommService.updateSingleTaskVar = this.updateSingleTaskVar.bind(this);
     this.boardCommService.deleteTask = this.deleteTask.bind(this);
-    this.openTaskDetails(this.todo[0])
   }
 
   reloadAfterNewTask() {
@@ -104,6 +103,8 @@ export class MainBoardComponent {
   convertTasksDataToLists() {
     this.todo = [];
     this.inprogress = [];
+    this.awaitfeedback = [];
+    this.done = [];
     this.allTasksData.forEach(task => {
       switch (task.taskStatus) {
         case "todo":
@@ -111,6 +112,12 @@ export class MainBoardComponent {
           break;
         case "inprogress":
           this.inprogress.push(task);
+          break;
+        case "awaitfeedback":
+          this.awaitfeedback.push(task);
+          break;
+        case "done":
+          this.done.push(task);
           break;
       }
     });
@@ -124,6 +131,8 @@ export class MainBoardComponent {
     };
     this.todo.sort(customSort);
     this.inprogress.sort(customSort);
+    this.awaitfeedback.sort(customSort);
+    this.done.sort(customSort);
   }
 
   determineSubtaskProgress(subTasksCompleted) {
@@ -192,6 +201,8 @@ export class MainBoardComponent {
   renumberTasksColumnOrder() {
     this.renumberTasksColumnOrderForList(this.todo, "todo");
     this.renumberTasksColumnOrderForList(this.inprogress, "inprogress");
+    this.renumberTasksColumnOrderForList(this.awaitfeedback, "awaitfeedback");
+    this.renumberTasksColumnOrderForList(this.done, "done");
   }
 
   renumberTasksColumnOrderForList(list, status) {
@@ -204,7 +215,12 @@ export class MainBoardComponent {
   }
 
   setNewTasksDataToLocal() {
-    const newAllTasksData = [...this.todo, ...this.inprogress];
+    const newAllTasksData = [
+      ...this.todo,
+      ...this.inprogress,
+      ...this.awaitfeedback,
+      ...this.done
+    ];
     localStorage.removeItem('allTasksData');
     localStorage.setItem('allTasksData', JSON.stringify(newAllTasksData));
   }
@@ -220,6 +236,22 @@ export class MainBoardComponent {
 
     for (let index = 0; index < this.inprogress.length; index++) {
       const element = this.inprogress[index];
+      this.firestore
+        .collection('tasks')
+        .doc(element.firebaseId)
+        .update(element);
+    }
+
+    for (let index = 0; index < this.awaitfeedback.length; index++) {
+      const element = this.awaitfeedback[index];
+      this.firestore
+        .collection('tasks')
+        .doc(element.firebaseId)
+        .update(element);
+    }
+
+    for (let index = 0; index < this.done.length; index++) {
+      const element = this.done[index];
       this.firestore
         .collection('tasks')
         .doc(element.firebaseId)

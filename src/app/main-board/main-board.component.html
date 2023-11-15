@@ -159,7 +159,7 @@
 
             <div class="section__header">
                 <h3>Await feedback</h3>
-                <span class="material__symbols__outlined">
+                <span (click)="openAddTaskDialog('awaitfeedback')" class="material__symbols__outlined">
                     add
                 </span>
             </div>
@@ -167,7 +167,54 @@
             <div cdkDropList #awaitfeedbackList="cdkDropList" [cdkDropListData]="awaitfeedback"
                 [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]"
                 (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
-                <div class="" *ngFor="let item of awaitfeedback" cdkDrag>{{item}}</div>
+
+                <div *ngIf="awaitfeedback.length === 0 && dragActive === false" class="task__card__ghost">No tasks To do</div>
+
+                <div (click)="openTaskDetails(item)" cdkDrag (cdkDragStarted)="onDragStarted($event, item)" class="task__card" *ngFor="let item of awaitfeedback" cdkDrag>
+
+                    <div class="task__cat" [ngClass]="{'category__tech': item.category === 'Technical Task',
+                    'category__user': item.category === 'User Story'}">{{ item.category }}</div>
+
+                    <div class="card__body">
+                        <div class="task__title">
+                            {{ item.title }}
+                        </div>
+                        <div class="task__description">
+                            {{ item.description }}
+                        </div>
+                    </div>
+
+                    <div *ngIf="item.subTasks.length > 0" class="task__subtasks">
+                        <!-- <div class="progressbar empty">
+                            <div class="filler"></div>
+                        </div> -->
+
+                        <div class="progressbar" [ngClass]="determineSubtaskProgress(item.subTasksCompleted)">
+                            <div class="filler"></div>
+                        </div>
+
+                        <!-- <div class="progressbar full">
+                            <div class="filler"></div>
+                        </div> -->
+                        <div class="progress__text">{{ countSubtasksCompleted(item.subTasksCompleted) }}/{{
+                            item.subTasksCompleted.length }} Subtasks</div>
+                    </div>
+
+                    <div class="card__footer">
+                        <div class="assigned__users">
+                            <div *ngFor="let mail of item.assignedTo | slice:0:5" [ngStyle]="{'background-color': getUserColor(mail)}" class="user__container user__orange">{{ getUserInitials(mail) }}</div>
+                        </div>
+                        <div *ngIf="item.priority === 'urgent'"
+                            class="material__symbols__outlined task__card__prio prio__red">keyboard_double_arrow_up
+                        </div>
+                        <div *ngIf="item.priority === 'medium'"
+                            class="material__symbols__outlined task__card__prio prio__yellow">double_arrow</div>
+                        <div *ngIf="item.priority === 'low'"
+                            class="material__symbols__outlined task__card__prio prio__green">keyboard_double_arrow_down
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </section>
@@ -176,7 +223,7 @@
 
             <div class="section__header">
                 <h3>Done</h3>
-                <span class="material__symbols__outlined">
+                <span (click)="openAddTaskDialog('done')" class="material__symbols__outlined">
                     add
                 </span>
             </div>
@@ -184,7 +231,54 @@
             <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
                 [cdkDropListConnectedTo]="[todoList, awaitfeedbackList, inprogressList]"
                 (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
-                <div class="" *ngFor="let item of done" cdkDrag>{{item}}</div>
+
+                <div *ngIf="done.length === 0 && dragActive === false" class="task__card__ghost">No tasks To do</div>
+
+                <div (click)="openTaskDetails(item)" cdkDrag (cdkDragStarted)="onDragStarted($event, item)" class="task__card" *ngFor="let item of done" cdkDrag>
+
+                    <div class="task__cat" [ngClass]="{'category__tech': item.category === 'Technical Task',
+                    'category__user': item.category === 'User Story'}">{{ item.category }}</div>
+
+                    <div class="card__body">
+                        <div class="task__title">
+                            {{ item.title }}
+                        </div>
+                        <div class="task__description">
+                            {{ item.description }}
+                        </div>
+                    </div>
+
+                    <div *ngIf="item.subTasks.length > 0" class="task__subtasks">
+                        <!-- <div class="progressbar empty">
+                            <div class="filler"></div>
+                        </div> -->
+
+                        <div class="progressbar" [ngClass]="determineSubtaskProgress(item.subTasksCompleted)">
+                            <div class="filler"></div>
+                        </div>
+
+                        <!-- <div class="progressbar full">
+                            <div class="filler"></div>
+                        </div> -->
+                        <div class="progress__text">{{ countSubtasksCompleted(item.subTasksCompleted) }}/{{
+                            item.subTasksCompleted.length }} Subtasks</div>
+                    </div>
+
+                    <div class="card__footer">
+                        <div class="assigned__users">
+                            <div *ngFor="let mail of item.assignedTo | slice:0:5" [ngStyle]="{'background-color': getUserColor(mail)}" class="user__container user__orange">{{ getUserInitials(mail) }}</div>
+                        </div>
+                        <div *ngIf="item.priority === 'urgent'"
+                            class="material__symbols__outlined task__card__prio prio__red">keyboard_double_arrow_up
+                        </div>
+                        <div *ngIf="item.priority === 'medium'"
+                            class="material__symbols__outlined task__card__prio prio__yellow">double_arrow</div>
+                        <div *ngIf="item.priority === 'low'"
+                            class="material__symbols__outlined task__card__prio prio__green">keyboard_double_arrow_down
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </section>
