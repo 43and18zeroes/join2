@@ -224,12 +224,13 @@
     }
 
     main {
-        width: calc(100vw - 299px);
+        width: calc(100vw - 339px);
         height: calc(100vh - 257px);
         display: flex;
         gap: 26px;
         overflow-x: auto;
         overflow-y: hidden;
+        padding-right: 40px;
 
         section {
             width: 244px;
