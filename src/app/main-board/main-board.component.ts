@@ -130,6 +130,7 @@ export class MainBoardComponent {
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.allUsersData = this.userService.allUsersData;
+      this.resetSearchFunction();
       // this.allTasksData = this.userService.allTasksData;
       // this.convertTasksDataToLists();
       // this.sortTasksInColumns();
@@ -348,6 +349,7 @@ export class MainBoardComponent {
     });
     dialogRef.componentInstance.taskData = { ...taskData };
     dialogRef.afterClosed().subscribe((result) => {
+      this.resetSearchFunction();
       if (this.boardCommService.subTaskCompletedChange) {
         this.updateSingleTaskVar();
         // this.reloadAfterNewTask();
