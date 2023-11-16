@@ -216,6 +216,7 @@ export class MainBoardComponent {
 
   onDragStarted(event: CdkDragStart, item: string) {
     this.dragActive = true; // Setzt die Variable auf das aktuelle Element
+    this.resetSearchFunction();
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -225,7 +226,6 @@ export class MainBoardComponent {
     this.renumberTasksColumnOrder();
     this.setNewTasksDataToLocal();
     this.backendTasksColumnOrder();
-    this.resetSearchFunction();
   }
 
   // saveBoardStatus() {
