@@ -101,6 +101,13 @@ export class MainBoardComponent {
     }
   }
 
+  resetSearchFunction() {
+    this.searchBar.nativeElement.value = '';
+    this.taskCards.forEach((taskCard: ElementRef) => {
+      taskCard.nativeElement.classList.remove('d-none');
+    });
+  }
+
   displaySearchResults(searchTerm) {
     this.taskCards.forEach((taskCard: ElementRef) => {
       this.taskCards.forEach((taskCard: ElementRef) => {
@@ -218,6 +225,7 @@ export class MainBoardComponent {
     this.renumberTasksColumnOrder();
     this.setNewTasksDataToLocal();
     this.backendTasksColumnOrder();
+    this.resetSearchFunction();
   }
 
   // saveBoardStatus() {
