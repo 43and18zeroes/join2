@@ -88,15 +88,30 @@ export class MainBoardComponent {
   }
 
   searchTasks() {
-    if (this.searchBar.nativeElement.value !== "") {
+    const searchTerm = this.searchBar.nativeElement.value.toLowerCase();
+    if (searchTerm !== "") {
       this.taskCards.forEach((taskCard: ElementRef) => {
         taskCard.nativeElement.classList.add("d-none");
       });
+      this.displaySearchResults(searchTerm);
     } else {
       this.taskCards.forEach((taskCard: ElementRef) => {
         taskCard.nativeElement.classList.remove("d-none");
       });
     }
+  }
+
+  displaySearchResults(searchTerm) {
+    this.taskCards.forEach((taskCard: ElementRef) => {
+      this.taskCards.forEach((taskCard: ElementRef) => {
+        const title = taskCard.nativeElement.querySelector('.task__title').innerText.toLowerCase();
+        const description = taskCard.nativeElement.querySelector('.task__description').innerText.toLowerCase();
+    
+        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+          taskCard.nativeElement.classList.remove('d-none');
+        }
+      });
+    })
   }
 
   openAddTaskDialog(taskStatus) {
