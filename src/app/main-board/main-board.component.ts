@@ -88,13 +88,13 @@ export class MainBoardComponent {
   }
 
   searchTasks() {
-    if (this.searchBar.nativeElement.value === "") {
+    if (this.searchBar.nativeElement.value !== "") {
       this.taskCards.forEach((taskCard: ElementRef) => {
-        taskCard.nativeElement.classList.remove("d-none");
+        taskCard.nativeElement.classList.add("d-none");
       });
     } else {
       this.taskCards.forEach((taskCard: ElementRef) => {
-        taskCard.nativeElement.classList.add("d-none");
+        taskCard.nativeElement.classList.remove("d-none");
       });
     }
   }
@@ -375,12 +375,12 @@ export class MainBoardComponent {
         this.allTasksData.splice(index, 1);
         try {
           await this.firestore
-          .collection('tasks')
-          .doc(element.firebaseId)
-          .delete();
+            .collection('tasks')
+            .doc(element.firebaseId)
+            .delete();
 
-        this.reloadAfterNewTask();
-        this.setNewTasksDataToLocal();
+          this.reloadAfterNewTask();
+          this.setNewTasksDataToLocal();
         } catch {
           console.error("Error deleting document: ", Error);
         }
