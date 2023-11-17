@@ -135,6 +135,7 @@
 
     @media (width <=992px) {
         height: calc(100vh - 1304px);
+        padding: 32px 16px;
     }
 
     header {
@@ -145,6 +146,11 @@
         margin-bottom: 40px;
         margin-right: 40px;
         padding-left: 48px;
+
+        @media (width <=992px) {
+            height: auto;
+            padding: 0;
+        }
 
         h2 {
             font-size: var(--fontsize-h2-desktop);
@@ -237,11 +243,17 @@
         @media (width <=992px) {
             width: calc(100vw - 89px);
             height: calc(100vh - 320px);
+            flex-direction: column;
         }
 
         section {
             width: 244px;
             min-width: 244px;
+
+            @media (width <=992px) {
+                width: auto;
+                min-width: auto;
+            }
 
             .section__header {
                 display: flex;
@@ -272,6 +284,11 @@
                 gap: 24px;
                 border-radius: 10px;
                 margin-bottom: 24px;
+
+                @media (width <=992px) {
+                    height: fit-content;
+                    flex-direction: row;
+                }
 
                 .task__card__ghost {
                     height: 48px;
