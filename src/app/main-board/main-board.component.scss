@@ -244,6 +244,8 @@
             width: calc(100vw - 89px);
             height: calc(100vh - 320px);
             flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         section {
@@ -287,6 +289,7 @@
 
                 @media (width <=992px) {
                     height: fit-content;
+                    min-height: 100px;
                     flex-direction: row;
                 }
 
