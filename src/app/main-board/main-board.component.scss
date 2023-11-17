@@ -235,6 +235,7 @@
         padding-right: 40px;
 
         @media (width <=992px) {
+            width: calc(100vw - 89px);
             height: calc(100vh - 320px);
         }
 
