@@ -134,7 +134,7 @@
     padding: 48px 0 0 0;
 
     @media (width <=992px) {
-        height: calc(100vh - 304px);
+        height: calc(100vh - 1304px);
     }
 
     header {
@@ -233,6 +233,10 @@
         overflow-y: hidden;
         padding-left: 48px;
         padding-right: 40px;
+
+        @media (width <=992px) {
+            height: calc(100vh - 320px);
+        }
 
         section {
             width: 244px;
