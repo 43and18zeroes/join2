@@ -58,6 +58,10 @@
             border-radius: 16px;
             overflow: hidden;
 
+            @media (width <=992px) {
+                min-width: auto;
+            }
+
             .filler {
                 height: 100%;
                 background-color: #4589FF;
