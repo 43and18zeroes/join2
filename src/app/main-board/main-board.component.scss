@@ -276,6 +276,10 @@
                     margin: 0 0 0 8px;
                     height: fit-content;
                     font-weight: 700;
+
+                    @media (width <=992px) {
+                        margin: 0 0 0 4px;
+                    }
                 }
 
                 span {
