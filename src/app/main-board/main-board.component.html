@@ -58,9 +58,6 @@
                     </div>
 
                     <div *ngIf="item.subTasks.length > 0" class="task__subtasks">
-                        <!-- <div class="progressbar empty">
-                            <div class="filler"></div>
-                        </div> -->
 
                         <div class="progressbar" [ngClass]="determineSubtaskProgress(item.subTasksCompleted)">
                             <div class="filler"></div>
