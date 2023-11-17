@@ -6,6 +6,11 @@
     font-size: 16px;
     cursor: pointer;
 
+    @media (width <=992px) {
+        width: fit-content;
+        height: 195px;
+    }
+
     .task__cat {
         width: fit-content;
         padding: 4px 16px;
