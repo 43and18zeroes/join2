@@ -7,7 +7,7 @@
     cursor: pointer;
 
     @media (width <=992px) {
-        width: fit-content;
+        min-width: 200px;
         height: 195px;
     }
 
