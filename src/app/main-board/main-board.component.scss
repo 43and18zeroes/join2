@@ -315,6 +315,13 @@
                     min-height: 100px;
                     flex-direction: row;
                     margin-bottom: 0;
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+
+                    &::-webkit-scrollbar {
+                        height: 0;
+                        scrollbar-width: none;
+                    }
                 }
 
                 .task__card__ghost {
