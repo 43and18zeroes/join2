@@ -37,7 +37,7 @@
                 </span>
             </div>
 
-            <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+            <div cdkDropList [cdkDropListOrientation]="dropListOrienatation" #todoList="cdkDropList" [cdkDropListData]="todo"
                 [cdkDropListConnectedTo]="[inprogressList, awaitfeedbackList, doneList]"
                 (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
 
@@ -98,7 +98,7 @@
                 </span>
             </div>
 
-            <div cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogress"
+            <div cdkDropList [cdkDropListOrientation]="dropListOrienatation" #inprogressList="cdkDropList" [cdkDropListData]="inprogress"
                 [cdkDropListConnectedTo]="[todoList, awaitfeedbackList, doneList]"
                 (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
 
@@ -159,7 +159,7 @@
                 </span>
             </div>
 
-            <div cdkDropList #awaitfeedbackList="cdkDropList" [cdkDropListData]="awaitfeedback"
+            <div cdkDropList [cdkDropListOrientation]="dropListOrienatation" #awaitfeedbackList="cdkDropList" [cdkDropListData]="awaitfeedback"
                 [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]"
                 (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
 
@@ -223,7 +223,7 @@
                 </span>
             </div>
 
-            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+            <div cdkDropList [cdkDropListOrientation]="dropListOrienatation" #doneList="cdkDropList" [cdkDropListData]="done"
                 [cdkDropListConnectedTo]="[todoList, awaitfeedbackList, inprogressList]"
                 (cdkDropListDropped)="drop($event)" class="section__body" #sectionBody>
 

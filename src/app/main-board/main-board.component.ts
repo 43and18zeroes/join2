@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList, CdkDragStart } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList, CdkDragStart, DropListOrientation } from '@angular/cdk/drag-drop';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from '../services/user-data.service';
 import { Router, NavigationStart } from '@angular/router';
@@ -17,6 +17,8 @@ import { TaskDataService } from '../services/task-data.service';
 })
 export class MainBoardComponent {
 
+  dropListOrienatation: DropListOrientation;
+
   allTasksData;
   allUsersData;
 
@@ -33,6 +35,7 @@ export class MainBoardComponent {
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.checkForHorizontalScroll();
+    this.dropListOrientation();
   }
 
   @ViewChild('mainContainer') mainContainer: ElementRef;
@@ -69,6 +72,7 @@ export class MainBoardComponent {
     this.boardCommService.setNewTasksDataToLocal = this.setNewTasksDataToLocal.bind(this);
     this.boardCommService.updateSingleTaskVar = this.updateSingleTaskVar.bind(this);
     this.boardCommService.deleteTask = this.deleteTask.bind(this);
+    this.dropListOrientation();
   }
 
   reloadAfterNewTask() {
@@ -85,6 +89,14 @@ export class MainBoardComponent {
 
   ngAfterViewInit() {
     this.checkForHorizontalScroll();
+  }
+
+  dropListOrientation() {
+    if (window.innerWidth <= 992) {
+      this.dropListOrienatation = "horizontal";
+    } else {
+      this.dropListOrienatation = "vertical";
+    }
   }
 
   searchTasks() {
