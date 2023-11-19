@@ -18,6 +18,7 @@ import { TaskDataService } from '../services/task-data.service';
 export class MainBoardComponent {
 
   dropListOrienatation: DropListOrientation;
+  dragDelay: number;
 
   allTasksData;
   allUsersData;
@@ -36,6 +37,7 @@ export class MainBoardComponent {
   onResize(event: any) {
     this.checkForHorizontalScroll();
     this.dropListOrientation();
+    this.determineDragDelay();
   }
 
   @ViewChild('mainContainer') mainContainer: ElementRef;
@@ -73,6 +75,7 @@ export class MainBoardComponent {
     this.boardCommService.updateSingleTaskVar = this.updateSingleTaskVar.bind(this);
     this.boardCommService.deleteTask = this.deleteTask.bind(this);
     this.dropListOrientation();
+    this.determineDragDelay();
   }
 
   reloadAfterNewTask() {
@@ -92,11 +95,13 @@ export class MainBoardComponent {
   }
 
   dropListOrientation() {
-    if (window.innerWidth <= 992) {
-      this.dropListOrienatation = "horizontal";
-    } else {
-      this.dropListOrienatation = "vertical";
-    }
+    if (window.innerWidth <= 992) this.dropListOrienatation = "horizontal";
+    else this.dropListOrienatation = "vertical";
+  }
+
+  determineDragDelay() {
+    if (window.innerWidth <= 992) this.dragDelay = 500;
+    else this.dragDelay = 0;
   }
 
   searchTasks() {

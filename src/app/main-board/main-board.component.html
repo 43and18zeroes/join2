@@ -43,7 +43,7 @@
 
                 <!-- <div *ngIf="todo.length === 0 && dragActive === false" class="task__card__ghost">No tasks To do</div> -->
 
-                <div (click)="openTaskDetails(item)" cdkDrag (cdkDragStarted)="onDragStarted($event, item)" class="task__card" *ngFor="let item of todo" cdkDrag #taskCard>
+                <div (click)="openTaskDetails(item)" cdkDrag [cdkDragStartDelay]="dragDelay" (cdkDragStarted)="onDragStarted($event, item)" class="task__card" *ngFor="let item of todo" cdkDrag #taskCard>
 
                     <div class="task__cat" [ngClass]="{'category__tech': item.category === 'Technical Task',
                     'category__user': item.category === 'User Story'}">{{ item.category }}</div>
