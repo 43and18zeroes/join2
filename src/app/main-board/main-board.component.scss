@@ -252,7 +252,7 @@
         padding-right: 40px;
 
         @media (width <=992px) {
-            width: calc(100vw - 32px);
+            width: calc(100vw - 16px);
             height: calc(100vh - 292px);
             flex-direction: column;
             overflow-x: hidden;
@@ -280,6 +280,7 @@
                 justify-content: space-between;
                 color: #42526E;
                 margin-bottom: 12px;
+                margin-right: 16px;
 
                 h3 {
                     margin: 0 0 0 8px;
