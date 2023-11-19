@@ -253,13 +253,14 @@
 
         @media (width <=992px) {
             width: calc(100vw - 16px);
-            height: calc(100vh - 292px);
+            height: calc(100vh - 316px);
             flex-direction: column;
             overflow-x: hidden;
             overflow-y: auto;
             padding-top: 32px;
             padding-left: 0;
             padding-right: 0;
+            padding-bottom: 24px;
 
             &::-webkit-scrollbar {
                 display: none;
