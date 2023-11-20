@@ -9,6 +9,12 @@
     <header>
 
         <h2>Board</h2>
+        <div class="h2__mobile">
+            <h2>Board</h2>
+            <button (click)="openAddTaskDialog('todo')" class="btn__primary" type="button"><span class="btn__text">Add task </span><span class="material__symbols__outlined">
+                add
+            </span></button>
+        </div>
         <div class="header__right">
             <div class="input__container">
                 <span (click)="searchBar.focus()" class="material__symbols__outlined magnifier">
