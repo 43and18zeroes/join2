@@ -52,8 +52,9 @@
         margin-bottom: 24px;
 
         .progressbar {
-            width: 100%;
-            min-width: 129px;
+            // width: 100%;
+            // width: calc(100% - 50px);
+            min-width: 109px;
             height: 8px;
             background-color: #F4F4F4;
             border-radius: 16px;
