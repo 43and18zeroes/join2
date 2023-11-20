@@ -175,6 +175,7 @@
         @media (width <=576px) {
             flex-direction: column;
             align-items: flex-start;
+            margin-bottom: 0;
         }
 
         h2 {
@@ -235,9 +236,10 @@
             gap: 16px;
 
             @media (width <=576px) {
-                width: 100%;
+                width: calc(100% - 40px);
                 gap: normal;
-                justify-content: space-between;
+                display: block;
+                // justify-content: flex-start;
             }
 
             .input__container {
@@ -283,8 +285,9 @@
                     font-family: inherit;
 
                     @media (width <=576px) {
-                        // width: calc(100% - 78px);
+                        width: 100%;
                         font-size: var(--fontsize-body-mobile);
+                        padding: 10px 16px;
                     }
 
                     &::placeholder {
