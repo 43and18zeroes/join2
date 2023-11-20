@@ -310,6 +310,10 @@
             }
         }
 
+        @media (width <=576px) {
+            height: calc(100vh - 356px);
+        }
+
         section {
             width: 244px;
             min-width: 244px;
