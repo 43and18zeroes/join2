@@ -172,6 +172,11 @@
             margin-bottom: 4px;
         }
 
+        @media (width <=576px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
         h2 {
             font-size: var(--fontsize-h2-desktop);
             margin: 0;
@@ -192,9 +197,19 @@
             display: flex;
             gap: 16px;
 
+            @media (width <=576px) {
+                width: 100%;
+                gap: normal;
+                justify-content: space-between;
+            }
+
             .input__container {
                 position: relative;
                 margin-left: 48px;
+
+                @media (width <=576px) {
+                    margin-left: 0;
+                }
 
                 .material__symbols__outlined {
                     position: absolute;
