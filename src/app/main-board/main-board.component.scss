@@ -52,8 +52,6 @@
         margin-bottom: 24px;
 
         .progressbar {
-            // width: 100%;
-            // width: calc(100% - 50px);
             min-width: 109px;
             height: 8px;
             background-color: #F4F4F4;
@@ -148,9 +146,11 @@
         padding: 32px 16px;
     }
 
-    // @media (width <=576px) {
-    //     height: calc(100vh - 263px);
-    // }
+    @media (width <=576px) {
+        overflow-y: auto;
+        height: auto;
+        padding-right: 0;
+    }
 
     .header__desktop {
         height: 73px;
@@ -234,13 +234,6 @@
             display: flex;
             gap: 16px;
 
-            // @media (width <=576px) {
-            //     width: calc(100% - 40px);
-            //     gap: normal;
-            //     display: block;
-            //     // justify-content: flex-start;
-            // }
-
             .input__container {
                 position: relative;
                 margin-left: 48px;
@@ -318,6 +311,7 @@
     }
 
     .header__mobile {
+        margin-right: 16px;
 
         @media (width >576px) {
             display: none;
@@ -431,8 +425,10 @@
         }
 
         @media (width <=576px) {
-            height: calc(100vh - 354px);
+            width: calc(100vw - 16px);
+            height: auto;
             padding-top: 24px;
+            overflow-y: hidden;
         }
 
         section {
@@ -491,6 +487,10 @@
                         height: 0;
                         scrollbar-width: none;
                     }
+                }
+
+                @media (width <=576px) {
+                    padding-right: 16px;
                 }
 
                 .task__card__ghost {

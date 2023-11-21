@@ -97,6 +97,13 @@ main {
             overflow-y: auto;
         }
 
+        @media (width <=576px) {
+            &::-webkit-scrollbar {
+                scrollbar-width: none;
+                width: 0;
+            }
+        }
+
         .contacts__container {
             height: 100%;
             display: flex;
