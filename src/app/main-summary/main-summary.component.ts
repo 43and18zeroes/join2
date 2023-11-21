@@ -15,6 +15,9 @@ export class MainSummaryComponent implements OnInit {
   currentUserData;
   allTasksData;
   amountTodos;
+  amountInProgress;
+  amountAwaitFeedback;
+  amountDone;
 
   currentDate = new Date();
   futureDate = new Date(this.currentDate);
@@ -23,8 +26,7 @@ export class MainSummaryComponent implements OnInit {
     public mainComponent: MainComponent,
     public taskDataService: TaskDataService,
     private userService: UserService
-    )
-    {
+  ) {
     this.futureDate.setDate(this.currentDate.getDate() + 8);
   }
 
@@ -41,6 +43,8 @@ export class MainSummaryComponent implements OnInit {
 
   determineMainNumbers() {
     this.amountTodos = this.allTasksData.filter(item => item.taskStatus === 'todo').length;
-    console.log("this.amountTodos", this.amountTodos)
+    this.amountInProgress = this.allTasksData.filter(item => item.taskStatus === 'inprogress').length;
+    this.amountAwaitFeedback = this.allTasksData.filter(item => item.taskStatus === 'awaitfeedback').length;
+    this.amountDone = this.allTasksData.filter(item => item.taskStatus === 'done').length;
   }
 }
