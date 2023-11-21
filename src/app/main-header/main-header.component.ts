@@ -22,6 +22,11 @@ export class MainHeaderComponent implements OnInit {
     this.currentUserInitials = this.userService.currentUserData.userInitials;
   }
 
+  displayHelp() {
+    this.mainComponent.currentlyDisplayed = "help";
+    this.mainComponent.currentlyClicked = "default";
+  }
+
   logOut() {
     const auth = getAuth();
     signOut(auth).then(() => {
