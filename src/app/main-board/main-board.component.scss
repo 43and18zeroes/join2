@@ -314,6 +314,10 @@
                 top: calc(50% + 0.5px);
                 transform: translate(0%, -50%);
                 right: 21px;
+
+                @media (width <=992px) {
+                    right: -18px;
+                }
             }
 
             .pipe {
@@ -325,6 +329,10 @@
                 font-weight: 200;
                 color: var(--inactive-lite-grey);
                 cursor: text;
+
+                @media (width <=992px) {
+                    right: 20px;
+                }
             }
 
             input {
