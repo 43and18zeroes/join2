@@ -4,19 +4,19 @@
     display: flex;
 
     .contacts__list {
-        // display: block;
         height: calc(100% - 20px);
         padding-top: 20px;
         padding-left: 50px;
-
-        // &.hide {
-        //     display: none; // Diese Klasse wird verwendet, um es basierend auf der showContactDetails Variable auszublenden
-        // }
 
         @media (width <=1100px) {
             padding: 20px 0 20px 20px;
             width: calc(100% - 35px);
             height: calc(100% - 40px);
+        }
+
+        @media (width <=992px) {
+            height: calc(100% - 21px);
+            padding-bottom: 0px;
         }
 
         /* ===== Scrollbar CSS ===== */
