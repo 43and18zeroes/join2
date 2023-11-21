@@ -6,6 +6,8 @@
     padding: 16px;
     font-size: 16px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
 
     @media (width <=992px) {
         min-width: 200px;
@@ -96,8 +98,10 @@
     }
 
     .card__footer {
+        flex-grow: 1;
         display: flex;
         justify-content: space-between;
+        align-items: flex-end;
 
         .assigned__users {
             display: flex;
