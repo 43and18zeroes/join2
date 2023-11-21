@@ -31,6 +31,9 @@ import { MainDialogAddTaskComponent } from './main-dialog-add-task/main-dialog-a
 import { MainDialogTaskDetailsAndEditComponent } from './main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
 import { MainDialogTaskDetailsAndEditTaskViewComponent } from './main-dialog-task-details-and-edit-task-view/main-dialog-task-details-and-edit-task-view.component';
 import { MainDialogTaskDetailsAndEditEditViewComponent } from './main-dialog-task-details-and-edit-edit-view/main-dialog-task-details-and-edit-edit-view.component';
+import { InfoHelpComponent } from './info-help/info-help.component';
+import { InfoPrivacyPolicyComponent } from './info-privacy-policy/info-privacy-policy.component';
+import { InfoLegalNoticeComponent } from './info-legal-notice/info-legal-notice.component';
 
 
 @NgModule({
@@ -51,7 +54,10 @@ import { MainDialogTaskDetailsAndEditEditViewComponent } from './main-dialog-tas
     MainDialogAddTaskComponent,
     MainDialogTaskDetailsAndEditComponent,
     MainDialogTaskDetailsAndEditTaskViewComponent,
-    MainDialogTaskDetailsAndEditEditViewComponent
+    MainDialogTaskDetailsAndEditEditViewComponent,
+    InfoHelpComponent,
+    InfoPrivacyPolicyComponent,
+    InfoLegalNoticeComponent
   ],
   imports: [
     BrowserModule,
