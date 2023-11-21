@@ -6,15 +6,14 @@
 
 <div class="board__container">
 
-    <header>
-
+    <header class="header__desktop">
         <h2>Board</h2>
-        <div class="h2__mobile">
+        <!-- <div class="h2__mobile">
             <h2>Board</h2>
             <button (click)="openAddTaskDialog('todo')" class="btn__primary" type="button"><span class="btn__text">Add task </span><span class="material__symbols__outlined">
                 add
             </span></button>
-        </div>
+        </div> -->
         <div class="header__right">
             <div class="input__container">
                 <span (click)="searchBar.focus()" class="material__symbols__outlined magnifier">
@@ -29,7 +28,24 @@
                     add
                 </span></button>
         </div>
+    </header>
 
+    <header class="header__mobile">
+        <div class="headline">
+            <h2>Board</h2>
+            <button (click)="openAddTaskDialog('todo')" class="btn__primary" type="button"><span class="material__symbols__outlined">
+                add
+            </span></button>
+        </div>
+        <div class="input__container">
+            <span (click)="searchBar.focus()" class="material__symbols__outlined magnifier">
+                search
+            </span>
+            <span (click)="searchBar.focus()" class="pipe">
+                |
+            </span>
+            <input (input)="searchTasks()" placeholder="Find Task" #searchBar placeholder="Name">
+        </div>
     </header>
 
     <main cdkScrollable #mainContainer>
