@@ -17,6 +17,7 @@ export class MainSummaryComponent implements OnInit {
   amountTodo;
   amountDone;
   amountUrgent;
+  amountTasks;
   amountInProgress;
   amountAwaitFeedback;
 
@@ -46,6 +47,7 @@ export class MainSummaryComponent implements OnInit {
     this.amountTodo = this.allTasksData.filter(item => item.taskStatus === 'todo').length;
     this.amountDone = this.allTasksData.filter(item => item.taskStatus === 'done').length;
     this.amountUrgent = this.allTasksData.filter(item => item.priority === 'urgent').length;
+    this.amountTasks = this.allTasksData.length;
     this.amountInProgress = this.allTasksData.filter(item => item.taskStatus === 'inprogress').length;
     this.amountAwaitFeedback = this.allTasksData.filter(item => item.taskStatus === 'awaitfeedback').length;
   }
