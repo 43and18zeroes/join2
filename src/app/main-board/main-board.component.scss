@@ -414,12 +414,13 @@
                 justify-content: space-between;
                 color: #42526E;
                 margin-bottom: 12px;
-                padding: 0 16px;
+                padding: 0;
 
                 h3 {
                     margin: 0 0 0 8px;
                     height: fit-content;
                     font-weight: 700;
+                    white-space: nowrap;
 
                     @media (width <=992px) {
                         margin: 0 0 0 4px;
