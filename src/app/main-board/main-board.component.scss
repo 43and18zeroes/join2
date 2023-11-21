@@ -149,6 +149,7 @@
     @media (width <=576px) {
         overflow-y: auto;
         height: auto;
+        padding-left: 0;
         padding-right: 0;
     }
 
@@ -425,7 +426,7 @@
         }
 
         @media (width <=576px) {
-            width: calc(100vw - 16px);
+            width: calc(100vw - 0px);
             height: auto;
             padding-top: 24px;
             overflow-y: hidden;
@@ -490,6 +491,7 @@
                 }
 
                 @media (width <=576px) {
+                    padding-left: 16px;
                     padding-right: 16px;
                 }
 
