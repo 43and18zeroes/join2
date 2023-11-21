@@ -14,10 +14,11 @@ export class MainSummaryComponent implements OnInit {
   currenUserIsGuest = true;
   currentUserData;
   allTasksData;
-  amountTodos;
+  amountTodo;
+  amountDone;
+  amountUrgent;
   amountInProgress;
   amountAwaitFeedback;
-  amountDone;
 
   currentDate = new Date();
   futureDate = new Date(this.currentDate);
@@ -42,9 +43,10 @@ export class MainSummaryComponent implements OnInit {
   }
 
   determineMainNumbers() {
-    this.amountTodos = this.allTasksData.filter(item => item.taskStatus === 'todo').length;
+    this.amountTodo = this.allTasksData.filter(item => item.taskStatus === 'todo').length;
+    this.amountDone = this.allTasksData.filter(item => item.taskStatus === 'done').length;
+    this.amountUrgent = this.allTasksData.filter(item => item.priority === 'urgent').length;
     this.amountInProgress = this.allTasksData.filter(item => item.taskStatus === 'inprogress').length;
     this.amountAwaitFeedback = this.allTasksData.filter(item => item.taskStatus === 'awaitfeedback').length;
-    this.amountDone = this.allTasksData.filter(item => item.taskStatus === 'done').length;
   }
 }
