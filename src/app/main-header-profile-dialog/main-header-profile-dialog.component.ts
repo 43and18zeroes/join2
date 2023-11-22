@@ -12,7 +12,8 @@ export class MainHeaderProfileDialogComponent {
   constructor(private router: Router) { }
 
   displayPrivacyPolicy() {
-
+    // this.mainComponent.currentlyDisplayed = "help";
+    // this.mainComponent.currentlyClicked = "default";
   }
   
   logOut() {
