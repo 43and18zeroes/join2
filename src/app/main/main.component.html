@@ -14,6 +14,14 @@
             <div class="spacer"></div><span class="material__symbols__outlined">account_box</span>Contacts
         </div>
     </nav>
+    <div class="info">
+        <div class="point" [class.active]="currentlyClicked === 'summary'" (click)="displayMainSection('summary')">
+            <div class="spacer"></div><span class="material__symbols__outlined">space_dashboard</span>Summary
+        </div>
+        <div class="point" [class.active]="currentlyClicked === 'board'" (click)="displayMainSection('board')">
+            <div class="spacer"></div><span class="material__symbols__outlined">view_week</span>Board
+        </div>
+    </div>
 </aside>
 <main>
     <app-main-header></app-main-header>

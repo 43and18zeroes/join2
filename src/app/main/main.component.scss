@@ -10,7 +10,7 @@
 
 aside {
     width: 250px;
-    height: 100%;
+    height: 100vh;
     background-color: var(--main-slate);
     display: flex;
     flex-direction: column;
@@ -63,13 +63,18 @@ aside {
             }
         }
     }
+
+    .info {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 64px;
+    }
 }
 
 main {
     flex: 1;
-    // display: flex;
-    // flex-direction: column;
-    // height: 100vh;
 
     app-main-header {
         height: 96px;
