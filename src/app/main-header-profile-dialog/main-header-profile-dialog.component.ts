@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { getAuth, signOut } from "firebase/auth";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-header-profile-dialog',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class MainHeaderProfileDialogComponent {
 
+  constructor(private router: Router) { }
+
+  logOut() {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      this.router.navigateByUrl('/');
+    }).catch((error) => {
+    });
+  }
 }

@@ -45,12 +45,4 @@ export class MainHeaderComponent implements OnInit {
       // this.sortTasksInColumns();
     // });
   }
-
-  logOut() {
-    const auth = getAuth();
-    signOut(auth).then(() => {
-      this.router.navigateByUrl('/');
-    }).catch((error) => {
-    });
-  }
 }
