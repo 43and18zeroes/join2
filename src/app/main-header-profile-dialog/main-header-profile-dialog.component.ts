@@ -11,6 +11,10 @@ export class MainHeaderProfileDialogComponent {
 
   constructor(private router: Router) { }
 
+  displayPrivacyPolicy() {
+
+  }
+  
   logOut() {
     const auth = getAuth();
     signOut(auth).then(() => {
