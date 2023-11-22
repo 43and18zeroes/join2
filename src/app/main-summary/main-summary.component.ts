@@ -22,16 +22,11 @@ export class MainSummaryComponent implements OnInit {
   amountInProgress;
   amountAwaitFeedback;
 
-  currentDate = new Date();
-  futureDate = new Date(this.currentDate);
-
   constructor(
     public mainComponent: MainComponent,
     public taskDataService: TaskDataService,
     private userService: UserService
-  ) {
-    this.futureDate.setDate(this.currentDate.getDate() + 8);
-  }
+  ) { }
 
   ngOnInit(): void {
     this.showGreetingScreenMobile = this.mainComponent.showGreetingScreenMobile;

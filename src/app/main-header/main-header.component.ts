@@ -27,6 +27,10 @@ export class MainHeaderComponent implements OnInit {
     this.mainComponent.currentlyClicked = "default";
   }
 
+  openProfileDialog() {
+    
+  }
+
   logOut() {
     const auth = getAuth();
     signOut(auth).then(() => {

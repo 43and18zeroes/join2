@@ -34,6 +34,7 @@ import { MainDialogTaskDetailsAndEditEditViewComponent } from './main-dialog-tas
 import { InfoHelpComponent } from './info-help/info-help.component';
 import { InfoPrivacyPolicyComponent } from './info-privacy-policy/info-privacy-policy.component';
 import { InfoLegalNoticeComponent } from './info-legal-notice/info-legal-notice.component';
+import { MainHeaderProfileDialogComponent } from './main-header-profile-dialog/main-header-profile-dialog.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { InfoLegalNoticeComponent } from './info-legal-notice/info-legal-notice.
     MainDialogTaskDetailsAndEditEditViewComponent,
     InfoHelpComponent,
     InfoPrivacyPolicyComponent,
-    InfoLegalNoticeComponent
+    InfoLegalNoticeComponent,
+    MainHeaderProfileDialogComponent
   ],
   imports: [
     BrowserModule,
