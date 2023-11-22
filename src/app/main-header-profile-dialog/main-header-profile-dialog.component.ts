@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { getAuth, signOut } from "firebase/auth";
 import { Router } from '@angular/router';
 import { MainCommunicationService } from '../services/main-communication.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main-header-profile-dialog',
@@ -12,6 +13,7 @@ export class MainHeaderProfileDialogComponent {
 
   constructor(
     private mainCommService: MainCommunicationService,
+    public dialog: MatDialog,
     private router: Router
     ) { }
 
@@ -19,6 +21,7 @@ export class MainHeaderProfileDialogComponent {
     // this.mainComponent.currentlyDisplayed = "help";
     // this.mainComponent.currentlyClicked = "default";
     this.mainCommService.displayPrivacyPolicyService('privacyPolicy');
+    this.dialog.closeAll();
   }
   
   logOut() {
@@ -28,5 +31,6 @@ export class MainHeaderProfileDialogComponent {
       this.router.navigateByUrl('/');
     }).catch((error) => {
     });
+    this.dialog.closeAll();
   }
 }
