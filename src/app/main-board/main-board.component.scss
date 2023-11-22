@@ -11,7 +11,8 @@
 
     @media (width <=992px) {
         min-width: 200px;
-        height: 195px;
+        // height: 195px;
+        height: 215px; 
     }
 
     .task__cat {
@@ -415,6 +416,10 @@
                 color: #42526E;
                 margin-bottom: 12px;
                 padding: 0;
+
+                @media (width <=992px) {
+                    padding: 0 15px;
+                }
 
                 h3 {
                     margin: 0 0 0 8px;
