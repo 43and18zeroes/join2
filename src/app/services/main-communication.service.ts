@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class MainCommunicationService {
   private displayBoard = new BehaviorSubject('default');
+  private displayPrivacyPolicy = new BehaviorSubject('default');
 
   constructor() { }
 
@@ -17,5 +18,13 @@ export class MainCommunicationService {
   // Diese Methode benachrichtigt alle Abonnenten über die Änderung
   displayMainBoard(board) {
     this.displayBoard.next(board);
+  }
+
+  get displayPrivacyPolicyServiceObservable() {
+    return this.displayPrivacyPolicy.asObservable();
+  }
+
+  displayPrivacyPolicyService(privacyPolicy) {
+    this.displayPrivacyPolicy.next(privacyPolicy);
   }
 }

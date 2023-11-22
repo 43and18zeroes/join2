@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { getAuth, signOut } from "firebase/auth";
 import { Router } from '@angular/router';
+import { MainCommunicationService } from '../services/main-communication.service';
 
 @Component({
   selector: 'app-main-header-profile-dialog',
@@ -9,11 +10,15 @@ import { Router } from '@angular/router';
 })
 export class MainHeaderProfileDialogComponent {
 
-  constructor(private router: Router) { }
+  constructor(
+    private mainCommService: MainCommunicationService,
+    private router: Router
+    ) { }
 
   displayPrivacyPolicy() {
     // this.mainComponent.currentlyDisplayed = "help";
     // this.mainComponent.currentlyClicked = "default";
+    this.mainCommService.displayPrivacyPolicyService('privacyPolicy');
   }
   
   logOut() {
