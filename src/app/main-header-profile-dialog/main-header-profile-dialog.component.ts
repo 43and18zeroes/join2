@@ -22,6 +22,7 @@ export class MainHeaderProfileDialogComponent {
   }
   
   logOut() {
+    this.mainCommService.displaySummaryService('summary');
     const auth = getAuth();
     signOut(auth).then(() => {
       this.router.navigateByUrl('/');

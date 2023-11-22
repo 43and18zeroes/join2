@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class MainCommunicationService {
   private displayBoard = new BehaviorSubject('default');
   private displayPrivacyPolicy = new BehaviorSubject('default');
+  private displaySummary = new BehaviorSubject('default');
 
   constructor() { }
 
@@ -26,5 +27,13 @@ export class MainCommunicationService {
 
   displayPrivacyPolicyService(privacyPolicy) {
     this.displayPrivacyPolicy.next(privacyPolicy);
+  }
+
+  get displaySummaryServiceObservable() {
+    return this.displaySummary.asObservable();
+  }
+
+  displaySummaryService(summary) {
+    this.displaySummary.next(summary);
   }
 }

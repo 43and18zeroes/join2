@@ -39,6 +39,11 @@ export class MainComponent implements OnInit {
         this.displayMainSection('privacyPolicy');
       }
     });
+    this.mainCommService.displaySummaryServiceObservable.subscribe((section) => {
+      if  (section !== 'default') {
+        this.displayMainSection('summary');
+      }
+    });
   }
 
   ngOnInit(): void {
