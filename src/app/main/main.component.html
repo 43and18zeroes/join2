@@ -1,5 +1,7 @@
 <aside>
+
     <img src="assets/img/main/sidebar/j-white.webp" alt="Main join logo" draggable="false">
+
     <nav>
         <div class="point" [class.active]="currentlyClicked === 'summary'" (click)="displayMainSection('summary')">
             <div class="spacer"></div><span class="material__symbols__outlined">space_dashboard</span>Summary
@@ -14,14 +16,16 @@
             <div class="spacer"></div><span class="material__symbols__outlined">account_box</span>Contacts
         </div>
     </nav>
+
     <div class="info">
-        <div class="point" [class.active]="currentlyClicked === 'summary'" (click)="displayMainSection('summary')">
-            <div class="spacer"></div><span class="material__symbols__outlined">space_dashboard</span>Summary
+        <div class="info__point" [class.active]="currentlyClicked === 'summary'" (click)="displayMainSection('summary')">
+            Summary
         </div>
-        <div class="point" [class.active]="currentlyClicked === 'board'" (click)="displayMainSection('board')">
-            <div class="spacer"></div><span class="material__symbols__outlined">view_week</span>Board
+        <div class="info__point" [class.active]="currentlyClicked === 'board'" (click)="displayMainSection('board')">
+            Board
         </div>
     </div>
+
 </aside>
 <main>
     <app-main-header></app-main-header>
@@ -38,8 +42,9 @@
         (click)="displayMainSection('summary')"><span class="material__symbols__outlined">space_dashboard</span>Summary
     </div>
     <div class="point no__select" [class.active]="currentlyClicked === 'board'" (click)="displayMainSection('board')">
-        <span class="material__symbols__outlined">view_week</span>Board</div>
-        <div class="point no__select" [class.active]="currentlyClicked === 'addTask'"
+        <span class="material__symbols__outlined">view_week</span>Board
+    </div>
+    <div class="point no__select" [class.active]="currentlyClicked === 'addTask'"
         (click)="displayMainSection('addTask')"><span class="material__symbols__outlined">add_box</span>Add Task</div>
     <div class="point no__select" [class.active]="currentlyClicked === 'contacts'"
         (click)="displayMainSection('contacts')"><span class="material__symbols__outlined">account_box</span>Contacts
