@@ -18,11 +18,11 @@
     </nav>
 
     <div class="info">
-        <div class="info__point" [class.active]="currentlyClicked === 'summary'" (click)="displayMainSection('summary')">
-            Summary
+        <div class="info__point" [class.active]="currentlyClicked === 'privacyPolicy'" (click)="displayMainSection('privacyPolicy')">
+            Privacy Policy
         </div>
-        <div class="info__point" [class.active]="currentlyClicked === 'board'" (click)="displayMainSection('board')">
-            Board
+        <div class="info__point" [class.active]="currentlyClicked === 'legalNotice'" (click)="displayMainSection('legalNotice')">
+            Legal Notice
         </div>
     </div>
 
@@ -35,6 +35,8 @@
         <app-main-board *ngIf="currentlyDisplayed === 'board'"></app-main-board>
         <app-main-contacts *ngIf="currentlyDisplayed === 'contacts'"></app-main-contacts>
         <app-info-help *ngIf="currentlyDisplayed === 'help'"></app-info-help>
+        <app-info-privacy-policy *ngIf="currentlyDisplayed === 'privacyPolicy'"></app-info-privacy-policy>
+        <app-info-legal-notice *ngIf="currentlyDisplayed === 'legalNotice'"></app-info-legal-notice>
     </section>
 </main>
 <footer>

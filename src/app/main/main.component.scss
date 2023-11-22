@@ -92,6 +92,15 @@ aside {
                 background-color: #2a3d59;
             }
         }
+
+        div.active {
+            background-color: var(--nav-darkblue-highlight);
+            color: var(--window-white);
+
+            &:hover {
+                background-color: var(--nav-darkblue-highlight);
+            }
+        }
     }
 }
 

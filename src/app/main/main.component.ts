@@ -16,10 +16,10 @@ export class MainComponent implements OnInit {
   allContactsData;
   allTasksData;
 
-  currentlyDisplayed: string = 'help';
-  currentlyClicked: string = 'default';
+  currentlyDisplayed: string = 'privacyPolicy';
+  currentlyClicked: string = 'privacyPolicy';
 
-  displayMainSection(condition: 'summary' | 'board' | 'addTask' | 'contacts') {
+  displayMainSection(condition: 'summary' | 'board' | 'addTask' | 'contacts' | 'privacyPolicy' | 'legalNotice') {
     this.currentlyDisplayed = condition;
     this.currentlyClicked = condition;
   }
