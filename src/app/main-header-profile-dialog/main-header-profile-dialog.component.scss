@@ -1,4 +1,33 @@
+// :host {
+
+// }
+
 .profile__dialog__container {
     background-color: var(--main-slate);
-    border-top-right-radius: 0;
+    color: #CDCDCD;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    div {
+        font-size: 20px;
+        display: flex;
+        justify-content: flex-start;
+        cursor: pointer;
+        padding: 0 30px;
+
+        &:hover {
+            background-color: #2a3d59;
+        }
+    }
+
+    .first {
+        padding-top: 20px;
+        padding-bottom: 15px;
+    }
+
+    .last {
+        padding-top: 15px;
+        padding-bottom: 20px;
+    }
 }
