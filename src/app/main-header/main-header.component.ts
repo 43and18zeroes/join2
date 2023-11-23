@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import { getAuth, signOut } from "firebase/auth";
 import { MainComponent } from '../main/main.component';
 import { Router } from '@angular/router';
@@ -14,8 +15,10 @@ import { MainHeaderProfileDialogComponent } from '../main-header-profile-dialog/
 export class MainHeaderComponent implements OnInit {
 
   currentUserInitials;
+  isSmallScreen = this.breakpointObserver.isMatched('(max-width: 992px)');
 
   constructor(
+    public breakpointObserver: BreakpointObserver,
     public dialog: MatDialog,
     public mainComponent: MainComponent,
     private router: Router,
@@ -32,25 +35,18 @@ export class MainHeaderComponent implements OnInit {
   }
 
   openProfileDialog() {
-    // this.saveBoardStatus();
-    // this.updateTasksStatus();
-    // const dialogRef = this.dialog.open(MainHeaderProfileDialogComponent, {
-    //   panelClass: 'profile__dialog'
-      // data: { taskStatus: taskStatus }
-    // });
-    // dialogRef.afterClosed().subscribe((result) => {
-      // this.allUsersData = this.userService.allUsersData;
-      // this.resetSearchFunction();
-      // this.allTasksData = this.userService.allTasksData;
-      // this.convertTasksDataToLists();
-      // this.sortTasksInColumns();
-    // });
-
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.position = {
-      top: '96px',
-      right: '30px'
-    };
+    if (this.isSmallScreen) {
+      dialogConfig.position = {
+        top: '80px',
+        right: '10px'
+      };
+    } else {
+      dialogConfig.position = {
+        top: '96px',
+        right: '30px'
+      };
+    }
     dialogConfig.panelClass = 'profile__dialog';
     const dialogRef = this.dialog.open(MainHeaderProfileDialogComponent, dialogConfig);
   }
