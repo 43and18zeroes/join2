@@ -61,4 +61,9 @@ export class MainSummaryComponent implements OnInit {
       }
     });
   }
+
+  displayBoard() {
+    this.mainComponent.currentlyDisplayed = 'board';
+    this.mainComponent.currentlyClicked = 'board';
+  }
 }
