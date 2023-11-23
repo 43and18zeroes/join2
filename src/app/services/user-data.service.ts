@@ -24,7 +24,7 @@ export class UserService {
 
   setAllDataToVarAndLocal() {
     this.setAllUsersDataToVarAndLocal();
-    // this.setAllContactsDataToVarAndLocal();
+    
     this.taskDataService.setAllTasksDataToVarAndLocal();
   }
 
@@ -74,32 +74,32 @@ export class UserService {
     });
   }
 
-  // getContactsDataMain() {
-  //   if (!this.allContactsData) {
-  //     this.allContactsData = JSON.parse(localStorage.getItem('allContactsData') || '[]');
-  //   }
-  //   this.sortContactsData();
-  // }
+  
+  
+  
+  
+  
+  
 
-  // sortContactsData() {
-  //   this.allContactsData.sort((a, b) => {
-  //     if (a.contactFirstName.toLowerCase() < b.contactFirstName.toLowerCase()) {
-  //       return -1;
-  //     }
-  //     if (a.contactFirstName.toLowerCase() > b.contactFirstName.toLowerCase()) {
-  //       return 1;
-  //     }
-  //     return 0;
-  //   });
-  // }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-  // addToContactsData(newContact) {
-  //   this.allContactsData.push(newContact);
-  //   localStorage.removeItem('allContactsData');
-  //   localStorage.setItem('allContactsData', JSON.stringify(this.allContactsData));
-  //   this.sortContactsData();
-  //   this.mergeUsersAndContactsData();
-  // }
+  
+  
+  
+  
+  
+  
+  
 
   addUser(addedUser) {
     this.addToUsersDataVar(addedUser);
@@ -117,7 +117,7 @@ export class UserService {
       .then((docRef) => {
         addedUser.firebaseId = docRef.id;
         this.lastUserAdded = addedUser;
-        // this.idLastUserAdded = addedUser.firebaseId;
+        
         return docRef.update({ firebaseId: docRef.id });
       })
       .then(() => {
@@ -208,52 +208,52 @@ export class UserService {
       });;
   }
 
-  // updateToContactsData(updatedContact) {
-  //   for (let i = 0; i < this.allContactsData.length; i++) {
-  //     if (this.allContactsData[i].contactEmailAddress === updatedContact.contactEmailAddress) {
-  //       this.allContactsData[i].contactColor = updatedContact.contactColor;
-  //       this.allContactsData[i].contactFirstName = updatedContact.contactFirstName;
-  //       this.allContactsData[i].contactSurName = updatedContact.contactSurName;
-  //       this.allContactsData[i].contactInitials = updatedContact.contactInitials;
-  //       this.allContactsData[i].contactName = updatedContact.contactName;
-  //       this.allContactsData[i].contactPhoneNumber = updatedContact.contactPhoneNumber;
-  //     }
-  //   }
-  //   this.deleteUnnecessaryValues(updatedContact);
-  //   this.updateContactBackend(updatedContact);
-  //   localStorage.removeItem('allContactsData');
-  //   localStorage.setItem('allContactsData', JSON.stringify(this.allContactsData));
-  //   this.sortContactsData();
-  //   this.mergeUsersAndContactsData();
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-  // }
+  
 
-  // deleteUnnecessaryValues(updatedContact) {
-  //   const keysToDelete = [
-  //     'userColor',
-  //     'userEmailAddress',
-  //     'userFirstName',
-  //     'userInitials',
-  //     'userName',
-  //     'userPhoneNumber',
-  //     'userSurName',
-  //     'updatedContact'
-  //   ]
-  //   keysToDelete.forEach(key => {
-  //     delete updatedContact[key]
-  //   })
-  //   return updatedContact;
-  // }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-  // updateContactBackend(updatedContact) {
-  //   this.firestore
-  //     .collection('contacts')
-  //     .doc(updatedContact.firebaseId)
-  //     .update(updatedContact);
-  // }
+  
+  
+  
+  
+  
+  
 
-  // updateToUsersData(updatedContact) {
-  // }
+  
+  
 
   filterCurrentUserData() {
     this.currentUserData = [];
@@ -270,82 +270,82 @@ export class UserService {
     localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData));
   }
 
-  // mergeUsersAndContactsData() {
-  //   const keyMappings = this.defineMapping();
-  //   const adjustedArray1 = this.adjustArray(keyMappings);
-  //   this.usersAndContactsMerged = adjustedArray1.concat(this.allUsersData);
-  //   this.sortUsersAndContactsMerged();
-  // }
+  
+  
+  
+  
+  
+  
 
-  // defineMapping() {
-  //   return {
-  //     contactInitials: 'userInitials',
-  //     contactSurName: 'userSurName',
-  //     contactName: 'userName',
-  //     contactFirstName: 'userFirstName',
-  //     contactColor: 'userColor',
-  //     contactEmailAddress: 'userEmailAddress',
-  //     contactPhoneNumber: 'userPhoneNumber'
-  //   };
-  // }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-  // adjustArray(keyMappings) {
-  //   return this.allContactsData.map(obj => {
-  //     const adjustedObj = {};
-  //     for (const key in obj) {
-  //       if (keyMappings[key]) {
-  //         adjustedObj[keyMappings[key]] = obj[key];
-  //       } else {
-  //         adjustedObj[key] = obj[key];
-  //       }
-  //     }
-  //     return adjustedObj;
-  //   });
-  // }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-  // sortUsersAndContactsMerged() {
-  //   this.usersAndContactsMerged.sort((a, b) => {
-  //     if (a.userFirstName.toLowerCase() < b.userFirstName.toLowerCase()) {
-  //       return -1;
-  //     }
-  //     if (a.userFirstName.toLowerCase() > b.userFirstName.toLowerCase()) {
-  //       return 1;
-  //     }
-  //     return 0;
-  //   });
-  // }
-
-
-
-  // generateUsersAndContactsLists() {
-  //   this.groupedContacts = {};
-  //   this.usersAndContactsMerged.forEach(index => {
-  //     const firstLetter = index.userFirstName.charAt(0).toUpperCase();
-  //     if (!this.groupedContacts[firstLetter]) {
-  //       this.groupedContacts[firstLetter] = [];
-  //     }
-  //     this.groupedContacts[firstLetter].push(index);
-  //   });
-  // }
-
-  // deleteUserOrContact(emailToDelete) {
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 
-  //   let deleteUserIndex = -1;
 
-  //   for (let i = 0; i < this.allUsersData.length; i++) {
-  //     if (this.allUsersData[i].userEmailAddress === emailToDelete) {
-  //       deleteUserIndex = i;
-  //       break; // Beendet die Schleife, wenn das Element gefunden wurde
-  //     }
-  //   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
-  //   if (deleteUserIndex !== -1) {
-  //     this.allUsersData.splice(deleteUserIndex, 1);
-  //     this.mergeUsersAndContactsData();
-  //     this.generateUsersAndContactsLists();
-  //   } else {
-  //     console.warn('Kein Nutzer mit der angegebenen E-Mail gefunden!');
-  //   }
-  // }
+  
+
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
 }
