@@ -54,10 +54,6 @@ export class MainDialogEditContactComponent {
     private userService: UserService
   ) { }
 
-  ngOnInit(): void {
-    console.log("user", this.user)
-  }
-
   closeDialog() {
     this.dialog.closeAll();
   }
@@ -69,8 +65,6 @@ export class MainDialogEditContactComponent {
       this.getUserData();
       this.userService.updateUser(this.user);
       this.addNewUserOutro();
-    } else {
-      console.log("form not valid");
     }
   }
 

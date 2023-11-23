@@ -141,7 +141,6 @@ export class MainContactsComponent {
         const elementArray = this.groupedContacts[key];
         for (const element of elementArray) {
           if (element.firebaseId === clickedContactDataID) {
-            console.log("findEditedContactData", element);
             this.clickedContactData = element;
             this.selectedContactId = `${key}-${elementArray.indexOf(element)}`;
             return;

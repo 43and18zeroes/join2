@@ -72,7 +72,6 @@ export class MainDialogAddTaskComponent {
   }
 
   ngOnInit(): void {
-    console.log("this.data.taskStatus", this.data.taskStatus)
     this.userService.sortUsersData();
     this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
@@ -360,12 +359,10 @@ export class MainDialogAddTaskComponent {
       .collection('tasks')
       .add(trimmedTask)
       .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
         trimmedTask.firebaseId = docRef.id;
         return docRef.update({ firebaseId: docRef.id });
       })
     .then(() => {
-      console.log('Document successfully updated with firebaseId!');
     })
     .catch((error) => {
       console.error("Error adding or updating document: ", error);

@@ -172,11 +172,9 @@ export class AuthSignUpComponent implements OnInit {
       .collection('users')
       .add(userData)
       .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
         return docRef.update({ firebaseId: docRef.id });
       })
       .then(() => {
-        console.log('Document successfully updated with firebaseId!');
       })
       .catch((error) => {
         console.error("Error adding or updating document: ", error);

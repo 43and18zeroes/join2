@@ -203,8 +203,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
         this.selectedUsers.push(user);
       } else if (!user.selected && index !== -1) {
         this.selectedUsers.splice(index, 1);
-      } else {
-        console.log("error")
       }
       this.taskData.assignedTo = this.selectedUsers.map(user => user.userEmailAddress);
     }
@@ -472,12 +470,10 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       .collection('tasks')
       .add(trimmedTask)
       .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
         trimmedTask.firebaseId = docRef.id;
         return docRef.update({ firebaseId: docRef.id });
       })
       .then(() => {
-        console.log('Document successfully updated with firebaseId!');
       })
       .catch((error) => {
         console.error("Error adding or updating document: ", error);
@@ -498,7 +494,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   async updateTaskSingleBackend() {
-    console.log("this.updatedTaskData", this.updatedTaskData)
     await this.firestore
       .collection('tasks')
       .doc(this.updatedTaskData.firebaseId)

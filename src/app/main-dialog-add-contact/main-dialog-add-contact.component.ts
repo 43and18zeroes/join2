@@ -70,8 +70,6 @@ export class MainDialogAddContactComponent {
       this.getUserData();
       this.userService.addUser(this.user);
       this.addNewUserOutro();
-    } else {
-      console.log("form not valid");
     }
   }
 

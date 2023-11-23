@@ -352,7 +352,7 @@ export class MainBoardComponent {
   //     // Execute
   //     return batch.commit();
   //   }).then(() => {
-  //     console.log('All tasks overwritten successfully');
+
   //   }).catch(err => {
   //     console.error('Error overwriting tasks: ', err);
   //   });
@@ -393,7 +393,6 @@ export class MainBoardComponent {
       const element = this.allTasksData[index];
       if (element.firebaseId === updatedTaskData.firebaseId) {
         this.allTasksData[index] = updatedTaskData;
-        console.log("this.allTasksData[index]", this.allTasksData[index])
       }
     }
     localStorage.removeItem('allTasksData');

@@ -115,14 +115,12 @@ export class UserService {
       .collection('users')
       .add(userData)
       .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
         addedUser.firebaseId = docRef.id;
         this.lastUserAdded = addedUser;
         // this.idLastUserAdded = addedUser.firebaseId;
         return docRef.update({ firebaseId: docRef.id });
       })
       .then(() => {
-        console.log('Document successfully updated with firebaseId!');
       })
       .catch((error) => {
         console.error("Error adding or updating document: ", error);
@@ -183,7 +181,6 @@ export class UserService {
         .doc(element.firebaseId)
         .update(element)
         .then(() => {
-          console.log('Aufgabe erfolgreich aktualisiert');
         })
         .catch((error) => {
           console.error('Fehler beim Aktualisieren der Aufgabe: ', error);
@@ -205,7 +202,6 @@ export class UserService {
       .doc(userToDelete.firebaseId)
       .delete()
       .then(() => {
-        console.log("Benutzer erfolgreich gelöscht!");
       })
       .catch((error) => {
         console.error("Fehler beim Löschen des Benutzers: ", error);
@@ -229,7 +225,7 @@ export class UserService {
   //   localStorage.setItem('allContactsData', JSON.stringify(this.allContactsData));
   //   this.sortContactsData();
   //   this.mergeUsersAndContactsData();
-  //   console.log("updated contact", updatedContact);
+
   // }
 
   // deleteUnnecessaryValues(updatedContact) {
@@ -257,7 +253,6 @@ export class UserService {
   // }
 
   // updateToUsersData(updatedContact) {
-  //   console.log("updatedContact", updatedContact);
   // }
 
   filterCurrentUserData() {
@@ -334,8 +329,7 @@ export class UserService {
   // }
 
   // deleteUserOrContact(emailToDelete) {
-  //   console.log("allUsersData", this.allUsersData);
-  //   console.log("allContactsData", this.allContactsData);
+
 
   //   let deleteUserIndex = -1;
 
