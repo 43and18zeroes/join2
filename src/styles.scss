@@ -141,6 +141,9 @@ body {
     transition: all 100ms ease-in;
     display: flex;
     align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-focus-ring-color: transparent;
+    outline: none;
 
     @media (width <=576px) {
         font-size: var(--fontsize-btn-mobile);
@@ -184,6 +187,9 @@ body {
     transition: all 100ms ease-in;
     display: flex;
     align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-focus-ring-color: transparent;
+    outline: none;
 
     @media (width <=576px) {
         font-size: var(--fontsize-btn-mobile);
