@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import { getAuth, signOut } from "firebase/auth";
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { MainComponent } from '../main/main.component';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user-data.service';
