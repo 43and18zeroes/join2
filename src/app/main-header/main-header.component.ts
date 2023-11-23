@@ -25,7 +25,6 @@ export class MainHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserInitials = this.userService.currentUserData.userInitials;
-    this.openProfileDialog()
   }
 
   displayHelp() {
