@@ -3,7 +3,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { MainComponent } from '../main/main.component';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user-data.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MainHeaderProfileDialogComponent } from '../main-header-profile-dialog/main-header-profile-dialog.component';
 
 @Component({
@@ -34,10 +34,10 @@ export class MainHeaderComponent implements OnInit {
   openProfileDialog() {
     // this.saveBoardStatus();
     // this.updateTasksStatus();
-    const dialogRef = this.dialog.open(MainHeaderProfileDialogComponent, {
-      panelClass: 'profile__dialog'
+    // const dialogRef = this.dialog.open(MainHeaderProfileDialogComponent, {
+    //   panelClass: 'profile__dialog'
       // data: { taskStatus: taskStatus }
-    });
+    // });
     // dialogRef.afterClosed().subscribe((result) => {
       // this.allUsersData = this.userService.allUsersData;
       // this.resetSearchFunction();
@@ -45,5 +45,13 @@ export class MainHeaderComponent implements OnInit {
       // this.convertTasksDataToLists();
       // this.sortTasksInColumns();
     // });
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.position = {
+      top: '96px',
+      right: '30px'
+    };
+    dialogConfig.panelClass = 'profile__dialog';
+    const dialogRef = this.dialog.open(MainHeaderProfileDialogComponent, dialogConfig);
   }
 }

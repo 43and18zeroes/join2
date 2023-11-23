@@ -298,7 +298,7 @@ body {
     background-color: white !important;
     border-radius: 30px !important;
 
-    
+
     /* ===== Scrollbar CSS ===== */
     /* Firefox */
     * {
@@ -338,6 +338,7 @@ body {
     height: 870px;
     background-color: white !important;
     border-radius: 30px !important;
+
     /* ===== Scrollbar CSS ===== */
     /* Firefox */
     * {
@@ -362,9 +363,9 @@ body {
     }
 }
 
-.profile__dialog {
-    
-}
+// .profile__dialog {
+//     z-index: 9999999999 !important;
+// }
 
 .mdc-dialog__surface {
     border-radius: 30px !important;
@@ -439,6 +440,7 @@ body {
         opacity: 1;
         // transform: scale(1);
     }
+
     100% {
         transform: translateY(0);
         opacity: 0;
