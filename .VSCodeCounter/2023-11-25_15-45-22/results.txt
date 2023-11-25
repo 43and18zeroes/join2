@@ -1,0 +1,172 @@
+Date : 2023-11-25 15:45:22
+Directory : h:\DA12\15_modul15\join2\src
+Total : 112 files,  10533 codes, 384 comments, 2217 blanks, all 13134 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| SCSS       |         22 |      5,766 |        102 |      1,216 |      7,084 |
+| TypeScript |         65 |      3,225 |        240 |        758 |      4,223 |
+| HTML       |         22 |      1,481 |         42 |        240 |      1,763 |
+| XML        |          2 |         42 |          0 |          2 |         44 |
+| JSON       |          1 |         19 |          0 |          1 |         20 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                       | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                          |        112 |     10,533 |        384 |      2,217 |     13,134 |
+| . (Files)                                                                                                                                  |          5 |        401 |         81 |         84 |        566 |
+| app                                                                                                                                        |        100 |     10,014 |        257 |      2,121 |     12,392 |
+| app (Files)                                                                                                                                |          6 |        141 |          0 |         17 |        158 |
+| app\auth-confirm-new-password                                                                                                              |          4 |        312 |          4 |         64 |        380 |
+| app\auth-log-in                                                                                                                            |          4 |        515 |          5 |         93 |        613 |
+| app\auth-password-mail                                                                                                                     |          4 |        297 |          7 |         64 |        368 |
+| app\auth-sign-up                                                                                                                           |          4 |        421 |         38 |         85 |        544 |
+| app\info-help                                                                                                                              |          4 |        101 |          0 |         20 |        121 |
+| app\info-legal-notice                                                                                                                      |          4 |         26 |          0 |         10 |         36 |
+| app\info-privacy-policy                                                                                                                    |          4 |         58 |          0 |         17 |         75 |
+| app\main                                                                                                                                   |          4 |        280 |          6 |         50 |        336 |
+| app\main-add-task                                                                                                                          |          4 |      1,224 |          5 |        228 |      1,457 |
+| app\main-board                                                                                                                             |          4 |        990 |        109 |        201 |      1,300 |
+| app\main-contacts                                                                                                                          |          4 |        573 |         15 |        112 |        700 |
+| app\main-dialog-add-contact                                                                                                                |          4 |        410 |          2 |         80 |        492 |
+| app\main-dialog-add-task                                                                                                                   |          4 |      1,258 |          6 |        229 |      1,493 |
+| app\main-dialog-edit-contact                                                                                                               |          4 |        415 |          6 |         81 |        502 |
+| app\main-dialog-task-details-and-edit                                                                                                      |          4 |         42 |          0 |         12 |         54 |
+| app\main-dialog-task-details-and-edit-edit-view                                                                                            |          4 |      1,323 |         37 |        254 |      1,614 |
+| app\main-dialog-task-details-and-edit-task-view                                                                                            |          4 |        393 |          8 |         79 |        480 |
+| app\main-header                                                                                                                            |          4 |        122 |          1 |         23 |        146 |
+| app\main-header-profile-dialog                                                                                                             |          4 |         77 |          4 |         16 |         97 |
+| app\main-summary                                                                                                                           |          4 |        662 |          2 |        135 |        799 |
+| app\services                                                                                                                               |         12 |        349 |          2 |        244 |        595 |
+| app\shared                                                                                                                                 |          2 |         25 |          0 |          7 |         32 |
+| app\shared (Files)                                                                                                                         |          1 |          9 |          0 |          4 |         13 |
+| app\shared\validators                                                                                                                      |          1 |         16 |          0 |          3 |         19 |
+| assets                                                                                                                                     |          3 |         61 |          0 |          3 |         64 |
+| assets\img                                                                                                                                 |          3 |         61 |          0 |          3 |         64 |
+| assets\img\favicon                                                                                                                         |          3 |         61 |          0 |          3 |         64 |
+| environments                                                                                                                               |          2 |         22 |         11 |          4 |         37 |
+| models                                                                                                                                     |          2 |         35 |         35 |          5 |         75 |
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                                   | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| h:\DA12\15_modul15\join2\src\app\app-routing.module.ts                                                                                     | TypeScript |         19 |          0 |          3 |         22 |
+| h:\DA12\15_modul15\join2\src\app\app.component.html                                                                                        | HTML       |          1 |          0 |          0 |          1 |
+| h:\DA12\15_modul15\join2\src\app\app.component.scss                                                                                        | SCSS       |          0 |          0 |          1 |          1 |
+| h:\DA12\15_modul15\join2\src\app\app.component.spec.ts                                                                                     | TypeScript |         31 |          0 |          5 |         36 |
+| h:\DA12\15_modul15\join2\src\app\app.component.ts                                                                                          | TypeScript |         12 |          0 |          4 |         16 |
+| h:\DA12\15_modul15\join2\src\app\app.module.ts                                                                                             | TypeScript |         78 |          0 |          4 |         82 |
+| h:\DA12\15_modul15\join2\src\app\auth-confirm-new-password\auth-confirm-new-password.component.html                                        | HTML       |         59 |          0 |         10 |         69 |
+| h:\DA12\15_modul15\join2\src\app\auth-confirm-new-password\auth-confirm-new-password.component.scss                                        | SCSS       |        205 |          4 |         40 |        249 |
+| h:\DA12\15_modul15\join2\src\app\auth-confirm-new-password\auth-confirm-new-password.component.spec.ts                                     | TypeScript |         18 |          0 |          6 |         24 |
+| h:\DA12\15_modul15\join2\src\app\auth-confirm-new-password\auth-confirm-new-password.component.ts                                          | TypeScript |         30 |          0 |          8 |         38 |
+| h:\DA12\15_modul15\join2\src\app\auth-log-in\auth-log-in.component.html                                                                    | HTML       |         65 |          0 |          8 |         73 |
+| h:\DA12\15_modul15\join2\src\app\auth-log-in\auth-log-in.component.scss                                                                    | SCSS       |        368 |          5 |         70 |        443 |
+| h:\DA12\15_modul15\join2\src\app\auth-log-in\auth-log-in.component.spec.ts                                                                 | TypeScript |         18 |          0 |          6 |         24 |
+| h:\DA12\15_modul15\join2\src\app\auth-log-in\auth-log-in.component.ts                                                                      | TypeScript |         64 |          0 |          9 |         73 |
+| h:\DA12\15_modul15\join2\src\app\auth-password-mail\auth-password-mail.component.html                                                      | HTML       |         44 |          0 |          9 |         53 |
+| h:\DA12\15_modul15\join2\src\app\auth-password-mail\auth-password-mail.component.scss                                                      | SCSS       |        205 |          7 |         41 |        253 |
+| h:\DA12\15_modul15\join2\src\app\auth-password-mail\auth-password-mail.component.spec.ts                                                   | TypeScript |         18 |          0 |          6 |         24 |
+| h:\DA12\15_modul15\join2\src\app\auth-password-mail\auth-password-mail.component.ts                                                        | TypeScript |         30 |          0 |          8 |         38 |
+| h:\DA12\15_modul15\join2\src\app\auth-sign-up\auth-sign-up.component.html                                                                  | HTML       |         68 |          0 |         12 |         80 |
+| h:\DA12\15_modul15\join2\src\app\auth-sign-up\auth-sign-up.component.scss                                                                  | SCSS       |        201 |          7 |         40 |        248 |
+| h:\DA12\15_modul15\join2\src\app\auth-sign-up\auth-sign-up.component.spec.ts                                                               | TypeScript |         18 |          0 |          6 |         24 |
+| h:\DA12\15_modul15\join2\src\app\auth-sign-up\auth-sign-up.component.ts                                                                    | TypeScript |        134 |         31 |         27 |        192 |
+| h:\DA12\15_modul15\join2\src\app\info-help\info-help.component.html                                                                        | HTML       |         52 |          0 |          6 |         58 |
+| h:\DA12\15_modul15\join2\src\app\info-help\info-help.component.scss                                                                        | SCSS       |         24 |          0 |          6 |         30 |
+| h:\DA12\15_modul15\join2\src\app\info-help\info-help.component.spec.ts                                                                     | TypeScript |         17 |          0 |          5 |         22 |
+| h:\DA12\15_modul15\join2\src\app\info-help\info-help.component.ts                                                                          | TypeScript |          8 |          0 |          3 |         11 |
+| h:\DA12\15_modul15\join2\src\app\info-legal-notice\info-legal-notice.component.html                                                        | HTML       |          1 |          0 |          1 |          2 |
+| h:\DA12\15_modul15\join2\src\app\info-legal-notice\info-legal-notice.component.scss                                                        | SCSS       |          0 |          0 |          1 |          1 |
+| h:\DA12\15_modul15\join2\src\app\info-legal-notice\info-legal-notice.component.spec.ts                                                     | TypeScript |         17 |          0 |          5 |         22 |
+| h:\DA12\15_modul15\join2\src\app\info-legal-notice\info-legal-notice.component.ts                                                          | TypeScript |          8 |          0 |          3 |         11 |
+| h:\DA12\15_modul15\join2\src\app\info-privacy-policy\info-privacy-policy.component.html                                                    | HTML       |          6 |          0 |          2 |          8 |
+| h:\DA12\15_modul15\join2\src\app\info-privacy-policy\info-privacy-policy.component.scss                                                    | SCSS       |         27 |          0 |          7 |         34 |
+| h:\DA12\15_modul15\join2\src\app\info-privacy-policy\info-privacy-policy.component.spec.ts                                                 | TypeScript |         17 |          0 |          5 |         22 |
+| h:\DA12\15_modul15\join2\src\app\info-privacy-policy\info-privacy-policy.component.ts                                                      | TypeScript |          8 |          0 |          3 |         11 |
+| h:\DA12\15_modul15\join2\src\app\main-add-task\main-add-task.component.html                                                                | HTML       |        160 |          0 |         26 |        186 |
+| h:\DA12\15_modul15\join2\src\app\main-add-task\main-add-task.component.scss                                                                | SCSS       |        717 |          2 |        155 |        874 |
+| h:\DA12\15_modul15\join2\src\app\main-add-task\main-add-task.component.spec.ts                                                             | TypeScript |         18 |          0 |          6 |         24 |
+| h:\DA12\15_modul15\join2\src\app\main-add-task\main-add-task.component.ts                                                                  | TypeScript |        329 |          3 |         41 |        373 |
+| h:\DA12\15_modul15\join2\src\app\main-board\main-board.component.html                                                                      | HTML       |        219 |         30 |         55 |        304 |
+| h:\DA12\15_modul15\join2\src\app\main-board\main-board.component.scss                                                                      | SCSS       |        427 |         20 |         86 |        533 |
+| h:\DA12\15_modul15\join2\src\app\main-board\main-board.component.spec.ts                                                                   | TypeScript |         18 |          0 |          6 |         24 |
+| h:\DA12\15_modul15\join2\src\app\main-board\main-board.component.ts                                                                        | TypeScript |        326 |         59 |         54 |        439 |
+| h:\DA12\15_modul15\join2\src\app\main-contacts\main-contacts.component.html                                                                | HTML       |         89 |          0 |         11 |        100 |
+| h:\DA12\15_modul15\join2\src\app\main-contacts\main-contacts.component.scss                                                                | SCSS       |        333 |         14 |         76 |        423 |
+| h:\DA12\15_modul15\join2\src\app\main-contacts\main-contacts.component.spec.ts                                                             | TypeScript |         18 |          0 |          6 |         24 |
+| h:\DA12\15_modul15\join2\src\app\main-contacts\main-contacts.component.ts                                                                  | TypeScript |        133 |          1 |         19 |        153 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-add-contact\main-dialog-add-contact.component.html                                            | HTML       |         75 |          0 |         13 |         88 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-add-contact\main-dialog-add-contact.component.scss                                            | SCSS       |        221 |          1 |         47 |        269 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-add-contact\main-dialog-add-contact.component.spec.ts                                         | TypeScript |         17 |          0 |          5 |         22 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-add-contact\main-dialog-add-contact.component.ts                                              | TypeScript |         97 |          1 |         15 |        113 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-add-task\main-dialog-add-task.component.html                                                  | HTML       |        172 |          0 |         25 |        197 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-add-task\main-dialog-add-task.component.scss                                                  | SCSS       |        731 |          2 |        158 |        891 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-add-task\main-dialog-add-task.component.spec.ts                                               | TypeScript |         17 |          0 |          5 |         22 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-add-task\main-dialog-add-task.component.ts                                                    | TypeScript |        338 |          4 |         41 |        383 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-edit-contact\main-dialog-edit-contact.component.html                                          | HTML       |         76 |          2 |         14 |         92 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-edit-contact\main-dialog-edit-contact.component.scss                                          | SCSS       |        226 |          1 |         48 |        275 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-edit-contact\main-dialog-edit-contact.component.spec.ts                                       | TypeScript |         17 |          0 |          5 |         22 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-edit-contact\main-dialog-edit-contact.component.ts                                            | TypeScript |         96 |          3 |         14 |        113 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit-edit-view\main-dialog-task-details-and-edit-edit-view.component.html    | HTML       |        168 |          2 |         26 |        196 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit-edit-view\main-dialog-task-details-and-edit-edit-view.component.scss    | SCSS       |        731 |          2 |        158 |        891 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit-edit-view\main-dialog-task-details-and-edit-edit-view.component.spec.ts | TypeScript |         17 |          0 |          5 |         22 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit-edit-view\main-dialog-task-details-and-edit-edit-view.component.ts      | TypeScript |        407 |         33 |         65 |        505 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit-task-view\main-dialog-task-details-and-edit-task-view.component.html    | HTML       |         69 |          5 |          9 |         83 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit-task-view\main-dialog-task-details-and-edit-task-view.component.scss    | SCSS       |        242 |          0 |         51 |        293 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit-task-view\main-dialog-task-details-and-edit-task-view.component.spec.ts | TypeScript |         17 |          0 |          5 |         22 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit-task-view\main-dialog-task-details-and-edit-task-view.component.ts      | TypeScript |         65 |          3 |         14 |         82 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit\main-dialog-task-details-and-edit.component.html                        | HTML       |          2 |          0 |          0 |          2 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit\main-dialog-task-details-and-edit.component.scss                        | SCSS       |          0 |          0 |          1 |          1 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit\main-dialog-task-details-and-edit.component.spec.ts                     | TypeScript |         17 |          0 |          5 |         22 |
+| h:\DA12\15_modul15\join2\src\app\main-dialog-task-details-and-edit\main-dialog-task-details-and-edit.component.ts                          | TypeScript |         23 |          0 |          6 |         29 |
+| h:\DA12\15_modul15\join2\src\app\main-header-profile-dialog\main-header-profile-dialog.component.html                                      | HTML       |          4 |          0 |          0 |          4 |
+| h:\DA12\15_modul15\join2\src\app\main-header-profile-dialog\main-header-profile-dialog.component.scss                                      | SCSS       |         24 |          2 |          6 |         32 |
+| h:\DA12\15_modul15\join2\src\app\main-header-profile-dialog\main-header-profile-dialog.component.spec.ts                                   | TypeScript |         17 |          0 |          5 |         22 |
+| h:\DA12\15_modul15\join2\src\app\main-header-profile-dialog\main-header-profile-dialog.component.ts                                        | TypeScript |         32 |          2 |          5 |         39 |
+| h:\DA12\15_modul15\join2\src\app\main-header\main-header.component.html                                                                    | HTML       |          8 |          0 |          0 |          8 |
+| h:\DA12\15_modul15\join2\src\app\main-header\main-header.component.scss                                                                    | SCSS       |         51 |          1 |         10 |         62 |
+| h:\DA12\15_modul15\join2\src\app\main-header\main-header.component.spec.ts                                                                 | TypeScript |         18 |          0 |          6 |         24 |
+| h:\DA12\15_modul15\join2\src\app\main-header\main-header.component.ts                                                                      | TypeScript |         45 |          0 |          7 |         52 |
+| h:\DA12\15_modul15\join2\src\app\main-summary\main-summary.component.html                                                                  | HTML       |         74 |          0 |          6 |         80 |
+| h:\DA12\15_modul15\join2\src\app\main-summary\main-summary.component.scss                                                                  | SCSS       |        509 |          2 |        115 |        626 |
+| h:\DA12\15_modul15\join2\src\app\main-summary\main-summary.component.spec.ts                                                               | TypeScript |         18 |          0 |          6 |         24 |
+| h:\DA12\15_modul15\join2\src\app\main-summary\main-summary.component.ts                                                                    | TypeScript |         61 |          0 |          8 |         69 |
+| h:\DA12\15_modul15\join2\src\app\main\main.component.html                                                                                  | HTML       |         47 |          3 |          4 |         54 |
+| h:\DA12\15_modul15\join2\src\app\main\main.component.scss                                                                                  | SCSS       |        165 |          0 |         31 |        196 |
+| h:\DA12\15_modul15\join2\src\app\main\main.component.spec.ts                                                                               | TypeScript |         18 |          0 |          6 |         24 |
+| h:\DA12\15_modul15\join2\src\app\main\main.component.ts                                                                                    | TypeScript |         50 |          3 |          9 |         62 |
+| h:\DA12\15_modul15\join2\src\app\services\auth.service.spec.ts                                                                             | TypeScript |         12 |          0 |          5 |         17 |
+| h:\DA12\15_modul15\join2\src\app\services\auth.service.ts                                                                                  | TypeScript |         14 |          0 |          5 |         19 |
+| h:\DA12\15_modul15\join2\src\app\services\board-comm.service.spec.ts                                                                       | TypeScript |         12 |          0 |          5 |         17 |
+| h:\DA12\15_modul15\join2\src\app\services\board-comm.service.ts                                                                            | TypeScript |         19 |          0 |         12 |         31 |
+| h:\DA12\15_modul15\join2\src\app\services\main-communication.service.spec.ts                                                               | TypeScript |         12 |          0 |          5 |         17 |
+| h:\DA12\15_modul15\join2\src\app\services\main-communication.service.ts                                                                    | TypeScript |         29 |          2 |          9 |         40 |
+| h:\DA12\15_modul15\join2\src\app\services\task-data.service.spec.ts                                                                        | TypeScript |         12 |          0 |          5 |         17 |
+| h:\DA12\15_modul15\join2\src\app\services\task-data.service.ts                                                                             | TypeScript |         24 |          0 |          6 |         30 |
+| h:\DA12\15_modul15\join2\src\app\services\task-details-comm.service.spec.ts                                                                | TypeScript |         12 |          0 |          5 |         17 |
+| h:\DA12\15_modul15\join2\src\app\services\task-details-comm.service.ts                                                                     | TypeScript |         16 |          0 |          6 |         22 |
+| h:\DA12\15_modul15\join2\src\app\services\user-data.service.spec.ts                                                                        | TypeScript |         12 |          0 |          5 |         17 |
+| h:\DA12\15_modul15\join2\src\app\services\user-data.service.ts                                                                             | TypeScript |        175 |          0 |        176 |        351 |
+| h:\DA12\15_modul15\join2\src\app\shared\shared.module.ts                                                                                   | TypeScript |          9 |          0 |          4 |         13 |
+| h:\DA12\15_modul15\join2\src\app\shared\validators\custom-validators.ts                                                                    | TypeScript |         16 |          0 |          3 |         19 |
+| h:\DA12\15_modul15\join2\src\assets\img\favicon\browserconfig.xml                                                                          | XML        |          9 |          0 |          1 |         10 |
+| h:\DA12\15_modul15\join2\src\assets\img\favicon\safari-pinned-tab.svg                                                                      | XML        |         33 |          0 |          1 |         34 |
+| h:\DA12\15_modul15\join2\src\assets\img\favicon\site.webmanifest                                                                           | JSON       |         19 |          0 |          1 |         20 |
+| h:\DA12\15_modul15\join2\src\environments\environment.prod.ts                                                                              | TypeScript |         11 |          0 |          1 |         12 |
+| h:\DA12\15_modul15\join2\src\environments\environment.ts                                                                                   | TypeScript |         11 |         11 |          3 |         25 |
+| h:\DA12\15_modul15\join2\src\index.html                                                                                                    | HTML       |         22 |          0 |          3 |         25 |
+| h:\DA12\15_modul15\join2\src\main.ts                                                                                                       | TypeScript |          9 |          0 |          4 |         13 |
+| h:\DA12\15_modul15\join2\src\models\contact.class.ts                                                                                       | TypeScript |          0 |         35 |          2 |         37 |
+| h:\DA12\15_modul15\join2\src\models\user.class.ts                                                                                          | TypeScript |         35 |          0 |          3 |         38 |
+| h:\DA12\15_modul15\join2\src\polyfills.ts                                                                                                  | TypeScript |          1 |         47 |          6 |         54 |
+| h:\DA12\15_modul15\join2\src\styles.scss                                                                                                   | SCSS       |        359 |         32 |         68 |        459 |
+| h:\DA12\15_modul15\join2\src\test.ts                                                                                                       | TypeScript |         10 |          2 |          3 |         15 |
+| Total                                                                                                                                      |            |     10,533 |        384 |      2,217 |     13,134 |
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

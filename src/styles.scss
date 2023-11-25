@@ -138,6 +138,17 @@ app-main {
     }
 }
 
+.android__height {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+
+    @media (width <=992px) {
+        flex-direction: column;
+        height: calc(100vh - 56px);
+    }
+}
+
 .btn__primary {
     padding: 15px 16px;
     background-color: var(--main-slate);
