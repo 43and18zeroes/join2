@@ -10,16 +10,11 @@ if (environment.production) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const isAndroid = /Android/i.test(navigator.userAgent);
-  // const element = document.getElementsByTagName('app-main')[0];
   if (isAndroid) {
-    const element = document.getElementsByTagName('app-main')[0];
-    if (element) {
-      element.classList.add('android__height');
+    const appMain = document.getElementsByTagName('app-main')[0];
+    if (appMain) {
+      appMain.classList.add('android__height');
     }
-  } else {
-    console.log('Anwendung wird nicht auf einem Android-Gerät ausgeführt');
-    // const element = document.getElementsByTagName('app-main')[0];
-    // element.classList.add('android__height');
   }
 });
 
