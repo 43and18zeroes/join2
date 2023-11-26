@@ -49,6 +49,10 @@
                 padding-right: 14px;
             }
 
+            @media (width <=992px) {
+                padding-right: 5px;
+            }
+
             button {
                 width: 100%;
                 display: flex;
@@ -71,6 +75,14 @@
             @media (width <=1100px) {
                 width: 100%;
                 padding-right: 15px;
+            }
+
+            @media (width <=992px) {
+
+                &::-webkit-scrollbar {
+                    scrollbar-width: none;
+                    width: 0;
+                }
             }
 
             .data__loop {
@@ -123,6 +135,10 @@
                             font-size: 19px;
                             letter-spacing: -0.5px;
                             line-height: 0.98;
+
+                            @media (width <=450px) {
+                                margin-left: 16px;
+                            }
 
                             .entry__name {
                                 margin-bottom: 4px;
