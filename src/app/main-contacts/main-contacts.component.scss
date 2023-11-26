@@ -95,6 +95,11 @@
                     align-items: center;
                     font-size: var(--fontsize-body);
                     border-bottom: 1px solid #D1D1D1;
+
+                    @media (width <=992px) {
+                        margin-right: 10px;
+                        padding-left: 25px;
+                    }
                 }
 
                 .alphabet__body {
@@ -126,6 +131,10 @@
                             justify-content: center;
                             align-items: center;
                             margin-left: 26px;
+
+                            @media (width <=992px) {
+                                margin-left: 16px;
+                            }
                         }
 
                         .entry__right {
