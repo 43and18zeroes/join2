@@ -29,7 +29,7 @@
 </aside>
 <main>
     <app-main-header></app-main-header>
-    <section>
+    <section #mainSection>
         <app-main-summary *ngIf="currentlyDisplayed === 'summary'"></app-main-summary>
         <app-main-add-task *ngIf="currentlyDisplayed === 'addTask'"></app-main-add-task>
         <app-main-board *ngIf="currentlyDisplayed === 'board'"></app-main-board>
