@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { emailValidator } from '../shared/validators/custom-validators';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-auth-password-mail',
@@ -16,17 +17,29 @@ export class AuthPasswordMailComponent implements OnInit {
 
   @ViewChild('authSuccess', { static: false }) authSuccess: ElementRef;
 
-  constructor(private router: Router) { }
+  constructor
+  (
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     
   }
 
   onSubmit() {
-    this.authSuccessAnimation();
-    setTimeout(() => {
-      this.router.navigate(['/auth-confirm-new-password']);
-    }, 1600);
+    if (this.passwordMailForm.valid) {
+      this.authService.sendPasswordResetEmail(this.passwordMailForm.value.passwordMailEmail)
+        .then(() => {
+          this.authSuccessAnimation();
+          setTimeout(() => {
+            this.router.navigate(['/auth-confirm-new-password']);
+          }, 1600);
+        })
+        .catch((error) => {
+          console.log("error")
+        });
+    }
   }
 
   authSuccessAnimation() {

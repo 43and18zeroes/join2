@@ -15,4 +15,8 @@ export class AuthService {
   signIn(user : {email: string, password: string}) {
     return this.afs.signInWithEmailAndPassword(user.email, user.password);
   }
+
+  async sendPasswordResetEmail(email: string): Promise<void> {
+    return this.afs.sendPasswordResetEmail(email);
+  }
 }
