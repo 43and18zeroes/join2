@@ -33,7 +33,7 @@ export class AuthPasswordMailComponent implements OnInit {
         .then(() => {
           this.authSuccessAnimation();
           setTimeout(() => {
-            this.router.navigate(['/auth-confirm-new-password']);
+            this.router.navigate(['/']);
           }, 1600);
         })
         .catch((error) => {
