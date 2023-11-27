@@ -19,6 +19,7 @@ export class AuthPasswordMailComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
   onSubmit() {
