@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { getAuth } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthService {
     return this.afs.signInWithEmailAndPassword(user.email, user.password);
   }
 
-  async sendPasswordResetEmail(email: string): Promise<void> {
+  sendPasswordResetEmail(email: string): Promise<void> {
     return this.afs.sendPasswordResetEmail(email);
   }
 }

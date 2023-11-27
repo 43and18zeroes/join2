@@ -18,18 +18,18 @@ export class AuthPasswordMailComponent implements OnInit {
   @ViewChild('authSuccess', { static: false }) authSuccess: ElementRef;
 
   constructor
-  (
-    private authService: AuthService,
-    private router: Router
-  ) { }
+    (
+      private authService: AuthService,
+      private router: Router
+    ) { }
 
   ngOnInit(): void {
-    
   }
 
   onSubmit() {
     if (this.passwordMailForm.valid) {
-      this.authService.sendPasswordResetEmail(this.passwordMailForm.value.passwordMailEmail)
+      const email = this.passwordMailForm.value.passwordMailEmail;
+      this.authService.sendPasswordResetEmail(email)
         .then(() => {
           this.authSuccessAnimation();
           setTimeout(() => {
@@ -37,7 +37,6 @@ export class AuthPasswordMailComponent implements OnInit {
           }, 1600);
         })
         .catch((error) => {
-          console.log("error")
         });
     }
   }
