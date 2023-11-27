@@ -106,8 +106,10 @@ aside {
 
 main {
     flex: 1;
+    background-color: var(--window-white);
 
     app-main-header {
+        max-width: 1562px;
         height: 96px;
         display: flex;
         align-items: center;
