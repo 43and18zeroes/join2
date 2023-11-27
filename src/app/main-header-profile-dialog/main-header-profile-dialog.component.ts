@@ -18,8 +18,6 @@ export class MainHeaderProfileDialogComponent {
     ) { }
 
   displayPrivacyPolicy() {
-    // this.mainComponent.currentlyDisplayed = "help";
-    // this.mainComponent.currentlyClicked = "default";
     this.mainCommService.displayPrivacyPolicyService('privacyPolicy');
     this.dialog.closeAll();
   }
