@@ -1,4 +1,4 @@
-import { USERCOLORS } from '../userColors.constant';
+import { USERCOLORS } from '../usercolors.constant';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { User } from 'src/models/user.class';
