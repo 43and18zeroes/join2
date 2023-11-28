@@ -122,21 +122,27 @@ export class AuthSignUpComponent implements OnInit {
     }, 1600);
   }
 
-  createNewUserData() {
+  prepareUserData() {
     const userData = this.user.toJSON();
     delete userData.firebaseId;
-
+    return userData;
+  }
+  
+  addUserToFirestore(userData) {
     this.firestore
       .collection('users')
       .add(userData)
       .then((docRef) => {
         return docRef.update({ firebaseId: docRef.id });
       })
-      .then(() => {
-      })
       .catch((error) => {
         console.error("Error adding or updating document: ", error);
       });
+  }
+  
+  createNewUserData() {
+    const userData = this.prepareUserData();
+    this.addUserToFirestore(userData);
   }
 
   authSuccessAnimation() {
@@ -145,5 +151,4 @@ export class AuthSignUpComponent implements OnInit {
       this.authSuccess.nativeElement.style.display = "none";
     }, 1450);
   }
-
 }
