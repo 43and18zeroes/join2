@@ -47,7 +47,6 @@ export class AuthSignUpComponent implements OnInit {
 
   signUp() {
     const userData = this.getUserData();
-
     this.authService.signUp(userData).then((res: any) => {
       this.populateUser(userData);
       this.processSuccessfulSignup();
