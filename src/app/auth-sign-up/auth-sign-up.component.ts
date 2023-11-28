@@ -78,22 +78,31 @@ export class AuthSignUpComponent implements OnInit {
     this.emailAdressAlreadyExists = true;
   }
 
-  getUserData() {
+  extractUserData() {
     const userName = this.signUpForm.value.signUpUserName;
     const userFirstName = userName.split(' ')[0];
     const userSurName = userName.split(' ')[1];
     const userInitials = userFirstName.charAt(0).toUpperCase() + userSurName.charAt(0).toUpperCase();
-    const type = "userSignUp"
-
+    const type = "userSignUp";
+  
+    return { userName, userFirstName, userSurName, userInitials, type };
+  }
+  
+  createUserDataObject() {
+    const { userName, userFirstName, userSurName, userInitials, type } = this.extractUserData();
     return {
-      userName: userName,
-      userFirstName: userFirstName,
-      userSurName: userSurName,
-      userInitials: userInitials,
+      userName,
+      userFirstName,
+      userSurName,
+      userInitials,
       email: this.signUpForm.value.signUpEmail,
       password: this.signUpForm.value.signUpPassword,
-      type: type
+      type
     };
+  }
+  
+  getUserData() {
+    return this.createUserDataObject();
   }
 
   private generateColorFromInitials(initials: string): string {
