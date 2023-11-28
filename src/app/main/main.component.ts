@@ -15,8 +15,8 @@ export class MainComponent implements OnInit {
   allUsersData;
   allContactsData;
   allTasksData;
+  
   @ViewChild('mainSection') mainSection: ElementRef;
-
 
   currentlyDisplayed: string = 'summary';
   currentlyClicked: string = 'summary';
@@ -30,16 +30,28 @@ export class MainComponent implements OnInit {
     private mainCommService: MainCommunicationService,
     public taskDataService: TaskDataService
   ) {
+    this.subscribeBoardObservable();
+    this.subscribePrivacyPolicyServiceObservable();
+    this.subscribeSummaryServiceObservable();
+  }
+
+  subscribeBoardObservable() {
     this.mainCommService.displayBoardObservable.subscribe((section) => {
       if  (section !== 'default') {
         this.displayMainSection('board');
       }
     });
+  }
+
+  subscribePrivacyPolicyServiceObservable() {
     this.mainCommService.displayPrivacyPolicyServiceObservable.subscribe((section) => {
       if  (section !== 'default') {
         this.displayMainSection('privacyPolicy');
       }
     });
+  }
+
+  subscribeSummaryServiceObservable() {
     this.mainCommService.displaySummaryServiceObservable.subscribe((section) => {
       if  (section !== 'default') {
         this.displayMainSection('summary');
@@ -49,10 +61,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUsersDataMain();
-    // this.userService.getContactsDataMain();
     this.taskDataService.getTasksDataMain();
-    // this.userService.mergeUsersAndContactsData();
-    // this.userService.generateUsersAndContactsLists();
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
     }, 2500);
@@ -64,10 +73,6 @@ export class MainComponent implements OnInit {
       const isAndroid = /Android/i.test(navigator.userAgent);
       if (isAndroid) {
         this.mainSection.nativeElement.classList.add('android__height');
-        // const appMain = document.getElementsByTagName('app-main')[0];
-        // if (appMain) {
-        //   appMain.classList.add('android__height');
-        // }
       }
     });
   }
