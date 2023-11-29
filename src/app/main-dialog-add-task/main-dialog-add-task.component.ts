@@ -79,6 +79,10 @@ export class MainDialogAddTaskComponent {
     this.userService.sortUsersData();
     this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
+    this.initListeners();
+  }
+
+  initListeners() {
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
       if (!this.assignSelectRef.nativeElement.contains(event.target)) {
         this.assignCloseDropdown();
