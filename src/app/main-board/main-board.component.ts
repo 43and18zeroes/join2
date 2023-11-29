@@ -323,14 +323,18 @@ export class MainBoardComponent {
     });
     dialogRef.componentInstance.taskData = { ...taskData };
     dialogRef.afterClosed().subscribe((result) => {
-      this.resetSearchFunction();
+      this.taskDetailsClosed();
+    });
+  }
+
+  taskDetailsClosed() {
+    this.resetSearchFunction();
       if (this.boardCommService.subTaskCompletedChange) {
         this.updateSingleTaskVar();
         this.setNewTasksDataToLocal();
         this.updateSingleTaskBackend();
         this.boardCommService.subTaskCompletedChange = false;
       }
-    });
   }
 
   updateSingleTaskVar() {
