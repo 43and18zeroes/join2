@@ -123,7 +123,7 @@ export class MainBoardComponent {
       this.taskCards.forEach((taskCard: ElementRef) => {
         const title = taskCard.nativeElement.querySelector('.task__title').innerText.toLowerCase();
         const description = taskCard.nativeElement.querySelector('.task__description').innerText.toLowerCase();
-    
+
         if (title.includes(searchTerm) || description.includes(searchTerm)) {
           taskCard.nativeElement.classList.remove('d-none');
         }
@@ -270,6 +270,13 @@ export class MainBoardComponent {
   }
 
   backendTasksColumnOrder() {
+    this.backendOrderTodo();
+    this.backendOrderInprogress();
+    this.backendOrderAwaitfeedback();
+    this.backendOrderDone();
+  }
+
+  backendOrderTodo() {
     for (let index = 0; index < this.todo.length; index++) {
       const element = this.todo[index];
       this.firestore
@@ -277,7 +284,9 @@ export class MainBoardComponent {
         .doc(element.firebaseId)
         .update(element);
     }
+  }
 
+  backendOrderInprogress() {
     for (let index = 0; index < this.inprogress.length; index++) {
       const element = this.inprogress[index];
       this.firestore
@@ -285,7 +294,9 @@ export class MainBoardComponent {
         .doc(element.firebaseId)
         .update(element);
     }
+  }
 
+  backendOrderAwaitfeedback() {
     for (let index = 0; index < this.awaitfeedback.length; index++) {
       const element = this.awaitfeedback[index];
       this.firestore
@@ -293,7 +304,9 @@ export class MainBoardComponent {
         .doc(element.firebaseId)
         .update(element);
     }
+  }
 
+  backendOrderDone() {
     for (let index = 0; index < this.done.length; index++) {
       const element = this.done[index];
       this.firestore
