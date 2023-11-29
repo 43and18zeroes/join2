@@ -1,6 +1,5 @@
 import { Component, ElementRef, Inject, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { MainComponent } from '../main/main.component';
 import { MainCommunicationService } from '../services/main-communication.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
@@ -17,36 +16,37 @@ import { TaskDataService } from '../services/task-data.service';
 })
 export class MainDialogAddTaskComponent {
 
+  @ViewChild('assignSelectedOptionRef') assignSelectedOptionRef: ElementRef;
+  @ViewChild('assignSelectRef') assignSelectRef: ElementRef;
+  @ViewChild('categorySelect') categorySelect: ElementRef;
+  @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
+  @ViewChild('subTasksInput') subTasksInput: ElementRef;
+  @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
+  @ViewChild('submitBtn') submitBtn: ElementRef;
+
   allUsersData;
   currentUserData;
   addTaskForm: FormGroup;
   showAssignedDropdown: boolean = false;
-  @ViewChild('assignSelectedOptionRef') assignSelectedOptionRef: ElementRef;
-  @ViewChild('assignSelectRef') assignSelectRef: ElementRef;
-  private globalClickListener: Function;
   selectedUsers: any[] = [];
   today: string;
   selectedPriority: string;
   showCategoryDropdown: boolean = false;
-  @ViewChild('categorySelect') categorySelect: ElementRef;
-  @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
   subTasksInputHasFocus: boolean = false;
-  @ViewChild('subTasksInput') subTasksInput: ElementRef;
   subTasksInputEmpty: boolean = true;
   subTasksMaxReached: boolean = false;
   subTasksArray: string[] = [];
   subTaskCurrentlyEditing: string | null = null;
-  @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
-  @ViewChild('submitBtn') submitBtn: ElementRef;
   formSubmitted: boolean = false;
   titleValid: boolean = true;
   dateValid: boolean = true;
   categoryValid: boolean = true;
 
+  private globalClickListener: Function;
+
   constructor(
     private firestore: AngularFirestore,
     private fb: FormBuilder,
-    // public mainComponent: MainComponent,
     private mainCommService: MainCommunicationService,
     private renderer: Renderer2,
     public dialog: MatDialog,
