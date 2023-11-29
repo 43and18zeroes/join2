@@ -51,6 +51,11 @@ export class MainAddTaskComponent {
     private userService: UserService,
     public taskDataService: TaskDataService
   ) {
+    this.initializeTaskForm();
+    this.today = this.getTodaysDate();
+  }
+
+  private initializeTaskForm(): void {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
@@ -63,13 +68,16 @@ export class MainAddTaskComponent {
       taskStatus: 'todo',
       taskColumnOrder: 0
     });
-    this.today = this.getTodaysDate();
   }
 
   ngOnInit(): void {
     this.userService.sortUsersData();
     this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
+    this.initListeners();
+  }
+
+  initListeners() {
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
       if (!this.assignSelectRef.nativeElement.contains(event.target)) {
         this.assignCloseDropdown();
