@@ -357,24 +357,21 @@ export class MainBoardComponent {
       .update(updatedTaskData);
   }
 
-  async deleteTask() {
+  deleteTask() {
     this.displayDeletionSuccessfulAnimation();
-    const taskToDelete = this.boardCommService.taskToDelete;
+    this.deleteSingleTaskBackend();
+  }
+
+  async deleteSingleTaskBackend() {
     for (let index = 0; index < this.allTasksData.length; index++) {
       const element = this.allTasksData[index];
-      if (element.firebaseId === taskToDelete.firebaseId) {
+      if (element.firebaseId === this.boardCommService.taskToDelete.firebaseId) {
         this.allTasksData.splice(index, 1);
         try {
-          await this.firestore
-            .collection('tasks')
-            .doc(element.firebaseId)
-            .delete();
-
+          await this.firestore.collection('tasks').doc(element.firebaseId).delete();
           this.reloadAfterNewTask();
           this.setNewTasksDataToLocal();
-        } catch {
-          console.error("Error deleting document: ", Error);
-        }
+        } catch { console.error("Error deleting document: ", Error); }
       }
     }
   }
