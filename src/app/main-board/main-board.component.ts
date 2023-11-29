@@ -16,21 +16,23 @@ import { TaskDataService } from '../services/task-data.service';
 })
 export class MainBoardComponent {
 
+  @ViewChild('mainContainer') mainContainer: ElementRef;
+  @ViewChildren('sectionBody') sectionBodys: QueryList<ElementRef>;
+  @ViewChild('searchBar') searchBar: ElementRef;
+  @ViewChildren('taskCard') taskCards: QueryList<ElementRef>;
+
   dropListOrienatation: DropListOrientation;
   dragDelay: number;
-
   allTasksData;
   allUsersData;
-
   todo = [];
   inprogress = [];
   awaitfeedback = [];
   done = [];
-
   subTasksComplete;
   subTasksAmount;
-
   dragActive: boolean = false;
+  displayDeletionAnimation: boolean = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -38,14 +40,6 @@ export class MainBoardComponent {
     this.dropListOrientation();
     this.determineDragDelay();
   }
-
-  @ViewChild('mainContainer') mainContainer: ElementRef;
-  @ViewChildren('sectionBody') sectionBodys: QueryList<ElementRef>;
-
-  @ViewChild('searchBar') searchBar: ElementRef;
-  @ViewChildren('taskCard') taskCards: QueryList<ElementRef>;
-
-  displayDeletionAnimation: boolean = false;
 
   constructor(
     private firestore: AngularFirestore,
