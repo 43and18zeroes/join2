@@ -1,10 +1,9 @@
 import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDrag, CdkDropList, CdkDragStart, DropListOrientation } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragStart, DropListOrientation } from '@angular/cdk/drag-drop';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from '../services/user-data.service';
 import { Router, NavigationStart } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { MainAddTaskComponent } from '../main-add-task/main-add-task.component';
 import { MainDialogAddTaskComponent } from '../main-dialog-add-task/main-dialog-add-task.component';
 import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
 import { BoardCommService } from '../services/board-comm.service';
@@ -139,8 +138,6 @@ export class MainBoardComponent {
   }
 
   openAddTaskDialog(taskStatus) {
-    // this.saveBoardStatus();
-    // this.updateTasksStatus();
     const dialogRef = this.dialog.open(MainDialogAddTaskComponent, {
       panelClass: 'popup__task__add',
       data: { taskStatus: taskStatus }
@@ -148,9 +145,6 @@ export class MainBoardComponent {
     dialogRef.afterClosed().subscribe((result) => {
       this.allUsersData = this.userService.allUsersData;
       this.resetSearchFunction();
-      // this.allTasksData = this.userService.allTasksData;
-      // this.convertTasksDataToLists();
-      // this.sortTasksInColumns();
     });
   }
 
@@ -233,7 +227,7 @@ export class MainBoardComponent {
   }
 
   onDragStarted(event: CdkDragStart, item: string) {
-    this.dragActive = true; // Setzt die Variable auf das aktuelle Element
+    this.dragActive = true;
     this.resetSearchFunction();
   }
 
@@ -245,13 +239,6 @@ export class MainBoardComponent {
     this.setNewTasksDataToLocal();
     this.backendTasksColumnOrder();
   }
-
-  // saveBoardStatus() {
-  // this.updateTasksStatus();
-  // this.newAllTasksData = [...this.todo, ...this.inprogress];
-  // this.setNewTasksDataToLocal(this.newAllTasksData);
-  // this.overwriteAllTasksDataBackend(this.newAllTasksData);
-  // }
 
   renumberTasksColumnOrder() {
     this.renumberTasksColumnOrderForList(this.todo, "todo");
@@ -314,52 +301,7 @@ export class MainBoardComponent {
     }
   }
 
-  // updateTasksStatus() {
-  //   this.updateStatusForList(this.todo, "todo");
-  //   this.updateStatusForList(this.inprogress, "inprogress");
-  // }
-
-  // updateStatusForList(list, status) {
-  //   let taskColumnOrder = 1;
-  //   list.forEach(task => {
-  //     task.taskStatus = status;
-  //     task.taskColumnOrder = taskColumnOrder;
-  //     taskColumnOrder++;
-  //   });
-  // }
-
-  // setNewTasksDataToLocal(newAllTasksData) {
-  //   localStorage.removeItem('allTasksData');
-  //   localStorage.setItem('allTasksData', JSON.stringify(newAllTasksData));
-  // }
-
-  // overwriteAllTasksDataBackend(newAllTasksData) {
-  //   const tasksCollection = this.firestore.collection('tasks');
-
-  //   // Delete tasks collection backend
-  //   tasksCollection.get().toPromise().then(querySnapshot => {
-  //     const batch = this.firestore.firestore.batch();
-  //     querySnapshot.docs.forEach(doc => {
-  //       batch.delete(doc.ref);
-  //     });
-
-  //     // Add new tasks
-  //     newAllTasksData.forEach(task => {
-  //       const docRef = tasksCollection.ref.doc(); // Neue ID für jedes Dokument erstellen
-  //       batch.set(docRef, task);
-  //     });
-
-  //     // Execute
-  //     return batch.commit();
-  //   }).then(() => {
-
-  //   }).catch(err => {
-  //     console.error('Error overwriting tasks: ', err);
-  //   });
-  // }
-
   openTaskDetails(taskData) {
-    // const clickedContactDataID = clickedContactData.firebaseId;
     const dialogRef = this.dialog.open(MainDialogTaskDetailsAndEditComponent, {
       panelClass: 'popup__task__details',
       autoFocus: false
@@ -369,21 +311,10 @@ export class MainBoardComponent {
       this.resetSearchFunction();
       if (this.boardCommService.subTaskCompletedChange) {
         this.updateSingleTaskVar();
-        // this.reloadAfterNewTask();
         this.setNewTasksDataToLocal();
         this.updateSingleTaskBackend();
         this.boardCommService.subTaskCompletedChange = false;
       }
-      // if (this.userService.userDeletedSuccessfully) {
-      //   this.showContactDetails = false;
-      //   this.displayDeletionSuccessfulAnimation();
-      // }
-      // if (this.userService.userUpdatedSuccessfully || this.userService.userDeletedSuccessfully) {
-      //   this.generateUsersLists();
-      //   this.findEditedContactData(clickedContactDataID);
-      // }
-      // this.userService.userUpdatedSuccessfully = false;
-      // this.userService.userDeletedSuccessfully = false;
     });
   }
 
