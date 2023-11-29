@@ -56,6 +56,11 @@ export class MainDialogAddTaskComponent {
     public dialogRef: MatDialogRef<MainDialogAddTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    this.initializeTaskForm();
+    this.today = this.getTodaysDate();
+  }
+
+  private initializeTaskForm(): void {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
@@ -68,7 +73,6 @@ export class MainDialogAddTaskComponent {
       taskStatus: this.data.taskStatus,
       taskColumnOrder: 0
     });
-    this.today = this.getTodaysDate();
   }
 
   ngOnInit(): void {
