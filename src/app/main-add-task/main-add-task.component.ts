@@ -354,10 +354,7 @@ export class MainAddTaskComponent {
 
   sendNewTaskToBackend(trimmedTask) {
     delete trimmedTask.firebaseId;
-    this.firestore
-      .collection('tasks')
-      .add(trimmedTask)
-      .then((docRef) => {
+    this.firestore.collection('tasks').add(trimmedTask).then((docRef) => {
         trimmedTask.firebaseId = docRef.id;
         return docRef.update({ firebaseId: docRef.id });
       })
@@ -366,14 +363,12 @@ export class MainAddTaskComponent {
     .catch((error) => {
       console.error("Error adding or updating document: ", error);
     });
-
     this.clearForm();
   }
 
   onSubmitOutro() {
     this.submitBtn.nativeElement.classList.add("btn__success");
     setTimeout(() => {
-      // this.mainComponent.displayMainSection('board');
       this.mainCommService.displayMainBoard('board');
     }, 1500);
   }
