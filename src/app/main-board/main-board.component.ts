@@ -143,10 +143,18 @@ export class MainBoardComponent {
   }
 
   convertTasksDataToLists() {
+    this.clearTaskLists();
+    this.determineTaskStatus();
+  }
+
+  clearTaskLists() {
     this.todo = [];
     this.inprogress = [];
     this.awaitfeedback = [];
     this.done = [];
+  }
+
+  determineTaskStatus() {
     this.allTasksData.forEach(task => {
       switch (task.taskStatus) {
         case "todo":
