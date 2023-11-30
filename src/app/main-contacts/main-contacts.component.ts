@@ -11,6 +11,11 @@ import { MainDialogEditContactComponent } from '../main-dialog-edit-contact/main
 })
 export class MainContactsComponent {
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.isLargeScreen = window.innerWidth > 1100;
+  }
+
   alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');;
   groupedContacts;
   currentUserData;
@@ -18,23 +23,17 @@ export class MainContactsComponent {
   selectedContactId: string | null = null;
   showContactDetails: boolean = false;
   clickedContactData;
-
-  isLargeScreen: boolean = window.innerWidth > 1100;
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.isLargeScreen = window.innerWidth > 1100;
-  }
-
   displayDeletionAnimation: boolean = false;
+  isLargeScreen: boolean = window.innerWidth > 1100;  
 
-  constructor(public dialog: MatDialog,
-    private userService: UserService) { }
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserService
+    ) { }
 
   ngOnInit(): void {
     this.currentUserData = this.userService.currentUserData;
     this.generateUsersLists();
-
-    // this.displayContactDetails(this.groupedContacts['A'][0], 'A', 0);
   }
 
   generateUsersLists() {
