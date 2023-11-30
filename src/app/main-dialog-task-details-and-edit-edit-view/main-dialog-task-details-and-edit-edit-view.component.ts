@@ -386,24 +386,32 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   onSubmit(): void {
     this.checkRequiredInputs();
     if (this.editTaskForm.valid) {
-      this.formSubmitted = true;
-      this.updatedTaskData.title = this.taskData.title;
-      this.updatedTaskData.description = this.taskData.description;
-      this.updatedTaskData.assignedTo = this.taskData.assignedTo;
-      this.updatedTaskData.dueDate = this.editTaskForm.value.dueDate;
-      this.updatedTaskData.priority = this.editTaskForm.value.priority;
-      this.updatedTaskData.category = this.editTaskForm.value.category;
-      this.updatedTaskData.subTasks = this.taskData.subTasks;
-      const trimmedTask = this.trimTask();
-      this.addAssignedTo(trimmedTask)
-      if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
-      this.updatedTaskData = trimmedTask;
+      this.updateTaskArray();
+      this.trimmTaskArray();
       this.boardCommService.updatedTaskData = this.updatedTaskData;
       this.boardCommService.updateSingleTaskVar();
       this.updateTaskSingleBackend();
       this.taskDetailsCommService.unsetEditMode();
       this.onSubmitOutro();
     }
+  }
+
+  updateTaskArray() {
+    this.formSubmitted = true;
+    this.updatedTaskData.title = this.taskData.title;
+    this.updatedTaskData.description = this.taskData.description;
+    this.updatedTaskData.assignedTo = this.taskData.assignedTo;
+    this.updatedTaskData.dueDate = this.editTaskForm.value.dueDate;
+    this.updatedTaskData.priority = this.editTaskForm.value.priority;
+    this.updatedTaskData.category = this.editTaskForm.value.category;
+    this.updatedTaskData.subTasks = this.taskData.subTasks;
+  }
+
+  trimmTaskArray() {
+    const trimmedTask = this.trimTask();
+    this.addAssignedTo(trimmedTask)
+    if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
+    this.updatedTaskData = trimmedTask;
   }
 
   checkRequiredInputs() {
