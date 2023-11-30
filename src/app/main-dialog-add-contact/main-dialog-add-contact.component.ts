@@ -1,7 +1,7 @@
 import { USERCOLORS } from '../usercolors.constant';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
@@ -15,21 +15,21 @@ import { UserService } from '../services/user-data.service';
 })
 export class MainDialogAddContactComponent {
 
+  @ViewChild('newUserSubmitBtn') newUserSubmitBtn: ElementRef;
+
+  private colors: string[] = USERCOLORS;
+  
   user = new User();
+  userNameValid: boolean = true;
+  userEmailAddressValid: boolean = true;
+  userPhoneNumberValid: boolean = true;
+  addUserFormSubmitted: boolean = false;
+
   addUserForm = this.fb.group({
     userName: ['', [Validators.required, signUpUserNameValidator]],
     userEmailAddress: ['', [Validators.required, emailValidator]],
     userPhoneNumber: ['', [Validators.required, phoneValidator]]
   });
-
-  private colors: string[] = USERCOLORS;
-
-  userNameValid: boolean = true;
-  userEmailAddressValid: boolean = true;
-  userPhoneNumberValid: boolean = true;
-  addUserFormSubmitted: boolean = false;
-  
-  @ViewChild('newUserSubmitBtn') newUserSubmitBtn: ElementRef;
 
   constructor(
     public dialog: MatDialog,
