@@ -1,7 +1,7 @@
 import { Component, ElementRef, Inject, Renderer2, ViewChild } from '@angular/core';
 import { TaskDetailsCommService } from '../services/task-details-comm.service';
 import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { BoardCommService } from '../services/board-comm.service';
 import { MainCommunicationService } from '../services/main-communication.service';
@@ -18,45 +18,35 @@ import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-d
 })
 export class MainDialogTaskDetailsAndEditEditViewComponent {
 
-  taskData;
-  updatedTaskData;
-  // editTaskForm = this.fb.group({
-  // category: [''],
-  // title: [''],
-  // description: [''],
-  // dueDate: [''],
-  // priority: [''],
-  // assignedTo: [[]],
-  // subTasks: [],
-  // subTasksCompleted: []
-  // });
-  editTaskForm;
-
-  allUsersData;
-  currentUserData;
-  // addTaskForm: FormGroup;
-  showAssignedDropdown: boolean = false;
   @ViewChild('assignSelectedOptionRef') assignSelectedOptionRef: ElementRef;
   @ViewChild('assignSelectRef') assignSelectRef: ElementRef;
-  private globalClickListener: Function;
+  @ViewChild('categorySelect') categorySelect: ElementRef;
+  @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
+  @ViewChild('subTasksInput') subTasksInput: ElementRef;
+  @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
+  @ViewChild('submitBtn') submitBtn: ElementRef;
+
+  taskData;
+  updatedTaskData;
+  editTaskForm;
+  allUsersData;
+  currentUserData;
+  showAssignedDropdown: boolean = false;
   selectedUsers: any[] = [];
   today: string;
   selectedPriority: string;
   showCategoryDropdown: boolean = false;
-  @ViewChild('categorySelect') categorySelect: ElementRef;
-  @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
   subTasksInputHasFocus: boolean = false;
-  @ViewChild('subTasksInput') subTasksInput: ElementRef;
   subTasksInputEmpty: boolean = true;
   subTasksMaxReached: boolean = false;
   subTasksArray: string[] = [];
   subTaskCurrentlyEditing: string | null = null;
-  @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
-  @ViewChild('submitBtn') submitBtn: ElementRef;
   formSubmitted: boolean = false;
   titleValid: boolean = true;
   dateValid: boolean = true;
   categoryValid: boolean = true;
+
+  private globalClickListener: Function;
 
   constructor(
     private taskDetailsCommService: TaskDetailsCommService,
@@ -82,7 +72,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       subTasks: [],
       subTasksCompleted: [],
       taskStatus: [],
-      // taskStatus: this.data.taskStatus,
       taskColumnOrder: 0
     });
     this.today = this.getTodaysDate();
