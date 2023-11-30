@@ -105,17 +105,21 @@ export class MainContactsComponent {
     });
     dialogRef.componentInstance.user = { ...clickedContactData };
     dialogRef.afterClosed().subscribe((result) => {
-      if (this.userService.userDeletedSuccessfully) {
-        this.showContactDetails = false;
-        this.displayDeletionSuccessfulAnimation();
-      }
-      if (this.userService.userUpdatedSuccessfully || this.userService.userDeletedSuccessfully) {
-        this.generateUsersLists();
-        this.findEditedContactData(clickedContactDataID);
-      }
-      this.userService.userUpdatedSuccessfully = false;
-      this.userService.userDeletedSuccessfully = false;
+      this.afterClosedEditContact(clickedContactDataID);
     });
+  }
+
+  afterClosedEditContact(clickedContactDataID) {
+    if (this.userService.userDeletedSuccessfully) {
+      this.showContactDetails = false;
+      this.displayDeletionSuccessfulAnimation();
+    }
+    if (this.userService.userUpdatedSuccessfully || this.userService.userDeletedSuccessfully) {
+      this.generateUsersLists();
+      this.findEditedContactData(clickedContactDataID);
+    }
+    this.userService.userUpdatedSuccessfully = false;
+    this.userService.userDeletedSuccessfully = false;
   }
 
   deleteContact(clickedContactData) {
