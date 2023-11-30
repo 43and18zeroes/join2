@@ -62,6 +62,11 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     public dialogRef: MatDialogRef<MainDialogAddTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    this.initializeEditTaskForm();
+    this.today = this.getTodaysDate();
+  }
+
+  initializeEditTaskForm() {
     this.editTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
@@ -74,17 +79,18 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       taskStatus: [],
       taskColumnOrder: 0
     });
-    this.today = this.getTodaysDate();
   }
 
   ngOnInit(): void {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
     this.updatedTaskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
-
-
     this.userService.sortUsersData();
     this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
+    this.initListeners();
+  }
+
+  initListeners() {
     this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
       if (!this.assignSelectRef.nativeElement.contains(event.target)) {
         this.assignCloseDropdown();
@@ -95,9 +101,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
         this.categoryCloseDropdown();
       }
     });
-
-
-
   }
 
   ngAfterViewInit() {
@@ -386,7 +389,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     if (this.editTaskForm.valid) {
       this.formSubmitted = true;
       // const trimmedTask = this.trimTask();
-      
+
       // this.sendNewTaskToBackend(trimmedTask);
       // this.taskDataService.setAllTasksDataToVarAndLocal();
 
@@ -445,12 +448,12 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   // addSubtasksStatuses(trimmedTask) {
-    // let subTasksCompleted = [];
-    // for (let index = 0; index < trimmedTask.subTasks.length; index++) {
-    //   subTasksCompleted.push(false);
-    // }
-    // trimmedTask.subTasksCompleted = subTasksCompleted;
-    // return trimmedTask;
+  // let subTasksCompleted = [];
+  // for (let index = 0; index < trimmedTask.subTasks.length; index++) {
+  //   subTasksCompleted.push(false);
+  // }
+  // trimmedTask.subTasksCompleted = subTasksCompleted;
+  // return trimmedTask;
   // }
 
   sendNewTaskToBackend(trimmedTask) {
@@ -488,6 +491,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       .doc(this.updatedTaskData.firebaseId)
       .update(this.updatedTaskData);
 
-      this.boardCommService.reloadAfterNewTask();
+    this.boardCommService.reloadAfterNewTask();
   }
 }
