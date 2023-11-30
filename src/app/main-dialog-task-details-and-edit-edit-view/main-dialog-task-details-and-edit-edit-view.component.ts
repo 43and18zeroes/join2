@@ -372,7 +372,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       category: ['', Validators.required],
       subTasks: [],
       subTasksCompleted: [],
-      // taskStatus: 'todo',
       taskStatus: [],
       taskColumnOrder: 0
     });
@@ -388,11 +387,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.checkRequiredInputs();
     if (this.editTaskForm.valid) {
       this.formSubmitted = true;
-      // const trimmedTask = this.trimTask();
-
-      // this.sendNewTaskToBackend(trimmedTask);
-      // this.taskDataService.setAllTasksDataToVarAndLocal();
-
       this.updatedTaskData.title = this.taskData.title;
       this.updatedTaskData.description = this.taskData.description;
       this.updatedTaskData.assignedTo = this.taskData.assignedTo;
@@ -400,21 +394,14 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.updatedTaskData.priority = this.editTaskForm.value.priority;
       this.updatedTaskData.category = this.editTaskForm.value.category;
       this.updatedTaskData.subTasks = this.taskData.subTasks;
-      // this.updatedTaskData.subTasksCompleted = this.taskData.subTasksCompleted;
-
       const trimmedTask = this.trimTask();
       this.addAssignedTo(trimmedTask)
       if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
-      // if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
-      // else trimmedTask.subTasksCompleted = [];
-
       this.updatedTaskData = trimmedTask;
-
       this.boardCommService.updatedTaskData = this.updatedTaskData;
       this.boardCommService.updateSingleTaskVar();
       this.updateTaskSingleBackend();
       this.taskDetailsCommService.unsetEditMode();
-
       this.onSubmitOutro();
     }
   }
