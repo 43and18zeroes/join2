@@ -442,15 +442,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     return trimmedTask;
   }
 
-  // addSubtasksStatuses(trimmedTask) {
-  // let subTasksCompleted = [];
-  // for (let index = 0; index < trimmedTask.subTasks.length; index++) {
-  //   subTasksCompleted.push(false);
-  // }
-  // trimmedTask.subTasksCompleted = subTasksCompleted;
-  // return trimmedTask;
-  // }
-
   sendNewTaskToBackend(trimmedTask) {
     delete trimmedTask.firebaseId;
     this.firestore
@@ -477,7 +468,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     //   this.boardCommService.reloadAfterNewTask();
     //   this.dialog.closeAll();
     // }, 1500);
-
   }
 
   async updateTaskSingleBackend() {
@@ -485,7 +475,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       .collection('tasks')
       .doc(this.updatedTaskData.firebaseId)
       .update(this.updatedTaskData);
-
     this.boardCommService.reloadAfterNewTask();
   }
 }
