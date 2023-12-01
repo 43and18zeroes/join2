@@ -490,31 +490,10 @@
             }
 
             .has__horizontal__scroll {
-                height: calc(100vh - 310px);
+                height: calc(100vh - 340px);
             }
         }
     }
-
-    // main {
-    //     height: calc(100% - 96px);
-    //     display: flex;
-    //     justify-content: space-between;
-
-    //     .main__element {
-    //         display: flex;
-    //         flex-direction: column;
-
-    //         h3 {
-    //             font-size: 20px;
-    //             font-weight: 700;
-    //         }
-
-    //         .column__body {
-    //             flex: 1;
-    //             overflow-y: auto;
-    //         }
-    //     }
-    // }
 }
 
 .cdk-drag-preview {
