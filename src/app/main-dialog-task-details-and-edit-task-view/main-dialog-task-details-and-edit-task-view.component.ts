@@ -25,11 +25,6 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
   ngOnInit() {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
     this.allUsersData = this.userService.allUsersData;
-
-
-    // setTimeout(() => {
-    //   this.setEditMode();
-    // }, 1);
   }
 
   closeDialog() {
