@@ -39,6 +39,12 @@ export class MainHeaderComponent implements OnInit {
 
   openProfileDialog() {
     const dialogConfig = new MatDialogConfig();
+    this.checkBreakpoint(dialogConfig);
+    dialogConfig.panelClass = 'profile__dialog';
+    const dialogRef = this.dialog.open(MainHeaderProfileDialogComponent, dialogConfig);
+  }
+
+  checkBreakpoint(dialogConfig) {
     if (this.isSmallScreen) {
       dialogConfig.position = {
         top: '80px',
@@ -50,8 +56,6 @@ export class MainHeaderComponent implements OnInit {
         right: '30px'
       };
     }
-    dialogConfig.panelClass = 'profile__dialog';
-    const dialogRef = this.dialog.open(MainHeaderProfileDialogComponent, dialogConfig);
   }
 
   updateBreakpoint() {
