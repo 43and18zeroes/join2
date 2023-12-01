@@ -84,17 +84,12 @@ export class UserService {
   addUserDataBackend(addedUser) {
     const userData = addedUser.toJSON();
     delete userData.firebaseId;
-    this.firestore
-      .collection('users')
-      .add(userData)
-      .then((docRef) => {
+    this.firestore.collection('users').add(userData).then((docRef) => {
         addedUser.firebaseId = docRef.id;
         this.lastUserAdded = addedUser;
-        
         return docRef.update({ firebaseId: docRef.id });
       })
-      .then(() => {
-      })
+      .then(() => {})
       .catch((error) => {
         console.error("Error adding or updating document: ", error);
       });
