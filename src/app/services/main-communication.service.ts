@@ -11,12 +11,10 @@ export class MainCommunicationService {
 
   constructor() { }
 
-  // Andere Komponenten können dieses Observable abonnieren
   get displayBoardObservable() {
     return this.displayBoard.asObservable();
   }
 
-  // Diese Methode benachrichtigt alle Abonnenten über die Änderung
   displayMainBoard(board) {
     this.displayBoard.next(board);
   }

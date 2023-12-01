@@ -74,33 +74,6 @@ export class UserService {
     });
   }
 
-  
-  
-  
-  
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-
   addUser(addedUser) {
     this.addToUsersDataVar(addedUser);
     this.addUserDataBackend(addedUser);
