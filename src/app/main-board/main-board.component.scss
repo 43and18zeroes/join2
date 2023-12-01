@@ -379,7 +379,8 @@
         padding-right: 40px;
 
         @media (width <=992px) {
-            width: calc(100vw - 16px);
+            // width: calc(100vw - 16px);
+            width: 100vw;
             height: calc(100vh - 317px);
             flex-direction: column;
             overflow-x: hidden;
@@ -441,7 +442,7 @@
             }
 
             .section__body {
-                height: calc(100vh - 300px);
+                height: calc(100vh - 330px);
                 overflow-y: auto;
                 overflow-x: hidden;
                 display: flex;
@@ -449,6 +450,11 @@
                 gap: 24px;
                 border-radius: 10px;
                 margin-bottom: 24px;
+                padding-bottom: 30px;
+
+                &::-webkit-scrollbar-track {
+                    margin-bottom: 30px;
+                }
 
                 @media (width <=992px) {
                     height: fit-content;
