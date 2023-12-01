@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MainComponent } from '../main/main.component';
 import { Router } from '@angular/router';
@@ -12,6 +12,11 @@ import { MainHeaderProfileDialogComponent } from '../main-header-profile-dialog/
   styleUrls: ['./main-header.component.scss']
 })
 export class MainHeaderComponent implements OnInit {
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.updateBreakpoint();
+  }
 
   currentUserInitials;
   isSmallScreen = this.breakpointObserver.isMatched('(max-width: 992px)');
@@ -47,5 +52,9 @@ export class MainHeaderComponent implements OnInit {
     }
     dialogConfig.panelClass = 'profile__dialog';
     const dialogRef = this.dialog.open(MainHeaderProfileDialogComponent, dialogConfig);
+  }
+
+  updateBreakpoint() {
+    this.isSmallScreen = this.breakpointObserver.isMatched('(max-width: 992px)');
   }
 }
