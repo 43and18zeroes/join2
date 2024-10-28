@@ -18,6 +18,10 @@ export class TaskDataService {
         this.allTasksData = changes;
         localStorage.removeItem('allTasksData');
         localStorage.setItem('allTasksData', JSON.stringify(changes));
+        console.log('this.allTasksData', this.allTasksData);
+        console.log('this.allTasksData', typeof this.allTasksData);
+        console.log('JSON.stringify(changes)', JSON.stringify(changes));
+        console.log('JSON.stringify(changes)', typeof JSON.stringify(changes));
       })
   }
 
