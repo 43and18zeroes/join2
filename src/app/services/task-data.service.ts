@@ -25,18 +25,18 @@ export class TaskDataService {
   constructor(private firestore: AngularFirestore) { }
 
   setAllTasksDataToVarAndLocal() {
-    this.firestore
-      .collection('tasks')
-      .valueChanges()
-      .subscribe((changes: any) => {
-        this.allTasksData = changes;
-        localStorage.removeItem('allTasksData');
-        localStorage.setItem('allTasksData', JSON.stringify(changes));
-        console.log('this.allTasksData', this.allTasksData);
-        console.log('this.allTasksData', typeof this.allTasksData); // obj
-        console.log('JSON.stringify(changes)', JSON.stringify(changes));
-        console.log('JSON.stringify(changes)', typeof JSON.stringify(changes)); // str
-      })
+    // this.firestore
+    //   .collection('tasks')
+    //   .valueChanges()
+    //   .subscribe((changes: any) => {
+    //     this.allTasksData = changes;
+    //     localStorage.removeItem('allTasksData');
+    //     localStorage.setItem('allTasksData', JSON.stringify(changes));
+    //     console.log('this.allTasksData', this.allTasksData);
+    //     console.log('this.allTasksData', typeof this.allTasksData); // obj
+    //     console.log('JSON.stringify(changes)', JSON.stringify(changes));
+    //     console.log('JSON.stringify(changes)', typeof JSON.stringify(changes)); // str
+    //   })
 
     this.endpointTest();
   }
@@ -51,6 +51,11 @@ export class TaskDataService {
     const data = this.convertData(resultToText);
     console.log('data', data);
     console.log('data', typeof data);
+
+
+    this.allTasksData = data;
+        localStorage.removeItem('allTasksData');
+        localStorage.setItem('allTasksData', JSON.stringify(resultToText));
   }
 
   convertData(dataString: string): Task[] {
