@@ -9,22 +9,7 @@ export class TaskDataService {
 
   constructor(private firestore: AngularFirestore) {}
 
-  setAllTasksDataToVarAndLocal() {
-    // this.firestore
-    //   .collection('tasks')
-    //   .valueChanges()
-    //   .subscribe((changes: any) => {
-    //     this.allTasksData = changes;
-    //     console.log('this.allTasksData', this.allTasksData);
-    //     localStorage.removeItem('allTasksData');
-    //     localStorage.setItem('allTasksData', JSON.stringify(changes));
-    //     console.log('localStorage:', JSON.stringify(changes));
-    //   })
-
-    this.endpointTest();
-  }
-
-  async endpointTest() {
+  async setAllTasksDataToVarAndLocal() {
     const downloadedData = await fetch('http://127.0.0.1:8000/kanban/');
     let dataObject = await downloadedData.json();
     dataObject.forEach((item) => {
