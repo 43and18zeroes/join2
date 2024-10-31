@@ -12,19 +12,7 @@ export class TaskDataService {
   async setAllTasksDataToVarAndLocal() {
     const downloadedData = await fetch('http://127.0.0.1:8000/kanban/');
     let dataObject = await downloadedData.json();
-    dataObject.forEach((item) => {
-      let jsonString = item.assignedTo.replace(/'/g, '"');
-      item.assignedTo = JSON.parse(jsonString);
-      let subTasksJsonString = item.subTasks.replace(/'/g, '"');
-      item.subTasks = JSON.parse(subTasksJsonString);
-
-      if (typeof item.subTasksCompleted === 'string') {
-        let subTasksCompletedJsonString = item.subTasksCompleted
-          .replace(/False/g, 'false')
-          .replace(/True/g, 'true');
-        item.subTasksCompleted = JSON.parse(subTasksCompletedJsonString);
-      }
-    });
+    this.parseData(dataObject);
     console.log('dataObject', dataObject);
 
     this.allTasksData = dataObject;
@@ -38,5 +26,21 @@ export class TaskDataService {
         localStorage.getItem('allTasksData') || '[]'
       );
     }
+  }
+
+  private parseData(dataObject: any[]) {
+    dataObject.forEach((item) => {
+      let jsonString = item.assignedTo.replace(/'/g, '"');
+      item.assignedTo = JSON.parse(jsonString);
+      let subTasksJsonString = item.subTasks.replace(/'/g, '"');
+      item.subTasks = JSON.parse(subTasksJsonString);
+
+      if (typeof item.subTasksCompleted === 'string') {
+        let subTasksCompletedJsonString = item.subTasksCompleted
+          .replace(/False/g, 'false')
+          .replace(/True/g, 'true');
+        item.subTasksCompleted = JSON.parse(subTasksCompletedJsonString);
+      }
+    });
   }
 }
