@@ -30,9 +30,11 @@ export class TaskDataService {
     dataObject.forEach(item => {
       let jsonString = item.assignedTo.replace(/'/g, '"');
       item.assignedTo = JSON.parse(jsonString);
+      let subTasksJsonString = item.subTasks.replace(/'/g, '"');
+      item.subTasks = JSON.parse(subTasksJsonString);
     });
     console.log('dataObject', dataObject);
-    
+
     // this.allTasksData = dataObject;
     // localStorage.removeItem('allTasksData');
     // localStorage.setItem('allTasksData', JSON.stringify(dataObject));
