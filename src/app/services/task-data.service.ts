@@ -42,9 +42,9 @@ export class TaskDataService {
     });
     console.log('dataObject', dataObject);
 
-    // this.allTasksData = dataObject;
-    // localStorage.removeItem('allTasksData');
-    // localStorage.setItem('allTasksData', JSON.stringify(dataObject));
+    this.allTasksData = dataObject;
+    localStorage.removeItem('allTasksData');
+    localStorage.setItem('allTasksData', JSON.stringify(dataObject));
   }
 
   getTasksDataMain() {
