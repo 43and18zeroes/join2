@@ -8,6 +8,7 @@ import { MainDialogAddTaskComponent } from '../main-dialog-add-task/main-dialog-
 import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
 import { BoardCommService } from '../services/board-comm.service';
 import { TaskDataService } from '../services/task-data.service';
+import { TaskUpdateService } from '../services/task-update.service';
 
 @Component({
   selector: 'app-main-board',
@@ -47,7 +48,8 @@ export class MainBoardComponent {
     private router: Router,
     public dialog: MatDialog,
     public boardCommService: BoardCommService,
-    public taskDataService: TaskDataService
+    public taskDataService: TaskDataService,
+    public taskUpdateService: TaskUpdateService
   ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart && event.id === 1) {
@@ -270,7 +272,7 @@ export class MainBoardComponent {
   }
 
   backendTasksColumnOrder() {
-    // this.backendOrderTodo();
+    this.backendOrderTodo();
     // this.backendOrderInprogress();
     // this.backendOrderAwaitfeedback();
     // this.backendOrderDone();
@@ -279,10 +281,15 @@ export class MainBoardComponent {
   backendOrderTodo() {
     for (let index = 0; index < this.todo.length; index++) {
       const element = this.todo[index];
-      this.firestore
-        .collection('tasks')
-        .doc(element.firebaseId)
-        .update(element);
+      this.taskUpdateService.updateTask(element.id, element).subscribe(
+        response => {
+          console.log('Task updated successfully', response);
+          // Hier kannst du weitere Aktionen ausführen, z.B. eine Bestätigungsnachricht anzeigen
+        },
+        error => {
+          console.error('There was an error updating the task!', error);
+        }
+      );
     }
   }
 

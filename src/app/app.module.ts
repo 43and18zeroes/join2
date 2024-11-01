@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import { InfoHelpComponent } from './info-help/info-help.component';
 import { InfoPrivacyPolicyComponent } from './info-privacy-policy/info-privacy-policy.component';
 import { InfoLegalNoticeComponent } from './info-legal-notice/info-legal-notice.component';
 import { MainHeaderProfileDialogComponent } from './main-header-profile-dialog/main-header-profile-dialog.component';
+import { TaskUpdateService } from './services/task-update.service';
 
 
 @NgModule({
@@ -72,9 +74,10 @@ import { MainHeaderProfileDialogComponent } from './main-header-profile-dialog/m
     AngularFireAuthModule,
     SharedModule,
     MatDialogModule,
-    DragDropModule
+    DragDropModule,
+    HttpClientModule
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, TaskUpdateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
