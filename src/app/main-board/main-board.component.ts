@@ -270,10 +270,10 @@ export class MainBoardComponent {
   }
 
   backendTasksColumnOrder() {
-    this.backendOrderTodo();
-    this.backendOrderInprogress();
-    this.backendOrderAwaitfeedback();
-    this.backendOrderDone();
+    // this.backendOrderTodo();
+    // this.backendOrderInprogress();
+    // this.backendOrderAwaitfeedback();
+    // this.backendOrderDone();
   }
 
   backendOrderTodo() {
