@@ -10,7 +10,7 @@ export class TaskDataService {
   constructor(private firestore: AngularFirestore) {}
 
   async setAllTasksDataToVarAndLocal() {
-    const downloadedData = await fetch('http://127.0.0.1:8000/kanban/');
+    const downloadedData = await fetch('http://127.0.0.1:8000/kanban/tasks/');
     let dataObject = await downloadedData.json();
     this.parseData(dataObject);
     console.log('dataObject', dataObject);
