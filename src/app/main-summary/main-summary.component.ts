@@ -55,23 +55,23 @@ export class MainSummaryComponent implements OnInit {
 
   determineMainNumbers() {
     this.amountTodo = this.allTasksData.filter(item => item.status === 'todo').length;
-    // this.amountDone = this.allTasksData.filter(item => item.taskStatus === 'done').length;
-    // this.amountUrgent = this.allTasksData.filter(item => item.priority === 'urgent').length;
-    // this.findUpcomingDeadline()
-    // this.amountTasks = this.allTasksData.length;
-    // this.amountInProgress = this.allTasksData.filter(item => item.taskStatus === 'inprogress').length;
-    // this.amountAwaitFeedback = this.allTasksData.filter(item => item.taskStatus === 'awaitfeedback').length;
+    this.amountDone = this.allTasksData.filter(item => item.status === 'done').length;
+    this.amountUrgent = this.allTasksData.filter(item => item.priority === 'urgent').length;
+    this.findUpcomingDeadline();
+    this.amountTasks = this.allTasksData.length;
+    this.amountInProgress = this.allTasksData.filter(item => item.taskStatus === 'inprogress').length;
+    this.amountAwaitFeedback = this.allTasksData.filter(item => item.taskStatus === 'awaitfeedback').length;
   }
 
   findUpcomingDeadline() {
     const today = new Date();
     let closestDiff = Number.MAX_VALUE;
     this.allTasksData.forEach(task => {
-      const dueDate = new Date(task.dueDate);
+      const dueDate = new Date(task.due_date);
       const diff = (dueDate.getTime() - today.getTime()) / (1000 * 3600 * 24);
       if (diff >= 0 && diff < closestDiff) {
         closestDiff = diff;
-        this.upcomingDeadline = task.dueDate;
+        this.upcomingDeadline = task.due_date;
       }
     });
   }
