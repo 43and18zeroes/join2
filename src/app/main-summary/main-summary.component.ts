@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MainComponent } from '../main/main.component';
 import { UserService } from '../services/user-data.service';
 import { TaskDataService } from '../services/task-data.service';
+import { BackendTempService } from '../services/backend-temp.service';
+import { BackendService } from '../services/backend-service.service';
 
 @Component({
   selector: 'app-main-summary',
@@ -21,31 +23,44 @@ export class MainSummaryComponent implements OnInit {
   amountTasks;
   amountInProgress;
   amountAwaitFeedback;
+  items: any[] = [];
 
   constructor(
     public mainComponent: MainComponent,
     public taskDataService: TaskDataService,
-    private userService: UserService
+    private userService: UserService,
+    private backendTempService: BackendTempService,
+    private backendService: BackendService
   ) { }
 
   ngOnInit(): void {
+    this.backendService.getItems().subscribe(data => {
+      this.allTasksData = data;
+      console.log('this.allTasksData', this.allTasksData);
+      this.determineMainNumbers();
+    });
+    // this.backendTempService.items$.subscribe(items => {
+    //   this.allTasksData = items; // Daten aus dem Service abonnieren
+    //   console.log('this.allTasksData', this.allTasksData);
+    // });
     this.showGreetingScreenMobile = this.mainComponent.showGreetingScreenMobile;
     this.currentUserData = this.userService.currentUserData;
     if (this.currentUserData.userName !== "Gast") {
       this.currenUserIsGuest = false;
     }
-    this.allTasksData = this.taskDataService.allTasksData;
-    // this.determineMainNumbers();
+
+    // this.allTasksData = this.taskDataService.allTasksData;
+    
   }
 
   determineMainNumbers() {
-    this.amountTodo = this.allTasksData.filter(item => item.taskStatus === 'todo').length;
-    this.amountDone = this.allTasksData.filter(item => item.taskStatus === 'done').length;
-    this.amountUrgent = this.allTasksData.filter(item => item.priority === 'urgent').length;
-    this.findUpcomingDeadline()
-    this.amountTasks = this.allTasksData.length;
-    this.amountInProgress = this.allTasksData.filter(item => item.taskStatus === 'inprogress').length;
-    this.amountAwaitFeedback = this.allTasksData.filter(item => item.taskStatus === 'awaitfeedback').length;
+    this.amountTodo = this.allTasksData.filter(item => item.status === 'todo').length;
+    // this.amountDone = this.allTasksData.filter(item => item.taskStatus === 'done').length;
+    // this.amountUrgent = this.allTasksData.filter(item => item.priority === 'urgent').length;
+    // this.findUpcomingDeadline()
+    // this.amountTasks = this.allTasksData.length;
+    // this.amountInProgress = this.allTasksData.filter(item => item.taskStatus === 'inprogress').length;
+    // this.amountAwaitFeedback = this.allTasksData.filter(item => item.taskStatus === 'awaitfeedback').length;
   }
 
   findUpcomingDeadline() {

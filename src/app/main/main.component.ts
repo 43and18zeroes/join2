@@ -41,10 +41,9 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUsersDataMain();
     // this.taskDataService.getTasksDataMain();
-    this.backendService.getItems().subscribe(data => {
-      this.items = data;
-      console.log('this.items', this.items);
-    });
+    // this.backendService.getItems().subscribe(data => {
+    //   this.items = data;
+    // });
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
     }, 2500);
