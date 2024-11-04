@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragStart, DropListOrientation } from '@angular/cdk/drag-drop';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from '../services/user-data.service';
 import { Router, NavigationStart } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,6 +8,7 @@ import { MainDialogAddTaskComponent } from '../main-dialog-add-task/main-dialog-
 import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
 import { BoardCommService } from '../services/board-comm.service';
 import { TaskDataService } from '../services/task-data.service';
+import { BackendService } from '../services/backend-service.service';
 
 @Component({
   selector: 'app-main-board',
@@ -33,6 +34,7 @@ export class MainBoardComponent {
   subTasksAmount;
   dragActive: boolean = false;
   displayDeletionAnimation: boolean = false;
+  // items: any[] = [];
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -42,12 +44,13 @@ export class MainBoardComponent {
   }
 
   constructor(
-    private firestore: AngularFirestore,
+    // private firestore: AngularFirestore,
     private userService: UserService,
     private router: Router,
     public dialog: MatDialog,
     public boardCommService: BoardCommService,
-    public taskDataService: TaskDataService
+    public taskDataService: TaskDataService,
+    private backendService: BackendService
   ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart && event.id === 1) {
@@ -57,7 +60,12 @@ export class MainBoardComponent {
   }
 
   ngOnInit(): void {
-    this.allTasksData = this.taskDataService.allTasksData;
+    // this.taskDataService.getTasksDataMain();
+    this.backendService.getItems().subscribe(data => {
+      this.allTasksData = data;
+      console.log('this.allTasksData', this.allTasksData);
+    });
+    // this.allTasksData = this.taskDataService.allTasksData;
     this.allUsersData = this.userService.allUsersData;
     this.convertTasksDataToLists();
     this.sortTasksInColumns();
@@ -65,7 +73,7 @@ export class MainBoardComponent {
     this.backendTasksColumnOrder();
     this.boardCommService.reloadAfterNewTask = this.reloadAfterNewTask.bind(this);
     this.boardCommService.setNewTasksDataToLocal = this.setNewTasksDataToLocal.bind(this);
-    this.boardCommService.updateSingleTaskVar = this.updateSingleTaskVar.bind(this);
+    // this.boardCommService.updateSingleTaskVar = this.updateSingleTaskVar.bind(this);
     this.boardCommService.deleteTask = this.deleteTask.bind(this);
     this.dropListOrientation();
     this.determineDragDelay();
@@ -156,7 +164,7 @@ export class MainBoardComponent {
 
   determineTaskStatus() {
     this.allTasksData.forEach(task => {
-      switch (task.taskStatus) {
+      switch (task.status) {
         case "todo":
           this.todo.push(task);
           break;
@@ -185,39 +193,39 @@ export class MainBoardComponent {
     this.done.sort(customSort);
   }
 
-  determineSubtaskProgress(subTasksCompleted) {
-    const subTaskCount = subTasksCompleted.length;
-    const trueCount = subTasksCompleted.filter(Boolean).length;
-    if (trueCount === 0) {
-      return 'empty';
-    } else if (subTaskCount === trueCount) {
-      return 'full';
-    } else {
-      return 'half';
-    }
-  }
+  // determineSubtaskProgress(subTasksCompleted) {
+  //   const subTaskCount = subTasksCompleted.length;
+  //   const trueCount = subTasksCompleted.filter(Boolean).length;
+  //   if (trueCount === 0) {
+  //     return 'empty';
+  //   } else if (subTaskCount === trueCount) {
+  //     return 'full';
+  //   } else {
+  //     return 'half';
+  //   }
+  // }
 
-  getUserColor(assignedUserEmail) {
-    for (let index = 0; index < this.allUsersData.length; index++) {
-      const element = this.allUsersData[index];
-      if (element.userEmailAddress === assignedUserEmail) {
-        return element.userColor;
-      }
-    }
-  }
+  // getUserColor(assignedUserEmail) {
+  //   for (let index = 0; index < this.allUsersData.length; index++) {
+  //     const element = this.allUsersData[index];
+  //     if (element.userEmailAddress === assignedUserEmail) {
+  //       return element.userColor;
+  //     }
+  //   }
+  // }
 
-  getUserInitials(assignedUserEmail) {
-    for (let index = 0; index < this.allUsersData.length; index++) {
-      const element = this.allUsersData[index];
-      if (element.userEmailAddress === assignedUserEmail) {
-        return element.userInitials;
-      }
-    }
-  }
+  // getUserInitials(assignedUserEmail) {
+  //   for (let index = 0; index < this.allUsersData.length; index++) {
+  //     const element = this.allUsersData[index];
+  //     if (element.userEmailAddress === assignedUserEmail) {
+  //       return element.userInitials;
+  //     }
+  //   }
+  // }
 
-  countSubtasksCompleted(obj: any): number {
-    return Object.values(obj).filter(value => value === true).length;
-  }
+  // countSubtasksCompleted(obj: any): number {
+  //   return Object.values(obj).filter(value => value === true).length;
+  // }
 
   private checkForHorizontalScroll() {
     const mainElement: HTMLDivElement = this.mainContainer.nativeElement;
@@ -277,43 +285,43 @@ export class MainBoardComponent {
   }
 
   backendOrderTodo() {
-    for (let index = 0; index < this.todo.length; index++) {
-      const element = this.todo[index];
-      this.firestore
-        .collection('tasks')
-        .doc(element.firebaseId)
-        .update(element);
-    }
+    // for (let index = 0; index < this.todo.length; index++) {
+    //   const element = this.todo[index];
+    //   this.firestore
+    //     .collection('tasks')
+    //     .doc(element.firebaseId)
+    //     .update(element);
+    // }
   }
 
   backendOrderInprogress() {
-    for (let index = 0; index < this.inprogress.length; index++) {
-      const element = this.inprogress[index];
-      this.firestore
-        .collection('tasks')
-        .doc(element.firebaseId)
-        .update(element);
-    }
+    // for (let index = 0; index < this.inprogress.length; index++) {
+    //   const element = this.inprogress[index];
+    //   this.firestore
+    //     .collection('tasks')
+    //     .doc(element.firebaseId)
+    //     .update(element);
+    // }
   }
 
   backendOrderAwaitfeedback() {
-    for (let index = 0; index < this.awaitfeedback.length; index++) {
-      const element = this.awaitfeedback[index];
-      this.firestore
-        .collection('tasks')
-        .doc(element.firebaseId)
-        .update(element);
-    }
+    // for (let index = 0; index < this.awaitfeedback.length; index++) {
+    //   const element = this.awaitfeedback[index];
+    //   this.firestore
+    //     .collection('tasks')
+    //     .doc(element.firebaseId)
+    //     .update(element);
+    // }
   }
 
   backendOrderDone() {
-    for (let index = 0; index < this.done.length; index++) {
-      const element = this.done[index];
-      this.firestore
-        .collection('tasks')
-        .doc(element.firebaseId)
-        .update(element);
-    }
+    // for (let index = 0; index < this.done.length; index++) {
+    //   const element = this.done[index];
+    //   this.firestore
+    //     .collection('tasks')
+    //     .doc(element.firebaseId)
+    //     .update(element);
+    // }
   }
 
   openTaskDetails(taskData) {
@@ -330,31 +338,31 @@ export class MainBoardComponent {
   taskDetailsClosed() {
     this.resetSearchFunction();
       if (this.boardCommService.subTaskCompletedChange) {
-        this.updateSingleTaskVar();
+        // this.updateSingleTaskVar();
         this.setNewTasksDataToLocal();
         this.updateSingleTaskBackend();
         this.boardCommService.subTaskCompletedChange = false;
       }
   }
 
-  updateSingleTaskVar() {
-    const updatedTaskData = this.boardCommService.updatedTaskData;
-    for (let index = 0; index < this.allTasksData.length; index++) {
-      const element = this.allTasksData[index];
-      if (element.firebaseId === updatedTaskData.firebaseId) {
-        this.allTasksData[index] = updatedTaskData;
-      }
-    }
-    localStorage.removeItem('allTasksData');
-    localStorage.setItem('allTasksData', JSON.stringify(this.allTasksData));
-  }
+  // updateSingleTaskVar() {
+  //   const updatedTaskData = this.boardCommService.updatedTaskData;
+  //   for (let index = 0; index < this.allTasksData.length; index++) {
+  //     const element = this.allTasksData[index];
+  //     if (element.firebaseId === updatedTaskData.firebaseId) {
+  //       this.allTasksData[index] = updatedTaskData;
+  //     }
+  //   }
+  //   localStorage.removeItem('allTasksData');
+  //   localStorage.setItem('allTasksData', JSON.stringify(this.allTasksData));
+  // }
 
   updateSingleTaskBackend() {
-    const updatedTaskData = this.boardCommService.updatedTaskData;
-    this.firestore
-      .collection('tasks')
-      .doc(updatedTaskData.firebaseId)
-      .update(updatedTaskData);
+    // const updatedTaskData = this.boardCommService.updatedTaskData;
+    // this.firestore
+    //   .collection('tasks')
+    //   .doc(updatedTaskData.firebaseId)
+    //   .update(updatedTaskData);
   }
 
   deleteTask() {
@@ -363,17 +371,17 @@ export class MainBoardComponent {
   }
 
   async deleteSingleTaskBackend() {
-    for (let index = 0; index < this.allTasksData.length; index++) {
-      const element = this.allTasksData[index];
-      if (element.firebaseId === this.boardCommService.taskToDelete.firebaseId) {
-        this.allTasksData.splice(index, 1);
-        try {
-          await this.firestore.collection('tasks').doc(element.firebaseId).delete();
-          this.reloadAfterNewTask();
-          this.setNewTasksDataToLocal();
-        } catch { console.error("Error deleting document: ", Error); }
-      }
-    }
+    // for (let index = 0; index < this.allTasksData.length; index++) {
+    //   const element = this.allTasksData[index];
+    //   if (element.firebaseId === this.boardCommService.taskToDelete.firebaseId) {
+    //     this.allTasksData.splice(index, 1);
+    //     try {
+    //       await this.firestore.collection('tasks').doc(element.firebaseId).delete();
+    //       this.reloadAfterNewTask();
+    //       this.setNewTasksDataToLocal();
+    //     } catch { console.error("Error deleting document: ", Error); }
+    //   }
+    // }
   }
 
   displayDeletionSuccessfulAnimation() {
