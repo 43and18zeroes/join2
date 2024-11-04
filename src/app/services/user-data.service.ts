@@ -25,7 +25,7 @@ export class UserService {
   setAllDataToVarAndLocal() {
     this.setAllUsersDataToVarAndLocal();
     
-    this.taskDataService.setAllTasksDataToVarAndLocal();
+    // this.taskDataService.setAllTasksDataToVarAndLocal();
   }
 
   setAllUsersDataToVarAndLocal() {
