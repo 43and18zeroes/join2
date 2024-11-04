@@ -34,6 +34,7 @@ import { InfoHelpComponent } from './info-help/info-help.component';
 import { InfoPrivacyPolicyComponent } from './info-privacy-policy/info-privacy-policy.component';
 import { InfoLegalNoticeComponent } from './info-legal-notice/info-legal-notice.component';
 import { MainHeaderProfileDialogComponent } from './main-header-profile-dialog/main-header-profile-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { MainHeaderProfileDialogComponent } from './main-header-profile-dialog/m
     AngularFireAuthModule,
     SharedModule,
     MatDialogModule,
-    DragDropModule
+    DragDropModule,
+    HttpClientModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

@@ -35,7 +35,7 @@ export class MainSummaryComponent implements OnInit {
       this.currenUserIsGuest = false;
     }
     this.allTasksData = this.taskDataService.allTasksData;
-    this.determineMainNumbers();
+    // this.determineMainNumbers();
   }
 
   determineMainNumbers() {

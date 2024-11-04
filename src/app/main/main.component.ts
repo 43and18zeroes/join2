@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../services/user-data.service';
 import { MainCommunicationService } from '../services/main-communication.service';
 import { TaskDataService } from '../services/task-data.service';
+import { BackendService } from '../services/backend-service.service';
 
 @Component({
   selector: 'app-main',
@@ -15,6 +16,7 @@ export class MainComponent implements OnInit {
   allUsersData;
   allContactsData;
   allTasksData;
+  items: any[] = [];
   
   @ViewChild('mainSection') mainSection: ElementRef;
 
@@ -28,11 +30,25 @@ export class MainComponent implements OnInit {
   constructor(
     private userService: UserService,
     private mainCommService: MainCommunicationService,
-    public taskDataService: TaskDataService
+    public taskDataService: TaskDataService,
+    private backendService: BackendService
   ) {
     this.subscribeBoardObservable();
     this.subscribePrivacyPolicyServiceObservable();
     this.subscribeSummaryServiceObservable();
+  }
+
+  ngOnInit(): void {
+    this.userService.getUsersDataMain();
+    // this.taskDataService.getTasksDataMain();
+    this.backendService.getItems().subscribe(data => {
+      this.items = data;
+      console.log('this.items', this.items);
+    });
+    setTimeout(() => {
+      this.showGreetingScreenMobile = false;
+    }, 2500);
+    this.implementAndroidHeight();
   }
 
   subscribeBoardObservable() {
@@ -57,15 +73,6 @@ export class MainComponent implements OnInit {
         this.displayMainSection('summary');
       }
     });
-  }
-
-  ngOnInit(): void {
-    this.userService.getUsersDataMain();
-    this.taskDataService.getTasksDataMain();
-    setTimeout(() => {
-      this.showGreetingScreenMobile = false;
-    }, 2500);
-    this.implementAndroidHeight();
   }
 
   implementAndroidHeight() {
