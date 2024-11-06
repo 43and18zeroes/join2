@@ -390,4 +390,8 @@ export class MainBoardComponent {
       this.displayDeletionAnimation = false;
     }, 1500);
   }
+
+  limitUsers(users: any[], limit: number): any[] {
+    return users.slice(0, limit);
+  }
 }
