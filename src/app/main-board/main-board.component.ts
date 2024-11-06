@@ -168,7 +168,7 @@ export class MainBoardComponent {
         case "todo":
           this.todo.push(task);
           break;
-        case "inprogress":
+        case "in_progress":
           this.inprogress.push(task);
           break;
         case "awaitfeedback":
