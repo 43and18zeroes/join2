@@ -1,83 +1,108 @@
 <div class="task__view__container no__select">
+  <header>
+    <div
+      class="task__cat"
+      [ngClass]="{
+        category__tech: taskData.category === 'Technical Task',
+        category__user: taskData.category === 'User Story'
+      }"
+    >
+      {{ taskData.category }}
+    </div>
+    <div (click)="closeDialog()" class="hover__area no__select">
+      <div class="transform__circle"></div>
+      <span class="material__symbols__outlined single__icon">close</span>
+    </div>
+  </header>
 
-    <header>
-        <div class="task__cat" [ngClass]="{'category__tech': taskData.category === 'Technical Task',
-    'category__user': taskData.category === 'User Story'}">{{ taskData.category }}</div>
-        <div (click)="closeDialog()" class="hover__area no__select">
-            <div class="transform__circle"></div>
-            <span class="material__symbols__outlined single__icon">close</span>
+  <h2>{{ taskData.title }}</h2>
+
+  <table class="dateprio">
+    <tr>
+      <td class="description" colspan="2">{{ taskData.description }}</td>
+    </tr>
+    <tr *ngIf="taskData.description !== ''" class="spacer"></tr>
+    <tr>
+      <td class="head">Due date:</td>
+      <td class="content">{{ taskData.due_date }}</td>
+    </tr>
+    <tr class="spacer"></tr>
+    <tr>
+      <td class="head">Priority:</td>
+      <td class="prio">
+        {{ taskData.priority }}
+        <div
+          *ngIf="taskData.priority === 'urgent'"
+          class="material__symbols__outlined prio__red"
+        >
+          keyboard_double_arrow_up
         </div>
-    </header>
+        <div
+          *ngIf="taskData.priority === 'medium'"
+          class="material__symbols__outlined prio__yellow"
+        >
+          double_arrow
+        </div>
+        <div
+          *ngIf="taskData.priority === 'low'"
+          class="material__symbols__outlined prio__green"
+        >
+          keyboard_double_arrow_down
+        </div>
+      </td>
+    </tr>
+  </table>
 
-    <h2>{{ taskData.title }}</h2>
+  <table *ngIf="taskData.users.length > 0" class="assigned">
+    <!-- <tr class="head__spacer"></tr> -->
+    <tr>
+      <td class="assigned__head" colspan="2">Assigned To:</td>
+    </tr>
+    <tr class="assignee" *ngFor="let user of taskData.users">
+      <td class="assignee__initials">
+        <div [ngStyle]="{ 'background-color': user.user_color }">
+          {{ user.initials }}
+        </div>
+      </td>
+      <td class="assignee__names">
+        {{ user.first_name }} {{ user.last_name }}
+      </td>
+    </tr>
+  </table>
 
-    <table class="dateprio">
-        <tr>
-            <td class="description" colspan="2">{{ taskData.description }}</td>
-        </tr>
-        <tr *ngIf="taskData.description !== ''" class="spacer"></tr>
-        <tr>
-            <td class="head">Due date:</td>
-            <td class="content">{{ taskData.due_date }}</td>
-        </tr>
-        <tr class="spacer"></tr>
-        <tr>
-            <td class="head">Priority:</td>
-            <td class="prio">{{ taskData.priority }}
-                <div *ngIf="taskData.priority === 'urgent'" class="material__symbols__outlined prio__red">
-                    keyboard_double_arrow_up
-                </div>
-                <div *ngIf="taskData.priority === 'medium'" class="material__symbols__outlined prio__yellow">
-                    double_arrow</div>
-                <div *ngIf="taskData.priority === 'low'" class="material__symbols__outlined prio__green">
-                    keyboard_double_arrow_down
-                </div>
-            </td>
-        </tr>
-    </table>
-
-    <table *ngIf="taskData.assignedTo.length > 0" class="assigned">
-        <!-- <tr class="head__spacer"></tr> -->
-        <tr>
-            <td class="assigned__head" colspan="2">
-                Assigned To:
-            </td>
-        </tr>
-        <tr class="assignee" *ngFor="let mail of taskData.assignedTo">
-            <td class="assignee__initials">
-                <div [ngStyle]="{'background-color': getUserColor(mail)}">{{ getUserInitials(mail) }}</div>
-            </td>
-            <td class="assignee__names">
-                {{ getUserName(mail) }}
-            </td>
-        </tr>
-    </table>
-
-    <!-- <div (click)="toggleSubTaksk(i)" *ngFor="let subTask of taskData.subTasks; let i = index" class="no__select">
+  <!-- <div (click)="toggleSubTaksk(i)" *ngFor="let subTask of taskData.subTasks; let i = index" class="no__select">
         <input type="checkbox" [checked]="taskData.subTasksCompleted[i]">
         <label></label>
     </div> -->
 
-    <table *ngIf="taskData.subTasks.length > 0" class="subtasks__header">
+  <!-- <table *ngIf="taskData.subTasks.length > 0" class="subtasks__header">
         <tr>
             <td class="header">Subtasks:</td>
         </tr>
-    </table>
+    </table> -->
 
-    <div *ngIf="taskData.subTasks.length > 0" class="subtasks__container">
-        <div (click)="toggleSubTaksk(i)" *ngFor="let subTask of taskData.subTasks; let i = index"
-            class="subtasks no__select">
-            <input type="checkbox" [checked]="taskData.subTasksCompleted[i]" class="css-checkbox">
-            <label>{{ subTask }}</label>
+  <!-- <div *ngIf="taskData.subTasks.length > 0" class="subtasks__container">
+    <div
+      (click)="toggleSubTaksk(i)"
+      *ngFor="let subTask of taskData.subTasks; let i = index"
+      class="subtasks no__select"
+    >
+      <input
+        type="checkbox"
+        [checked]="taskData.subTasksCompleted[i]"
+        class="css-checkbox"
+      />
+      <label>{{ subTask }}</label>
     </div>
-    </div>
+  </div> -->
 
-    <div class="details__btns">
-        <div (click)="deleteTask()" class="details__delete__btn"><span class="material__symbols__outlined">delete</span>
-            Delete</div>
-        <div (click)="setEditMode()" class="details__edit__btn"><span class="material__symbols__outlined">edit</span>
-            Edit
-        </div>
+  <div class="details__btns">
+    <div (click)="deleteTask()" class="details__delete__btn">
+      <span class="material__symbols__outlined">delete</span> Delete
     </div>
-
+    <div (click)="setEditMode()" class="details__edit__btn">
+      <span class="material__symbols__outlined">edit</span>
+      Edit
+    </div>
+  </div>
 </div>

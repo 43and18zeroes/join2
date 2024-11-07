@@ -32,32 +32,32 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     this.dialog.closeAll();
   }
 
-  getUserColor(assignedUserEmail) {
-    for (let index = 0; index < this.allUsersData.length; index++) {
-      const element = this.allUsersData[index];
-      if (element.userEmailAddress === assignedUserEmail) {
-        return element.userColor;
-      }
-    }
-  }
+  // getUserColor(assignedUserEmail) {
+  //   for (let index = 0; index < this.allUsersData.length; index++) {
+  //     const element = this.allUsersData[index];
+  //     if (element.userEmailAddress === assignedUserEmail) {
+  //       return element.userColor;
+  //     }
+  //   }
+  // }
 
-  getUserInitials(assignedUserEmail) {
-    for (let index = 0; index < this.allUsersData.length; index++) {
-      const element = this.allUsersData[index];
-      if (element.userEmailAddress === assignedUserEmail) {
-        return element.userInitials;
-      }
-    }
-  }
+  // getUserInitials(assignedUserEmail) {
+  //   for (let index = 0; index < this.allUsersData.length; index++) {
+  //     const element = this.allUsersData[index];
+  //     if (element.userEmailAddress === assignedUserEmail) {
+  //       return element.userInitials;
+  //     }
+  //   }
+  // }
 
-  getUserName(assignedUserEmail) {
-    for (let index = 0; index < this.allUsersData.length; index++) {
-      const element = this.allUsersData[index];
-      if (element.userEmailAddress === assignedUserEmail) {
-        return element.userName;
-      }
-    }
-  }
+  // getUserName(assignedUserEmail) {
+  //   for (let index = 0; index < this.allUsersData.length; index++) {
+  //     const element = this.allUsersData[index];
+  //     if (element.userEmailAddress === assignedUserEmail) {
+  //       return element.userName;
+  //     }
+  //   }
+  // }
 
   toggleSubTaksk(index: number): void {
     this.taskData.subTasksCompleted[index] = !this.taskData.subTasksCompleted[index];
