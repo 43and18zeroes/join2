@@ -24,6 +24,7 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
 
   ngOnInit() {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
+    console.log('this.taskData', this.taskData);
     this.allUsersData = this.userService.allUsersData;
   }
 

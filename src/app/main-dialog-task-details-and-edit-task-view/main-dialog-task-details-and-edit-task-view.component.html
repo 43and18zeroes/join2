@@ -12,7 +12,7 @@
     <h2>{{ taskData.title }}</h2>
 
     <table class="dateprio">
-        <tr *ngIf="taskData.description !== ''">
+        <tr>
             <td class="description" colspan="2">{{ taskData.description }}</td>
         </tr>
         <tr *ngIf="taskData.description !== ''" class="spacer"></tr>
