@@ -71,10 +71,25 @@
   </table>
 
   <table *ngIf="taskData.subtasks.length" class="subtasks__header">
-        <tr>
-            <td class="header">Subtasks:</td>
-        </tr>
-    </table>
+    <tr>
+      <td class="header">Subtasks:</td>
+    </tr>
+  </table>
+
+  <div *ngIf="taskData.subtasks.length" class="subtasks__container">
+    <div
+      (click)="toggleSubTaksk(i)"
+      *ngFor="let subtask of taskData.subtasks; let i = index"
+      class="subtasks no__select"
+    >
+      <input
+        type="checkbox"
+        [checked]="subtask.is_completed"
+        class="css-checkbox"
+      />
+      <label>{{ subtask.title }}</label>
+    </div>
+  </div>
 
   <!-- <div (click)="toggleSubTaksk(i)" *ngFor="let subTask of taskData.subTasks; let i = index" class="no__select">
         <input type="checkbox" [checked]="taskData.subTasksCompleted[i]">
