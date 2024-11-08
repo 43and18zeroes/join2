@@ -21,11 +21,11 @@
                         <div *ngFor="let index of groupedContacts[letter]; let i = index;"
                             (click)="displayContactDetails(index, letter, i)" class="single__entry"
                             [ngClass]="{'active__class': isActive(letter, i)}">
-                            <div class="entry__initials" [ngStyle]="{'background-color': index.userColor}">{{
-                                index.userInitials }}</div>
+                            <div class="entry__initials" [ngStyle]="{'background-color': index.user_color}">{{
+                                index.initials }}</div>
                             <div class="entry__right">
-                                <div class="entry__name">{{ index.userName }}</div>
-                                <div class="entry__mail">{{ index.userEmailAddress }}</div>
+                                <div class="entry__name">{{ index.first_name }}</div>
+                                <div class="entry__mail">{{ index.email }}</div>
                             </div>
                         </div>
                     </div>
