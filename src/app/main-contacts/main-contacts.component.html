@@ -24,7 +24,7 @@
                             <div class="entry__initials" [ngStyle]="{'background-color': index.user_color}">{{
                                 index.initials }}</div>
                             <div class="entry__right">
-                                <div class="entry__name">{{ index.first_name }}</div>
+                                <div class="entry__name">{{ index.first_name }} {{ index.last_name }}</div>
                                 <div class="entry__mail">{{ index.email }}</div>
                             </div>
                         </div>
@@ -61,12 +61,12 @@
         <div *ngIf="showContactDetails" class="contact__details__body">
             <div class="details__header">
                 <div class="header__left">
-                    <div class="details__initials" [ngStyle]="{'background-color': clickedContactData.userColor}">{{
-                        clickedContactData.userInitials }}
+                    <div class="details__initials" [ngStyle]="{'background-color': clickedContactData.user_color}">{{
+                        clickedContactData.initials }}
                     </div>
                 </div>
                 <div class="details__header__right">
-                    <div class="details__name">{{ clickedContactData.userName }}</div>
+                    <div class="details__name">{{ clickedContactData.first_name }} {{ clickedContactData.last_name }}</div>
                     <div class="details__btns">
                         <div (click)="editContact(clickedContactData)" class="details__edit__btn"><span
                                 class="material__symbols__outlined">edit</span> Edit</div>
@@ -85,13 +85,13 @@
             <div class="contact__info">
                 <div class="mail">
                     <h4>Email</h4>
-                    <a href="mailto:{{ clickedContactData.userEmailAddress }}" target="_blank">{{
-                        clickedContactData.userEmailAddress }}</a>
+                    <a href="mailto:{{ clickedContactData.email }}" target="_blank">{{
+                        clickedContactData.email }}</a>
                 </div>
                 <div class="mail">
                     <h4>Phone</h4>
-                    <a href="tel:+{{ clickedContactData.userPhoneNumber }}" target="_blank">{{
-                        clickedContactData.userPhoneNumber }}</a>
+                    <a href="tel:+{{ clickedContactData.phone_number }}" target="_blank">{{
+                        clickedContactData.phone_number }}</a>
                 </div>
             </div>
         </div>
