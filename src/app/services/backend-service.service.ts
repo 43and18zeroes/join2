@@ -9,49 +9,88 @@ import { tap, shareReplay } from 'rxjs/operators';
 export class BackendService {
 
   private apiUrl = 'http://127.0.0.1:8000/kanban/';
-  private itemsCache$: Observable<any>;
+  private tasksCache$: Observable<any>;
+  private usersCache$: Observable<any>;
+  private subtasksCache$: Observable<any>;
 
   constructor(private http: HttpClient) { }
 
-  // Beispielmethode zum Abrufen von Daten
-  getItems(): Observable<any> {
-    if (!this.itemsCache$) {
-      this.itemsCache$ = this.http.get(`${this.apiUrl}tasks/`).pipe(
+  // Methode zum Abrufen von Tasks
+  getTasks(): Observable<any> {
+    if (!this.tasksCache$) {
+      this.tasksCache$ = this.http.get(`${this.apiUrl}tasks/`).pipe(
         shareReplay(1) // Zwischenspeichern der Daten
       );
     }
-    return this.itemsCache$;
+    return this.tasksCache$;
   }
 
-  // Beispielmethode zum Senden von Daten
-  createItem(item: any): Observable<any> {
+  // Methode zum Abrufen von Users
+  getUsers(): Observable<any> {
+    if (!this.usersCache$) {
+      this.usersCache$ = this.http.get(`${this.apiUrl}users/`).pipe(
+        shareReplay(1) // Zwischenspeichern der Daten
+      );
+    }
+    return this.usersCache$;
+  }
+
+  // Methode zum Abrufen von Subtasks
+  getSubtasks(): Observable<any> {
+    if (!this.subtasksCache$) {
+      this.subtasksCache$ = this.http.get(`${this.apiUrl}subtasks/`).pipe(
+        shareReplay(1) // Zwischenspeichern der Daten
+      );
+    }
+    return this.subtasksCache$;
+  }
+
+  // Methode zum Senden von Daten (z.B. für Tasks)
+  createItem(item: any, endpoint: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(`${this.apiUrl}items/`, item, { headers: headers }).pipe(
+    return this.http.post(`${this.apiUrl}${endpoint}/`, item, { headers: headers }).pipe(
       tap(() => {
         // Nach dem Erstellen eines neuen Items, das Cache leeren
-        this.itemsCache$ = null;
+        this.clearCache(endpoint);
       })
     );
   }
 
-  // Beispielmethode zum Aktualisieren von Daten
-  updateItem(item: any): Observable<any> {
+  // Methode zum Aktualisieren von Daten (z.B. für Tasks)
+  updateItem(item: any, endpoint: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put(`${this.apiUrl}items/${item.id}/`, item, { headers: headers }).pipe(
+    return this.http.put(`${this.apiUrl}${endpoint}/${item.id}/`, item, { headers: headers }).pipe(
       tap(() => {
         // Nach dem Aktualisieren eines Items, das Cache leeren
-        this.itemsCache$ = null;
+        this.clearCache(endpoint);
       })
     );
   }
 
-  // Beispielmethode zum Löschen von Daten
-  deleteItem(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}items/${id}/`).pipe(
+  // Methode zum Löschen von Daten (z.B. für Tasks)
+  deleteItem(id: number, endpoint: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}${endpoint}/${id}/`).pipe(
       tap(() => {
         // Nach dem Löschen eines Items, das Cache leeren
-        this.itemsCache$ = null;
+        this.clearCache(endpoint);
       })
     );
+  }
+
+  // Hilfsmethode zum Leeren des Caches basierend auf dem Endpunkt
+  private clearCache(endpoint: string): void {
+    switch (endpoint) {
+      case 'tasks':
+        this.tasksCache$ = null;
+        break;
+      case 'users':
+        this.usersCache$ = null;
+        break;
+      case 'subtasks':
+        this.subtasksCache$ = null;
+        break;
+      default:
+        break;
+    }
   }
 }

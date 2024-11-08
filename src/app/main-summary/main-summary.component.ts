@@ -34,7 +34,7 @@ export class MainSummaryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.backendService.getItems().subscribe(data => {
+    this.backendService.getTasks().subscribe(data => {
       this.allTasksData = data;
       console.log('this.allTasksData', this.allTasksData);
       this.determineMainNumbers();
