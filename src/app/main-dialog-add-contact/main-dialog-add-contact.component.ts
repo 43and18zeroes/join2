@@ -51,7 +51,7 @@ export class MainDialogAddContactComponent {
     if (this.addUserForm.valid) {
       this.addUserFormSubmitted = true;
       this.getUserData();
-      this.userService.addUser(this.user);
+      // this.userService.addUser(this.user);
       this.addNewUserOutro();
     }
   }
