@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 import { UserService } from '../services/user-data.service';
 import { MainDialogEditContactComponent } from '../main-dialog-edit-contact/main-dialog-edit-contact.component';
+import { BackendService } from '../services/backend-service.service';
 
 @Component({
   selector: 'app-main-contacts',
@@ -28,12 +29,17 @@ export class MainContactsComponent {
 
   constructor(
     public dialog: MatDialog,
-    private userService: UserService
+    private userService: UserService,
+    private backendService: BackendService
     ) { }
 
   ngOnInit(): void {
-    this.currentUserData = this.userService.currentUserData;
-    this.generateUsersLists();
+    // this.currentUserData = this.userService.currentUserData;
+    this.backendService.getUsers().subscribe(data => {
+      this.allUsersData = data;
+      console.log('this.allUsersData', this.allUsersData);
+      this.generateUsersLists();
+    });
   }
 
   generateUsersLists() {

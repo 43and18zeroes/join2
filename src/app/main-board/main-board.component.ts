@@ -63,7 +63,6 @@ export class MainBoardComponent {
     // this.taskDataService.getTasksDataMain();
     this.backendService.getTasks().subscribe(data => {
       this.allTasksData = data;
-      console.log('this.allTasksData', this.allTasksData);
     });
     // this.allTasksData = this.taskDataService.allTasksData;
     this.allUsersData = this.userService.allUsersData;
