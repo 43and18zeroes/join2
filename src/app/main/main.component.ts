@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../services/user-data.service';
 import { MainCommunicationService } from '../services/main-communication.service';
 import { TaskDataService } from '../services/task-data.service';
-// import { BackendService } from '../services/backend-service.service';
+import { BackendService } from '../services/backend-service.service';
 
 @Component({
   selector: 'app-main',
@@ -31,7 +31,7 @@ export class MainComponent implements OnInit {
     private userService: UserService,
     private mainCommService: MainCommunicationService,
     public taskDataService: TaskDataService,
-    // private backendService: BackendService
+    private backendService: BackendService
   ) {
     this.subscribeBoardObservable();
     this.subscribePrivacyPolicyServiceObservable();
@@ -40,10 +40,9 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUsersDataMain();
-    // this.taskDataService.getTasksDataMain();
-    // this.backendService.getItems().subscribe(data => {
-    //   this.items = data;
-    // });
+    this.backendService.getUsers().subscribe(data => {
+      this.allUsersData = data;
+    });
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
     }, 2500);
