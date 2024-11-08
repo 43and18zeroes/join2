@@ -4,9 +4,10 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
-import { User } from 'src/models/user.class';
+import { User } from 'src/models/user_drf.class';
 import { emailValidator, signUpUserNameValidator, phoneValidator } from '../shared/validators/custom-validators';
 import { UserService } from '../services/user-data.service';
+import { BackendService } from '../services/backend-service.service';
 
 @Component({
   selector: 'app-main-dialog-add-contact',
@@ -36,7 +37,8 @@ export class MainDialogAddContactComponent {
     public dialogRef: MatDialogRef<MainDialogAddContactComponent>,
     private fb: FormBuilder,
     private firestore: AngularFirestore,
-    private userService: UserService
+    private userService: UserService,
+    private backendService: BackendService
   ) { }
 
   ngOnInit(): void {
@@ -52,26 +54,35 @@ export class MainDialogAddContactComponent {
       this.addUserFormSubmitted = true;
       this.getUserData();
       // this.userService.addUser(this.user);
-      this.addNewUserOutro();
+      // this.addNewUserOutro();
+      this.backendService.createItem(this.user, 'users').subscribe(
+        (response) => {
+          console.log('User created successfully:', response);
+          this.addNewUserOutro();
+        },
+        (error) => {
+          console.error('Error creating user:', error);
+        }
+      );
     }
   }
 
   checkSingleInputs() {
-    if (!this.user.userName) this.userNameValid = false;
+    if (!this.user.user_name) this.userNameValid = false;
     else this.userNameValid = true;
-    if (!this.user.userEmailAddress) this.userEmailAddressValid = false;
+    if (!this.user.email) this.userEmailAddressValid = false;
     else this.userEmailAddressValid = true;
-    if (!this.user.userPhoneNumber) this.userPhoneNumberValid = false;
+    if (!this.user.phone_number) this.userPhoneNumberValid = false;
     else this.userPhoneNumberValid = true;
   }
 
   getUserData() {
-    this.user.userFirstName = this.user.userName.split(' ')[0];
-    this.user.userSurName = this.user.userName.split(' ')[1];
-    this.user.userInitials = this.user.userFirstName.charAt(0).toUpperCase() + this.user.userSurName.charAt(0).toUpperCase();
-    this.user.userColor = this.generateColorFromInitials(this.user.userInitials);
-    this.user.userPhoneNumber = this.user.userPhoneNumber.replace(/\s/g, '');
-    this.user.type = "userFromContacts";
+    this.user.first_name = this.user.user_name.split(' ')[0];
+    this.user.last_name = this.user.user_name.split(' ')[1];
+    this.user.initials = this.user.first_name.charAt(0).toUpperCase() + this.user.last_name.charAt(0).toUpperCase();
+    this.user.user_color = this.generateColorFromInitials(this.user.initials);
+    this.user.phone_number = this.user.phone_number.replace(/\s/g, '');
+    this.user.type = "user_from_contacts";
   }
 
   private generateColorFromInitials(initials: string): string {

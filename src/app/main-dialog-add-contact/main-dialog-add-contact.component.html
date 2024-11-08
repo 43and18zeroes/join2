@@ -35,7 +35,7 @@
                     <span (click)="userName.focus()" class="material__symbols__outlined">
                         person
                     </span>
-                    <input [(ngModel)]="user.userName" id="userName" formControlName="userName" placeholder="Name"
+                    <input [(ngModel)]="user.user_name" id="userName" formControlName="userName" placeholder="Name"
                         #userName placeholder="Name">
                 </div>
                 <div class="incorrect__input">
@@ -47,7 +47,7 @@
                     <span (click)="userEmailAddress.focus()" class="material__symbols__outlined">
                         mail
                     </span>
-                    <input [(ngModel)]="user.userEmailAddress" formControlName="userEmailAddress"
+                    <input [(ngModel)]="user.email" formControlName="userEmailAddress"
                         placeholder="Email" #userEmailAddress placeholder="Email">
                 </div>
                 <div class="incorrect__input">
@@ -61,7 +61,7 @@
                     <span (click)="userPhoneNumber.focus()" class="material__symbols__outlined">
                         phone
                     </span>
-                    <input [(ngModel)]="user.userPhoneNumber" formControlName="userPhoneNumber"
+                    <input [(ngModel)]="user.phone_number" formControlName="userPhoneNumber"
                         placeholder="Phone" #userPhoneNumber placeholder="Phone">
                 </div>
                 <div class="incorrect__input">
