@@ -4,6 +4,7 @@ import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-d
 import { UserService } from '../services/user-data.service';
 import { MainDialogEditContactComponent } from '../main-dialog-edit-contact/main-dialog-edit-contact.component';
 import { BackendService } from '../services/drf/backend-service.service';
+import { BackendUserDataService } from '../services/drf/backend-user-data.service';
 
 @Component({
   selector: 'app-main-contacts',
@@ -30,11 +31,16 @@ export class MainContactsComponent {
   constructor(
     public dialog: MatDialog,
     private userService: UserService,
-    private backendService: BackendService
+    private backendService: BackendService,
+    private backendUserDataService: BackendUserDataService
     ) { }
 
   ngOnInit(): void {
     this.currentUserData = this.userService.currentUserData;
+    this.fetchUsers();
+  }
+
+  fetchUsers() {
     this.backendService.getUsers().subscribe(data => {
       this.allUsersData = data;
       console.log('this.allUsersData', this.allUsersData);
@@ -62,12 +68,13 @@ export class MainContactsComponent {
       panelClass: 'popup__contact__add'
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if (this.userService.userAddedSuccessfully) {
-        this.generateUsersLists();
-        this.highlightNewContact(this.userService.lastUserAdded.firebaseId);
+      if (this.backendUserDataService.userAddedSuccessfully) {
+        this.fetchUsers();
+        // this.highlightNewContact(this.userService.lastUserAdded.firebaseId);
         this.showContactDetails = true;
         this.clickedContactData = this.userService.lastUserAdded;
-        this.userService.userAddedSuccessfully = false;
+        this.backendUserDataService.userAddedSuccessfully = false;
+        // this.userService.userAddedSuccessfully = false;
       }
     });
   }

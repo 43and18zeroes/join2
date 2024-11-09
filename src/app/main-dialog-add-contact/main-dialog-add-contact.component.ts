@@ -8,6 +8,7 @@ import { User } from 'src/models/user_drf.class';
 import { emailValidator, signUpUserNameValidator, phoneValidator } from '../shared/validators/custom-validators';
 import { UserService } from '../services/user-data.service';
 import { BackendService } from '../services/drf/backend-service.service';
+import { BackendUserDataService } from '../services/drf/backend-user-data.service';
 
 @Component({
   selector: 'app-main-dialog-add-contact',
@@ -38,7 +39,8 @@ export class MainDialogAddContactComponent {
     private fb: FormBuilder,
     private firestore: AngularFirestore,
     private userService: UserService,
-    private backendService: BackendService
+    private backendService: BackendService,
+    private backendUserDataService: BackendUserDataService
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +60,7 @@ export class MainDialogAddContactComponent {
       this.backendService.createItem(this.user, 'users').subscribe(
         (response) => {
           console.log('User created successfully:', response);
+          this.backendUserDataService.userAddedSuccessfully = true;
           this.addNewUserOutro();
         },
         (error) => {
