@@ -61,6 +61,7 @@ export class MainContactsComponent {
         this.groupedContacts[firstLetter].push(index);
       }
     });
+    console.log('this.groupedContacts', this.groupedContacts);
   }
 
   openAddUserDialog(): void {
@@ -71,26 +72,39 @@ export class MainContactsComponent {
       if (this.backendUserDataService.userAddedSuccessfully) {
         this.fetchUsers();
         // this.highlightNewContact(this.userService.lastUserAdded.firebaseId);
+        this.highlightNewContact(this.backendUserDataService.lastUserAddedId);
         this.showContactDetails = true;
-        this.clickedContactData = this.userService.lastUserAdded;
+        this.clickedContactData = this.backendUserDataService.lastUserAdded;
         this.backendUserDataService.userAddedSuccessfully = false;
         // this.userService.userAddedSuccessfully = false;
       }
     });
   }
 
-  highlightNewContact(newContactId: string) {
+  highlightNewContact(newContactId: number) {
     for (const key in this.groupedContacts) {
       if (this.groupedContacts.hasOwnProperty(key)) {
-        const elementArray = this.groupedContacts[key];
-        const foundElement = elementArray.find(element => element.firebaseId === newContactId);
-        if (foundElement) {
-          this.selectedContactId = `${key}-${elementArray.indexOf(foundElement)}`;
-          this.clickedContactData = foundElement; // Optional, wenn Sie die Kontaktdetails auch anzeigen möchten
+        const entries = this.groupedContacts[key];
+        let foundEntry = entries.find(entry => entry.id === newContactId);
+        if (foundEntry) {
+          foundEntry = foundEntry.toString();
+          this.selectedContactId = `${key}-${entries.indexOf(foundEntry)}`;
+          this.clickedContactData = foundEntry; // Optional, wenn Sie die Kontaktdetails auch anzeigen möchten
           return;
         }
       }
     }
+    // for (const key in this.groupedContacts) {
+    //   if (this.groupedContacts.hasOwnProperty(key)) {
+    //     const elementArray = this.groupedContacts[key];
+    //     const foundElement = elementArray.find(element => element.firebaseId === newContactId);
+    //     if (foundElement) {
+    //       this.selectedContactId = `${key}-${elementArray.indexOf(foundElement)}`;
+    //       this.clickedContactData = foundElement; // Optional, wenn Sie die Kontaktdetails auch anzeigen möchten
+    //       return;
+    //     }
+    //   }
+    // }
   }
 
   hasContactsForLetter(letter: string): boolean {

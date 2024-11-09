@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class BackendUserDataService {
 
   userAddedSuccessfully = false;
+  lastUserAdded: Object;
+  lastUserAddedId: number;
 
   constructor() {}
 

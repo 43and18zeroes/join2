@@ -60,6 +60,8 @@ export class MainDialogAddContactComponent {
       this.backendService.createItem(this.user, 'users').subscribe(
         (response) => {
           console.log('User created successfully:', response);
+          this.backendUserDataService.lastUserAdded = response;
+          this.backendUserDataService.lastUserAddedId = response.id;
           this.backendUserDataService.userAddedSuccessfully = true;
           this.addNewUserOutro();
         },
