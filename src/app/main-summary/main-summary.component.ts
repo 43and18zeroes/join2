@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MainComponent } from '../main/main.component';
 import { UserService } from '../services/user-data.service';
 import { TaskDataService } from '../services/task-data.service';
-import { BackendTempService } from '../services/drf/backend-temp.service';
 import { BackendService } from '../services/drf/backend-service.service';
 
 @Component({
@@ -29,7 +28,6 @@ export class MainSummaryComponent implements OnInit {
     public mainComponent: MainComponent,
     public taskDataService: TaskDataService,
     private userService: UserService,
-    private backendTempService: BackendTempService,
     private backendService: BackendService
   ) { }
 
@@ -38,10 +36,6 @@ export class MainSummaryComponent implements OnInit {
       this.allTasksData = data;
       this.determineMainNumbers();
     });
-    // this.backendTempService.items$.subscribe(items => {
-    //   this.allTasksData = items; // Daten aus dem Service abonnieren
-    //   console.log('this.allTasksData', this.allTasksData);
-    // });
     this.showGreetingScreenMobile = this.mainComponent.showGreetingScreenMobile;
     this.currentUserData = this.userService.currentUserData;
     if (this.currentUserData.userName !== "Gast") {
