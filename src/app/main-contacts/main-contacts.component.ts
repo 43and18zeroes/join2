@@ -81,13 +81,12 @@ export class MainContactsComponent {
     });
   }
 
-  highlightNewContact(newContactId: number) {
+  highlightNewContact(newContactId: string) {
     for (const key in this.groupedContacts) {
       if (this.groupedContacts.hasOwnProperty(key)) {
         const entries = this.groupedContacts[key];
         let foundEntry = entries.find(entry => entry.id === newContactId);
         if (foundEntry) {
-          foundEntry = foundEntry.toString();
           this.selectedContactId = `${key}-${entries.indexOf(foundEntry)}`;
           this.clickedContactData = foundEntry; // Optional, wenn Sie die Kontaktdetails auch anzeigen möchten
           return;

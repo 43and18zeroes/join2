@@ -61,7 +61,7 @@ export class MainDialogAddContactComponent {
         (response) => {
           console.log('User created successfully:', response);
           this.backendUserDataService.lastUserAdded = response;
-          this.backendUserDataService.lastUserAddedId = response.id;
+          this.backendUserDataService.lastUserAddedId = response.id.toString();
           this.backendUserDataService.userAddedSuccessfully = true;
           this.addNewUserOutro();
         },

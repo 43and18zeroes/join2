@@ -7,7 +7,7 @@ export class BackendUserDataService {
 
   userAddedSuccessfully = false;
   lastUserAdded: Object;
-  lastUserAddedId: number;
+  lastUserAddedId: string;
 
   constructor() {}
 
