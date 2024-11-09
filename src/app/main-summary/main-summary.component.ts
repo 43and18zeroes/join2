@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainComponent } from '../main/main.component';
 import { UserService } from '../services/user-data.service';
 import { TaskDataService } from '../services/task-data.service';
-import { BackendTempService } from '../services/backend-temp.service';
+import { BackendTempService } from '../services/drf/backend-temp.service';
 import { BackendService } from '../services/drf/backend-service.service';
 
 @Component({
