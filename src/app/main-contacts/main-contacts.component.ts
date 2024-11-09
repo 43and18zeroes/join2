@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 import { UserService } from '../services/user-data.service';
 import { MainDialogEditContactComponent } from '../main-dialog-edit-contact/main-dialog-edit-contact.component';
-import { BackendService } from '../services/backend-service.service';
+import { BackendService } from '../services/drf/backend-service.service';
 
 @Component({
   selector: 'app-main-contacts',

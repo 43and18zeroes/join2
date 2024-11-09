@@ -8,7 +8,7 @@ import { MainDialogAddTaskComponent } from '../main-dialog-add-task/main-dialog-
 import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
 import { BoardCommService } from '../services/board-comm.service';
 import { TaskDataService } from '../services/task-data.service';
-import { BackendService } from '../services/backend-service.service';
+import { BackendService } from '../services/drf/backend-service.service';
 
 @Component({
   selector: 'app-main-board',

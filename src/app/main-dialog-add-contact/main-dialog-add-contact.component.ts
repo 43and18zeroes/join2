@@ -7,7 +7,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user_drf.class';
 import { emailValidator, signUpUserNameValidator, phoneValidator } from '../shared/validators/custom-validators';
 import { UserService } from '../services/user-data.service';
-import { BackendService } from '../services/backend-service.service';
+import { BackendService } from '../services/drf/backend-service.service';
 
 @Component({
   selector: 'app-main-dialog-add-contact',

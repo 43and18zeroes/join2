@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../services/user-data.service';
 import { MainCommunicationService } from '../services/main-communication.service';
 import { TaskDataService } from '../services/task-data.service';
-import { BackendService } from '../services/backend-service.service';
+import { BackendService } from '../services/drf/backend-service.service';
 
 @Component({
   selector: 'app-main',
