@@ -144,7 +144,7 @@ export class MainContactsComponent {
   }
 
   editContact(clickedContactData) {
-    const clickedContactDataID = clickedContactData.firebaseId;
+    const clickedContactDataID = clickedContactData.id;
     const dialogRef = this.dialog.open(MainDialogEditContactComponent, {
       panelClass: 'popup__contact__add'
     });
