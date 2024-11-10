@@ -49,7 +49,7 @@ export class MainContactsComponent {
   }
 
   generateUsersLists() {
-    this.userService.sortUsersData();
+    // this.userService.sortUsersData();
     // this.allUsersData = this.userService.allUsersData;
     this.groupedContacts = {};
     this.allUsersData.forEach(index => {
