@@ -61,7 +61,26 @@ export class MainContactsComponent {
         this.groupedContacts[firstLetter].push(index);
       }
     });
+    this.sortGroupedContacts(this.groupedContacts);
     console.log('this.groupedContacts', this.groupedContacts);
+  }
+
+  sortGroupedContacts(groupedContacts: { [key: string]: any[] }): void {
+    for (const key in groupedContacts) {
+      if (groupedContacts.hasOwnProperty(key)) {
+        groupedContacts[key].sort((a, b) => {
+          const nameA = a.first_name.toLowerCase();
+          const nameB = b.first_name.toLowerCase();
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+    }
   }
 
   openAddUserDialog(): void {
