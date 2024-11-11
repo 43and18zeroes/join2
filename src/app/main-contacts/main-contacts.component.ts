@@ -180,6 +180,7 @@ export class MainContactsComponent {
       (response) => {
         
         console.log('User deleted successfully:', response);
+        this.fetchUsers();
         // this.backendUserDataService.lastUserAdded = response;
         // this.backendUserDataService.lastUserAddedId = response.id.toString();
         // this.backendUserDataService.userAddedSuccessfully = true;
@@ -189,7 +190,7 @@ export class MainContactsComponent {
       }
     )
     // this.generateUsersLists();
-    this.fetchUsers();
+    // this.fetchUsers();
     this.showContactDetails = false;
     this.selectedContactId = null;
     this.displayDeletionSuccessfulAnimation();
