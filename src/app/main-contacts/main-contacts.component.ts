@@ -155,12 +155,14 @@ export class MainContactsComponent {
   }
 
   afterClosedEditContact(clickedContactDataID) {
+    this.showContactDetails = false;
+    this.fetchUsers();
     if (this.userService.userDeletedSuccessfully) {
-      this.showContactDetails = false;
+      // this.showContactDetails = false;
       this.displayDeletionSuccessfulAnimation();
     }
     if (this.userService.userUpdatedSuccessfully || this.userService.userDeletedSuccessfully) {
-      this.generateUsersLists();
+      // this.generateUsersLists();
       this.findEditedContactData(clickedContactDataID);
     }
     this.userService.userUpdatedSuccessfully = false;
