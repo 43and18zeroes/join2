@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ElementRef, Renderer2 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
 import { UserService } from '../services/user-data.service';
@@ -32,7 +32,9 @@ export class MainContactsComponent {
     public dialog: MatDialog,
     private userService: UserService,
     private backendService: BackendService,
-    private backendUserDataService: BackendUserDataService
+    private backendUserDataService: BackendUserDataService,
+    private el: ElementRef,
+    private renderer: Renderer2
     ) { }
 
   ngOnInit(): void {
@@ -96,6 +98,7 @@ export class MainContactsComponent {
         this.clickedContactData = this.backendUserDataService.lastUserAdded;
         this.backendUserDataService.userAddedSuccessfully = false;
         // this.userService.userAddedSuccessfully = false;
+        this.removeHighlight();
       }
     });
   }
@@ -167,6 +170,7 @@ export class MainContactsComponent {
     }
     this.userService.userUpdatedSuccessfully = false;
     this.userService.userDeletedSuccessfully = false;
+    this.removeHighlight();
   }
 
   deleteContact(clickedContactData) {
@@ -198,5 +202,16 @@ export class MainContactsComponent {
         }
       }
     }
+  }
+
+  removeHighlight() {
+    this.showContactDetails = false;
+    this.selectedContactId = null;
+  
+    // Entferne die Klasse active__class aus allen Elementen
+    const activeElements = this.el.nativeElement.querySelectorAll('.active__class');
+    activeElements.forEach(element => {
+      this.renderer.removeClass(element, 'active__class');
+    });
   }
 }
