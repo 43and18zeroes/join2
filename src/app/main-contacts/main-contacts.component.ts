@@ -175,22 +175,17 @@ export class MainContactsComponent {
 
   deleteContact(clickedContactData) {
     // this.userService.deleteContact(clickedContactData);
-    console.log('clickedContactData', clickedContactData.id);
     this.backendService.deleteItem(clickedContactData.id, 'users').subscribe(
       (response) => {
         
         console.log('User deleted successfully:', response);
         this.fetchUsers();
-        // this.backendUserDataService.lastUserAdded = response;
-        // this.backendUserDataService.lastUserAddedId = response.id.toString();
-        // this.backendUserDataService.userAddedSuccessfully = true;
       },
       (error) => {
         console.error('Error deleting user:', error);
       }
     )
     // this.generateUsersLists();
-    // this.fetchUsers();
     this.showContactDetails = false;
     this.selectedContactId = null;
     this.displayDeletionSuccessfulAnimation();
