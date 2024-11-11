@@ -11,6 +11,7 @@ import { BackendService } from '../services/drf/backend-service.service';
 })
 export class MainSummaryComponent implements OnInit {
 
+  allUsersData;
   showGreetingScreenMobile = true;
   currenUserIsGuest = true;
   currentUserData;
@@ -35,6 +36,10 @@ export class MainSummaryComponent implements OnInit {
     this.backendService.getTasks().subscribe(data => {
       this.allTasksData = data;
       this.determineMainNumbers();
+    });
+    this.backendService.getUsers().subscribe(data => {
+      this.allUsersData = data;
+      console.log('this.allUsersData', this.allUsersData);
     });
     this.showGreetingScreenMobile = this.mainComponent.showGreetingScreenMobile;
     this.currentUserData = this.userService.currentUserData;
