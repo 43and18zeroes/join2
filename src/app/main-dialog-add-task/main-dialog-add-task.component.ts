@@ -8,6 +8,7 @@ import { UserService } from '../services/user-data.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { BoardCommService } from '../services/board-comm.service';
 import { TaskDataService } from '../services/task-data.service';
+import { BackendService } from '../services/drf/backend-service.service';
 
 @Component({
   selector: 'app-main-dialog-add-task',
@@ -53,6 +54,7 @@ export class MainDialogAddTaskComponent {
     private userService: UserService,
     public boardCommService: BoardCommService,
     public taskDataService: TaskDataService,
+    private backendService: BackendService,
     public dialogRef: MatDialogRef<MainDialogAddTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -76,8 +78,14 @@ export class MainDialogAddTaskComponent {
   }
 
   ngOnInit(): void {
-    this.userService.sortUsersData();
-    this.allUsersData = this.userService.allUsersData;
+    // this.userService.sortUsersData();
+    // this.allUsersData = this.userService.allUsersData;
+
+    this.backendService.getUsers().subscribe(data => {
+      this.allUsersData = data;
+      console.log('this.allUsersData', this.allUsersData);
+    });
+
     this.currentUserData = this.userService.currentUserData;
     this.initListeners();
   }
