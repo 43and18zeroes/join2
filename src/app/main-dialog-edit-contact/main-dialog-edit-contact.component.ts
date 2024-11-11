@@ -15,7 +15,7 @@ import { BackendService } from '../services/drf/backend-service.service';
 })
 export class MainDialogEditContactComponent {
 
-  @ViewChild('newUserSubmitBtn') newUserSubmitBtn: ElementRef;
+  @ViewChild('saveChangesSubmitBtn') saveChangesSubmitBtn: ElementRef;
 
   user = new User(); 
   userNameValid: boolean = true;
@@ -56,13 +56,12 @@ export class MainDialogEditContactComponent {
           // this.backendUserDataService.lastUserAdded = response;
           // this.backendUserDataService.lastUserAddedId = response.id.toString();
           // this.backendUserDataService.userAddedSuccessfully = true;
-          this.addNewUserOutro();
+          this.saveChangesOutro();
         },
         (error) => {
           console.error('Error creating user:', error);
         }
       )
-      this.addNewUserOutro();
     }
   }
 
@@ -108,8 +107,8 @@ export class MainDialogEditContactComponent {
     this.closeDialog();
   }
 
-  addNewUserOutro() {
-    this.newUserSubmitBtn.nativeElement.classList.add("btn__success");
+  saveChangesOutro() {
+    this.saveChangesSubmitBtn.nativeElement.classList.add("btn__success");
     setTimeout(() => {
       this.dialog.closeAll();
     }, 1500);
