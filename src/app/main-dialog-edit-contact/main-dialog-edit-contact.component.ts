@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/models/user_drf.class';
 import { signUpUserNameValidator } from '../shared/validators/custom-validators';
 import { UserService } from '../services/user-data.service';
+import { BackendService } from '../services/drf/backend-service.service';
 
 @Component({
   selector: 'app-main-dialog-edit-contact',
@@ -34,7 +35,8 @@ export class MainDialogEditContactComponent {
     public dialog: MatDialog,
     private fb: FormBuilder,
     private firestore: AngularFirestore,
-    private userService: UserService
+    private userService: UserService,
+    private backendService: BackendService,
   ) { }
 
   closeDialog() {
@@ -46,7 +48,20 @@ export class MainDialogEditContactComponent {
     if (this.editUserForm.valid) {
       this.editUserFormSubmitted = true;
       this.getUserData();
-      this.userService.updateUser(this.user);
+      // this.userService.updateUser(this.user);
+
+      this.backendService.updateItem(this.user, 'users').subscribe(
+        (response) => {
+          console.log('User updated successfully:', response);
+          // this.backendUserDataService.lastUserAdded = response;
+          // this.backendUserDataService.lastUserAddedId = response.id.toString();
+          // this.backendUserDataService.userAddedSuccessfully = true;
+          this.addNewUserOutro();
+        },
+        (error) => {
+          console.error('Error creating user:', error);
+        }
+      )
       this.addNewUserOutro();
     }
   }
