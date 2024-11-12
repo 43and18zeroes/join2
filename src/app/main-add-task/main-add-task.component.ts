@@ -88,10 +88,13 @@ export class MainAddTaskComponent {
 
   private sortUsersData(): void {
     this.allUsersData.sort((a, b) => {
-      if (a.first_name < b.first_name) {
+      const firstNameA = a.first_name.toLowerCase();
+      const firstNameB = b.first_name.toLowerCase();
+
+      if (firstNameA < firstNameB) {
         return -1;
       }
-      if (a.first_name > b.first_name) {
+      if (firstNameA > firstNameB) {
         return 1;
       }
       return 0;
