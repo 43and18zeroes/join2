@@ -64,7 +64,7 @@
                 <div class="form__right">
 
                     <label for="addTaskDueDate">Due date<span class="asterisk">*</span></label>
-                    <input id="addTaskDueDate" formControlName="dueDate" type="date" [min]="today"
+                    <input id="addTaskDueDate" formControlName="due_date" type="date" [min]="today"
                         class="inputs__right input__date">
                     <div class="input__required">
                         <span  *ngIf="!dateValid">This field is required</span>

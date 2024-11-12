@@ -61,14 +61,14 @@ export class MainAddTaskComponent {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
-      assignedTo: [[]],
-      dueDate: ['', Validators.required],
+      users: [[]],
+      due_date: ['', Validators.required],
       priority: ['low'],
       category: ['', Validators.required],
-      subTasks: [],
-      subTasksCompleted: [],
-      taskStatus: 'todo',
-      taskColumnOrder: 0
+      // subTasks: [],
+      // subTasksCompleted: [],
+      status: 'todo',
+      // taskColumnOrder: 0
     });
   }
 
@@ -307,14 +307,14 @@ export class MainAddTaskComponent {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
-      assignedTo: [[]],
-      dueDate: ['', Validators.required],
+      users: [[]],
+      due_date: ['', Validators.required],
       priority: ['low'],
       category: ['', Validators.required],
-      subTasks: [],
-      subTasksCompleted: [],
-      taskStatus: 'todo',
-      taskColumnOrder: 0
+      // subTasks: [],
+      // subTasksCompleted: [],
+      status: 'todo',
+      // taskColumnOrder: 0
     });
   }
 
@@ -330,9 +330,9 @@ export class MainAddTaskComponent {
       this.formSubmitted = true;
       const trimmedTask = this.trimTask();
       this.addAssignedTo(trimmedTask)
-      if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
-      if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
-      else trimmedTask.subTasksCompleted = [];
+      // if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
+      // if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
+      // else trimmedTask.subTasksCompleted = [];
       this.sendNewTaskToBackend(trimmedTask);
       // this.taskDataService.setAllTasksDataToVarAndLocal();
       this.onSubmitOutro();
@@ -342,7 +342,7 @@ export class MainAddTaskComponent {
   checkRequiredInputs() {
     if (this.addTaskForm.value.title === "") this.titleValid = false;
     else this.titleValid = true;
-    if (this.addTaskForm.value.dueDate) this.dateValid = true;
+    if (this.addTaskForm.value.due_date) this.dateValid = true;
     else this.dateValid = false;
     if (this.addTaskForm.value.category === "") this.categoryValid = false;
     else this.categoryValid = true;
@@ -363,7 +363,7 @@ export class MainAddTaskComponent {
         assignedMailAdresses.push(item.userEmailAddress);
       }
     }
-    trimmedTask.assignedTo = assignedMailAdresses;
+    trimmedTask.users = assignedMailAdresses;
     return trimmedTask;
   }
 
