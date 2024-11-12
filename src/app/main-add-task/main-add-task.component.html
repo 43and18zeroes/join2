@@ -34,19 +34,19 @@
                                     [class.selected]="currentUserData.selected">
                                     <div class="option__left">
                                         <span class="initials"
-                                            [ngStyle]="{'background-color': currentUserData.userColor}">{{
+                                            [ngStyle]="{'background-color': currentUserData.user_}">{{
                                             currentUserData.userInitials }}</span><span class="name">{{
                                             currentUserData.userName }} (You)</span>
                                     </div>
                                     <input type="checkbox" [checked]="currentUserData.selected" readonly />
                                 </div>
                                 <ng-container *ngFor="let user of allUsersData">
-                                    <div *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
+                                    <div *ngIf="user.user_mail !== currentUserData.userEmailAddress"
                                         class="option__container" (click)="assignSelectOption(user)"
                                         (mousedown)="assignPreventFocusLoss($event)" [class.selected]="user.selected">
                                         <div class="option__left"><span class="initials"
-                                                [ngStyle]="{'background-color': user.userColor}">{{ user.userInitials
-                                                }}</span><span class="name">{{ user.userName }}</span></div>
+                                                [ngStyle]="{'background-color': user.user_color}">{{ user.initials
+                                                }}</span><span class="name">{{ user.first_name }} {{ user.last_name }}</span></div>
                                         <input type="checkbox" [checked]="user.selected" readonly />
                                     </div>
                                 </ng-container>

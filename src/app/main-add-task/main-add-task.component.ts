@@ -120,7 +120,7 @@ export class MainAddTaskComponent {
   }
 
   assignToggleDropdown() {
-    this.allUsersData = this.userService.allUsersData;
+    // this.allUsersData = this.userService.allUsersData;
     this.showAssignedDropdown = !this.showAssignedDropdown;
     for (let index = 0; index < this.selectedUsers.length; index++) {
       const selectedUser = this.selectedUsers[index];
