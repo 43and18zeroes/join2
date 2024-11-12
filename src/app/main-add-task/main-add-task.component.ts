@@ -334,7 +334,7 @@ export class MainAddTaskComponent {
       if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
       else trimmedTask.subTasksCompleted = [];
       this.sendNewTaskToBackend(trimmedTask);
-      this.taskDataService.setAllTasksDataToVarAndLocal();
+      // this.taskDataService.setAllTasksDataToVarAndLocal();
       this.onSubmitOutro();
     }
   }
@@ -377,16 +377,26 @@ export class MainAddTaskComponent {
   }
 
   sendNewTaskToBackend(trimmedTask) {
-    delete trimmedTask.firebaseId;
-    this.firestore.collection('tasks').add(trimmedTask).then((docRef) => {
-        trimmedTask.firebaseId = docRef.id;
-        return docRef.update({ firebaseId: docRef.id });
-      })
-    .then(() => {
-    })
-    .catch((error) => {
-      console.error("Error adding or updating document: ", error);
-    });
+    // delete trimmedTask.firebaseId;
+    // this.firestore.collection('tasks').add(trimmedTask).then((docRef) => {
+    //     trimmedTask.firebaseId = docRef.id;
+    //     return docRef.update({ firebaseId: docRef.id });
+    //   })
+    // .then(() => {
+    // })
+    // .catch((error) => {
+    //   console.error("Error adding or updating document: ", error);
+    // });
+    console.log('trimmedTask', trimmedTask);
+    this.backendService.createItem(trimmedTask, 'tasks').subscribe(
+      (response) => {
+        console.log('Task created successfully:', response);
+      },
+      (error) => {
+        console.error('Error creating user:', error);
+      }
+    );
+
     this.clearForm();
   }
 
