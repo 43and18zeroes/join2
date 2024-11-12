@@ -6,6 +6,7 @@ import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-d
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../services/user-data.service';
 import { TaskDataService } from '../services/task-data.service';
+import { BackendService } from '../services/drf/backend-service.service';
 
 @Component({
   selector: 'app-main-add-task',
@@ -49,6 +50,7 @@ export class MainAddTaskComponent {
     private renderer: Renderer2,
     public dialog: MatDialog,
     private userService: UserService,
+    private backendService: BackendService,
     public taskDataService: TaskDataService
   ) {
     this.initializeTaskForm();
@@ -71,10 +73,29 @@ export class MainAddTaskComponent {
   }
 
   ngOnInit(): void {
-    this.userService.sortUsersData();
-    this.allUsersData = this.userService.allUsersData;
+    // this.userService.sortUsersData();
+
+    this.backendService.getUsers().subscribe(data => {
+      this.allUsersData = data;
+    });
+    this.sortUsersData();
+    console.log('this.allUsersData', this.allUsersData);
+
+    // this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
     this.initListeners();
+  }
+
+  private sortUsersData(): void {
+    this.allUsersData.sort((a, b) => {
+      if (a.first_name < b.first_name) {
+        return -1;
+      }
+      if (a.first_name > b.first_name) {
+        return 1;
+      }
+      return 0;
+    });
   }
 
   initListeners() {
