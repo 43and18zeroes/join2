@@ -63,13 +63,14 @@ export class MainBoardComponent {
     // this.taskDataService.getTasksDataMain();
     this.backendService.getTasks().subscribe(data => {
       this.allTasksData = data;
+      this.convertTasksDataToLists();
+      this.sortTasksInColumns();
+      this.renumberTasksColumnOrder();
+      this.backendTasksColumnOrder();
     });
     // this.allTasksData = this.taskDataService.allTasksData;
     this.allUsersData = this.userService.allUsersData;
-    this.convertTasksDataToLists();
-    this.sortTasksInColumns();
-    this.renumberTasksColumnOrder();
-    this.backendTasksColumnOrder();
+
     this.boardCommService.reloadAfterNewTask = this.reloadAfterNewTask.bind(this);
     this.boardCommService.setNewTasksDataToLocal = this.setNewTasksDataToLocal.bind(this);
     // this.boardCommService.updateSingleTaskVar = this.updateSingleTaskVar.bind(this);
