@@ -1,5 +1,5 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainCommunicationService } from '../services/main-communication.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
@@ -69,6 +69,8 @@ export class MainAddTaskComponent {
       // subTasksCompleted: [],
       status: 'todo',
       // taskColumnOrder: 0
+
+      subtasks: this.fb.array([])
     });
   }
 
@@ -403,5 +405,21 @@ export class MainAddTaskComponent {
     setTimeout(() => {
       this.mainCommService.displayMainBoard('board');
     }, 1500);
+  }
+
+  get subtasks() {
+    return this.addTaskForm.get('subtasks') as FormArray;
+  }
+
+  addSubtask() {
+    const subtaskForm = this.fb.group({
+      title: ['', Validators.required],
+      is_completed: [false]
+    });
+    this.subtasks.push(subtaskForm);
+  }
+
+  removeSubtask(index: number) {
+    this.subtasks.removeAt(index);
   }
 }
