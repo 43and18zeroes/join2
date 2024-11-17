@@ -411,15 +411,46 @@ export class MainAddTaskComponent {
     return this.addTaskForm.get('subtasks') as FormArray;
   }
 
-  addSubtask() {
-    const subtaskForm = this.fb.group({
-      title: ['', Validators.required],
-      is_completed: [false]
-    });
-    this.subtasks.push(subtaskForm);
-  }
+  // addSubtask() {
+  //   const subtaskForm = this.fb.group({
+  //     title: ['', Validators.required],
+  //     is_completed: [false]
+  //   });
+  //   this.subtasks.push(subtaskForm);
+  // }
 
-  removeSubtask(index: number) {
+  // removeSubtask(index: number) {
+  //   this.subtasks.removeAt(index);
+  // }
+
+  addSubtaskInput(value: string): void {
+    const trimmedValue = value.trim();
+    if (trimmedValue) {
+      this.addSubtask(trimmedValue);
+      this.subTasksInput.nativeElement.value = '';
+      this.checkSubtaskLimit();
+    }
+  }
+  
+  addSubtask(title: string): void {
+    this.subtasks.push(this.fb.group({ title: [title, Validators.required] }));
+    this.checkSubtaskLimit();
+  }
+  
+  removeSubtask(index: number): void {
     this.subtasks.removeAt(index);
+    this.checkSubtaskLimit();
+  }
+  
+  checkSubtaskLimit(): void {
+    this.subTasksMaxReached = this.subtasks.length >= 2;
+  }
+  
+  onSubtaskInputFocus(): void {
+    this.subTasksInputHasFocus = true;
+  }
+  
+  onSubtaskInputChange(value: string): void {
+    this.subTasksInputEmpty = !value.trim();
   }
 }

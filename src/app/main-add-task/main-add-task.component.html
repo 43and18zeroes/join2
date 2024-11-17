@@ -188,57 +188,49 @@
             <span *ngIf="!categoryValid">This field is required</span>
           </div>
 
-          <div formArrayName="subtasks">
+          <label for="subTasks">Subtasks</label>
+          <div class="subtasks__container" formArrayName="subtasks">
+            <!-- Bestehende Subtasks anzeigen -->
             <div
               *ngFor="let subtask of subtasks?.controls; let i = index"
               [formGroupName]="i"
+              class="subtask__item"
             >
-              <input formControlName="title" placeholder="Subtask Title" />
-              <button type="button" (click)="removeSubtask(i)">Remove</button>
+              <input
+                formControlName="title"
+                class="inputs__right"
+                placeholder="Enter Subtask Title"
+              />
+              <div class="handler__symbols">
+                <button
+                  type="button"
+                  (click)="removeSubtask(i)"
+                  class="material__symbols__outlined"
+                >
+                  clear
+                </button>
+              </div>
             </div>
-          </div>
-          <button type="button" (click)="addSubtask()">Add Subtask</button>
 
-          <label for="subTasks">Subtasks</label>
-          <div class="subtasks__container">
+            <!-- Neues Subtask hinzufügen -->
             <input
-              (keydown.enter)="subTaskInputEnterPressed($event)"
-              (input)="subTasksInputCheckValue()"
-              (click)="subTasksInputFocus()"
-              class="inputs__right"
+              (keydown.enter)="addSubtaskInput(subTasksInput.value)"
+              (input)="onSubtaskInputChange(subTasksInput.value)"
+              (focus)="onSubtaskInputFocus()"
               #subTasksInput
+              class="inputs__right"
               [placeholder]="
                 subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'
               "
               [ngClass]="{ grey__placeholder: subTasksMaxReached }"
+              [disabled]="subTasksMaxReached"
             />
             <div
               *ngIf="!subTasksInputHasFocus && !subTasksMaxReached"
-              (click)="subTasksInputFocus()"
+              (click)="onSubtaskInputFocus()"
               class="material__symbols__outlined add__symbol"
             >
               add
-            </div>
-            <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
-              <button
-                (mousedown)="assignPreventFocusLoss($event)"
-                [disabled]="subTasksInputEmpty"
-                [ngClass]="{ check__disabled: subTasksInputEmpty }"
-                (click)="subTasksInputClear()"
-                class="material__symbols__outlined"
-              >
-                clear
-              </button>
-              <hr />
-              <button
-                (mousedown)="assignPreventFocusLoss($event)"
-                [disabled]="subTasksInputEmpty"
-                [ngClass]="{ check__disabled: subTasksInputEmpty }"
-                (click)="subTaskInputConfirm()"
-                class="material__symbols__outlined"
-              >
-                check
-              </button>
             </div>
           </div>
         </div>
