@@ -161,7 +161,7 @@
               #categorySelect
             >
               <span>{{
-                addTaskForm.controls["category"].value ||
+                addTaskForm?.controls["category"].value ||
                   "Select a task category"
               }}</span>
               <span class="material__symbols__outlined"> arrow_drop_down </span>
@@ -190,7 +190,7 @@
 
           <div formArrayName="subtasks">
             <div
-              *ngFor="let subtask of subtasks.controls; let i = index"
+              *ngFor="let subtask of subtasks?.controls; let i = index"
               [formGroupName]="i"
             >
               <input formControlName="title" placeholder="Subtask Title" />
