@@ -452,9 +452,9 @@ export class MainAddTaskComponent {
     this.subTasksMaxReached = this.subtasks.length >= 2;
   }
   
-  onSubtaskInputFocus(): void {
-    this.subTasksInputHasFocus = true;
-  }
+  // onSubtaskInputFocus(): void {
+  //   this.subTasksInputHasFocus = true;
+  // }
   
   // onSubtaskInputChange(value: string): void {
   //   this.subTasksInputEmpty = !value.trim();

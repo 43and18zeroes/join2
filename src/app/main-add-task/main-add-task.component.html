@@ -190,6 +190,49 @@
 
           <label for="subTasks">Subtasks</label>
           <div class="subtasks__container" formArrayName="subtasks">
+            
+            <!-- Neues Subtask hinzufügen -->
+            <input
+              (keydown.enter)="addSubtaskInput(subTasksInput.value)"
+              (input)="subTasksInputCheckValue()"
+              (focus)="subTasksInputFocus()"
+              #subTasksInput
+              class="inputs__right"
+              [placeholder]="
+                subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'
+              "
+              [ngClass]="{ grey__placeholder: subTasksMaxReached }"
+              [disabled]="subTasksMaxReached"
+            />
+            <div
+              *ngIf="!subTasksInputHasFocus && !subTasksMaxReached"
+              (click)="subTasksInputFocus()"
+              class="material__symbols__outlined add__symbol"
+            >
+              add
+            </div>
+            <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
+              <button
+                (mousedown)="assignPreventFocusLoss($event)"
+                [disabled]="subTasksInputEmpty"
+                [ngClass]="{ check__disabled: subTasksInputEmpty }"
+                (click)="subTasksInputClear()"
+                class="material__symbols__outlined"
+              >
+                clear
+              </button>
+              <hr />
+              <button
+                (mousedown)="assignPreventFocusLoss($event)"
+                [disabled]="subTasksInputEmpty"
+                [ngClass]="{ check__disabled: subTasksInputEmpty }"
+                (click)="subTaskInputConfirm()"
+                class="material__symbols__outlined"
+              >
+                check
+              </button>
+            </div>
+
             <!-- Bestehende Subtasks anzeigen -->
             <div
               *ngFor="let subtask of subtasks?.controls; let i = index"
@@ -212,26 +255,6 @@
               </div>
             </div>
 
-            <!-- Neues Subtask hinzufügen -->
-            <input
-              (keydown.enter)="addSubtaskInput(subTasksInput.value)"
-              (input)="subTasksInputCheckValue()"
-              (focus)="onSubtaskInputFocus()"
-              #subTasksInput
-              class="inputs__right"
-              [placeholder]="
-                subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'
-              "
-              [ngClass]="{ grey__placeholder: subTasksMaxReached }"
-              [disabled]="subTasksMaxReached"
-            />
-            <div
-              *ngIf="!subTasksInputHasFocus && !subTasksMaxReached"
-              (click)="onSubtaskInputFocus()"
-              class="material__symbols__outlined add__symbol"
-            >
-              add
-            </div>
           </div>
         </div>
       </div>
