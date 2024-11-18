@@ -233,6 +233,40 @@
               </button>
             </div>
 
+            <!-- ChatGPT Bestehende Subtasks anzeigen -->
+
+            <div
+              *ngFor="let subtask of subtasks?.controls; let i = index"
+              [formGroupName]="i"
+              class="subtask__item"
+            >
+              <p>{{ subtask.value.title }}</p>
+              <div class="subtask__display__right">
+                <div class="material__symbols__outlined">edit</div>
+                <hr />
+                <div
+                  (mousedown)="removeSubtask(i)"
+                  class="material__symbols__outlined"
+                >
+                  delete
+                </div>
+              </div>
+              <!-- <input
+                          formControlName="title"
+                          class="inputs__right"
+                          placeholder="Enter Subtask Title"
+                        /> -->
+              <!-- <div class="handler__symbols">
+                          <button
+                            type="button"
+                            (click)="removeSubtask(i)"
+                            class="material__symbols__outlined"
+                          >
+                            clear
+                          </button>
+                        </div> -->
+            </div>
+
             <!-- My Bestehende Subtasks anzeigen -->
 
             <!-- <div class="form__body">
@@ -273,30 +307,6 @@
               </div>
           
           </div> -->
-
-          <!-- ChatGPT Bestehende Subtasks anzeigen -->
-
-            <div
-              *ngFor="let subtask of subtasks?.controls; let i = index"
-              [formGroupName]="i"
-              class="subtask__item"
-            >
-              <!-- <input
-                formControlName="title"
-                class="inputs__right"
-                placeholder="Enter Subtask Title"
-              /> -->
-              <p>{{ subtask.value.title }}</p>
-              <div class="handler__symbols">
-                <button
-                  type="button"
-                  (click)="removeSubtask(i)"
-                  class="material__symbols__outlined"
-                >
-                  clear
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
