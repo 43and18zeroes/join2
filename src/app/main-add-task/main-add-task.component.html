@@ -190,7 +190,6 @@
 
           <label for="subTasks">Subtasks</label>
           <div class="subtasks__container" formArrayName="subtasks">
-            
             <!-- Neues Subtask hinzufügen -->
             <input
               (keydown.enter)="addSubtaskInput(subTasksInput.value)"
@@ -223,10 +222,11 @@
               </button>
               <hr />
               <button
+                type="button"
                 (mousedown)="assignPreventFocusLoss($event)"
                 [disabled]="subTasksInputEmpty"
                 [ngClass]="{ check__disabled: subTasksInputEmpty }"
-                (click)="subTaskInputConfirm()"
+                (click)="addSubtaskInput(subTasksInput.value)"
                 class="material__symbols__outlined"
               >
                 check
@@ -254,7 +254,6 @@
                 </button>
               </div>
             </div>
-
           </div>
         </div>
       </div>
