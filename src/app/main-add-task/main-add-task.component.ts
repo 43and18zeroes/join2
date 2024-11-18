@@ -76,14 +76,19 @@ export class MainAddTaskComponent {
 
   ngOnInit(): void {
     // this.userService.sortUsersData();
-    this.backendService.getUsers().subscribe(data => {
-      this.allUsersData = data;
-    });
-    this.sortUsersData();
+    this.getUsersData();
     console.log('this.allUsersData', this.allUsersData);
     // this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
     this.initListeners();
+  }
+
+  getUsersData() {
+    this.backendService.getUsers().subscribe(data => {
+      this.allUsersData = data;
+      this.sortUsersData();
+    });
+    
   }
 
   private sortUsersData(): void {
@@ -160,7 +165,8 @@ export class MainAddTaskComponent {
       panelClass: 'popup__contact__add'
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.userService.sortUsersData();
+      // this.userService.sortUsersData();
+      this.getUsersData();
     });
   }
 
