@@ -235,7 +235,7 @@
 
             <!-- My Bestehende Subtasks anzeigen -->
 
-            <div class="form__body">
+            <!-- <div class="form__body">
               <div class="form__left">
               </div>
               <hr class="form__body__2__hr">
@@ -272,7 +272,7 @@
                   </div>
               </div>
           
-          </div>
+          </div> -->
 
           <!-- ChatGPT Bestehende Subtasks anzeigen -->
 
@@ -281,11 +281,12 @@
               [formGroupName]="i"
               class="subtask__item"
             >
-              <input
+              <!-- <input
                 formControlName="title"
                 class="inputs__right"
                 placeholder="Enter Subtask Title"
-              />
+              /> -->
+              <p>{{ subtask.value.title }}</p>
               <div class="handler__symbols">
                 <button
                   type="button"
