@@ -434,6 +434,7 @@ export class MainAddTaskComponent {
     if (trimmedValue) {
       this.addSubtask(trimmedValue);
       this.subTasksInput.nativeElement.value = '';
+      this.subTasksInputHasFocus = false;
       this.checkSubtaskLimit();
     }
   }
