@@ -215,7 +215,7 @@
             <!-- Neues Subtask hinzufügen -->
             <input
               (keydown.enter)="addSubtaskInput(subTasksInput.value)"
-              (input)="onSubtaskInputChange(subTasksInput.value)"
+              (input)="subTasksInputCheckValue()"
               (focus)="onSubtaskInputFocus()"
               #subTasksInput
               class="inputs__right"

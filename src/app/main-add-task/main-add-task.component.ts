@@ -456,7 +456,7 @@ export class MainAddTaskComponent {
     this.subTasksInputHasFocus = true;
   }
   
-  onSubtaskInputChange(value: string): void {
-    this.subTasksInputEmpty = !value.trim();
-  }
+  // onSubtaskInputChange(value: string): void {
+  //   this.subTasksInputEmpty = !value.trim();
+  // }
 }
