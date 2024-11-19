@@ -233,25 +233,7 @@
               </button>
             </div>
 
-            <!-- ChatGPT Bestehende Subtasks anzeigen -->
-
-            <div
-              *ngFor="let subtask of subtasks?.controls; let i = index"
-              [formGroupName]="i"
-              class="subtask__item"
-            >
-              <p>{{ subtask.value.title }}</p>
-              <div class="subtask__display__right">
-                <div class="material__symbols__outlined">edit</div>
-                <hr />
-                <div
-                  (mousedown)="removeSubtask(i)"
-                  class="material__symbols__outlined"
-                >
-                  delete
-                </div>
-              </div>
-            </div>
+            <!-- Display Subtasks -->
           </div>
         </div>
       </div>
