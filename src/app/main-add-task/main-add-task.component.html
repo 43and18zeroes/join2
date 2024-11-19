@@ -234,7 +234,6 @@
             </div>
 
             <!-- Display Subtasks -->
-
           </div>
         </div>
       </div>
@@ -244,11 +243,23 @@
         <hr class="form__body__2__hr" />
         <div class="form__right">
           <ul class="subtask__list">
-            <li>Subtask 1</li>
-            <li>Subtask 2</li>
+            <li>
+              &#8226; Subtask 1
+              <div class="btns">
+                <button type="button" class="material__symbols__outlined">
+                  edit
+                </button>
+                <button type="button" class="material__symbols__outlined">
+                  delete
+                </button>
+              </div>
+            </li>
+            <li>&#8226; Subtask 2</li>
           </ul>
-
-
+          <div class="subtask__edit">
+            <input type="text" />
+            <input type="text" />
+          </div>
 
           <div
             *ngIf="subTasksArray.length > 0"
