@@ -243,25 +243,47 @@
         <hr class="form__body__2__hr" />
         <div class="form__right">
           <ul class="subtask__list">
-            <li>
-              &#8226; Subtask 1
-              <div class="btns">
-                <button type="button" class="material__symbols__outlined">
-                  edit
-                </button>
-                <button type="button" class="material__symbols__outlined">
-                  delete
-                </button>
-              </div>
+            <li *ngFor="let subtask of subtasks?.controls; let i = index">
+              <ng-container *ngIf="!editing; else editMode">
+                &#8226; {{ subtask.value.name }}
+                <div class="btns">
+                  <button
+                    type="button"
+                    class="material__symbols__outlined"
+                    (click)="editSubtask(i)"
+                  >
+                    edit
+                  </button>
+                  <button
+                    type="button"
+                    class="material__symbols__outlined"
+                    (click)="deleteSubtask(i)"
+                  >
+                    delete
+                  </button>
+                </div>
+              </ng-container>
+              <ng-template #editMode>
+                <div class="subtask__edit">
+                  <input
+                    type="text"
+                    [formControl]="getSubtaskNameControl(i)"
+                    (blur)="saveSubtask(i)"
+                    (keyup.enter)="saveSubtask(i)"
+                  />
+                  <button
+                    type="button"
+                    class="material__symbols__outlined"
+                    (click)="saveSubtask(i)"
+                  >
+                    save
+                  </button>
+                </div>
+              </ng-template>
             </li>
-            <li>&#8226; Subtask 2</li>
           </ul>
-          <div class="subtask__edit">
-            <input type="text" />
-            <input type="text" />
-          </div>
 
-          <div
+          <!-- <div
             *ngIf="subTasksArray.length > 0"
             class="subtasks__display__container"
           >
@@ -317,7 +339,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

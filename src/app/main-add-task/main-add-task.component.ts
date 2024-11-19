@@ -1,5 +1,5 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MainCommunicationService } from '../services/main-communication.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
@@ -40,6 +40,8 @@ export class MainAddTaskComponent {
   titleValid: boolean = true;
   dateValid: boolean = true;
   categoryValid: boolean = true;
+
+  editing = false;
 
   private globalClickListener: Function;
 
@@ -265,12 +267,12 @@ export class MainAddTaskComponent {
     }
   }
 
-  subTaskEdit(subTask: string): void {
-    this.subTaskCurrentlyEditing = subTask;
-    setTimeout(() => {
-      this.subTaskEditCurrentInput.nativeElement.focus();
-    }, 10);
-  }
+  // subTaskEdit(subTask: string): void {
+  //   this.subTaskCurrentlyEditing = subTask;
+  //   setTimeout(() => {
+  //     this.subTaskEditCurrentInput.nativeElement.focus();
+  //   }, 10);
+  // }
 
   subTaskSaveEdited(index: number): void {
     if (this.subTasksArray[index] !== undefined) {
@@ -451,6 +453,24 @@ export class MainAddTaskComponent {
   
   checkSubtaskLimit(): void {
     this.subTasksMaxReached = this.subtasks.length >= 2;
+  }
+
+  editSubtask(index: number): void {
+    const subtask = this.subtasks.at(index);
+    subtask.patchValue({ editing: true });
+  }
+
+  deleteSubtask(index: number): void {
+    this.subtasks.removeAt(index);
+  }
+
+  saveSubtask(index: number): void {
+    const subtask = this.subtasks.at(index);
+    subtask.patchValue({ editing: false });
+  }
+
+  getSubtaskNameControl(index: number): FormControl {
+    return this.subtasks.at(index).get('name') as FormControl;
   }
   
   // onSubtaskInputFocus(): void {
