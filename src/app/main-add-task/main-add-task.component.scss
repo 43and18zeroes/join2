@@ -696,8 +696,7 @@
               }
 
               &:hover {
-                // background-color: #eee;
-                background-color: red;
+                background-color: #eee;
               }
             }
 
@@ -707,13 +706,14 @@
           }
 
           .subtask__edit {
+            width: 100%;
             height: 34px;
             position: relative;
             display: flex;
             align-items: center;
 
             input {
-              // position: absolute;
+              position: absolute;
               font-size: 18px;
               padding: 3px 16px;
               margin-top: 1px;

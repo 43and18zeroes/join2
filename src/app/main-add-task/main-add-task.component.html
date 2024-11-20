@@ -274,9 +274,16 @@
                   <button
                     type="button"
                     class="material__symbols__outlined"
+                    (click)="deleteSubtask(i)"
+                  >
+                    delete
+                  </button>
+                  <button
+                    type="button"
+                    class="material__symbols__outlined"
                     (click)="saveSubtask(i)"
                   >
-                    save
+                    check
                   </button>
                 </div>
               </ng-template>

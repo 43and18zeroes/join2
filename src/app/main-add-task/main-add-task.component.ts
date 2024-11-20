@@ -458,6 +458,7 @@ export class MainAddTaskComponent {
   deleteSubtask(index: number): void {
     this.subtasks.removeAt(index);
     this.checkSubtaskLimit();
+    console.log('this.addTaskForm', this.addTaskForm.value.subtasks);
   }
 
   saveSubtask(index: number): void {
