@@ -385,16 +385,6 @@ export class MainAddTaskComponent {
   }
 
   sendNewTaskToBackend(trimmedTask) {
-    // delete trimmedTask.firebaseId;
-    // this.firestore.collection('tasks').add(trimmedTask).then((docRef) => {
-    //     trimmedTask.firebaseId = docRef.id;
-    //     return docRef.update({ firebaseId: docRef.id });
-    //   })
-    // .then(() => {
-    // })
-    // .catch((error) => {
-    //   console.error("Error adding or updating document: ", error);
-    // });
     console.log('trimmedTask', trimmedTask);
     this.backendService.createItem(trimmedTask, 'tasks').subscribe(
       (response) => {
@@ -449,7 +439,6 @@ export class MainAddTaskComponent {
       })
     );
     this.checkSubtaskLimit();
-    console.log('this.addTaskForm', this.addTaskForm.value.subtasks);
   }
   
   removeSubtask(index: number): void {
@@ -468,13 +457,12 @@ export class MainAddTaskComponent {
 
   deleteSubtask(index: number): void {
     this.subtasks.removeAt(index);
-    console.log('this.addTaskForm', this.addTaskForm.value.subtasks);
+    this.checkSubtaskLimit();
   }
 
   saveSubtask(index: number): void {
     const subtask = this.subtasks.at(index);
     subtask.patchValue({ editing: false });
-    console.log('this.addTaskForm', this.addTaskForm.value.subtasks);
   }
 
   getSubtaskNameControl(index: number): FormControl {
