@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MainCommunicationService } from '../services/main-communication.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -22,6 +22,7 @@ export class MainAddTaskComponent {
   @ViewChild('categorySelect') categorySelect: ElementRef;
   @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
   @ViewChild('subTasksInput') subTasksInput: ElementRef;
+  @ViewChildren('subtaskEditInput') subtaskEditInputs!: QueryList<ElementRef>;
 
   allUsersData;
   currentUserData;
@@ -451,8 +452,18 @@ export class MainAddTaskComponent {
   }
 
   editSubtask(index: number): void {
-    const subtask = this.subtasks.at(index);
-    subtask.patchValue({ editing: true });
+    // Setzt den Subtask in den Bearbeitungsmodus
+    this.subtasks.at(index).patchValue({ editing: true });
+
+    // Fokussiert das entsprechende Eingabefeld nach Rendern
+    setTimeout(() => {
+      const inputsArray = this.subtaskEditInputs.toArray();
+      if (inputsArray[index]) {
+        inputsArray[index].nativeElement.focus();
+      } else {
+        console.warn('Eingabefeld nicht gefunden.');
+      }
+    });
   }
 
   deleteSubtask(index: number): void {

@@ -270,6 +270,7 @@
                     [formControl]="getSubtaskNameControl(i)"
                     (blur)="saveSubtask(i)"
                     (keyup.enter)="saveSubtask(i)"
+                    #subtaskEditInput
                   />
                   <button
                     type="button"
