@@ -245,7 +245,7 @@
           <ul class="subtask__list">
             <li *ngFor="let subtask of subtasks?.controls; let i = index">
               <ng-container *ngIf="!editing; else editMode">
-                &#8226; {{ subtask.value.name }}
+                &#8226; {{ subtask.value.title }}
                 <div class="btns">
                   <button
                     type="button"

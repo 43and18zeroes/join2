@@ -438,6 +438,7 @@ export class MainAddTaskComponent {
       this.subTasksInput.nativeElement.value = '';
       this.subTasksInputHasFocus = false;
       this.checkSubtaskLimit();
+      console.log("this.subtasks", this.subtasks)
     }
   }
   
