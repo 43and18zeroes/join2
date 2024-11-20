@@ -449,6 +449,7 @@ export class MainAddTaskComponent {
       })
     );
     this.checkSubtaskLimit();
+    console.log('this.addTaskForm', this.addTaskForm.value.subtasks);
   }
   
   removeSubtask(index: number): void {
@@ -467,12 +468,13 @@ export class MainAddTaskComponent {
 
   deleteSubtask(index: number): void {
     this.subtasks.removeAt(index);
+    console.log('this.addTaskForm', this.addTaskForm.value.subtasks);
   }
 
   saveSubtask(index: number): void {
     const subtask = this.subtasks.at(index);
     subtask.patchValue({ editing: false });
-    console.log('Subtask saved:', subtask.value);
+    console.log('this.addTaskForm', this.addTaskForm.value.subtasks);
   }
 
   getSubtaskNameControl(index: number): FormControl {
