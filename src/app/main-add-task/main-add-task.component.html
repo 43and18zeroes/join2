@@ -243,8 +243,8 @@
         <hr class="form__body__2__hr" />
         <div class="form__right">
           <ul class="subtask__list">
-            <li *ngFor="let subtask of subtasks?.controls; let i = index">
-              <ng-container *ngIf="!editing; else editMode">
+            <li *ngFor="let subtask of subtasks.controls; let i = index">
+              <ng-container *ngIf="!subtask.value.editing; else editMode">
                 &#8226; {{ subtask.value.title }}
                 <div class="btns">
                   <button

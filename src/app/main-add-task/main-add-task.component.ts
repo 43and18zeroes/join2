@@ -442,7 +442,12 @@ export class MainAddTaskComponent {
   }
   
   addSubtask(title: string): void {
-    this.subtasks.push(this.fb.group({ title: [title, Validators.required] }));
+    this.subtasks.push(
+      this.fb.group({
+        title: [title, Validators.required],
+        editing: [false]
+      })
+    );
     this.checkSubtaskLimit();
   }
   
@@ -467,10 +472,11 @@ export class MainAddTaskComponent {
   saveSubtask(index: number): void {
     const subtask = this.subtasks.at(index);
     subtask.patchValue({ editing: false });
+    console.log('Subtask saved:', subtask.value);
   }
 
   getSubtaskNameControl(index: number): FormControl {
-    return this.subtasks.at(index).get('name') as FormControl;
+    return this.subtasks.at(index).get('title') as FormControl;
   }
   
   // onSubtaskInputFocus(): void {
