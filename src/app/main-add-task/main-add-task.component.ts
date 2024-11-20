@@ -155,6 +155,7 @@ export class MainAddTaskComponent {
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
+    console.log('selectedUsers', this.selectedUsers);
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
@@ -337,11 +338,7 @@ export class MainAddTaskComponent {
       this.formSubmitted = true;
       const trimmedTask = this.trimTask();
       this.addAssignedTo(trimmedTask)
-      // if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
-      // if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
-      // else trimmedTask.subTasksCompleted = [];
       this.sendNewTaskToBackend(trimmedTask);
-      // this.taskDataService.setAllTasksDataToVarAndLocal();
       this.onSubmitOutro();
     }
   }
@@ -408,18 +405,6 @@ export class MainAddTaskComponent {
     return this.addTaskForm.get('subtasks') as FormArray;
   }
 
-  // addSubtask() {
-  //   const subtaskForm = this.fb.group({
-  //     title: ['', Validators.required],
-  //     is_completed: [false]
-  //   });
-  //   this.subtasks.push(subtaskForm);
-  // }
-
-  // removeSubtask(index: number) {
-  //   this.subtasks.removeAt(index);
-  // }
-
   addSubtaskInput(value: string): void {
     const trimmedValue = value.trim();
     if (trimmedValue) {
@@ -450,10 +435,7 @@ export class MainAddTaskComponent {
   }
 
   editSubtask(index: number): void {
-    // Setzt den Subtask in den Bearbeitungsmodus
     this.subtasks.at(index).patchValue({ editing: true });
-
-    // Fokussiert das entsprechende Eingabefeld nach Rendern
     setTimeout(() => {
       const inputsArray = this.subtaskEditInputs.toArray();
       if (inputsArray[index]) {
@@ -478,12 +460,4 @@ export class MainAddTaskComponent {
   getSubtaskNameControl(index: number): FormControl {
     return this.subtasks.at(index).get('title') as FormControl;
   }
-  
-  // onSubtaskInputFocus(): void {
-  //   this.subTasksInputHasFocus = true;
-  // }
-  
-  // onSubtaskInputChange(value: string): void {
-  //   this.subTasksInputEmpty = !value.trim();
-  // }
 }
