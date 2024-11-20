@@ -361,13 +361,26 @@ export class MainAddTaskComponent {
   }
 
   addAssignedTo(trimmedTask) {
-    let assignedMailAdresses = [];
-    for (const item of this.selectedUsers) {
-      if (item.userEmailAddress) {
-        assignedMailAdresses.push(item.userEmailAddress);
-      }
-    }
-    trimmedTask.users = assignedMailAdresses;
+    // let assignedMailAdresses = [];
+    // for (const item of this.selectedUsers) {
+    //   if (item.userEmailAddress) {
+    //     assignedMailAdresses.push(item.userEmailAddress);
+    //   }
+    // }
+    // trimmedTask.users = assignedMailAdresses;
+    console.log('this.selectedUsers', this.selectedUsers);
+    const assignedUsers = this.selectedUsers.map(user => ({
+      id: user.id,  // Wichtig: 'id' muss vorhanden sein
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.userEmailAddress,
+      phone_number: user.phone_number,
+      user_color: user.user_color,
+      type: user.type,
+      initials: user.initials,
+    }));
+  
+    trimmedTask.users = assignedUsers.length > 0 ? assignedUsers : [];
     return trimmedTask;
   }
 
@@ -387,7 +400,7 @@ export class MainAddTaskComponent {
         console.log('Task created successfully:', response);
       },
       (error) => {
-        console.error('Error creating user:', error);
+        console.error('Error creating task:', error);
       }
     );
 
