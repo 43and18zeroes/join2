@@ -78,10 +78,7 @@ export class MainAddTaskComponent {
   }
 
   ngOnInit(): void {
-    // this.userService.sortUsersData();
     this.getUsersData();
-    console.log('this.allUsersData', this.allUsersData);
-    // this.allUsersData = this.userService.allUsersData;
     this.currentUserData = this.userService.currentUserData;
     this.initListeners();
   }
@@ -90,6 +87,7 @@ export class MainAddTaskComponent {
     this.backendService.getUsers().subscribe(data => {
       this.allUsersData = data;
       this.sortUsersData();
+      console.log('this.allUsersData', this.allUsersData);
     });
     
   }
