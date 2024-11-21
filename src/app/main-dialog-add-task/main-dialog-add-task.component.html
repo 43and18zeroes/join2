@@ -71,9 +71,7 @@
                 </div>
                 <ng-container *ngFor="let user of allUsersData">
                   <div
-                    *ngIf="
-                      user.userEmailAddress !== currentUserData.userEmailAddress
-                    "
+                    *ngIf="user.user_mail !== currentUserData.userEmailAddress"
                     class="option__container"
                     (click)="assignSelectOption(user)"
                     (mousedown)="assignPreventFocusLoss($event)"
@@ -82,9 +80,11 @@
                     <div class="option__left">
                       <span
                         class="initials"
-                        [ngStyle]="{ 'background-color': user.userColor }"
-                        >{{ user.userInitials }}</span
-                      ><span class="name">{{ user.userName }}</span>
+                        [ngStyle]="{ 'background-color': user.user_color }"
+                        >{{ user.user_mail }}</span
+                      ><span class="name"
+                        >{{ user.first_name }} {{ user.last_name }}</span
+                      >
                     </div>
                     <input type="checkbox" [checked]="user.selected" readonly />
                   </div>
@@ -111,7 +111,7 @@
           >
           <input
             id="addTaskDueDate"
-            formControlName="dueDate"
+            formControlName="due_date"
             type="date"
             [min]="today"
             class="inputs__right input__date"
@@ -166,7 +166,7 @@
               #categorySelect
             >
               <span>{{
-                addTaskForm.controls["category"].value ||
+                addTaskForm?.controls["category"].value ||
                   "Select a task category"
               }}</span>
               <span class="material__symbols__outlined"> arrow_drop_down </span>
@@ -194,6 +194,113 @@
           </div>
 
           <label for="subTasks">Subtasks</label>
+          <div class="subtasks__container" formArrayName="subtasks">
+            <!-- Neues Subtask hinzufügen -->
+            <input
+              (keydown.enter)="addSubtaskInput(subTasksInput.value)"
+              (input)="subTasksInputCheckValue()"
+              (focus)="subTasksInputFocus()"
+              #subTasksInput
+              class="inputs__right"
+              [placeholder]="
+                subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'
+              "
+              [ngClass]="{ grey__placeholder: subTasksMaxReached }"
+              [disabled]="subTasksMaxReached"
+            />
+            <div
+              *ngIf="!subTasksInputHasFocus && !subTasksMaxReached"
+              (click)="subTasksInputFocus()"
+              class="material__symbols__outlined add__symbol"
+            >
+              add
+            </div>
+            <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
+              <button
+                (mousedown)="assignPreventFocusLoss($event)"
+                [disabled]="subTasksInputEmpty"
+                [ngClass]="{ check__disabled: subTasksInputEmpty }"
+                (click)="subTasksInputClear()"
+                class="material__symbols__outlined"
+              >
+                clear
+              </button>
+              <hr />
+              <button
+                type="button"
+                (mousedown)="assignPreventFocusLoss($event)"
+                [disabled]="subTasksInputEmpty"
+                [ngClass]="{ check__disabled: subTasksInputEmpty }"
+                (click)="addSubtaskInput(subTasksInput.value)"
+                class="material__symbols__outlined"
+              >
+                check
+              </button>
+            </div>
+
+            <!-- Display Subtasks -->
+          </div>
+        </div>
+      </div>
+
+      <div class="form__body">
+        <div class="form__left"></div>
+        <hr class="form__body__2__hr" />
+        <div class="form__right">
+          <ul class="subtask__list">
+            <li *ngFor="let subtask of subtasks?.controls; let i = index">
+              <ng-container *ngIf="!subtask.value.editing; else editMode">
+                &#8226; {{ subtask.value.title }}
+                <div class="btns">
+                  <button
+                    type="button"
+                    class="material__symbols__outlined"
+                    (click)="editSubtask(i)"
+                  >
+                    edit
+                  </button>
+                  <button
+                    type="button"
+                    class="material__symbols__outlined"
+                    (click)="deleteSubtask(i)"
+                  >
+                    delete
+                  </button>
+                </div>
+              </ng-container>
+              <ng-template #editMode>
+                <div class="subtask__edit">
+                  <input
+                    type="text"
+                    [formControl]="getSubtaskNameControl(i)"
+                    (blur)="saveSubtask(i)"
+                    (keyup.enter)="saveSubtask(i)"
+                    #subtaskEditInput
+                  />
+                  <div class="subtask__edit__right">
+                    <button
+                      type="button"
+                      class="material__symbols__outlined"
+                      (click)="deleteSubtask(i)"
+                    >
+                      delete
+                    </button>
+                    <button
+                      type="button"
+                      class="material__symbols__outlined"
+                      (click)="saveSubtask(i)"
+                    >
+                      check
+                    </button>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- <label for="subTasks">Subtasks</label>
           <div class="subtasks__container">
             <input
               (keydown.enter)="subTaskInputEnterPressed($event)"
@@ -236,9 +343,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="form__body">
+      <!-- <div class="form__body">
         <div class="form__left"></div>
         <hr class="form__body__2__hr" />
         <div class="form__right">
@@ -300,7 +407,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="form__footer">
