@@ -292,64 +292,6 @@
               </ng-template>
             </li>
           </ul>
-
-          <!-- <div
-            *ngIf="subTasksArray.length > 0"
-            class="subtasks__display__container"
-          >
-            <div
-              *ngFor="let subTask of subTasksArray; let i = index"
-              class="subtask"
-            >
-              <div
-                *ngIf="subTaskCurrentlyEditing !== subTask"
-                (click)="subTaskEdit(subTask)"
-                class="subtask__display"
-              >
-                <div class="subtask__display__text">&#8226; {{ subTask }}</div>
-                <div class="subtask__display__right">
-                  <div class="material__symbols__outlined">edit</div>
-                  <hr />
-                  <div
-                    (mousedown)="subTaskDelete(subTask)"
-                    class="material__symbols__outlined"
-                  >
-                    delete
-                  </div>
-                </div>
-              </div>
-
-              <div
-                *ngIf="subTaskCurrentlyEditing === subTask"
-                class="subtask__edit"
-              >
-                <input
-                  (keydown.enter)="subTaskSaveEdited(i)"
-                  type="text"
-                  name=""
-                  id=""
-                  value="{{ subTask }}"
-                  #subTaskEditCurrentInput
-                  (blur)="subTaskInputEditBlur()"
-                />
-                <div class="subtask__edit__right">
-                  <div
-                    (mousedown)="subTaskDelete(subTask)"
-                    class="material__symbols__outlined"
-                  >
-                    delete
-                  </div>
-                  <hr />
-                  <div
-                    (mousedown)="subTaskSaveEdited(i)"
-                    class="material__symbols__outlined"
-                  >
-                    check
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
