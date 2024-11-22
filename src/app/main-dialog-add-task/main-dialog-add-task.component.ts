@@ -1,5 +1,5 @@
-import { Component, ElementRef, Inject, Renderer2, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, Inject, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MainCommunicationService } from '../services/main-communication.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
@@ -17,12 +17,13 @@ import { BackendService } from '../services/drf/backend-service.service';
 })
 export class MainDialogAddTaskComponent {
 
+  @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
+  @ViewChildren('subtaskEditInput') subtaskEditInputs!: QueryList<ElementRef>;
   @ViewChild('assignSelectedOptionRef') assignSelectedOptionRef: ElementRef;
   @ViewChild('assignSelectRef') assignSelectRef: ElementRef;
   @ViewChild('categorySelect') categorySelect: ElementRef;
   @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
   @ViewChild('subTasksInput') subTasksInput: ElementRef;
-  @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
   @ViewChild('submitBtn') submitBtn: ElementRef;
 
   allUsersData;
@@ -42,6 +43,7 @@ export class MainDialogAddTaskComponent {
   titleValid: boolean = true;
   dateValid: boolean = true;
   categoryValid: boolean = true;
+  editing = false;
 
   private globalClickListener: Function;
 
@@ -62,18 +64,35 @@ export class MainDialogAddTaskComponent {
     this.today = this.getTodaysDate();
   }
 
+  // private initializeTaskForm(): void {
+  //   this.addTaskForm = this.fb.group({
+  //     title: ['', Validators.required],
+  //     description: [''],
+  //     assignedTo: [[]],
+  //     dueDate: ['', Validators.required],
+  //     priority: ['low'],
+  //     category: ['', Validators.required],
+  //     subTasks: [],
+  //     subTasksCompleted: [],
+  //     taskStatus: this.data.taskStatus,
+  //     taskColumnOrder: 0
+  //   });
+  // }
+
   private initializeTaskForm(): void {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
-      assignedTo: [[]],
-      dueDate: ['', Validators.required],
+      users: [[]],
+      due_date: ['', Validators.required],
       priority: ['low'],
       category: ['', Validators.required],
-      subTasks: [],
-      subTasksCompleted: [],
-      taskStatus: this.data.taskStatus,
-      taskColumnOrder: 0
+      // subTasks: [],
+      // subTasksCompleted: [],
+      status: 'todo',
+      // taskColumnOrder: 0
+
+      subtasks: this.fb.array([])
     });
   }
 
@@ -81,13 +100,39 @@ export class MainDialogAddTaskComponent {
     // this.userService.sortUsersData();
     // this.allUsersData = this.userService.allUsersData;
 
-    this.backendService.getUsers().subscribe(data => {
-      this.allUsersData = data;
-      console.log('this.allUsersData', this.allUsersData);
-    });
+    // this.backendService.getUsers().subscribe(data => {
+    //   this.allUsersData = data;
+    //   console.log('this.allUsersData', this.allUsersData);
+    // });
 
+    // this.currentUserData = this.userService.currentUserData;
+    // this.initListeners();
+    this.getUsersData();
     this.currentUserData = this.userService.currentUserData;
     this.initListeners();
+  }
+
+  getUsersData() {
+    this.backendService.getUsers().subscribe(data => {
+      this.allUsersData = data;
+      this.sortUsersData();
+      console.log('this.allUsersData', this.allUsersData);
+    });
+  }
+
+  private sortUsersData(): void {
+    this.allUsersData.sort((a, b) => {
+      const firstNameA = a.first_name.toLowerCase();
+      const firstNameB = b.first_name.toLowerCase();
+
+      if (firstNameA < firstNameB) {
+        return -1;
+      }
+      if (firstNameA > firstNameB) {
+        return 1;
+      }
+      return 0;
+    });
   }
 
   initListeners() {
@@ -116,7 +161,7 @@ export class MainDialogAddTaskComponent {
   }
 
   assignToggleDropdown() {
-    this.allUsersData = this.userService.allUsersData;
+    // this.allUsersData = this.userService.allUsersData;
     this.showAssignedDropdown = !this.showAssignedDropdown;
     for (let index = 0; index < this.selectedUsers.length; index++) {
       const selectedUser = this.selectedUsers[index];
@@ -142,6 +187,7 @@ export class MainDialogAddTaskComponent {
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
+    console.log('selectedUsers', this.selectedUsers);
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
@@ -153,7 +199,8 @@ export class MainDialogAddTaskComponent {
       panelClass: 'popup__contact__add'
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.userService.sortUsersData();
+      // this.userService.sortUsersData();
+      this.getUsersData();
     });
   }
 
@@ -252,12 +299,12 @@ export class MainDialogAddTaskComponent {
     }
   }
 
-  subTaskEdit(subTask: string): void {
-    this.subTaskCurrentlyEditing = subTask;
-    setTimeout(() => {
-      this.subTaskEditCurrentInput.nativeElement.focus();
-    }, 10);
-  }
+  // subTaskEdit(subTask: string): void {
+  //   this.subTaskCurrentlyEditing = subTask;
+  //   setTimeout(() => {
+  //     this.subTaskEditCurrentInput.nativeElement.focus();
+  //   }, 10);
+  // }
 
   subTaskSaveEdited(index: number): void {
     if (this.subTasksArray[index] !== undefined) {
@@ -300,16 +347,31 @@ export class MainDialogAddTaskComponent {
     this.addTaskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
-      assignedTo: [[]],
-      dueDate: ['', Validators.required],
+      users: [[]],
+      due_date: ['', Validators.required],
       priority: ['low'],
       category: ['', Validators.required],
-      subTasks: [],
-      subTasksCompleted: [],
-      taskStatus: 'todo',
-      taskColumnOrder: 0
+      // subTasks: [],
+      // subTasksCompleted: [],
+      status: 'todo',
+      // taskColumnOrder: 0
     });
   }
+
+  // resetFormModel() {
+  //   this.addTaskForm = this.fb.group({
+  //     title: ['', Validators.required],
+  //     description: [''],
+  //     assignedTo: [[]],
+  //     dueDate: ['', Validators.required],
+  //     priority: ['low'],
+  //     category: ['', Validators.required],
+  //     subTasks: [],
+  //     subTasksCompleted: [],
+  //     taskStatus: 'todo',
+  //     taskColumnOrder: 0
+  //   });
+  // }
 
   resetFormValidators() {
     this.titleValid = true;
@@ -323,11 +385,11 @@ export class MainDialogAddTaskComponent {
       this.formSubmitted = true;
       const trimmedTask = this.trimTask();
       this.addAssignedTo(trimmedTask)
-      if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
-      if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
-      else trimmedTask.subTasksCompleted = [];
+      // if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
+      // if (trimmedTask.subTasks.length > 0) this.addSubtasksStatuses(trimmedTask);
+      // else trimmedTask.subTasksCompleted = [];
       this.sendNewTaskToBackend(trimmedTask);
-      this.taskDataService.setAllTasksDataToVarAndLocal();
+      // this.taskDataService.setAllTasksDataToVarAndLocal();
       this.onSubmitOutro();
     }
   }
@@ -335,7 +397,7 @@ export class MainDialogAddTaskComponent {
   checkRequiredInputs() {
     if (this.addTaskForm.value.title === "") this.titleValid = false;
     else this.titleValid = true;
-    if (this.addTaskForm.value.dueDate) this.dateValid = true;
+    if (this.addTaskForm.value.due_date) this.dateValid = true;
     else this.dateValid = false;
     if (this.addTaskForm.value.category === "") this.categoryValid = false;
     else this.categoryValid = true;
@@ -350,15 +412,39 @@ export class MainDialogAddTaskComponent {
   }
 
   addAssignedTo(trimmedTask) {
-    let assignedMailAdresses = [];
-    for (const item of this.selectedUsers) {
-      if (item.userEmailAddress) {
-        assignedMailAdresses.push(item.userEmailAddress);
-      }
-    }
-    trimmedTask.assignedTo = assignedMailAdresses;
+    // let assignedMailAdresses = [];
+    // for (const item of this.selectedUsers) {
+    //   if (item.userEmailAddress) {
+    //     assignedMailAdresses.push(item.userEmailAddress);
+    //   }
+    // }
+    // trimmedTask.users = assignedMailAdresses;
+    console.log('this.selectedUsers', this.selectedUsers);
+    const assignedUsers = this.selectedUsers.map(user => ({
+      id: user.id,  // Wichtig: 'id' muss vorhanden sein
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.userEmailAddress,
+      phone_number: user.phone_number,
+      user_color: user.user_color,
+      type: user.type,
+      initials: user.initials,
+    }));
+  
+    trimmedTask.users = assignedUsers.length > 0 ? assignedUsers : [];
     return trimmedTask;
   }
+
+  // addAssignedTo(trimmedTask) {
+  //   let assignedMailAdresses = [];
+  //   for (const item of this.selectedUsers) {
+  //     if (item.userEmailAddress) {
+  //       assignedMailAdresses.push(item.userEmailAddress);
+  //     }
+  //   }
+  //   trimmedTask.assignedTo = assignedMailAdresses;
+  //   return trimmedTask;
+  // }
 
   addSubtasksStatuses(trimmedTask) {
     let subTasksCompleted = [];
@@ -370,18 +456,32 @@ export class MainDialogAddTaskComponent {
   }
 
   sendNewTaskToBackend(trimmedTask) {
-    delete trimmedTask.firebaseId;
-    this.firestore.collection('tasks').add(trimmedTask).then((docRef) => {
-        trimmedTask.firebaseId = docRef.id;
-        return docRef.update({ firebaseId: docRef.id });
-      })
-    .then(() => {
-    })
-    .catch((error) => {
-      console.error("Error adding or updating document: ", error);
-    });
+    console.log('trimmedTask', trimmedTask);
+    this.backendService.createItem(trimmedTask, 'tasks').subscribe(
+      (response) => {
+        console.log('Task created successfully:', response);
+      },
+      (error) => {
+        console.error('Error creating task:', error);
+      }
+    );
+
     this.clearForm();
   }
+
+  // sendNewTaskToBackend(trimmedTask) {
+  //   delete trimmedTask.firebaseId;
+  //   this.firestore.collection('tasks').add(trimmedTask).then((docRef) => {
+  //       trimmedTask.firebaseId = docRef.id;
+  //       return docRef.update({ firebaseId: docRef.id });
+  //     })
+  //   .then(() => {
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error adding or updating document: ", error);
+  //   });
+  //   this.clearForm();
+  // }
 
   onSubmitOutro() {
     this.submitBtn.nativeElement.classList.add("btn__success");
@@ -389,5 +489,65 @@ export class MainDialogAddTaskComponent {
       this.boardCommService.reloadAfterNewTask();
       this.dialog.closeAll();
     }, 1500);
+  }
+
+  get subtasks() {
+    return this.addTaskForm.get('subtasks') as FormArray;
+  }
+
+  addSubtaskInput(value: string): void {
+    const trimmedValue = value.trim();
+    if (trimmedValue) {
+      this.addSubtask(trimmedValue);
+      this.subTasksInput.nativeElement.value = '';
+      this.subTasksInputHasFocus = false;
+      this.checkSubtaskLimit();
+    }
+  }
+  
+  addSubtask(title: string): void {
+    this.subtasks.push(
+      this.fb.group({
+        title: [title, Validators.required],
+        editing: [false]
+      })
+    );
+    this.checkSubtaskLimit();
+  }
+  
+  removeSubtask(index: number): void {
+    this.subtasks.removeAt(index);
+    this.checkSubtaskLimit();
+  }
+  
+  checkSubtaskLimit(): void {
+    this.subTasksMaxReached = this.subtasks.length >= 2;
+  }
+
+  editSubtask(index: number): void {
+    this.subtasks.at(index).patchValue({ editing: true });
+    setTimeout(() => {
+      const inputsArray = this.subtaskEditInputs.toArray();
+      if (inputsArray[index]) {
+        inputsArray[index].nativeElement.focus();
+      } else {
+        console.warn('Eingabefeld nicht gefunden.');
+      }
+    });
+  }
+
+  deleteSubtask(index: number): void {
+    this.subtasks.removeAt(index);
+    this.checkSubtaskLimit();
+    console.log('this.addTaskForm', this.addTaskForm.value.subtasks);
+  }
+
+  saveSubtask(index: number): void {
+    const subtask = this.subtasks.at(index);
+    subtask.patchValue({ editing: false });
+  }
+
+  getSubtaskNameControl(index: number): FormControl {
+    return this.subtasks.at(index).get('title') as FormControl;
   }
 }
