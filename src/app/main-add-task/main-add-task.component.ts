@@ -131,12 +131,12 @@ export class MainAddTaskComponent {
   assignToggleDropdown() {
     // this.allUsersData = this.userService.allUsersData;
     this.showAssignedDropdown = !this.showAssignedDropdown;
-    for (let index = 0; index < this.selectedUsers.length; index++) {
-      const selectedUser = this.selectedUsers[index];
-      for (let index = 0; index < this.allUsersData.length; index++) {
-        const allUser = this.allUsersData[index];
-        if (selectedUser.userEmailAddress === allUser.userEmailAddress) {
-          allUser.selected = true;
+    for (let i = 0; i < this.selectedUsers.length; i++) {
+      const selectedUser = this.selectedUsers[i];
+      for (let j = 0; j < this.allUsersData.length; j++) {
+        const user = this.allUsersData[j];
+        if (selectedUser.email === user.email) {
+          user.selected = true;
         }
       }
     }
