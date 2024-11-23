@@ -1,92 +1,101 @@
 <div class="add__contact__container no__select">
+  <div class="left">
+    <div class="mobile__header">
+      <div (click)="closeDialog()" class="hover__area no__select">
+        <div class="transform__circle"></div>
+        <span class="material__symbols__outlined single__icon">close</span>
+      </div>
+    </div>
+    <div class="left__content">
+      <img src="assets/img/main/popups/j-white.webp" alt="Main join logo" draggable="false" />
+      <h2>Edit contact</h2>
+      <!-- <span>Tasks are better with a team!</span> -->
+      <div class="line"></div>
+      <div class="spacer"></div>
+    </div>
+  </div>
 
-    <div class="left">
-        <div class="mobile__header">
-            <div (click)="closeDialog()" class="hover__area no__select">
-                <div class="transform__circle"></div>
-                <span class="material__symbols__outlined single__icon">close</span>
-            </div>
-        </div>
-        <div class="left__content">
-            <img src="assets/img/main/popups/j-white.webp" alt="Main join logo" draggable="false">
-            <h2>Edit contact</h2>
-            <!-- <span>Tasks are better with a team!</span> -->
-            <div class="line"></div>
-            <div class="spacer"></div>
-        </div>
+  <div class="right">
+    <div class="right__header">
+      <div (click)="closeDialog()" class="hover__area no__select">
+        <div class="transform__circle"></div>
+        <span class="material__symbols__outlined single__icon">close</span>
+      </div>
     </div>
 
-    <div class="right">
+    <div class="right__body">
+      <!-- <div class="material__symbols__outlined symbol__person">person</div> -->
 
-        <div class="right__header">
-            <div (click)="closeDialog()" class="hover__area no__select">
-                <div class="transform__circle"></div>
-                <span class="material__symbols__outlined single__icon">close</span>
-            </div>
+      <div class="symbol__person" [ngStyle]="{ 'background-color': user.user_color }">{{ user.initials }}</div>
+
+      <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()" [ngClass]="{ form__disabled: editUserFormSubmitted }">
+        <div class="input__container">
+          <span (click)="userName.focus()" class="material__symbols__outlined">person</span>
+          <input
+            [(ngModel)]="user.user_name"
+            id="userName"
+            formControlName="userName"
+            placeholder="Name"
+            #userName
+            placeholder="Name" />
+        </div>
+        <div class="incorrect__input">
+          <span
+            *ngIf="(editUserForm.controls.userName.invalid && editUserForm.controls.userName.dirty) || !userNameValid">
+            Separate first and last name with a space.
+          </span>
         </div>
 
-        <div class="right__body">
-
-            <!-- <div class="material__symbols__outlined symbol__person">person</div> -->
-
-            <div class="symbol__person" [ngStyle]="{'background-color': user.user_color}">{{
-                user.initials }}
-            </div>
-
-            <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()" [ngClass]="{ 'form__disabled': editUserFormSubmitted }">
-
-                <div class="input__container">
-                    <span (click)="userName.focus()" class="material__symbols__outlined">
-                        person
-                    </span>
-                    <input [(ngModel)]="user.user_name" id="userName" formControlName="userName" placeholder="Name"
-                        #userName placeholder="Name">
-                </div>
-                <div class="incorrect__input">
-                    <span *ngIf="editUserForm.controls.userName.invalid &&
-                    editUserForm.controls.userName.dirty || !userNameValid">Separate first and last name with a space.</span>
-                </div>
-
-                <div class="input__container">
-                    <span (click)="userEmailAddress.focus()" class="material__symbols__outlined">
-                        mail
-                    </span>
-                    <input [(ngModel)]="user.email" formControlName="userEmailAddress"
-                        placeholder="Email" #userEmailAddress placeholder="Email" class="email__input">
-                </div>
-                <div class="incorrect__input">
-                    <span *ngIf="editUserForm.controls.userEmailAddress.invalid &&
-                    editUserForm.controls.userEmailAddress.dirty || !userEmailAddressValid" >Invalid
-                        email
-                        address.</span>
-                </div>
-
-                <div class="input__container">
-                    <span (click)="userPhoneNumber.focus()" class="material__symbols__outlined">
-                        phone
-                    </span>
-                    <input [(ngModel)]="user.phone_number" formControlName="userPhoneNumber"
-                        placeholder="Phone" #userPhoneNumber placeholder="Phone">
-                </div>
-                <div class="incorrect__input">
-                    <span *ngIf="editUserForm.controls.userPhoneNumber.invalid &&
-                    editUserForm.controls.userPhoneNumber.dirty || !userPhoneNumberValid">Invalid
-                        phone number.</span>
-                </div>
-
-                <div class="form__footer">
-                    <button (click)="deleteContact(user)" type="button" class="btn__secondary btn__secondary__main">Delete <span
-                            class="material__symbols__outlined">
-                            delete
-                        </span></button>
-                    <button [disabled]="editUserFormSubmitted" type="submit" class="btn__primary" #saveChangesSubmitBtn>Save changes <span class="material__symbols__outlined">
-                            check
-                        </span></button>
-                </div>
-            </form>
-
+        <div class="input__container">
+          <span (click)="userEmailAddress.focus()" class="material__symbols__outlined">mail</span>
+          <input
+            [(ngModel)]="user.email"
+            formControlName="userEmailAddress"
+            placeholder="Email"
+            #userEmailAddress
+            placeholder="Email"
+            class="email__input" />
+        </div>
+        <div class="incorrect__input">
+          <span
+            *ngIf="
+              (editUserForm.controls.userEmailAddress.invalid && editUserForm.controls.userEmailAddress.dirty) ||
+              !userEmailAddressValid
+            ">
+            Invalid email address.
+          </span>
         </div>
 
+        <div class="input__container">
+          <span (click)="userPhoneNumber.focus()" class="material__symbols__outlined">phone</span>
+          <input
+            [(ngModel)]="user.phone_number"
+            formControlName="userPhoneNumber"
+            placeholder="Phone"
+            #userPhoneNumber
+            placeholder="Phone" />
+        </div>
+        <div class="incorrect__input">
+          <span
+            *ngIf="
+              (editUserForm.controls.userPhoneNumber.invalid && editUserForm.controls.userPhoneNumber.dirty) ||
+              !userPhoneNumberValid
+            ">
+            Invalid phone number.
+          </span>
+        </div>
+
+        <div class="form__footer">
+          <button (click)="deleteContact(user)" type="button" class="btn__secondary btn__secondary__main">
+            Delete
+            <span class="material__symbols__outlined">delete</span>
+          </button>
+          <button [disabled]="editUserFormSubmitted" type="submit" class="btn__primary" #saveChangesSubmitBtn>
+            Save changes
+            <span class="material__symbols__outlined">check</span>
+          </button>
+        </div>
+      </form>
     </div>
-
+  </div>
 </div>
