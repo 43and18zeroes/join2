@@ -5,39 +5,27 @@
     [formGroup]="addTaskForm"
     (ngSubmit)="onSubmit()"
     (keydown.enter)="formGroupEnterKey($event)"
-    [ngClass]="{ form__disabled: formSubmitted }"
-  >
+    [ngClass]="{ form__disabled: formSubmitted }">
     <div class="form__body__container">
       <div class="form__body">
         <div class="form__left">
-          <label for="addTaskTitle">Title<span class="asterisk">*</span></label>
-          <input
-            id="addTaskTitle"
-            formControlName="title"
-            required
-            placeholder="Enter a Title"
-          />
+          <label for="addTaskTitle">
+            Title
+            <span class="asterisk">*</span>
+          </label>
+          <input id="addTaskTitle" formControlName="title" required placeholder="Enter a Title" />
           <div class="input__required">
             <span *ngIf="!titleValid">This field is required</span>
           </div>
 
           <label for="addTaskDescription">Description</label>
-          <textarea
-            id="addTaskDescription"
-            formControlName="description"
-            placeholder="Enter a Description"
-          ></textarea>
+          <textarea id="addTaskDescription" formControlName="description" placeholder="Enter a Description"></textarea>
 
           <label for="addTaskAssignedTo">Assigned to</label>
           <div class="assign__select no__select" #assignSelectRef>
-            <div
-              class="header"
-              (click)="assignToggleDropdown()"
-              tabindex="0"
-              #assignSelectedOptionRef
-            >
+            <div class="header" (click)="assignToggleDropdown()" tabindex="0" #assignSelectedOptionRef>
               <span>Select a contact to assign</span>
-              <span class="material__symbols__outlined"> arrow_drop_down </span>
+              <span class="material__symbols__outlined">arrow_drop_down</span>
             </div>
             <div class="options" *ngIf="showAssignedDropdown">
               <div class="options__body">
@@ -45,24 +33,18 @@
                   class="option__container"
                   (click)="assignSelectOption(currentUserData)"
                   (mousedown)="assignPreventFocusLoss($event)"
-                  [class.selected]="currentUserData.selected"
-                >
+                  [class.selected]="currentUserData.selected">
                   <div class="option__left">
                     <span
                       class="initials"
                       [ngStyle]="{
                         'background-color': currentUserData.userColor
-                      }"
-                      >{{ currentUserData.userInitials }}</span
-                    ><span class="name"
-                      >{{ currentUserData.userName }} (You)</span
-                    >
+                      }">
+                      {{ currentUserData.userInitials }}
+                    </span>
+                    <span class="name">{{ currentUserData.userName }} (You)</span>
                   </div>
-                  <input
-                    type="checkbox"
-                    [checked]="currentUserData.selected"
-                    readonly
-                  />
+                  <input type="checkbox" [checked]="currentUserData.selected" readonly />
                 </div>
                 <ng-container *ngFor="let user of allUsersData">
                   <div
@@ -70,29 +52,20 @@
                     class="option__container"
                     (click)="assignSelectOption(user)"
                     (mousedown)="assignPreventFocusLoss($event)"
-                    [class.selected]="user.selected"
-                  >
+                    [class.selected]="user.selected">
                     <div class="option__left">
-                      <span
-                        class="initials"
-                        [ngStyle]="{ 'background-color': user.user_color }"
-                        >{{ user.initials }}</span
-                      ><span class="name"
-                        >{{ user.first_name }} {{ user.last_name }}</span
-                      >
+                      <span class="initials" [ngStyle]="{ 'background-color': user.user_color }">
+                        {{ user.initials }}
+                      </span>
+                      <span class="name">{{ user.first_name }} {{ user.last_name }}</span>
                     </div>
                     <input type="checkbox" [checked]="user.selected" readonly />
                   </div>
                 </ng-container>
               </div>
-              <button
-                type="button"
-                (click)="openAddUserDialog()"
-                class="btn__primary"
-              >
-                Add new contact<span class="material__symbols__outlined"
-                  >person_add</span
-                >
+              <button type="button" (click)="openAddUserDialog()" class="btn__primary">
+                Add new contact
+                <span class="material__symbols__outlined">person_add</span>
               </button>
             </div>
           </div>
@@ -101,16 +74,16 @@
         <hr />
 
         <div class="form__right">
-          <label for="addTaskDueDate"
-            >Due date<span class="asterisk">*</span></label
-          >
+          <label for="addTaskDueDate">
+            Due date
+            <span class="asterisk">*</span>
+          </label>
           <input
             id="addTaskDueDate"
             formControlName="due_date"
             type="date"
             [min]="today"
-            class="inputs__right input__date"
-          />
+            class="inputs__right input__date" />
           <div class="input__required">
             <span *ngIf="!dateValid">This field is required</span>
           </div>
@@ -121,19 +94,15 @@
               id="addTaskPrioHigh"
               type="button"
               (click)="setPriority('urgent')"
-              [class.btn__red]="selectedPriority === 'urgent'"
-            >
+              [class.btn__red]="selectedPriority === 'urgent'">
               <div class="text">Urgent</div>
-              <div class="material__symbols__outlined red">
-                keyboard_double_arrow_up
-              </div>
+              <div class="material__symbols__outlined red">keyboard_double_arrow_up</div>
             </button>
             <button
               id="addTaskPrioMiddle"
               type="button"
               (click)="setPriority('medium')"
-              [class.btn__yellow]="selectedPriority === 'medium'"
-            >
+              [class.btn__yellow]="selectedPriority === 'medium'">
               <div class="text">Medium</div>
               <div class="material__symbols__outlined yellow">double_arrow</div>
             </button>
@@ -141,44 +110,29 @@
               id="addTaskPrioLow"
               type="button"
               (click)="setPriority('low')"
-              [class.btn__green]="selectedPriority === 'low'"
-            >
+              [class.btn__green]="selectedPriority === 'low'">
               <div class="text">Low</div>
-              <div class="material__symbols__outlined green">
-                keyboard_double_arrow_down
-              </div>
+              <div class="material__symbols__outlined green">keyboard_double_arrow_down</div>
             </button>
           </div>
 
-          <label for="addTaskCategory"
-            >Category<span class="asterisk">*</span></label
-          >
+          <label for="addTaskCategory">
+            Category
+            <span class="asterisk">*</span>
+          </label>
           <div class="category__select no__select" #categorySelectRef>
-            <div
-              class="header"
-              (click)="categoryToggleDropdown()"
-              tabindex="0"
-              #categorySelect
-            >
-              <span>{{
-                addTaskForm?.controls["category"].value ||
-                  "Select a task category"
-              }}</span>
-              <span class="material__symbols__outlined"> arrow_drop_down </span>
+            <div class="header" (click)="categoryToggleDropdown()" tabindex="0" #categorySelect>
+              <span>{{ addTaskForm?.controls["category"].value || "Select a task category" }}</span>
+              <span class="material__symbols__outlined">arrow_drop_down</span>
             </div>
             <div class="options" *ngIf="showCategoryDropdown">
               <div
                 class="option"
                 (mousedown)="categoryPreventFocusLoss($event)"
-                (click)="selectCategory('Technical Task')"
-              >
+                (click)="selectCategory('Technical Task')">
                 Technical Task
               </div>
-              <div
-                class="option"
-                (mousedown)="categoryPreventFocusLoss($event)"
-                (click)="selectCategory('User Story')"
-              >
+              <div class="option" (mousedown)="categoryPreventFocusLoss($event)" (click)="selectCategory('User Story')">
                 User Story
               </div>
             </div>
@@ -197,17 +151,13 @@
               (focus)="subTasksInputFocus()"
               #subTasksInput
               class="inputs__right"
-              [placeholder]="
-                subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'
-              "
+              [placeholder]="subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'"
               [ngClass]="{ grey__placeholder: subTasksMaxReached }"
-              [disabled]="subTasksMaxReached"
-            />
+              [disabled]="subTasksMaxReached" />
             <div
               *ngIf="!subTasksInputHasFocus && !subTasksMaxReached"
               (click)="subTasksInputFocus()"
-              class="material__symbols__outlined add__symbol"
-            >
+              class="material__symbols__outlined add__symbol">
               add
             </div>
             <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
@@ -216,8 +166,7 @@
                 [disabled]="subTasksInputEmpty"
                 [ngClass]="{ check__disabled: subTasksInputEmpty }"
                 (click)="subTasksInputClear()"
-                class="material__symbols__outlined"
-              >
+                class="material__symbols__outlined">
                 clear
               </button>
               <hr />
@@ -227,8 +176,7 @@
                 [disabled]="subTasksInputEmpty"
                 [ngClass]="{ check__disabled: subTasksInputEmpty }"
                 (click)="addSubtaskInput(subTasksInput.value)"
-                class="material__symbols__outlined"
-              >
+                class="material__symbols__outlined">
                 check
               </button>
             </div>
@@ -247,20 +195,8 @@
               <ng-container *ngIf="!subtask.value.editing; else editMode">
                 &#8226; {{ subtask.value.title }}
                 <div class="btns">
-                  <button
-                    type="button"
-                    class="material__symbols__outlined"
-                    (click)="editSubtask(i)"
-                  >
-                    edit
-                  </button>
-                  <button
-                    type="button"
-                    class="material__symbols__outlined"
-                    (click)="deleteSubtask(i)"
-                  >
-                    delete
-                  </button>
+                  <button type="button" class="material__symbols__outlined" (click)="editSubtask(i)">edit</button>
+                  <button type="button" class="material__symbols__outlined" (click)="deleteSubtask(i)">delete</button>
                 </div>
               </ng-container>
               <ng-template #editMode>
@@ -270,23 +206,10 @@
                     [formControl]="getSubtaskNameControl(i)"
                     (blur)="saveSubtask(i)"
                     (keyup.enter)="saveSubtask(i)"
-                    #subtaskEditInput
-                  />
+                    #subtaskEditInput />
                   <div class="subtask__edit__right">
-                    <button
-                    type="button"
-                    class="material__symbols__outlined"
-                    (click)="deleteSubtask(i)"
-                  >
-                    delete
-                  </button>
-                  <button
-                    type="button"
-                    class="material__symbols__outlined"
-                    (click)="saveSubtask(i)"
-                  >
-                    check
-                  </button>
+                    <button type="button" class="material__symbols__outlined" (click)="deleteSubtask(i)">delete</button>
+                    <button type="button" class="material__symbols__outlined" (click)="saveSubtask(i)">check</button>
                   </div>
                 </div>
               </ng-template>
@@ -297,19 +220,18 @@
     </div>
 
     <div class="form__footer">
-      <span class="required"
-        ><span class="asterisk">*</span>This field is required</span
-      >
+      <span class="required">
+        <span class="asterisk">*</span>
+        This field is required
+      </span>
       <div class="footer__right">
-        <button
-          type="reset"
-          (click)="clearForm()"
-          class="btn__secondary btn__secondary__main"
-        >
-          Clear <span class="material__symbols__outlined"> close </span>
+        <button type="reset" (click)="clearForm()" class="btn__secondary btn__secondary__main">
+          Clear
+          <span class="material__symbols__outlined">close</span>
         </button>
         <button type="submit" class="btn__primary" #submitBtn>
-          Create Task <span class="material__symbols__outlined"> check </span>
+          Create Task
+          <span class="material__symbols__outlined">check</span>
         </button>
       </div>
     </div>
