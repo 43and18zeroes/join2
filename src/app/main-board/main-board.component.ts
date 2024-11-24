@@ -259,12 +259,13 @@ export class MainBoardComponent {
 
   renumberTasksColumnOrder() {
     this.renumberTasksColumnOrderForList(this.todo, "todo");
-    this.renumberTasksColumnOrderForList(this.inprogress, "inprogress");
-    this.renumberTasksColumnOrderForList(this.awaitfeedback, "awaitfeedback");
+    this.renumberTasksColumnOrderForList(this.inprogress, "in_progress");
+    this.renumberTasksColumnOrderForList(this.awaitfeedback, "await_feedback");
     this.renumberTasksColumnOrderForList(this.done, "done");
   }
 
   renumberTasksColumnOrderForList(list, status) {
+    debugger;
     let taskColumnOrder = 1;
     list.forEach(task => {
       task.taskStatus = status;
