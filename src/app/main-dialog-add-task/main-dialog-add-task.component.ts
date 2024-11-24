@@ -89,7 +89,7 @@ export class MainDialogAddTaskComponent {
       category: ['', Validators.required],
       // subTasks: [],
       // subTasksCompleted: [],
-      status: 'todo',
+      status: this.data.taskStatus,
       // taskColumnOrder: 0
 
       subtasks: this.fb.array([])
