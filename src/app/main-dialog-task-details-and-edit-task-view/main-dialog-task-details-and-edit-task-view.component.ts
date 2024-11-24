@@ -67,17 +67,17 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     // this.taskData.subtasks[index] = !this.taskData.subTasksCompleted[index];
     const subTask = this.taskData.subtasks[index];
     subTask.is_completed = !subTask.is_completed;
-    console.log('this.taskData.subtasks[index]', this.taskData.subtasks[index]);
+    console.log("this.taskData.subtasks[index]", this.taskData.subtasks[index]);
     // this.boardCommService.subTaskCompletedChange = true;
     // this.boardCommService.updatedTaskData = this.taskData;
-    this.backendService.updateItem(this.taskData.subtasks[index], 'subtasks').subscribe(
+    this.backendService.updateItem(this.taskData.subtasks[index], "subtasks").subscribe(
       (response) => {
-        console.log('User updated successfully:', response);
+        console.log("User updated successfully:", response);
       },
       (error) => {
-        console.error('Error creating user:', error);
+        console.error("Error creating user:", error);
       }
-    )
+    );
   }
 
   setEditMode() {
