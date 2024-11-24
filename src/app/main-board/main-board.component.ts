@@ -80,11 +80,18 @@ export class MainBoardComponent {
   }
 
   reloadAfterNewTask() {
-    this.allTasksData = this.taskDataService.allTasksData;
-    this.convertTasksDataToLists();
-    this.sortTasksInColumns();
-    this.renumberTasksColumnOrder();
-    this.backendTasksColumnOrder();
+    this.backendService.getTasks().subscribe(data => {
+      this.allTasksData = data;
+      this.convertTasksDataToLists();
+      this.sortTasksInColumns();
+      this.renumberTasksColumnOrder();
+      this.backendTasksColumnOrder();
+    });
+    // this.allTasksData = this.taskDataService.allTasksData;
+    // this.convertTasksDataToLists();
+    // this.sortTasksInColumns();
+    // this.renumberTasksColumnOrder();
+    // this.backendTasksColumnOrder();
   }
 
   onBrowserRefresh() {
