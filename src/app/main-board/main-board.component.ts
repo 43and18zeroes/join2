@@ -265,7 +265,6 @@ export class MainBoardComponent {
   }
 
   renumberTasksColumnOrderForList(list, status) {
-    debugger;
     let taskColumnOrder = 1;
     list.forEach(task => {
       task.taskStatus = status;
