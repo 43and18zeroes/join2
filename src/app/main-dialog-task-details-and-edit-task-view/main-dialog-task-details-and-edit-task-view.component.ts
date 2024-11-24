@@ -4,6 +4,7 @@ import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-detai
 import { BoardCommService } from '../services/board-comm.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../services/user-data.service';
+import { BackendService } from '../services/drf/backend-service.service';
 
 @Component({
   selector: 'app-main-dialog-task-details-and-edit-task-view',
@@ -20,6 +21,7 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
               public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent,
               public boardCommService: BoardCommService,
               public dialog: MatDialog,
+              private backendService: BackendService,
               private userService: UserService) { }
 
   ngOnInit() {
@@ -70,8 +72,16 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
   }
 
   deleteTask() {
-    this.boardCommService.taskToDelete = this.taskData;
+    // this.boardCommService.taskToDelete = this.taskData;
     this.boardCommService.deleteTask();
+    this.backendService.deleteItem(this.taskData.id, 'tasks').subscribe(
+      (response) => {
+        console.log('Task deleted successfully:', response);
+      },
+      (error) => {
+        console.error('Error deleting user:', error);
+      }
+    )
     this.closeDialog();
   }
 }

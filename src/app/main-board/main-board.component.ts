@@ -1,26 +1,31 @@
-import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragStart, DropListOrientation } from '@angular/cdk/drag-drop';
+import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from "@angular/core";
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+  CdkDragStart,
+  DropListOrientation,
+} from "@angular/cdk/drag-drop";
 // import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { UserService } from '../services/user-data.service';
-import { Router, NavigationStart } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { MainDialogAddTaskComponent } from '../main-dialog-add-task/main-dialog-add-task.component';
-import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
-import { BoardCommService } from '../services/board-comm.service';
-import { TaskDataService } from '../services/task-data.service';
-import { BackendService } from '../services/drf/backend-service.service';
+import { UserService } from "../services/user-data.service";
+import { Router, NavigationStart } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { MainDialogAddTaskComponent } from "../main-dialog-add-task/main-dialog-add-task.component";
+import { MainDialogTaskDetailsAndEditComponent } from "../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component";
+import { BoardCommService } from "../services/board-comm.service";
+import { TaskDataService } from "../services/task-data.service";
+import { BackendService } from "../services/drf/backend-service.service";
 
 @Component({
-  selector: 'app-main-board',
-  templateUrl: './main-board.component.html',
-  styleUrls: ['./main-board.component.scss']
+  selector: "app-main-board",
+  templateUrl: "./main-board.component.html",
+  styleUrls: ["./main-board.component.scss"],
 })
 export class MainBoardComponent {
-
-  @ViewChild('mainContainer') mainContainer: ElementRef;
-  @ViewChildren('sectionBody') sectionBodys: QueryList<ElementRef>;
-  @ViewChild('searchBar') searchBar: ElementRef;
-  @ViewChildren('taskCard') taskCards: QueryList<ElementRef>;
+  @ViewChild("mainContainer") mainContainer: ElementRef;
+  @ViewChildren("sectionBody") sectionBodys: QueryList<ElementRef>;
+  @ViewChild("searchBar") searchBar: ElementRef;
+  @ViewChildren("taskCard") taskCards: QueryList<ElementRef>;
 
   dropListOrienatation: DropListOrientation;
   dragDelay: number;
@@ -36,7 +41,7 @@ export class MainBoardComponent {
   displayDeletionAnimation: boolean = false;
   // items: any[] = [];
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener("window:resize", ["$event"])
   onResize(event: any) {
     this.checkForHorizontalScroll();
     this.dropListOrientation();
@@ -52,7 +57,7 @@ export class MainBoardComponent {
     public taskDataService: TaskDataService,
     private backendService: BackendService
   ) {
-    this.router.events.subscribe(event => {
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart && event.id === 1) {
         this.onBrowserRefresh();
       }
@@ -61,16 +66,9 @@ export class MainBoardComponent {
 
   ngOnInit(): void {
     // this.taskDataService.getTasksDataMain();
-    this.backendService.getTasks().subscribe(data => {
-      this.allTasksData = data;
-      this.convertTasksDataToLists();
-      this.sortTasksInColumns();
-      this.renumberTasksColumnOrder();
-      this.backendTasksColumnOrder();
-    });
+    this.getTasksData();
     // this.allTasksData = this.taskDataService.allTasksData;
     this.allUsersData = this.userService.allUsersData;
-
     this.boardCommService.reloadAfterNewTask = this.reloadAfterNewTask.bind(this);
     this.boardCommService.setNewTasksDataToLocal = this.setNewTasksDataToLocal.bind(this);
     // this.boardCommService.updateSingleTaskVar = this.updateSingleTaskVar.bind(this);
@@ -79,8 +77,18 @@ export class MainBoardComponent {
     this.determineDragDelay();
   }
 
+  getTasksData() {
+    this.backendService.getTasks().subscribe((data) => {
+      this.allTasksData = data;
+      this.convertTasksDataToLists();
+      this.sortTasksInColumns();
+      this.renumberTasksColumnOrder();
+      this.backendTasksColumnOrder();
+    });
+  }
+
   reloadAfterNewTask() {
-    this.backendService.getTasks().subscribe(data => {
+    this.backendService.getTasks().subscribe((data) => {
       this.allTasksData = data;
       this.convertTasksDataToLists();
       this.sortTasksInColumns();
@@ -95,7 +103,7 @@ export class MainBoardComponent {
   }
 
   onBrowserRefresh() {
-    this.allTasksData = JSON.parse(localStorage.getItem('allTasksData') || '[]');
+    this.allTasksData = JSON.parse(localStorage.getItem("allTasksData") || "[]");
   }
 
   ngAfterViewInit() {
@@ -127,29 +135,29 @@ export class MainBoardComponent {
   }
 
   resetSearchFunction() {
-    this.searchBar.nativeElement.value = '';
+    this.searchBar.nativeElement.value = "";
     this.taskCards.forEach((taskCard: ElementRef) => {
-      taskCard.nativeElement.classList.remove('d-none');
+      taskCard.nativeElement.classList.remove("d-none");
     });
   }
 
   displaySearchResults(searchTerm) {
     this.taskCards.forEach((taskCard: ElementRef) => {
       this.taskCards.forEach((taskCard: ElementRef) => {
-        const title = taskCard.nativeElement.querySelector('.task__title').innerText.toLowerCase();
-        const description = taskCard.nativeElement.querySelector('.task__description').innerText.toLowerCase();
+        const title = taskCard.nativeElement.querySelector(".task__title").innerText.toLowerCase();
+        const description = taskCard.nativeElement.querySelector(".task__description").innerText.toLowerCase();
 
         if (title.includes(searchTerm) || description.includes(searchTerm)) {
-          taskCard.nativeElement.classList.remove('d-none');
+          taskCard.nativeElement.classList.remove("d-none");
         }
       });
-    })
+    });
   }
 
   openAddTaskDialog(taskStatus) {
     const dialogRef = this.dialog.open(MainDialogAddTaskComponent, {
-      panelClass: 'popup__task__add',
-      data: { taskStatus: taskStatus }
+      panelClass: "popup__task__add",
+      data: { taskStatus: taskStatus },
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.allUsersData = this.userService.allUsersData;
@@ -170,7 +178,7 @@ export class MainBoardComponent {
   }
 
   determineTaskStatus() {
-    this.allTasksData.forEach(task => {
+    this.allTasksData.forEach((task) => {
       switch (task.status) {
         case "todo":
           this.todo.push(task);
@@ -238,8 +246,8 @@ export class MainBoardComponent {
     const mainElement: HTMLDivElement = this.mainContainer.nativeElement;
     this.sectionBodys.forEach((sectionBody: ElementRef) => {
       const divElement: HTMLDivElement = sectionBody.nativeElement;
-      if (mainElement.scrollWidth > mainElement.clientWidth) divElement.classList.add('has__horizontal__scroll');
-      else divElement.classList.remove('has__horizontal__scroll');
+      if (mainElement.scrollWidth > mainElement.clientWidth) divElement.classList.add("has__horizontal__scroll");
+      else divElement.classList.remove("has__horizontal__scroll");
     });
   }
 
@@ -250,7 +258,8 @@ export class MainBoardComponent {
 
   drop(event: CdkDragDrop<string[]>) {
     this.dragActive = false;
-    if (event.previousContainer === event.container) moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container)
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     else transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     this.renumberTasksColumnOrder();
     this.setNewTasksDataToLocal();
@@ -266,7 +275,7 @@ export class MainBoardComponent {
 
   renumberTasksColumnOrderForList(list, status) {
     let taskColumnOrder = 1;
-    list.forEach(task => {
+    list.forEach((task) => {
       task.taskStatus = status;
       task.taskColumnOrder = taskColumnOrder;
       taskColumnOrder++;
@@ -274,14 +283,9 @@ export class MainBoardComponent {
   }
 
   setNewTasksDataToLocal() {
-    const newAllTasksData = [
-      ...this.todo,
-      ...this.inprogress,
-      ...this.awaitfeedback,
-      ...this.done
-    ];
-    localStorage.removeItem('allTasksData');
-    localStorage.setItem('allTasksData', JSON.stringify(newAllTasksData));
+    const newAllTasksData = [...this.todo, ...this.inprogress, ...this.awaitfeedback, ...this.done];
+    localStorage.removeItem("allTasksData");
+    localStorage.setItem("allTasksData", JSON.stringify(newAllTasksData));
   }
 
   backendTasksColumnOrder() {
@@ -333,23 +337,24 @@ export class MainBoardComponent {
 
   openTaskDetails(taskData) {
     const dialogRef = this.dialog.open(MainDialogTaskDetailsAndEditComponent, {
-      panelClass: 'popup__task__details',
-      autoFocus: false
+      panelClass: "popup__task__details",
+      autoFocus: false,
     });
     dialogRef.componentInstance.taskData = { ...taskData };
     dialogRef.afterClosed().subscribe((result) => {
       this.taskDetailsClosed();
+      this.getTasksData();
     });
   }
 
   taskDetailsClosed() {
     this.resetSearchFunction();
-      if (this.boardCommService.subTaskCompletedChange) {
-        // this.updateSingleTaskVar();
-        this.setNewTasksDataToLocal();
-        this.updateSingleTaskBackend();
-        this.boardCommService.subTaskCompletedChange = false;
-      }
+    if (this.boardCommService.subTaskCompletedChange) {
+      // this.updateSingleTaskVar();
+      this.setNewTasksDataToLocal();
+      this.updateSingleTaskBackend();
+      this.boardCommService.subTaskCompletedChange = false;
+    }
   }
 
   // updateSingleTaskVar() {
