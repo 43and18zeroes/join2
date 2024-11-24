@@ -72,7 +72,7 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     // this.boardCommService.updatedTaskData = this.taskData;
     this.backendService.updateItem(this.taskData.subtasks[index], "subtasks").subscribe(
       (response) => {
-        console.log("User updated successfully:", response);
+        console.log("Task updated successfully:", response);
       },
       (error) => {
         console.error("Error creating user:", error);
