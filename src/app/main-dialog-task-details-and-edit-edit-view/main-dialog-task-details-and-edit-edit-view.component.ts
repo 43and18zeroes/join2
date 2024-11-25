@@ -168,7 +168,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     //     this.selectedUsers.push(singleUser);
     //   }
     // }
-    const users = this.taskData?.users || []; // Safely access `users` to handle cases where `taskData` or `users` is undefined.
+    const users = this.taskData?.users || [];
     this.selectedUsers = [...users];
     console.log("this.selectedUsers", this.selectedUsers);
   }
@@ -232,7 +232,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     //     }
     //   }
     // }
-    this.allUsersData = this.taskData?.users || [];
+    
+    // this.allUsersData = this.taskData?.users || [];
     this.showAssignedDropdown = !this.showAssignedDropdown;
     for (let i = 0; i < this.selectedUsers.length; i++) {
       const selectedUser = this.selectedUsers[i];
