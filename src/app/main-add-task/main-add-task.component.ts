@@ -81,13 +81,13 @@ export class MainAddTaskComponent {
     this.getUsersData();
     this.currentUserData = this.userService.currentUserData;
     this.initListeners();
+    console.log('this.selectedUsers', this.selectedUsers);
   }
 
   getUsersData() {
     this.backendService.getUsers().subscribe(data => {
       this.allUsersData = data;
       this.sortUsersData();
-      console.log('this.allUsersData', this.allUsersData);
     });
     
   }
