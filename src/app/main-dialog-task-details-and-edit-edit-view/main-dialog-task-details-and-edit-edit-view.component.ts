@@ -10,6 +10,7 @@ import { UserService } from "../services/user-data.service";
 import { TaskDataService } from "../services/task-data.service";
 import { MainDialogAddTaskComponent } from "../main-dialog-add-task/main-dialog-add-task.component";
 import { MainDialogAddContactComponent } from "../main-dialog-add-contact/main-dialog-add-contact.component";
+import { BackendService } from "../services/drf/backend-service.service";
 
 @Component({
   selector: "app-main-dialog-task-details-and-edit-edit-view",
@@ -59,6 +60,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     private userService: UserService,
     public taskDataService: TaskDataService,
     public dialogRef: MatDialogRef<MainDialogAddTaskComponent>,
+    private backendService: BackendService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.initializeEditTaskForm();
@@ -82,18 +84,18 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   initializeEditTaskForm() {
     this.editTaskForm = this.fb.group({
-      title: ['', Validators.required],
-      description: [''],
+      title: ["", Validators.required],
+      description: [""],
       users: [[]],
-      due_date: ['', Validators.required],
-      priority: [''],
-      category: ['', Validators.required],
+      due_date: ["", Validators.required],
+      priority: [""],
+      category: ["", Validators.required],
       // subTasks: [],
       // subTasksCompleted: [],
       status: [],
       // taskColumnOrder: 0
 
-      subtasks: this.fb.array([])
+      subtasks: this.fb.array([]),
     });
   }
 
@@ -102,8 +104,32 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.updatedTaskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
     this.userService.sortUsersData();
     this.allUsersData = this.userService.allUsersData;
+    this.getUsersData();
     this.currentUserData = this.userService.currentUserData;
     this.initListeners();
+  }
+
+  getUsersData() {
+    this.backendService.getUsers().subscribe((data) => {
+      this.allUsersData = data;
+      this.sortUsersData();
+      console.log("this.allUsersData", this.allUsersData);
+    });
+  }
+
+  private sortUsersData(): void {
+    this.allUsersData.sort((a, b) => {
+      const firstNameA = a.first_name.toLowerCase();
+      const firstNameB = b.first_name.toLowerCase();
+
+      if (firstNameA < firstNameB) {
+        return -1;
+      }
+      if (firstNameA > firstNameB) {
+        return 1;
+      }
+      return 0;
+    });
   }
 
   initListeners() {
@@ -222,17 +248,33 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     }
   }
 
+  // assignSelectOption(user: any) {
+  //   if (user) {
+  //     const index = this.selectedUsers.findIndex((u) => u.firebaseId === user.firebaseId);
+  //     user.selected = !user.selected;
+  //     if (user.selected) {
+  //       this.selectedUsers.push(user);
+  //     } else if (!user.selected && index !== -1) {
+  //       this.selectedUsers.splice(index, 1);
+  //     }
+  //     this.taskData.assignedTo = this.selectedUsers.map((user) => user.userEmailAddress);
+  //   }
+  // }
+
   assignSelectOption(user: any) {
     if (user) {
-      const index = this.selectedUsers.findIndex((u) => u.firebaseId === user.firebaseId);
       user.selected = !user.selected;
       if (user.selected) {
         this.selectedUsers.push(user);
-      } else if (!user.selected && index !== -1) {
-        this.selectedUsers.splice(index, 1);
+      } else {
+        const index = this.selectedUsers.indexOf(user);
+        if (index !== -1) {
+          this.selectedUsers.splice(index, 1);
+        }
       }
-      this.taskData.assignedTo = this.selectedUsers.map((user) => user.userEmailAddress);
     }
+    this.assignSelectedOptionRef.nativeElement.focus();
+    console.log('selectedUsers', this.selectedUsers);
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
@@ -244,7 +286,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       panelClass: "popup__contact__add",
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.userService.sortUsersData();
+      // this.userService.sortUsersData();
+      this.getUsersData();
     });
   }
 
@@ -477,19 +520,33 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     return trimmedTask;
   }
 
+  // sendNewTaskToBackend(trimmedTask) {
+  //   delete trimmedTask.firebaseId;
+  //   this.firestore
+  //     .collection("tasks")
+  //     .add(trimmedTask)
+  //     .then((docRef) => {
+  //       trimmedTask.firebaseId = docRef.id;
+  //       return docRef.update({ firebaseId: docRef.id });
+  //     })
+  //     .then(() => {})
+  //     .catch((error) => {
+  //       console.error("Error adding or updating document: ", error);
+  //     });
+  //   this.clearForm();
+  // }
+
   sendNewTaskToBackend(trimmedTask) {
-    delete trimmedTask.firebaseId;
-    this.firestore
-      .collection("tasks")
-      .add(trimmedTask)
-      .then((docRef) => {
-        trimmedTask.firebaseId = docRef.id;
-        return docRef.update({ firebaseId: docRef.id });
-      })
-      .then(() => {})
-      .catch((error) => {
-        console.error("Error adding or updating document: ", error);
-      });
+    console.log('trimmedTask', trimmedTask);
+    this.backendService.createItem(trimmedTask, 'tasks').subscribe(
+      (response) => {
+        console.log('Task created successfully:', response);
+      },
+      (error) => {
+        console.error('Error creating task:', error);
+      }
+    );
+
     this.clearForm();
   }
 
