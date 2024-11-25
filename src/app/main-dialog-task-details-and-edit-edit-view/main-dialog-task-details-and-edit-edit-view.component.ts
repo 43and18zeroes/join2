@@ -1,30 +1,29 @@
-import { Component, ElementRef, Inject, Renderer2, ViewChild } from '@angular/core';
-import { TaskDetailsCommService } from '../services/task-details-comm.service';
-import { MainDialogTaskDetailsAndEditComponent } from '../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';
-import { FormBuilder, Validators } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { BoardCommService } from '../services/board-comm.service';
-import { MainCommunicationService } from '../services/main-communication.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { UserService } from '../services/user-data.service';
-import { TaskDataService } from '../services/task-data.service';
-import { MainDialogAddTaskComponent } from '../main-dialog-add-task/main-dialog-add-task.component';
-import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
+import { Component, ElementRef, Inject, Renderer2, ViewChild } from "@angular/core";
+import { TaskDetailsCommService } from "../services/task-details-comm.service";
+import { MainDialogTaskDetailsAndEditComponent } from "../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component";
+import { FormBuilder, Validators } from "@angular/forms";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { BoardCommService } from "../services/board-comm.service";
+import { MainCommunicationService } from "../services/main-communication.service";
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { UserService } from "../services/user-data.service";
+import { TaskDataService } from "../services/task-data.service";
+import { MainDialogAddTaskComponent } from "../main-dialog-add-task/main-dialog-add-task.component";
+import { MainDialogAddContactComponent } from "../main-dialog-add-contact/main-dialog-add-contact.component";
 
 @Component({
-  selector: 'app-main-dialog-task-details-and-edit-edit-view',
-  templateUrl: './main-dialog-task-details-and-edit-edit-view.component.html',
-  styleUrls: ['./main-dialog-task-details-and-edit-edit-view.component.scss']
+  selector: "app-main-dialog-task-details-and-edit-edit-view",
+  templateUrl: "./main-dialog-task-details-and-edit-edit-view.component.html",
+  styleUrls: ["./main-dialog-task-details-and-edit-edit-view.component.scss"],
 })
 export class MainDialogTaskDetailsAndEditEditViewComponent {
-
-  @ViewChild('assignSelectedOptionRef') assignSelectedOptionRef: ElementRef;
-  @ViewChild('assignSelectRef') assignSelectRef: ElementRef;
-  @ViewChild('categorySelect') categorySelect: ElementRef;
-  @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
-  @ViewChild('subTasksInput') subTasksInput: ElementRef;
-  @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
-  @ViewChild('submitBtn') submitBtn: ElementRef;
+  @ViewChild("assignSelectedOptionRef") assignSelectedOptionRef: ElementRef;
+  @ViewChild("assignSelectRef") assignSelectRef: ElementRef;
+  @ViewChild("categorySelect") categorySelect: ElementRef;
+  @ViewChild("categorySelectRef") categorySelectRef: ElementRef;
+  @ViewChild("subTasksInput") subTasksInput: ElementRef;
+  @ViewChild("subTaskEditCurrentInput") subTaskEditCurrentInput: ElementRef;
+  @ViewChild("submitBtn") submitBtn: ElementRef;
 
   taskData;
   updatedTaskData;
@@ -68,16 +67,16 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   initializeEditTaskForm() {
     this.editTaskForm = this.fb.group({
-      title: ['', Validators.required],
-      description: [''],
+      title: ["", Validators.required],
+      description: [""],
       assignedTo: [[]],
-      dueDate: ['', Validators.required],
-      priority: [''],
-      category: ['', Validators.required],
+      dueDate: ["", Validators.required],
+      priority: [""],
+      category: ["", Validators.required],
       subTasks: [],
       subTasksCompleted: [],
       taskStatus: [],
-      taskColumnOrder: 0
+      taskColumnOrder: 0,
     });
   }
 
@@ -91,12 +90,12 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   initListeners() {
-    this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
+    this.globalClickListener = this.renderer.listen("document", "click", (event) => {
       if (!this.assignSelectRef.nativeElement.contains(event.target)) {
         this.assignCloseDropdown();
       }
     });
-    this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
+    this.globalClickListener = this.renderer.listen("document", "click", (event) => {
       if (!this.categorySelectRef.nativeElement.contains(event.target)) {
         this.categoryCloseDropdown();
       }
@@ -118,18 +117,23 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   determineAssignees() {
-    for (let index = 0; index < this.allUsersData.length; index++) {
-      const singleUser = this.allUsersData[index];
-      if (this.taskData.assignedTo.includes(singleUser.userEmailAddress)) {
-        this.selectedUsers.push(singleUser);
-      }
-    }
+    // for (let index = 0; index < this.allUsersData.length; index++) {
+    //   const singleUser = this.allUsersData[index];
+    //   console.log('this.taskData', this.taskData);
+    //   console.log('singleUser', singleUser);
+    //   if (this.taskData.assignedTo.includes(singleUser.userEmailAddress)) {
+    //     this.selectedUsers.push(singleUser);
+    //   }
+    // }
+    const users = this.taskData?.users || []; // Safely access `users` to handle cases where `taskData` or `users` is undefined.
+    this.selectedUsers = [...users];
+    console.log("this.selectedUsers", this.selectedUsers);
   }
 
   getDueDate() {
     if (this.taskData && this.taskData.dueDate) {
       this.editTaskForm.patchValue({
-        dueDate: this.taskData.dueDate
+        dueDate: this.taskData.dueDate,
       });
     }
   }
@@ -137,7 +141,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   getPriority() {
     if (this.taskData.priority) {
       this.editTaskForm.patchValue({
-        priority: this.taskData.priority
+        priority: this.taskData.priority,
       });
       this.selectedPriority = this.taskData.priority;
     }
@@ -146,7 +150,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   getCategory() {
     if (this.taskData.category) {
       this.editTaskForm.patchValue({
-        category: this.taskData.category
+        category: this.taskData.category,
       });
     }
   }
@@ -154,7 +158,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   getSubTasks() {
     if (this.taskData.subTasks) {
       this.editTaskForm.patchValue({
-        subTasks: this.taskData.subTasks
+        subTasks: this.taskData.subTasks,
       });
       this.subTasksArray = this.taskData.subTasks;
       this.subTaskCheckAmount();
@@ -189,14 +193,14 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   assignSelectOption(user: any) {
     if (user) {
-      const index = this.selectedUsers.findIndex(u => u.firebaseId === user.firebaseId);
+      const index = this.selectedUsers.findIndex((u) => u.firebaseId === user.firebaseId);
       user.selected = !user.selected;
       if (user.selected) {
         this.selectedUsers.push(user);
       } else if (!user.selected && index !== -1) {
         this.selectedUsers.splice(index, 1);
       }
-      this.taskData.assignedTo = this.selectedUsers.map(user => user.userEmailAddress);
+      this.taskData.assignedTo = this.selectedUsers.map((user) => user.userEmailAddress);
     }
   }
 
@@ -206,7 +210,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   openAddUserDialog() {
     const dialogRef = this.dialog.open(MainDialogAddContactComponent, {
-      panelClass: 'popup__contact__add'
+      panelClass: "popup__contact__add",
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.userService.sortUsersData();
@@ -229,14 +233,14 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   getTodaysDate(): string {
     const now = new Date();
     const year = now.getFullYear().toString();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-    const day = now.getDate().toString().padStart(2, '0');
+    const month = (now.getMonth() + 1).toString().padStart(2, "0");
+    const day = now.getDate().toString().padStart(2, "0");
     return `${year}-${month}-${day}`;
   }
 
   setPriority(priority: string) {
     this.selectedPriority = priority;
-    this.editTaskForm.controls['priority'].setValue(priority);
+    this.editTaskForm.controls["priority"].setValue(priority);
   }
 
   categoryToggleDropdown() {
@@ -244,7 +248,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   selectCategory(category: string) {
-    this.editTaskForm.controls['category'].setValue(category);
+    this.editTaskForm.controls["category"].setValue(category);
     this.categoryToggleDropdown();
   }
 
@@ -254,7 +258,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   subTasksInputCheckValue() {
-    if (this.subTasksInput.nativeElement.value == '') {
+    if (this.subTasksInput.nativeElement.value == "") {
       this.subTasksInputEmpty = true;
     } else {
       this.subTasksInputEmpty = false;
@@ -263,13 +267,13 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   subTasksInputClear() {
-    this.subTasksInput.nativeElement.value = '';
+    this.subTasksInput.nativeElement.value = "";
     this.subTasksInputHasFocus = false;
     this.subTasksInputCheckValue();
   }
 
   subTaskInputEnterPressed(event: Event) {
-    if (event instanceof KeyboardEvent && event.key === 'Enter') {
+    if (event instanceof KeyboardEvent && event.key === "Enter") {
       event.preventDefault();
       this.subTaskInputConfirm();
     }
@@ -344,16 +348,16 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   setSubtasksForm() {
-    this.editTaskForm.controls['subTasks'].setValue(this.subTasksArray);
-    this.subTasksInput.nativeElement.value = '';
+    this.editTaskForm.controls["subTasks"].setValue(this.subTasksArray);
+    this.subTasksInput.nativeElement.value = "";
   }
 
   clearForm() {
     this.resetFormModel();
     this.currentUserData.selected = false;
-    this.allUsersData.forEach(user => user.selected = false);
+    this.allUsersData.forEach((user) => (user.selected = false));
     this.selectedUsers = [];
-    this.selectedPriority = 'undefined';
+    this.selectedPriority = "undefined";
     this.subTasksArray = [];
     this.subTasksInput.nativeElement.value = "";
     this.subTasksInputHasFocus = false;
@@ -364,16 +368,16 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   resetFormModel() {
     this.editTaskForm = this.fb.group({
-      title: ['', Validators.required],
-      description: [''],
+      title: ["", Validators.required],
+      description: [""],
       assignedTo: [[]],
-      dueDate: ['', Validators.required],
-      priority: ['low'],
-      category: ['', Validators.required],
+      dueDate: ["", Validators.required],
+      priority: ["low"],
+      category: ["", Validators.required],
       subTasks: [],
       subTasksCompleted: [],
       taskStatus: [],
-      taskColumnOrder: 0
+      taskColumnOrder: 0,
     });
   }
 
@@ -409,7 +413,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   trimmTaskArray() {
     const trimmedTask = this.trimTask();
-    this.addAssignedTo(trimmedTask)
+    this.addAssignedTo(trimmedTask);
     if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
     this.updatedTaskData = trimmedTask;
   }
@@ -444,12 +448,14 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   sendNewTaskToBackend(trimmedTask) {
     delete trimmedTask.firebaseId;
-    this.firestore.collection('tasks').add(trimmedTask).then((docRef) => {
-      trimmedTask.firebaseId = docRef.id;
-      return docRef.update({ firebaseId: docRef.id });
-    })
-      .then(() => {
+    this.firestore
+      .collection("tasks")
+      .add(trimmedTask)
+      .then((docRef) => {
+        trimmedTask.firebaseId = docRef.id;
+        return docRef.update({ firebaseId: docRef.id });
       })
+      .then(() => {})
       .catch((error) => {
         console.error("Error adding or updating document: ", error);
       });
@@ -461,10 +467,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   async updateTaskSingleBackend() {
-    await this.firestore
-      .collection('tasks')
-      .doc(this.updatedTaskData.firebaseId)
-      .update(this.updatedTaskData);
+    await this.firestore.collection("tasks").doc(this.updatedTaskData.firebaseId).update(this.updatedTaskData);
     this.boardCommService.reloadAfterNewTask();
   }
 }
