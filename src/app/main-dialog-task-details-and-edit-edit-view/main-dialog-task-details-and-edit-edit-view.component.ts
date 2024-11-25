@@ -65,18 +65,35 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.today = this.getTodaysDate();
   }
 
+  // initializeEditTaskForm() {
+  //   this.editTaskForm = this.fb.group({
+  //     title: ["", Validators.required],
+  //     description: [""],
+  //     assignedTo: [[]],
+  //     dueDate: ["", Validators.required],
+  //     priority: [""],
+  //     category: ["", Validators.required],
+  //     subTasks: [],
+  //     subTasksCompleted: [],
+  //     taskStatus: [],
+  //     taskColumnOrder: 0,
+  //   });
+  // }
+
   initializeEditTaskForm() {
     this.editTaskForm = this.fb.group({
-      title: ["", Validators.required],
-      description: [""],
-      assignedTo: [[]],
-      dueDate: ["", Validators.required],
-      priority: [""],
-      category: ["", Validators.required],
-      subTasks: [],
-      subTasksCompleted: [],
-      taskStatus: [],
-      taskColumnOrder: 0,
+      title: ['', Validators.required],
+      description: [''],
+      users: [[]],
+      due_date: ['', Validators.required],
+      priority: [''],
+      category: ['', Validators.required],
+      // subTasks: [],
+      // subTasksCompleted: [],
+      status: [],
+      // taskColumnOrder: 0
+
+      subtasks: this.fb.array([])
     });
   }
 
@@ -131,9 +148,9 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   getDueDate() {
-    if (this.taskData && this.taskData.dueDate) {
+    if (this.taskData && this.taskData.due_date) {
       this.editTaskForm.patchValue({
-        dueDate: this.taskData.dueDate,
+        due_date: this.taskData.due_date,
       });
     }
   }
@@ -385,12 +402,12 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       title: ["", Validators.required],
       description: [""],
       assignedTo: [[]],
-      dueDate: ["", Validators.required],
+      due_date: ["", Validators.required],
       priority: ["low"],
       category: ["", Validators.required],
       subTasks: [],
       subTasksCompleted: [],
-      taskStatus: [],
+      status: [],
       taskColumnOrder: 0,
     });
   }
@@ -419,7 +436,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.updatedTaskData.title = this.taskData.title;
     this.updatedTaskData.description = this.taskData.description;
     this.updatedTaskData.assignedTo = this.taskData.assignedTo;
-    this.updatedTaskData.dueDate = this.editTaskForm.value.dueDate;
+    this.updatedTaskData.due_date = this.editTaskForm.value.due_date;
     this.updatedTaskData.priority = this.editTaskForm.value.priority;
     this.updatedTaskData.category = this.editTaskForm.value.category;
     this.updatedTaskData.subTasks = this.taskData.subTasks;
@@ -435,7 +452,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   checkRequiredInputs() {
     if (this.editTaskForm.value.title === "") this.titleValid = false;
     else this.titleValid = true;
-    if (this.editTaskForm.value.dueDate) this.dateValid = true;
+    if (this.editTaskForm.value.due_date) this.dateValid = true;
     else this.dateValid = false;
     if (this.editTaskForm.value.category === "") this.categoryValid = false;
     else this.categoryValid = true;
