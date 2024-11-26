@@ -1,196 +1,307 @@
 <div class="task__edit__container no__select">
+  <header>
+    <h2>Edit Task</h2>
+    <div (click)="closeDialog()" class="hover__area no__select">
+      <div class="transform__circle"></div>
+      <span class="material__symbols__outlined single__icon">close</span>
+    </div>
+  </header>
 
-    <header>
-        <h2>Edit Task</h2>
-        <div (click)="closeDialog()" class="hover__area no__select">
-            <div class="transform__circle"></div>
-            <span class="material__symbols__outlined single__icon">close</span>
-        </div>
-    </header>
-    
-    <form [formGroup]="editTaskForm" (ngSubmit)="onSubmit()" (keydown.enter)="formGroupEnterKey($event)"
-        [ngClass]="{ 'form__disabled': formSubmitted }">
+  <form
+    [formGroup]="editTaskForm"
+    (ngSubmit)="onSubmit()"
+    (keydown.enter)="formGroupEnterKey($event)"
+    [ngClass]="{ form__disabled: formSubmitted }">
+    <div class="form__body__container">
+      <div class="form__body">
+        <div class="form__left">
+          <label for="addTaskTitle">
+            Title
+            <span class="asterisk">*</span>
+          </label>
+          <input
+            [(ngModel)]="taskData.title"
+            id="addTaskTitle"
+            formControlName="title"
+            required
+            placeholder="Enter a Title" />
+          <div class="input__required">
+            <span *ngIf="!titleValid">This field is required</span>
+          </div>
 
-        <div class="form__body__container">
-            <div class="form__body">
+          <label for="addTaskDescription">Description</label>
+          <textarea
+            [(ngModel)]="taskData.description"
+            id="addTaskDescription"
+            formControlName="description"
+            placeholder="Enter a Description"></textarea>
 
-                <div class="form__left">
-
-                    <label for="addTaskTitle">Title<span class="asterisk">*</span></label>
-                    <input [(ngModel)]="taskData.title" id="addTaskTitle" formControlName="title" required placeholder="Enter a Title" />
-                    <div class="input__required">
-                        <span *ngIf="!titleValid">This field is required</span>
-                    </div>
-
-                    <label for="addTaskDescription">Description</label>
-                    <textarea [(ngModel)]="taskData.description" id="addTaskDescription" formControlName="description"
-                        placeholder="Enter a Description"></textarea>
-
-                    <label for="addTaskAssignedTo">Assigned to</label>
-                    <div class="assign__select no__select" #assignSelectRef>
-                        <div class="header" (click)="assignToggleDropdown()" tabindex="0" #assignSelectedOptionRef>
-                            <span>Select a contact to assign</span>
-                            <span class="material__symbols__outlined">
-                                arrow_drop_down
-                            </span>
-                        </div>
-                        <div class="options" *ngIf="showAssignedDropdown">
-                            <div class="options__body">
-                                <div class="option__container" (click)="assignSelectOption(currentUserData)"
-                                    (mousedown)="assignPreventFocusLoss($event)"
-                                    [class.selected]="currentUserData.selected">
-                                    <div class="option__left">
-                                        <span class="initials"
-                                            [ngStyle]="{'background-color': currentUserData.userColor}">{{
-                                            currentUserData.userInitials }}</span><span class="name">{{
-                                            currentUserData.userName }} (You)</span>
-                                    </div>
-                                    <input type="checkbox" [checked]="currentUserData.selected" readonly />
-                                </div>
-                                <ng-container *ngFor="let user of allUsersData">
-                                    <div *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
-                                        class="option__container" (click)="assignSelectOption(user)"
-                                        (mousedown)="assignPreventFocusLoss($event)" [class.selected]="user.selected">
-                                        <div class="option__left"><span class="initials"
-                                                [ngStyle]="{'background-color': user.user_color}">{{ user.initials
-                                                }}</span><span class="name">{{ user.first_name }} {{ user.last_name }}</span></div>
-                                        <input type="checkbox" [checked]="user.selected" readonly />
-                                    </div>
-                                </ng-container>
-                            </div>
-                            <button type="button" (click)="openAddUserDialog()" class="btn__primary">Add new
-                                contact<span class="material__symbols__outlined">person_add</span></button>
-                        </div>
-                    </div>
-
-
+          <label for="addTaskAssignedTo">Assigned to</label>
+          <div class="assign__select no__select" #assignSelectRef>
+            <div class="header" (click)="assignToggleDropdown()" tabindex="0" #assignSelectedOptionRef>
+              <span>Select a contact to assign</span>
+              <span class="material__symbols__outlined">arrow_drop_down</span>
+            </div>
+            <div class="options" *ngIf="showAssignedDropdown">
+              <div class="options__body">
+                <div
+                  class="option__container"
+                  (click)="assignSelectOption(currentUserData)"
+                  (mousedown)="assignPreventFocusLoss($event)"
+                  [class.selected]="currentUserData.selected">
+                  <div class="option__left">
+                    <span class="initials" [ngStyle]="{ 'background-color': currentUserData.userColor }">
+                      {{ currentUserData.userInitials }}
+                    </span>
+                    <span class="name">{{ currentUserData.userName }} (You)</span>
+                  </div>
+                  <input type="checkbox" [checked]="currentUserData.selected" readonly />
                 </div>
+                <ng-container *ngFor="let user of allUsersData">
+                  <div
+                    *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
+                    class="option__container"
+                    (click)="assignSelectOption(user)"
+                    (mousedown)="assignPreventFocusLoss($event)"
+                    [class.selected]="user.selected">
+                    <div class="option__left">
+                      <span class="initials" [ngStyle]="{ 'background-color': user.user_color }">
+                        {{ user.initials }}
+                      </span>
+                      <span class="name">{{ user.first_name }} {{ user.last_name }}</span>
+                    </div>
+                    <input type="checkbox" [checked]="user.selected" readonly />
+                  </div>
+                </ng-container>
+              </div>
+              <button type="button" (click)="openAddUserDialog()" class="btn__primary">
+                Add new contact
+                <span class="material__symbols__outlined">person_add</span>
+              </button>
+            </div>
+          </div>
+        </div>
 
-                <hr>
+        <hr />
 
-                <div class="form__right">
-
-                    <label for="addTaskDueDate">Due date<span class="asterisk">*</span></label>
-                    <!-- <input id="addTaskDueDate" formControlName="dueDate" type="date" [min]="today"
+        <div class="form__right">
+          <label for="addTaskDueDate">
+            Due date
+            <span class="asterisk">*</span>
+          </label>
+          <!-- <input id="addTaskDueDate" formControlName="dueDate" type="date" [min]="today"
                         class="inputs__right input__date"> -->
-                    <input id="addTaskDueDate" formControlName="due_date" type="date"
-                        class="inputs__right input__date">
-                    <div class="input__required">
-                        <span *ngIf="!dateValid">This field is required</span>
-                    </div>
+          <input id="addTaskDueDate" formControlName="due_date" type="date" class="inputs__right input__date" />
+          <div class="input__required">
+            <span *ngIf="!dateValid">This field is required</span>
+          </div>
 
-                    <label for="addTaskPrio">Prio</label>
-                    <div class="prio__container">
-                        <button id="addTaskPrioHigh" type="button" (click)="setPriority('urgent')"
-                            [class.btn__red]="selectedPriority === 'urgent'">
-                            <div class="text">Urgent</div>
-                            <div class="material__symbols__outlined red">keyboard_double_arrow_up</div>
-                        </button>
-                        <button id="addTaskPrioMiddle" type="button" (click)="setPriority('medium')"
-                            [class.btn__yellow]="selectedPriority === 'medium'">
-                            <div class="text">Medium</div>
-                            <div class="material__symbols__outlined yellow">double_arrow</div>
-                        </button>
-                        <button id="addTaskPrioLow" type="button" (click)="setPriority('low')"
-                            [class.btn__green]="selectedPriority === 'low'">
-                            <div class="text">Low</div>
-                            <div class="material__symbols__outlined green">keyboard_double_arrow_down</div>
-                        </button>
-                    </div>
+          <label for="addTaskPrio">Prio</label>
+          <div class="prio__container">
+            <button
+              id="addTaskPrioHigh"
+              type="button"
+              (click)="setPriority('urgent')"
+              [class.btn__red]="selectedPriority === 'urgent'">
+              <div class="text">Urgent</div>
+              <div class="material__symbols__outlined red">keyboard_double_arrow_up</div>
+            </button>
+            <button
+              id="addTaskPrioMiddle"
+              type="button"
+              (click)="setPriority('medium')"
+              [class.btn__yellow]="selectedPriority === 'medium'">
+              <div class="text">Medium</div>
+              <div class="material__symbols__outlined yellow">double_arrow</div>
+            </button>
+            <button
+              id="addTaskPrioLow"
+              type="button"
+              (click)="setPriority('low')"
+              [class.btn__green]="selectedPriority === 'low'">
+              <div class="text">Low</div>
+              <div class="material__symbols__outlined green">keyboard_double_arrow_down</div>
+            </button>
+          </div>
 
-                    <label for="addTaskCategory">Category<span class="asterisk">*</span></label>
-                    <div class="category__select no__select" #categorySelectRef>
-                        <div class="header" (click)="categoryToggleDropdown()" tabindex="0" #categorySelect>
-                            <span>{{ editTaskForm.controls['category'].value || 'Select a task category' }}</span>
-                            <span class="material__symbols__outlined">
-                                arrow_drop_down
-                            </span>
-                        </div>
-                        <div class="options" *ngIf="showCategoryDropdown">
-                            <div class="option" (mousedown)="categoryPreventFocusLoss($event)"
-                                (click)="selectCategory('Technical Task')">Technical Task</div>
-                            <div class="option" (mousedown)="categoryPreventFocusLoss($event)"
-                                (click)="selectCategory('User Story')">User Story</div>
-                        </div>
-                    </div>
-
-                    <div class="input__required">
-                        <span *ngIf="!categoryValid">This field is required</span>
-                    </div>
-
-                    <label for="subTasks">Subtasks</label>
-                    <div class="subtasks__container">
-                        <input (keydown.enter)="subTaskInputEnterPressed($event)" (input)="subTasksInputCheckValue()"
-                            (click)="subTasksInputFocus()" class="inputs__right" #subTasksInput
-                            [placeholder]="subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'"
-                            [ngClass]="{ 'grey__placeholder': subTasksMaxReached }">
-                        <div *ngIf="!subTasksInputHasFocus && !subTasksMaxReached" (click)="subTasksInputFocus()"
-                            class="material__symbols__outlined add__symbol">add</div>
-                        <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
-                            <button (mousedown)="assignPreventFocusLoss($event)" [disabled]="subTasksInputEmpty"
-                                [ngClass]="{'check__disabled': subTasksInputEmpty}" (click)="subTasksInputClear()"
-                                class="material__symbols__outlined">clear</button>
-                            <hr>
-                            <button (mousedown)="assignPreventFocusLoss($event)" [disabled]="subTasksInputEmpty"
-                                [ngClass]="{'check__disabled': subTasksInputEmpty}" (click)="subTaskInputConfirm()"
-                                class="material__symbols__outlined">check</button>
-                        </div>
-                    </div>
-
-                </div>
-
+          <label for="addTaskCategory">
+            Category
+            <span class="asterisk">*</span>
+          </label>
+          <div class="category__select no__select" #categorySelectRef>
+            <div class="header" (click)="categoryToggleDropdown()" tabindex="0" #categorySelect>
+              <span>{{ editTaskForm.controls["category"].value || "Select a task category" }}</span>
+              <span class="material__symbols__outlined">arrow_drop_down</span>
             </div>
-
-            <div class="form__body">
-                <div class="form__left">
-                </div>
-                <hr class="form__body__2__hr">
-                <div class="form__right">
-
-                    <div *ngIf="subTasksArray.length > 0" class="subtasks__display__container">
-                        <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask">
-
-                            <div *ngIf="subTaskCurrentlyEditing !== subTask" (click)="subTaskEdit(subTask)"
-                                class="subtask__display">
-                                <div class="subtask__display__text">
-                                    &#8226; {{ subTask }}
-                                </div>
-                                <div class="subtask__display__right">
-                                    <div class="material__symbols__outlined">edit</div>
-                                    <hr>
-                                    <div (mousedown)="subTaskDelete(subTask)" class="material__symbols__outlined">delete
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div *ngIf="subTaskCurrentlyEditing === subTask" class="subtask__edit">
-                                <input (keydown.enter)="subTaskSaveEdited(i)" type="text" name="" id=""
-                                    value="{{ subTask }}" #subTaskEditCurrentInput (blur)="subTaskInputEditBlur()">
-                                <div class="subtask__edit__right">
-                                    <div (mousedown)="subTaskDelete(subTask)" class="material__symbols__outlined">delete
-                                    </div>
-                                    <hr>
-                                    <div (mousedown)="subTaskSaveEdited(i)" class="material__symbols__outlined">check
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+            <div class="options" *ngIf="showCategoryDropdown">
+              <div
+                class="option"
+                (mousedown)="categoryPreventFocusLoss($event)"
+                (click)="selectCategory('Technical Task')">
+                Technical Task
+              </div>
+              <div class="option" (mousedown)="categoryPreventFocusLoss($event)" (click)="selectCategory('User Story')">
+                User Story
+              </div>
             </div>
+          </div>
+
+          <div class="input__required">
+            <span *ngIf="!categoryValid">This field is required</span>
+          </div>
+
+          <label for="subTasks">Subtasks</label>
+          <div class="subtasks__container" formArrayName="subtasks">
+            <!-- Neues Subtask hinzufügen -->
+            <input
+              (keydown.enter)="addSubtaskInput(subTasksInput.value)"
+              (input)="subTasksInputCheckValue()"
+              (focus)="subTasksInputFocus()"
+              #subTasksInput
+              class="inputs__right"
+              [placeholder]="subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'"
+              [ngClass]="{ grey__placeholder: subTasksMaxReached }"
+              [disabled]="subTasksMaxReached" />
+            <div
+              *ngIf="!subTasksInputHasFocus && !subTasksMaxReached"
+              (click)="subTasksInputFocus()"
+              class="material__symbols__outlined add__symbol">
+              add
+            </div>
+            <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
+              <button
+                (mousedown)="assignPreventFocusLoss($event)"
+                [disabled]="subTasksInputEmpty"
+                [ngClass]="{ check__disabled: subTasksInputEmpty }"
+                (click)="subTasksInputClear()"
+                class="material__symbols__outlined">
+                clear
+              </button>
+              <hr />
+              <button
+                type="button"
+                (mousedown)="assignPreventFocusLoss($event)"
+                [disabled]="subTasksInputEmpty"
+                [ngClass]="{ check__disabled: subTasksInputEmpty }"
+                (click)="addSubtaskInput(subTasksInput.value)"
+                class="material__symbols__outlined">
+                check
+              </button>
+            </div>
+          </div>
+
+          <!-- <label for="subTasks">Subtasks</label>
+          <div class="subtasks__container">
+            <input
+              (keydown.enter)="subTaskInputEnterPressed($event)"
+              (input)="subTasksInputCheckValue()"
+              (click)="subTasksInputFocus()"
+              class="inputs__right"
+              #subTasksInput
+              [placeholder]="subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'"
+              [ngClass]="{ grey__placeholder: subTasksMaxReached }" />
+            <div
+              *ngIf="!subTasksInputHasFocus && !subTasksMaxReached"
+              (click)="subTasksInputFocus()"
+              class="material__symbols__outlined add__symbol">
+              add
+            </div>
+            <div *ngIf="subTasksInputHasFocus" class="handler__symbols">
+              <button
+                (mousedown)="assignPreventFocusLoss($event)"
+                [disabled]="subTasksInputEmpty"
+                [ngClass]="{ check__disabled: subTasksInputEmpty }"
+                (click)="subTasksInputClear()"
+                class="material__symbols__outlined">
+                clear
+              </button>
+              <hr />
+              <button
+                (mousedown)="assignPreventFocusLoss($event)"
+                [disabled]="subTasksInputEmpty"
+                [ngClass]="{ check__disabled: subTasksInputEmpty }"
+                (click)="subTaskInputConfirm()"
+                class="material__symbols__outlined">
+                check
+              </button>
+            </div>
+          </div> -->
         </div>
+      </div>
 
+      <div class="form__body">
+        <div class="form__left"></div>
+        <hr class="form__body__2__hr" />
+        <div class="form__right">
+          <ul class="subtask__list">
+            <li *ngFor="let subtask of subtasks?.controls; let i = index">
+              <ng-container *ngIf="!subtask.value.editing; else editMode">
+                &#8226; {{ subtask.value.title }}
+                <div class="btns">
+                  <button type="button" class="material__symbols__outlined" (click)="editSubtask(i)">edit</button>
+                  <button type="button" class="material__symbols__outlined" (click)="deleteSubtask(i)">delete</button>
+                </div>
+              </ng-container>
+              <ng-template #editMode>
+                <div class="subtask__edit">
+                  <input
+                    type="text"
+                    [formControl]="getSubtaskNameControl(i)"
+                    (blur)="saveSubtask(i)"
+                    (keyup.enter)="saveSubtask(i)"
+                    #subtaskEditInput />
+                  <div class="subtask__edit__right">
+                    <button type="button" class="material__symbols__outlined" (click)="deleteSubtask(i)">delete</button>
+                    <button type="button" class="material__symbols__outlined" (click)="saveSubtask(i)">check</button>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+          </ul>
 
-        <div class="form__footer">
-            <span class="required"><span class="asterisk">*</span>This field is required</span>
-            <div class="footer__right">
-                <button type="submit" class="btn__primary" #submitBtn>Ok <span
-                        class="material__symbols__outlined">
-                        check
-                    </span></button>
+          <!-- <div *ngIf="subTasksArray.length > 0" class="subtasks__display__container">
+            <div *ngFor="let subTask of subTasksArray; let i = index" class="subtask">
+              <div *ngIf="subTaskCurrentlyEditing !== subTask" (click)="subTaskEdit(subTask)" class="subtask__display">
+                <div class="subtask__display__text">&#8226; {{ subTask }}</div>
+                <div class="subtask__display__right">
+                  <div class="material__symbols__outlined">edit</div>
+                  <hr />
+                  <div (mousedown)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
+                </div>
+              </div>
+
+              <div *ngIf="subTaskCurrentlyEditing === subTask" class="subtask__edit">
+                <input
+                  (keydown.enter)="subTaskSaveEdited(i)"
+                  type="text"
+                  name=""
+                  id=""
+                  value="{{ subTask }}"
+                  #subTaskEditCurrentInput
+                  (blur)="subTaskInputEditBlur()" />
+                <div class="subtask__edit__right">
+                  <div (mousedown)="subTaskDelete(subTask)" class="material__symbols__outlined">delete</div>
+                  <hr />
+                  <div (mousedown)="subTaskSaveEdited(i)" class="material__symbols__outlined">check</div>
+                </div>
+              </div>
             </div>
+          </div> -->
         </div>
-    </form>
+      </div>
+    </div>
+
+    <div class="form__footer">
+      <span class="required">
+        <span class="asterisk">*</span>
+        This field is required
+      </span>
+      <div class="footer__right">
+        <button type="submit" class="btn__primary" #submitBtn>
+          Ok
+          <span class="material__symbols__outlined">check</span>
+        </button>
+      </div>
+    </div>
+  </form>
 </div>

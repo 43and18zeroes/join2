@@ -1,7 +1,7 @@
-import { Component, ElementRef, Inject, Renderer2, ViewChild } from "@angular/core";
+import { Component, ElementRef, Inject, QueryList, Renderer2, ViewChild, ViewChildren } from "@angular/core";
 import { TaskDetailsCommService } from "../services/task-details-comm.service";
 import { MainDialogTaskDetailsAndEditComponent } from "../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component";
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormArray, FormBuilder, FormControl, Validators } from "@angular/forms";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { BoardCommService } from "../services/board-comm.service";
 import { MainCommunicationService } from "../services/main-communication.service";
@@ -25,6 +25,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   @ViewChild("subTasksInput") subTasksInput: ElementRef;
   @ViewChild("subTaskEditCurrentInput") subTaskEditCurrentInput: ElementRef;
   @ViewChild("submitBtn") submitBtn: ElementRef;
+  @ViewChildren("subtaskEditInput") subtaskEditInputs!: QueryList<ElementRef>;
 
   taskData;
   updatedTaskData;
@@ -156,7 +157,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   ngOnDestroy() {
-    this.allUsersData.forEach(user => user.selected = false);
+    this.allUsersData.forEach((user) => (user.selected = false));
     this.globalClickListener();
   }
 
@@ -200,7 +201,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   getSubTasks() {
-    if (this.taskData.subTasks) {
+    console.log('this.taskData', this.taskData);
+    if (this.taskData.subtasks) {
       this.editTaskForm.patchValue({
         subTasks: this.taskData.subTasks,
       });
@@ -233,7 +235,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     //     }
     //   }
     // }
-    
+
     // this.allUsersData = this.taskData?.users || [];
     this.showAssignedDropdown = !this.showAssignedDropdown;
     for (let i = 0; i < this.selectedUsers.length; i++) {
@@ -276,7 +278,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
-    console.log('selectedUsers', this.selectedUsers);
+    console.log("selectedUsers", this.selectedUsers);
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
@@ -539,13 +541,13 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   // }
 
   sendNewTaskToBackend(trimmedTask) {
-    console.log('trimmedTask', trimmedTask);
-    this.backendService.createItem(trimmedTask, 'tasks').subscribe(
+    console.log("trimmedTask", trimmedTask);
+    this.backendService.createItem(trimmedTask, "tasks").subscribe(
       (response) => {
-        console.log('Task created successfully:', response);
+        console.log("Task created successfully:", response);
       },
       (error) => {
-        console.error('Error creating task:', error);
+        console.error("Error creating task:", error);
       }
     );
 
@@ -556,8 +558,63 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.submitBtn.nativeElement.classList.add("btn__success");
   }
 
+  get subtasks() {
+    return this.editTaskForm.get("subtasks") as FormArray;
+  }
+
   async updateTaskSingleBackend() {
     await this.firestore.collection("tasks").doc(this.updatedTaskData.firebaseId).update(this.updatedTaskData);
     this.boardCommService.reloadAfterNewTask();
+  }
+
+  addSubtaskInput(value: string): void {
+    const trimmedValue = value.trim();
+    if (trimmedValue) {
+      this.addSubtask(trimmedValue);
+      this.subTasksInput.nativeElement.value = "";
+      this.subTasksInputHasFocus = false;
+      this.checkSubtaskLimit();
+    }
+  }
+
+  editSubtask(index: number): void {
+    this.subtasks.at(index).patchValue({ editing: true });
+    setTimeout(() => {
+      const inputsArray = this.subtaskEditInputs.toArray();
+      if (inputsArray[index]) {
+        inputsArray[index].nativeElement.focus();
+      } else {
+        console.warn("Eingabefeld nicht gefunden.");
+      }
+    });
+  }
+
+  deleteSubtask(index: number): void {
+    this.subtasks.removeAt(index);
+    this.checkSubtaskLimit();
+    console.log("this.addTaskForm", this.editTaskForm.value.subtasks);
+  }
+
+  getSubtaskNameControl(index: number): FormControl {
+    return this.subtasks.at(index).get("title") as FormControl;
+  }
+
+  saveSubtask(index: number): void {
+    const subtask = this.subtasks.at(index);
+    subtask.patchValue({ editing: false });
+  }
+
+  addSubtask(title: string): void {
+    this.subtasks.push(
+      this.fb.group({
+        title: [title, Validators.required],
+        editing: [false],
+      })
+    );
+    this.checkSubtaskLimit();
+  }
+
+  checkSubtaskLimit(): void {
+    this.subTasksMaxReached = this.subtasks.length >= 2;
   }
 }
