@@ -200,14 +200,27 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     }
   }
 
+  // getSubTasks() {
+  //   console.log('this.taskData', this.taskData);
+  //   if (this.taskData.subtasks) {
+  //     this.editTaskForm.patchValue({
+  //       subTasks: this.taskData.subTasks,
+  //     });
+  //     this.subTasksArray = this.taskData.subTasks;
+  //     this.subTaskCheckAmount();
+  //   }
+  // }
+
   getSubTasks() {
     console.log('this.taskData', this.taskData);
-    if (this.taskData.subtasks) {
+    if (this.taskData?.subtasks?.length) {
       this.editTaskForm.patchValue({
-        subTasks: this.taskData.subTasks,
+        subtasks: this.taskData.subtasks,
       });
-      this.subTasksArray = this.taskData.subTasks;
+      this.subTasksArray = this.taskData.subtasks;
       this.subTaskCheckAmount();
+    } else {
+      this.subTasksArray = [];
     }
   }
 
