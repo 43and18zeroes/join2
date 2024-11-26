@@ -149,6 +149,7 @@ export class MainDialogAddTaskComponent {
   }
 
   ngOnDestroy() {
+    this.allUsersData.forEach(user => user.selected = false);
     this.globalClickListener();
   }
 

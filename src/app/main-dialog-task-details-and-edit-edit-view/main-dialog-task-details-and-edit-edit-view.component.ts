@@ -156,6 +156,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   ngOnDestroy() {
+    this.allUsersData.forEach(user => user.selected = false);
     this.globalClickListener();
   }
 
