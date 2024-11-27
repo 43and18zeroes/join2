@@ -211,13 +211,16 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   getSubTasks() {
     if (this.taskData?.subtasks?.length) {
-      this.editTaskForm.patchValue({
-        subtasks: this.taskData.subtasks,
+      const subtasksFormArray = this.editTaskForm.get('subtasks') as FormArray;
+      subtasksFormArray.clear(); // Alte Werte entfernen
+      this.taskData.subtasks.forEach((subtask: any) => {
+        subtasksFormArray.push(
+          this.fb.group({
+            title: [subtask.title, Validators.required],
+            editing: [false],
+          })
+        );
       });
-      this.subTasksArray = this.taskData.subtasks;
-      this.subTaskCheckAmount();
-    } else {
-      this.subTasksArray = [];
     }
   }
 
@@ -568,7 +571,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   get subtasks() {
-    return this.editTaskForm.get("subtasks") as FormArray;
+    return this.editTaskForm.get('subtasks') as FormArray;
   }
 
   async updateTaskSingleBackend() {
