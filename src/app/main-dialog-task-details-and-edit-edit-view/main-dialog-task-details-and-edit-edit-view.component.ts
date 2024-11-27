@@ -114,7 +114,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.backendService.getUsers().subscribe((data) => {
       this.allUsersData = data;
       this.sortUsersData();
-      console.log("this.allUsersData", this.allUsersData);
     });
   }
 
@@ -172,7 +171,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     // }
     const users = this.taskData?.users || [];
     this.selectedUsers = [...users];
-    console.log("this.selectedUsers", this.selectedUsers);
   }
 
   getDueDate() {
@@ -212,7 +210,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   // }
 
   getSubTasks() {
-    console.log('this.taskData', this.taskData);
     if (this.taskData?.subtasks?.length) {
       this.editTaskForm.patchValue({
         subtasks: this.taskData.subtasks,
@@ -291,7 +288,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
-    console.log("selectedUsers", this.selectedUsers);
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
