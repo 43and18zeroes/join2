@@ -221,6 +221,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
           })
         );
       });
+      this.checkSubtaskLimit();
     }
   }
 
