@@ -431,6 +431,7 @@ export class MainAddTaskComponent {
       })
     );
     this.checkSubtaskLimit();
+    console.log('this.addTaskForm', this.addTaskForm);
   }
 
   removeSubtask(index: number): void {

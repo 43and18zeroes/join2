@@ -618,6 +618,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       })
     );
     this.checkSubtaskLimit();
+    console.log('this.addTaskForm', this.editTaskForm);
   }
 
   editSubtask(index: number): void {
