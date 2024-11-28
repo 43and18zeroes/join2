@@ -584,13 +584,9 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.submitBtn.nativeElement.classList.add("btn__success");
   }
 
-  get subtasks() {
-    return this.editTaskForm.get("subtasks") as FormArray;
-  }
-
   async updateTaskSingleBackend() {
     // await this.firestore.collection("tasks").doc(this.updatedTaskData.firebaseId).update(this.updatedTaskData);
-    console.log('updatedTaskData', this.updatedTaskData);
+    console.log("updatedTaskData", this.updatedTaskData);
     this.backendService.updateItem(this.updatedTaskData, "tasks").subscribe(
       (response) => {
         console.log("Task updated successfully:", response);
@@ -605,6 +601,10 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.boardCommService.reloadAfterNewTask();
   }
 
+  get subtasks() {
+    return this.editTaskForm.get("subtasks") as FormArray;
+  }
+
   addSubtaskInput(value: string): void {
     const trimmedValue = value.trim();
     if (trimmedValue) {
@@ -613,6 +613,17 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.subTasksInputHasFocus = false;
       this.checkSubtaskLimit();
     }
+  }
+
+  addSubtask(title: string): void {
+    this.subtasks.push(
+      this.fb.group({
+        title: [title, Validators.required],
+        editing: [false],
+      })
+    );
+    this.checkSubtaskLimit();
+    console.log("this.subtasks", this.subtasks);
   }
 
   editSubtask(index: number): void {
@@ -640,16 +651,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   saveSubtask(index: number): void {
     const subtask = this.subtasks.at(index);
     subtask.patchValue({ editing: false });
-  }
-
-  addSubtask(title: string): void {
-    this.subtasks.push(
-      this.fb.group({
-        title: [title, Validators.required],
-        editing: [false],
-      })
-    );
-    this.checkSubtaskLimit();
   }
 
   checkSubtaskLimit(): void {

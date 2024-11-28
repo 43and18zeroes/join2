@@ -1,28 +1,27 @@
-import { Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MainCommunicationService } from '../services/main-communication.service';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
-import { MatDialog } from '@angular/material/dialog';
-import { UserService } from '../services/user-data.service';
-import { TaskDataService } from '../services/task-data.service';
-import { BackendService } from '../services/drf/backend-service.service';
+import { Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from "@angular/core";
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { MainCommunicationService } from "../services/main-communication.service";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { MainDialogAddContactComponent } from "../main-dialog-add-contact/main-dialog-add-contact.component";
+import { MatDialog } from "@angular/material/dialog";
+import { UserService } from "../services/user-data.service";
+import { TaskDataService } from "../services/task-data.service";
+import { BackendService } from "../services/drf/backend-service.service";
 
 @Component({
-  selector: 'app-main-add-task',
-  templateUrl: './main-add-task.component.html',
-  styleUrls: ['./main-add-task.component.scss']
+  selector: "app-main-add-task",
+  templateUrl: "./main-add-task.component.html",
+  styleUrls: ["./main-add-task.component.scss"],
 })
 export class MainAddTaskComponent {
-
-  @ViewChild('subTaskEditCurrentInput') subTaskEditCurrentInput: ElementRef;
-  @ViewChild('submitBtn') submitBtn: ElementRef;
-  @ViewChild('assignSelectedOptionRef') assignSelectedOptionRef: ElementRef;
-  @ViewChild('assignSelectRef') assignSelectRef: ElementRef;
-  @ViewChild('categorySelect') categorySelect: ElementRef;
-  @ViewChild('categorySelectRef') categorySelectRef: ElementRef;
-  @ViewChild('subTasksInput') subTasksInput: ElementRef;
-  @ViewChildren('subtaskEditInput') subtaskEditInputs!: QueryList<ElementRef>;
+  @ViewChild("subTaskEditCurrentInput") subTaskEditCurrentInput: ElementRef;
+  @ViewChild("submitBtn") submitBtn: ElementRef;
+  @ViewChild("assignSelectedOptionRef") assignSelectedOptionRef: ElementRef;
+  @ViewChild("assignSelectRef") assignSelectRef: ElementRef;
+  @ViewChild("categorySelect") categorySelect: ElementRef;
+  @ViewChild("categorySelectRef") categorySelectRef: ElementRef;
+  @ViewChild("subTasksInput") subTasksInput: ElementRef;
+  @ViewChildren("subtaskEditInput") subtaskEditInputs!: QueryList<ElementRef>;
 
   allUsersData;
   currentUserData;
@@ -62,18 +61,18 @@ export class MainAddTaskComponent {
 
   private initializeTaskForm(): void {
     this.addTaskForm = this.fb.group({
-      title: ['', Validators.required],
-      description: [''],
+      title: ["", Validators.required],
+      description: [""],
       users: [[]],
-      due_date: ['', Validators.required],
-      priority: ['low'],
-      category: ['', Validators.required],
+      due_date: ["", Validators.required],
+      priority: ["low"],
+      category: ["", Validators.required],
       // subTasks: [],
       // subTasksCompleted: [],
-      status: 'todo',
+      status: "todo",
       // taskColumnOrder: 0
 
-      subtasks: this.fb.array([])
+      subtasks: this.fb.array([]),
     });
   }
 
@@ -84,11 +83,10 @@ export class MainAddTaskComponent {
   }
 
   getUsersData() {
-    this.backendService.getUsers().subscribe(data => {
+    this.backendService.getUsers().subscribe((data) => {
       this.allUsersData = data;
       this.sortUsersData();
     });
-    
   }
 
   private sortUsersData(): void {
@@ -107,12 +105,12 @@ export class MainAddTaskComponent {
   }
 
   initListeners() {
-    this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
+    this.globalClickListener = this.renderer.listen("document", "click", (event) => {
       if (!this.assignSelectRef.nativeElement.contains(event.target)) {
         this.assignCloseDropdown();
       }
     });
-    this.globalClickListener = this.renderer.listen('document', 'click', (event) => {
+    this.globalClickListener = this.renderer.listen("document", "click", (event) => {
       if (!this.categorySelectRef.nativeElement.contains(event.target)) {
         this.categoryCloseDropdown();
       }
@@ -120,7 +118,7 @@ export class MainAddTaskComponent {
   }
 
   ngOnDestroy() {
-    this.allUsersData.forEach(user => user.selected = false);
+    this.allUsersData.forEach((user) => (user.selected = false));
     this.globalClickListener();
   }
 
@@ -155,7 +153,7 @@ export class MainAddTaskComponent {
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
-    console.log('selectedUsers', this.selectedUsers);
+    console.log("selectedUsers", this.selectedUsers);
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
@@ -164,7 +162,7 @@ export class MainAddTaskComponent {
 
   openAddUserDialog() {
     const dialogRef = this.dialog.open(MainDialogAddContactComponent, {
-      panelClass: 'popup__contact__add'
+      panelClass: "popup__contact__add",
     });
     dialogRef.afterClosed().subscribe((result) => {
       // this.userService.sortUsersData();
@@ -188,14 +186,14 @@ export class MainAddTaskComponent {
   getTodaysDate(): string {
     const now = new Date();
     const year = now.getFullYear().toString();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-    const day = now.getDate().toString().padStart(2, '0');
+    const month = (now.getMonth() + 1).toString().padStart(2, "0");
+    const day = now.getDate().toString().padStart(2, "0");
     return `${year}-${month}-${day}`;
   }
 
   setPriority(priority: string) {
     this.selectedPriority = priority;
-    this.addTaskForm.controls['priority'].setValue(priority);
+    this.addTaskForm.controls["priority"].setValue(priority);
   }
 
   categoryToggleDropdown() {
@@ -203,7 +201,7 @@ export class MainAddTaskComponent {
   }
 
   selectCategory(category: string) {
-    this.addTaskForm.controls['category'].setValue(category);
+    this.addTaskForm.controls["category"].setValue(category);
     this.categoryToggleDropdown();
   }
 
@@ -213,7 +211,7 @@ export class MainAddTaskComponent {
   }
 
   subTasksInputCheckValue() {
-    if (this.subTasksInput.nativeElement.value == '') {
+    if (this.subTasksInput.nativeElement.value == "") {
       this.subTasksInputEmpty = true;
     } else {
       this.subTasksInputEmpty = false;
@@ -222,13 +220,13 @@ export class MainAddTaskComponent {
   }
 
   subTasksInputClear() {
-    this.subTasksInput.nativeElement.value = '';
+    this.subTasksInput.nativeElement.value = "";
     this.subTasksInputHasFocus = false;
     this.subTasksInputCheckValue();
   }
 
   subTaskInputEnterPressed(event: Event) {
-    if (event instanceof KeyboardEvent && event.key === 'Enter') {
+    if (event instanceof KeyboardEvent && event.key === "Enter") {
       event.preventDefault();
       this.subTaskInputConfirm();
     }
@@ -293,16 +291,16 @@ export class MainAddTaskComponent {
   }
 
   setSubtasksForm() {
-    this.addTaskForm.controls['subTasks'].setValue(this.subTasksArray);
-    this.subTasksInput.nativeElement.value = '';
+    this.addTaskForm.controls["subTasks"].setValue(this.subTasksArray);
+    this.subTasksInput.nativeElement.value = "";
   }
 
   clearForm() {
     this.resetFormModel();
     this.currentUserData.selected = false;
-    this.allUsersData.forEach(user => user.selected = false);
+    this.allUsersData.forEach((user) => (user.selected = false));
     this.selectedUsers = [];
-    this.selectedPriority = 'undefined';
+    this.selectedPriority = "undefined";
     this.subTasksArray = [];
     this.subTasksInput.nativeElement.value = "";
     this.subTasksInputHasFocus = false;
@@ -313,15 +311,15 @@ export class MainAddTaskComponent {
 
   resetFormModel() {
     this.addTaskForm = this.fb.group({
-      title: ['', Validators.required],
-      description: [''],
+      title: ["", Validators.required],
+      description: [""],
       users: [[]],
-      due_date: ['', Validators.required],
-      priority: ['low'],
-      category: ['', Validators.required],
+      due_date: ["", Validators.required],
+      priority: ["low"],
+      category: ["", Validators.required],
       // subTasks: [],
       // subTasksCompleted: [],
-      status: 'todo',
+      status: "todo",
       // taskColumnOrder: 0
     });
   }
@@ -337,7 +335,7 @@ export class MainAddTaskComponent {
     if (this.addTaskForm.valid) {
       this.formSubmitted = true;
       const trimmedTask = this.trimTask();
-      this.addAssignedTo(trimmedTask)
+      this.addAssignedTo(trimmedTask);
       this.sendNewTaskToBackend(trimmedTask);
       this.onSubmitOutro();
     }
@@ -368,9 +366,9 @@ export class MainAddTaskComponent {
     //   }
     // }
     // trimmedTask.users = assignedMailAdresses;
-    console.log('this.selectedUsers', this.selectedUsers);
-    const assignedUsers = this.selectedUsers.map(user => ({
-      id: user.id,  // Wichtig: 'id' muss vorhanden sein
+    console.log("this.selectedUsers", this.selectedUsers);
+    const assignedUsers = this.selectedUsers.map((user) => ({
+      id: user.id, // Wichtig: 'id' muss vorhanden sein
       first_name: user.first_name,
       last_name: user.last_name,
       email: user.userEmailAddress,
@@ -379,7 +377,7 @@ export class MainAddTaskComponent {
       type: user.type,
       initials: user.initials,
     }));
-  
+
     trimmedTask.users = assignedUsers.length > 0 ? assignedUsers : [];
     return trimmedTask;
   }
@@ -394,13 +392,13 @@ export class MainAddTaskComponent {
   }
 
   sendNewTaskToBackend(trimmedTask) {
-    console.log('trimmedTask', trimmedTask);
-    this.backendService.createItem(trimmedTask, 'tasks').subscribe(
+    console.log("trimmedTask", trimmedTask);
+    this.backendService.createItem(trimmedTask, "tasks").subscribe(
       (response) => {
-        console.log('Task created successfully:', response);
+        console.log("Task created successfully:", response);
       },
       (error) => {
-        console.error('Error creating task:', error);
+        console.error("Error creating task:", error);
       }
     );
 
@@ -410,39 +408,40 @@ export class MainAddTaskComponent {
   onSubmitOutro() {
     this.submitBtn.nativeElement.classList.add("btn__success");
     setTimeout(() => {
-      this.mainCommService.displayMainBoard('board');
+      this.mainCommService.displayMainBoard("board");
     }, 1500);
   }
 
   get subtasks() {
-    return this.addTaskForm.get('subtasks') as FormArray;
+    return this.addTaskForm.get("subtasks") as FormArray;
   }
 
   addSubtaskInput(value: string): void {
     const trimmedValue = value.trim();
     if (trimmedValue) {
       this.addSubtask(trimmedValue);
-      this.subTasksInput.nativeElement.value = '';
+      this.subTasksInput.nativeElement.value = "";
       this.subTasksInputHasFocus = false;
       this.checkSubtaskLimit();
     }
   }
-  
+
   addSubtask(title: string): void {
     this.subtasks.push(
       this.fb.group({
         title: [title, Validators.required],
-        editing: [false]
+        editing: [false],
       })
     );
     this.checkSubtaskLimit();
+    console.log("this.subtasks", this.subtasks);
   }
-  
+
   removeSubtask(index: number): void {
     this.subtasks.removeAt(index);
     this.checkSubtaskLimit();
   }
-  
+
   checkSubtaskLimit(): void {
     this.subTasksMaxReached = this.subtasks.length >= 2;
   }
@@ -454,7 +453,7 @@ export class MainAddTaskComponent {
       if (inputsArray[index]) {
         inputsArray[index].nativeElement.focus();
       } else {
-        console.warn('Eingabefeld nicht gefunden.');
+        console.warn("Eingabefeld nicht gefunden.");
       }
     });
   }
@@ -462,7 +461,7 @@ export class MainAddTaskComponent {
   deleteSubtask(index: number): void {
     this.subtasks.removeAt(index);
     this.checkSubtaskLimit();
-    console.log('this.addTaskForm', this.addTaskForm.value.subtasks);
+    console.log("this.addTaskForm", this.addTaskForm.value.subtasks);
   }
 
   saveSubtask(index: number): void {
@@ -471,6 +470,6 @@ export class MainAddTaskComponent {
   }
 
   getSubtaskNameControl(index: number): FormControl {
-    return this.subtasks.at(index).get('title') as FormControl;
+    return this.subtasks.at(index).get("title") as FormControl;
   }
 }
