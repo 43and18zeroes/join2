@@ -211,7 +211,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   getSubTasks() {
     if (this.taskData?.subtasks?.length) {
-      const subtasksFormArray = this.editTaskForm.get('subtasks') as FormArray;
+      const subtasksFormArray = this.editTaskForm.get("subtasks") as FormArray;
       subtasksFormArray.clear(); // Alte Werte entfernen
       this.taskData.subtasks.forEach((subtask: any) => {
         subtasksFormArray.push(
@@ -572,11 +572,23 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   get subtasks() {
-    return this.editTaskForm.get('subtasks') as FormArray;
+    return this.editTaskForm.get("subtasks") as FormArray;
   }
 
   async updateTaskSingleBackend() {
-    await this.firestore.collection("tasks").doc(this.updatedTaskData.firebaseId).update(this.updatedTaskData);
+    // await this.firestore.collection("tasks").doc(this.updatedTaskData.firebaseId).update(this.updatedTaskData);
+    console.log('updatedTaskData', this.updatedTaskData);
+    this.backendService.updateItem(this.updatedTaskData, "tasks").subscribe(
+      (response) => {
+        console.log("Task updated successfully:", response);
+        // this.backendUserDataService.lastUserAdded = response;
+        // this.backendUserDataService.lastUserAddedId = response.id.toString();
+        // this.backendUserDataService.userAddedSuccessfully = true;
+      },
+      (error) => {
+        console.error("Error creating user:", error);
+      }
+    );
     this.boardCommService.reloadAfterNewTask();
   }
 
