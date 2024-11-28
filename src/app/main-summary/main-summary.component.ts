@@ -39,7 +39,6 @@ export class MainSummaryComponent implements OnInit {
     });
     this.backendService.getUsers().subscribe(data => {
       this.allUsersData = data;
-      console.log('this.allUsersData', this.allUsersData);
     });
     this.showGreetingScreenMobile = this.mainComponent.showGreetingScreenMobile;
     this.currentUserData = this.userService.currentUserData;

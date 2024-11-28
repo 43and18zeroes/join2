@@ -163,8 +163,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   determineAssignees() {
     // for (let index = 0; index < this.allUsersData.length; index++) {
     //   const singleUser = this.allUsersData[index];
-    //   console.log('this.taskData', this.taskData);
-    //   console.log('singleUser', singleUser);
     //   if (this.taskData.assignedTo.includes(singleUser.userEmailAddress)) {
     //     this.selectedUsers.push(singleUser);
     //   }
@@ -199,7 +197,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   // getSubTasks() {
-  //   console.log('this.taskData', this.taskData);
   //   if (this.taskData.subtasks) {
   //     this.editTaskForm.patchValue({
   //       subTasks: this.taskData.subTasks,
@@ -567,7 +564,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   // }
 
   sendNewTaskToBackend(trimmedTask) {
-    console.log("trimmedTask", trimmedTask);
     this.backendService.updateItem(trimmedTask, "tasks").subscribe(
       (response) => {
         console.log("Task created successfully:", response);
@@ -586,7 +582,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   async updateTaskSingleBackend() {
     // await this.firestore.collection("tasks").doc(this.updatedTaskData.firebaseId).update(this.updatedTaskData);
-    console.log("updatedTaskData", this.updatedTaskData);
     this.backendService.updateItem(this.updatedTaskData, "tasks").subscribe(
       (response) => {
         console.log("Task updated successfully:", response);
@@ -623,7 +618,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       })
     );
     this.checkSubtaskLimit();
-    console.log("this.subtasks", this.subtasks);
   }
 
   editSubtask(index: number): void {
@@ -641,7 +635,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   deleteSubtask(index: number): void {
     this.subtasks.removeAt(index);
     this.checkSubtaskLimit();
-    console.log("this.addTaskForm", this.editTaskForm.value.subtasks);
   }
 
   getSubtaskNameControl(index: number): FormControl {

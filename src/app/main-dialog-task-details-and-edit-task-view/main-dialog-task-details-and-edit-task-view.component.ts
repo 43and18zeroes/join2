@@ -27,7 +27,6 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
 
   ngOnInit() {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
-    console.log("this.taskData", this.taskData);
     this.allUsersData = this.userService.allUsersData;
   }
 
@@ -67,7 +66,6 @@ export class MainDialogTaskDetailsAndEditTaskViewComponent {
     // this.taskData.subtasks[index] = !this.taskData.subTasksCompleted[index];
     const subTask = this.taskData.subtasks[index];
     subTask.is_completed = !subTask.is_completed;
-    console.log("this.taskData.subtasks[index]", this.taskData.subtasks[index]);
     // this.boardCommService.subTaskCompletedChange = true;
     // this.boardCommService.updatedTaskData = this.taskData;
     this.backendService.updateItem(this.taskData.subtasks[index], "subtasks").subscribe(

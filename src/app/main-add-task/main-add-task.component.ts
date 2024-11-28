@@ -153,7 +153,6 @@ export class MainAddTaskComponent {
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
-    console.log("selectedUsers", this.selectedUsers);
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
@@ -366,7 +365,6 @@ export class MainAddTaskComponent {
     //   }
     // }
     // trimmedTask.users = assignedMailAdresses;
-    console.log("this.selectedUsers", this.selectedUsers);
     const assignedUsers = this.selectedUsers.map((user) => ({
       id: user.id, // Wichtig: 'id' muss vorhanden sein
       first_name: user.first_name,
@@ -392,7 +390,6 @@ export class MainAddTaskComponent {
   }
 
   sendNewTaskToBackend(trimmedTask) {
-    console.log("trimmedTask", trimmedTask);
     this.backendService.createItem(trimmedTask, "tasks").subscribe(
       (response) => {
         console.log("Task created successfully:", response);
@@ -434,7 +431,6 @@ export class MainAddTaskComponent {
       })
     );
     this.checkSubtaskLimit();
-    console.log("this.subtasks", this.subtasks);
   }
 
   removeSubtask(index: number): void {
@@ -461,7 +457,6 @@ export class MainAddTaskComponent {
   deleteSubtask(index: number): void {
     this.subtasks.removeAt(index);
     this.checkSubtaskLimit();
-    console.log("this.addTaskForm", this.addTaskForm.value.subtasks);
   }
 
   saveSubtask(index: number): void {

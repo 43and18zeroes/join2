@@ -102,7 +102,6 @@ export class MainDialogAddTaskComponent {
 
     // this.backendService.getUsers().subscribe(data => {
     //   this.allUsersData = data;
-    //   console.log('this.allUsersData', this.allUsersData);
     // });
 
     // this.currentUserData = this.userService.currentUserData;
@@ -116,7 +115,6 @@ export class MainDialogAddTaskComponent {
     this.backendService.getUsers().subscribe(data => {
       this.allUsersData = data;
       this.sortUsersData();
-      console.log('this.allUsersData', this.allUsersData);
     });
   }
 
@@ -188,7 +186,6 @@ export class MainDialogAddTaskComponent {
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
-    console.log('selectedUsers', this.selectedUsers);
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
@@ -420,7 +417,6 @@ export class MainDialogAddTaskComponent {
     //   }
     // }
     // trimmedTask.users = assignedMailAdresses;
-    console.log('this.selectedUsers', this.selectedUsers);
     const assignedUsers = this.selectedUsers.map(user => ({
       id: user.id,  // Wichtig: 'id' muss vorhanden sein
       first_name: user.first_name,
@@ -457,7 +453,6 @@ export class MainDialogAddTaskComponent {
   }
 
   sendNewTaskToBackend(trimmedTask) {
-    console.log('trimmedTask', trimmedTask);
     this.backendService.createItem(trimmedTask, 'tasks').subscribe(
       (response) => {
         console.log('Task created successfully:', response);
@@ -540,7 +535,6 @@ export class MainDialogAddTaskComponent {
   deleteSubtask(index: number): void {
     this.subtasks.removeAt(index);
     this.checkSubtaskLimit();
-    console.log('this.addTaskForm', this.addTaskForm.value.subtasks);
   }
 
   saveSubtask(index: number): void {

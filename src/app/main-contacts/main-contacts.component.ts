@@ -45,7 +45,6 @@ export class MainContactsComponent {
   fetchUsers() {
     this.backendService.getUsers().subscribe(data => {
       this.allUsersData = data;
-      console.log('this.allUsersData', this.allUsersData);
       this.generateUsersLists();
     });
   }
@@ -64,7 +63,6 @@ export class MainContactsComponent {
       }
     });
     this.sortGroupedContacts(this.groupedContacts);
-    console.log('this.groupedContacts', this.groupedContacts);
   }
 
   sortGroupedContacts(groupedContacts: { [key: string]: any[] }): void {
