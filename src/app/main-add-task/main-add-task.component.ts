@@ -81,7 +81,6 @@ export class MainAddTaskComponent {
     this.getUsersData();
     this.currentUserData = this.userService.currentUserData;
     this.initListeners();
-    console.log('this.selectedUsers', this.selectedUsers);
   }
 
   getUsersData() {
