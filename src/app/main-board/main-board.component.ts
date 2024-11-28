@@ -80,6 +80,7 @@ export class MainBoardComponent {
   getTasksData() {
     this.backendService.getTasks().subscribe((data) => {
       this.allTasksData = data;
+      console.log('this.allTasksData', this.allTasksData);
       this.convertTasksDataToLists();
       this.sortTasksInColumns();
       this.renumberTasksColumnOrder();

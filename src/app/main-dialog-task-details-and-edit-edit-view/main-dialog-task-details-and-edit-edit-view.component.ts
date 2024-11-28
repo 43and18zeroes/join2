@@ -461,7 +461,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.editTaskForm = this.fb.group({
       title: ["", Validators.required],
       description: [""],
-      assignedTo: [[]],
+      // assignedTo: [[]],
       due_date: ["", Validators.required],
       priority: ["low"],
       category: ["", Validators.required],
@@ -495,7 +495,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.formSubmitted = true;
     this.updatedTaskData.title = this.taskData.title;
     this.updatedTaskData.description = this.taskData.description;
-    this.updatedTaskData.assignedTo = this.taskData.assignedTo;
+    // this.updatedTaskData.assignedTo = this.taskData.assignedTo;
     this.updatedTaskData.due_date = this.editTaskForm.value.due_date;
     this.updatedTaskData.priority = this.editTaskForm.value.priority;
     this.updatedTaskData.category = this.editTaskForm.value.category;
@@ -504,7 +504,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   trimmTaskArray() {
     const trimmedTask = this.trimTask();
-    this.addAssignedTo(trimmedTask);
+    // this.addAssignedTo(trimmedTask);
     if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
     this.updatedTaskData = trimmedTask;
   }
@@ -520,22 +520,35 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   trimTask() {
     const untrimmedTask = this.updatedTaskData;
-    const trimmedTask = this.updatedTaskData;
+    let trimmedTask = this.updatedTaskData;
     trimmedTask.title = untrimmedTask.title.trim();
     trimmedTask.description = untrimmedTask.description.trim();
+    // delete trimmedTask.category_choices;
+    delete trimmedTask.subTasks;
+    delete trimmedTask.taskColumnOrder;
+    delete trimmedTask.taskStatus;
+    trimmedTask = this.removeUserEmail(trimmedTask);
     return trimmedTask;
   }
 
-  addAssignedTo(trimmedTask) {
-    let assignedMailAdresses = [];
-    for (const item of this.selectedUsers) {
-      if (item.userEmailAddress) {
-        assignedMailAdresses.push(item.userEmailAddress);
-      }
+  removeUserEmail(trimmedTask) {
+    for (let index = 0; index < trimmedTask.users.length; index++) {
+      const element = trimmedTask.users[index];
+      delete element.email;
     }
-    trimmedTask.assignedTo = assignedMailAdresses;
     return trimmedTask;
   }
+
+  // addAssignedTo(trimmedTask) {
+  //   let assignedMailAdresses = [];
+  //   for (const item of this.selectedUsers) {
+  //     if (item.userEmailAddress) {
+  //       assignedMailAdresses.push(item.userEmailAddress);
+  //     }
+  //   }
+  //   trimmedTask.assignedTo = assignedMailAdresses;
+  //   return trimmedTask;
+  // }
 
   // sendNewTaskToBackend(trimmedTask) {
   //   delete trimmedTask.firebaseId;
@@ -555,7 +568,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   sendNewTaskToBackend(trimmedTask) {
     console.log("trimmedTask", trimmedTask);
-    this.backendService.createItem(trimmedTask, "tasks").subscribe(
+    this.backendService.updateItem(trimmedTask, "tasks").subscribe(
       (response) => {
         console.log("Task created successfully:", response);
       },
