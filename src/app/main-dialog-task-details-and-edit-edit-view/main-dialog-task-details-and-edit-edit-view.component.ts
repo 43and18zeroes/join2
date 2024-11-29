@@ -289,6 +289,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
+    console.log('this.selectedUsers', this.selectedUsers);
+    console.log('this.editTaskForm.value', this.editTaskForm.value);
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
@@ -479,7 +481,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.checkRequiredInputs();
     if (this.editTaskForm.valid) {
       console.log('Form Value before submit:', this.editTaskForm.value);
-      
       this.updateTaskArray();
       this.trimmTaskArray();
       this.boardCommService.updatedTaskData = this.updatedTaskData;
@@ -495,10 +496,11 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.updatedTaskData.title = this.taskData.title;
     this.updatedTaskData.description = this.taskData.description;
     // this.updatedTaskData.assignedTo = this.taskData.assignedTo;
+    // this.updatedTaskData = this.selectedUsers;
     this.updatedTaskData.due_date = this.editTaskForm.value.due_date;
     this.updatedTaskData.priority = this.editTaskForm.value.priority;
     this.updatedTaskData.category = this.editTaskForm.value.category;
-    this.updatedTaskData.subTasks = this.taskData.subTasks;
+    this.updatedTaskData.subtasks = this.editTaskForm.value.subtasks;
   }
 
   trimmTaskArray() {
@@ -620,7 +622,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       })
     );
     this.checkSubtaskLimit();
-    console.log('this.editTaskForm', this.editTaskForm);
   }
 
   editSubtask(index: number): void {
