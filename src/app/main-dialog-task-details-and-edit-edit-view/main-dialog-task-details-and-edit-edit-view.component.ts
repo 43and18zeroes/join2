@@ -478,6 +478,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   onSubmit(): void {
     this.checkRequiredInputs();
     if (this.editTaskForm.valid) {
+      console.log('Form Value before submit:', this.editTaskForm.value);
+      
       this.updateTaskArray();
       this.trimmTaskArray();
       this.boardCommService.updatedTaskData = this.updatedTaskData;
@@ -618,7 +620,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       })
     );
     this.checkSubtaskLimit();
-    console.log('this.addTaskForm', this.editTaskForm);
+    console.log('this.editTaskForm', this.editTaskForm);
   }
 
   editSubtask(index: number): void {
