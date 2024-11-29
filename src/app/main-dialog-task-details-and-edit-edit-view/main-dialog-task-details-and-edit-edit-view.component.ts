@@ -480,7 +480,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   onSubmit(): void {
     this.checkRequiredInputs();
     if (this.editTaskForm.valid) {
-      console.log('Form Value before submit:', this.editTaskForm.value);
       this.updateTaskArray();
       this.trimmTaskArray();
       this.boardCommService.updatedTaskData = this.updatedTaskData;
