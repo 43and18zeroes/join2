@@ -84,6 +84,7 @@ export class MainBoardComponent {
       this.sortTasksInColumns();
       this.renumberTasksColumnOrder();
       this.backendTasksColumnOrder();
+      console.log('data', this.allTasksData);
     });
   }
 
