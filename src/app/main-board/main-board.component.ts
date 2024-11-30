@@ -289,37 +289,57 @@ export class MainBoardComponent {
     localStorage.setItem("allTasksData", JSON.stringify(newAllTasksData));
   }
 
-  backendTasksColumnOrder() {
-    this.backendOrderTodo();
-    this.backendOrderInprogress();
-    this.backendOrderAwaitfeedback();
-    this.backendOrderDone();
-    console.log('backend', this.allTasksData);
-    // this.backendService.updateItem(this.allTasksData, "tasks/bulk-update").subscribe(
-    //   (response) => {
-    //     console.log("Task updated successfully:", response);
-    //     // this.backendUserDataService.lastUserAdded = response;
-    //     // this.backendUserDataService.lastUserAddedId = response.id.toString();
-    //     // this.backendUserDataService.userAddedSuccessfully = true;
-    //   },
-    //   (error) => {
-    //     console.error("Error updating user:", error);
-    //   }
-    // );
-    const updatedPositions = [
-      ...this.todo.map((task) => ({ id: task.id, position: task.position })),
-      ...this.inprogress.map((task) => ({ id: task.id, position: task.position })),
-      ...this.awaitfeedback.map((task) => ({ id: task.id, position: task.position })),
-      ...this.done.map((task) => ({ id: task.id, position: task.position })),
+  // backendTasksColumnOrder() {
+  //   this.backendOrderTodo();
+  //   this.backendOrderInprogress();
+  //   this.backendOrderAwaitfeedback();
+  //   this.backendOrderDone();
+  //   console.log('backend', this.allTasksData);
+  //   // this.backendService.updateItem(this.allTasksData, "tasks/bulk-update").subscribe(
+  //   //   (response) => {
+  //   //     console.log("Task updated successfully:", response);
+  //   //     // this.backendUserDataService.lastUserAdded = response;
+  //   //     // this.backendUserDataService.lastUserAddedId = response.id.toString();
+  //   //     // this.backendUserDataService.userAddedSuccessfully = true;
+  //   //   },
+  //   //   (error) => {
+  //   //     console.error("Error updating user:", error);
+  //   //   }
+  //   // );
+  //   const updatedPositions = [
+  //     ...this.todo.map((task) => ({ id: task.id, position: task.position })),
+  //     ...this.inprogress.map((task) => ({ id: task.id, position: task.position })),
+  //     ...this.awaitfeedback.map((task) => ({ id: task.id, position: task.position })),
+  //     ...this.done.map((task) => ({ id: task.id, position: task.position })),
+  //   ];
+  
+  //   // HTTP-Request an das Backend senden
+  //   this.backendService.updateTaskPositionsBatch(updatedPositions).subscribe(
+  //     (response) => {
+  //       console.log("Positions updated successfully:", response);
+  //     },
+  //     (error) => {
+  //       console.error("Error updating positions:", error);
+  //     }
+  //   );
+  // }
+
+  backendTasksColumnOrder(): void {
+    const updatedTasks = [
+      ...this.todo.map((task) => ({ id: task.id, position: task.position, status: "todo" })),
+      ...this.inprogress.map((task) => ({ id: task.id, position: task.position, status: "in_progress" })),
+      ...this.awaitfeedback.map((task) => ({ id: task.id, position: task.position, status: "await_feedback" })),
+      ...this.done.map((task) => ({ id: task.id, position: task.position, status: "done" })),
     ];
   
     // HTTP-Request an das Backend senden
-    this.backendService.updateTaskPositionsBatch(updatedPositions).subscribe(
+    this.backendService.updateTaskPositionsBatch(updatedTasks).subscribe(
       (response) => {
-        console.log("Positions updated successfully:", response);
+        console.log("Tasks updated successfully:", response);
+        console.log('updatedTasks', updatedTasks);
       },
       (error) => {
-        console.error("Error updating positions:", error);
+        console.error("Error updating tasks:", error);
       }
     );
   }
