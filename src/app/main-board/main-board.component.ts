@@ -305,7 +305,7 @@ export class MainBoardComponent {
     //   (error) => {
     //     console.error("Error updating user:", error);
     //   }
-    );
+    // );
   }
 
   backendOrderTodo() {
