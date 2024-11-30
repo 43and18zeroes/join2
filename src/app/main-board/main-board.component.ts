@@ -306,6 +306,22 @@ export class MainBoardComponent {
     //     console.error("Error updating user:", error);
     //   }
     // );
+    const updatedPositions = [
+      ...this.todo.map((task) => ({ id: task.id, position: task.position })),
+      ...this.inprogress.map((task) => ({ id: task.id, position: task.position })),
+      ...this.awaitfeedback.map((task) => ({ id: task.id, position: task.position })),
+      ...this.done.map((task) => ({ id: task.id, position: task.position })),
+    ];
+  
+    // HTTP-Request an das Backend senden
+    this.backendService.updateTaskPositionsBatch(updatedPositions).subscribe(
+      (response) => {
+        console.log("Positions updated successfully:", response);
+      },
+      (error) => {
+        console.error("Error updating positions:", error);
+      }
+    );
   }
 
   backendOrderTodo() {

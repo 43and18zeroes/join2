@@ -93,4 +93,14 @@ export class BackendService {
         break;
     }
   }
+
+  updateTaskPositionsBatch(data: { id: number; position: number }[]): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.apiUrl}tasks/update_positions/`, data, { headers: headers }).pipe(
+      tap(() => {
+        // Nach dem Batch-Update das Cache für Tasks leeren
+        this.clearCache('tasks');
+      })
+    );
+  }  
 }
