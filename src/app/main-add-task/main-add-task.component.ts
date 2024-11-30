@@ -70,6 +70,7 @@ export class MainAddTaskComponent {
       // subTasks: [],
       // subTasksCompleted: [],
       status: "todo",
+      position: 0,
       // taskColumnOrder: 0
 
       subtasks: this.fb.array([]),
@@ -319,6 +320,7 @@ export class MainAddTaskComponent {
       // subTasks: [],
       // subTasksCompleted: [],
       status: "todo",
+      position: 0,
       // taskColumnOrder: 0
     });
   }

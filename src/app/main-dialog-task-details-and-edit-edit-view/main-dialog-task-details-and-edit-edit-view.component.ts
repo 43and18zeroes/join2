@@ -95,7 +95,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       // subTasksCompleted: [],
       status: [],
       // taskColumnOrder: 0
-
+      position: 0,
       subtasks: this.fb.array([]),
     });
   }
@@ -465,9 +465,10 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       priority: ["low"],
       category: ["", Validators.required],
       subTasks: [],
-      subTasksCompleted: [],
+      // subTasksCompleted: [],
       status: [],
-      taskColumnOrder: 0,
+      // taskColumnOrder: 0,
+      position: 0,
     });
   }
 
@@ -593,7 +594,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
         // this.backendUserDataService.userAddedSuccessfully = true;
       },
       (error) => {
-        console.error("Error creating user:", error);
+        console.error("Error updating user:", error);
       }
     );
     this.boardCommService.reloadAfterNewTask();

@@ -91,7 +91,7 @@ export class MainDialogAddTaskComponent {
       // subTasksCompleted: [],
       status: this.data.taskStatus,
       // taskColumnOrder: 0
-
+      position: 0,
       subtasks: this.fb.array([])
     });
   }
@@ -352,6 +352,7 @@ export class MainDialogAddTaskComponent {
       // subTasks: [],
       // subTasksCompleted: [],
       status: 'todo',
+      position: 0,
       // taskColumnOrder: 0
     });
   }

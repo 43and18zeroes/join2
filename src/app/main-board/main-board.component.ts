@@ -199,9 +199,9 @@ export class MainBoardComponent {
 
   sortTasksInColumns() {
     const customSort = (a, b) => {
-      if (a.taskColumnOrder === undefined) return -1;
-      if (b.taskColumnOrder === undefined) return 1;
-      return a.taskColumnOrder - b.taskColumnOrder;
+      if (a.position === undefined) return -1;
+      if (b.position === undefined) return 1;
+      return a.position - b.position;
     };
     this.todo.sort(customSort);
     this.inprogress.sort(customSort);
@@ -275,11 +275,11 @@ export class MainBoardComponent {
   }
 
   renumberTasksColumnOrderForList(list, status) {
-    let taskColumnOrder = 1;
+    let position = 1;
     list.forEach((task) => {
-      task.taskStatus = status;
-      task.taskColumnOrder = taskColumnOrder;
-      taskColumnOrder++;
+      task.status = status;
+      task.position = position;
+      position++;
     });
   }
 
@@ -294,6 +294,18 @@ export class MainBoardComponent {
     this.backendOrderInprogress();
     this.backendOrderAwaitfeedback();
     this.backendOrderDone();
+    console.log('backend', this.allTasksData);
+    // this.backendService.updateItem(this.allTasksData, "tasks/bulk-update").subscribe(
+    //   (response) => {
+    //     console.log("Task updated successfully:", response);
+    //     // this.backendUserDataService.lastUserAdded = response;
+    //     // this.backendUserDataService.lastUserAddedId = response.id.toString();
+    //     // this.backendUserDataService.userAddedSuccessfully = true;
+    //   },
+    //   (error) => {
+    //     console.error("Error updating user:", error);
+    //   }
+    );
   }
 
   backendOrderTodo() {
