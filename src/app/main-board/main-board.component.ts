@@ -83,7 +83,7 @@ export class MainBoardComponent {
       this.convertTasksDataToLists();
       this.sortTasksInColumns();
       this.renumberTasksColumnOrder();
-      this.backendTasksColumnOrder();
+      this.backendTasksStatusPosition();
       console.log('data', this.allTasksData);
     });
   }
@@ -94,7 +94,7 @@ export class MainBoardComponent {
       this.convertTasksDataToLists();
       this.sortTasksInColumns();
       this.renumberTasksColumnOrder();
-      this.backendTasksColumnOrder();
+      this.backendTasksStatusPosition();
     });
     // this.allTasksData = this.taskDataService.allTasksData;
     // this.convertTasksDataToLists();
@@ -264,7 +264,7 @@ export class MainBoardComponent {
     else transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     this.renumberTasksColumnOrder();
     this.setNewTasksDataToLocal();
-    this.backendTasksColumnOrder();
+    this.backendTasksStatusPosition();
   }
 
   renumberTasksColumnOrder() {
@@ -289,42 +289,7 @@ export class MainBoardComponent {
     localStorage.setItem("allTasksData", JSON.stringify(newAllTasksData));
   }
 
-  // backendTasksColumnOrder() {
-  //   this.backendOrderTodo();
-  //   this.backendOrderInprogress();
-  //   this.backendOrderAwaitfeedback();
-  //   this.backendOrderDone();
-  //   console.log('backend', this.allTasksData);
-  //   // this.backendService.updateItem(this.allTasksData, "tasks/bulk-update").subscribe(
-  //   //   (response) => {
-  //   //     console.log("Task updated successfully:", response);
-  //   //     // this.backendUserDataService.lastUserAdded = response;
-  //   //     // this.backendUserDataService.lastUserAddedId = response.id.toString();
-  //   //     // this.backendUserDataService.userAddedSuccessfully = true;
-  //   //   },
-  //   //   (error) => {
-  //   //     console.error("Error updating user:", error);
-  //   //   }
-  //   // );
-  //   const updatedPositions = [
-  //     ...this.todo.map((task) => ({ id: task.id, position: task.position })),
-  //     ...this.inprogress.map((task) => ({ id: task.id, position: task.position })),
-  //     ...this.awaitfeedback.map((task) => ({ id: task.id, position: task.position })),
-  //     ...this.done.map((task) => ({ id: task.id, position: task.position })),
-  //   ];
-  
-  //   // HTTP-Request an das Backend senden
-  //   this.backendService.updateTaskPositionsBatch(updatedPositions).subscribe(
-  //     (response) => {
-  //       console.log("Positions updated successfully:", response);
-  //     },
-  //     (error) => {
-  //       console.error("Error updating positions:", error);
-  //     }
-  //   );
-  // }
-
-  backendTasksColumnOrder(): void {
+  backendTasksStatusPosition(): void {
     const updatedTasks = [
       ...this.todo.map((task) => ({ id: task.id, position: task.position, status: "todo" })),
       ...this.inprogress.map((task) => ({ id: task.id, position: task.position, status: "in_progress" })),
@@ -342,46 +307,6 @@ export class MainBoardComponent {
         console.error("Error updating tasks:", error);
       }
     );
-  }
-
-  backendOrderTodo() {
-    // for (let index = 0; index < this.todo.length; index++) {
-    //   const element = this.todo[index];
-    //   this.firestore
-    //     .collection('tasks')
-    //     .doc(element.firebaseId)
-    //     .update(element);
-    // }
-  }
-
-  backendOrderInprogress() {
-    // for (let index = 0; index < this.inprogress.length; index++) {
-    //   const element = this.inprogress[index];
-    //   this.firestore
-    //     .collection('tasks')
-    //     .doc(element.firebaseId)
-    //     .update(element);
-    // }
-  }
-
-  backendOrderAwaitfeedback() {
-    // for (let index = 0; index < this.awaitfeedback.length; index++) {
-    //   const element = this.awaitfeedback[index];
-    //   this.firestore
-    //     .collection('tasks')
-    //     .doc(element.firebaseId)
-    //     .update(element);
-    // }
-  }
-
-  backendOrderDone() {
-    // for (let index = 0; index < this.done.length; index++) {
-    //   const element = this.done[index];
-    //   this.firestore
-    //     .collection('tasks')
-    //     .doc(element.firebaseId)
-    //     .update(element);
-    // }
   }
 
   openTaskDetails(taskData) {
