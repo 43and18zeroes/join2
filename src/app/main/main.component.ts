@@ -19,8 +19,8 @@ export class MainComponent implements OnInit {
   
   @ViewChild('mainSection') mainSection: ElementRef;
 
-  currentlyDisplayed: string = 'board';
-  currentlyClicked: string = 'board';
+  currentlyDisplayed: string = 'summary';
+  currentlyClicked: string = 'summary';
   displayMainSection(condition: 'summary' | 'board' | 'addTask' | 'contacts' | 'privacyPolicy' | 'legalNotice') {
     this.currentlyDisplayed = condition;
     this.currentlyClicked = condition;
