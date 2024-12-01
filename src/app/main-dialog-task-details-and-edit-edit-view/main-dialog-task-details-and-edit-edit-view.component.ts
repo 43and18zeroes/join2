@@ -504,7 +504,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   trimmTaskArray() {
     const trimmedTask = this.trimTask();
     // this.addAssignedTo(trimmedTask);
-    if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
+    // if (trimmedTask.subTasks === null) trimmedTask.subTasks = [];
     this.updatedTaskData = trimmedTask;
   }
 
@@ -549,47 +549,16 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   //   return trimmedTask;
   // }
 
-  // sendNewTaskToBackend(trimmedTask) {
-  //   delete trimmedTask.firebaseId;
-  //   this.firestore
-  //     .collection("tasks")
-  //     .add(trimmedTask)
-  //     .then((docRef) => {
-  //       trimmedTask.firebaseId = docRef.id;
-  //       return docRef.update({ firebaseId: docRef.id });
-  //     })
-  //     .then(() => {})
-  //     .catch((error) => {
-  //       console.error("Error adding or updating document: ", error);
-  //     });
-  //   this.clearForm();
-  // }
-
-  // sendNewTaskToBackend(trimmedTask) {
-  //   this.backendService.updateItem(trimmedTask, "tasks").subscribe(
-  //     (response) => {
-  //       console.log("Task created successfully:", response);
-  //     },
-  //     (error) => {
-  //       console.error("Error creating task:", error);
-  //     }
-  //   );
-
-  //   this.clearForm();
-  // }
-
   onSubmitOutro() {
     this.submitBtn.nativeElement.classList.add("btn__success");
   }
 
   async updateTaskSingleBackend() {
-    // await this.firestore.collection("tasks").doc(this.updatedTaskData.firebaseId).update(this.updatedTaskData);
+    console.log('updateTaskSingleBackend:', this.updatedTaskData);
     this.backendService.updateItem(this.updatedTaskData, "tasks").subscribe(
       (response) => {
         console.log("Task updated successfully:", response);
-        // this.backendUserDataService.lastUserAdded = response;
-        // this.backendUserDataService.lastUserAddedId = response.id.toString();
-        // this.backendUserDataService.userAddedSuccessfully = true;
+        console.log('updateTaskSingleResponse:', this.updatedTaskData);
       },
       (error) => {
         console.error("Error updating user:", error);
