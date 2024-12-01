@@ -150,10 +150,7 @@
               (input)="subTasksInputCheckValue()"
               (focus)="subTasksInputFocus()"
               #subTasksInput
-              class="inputs__right"
-              [placeholder]="subTasksMaxReached ? 'Max entries: 2' : 'Add new subtask'"
-              [ngClass]="{ grey__placeholder: subTasksMaxReached }"
-              [disabled]="subTasksMaxReached" />
+              class="inputs__right" />
             <div
               *ngIf="!subTasksInputHasFocus && !subTasksMaxReached"
               (click)="subTasksInputFocus()"
