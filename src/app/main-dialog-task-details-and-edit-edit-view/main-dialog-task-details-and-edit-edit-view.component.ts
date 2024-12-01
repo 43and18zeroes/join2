@@ -218,7 +218,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
           })
         );
       });
-      this.checkSubtaskLimit();
+      // this.checkSubtaskLimit();
     }
   }
 
@@ -501,6 +501,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.updatedTaskData.category = this.editTaskForm.value.category;
     this.updatedTaskData.subtasks = this.editTaskForm.value.subtasks;
     this.updatedTaskData.users = this.selectedUsers;
+    console.log('this.editTaskForm.value.subtasks', this.editTaskForm.value.subtasks);
   }
 
   trimmTaskArray() {
@@ -610,7 +611,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.addSubtask(trimmedValue);
       this.subTasksInput.nativeElement.value = "";
       this.subTasksInputHasFocus = false;
-      this.checkSubtaskLimit();
+      // this.checkSubtaskLimit();
+      console.log('this.subtasks.value', this.subtasks.value);
     }
   }
 
@@ -621,7 +623,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
         editing: [false],
       })
     );
-    this.checkSubtaskLimit();
+    // this.checkSubtaskLimit();
   }
 
   editSubtask(index: number): void {
@@ -638,7 +640,8 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
 
   deleteSubtask(index: number): void {
     this.subtasks.removeAt(index);
-    this.checkSubtaskLimit();
+    // this.checkSubtaskLimit();
+    console.log('this.subtasks.value', this.subtasks.value);
   }
 
   getSubtaskNameControl(index: number): FormControl {
@@ -650,7 +653,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     subtask.patchValue({ editing: false });
   }
 
-  checkSubtaskLimit(): void {
-    this.subTasksMaxReached = this.subtasks.length >= 2;
-  }
+  // checkSubtaskLimit(): void {
+  //   this.subTasksMaxReached = this.subtasks.length >= 2;
+  // }
 }
