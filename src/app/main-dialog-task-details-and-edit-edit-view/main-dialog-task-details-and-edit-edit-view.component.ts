@@ -289,8 +289,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
-    console.log('this.selectedUsers', this.selectedUsers);
-    console.log('this.editTaskForm.value', this.editTaskForm.value);
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
@@ -501,7 +499,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.updatedTaskData.category = this.editTaskForm.value.category;
     this.updatedTaskData.subtasks = this.editTaskForm.value.subtasks;
     this.updatedTaskData.users = this.selectedUsers;
-    console.log('this.editTaskForm.value.subtasks', this.editTaskForm.value.subtasks);
   }
 
   trimmTaskArray() {
@@ -568,18 +565,18 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   //   this.clearForm();
   // }
 
-  sendNewTaskToBackend(trimmedTask) {
-    this.backendService.updateItem(trimmedTask, "tasks").subscribe(
-      (response) => {
-        console.log("Task created successfully:", response);
-      },
-      (error) => {
-        console.error("Error creating task:", error);
-      }
-    );
+  // sendNewTaskToBackend(trimmedTask) {
+  //   this.backendService.updateItem(trimmedTask, "tasks").subscribe(
+  //     (response) => {
+  //       console.log("Task created successfully:", response);
+  //     },
+  //     (error) => {
+  //       console.error("Error creating task:", error);
+  //     }
+  //   );
 
-    this.clearForm();
-  }
+  //   this.clearForm();
+  // }
 
   onSubmitOutro() {
     this.submitBtn.nativeElement.classList.add("btn__success");
@@ -612,7 +609,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
       this.subTasksInput.nativeElement.value = "";
       this.subTasksInputHasFocus = false;
       // this.checkSubtaskLimit();
-      console.log('this.subtasks.value', this.subtasks.value);
     }
   }
 
@@ -641,7 +637,6 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   deleteSubtask(index: number): void {
     this.subtasks.removeAt(index);
     // this.checkSubtaskLimit();
-    console.log('this.subtasks.value', this.subtasks.value);
   }
 
   getSubtaskNameControl(index: number): FormControl {
