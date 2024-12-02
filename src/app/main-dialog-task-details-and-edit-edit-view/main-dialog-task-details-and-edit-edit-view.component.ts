@@ -558,7 +558,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.backendService.updateItem(this.updatedTaskData, "tasks").subscribe(
       (response) => {
         console.log("Task updated successfully:", response);
-        console.log('updateTaskSingleResponse:', this.updatedTaskData);
+        console.log('updateTaskSingleBackend:', this.updatedTaskData);
       },
       (error) => {
         console.error("Error updating user:", error);

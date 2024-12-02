@@ -84,7 +84,6 @@ export class MainBoardComponent {
       this.sortTasksInColumns();
       this.renumberTasksColumnOrder();
       this.backendTasksStatusPosition();
-      console.log('data', this.allTasksData);
     });
   }
 
@@ -301,7 +300,6 @@ export class MainBoardComponent {
     this.backendService.updateTaskPositionsBatch(updatedTasks).subscribe(
       (response) => {
         console.log("Tasks updated successfully:", response);
-        console.log('updatedTasks', updatedTasks);
       },
       (error) => {
         console.error("Error updating tasks:", error);

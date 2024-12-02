@@ -175,7 +175,6 @@ export class MainContactsComponent {
     // this.userService.deleteContact(clickedContactData);
     this.backendService.deleteItem(clickedContactData.id, 'users').subscribe(
       (response) => {
-        
         console.log('User deleted successfully:', response);
         this.fetchUsers();
       },
