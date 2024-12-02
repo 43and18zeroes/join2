@@ -1,80 +1,101 @@
 <div class="auth__container no__select">
+  <header>
+    <img src="assets/img/auth/intro-j.webp" alt="Main join logo" draggable="false" />
+  </header>
 
-    <header>
-        <img src="assets/img/auth/intro-j.webp" alt="Main join logo" draggable="false">
-    </header>
-
-    <main>
-        
-        <div class="window">
-            <div class="window__header">
-                <div class="window__header__side">
-                    <div class="hover__area no__select">
-                        <div class="transform__circle"></div>
-                        <span routerLink="/" class="material__symbols__outlined single__icon">arrow_back</span>
-                    </div>
-                </div>
-                <h1>Sign up
-                </h1>
-                <div class="window__header__side"></div>
-            </div>
-
-            <hr>
-
-            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" autocomplete="off">
-
-                <div class="input__container">
-                    <span (click)="signUpUserName.focus()" class="material__symbols__outlined">
-                        person
-                    </span>
-                    <input [attr.disabled]="isSubmitted ? true : null" [(ngModel)]="user.userName" #signUpUserName id="signUpUserName" formControlName="signUpUserName" placeholder="First and last name"
-                        type="text" autocomplete="false">
-                </div>
-                <div class="incorrect__input">
-                    <span *ngIf="signUpForm.controls.signUpUserName.invalid &&
-                        signUpForm.controls.signUpUserName.dirty && 
-                        signUpForm.controls.signUpUserName.value">Separate first and last name with a space.</span>
-                </div>
-
-                <div class="input__container">
-                    <span (click)="signUpEmail.focus()" class="material__symbols__outlined">
-                        mail
-                    </span>
-                    <input (focus)="mailFocus()" [attr.disabled]="isSubmitted ? true : null" [(ngModel)]="user.userEmailAddress" #signUpEmail id="signUpEmail" formControlName="signUpEmail" placeholder="Email" type="email">
-                </div>
-                <div class="incorrect__input">
-                    <span *ngIf="signUpForm.controls.signUpEmail.invalid &&
-                        signUpForm.controls.signUpEmail.dirty && 
-                        signUpForm.controls.signUpEmail.value">Invalid
-                        email
-                        address.</span>
-                        <span *ngIf="emailAdressAlreadyExists">This email adress is already in use.</span>
-                </div>
-
-                <div class="input__container">
-                    <span (click)="signUpPassword.focus()" class="material__symbols__outlined">
-                        lock
-                    </span>
-                    <input [attr.disabled]="isSubmitted ? true : null" #signUpPassword id="signUpPassword" formControlName="signUpPassword" placeholder="Password"
-                        type="password">
-                </div>
-                <div class="incorrect__input">
-                    <span *ngIf="signUpForm.controls.signUpPassword.invalid &&
-                    signUpForm.controls.signUpPassword.dirty  && 
-                    signUpForm.controls.signUpPassword.value">Password must be at least 6 characters long.</span>
-                </div>
-
-                <div class="signup__btns">
-                    <button [disabled]="signUpForm.invalid" type="submit" class="btn__primary">Sign up</button>
-                </div>
-
-            </form>
-
+  <main>
+    <div class="window">
+      <div class="window__header">
+        <div class="window__header__side">
+          <div class="hover__area no__select">
+            <div class="transform__circle"></div>
+            <span routerLink="/" class="material__symbols__outlined single__icon">arrow_back</span>
+          </div>
         </div>
-        
-    </main>
-    <div class="auth__success" #authSuccess>
-        <span class="material__symbols__outlined">person</span>
-        You signed up successfully
+        <h1>Sign up</h1>
+        <div class="window__header__side"></div>
+      </div>
+
+      <hr />
+
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="input__container">
+            <span style="color: #29abe3;">Deaktiviert, weil User authentication in Django erst im nächsten Modul eingeführt wird.</span>
+          <!-- <span (click)="signUpUserName.focus()" class="material__symbols__outlined">person</span>
+          <input
+            [attr.disabled]="isSubmitted ? true : null"
+            [(ngModel)]="user.userName"
+            #signUpUserName
+            id="signUpUserName"
+            formControlName="signUpUserName"
+            placeholder="First and last name"
+            type="text"
+            autocomplete="false" /> -->
+        </div>
+        <div class="incorrect__input">
+          <span
+            *ngIf="
+              signUpForm.controls.signUpUserName.invalid &&
+              signUpForm.controls.signUpUserName.dirty &&
+              signUpForm.controls.signUpUserName.value
+            ">
+            Separate first and last name with a space.
+          </span>
+        </div>
+
+        <div class="input__container">
+          <!-- <span (click)="signUpEmail.focus()" class="material__symbols__outlined">mail</span>
+          <input
+            (focus)="mailFocus()"
+            [attr.disabled]="isSubmitted ? true : null"
+            [(ngModel)]="user.userEmailAddress"
+            #signUpEmail
+            id="signUpEmail"
+            formControlName="signUpEmail"
+            placeholder="Email"
+            type="email" /> -->
+        </div>
+        <div class="incorrect__input">
+          <span
+            *ngIf="
+              signUpForm.controls.signUpEmail.invalid &&
+              signUpForm.controls.signUpEmail.dirty &&
+              signUpForm.controls.signUpEmail.value
+            ">
+            Invalid email address.
+          </span>
+          <span *ngIf="emailAdressAlreadyExists">This email adress is already in use.</span>
+        </div>
+
+        <div class="input__container">
+          <!-- <span (click)="signUpPassword.focus()" class="material__symbols__outlined">lock</span> -->
+          <!-- <input
+            [attr.disabled]="isSubmitted ? true : null"
+            #signUpPassword
+            id="signUpPassword"
+            formControlName="signUpPassword"
+            placeholder="Password"
+            type="password" /> -->
+        </div>
+        <div class="incorrect__input">
+          <span
+            *ngIf="
+              signUpForm.controls.signUpPassword.invalid &&
+              signUpForm.controls.signUpPassword.dirty &&
+              signUpForm.controls.signUpPassword.value
+            ">
+            Password must be at least 6 characters long.
+          </span>
+        </div>
+
+        <!-- <div class="signup__btns">
+          <button [disabled]="signUpForm.invalid" type="submit" class="btn__primary">Sign up</button>
+        </div> -->
+      </form>
     </div>
+  </main>
+  <div class="auth__success" #authSuccess>
+    <span class="material__symbols__outlined">person</span>
+    You signed up successfully
+  </div>
 </div>
