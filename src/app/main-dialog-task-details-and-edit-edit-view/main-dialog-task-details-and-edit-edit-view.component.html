@@ -44,7 +44,7 @@
             </div>
             <div class="options" *ngIf="showAssignedDropdown">
               <div class="options__body">
-                <div
+                <!-- <div
                   class="option__container"
                   (click)="assignSelectOption(currentUserData)"
                   (mousedown)="assignPreventFocusLoss($event)"
@@ -56,7 +56,7 @@
                     <span class="name">{{ currentUserData.userName }} (You)</span>
                   </div>
                   <input type="checkbox" [checked]="currentUserData.selected" readonly />
-                </div>
+                </div> -->
                 <ng-container *ngFor="let user of allUsersData">
                   <div
                     *ngIf="user.userEmailAddress !== currentUserData.userEmailAddress"
