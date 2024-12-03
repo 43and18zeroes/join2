@@ -1,6 +1,7 @@
 <div class="del__animation__overlay" [class.active]="displayDeletionAnimation">
   <div class="del__success__message" [class.show]="displayDeletionAnimation">
-    Task deleted <span class="material__symbols__outlined">check</span>
+    Task deleted
+    <span class="material__symbols__outlined">check</span>
   </div>
 </div>
 
@@ -9,27 +10,13 @@
     <h2>Board</h2>
     <div class="header__right">
       <div class="input__container">
-        <span
-          (click)="searchBar.focus()"
-          class="material__symbols__outlined magnifier"
-        >
-          search
-        </span>
-        <span (click)="searchBar.focus()" class="pipe"> | </span>
-        <input
-          (input)="searchTasks()"
-          placeholder="Find Task"
-          #searchBar
-          placeholder="Name"
-        />
+        <span (click)="searchBar.focus()" class="material__symbols__outlined magnifier">search</span>
+        <span (click)="searchBar.focus()" class="pipe">|</span>
+        <input (input)="searchTasks()" placeholder="Find Task" #searchBar placeholder="Name" />
       </div>
-      <button
-        (click)="openAddTaskDialog('todo')"
-        class="btn__primary"
-        type="button"
-      >
-        <span class="btn__text">Add task </span
-        ><span class="material__symbols__outlined"> add </span>
+      <button (click)="openAddTaskDialog('todo')" class="btn__primary" type="button">
+        <span class="btn__text">Add task</span>
+        <span class="material__symbols__outlined">add</span>
       </button>
     </div>
   </header>
@@ -37,28 +24,14 @@
   <header class="header__mobile">
     <div class="headline">
       <h2>Board</h2>
-      <button
-        (click)="openAddTaskDialog('todo')"
-        class="btn__primary"
-        type="button"
-      >
-        <span class="material__symbols__outlined"> add </span>
+      <button (click)="openAddTaskDialog('todo')" class="btn__primary" type="button">
+        <span class="material__symbols__outlined">add</span>
       </button>
     </div>
     <div class="input__container">
-      <span
-        (click)="searchBar.focus()"
-        class="material__symbols__outlined magnifier"
-      >
-        search
-      </span>
-      <span (click)="searchBar.focus()" class="pipe"> | </span>
-      <input
-        (input)="searchTasks()"
-        placeholder="Find Task"
-        #searchBar
-        placeholder="Name"
-      />
+      <span (click)="searchBar.focus()" class="material__symbols__outlined magnifier">search</span>
+      <span (click)="searchBar.focus()" class="pipe">|</span>
+      <input (input)="searchTasks()" placeholder="Find Task" #searchBar placeholder="Name" />
     </div>
   </header>
 
@@ -66,12 +39,7 @@
     <section class="to__do">
       <div class="section__header">
         <h3>To do</h3>
-        <span
-          (click)="openAddTaskDialog('todo')"
-          class="material__symbols__outlined"
-        >
-          add
-        </span>
+        <span (click)="openAddTaskDialog('todo')" class="material__symbols__outlined">add</span>
       </div>
 
       <div
@@ -82,8 +50,7 @@
         [cdkDropListConnectedTo]="[inprogressList, awaitfeedbackList, doneList]"
         (cdkDropListDropped)="drop($event)"
         class="section__body"
-        #sectionBody
-      >
+        #sectionBody>
         <div
           (click)="openTaskDetails(item)"
           cdkDrag
@@ -92,15 +59,13 @@
           class="task__card no__select"
           *ngFor="let item of todo"
           cdkDrag
-          #taskCard
-        >
+          #taskCard>
           <div
             class="task__cat"
             [ngClass]="{
               category__tech: item.category === 'Technical Task',
               category__user: item.category === 'User Story'
-            }"
-          >
+            }">
             {{ item.category }}
           </div>
 
@@ -113,22 +78,15 @@
             </div>
 
             <div *ngIf="item.subtasks?.length > 0" class="task__progress">
-              <div class="progress-container">
-                <div class="progress-bar" [style.width.%]="calculateProgressPercentage(item.subtasks)"></div>
+              <div class="progress-wrapper">
+                <div class="progress-container">
+                  <div class="progress-bar" [style.width.%]="calculateProgressPercentage(item.subtasks)"></div>
+                </div>
+                <span class="progress-text">
+                  Subtasks: {{ countCompletedSubtasks(item.subtasks) }}/{{ item.subtasks.length }}
+                </span>
               </div>
-              <p class="progress-text">
-                Subtasks: {{ countCompletedSubtasks(item.subtasks) }}/{{ item.subtasks.length }}
-              </p>
             </div>
-
-            <!-- <div *ngIf="item.subtasks?.length > 0" class="task__progress">
-              <div class="progress-container">
-                <div class="progress-bar" [style.width.%]="calculateProgress(item.subtasks)"></div>
-              </div>
-              <p class="progress-text">{{ calculateProgress(item.subtasks) | number : "1.0-0" }}% abgeschlossen</p>
-            </div> -->
-
-            
           </div>
 
           <!-- <div *ngIf="item.subTasks.length > 0" class="task__subtasks"> -->
@@ -147,27 +105,17 @@
               <div
                 *ngFor="let user of limitUsers(item.users, 5)"
                 [ngStyle]="{ 'background-color': user.user_color }"
-                class="user__container"
-              >
+                class="user__container">
                 {{ user.initials }}
               </div>
             </div>
-            <div
-              *ngIf="item.priority === 'urgent'"
-              class="material__symbols__outlined task__card__prio prio__red"
-            >
+            <div *ngIf="item.priority === 'urgent'" class="material__symbols__outlined task__card__prio prio__red">
               keyboard_double_arrow_up
             </div>
-            <div
-              *ngIf="item.priority === 'medium'"
-              class="material__symbols__outlined task__card__prio prio__yellow"
-            >
+            <div *ngIf="item.priority === 'medium'" class="material__symbols__outlined task__card__prio prio__yellow">
               double_arrow
             </div>
-            <div
-              *ngIf="item.priority === 'low'"
-              class="material__symbols__outlined task__card__prio prio__green"
-            >
+            <div *ngIf="item.priority === 'low'" class="material__symbols__outlined task__card__prio prio__green">
               keyboard_double_arrow_down
             </div>
           </div>
@@ -178,12 +126,7 @@
     <section class="in__progress">
       <div class="section__header">
         <h3>In progress</h3>
-        <span
-          (click)="openAddTaskDialog('in_progress')"
-          class="material__symbols__outlined"
-        >
-          add
-        </span>
+        <span (click)="openAddTaskDialog('in_progress')" class="material__symbols__outlined">add</span>
       </div>
 
       <div
@@ -194,8 +137,7 @@
         [cdkDropListConnectedTo]="[todoList, awaitfeedbackList, doneList]"
         (cdkDropListDropped)="drop($event)"
         class="section__body"
-        #sectionBody
-      >
+        #sectionBody>
         <div
           (click)="openTaskDetails(item)"
           cdkDrag
@@ -204,15 +146,13 @@
           class="task__card no__select"
           *ngFor="let item of inprogress"
           cdkDrag
-          #taskCard
-        >
+          #taskCard>
           <div
             class="task__cat"
             [ngClass]="{
               category__tech: item.category === 'Technical Task',
               category__user: item.category === 'User Story'
-            }"
-          >
+            }">
             {{ item.category }}
           </div>
 
@@ -241,27 +181,17 @@
               <div
                 *ngFor="let user of limitUsers(item.users, 5)"
                 [ngStyle]="{ 'background-color': user.user_color }"
-                class="user__container"
-              >
+                class="user__container">
                 {{ user.initials }}
               </div>
             </div>
-            <div
-              *ngIf="item.priority === 'urgent'"
-              class="material__symbols__outlined task__card__prio prio__red"
-            >
+            <div *ngIf="item.priority === 'urgent'" class="material__symbols__outlined task__card__prio prio__red">
               keyboard_double_arrow_up
             </div>
-            <div
-              *ngIf="item.priority === 'medium'"
-              class="material__symbols__outlined task__card__prio prio__yellow"
-            >
+            <div *ngIf="item.priority === 'medium'" class="material__symbols__outlined task__card__prio prio__yellow">
               double_arrow
             </div>
-            <div
-              *ngIf="item.priority === 'low'"
-              class="material__symbols__outlined task__card__prio prio__green"
-            >
+            <div *ngIf="item.priority === 'low'" class="material__symbols__outlined task__card__prio prio__green">
               keyboard_double_arrow_down
             </div>
           </div>
@@ -272,12 +202,7 @@
     <section class="await__feedback">
       <div class="section__header">
         <h3>Await feedback</h3>
-        <span
-          (click)="openAddTaskDialog('await_feedback')"
-          class="material__symbols__outlined"
-        >
-          add
-        </span>
+        <span (click)="openAddTaskDialog('await_feedback')" class="material__symbols__outlined">add</span>
       </div>
 
       <div
@@ -288,8 +213,7 @@
         [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]"
         (cdkDropListDropped)="drop($event)"
         class="section__body"
-        #sectionBody
-      >
+        #sectionBody>
         <div
           (click)="openTaskDetails(item)"
           cdkDrag
@@ -298,15 +222,13 @@
           class="task__card no__select"
           *ngFor="let item of awaitfeedback"
           cdkDrag
-          #taskCard
-        >
+          #taskCard>
           <div
             class="task__cat"
             [ngClass]="{
               category__tech: item.category === 'Technical Task',
               category__user: item.category === 'User Story'
-            }"
-          >
+            }">
             {{ item.category }}
           </div>
 
@@ -335,27 +257,17 @@
               <div
                 *ngFor="let user of limitUsers(item.users, 5)"
                 [ngStyle]="{ 'background-color': user.user_color }"
-                class="user__container"
-              >
+                class="user__container">
                 {{ user.initials }}
               </div>
             </div>
-            <div
-              *ngIf="item.priority === 'urgent'"
-              class="material__symbols__outlined task__card__prio prio__red"
-            >
+            <div *ngIf="item.priority === 'urgent'" class="material__symbols__outlined task__card__prio prio__red">
               keyboard_double_arrow_up
             </div>
-            <div
-              *ngIf="item.priority === 'medium'"
-              class="material__symbols__outlined task__card__prio prio__yellow"
-            >
+            <div *ngIf="item.priority === 'medium'" class="material__symbols__outlined task__card__prio prio__yellow">
               double_arrow
             </div>
-            <div
-              *ngIf="item.priority === 'low'"
-              class="material__symbols__outlined task__card__prio prio__green"
-            >
+            <div *ngIf="item.priority === 'low'" class="material__symbols__outlined task__card__prio prio__green">
               keyboard_double_arrow_down
             </div>
           </div>
@@ -366,12 +278,7 @@
     <section class="done">
       <div class="section__header">
         <h3>Done</h3>
-        <span
-          (click)="openAddTaskDialog('done')"
-          class="material__symbols__outlined"
-        >
-          add
-        </span>
+        <span (click)="openAddTaskDialog('done')" class="material__symbols__outlined">add</span>
       </div>
 
       <div
@@ -382,8 +289,7 @@
         [cdkDropListConnectedTo]="[todoList, awaitfeedbackList, inprogressList]"
         (cdkDropListDropped)="drop($event)"
         class="section__body"
-        #sectionBody
-      >
+        #sectionBody>
         <div
           (click)="openTaskDetails(item)"
           cdkDrag
@@ -392,15 +298,13 @@
           class="task__card no__select"
           *ngFor="let item of done"
           cdkDrag
-          #taskCard
-        >
+          #taskCard>
           <div
             class="task__cat"
             [ngClass]="{
               category__tech: item.category === 'Technical Task',
               category__user: item.category === 'User Story'
-            }"
-          >
+            }">
             {{ item.category }}
           </div>
 
@@ -429,27 +333,17 @@
               <div
                 *ngFor="let user of limitUsers(item.users, 5)"
                 [ngStyle]="{ 'background-color': user.user_color }"
-                class="user__container"
-              >
+                class="user__container">
                 {{ user.initials }}
               </div>
             </div>
-            <div
-              *ngIf="item.priority === 'urgent'"
-              class="material__symbols__outlined task__card__prio prio__red"
-            >
+            <div *ngIf="item.priority === 'urgent'" class="material__symbols__outlined task__card__prio prio__red">
               keyboard_double_arrow_up
             </div>
-            <div
-              *ngIf="item.priority === 'medium'"
-              class="material__symbols__outlined task__card__prio prio__yellow"
-            >
+            <div *ngIf="item.priority === 'medium'" class="material__symbols__outlined task__card__prio prio__yellow">
               double_arrow
             </div>
-            <div
-              *ngIf="item.priority === 'low'"
-              class="material__symbols__outlined task__card__prio prio__green"
-            >
+            <div *ngIf="item.priority === 'low'" class="material__symbols__outlined task__card__prio prio__green">
               keyboard_double_arrow_down
             </div>
           </div>
