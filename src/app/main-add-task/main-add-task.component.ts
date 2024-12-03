@@ -72,7 +72,6 @@ export class MainAddTaskComponent {
       status: "todo",
       position: 0,
       // taskColumnOrder: 0
-
       subtasks: this.fb.array([]),
     });
   }
@@ -94,7 +93,6 @@ export class MainAddTaskComponent {
     this.allUsersData.sort((a, b) => {
       const firstNameA = a.first_name.toLowerCase();
       const firstNameB = b.first_name.toLowerCase();
-
       if (firstNameA < firstNameB) {
         return -1;
       }
