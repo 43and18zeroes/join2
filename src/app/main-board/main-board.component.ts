@@ -208,6 +208,12 @@ export class MainBoardComponent {
     this.done.sort(customSort);
   }
 
+  calculateProgress(subtasks: any[]): number {
+    if (!subtasks || subtasks.length === 0) return 0;
+    const completed = subtasks.filter(subtask => subtask.is_completed).length;
+    return (completed / subtasks.length) * 100;
+  }
+
   // determineSubtaskProgress(subTasksCompleted) {
   //   const subTaskCount = subTasksCompleted.length;
   //   const trueCount = subTasksCompleted.filter(Boolean).length;

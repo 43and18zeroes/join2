@@ -111,6 +111,15 @@
             <div class="task__description">
               {{ item.description }}
             </div>
+
+            <div *ngIf="item.subtasks?.length > 0" class="task__progress">
+              <div class="progress-container">
+                <div class="progress-bar" [style.width.%]="calculateProgress(item.subtasks)"></div>
+              </div>
+              <p class="progress-text">{{ calculateProgress(item.subtasks) | number : "1.0-0" }}% abgeschlossen</p>
+            </div>
+
+            
           </div>
 
           <!-- <div *ngIf="item.subTasks.length > 0" class="task__subtasks"> -->
