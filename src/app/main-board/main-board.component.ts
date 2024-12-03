@@ -208,16 +208,6 @@ export class MainBoardComponent {
     this.done.sort(customSort);
   }
 
-  calculateProgressPercentage(subtasks: any[]): number {
-    if (!subtasks || subtasks.length === 0) return 0;
-    const completed = this.countCompletedSubtasks(subtasks);
-    return (completed / subtasks.length) * 100;
-  }
-  
-  countCompletedSubtasks(subtasks: any[]): number {
-    return subtasks.filter(subtask => subtask.is_completed).length;
-  }
-
   // calculateProgress(subtasks: any[]): number {
   //   if (!subtasks || subtasks.length === 0) return 0;
   //   const completed = subtasks.filter(subtask => subtask.is_completed).length;

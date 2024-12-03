@@ -1,0 +1,10 @@
+<div *ngIf="subtasks?.length > 0" class="task__progress">
+    <div class="progress-wrapper">
+      <div class="progress-container">
+        <div class="progress-bar" [style.width.%]="calculateProgressPercentage(subtasks)"></div>
+      </div>
+      <span class="progress-text">
+        Subtasks: {{ countCompletedSubtasks(subtasks) }}/{{ subtasks.length }}
+      </span>
+    </div>
+  </div>

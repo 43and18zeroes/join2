@@ -76,17 +76,7 @@
             <div class="task__description">
               {{ item.description }}
             </div>
-
-            <div *ngIf="item.subtasks?.length > 0" class="task__progress">
-              <div class="progress-wrapper">
-                <div class="progress-container">
-                  <div class="progress-bar" [style.width.%]="calculateProgressPercentage(item.subtasks)"></div>
-                </div>
-                <span class="progress-text">
-                  Subtasks: {{ countCompletedSubtasks(item.subtasks) }}/{{ item.subtasks.length }}
-                </span>
-              </div>
-            </div>
+            <app-progress-bar [subtasks]="item.subtasks"></app-progress-bar>
           </div>
 
           <!-- <div *ngIf="item.subTasks.length > 0" class="task__subtasks"> -->
