@@ -153,6 +153,7 @@
             <div class="task__description">
               {{ item.description }}
             </div>
+            <app-progress-bar [subtasks]="item.subtasks"></app-progress-bar>
           </div>
 
           <!-- <div *ngIf="item.subTasks.length > 0" class="task__subtasks"> -->
@@ -229,6 +230,7 @@
             <div class="task__description">
               {{ item.description }}
             </div>
+            <app-progress-bar [subtasks]="item.subtasks"></app-progress-bar>
           </div>
 
           <!-- <div *ngIf="item.subTasks.length > 0" class="task__subtasks"> -->
@@ -305,6 +307,7 @@
             <div class="task__description">
               {{ item.description }}
             </div>
+            <app-progress-bar [subtasks]="item.subtasks"></app-progress-bar>
           </div>
 
           <!-- <div *ngIf="item.subTasks.length > 0" class="task__subtasks"> -->
