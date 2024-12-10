@@ -1,7 +1,7 @@
 import { Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MainCommunicationService } from "../services/main-communication.service";
-import { AngularFirestore } from "@angular/fire/compat/firestore";
+// import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { MainDialogAddContactComponent } from "../main-dialog-add-contact/main-dialog-add-contact.component";
 import { MatDialog } from "@angular/material/dialog";
 import { UserService } from "../services/user-data.service";
@@ -46,7 +46,7 @@ export class MainAddTaskComponent {
   private globalClickListener: Function;
 
   constructor(
-    private firestore: AngularFirestore,
+    // private firestore: AngularFirestore,
     private fb: FormBuilder,
     private mainCommService: MainCommunicationService,
     private renderer: Renderer2,

@@ -42,30 +42,30 @@ export class AuthLogInComponent implements OnInit {
 
   onSubmit() {
     const userData = Object.assign(this.logInForm, { email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword });
-    this.authService.signIn(userData).then((res: any) => {
-      this.identifyCurrentUserData();
-      this.isSubmitted = true;
-      this.logInFailed = false;
-      this.router.navigateByUrl('main');
-    }).catch((error: any) => {
-      this.logInFailed = true;
-    });
+    // this.authService.signIn(userData).then((res: any) => {
+    //   this.identifyCurrentUserData();
+    //   this.isSubmitted = true;
+    //   this.logInFailed = false;
+    //   this.router.navigateByUrl('main');
+    // }).catch((error: any) => {
+    //   this.logInFailed = true;
+    // });
   }
 
   logInGuest() {
     const userData = Object.assign(this.logInForm, { email: "gast@gast.de", password: "123456" });
-    this.authService.signIn(userData).then((res: any) => {
-      this.identifyCurrentUserData();
-      this.isSubmitted = true;
-      this.logInFailed = false;
-      this.router.navigateByUrl('main');
-    }).catch((error: any) => {
-      this.logInFailed = true;
-    });
+    // this.authService.signIn(userData).then((res: any) => {
+    //   this.identifyCurrentUserData();
+    //   this.isSubmitted = true;
+    //   this.logInFailed = false;
+    //   this.router.navigateByUrl('main');
+    // }).catch((error: any) => {
+    //   this.logInFailed = true;
+    // });
   }
 
   async identifyCurrentUserData() {
-    await this.userService.getCurrentUserAuth();
+    // await this.userService.getCurrentUserAuth();
     this.userService.filterCurrentUserData();
     // this.userService.setCurrentUserDataToLocal();
   }

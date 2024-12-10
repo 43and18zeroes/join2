@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { getAuth, signOut } from "firebase/auth";
+// import { getAuth, signOut } from "firebase/auth";
 import { Router } from '@angular/router';
 import { MainCommunicationService } from '../services/main-communication.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,11 +23,11 @@ export class MainHeaderProfileDialogComponent {
   }
   
   logOut() {
-    const auth = getAuth();
-    signOut(auth).then(() => {
-      this.router.navigateByUrl('/');
-    }).catch((error) => {
-    });
+    // const auth = getAuth();
+    // signOut(auth).then(() => {
+    //   this.router.navigateByUrl('/');
+    // }).catch((error) => {
+    // });
     this.dialog.closeAll();
     setTimeout(() => {
       this.mainCommService.displaySummaryService('summary');

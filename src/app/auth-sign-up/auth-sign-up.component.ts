@@ -2,7 +2,7 @@ import { USERCOLORS } from '../usercolors.constant';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { User } from 'src/models/user.class';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { emailValidator, signUpUserNameValidator } from '../shared/validators/custom-validators';
@@ -29,7 +29,8 @@ export class AuthSignUpComponent implements OnInit {
 
   @ViewChild('authSuccess', { static: false }) authSuccess: ElementRef;
 
-  constructor(private firestore: AngularFirestore,
+  constructor(
+    // private firestore: AngularFirestore,
     private router: Router,
     private authService: AuthService,
     private fb: FormBuilder) { }
@@ -47,12 +48,12 @@ export class AuthSignUpComponent implements OnInit {
 
   signUp() {
     const userData = this.getUserData();
-    this.authService.signUp(userData).then((res: any) => {
-      this.populateUser(userData);
-      this.processSuccessfulSignup();
-    }).catch((error: any) => {
-      this.handleSignupError(error);
-    });
+    // this.authService.signUp(userData).then((res: any) => {
+    //   this.populateUser(userData);
+    //   this.processSuccessfulSignup();
+    // }).catch((error: any) => {
+    //   this.handleSignupError(error);
+    // });
   }
 
   populateUser(userData) {
@@ -128,21 +129,21 @@ export class AuthSignUpComponent implements OnInit {
     return userData;
   }
   
-  addUserToFirestore(userData) {
-    this.firestore
-      .collection('users')
-      .add(userData)
-      .then((docRef) => {
-        return docRef.update({ firebaseId: docRef.id });
-      })
-      .catch((error) => {
-        console.error("Error adding or updating document: ", error);
-      });
-  }
+  // addUserToFirestore(userData) {
+  //   this.firestore
+  //     .collection('users')
+  //     .add(userData)
+  //     .then((docRef) => {
+  //       return docRef.update({ firebaseId: docRef.id });
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error adding or updating document: ", error);
+  //     });
+  // }
   
   createNewUserData() {
     const userData = this.prepareUserData();
-    this.addUserToFirestore(userData);
+    // this.addUserToFirestore(userData);
   }
 
   authSuccessAnimation() {

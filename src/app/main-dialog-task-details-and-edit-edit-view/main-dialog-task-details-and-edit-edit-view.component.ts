@@ -2,7 +2,7 @@ import { Component, ElementRef, Inject, QueryList, Renderer2, ViewChild, ViewChi
 import { TaskDetailsCommService } from "../services/task-details-comm.service";
 import { MainDialogTaskDetailsAndEditComponent } from "../main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component";
 import { FormArray, FormBuilder, FormControl, Validators } from "@angular/forms";
-import { AngularFirestore } from "@angular/fire/compat/firestore";
+// import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { BoardCommService } from "../services/board-comm.service";
 import { MainCommunicationService } from "../services/main-communication.service";
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material/dialog";
@@ -53,7 +53,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     private taskDetailsCommService: TaskDetailsCommService,
     public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent,
     private fb: FormBuilder,
-    private firestore: AngularFirestore,
+    // private firestore: AngularFirestore,
     public boardCommService: BoardCommService,
     private mainCommService: MainCommunicationService,
     private renderer: Renderer2,

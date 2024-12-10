@@ -1,6 +1,6 @@
 import { USERCOLORS } from '../usercolors.constant';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -37,7 +37,7 @@ export class MainDialogAddContactComponent {
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<MainDialogAddContactComponent>,
     private fb: FormBuilder,
-    private firestore: AngularFirestore,
+    // private firestore: AngularFirestore,
     private userService: UserService,
     private backendService: BackendService,
     private backendUserDataService: BackendUserDataService

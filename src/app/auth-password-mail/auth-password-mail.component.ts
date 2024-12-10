@@ -26,15 +26,15 @@ export class AuthPasswordMailComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.sendPasswordResetEmail(this.passwordMailForm.value.passwordMailEmail)
-      .then(() => {
-        this.authSuccessAnimation();
-        setTimeout(() => {
-          this.router.navigate(['/']);
-        }, 1600);
-      })
-      .catch((error) => {
-      });
+    // this.authService.sendPasswordResetEmail(this.passwordMailForm.value.passwordMailEmail)
+    //   .then(() => {
+    //     this.authSuccessAnimation();
+    //     setTimeout(() => {
+    //       this.router.navigate(['/']);
+    //     }, 1600);
+    //   })
+    //   .catch((error) => {
+    //   });
   }
 
   authSuccessAnimation() {

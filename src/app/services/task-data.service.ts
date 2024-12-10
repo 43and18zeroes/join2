@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +7,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class TaskDataService {
   allTasksData;
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(
+    // private firestore: AngularFirestore
+  ) {}
 
   async setAllTasksDataToVarAndLocal() {
     const downloadedData = await fetch('http://127.0.0.1:8000/kanban/');

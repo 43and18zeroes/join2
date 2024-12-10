@@ -162,10 +162,10 @@ export class MainContactsComponent {
       // this.showContactDetails = false;
       this.displayDeletionSuccessfulAnimation();
     }
-    if (this.userService.userUpdatedSuccessfully || this.userService.userDeletedSuccessfully) {
-      // this.generateUsersLists();
-      this.findEditedContactData(clickedContactDataID);
-    }
+    // if (this.userService.userUpdatedSuccessfully || this.userService.userDeletedSuccessfully) {
+    //   // this.generateUsersLists();
+    //   this.findEditedContactData(clickedContactDataID);
+    // }
     this.userService.userUpdatedSuccessfully = false;
     this.userService.userDeletedSuccessfully = false;
     this.removeHighlight();
@@ -196,20 +196,20 @@ export class MainContactsComponent {
     }, 1500);
   }
 
-  findEditedContactData(clickedContactDataID) {
-    for (const key in this.groupedContacts) {
-      if (this.groupedContacts.hasOwnProperty(key)) {
-        const elementArray = this.groupedContacts[key];
-        for (const element of elementArray) {
-          if (element.firebaseId === clickedContactDataID) {
-            this.clickedContactData = element;
-            this.selectedContactId = `${key}-${elementArray.indexOf(element)}`;
-            return;
-          }
-        }
-      }
-    }
-  }
+  // findEditedContactData(clickedContactDataID) {
+  //   for (const key in this.groupedContacts) {
+  //     if (this.groupedContacts.hasOwnProperty(key)) {
+  //       const elementArray = this.groupedContacts[key];
+  //       for (const element of elementArray) {
+  //         if (element.firebaseId === clickedContactDataID) {
+  //           this.clickedContactData = element;
+  //           this.selectedContactId = `${key}-${elementArray.indexOf(element)}`;
+  //           return;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   removeHighlight() {
     this.showContactDetails = false;
