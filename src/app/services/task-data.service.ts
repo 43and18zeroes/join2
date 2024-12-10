@@ -14,17 +14,17 @@ export class TaskDataService {
     let dataObject = await downloadedData.json();
     this.parseData(dataObject);
     this.allTasksData = dataObject;
-    localStorage.removeItem('allTasksData');
-    localStorage.setItem('allTasksData', JSON.stringify(dataObject));
+    // localStorage.removeItem('allTasksData');
+    // localStorage.setItem('allTasksData', JSON.stringify(dataObject));
   }
 
-  getTasksDataMain() {
-    if (!this.allTasksData) {
-      this.allTasksData = JSON.parse(
-        localStorage.getItem('allTasksData') || '[]'
-      );
-    }
-  }
+  // getTasksDataMain() {
+  //   if (!this.allTasksData) {
+  //     this.allTasksData = JSON.parse(
+  //       localStorage.getItem('allTasksData') || '[]'
+  //     );
+  //   }
+  // }
 
   private parseData(dataObject: any[]) {
     dataObject.forEach((item) => {
