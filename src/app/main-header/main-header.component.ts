@@ -29,7 +29,7 @@ export class MainHeaderComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    this.currentUserInitials = this.userService.currentUserData.userInitials;
+    // this.currentUserInitials = this.userService.currentUserData.userInitials;
   }
 
   displayHelp() {

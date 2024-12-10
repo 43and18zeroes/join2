@@ -42,9 +42,9 @@ export class MainSummaryComponent implements OnInit {
     });
     this.showGreetingScreenMobile = this.mainComponent.showGreetingScreenMobile;
     this.currentUserData = this.userService.currentUserData;
-    if (this.currentUserData.userName !== "Gast") {
-      this.currenUserIsGuest = false;
-    }
+    // if (this.currentUserData.userName !== "Gast") {
+    //   this.currenUserIsGuest = false;
+    // }
 
     // this.allTasksData = this.taskDataService.allTasksData;
     

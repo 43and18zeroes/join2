@@ -103,7 +103,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   ngOnInit(): void {
     this.taskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
     this.updatedTaskData = this.mainDialogTaskDetailsAndEditComponent.taskData;
-    this.userService.sortUsersData();
+    // this.userService.sortUsersData();
     this.allUsersData = this.userService.allUsersData;
     this.getUsersData();
     this.currentUserData = this.userService.currentUserData;

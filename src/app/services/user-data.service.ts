@@ -34,8 +34,8 @@ export class UserService {
       .valueChanges()
       .subscribe((changes: any) => {
         this.allUsersData = changes;
-        localStorage.removeItem('allUsersData');
-        localStorage.setItem('allUsersData', JSON.stringify(changes));
+        // localStorage.removeItem('allUsersData');
+        // localStorage.setItem('allUsersData', JSON.stringify(changes));
       })
   }
 
@@ -55,11 +55,11 @@ export class UserService {
   }
 
   getUsersDataMain() {
-    if (!this.allUsersData) {
-      this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
-      this.allUsersData = JSON.parse(localStorage.getItem('allUsersData') || '[]');
-    }
-    this.sortUsersData();
+    // if (!this.allUsersData) {
+      // this.currentUserData = JSON.parse(localStorage.getItem('currentUserData') || '[]');
+      // this.allUsersData = JSON.parse(localStorage.getItem('allUsersData') || '[]');
+    // }
+    // this.sortUsersData();
   }
 
   public sortUsersData(): void {
@@ -233,10 +233,10 @@ export class UserService {
     this.currentUserData = this.currentUserData[0];
   }
 
-  setCurrentUserDataToLocal() {
-    localStorage.removeItem('currentUserData');
-    localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData));
-  }
+  // setCurrentUserDataToLocal() {
+  //   localStorage.removeItem('currentUserData');
+  //   localStorage.setItem('currentUserData', JSON.stringify(this.currentUserData));
+  // }
 
   
   

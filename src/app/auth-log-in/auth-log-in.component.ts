@@ -67,6 +67,6 @@ export class AuthLogInComponent implements OnInit {
   async identifyCurrentUserData() {
     await this.userService.getCurrentUserAuth();
     this.userService.filterCurrentUserData();
-    this.userService.setCurrentUserDataToLocal();
+    // this.userService.setCurrentUserDataToLocal();
   }
 }
