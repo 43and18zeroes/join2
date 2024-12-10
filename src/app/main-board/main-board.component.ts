@@ -58,9 +58,9 @@ export class MainBoardComponent {
     private backendService: BackendService
   ) {
     this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart && event.id === 1) {
-        this.onBrowserRefresh();
-      }
+      // if (event instanceof NavigationStart && event.id === 1) {
+      //   this.onBrowserRefresh();
+      // }
     });
   }
 
@@ -70,7 +70,7 @@ export class MainBoardComponent {
     // this.allTasksData = this.taskDataService.allTasksData;
     this.allUsersData = this.userService.allUsersData;
     this.boardCommService.reloadAfterNewTask = this.reloadAfterNewTask.bind(this);
-    this.boardCommService.setNewTasksDataToLocal = this.setNewTasksDataToLocal.bind(this);
+    // this.boardCommService.setNewTasksDataToLocal = this.setNewTasksDataToLocal.bind(this);
     // this.boardCommService.updateSingleTaskVar = this.updateSingleTaskVar.bind(this);
     this.boardCommService.deleteTask = this.deleteTask.bind(this);
     this.dropListOrientation();
@@ -102,9 +102,9 @@ export class MainBoardComponent {
     // this.backendTasksColumnOrder();
   }
 
-  onBrowserRefresh() {
-    this.allTasksData = JSON.parse(localStorage.getItem("allTasksData") || "[]");
-  }
+  // onBrowserRefresh() {
+  //   this.allTasksData = JSON.parse(localStorage.getItem("allTasksData") || "[]");
+  // }
 
   ngAfterViewInit() {
     this.checkForHorizontalScroll();
@@ -268,7 +268,7 @@ export class MainBoardComponent {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     else transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     this.renumberTasksColumnOrder();
-    this.setNewTasksDataToLocal();
+    // this.setNewTasksDataToLocal();
     this.backendTasksStatusPosition();
   }
 
@@ -288,11 +288,11 @@ export class MainBoardComponent {
     });
   }
 
-  setNewTasksDataToLocal() {
-    const newAllTasksData = [...this.todo, ...this.inprogress, ...this.awaitfeedback, ...this.done];
-    localStorage.removeItem("allTasksData");
-    localStorage.setItem("allTasksData", JSON.stringify(newAllTasksData));
-  }
+  // setNewTasksDataToLocal() {
+  //   const newAllTasksData = [...this.todo, ...this.inprogress, ...this.awaitfeedback, ...this.done];
+  //   localStorage.removeItem("allTasksData");
+  //   localStorage.setItem("allTasksData", JSON.stringify(newAllTasksData));
+  // }
 
   backendTasksStatusPosition(): void {
     const updatedTasks = [
@@ -329,7 +329,7 @@ export class MainBoardComponent {
     this.resetSearchFunction();
     if (this.boardCommService.subTaskCompletedChange) {
       // this.updateSingleTaskVar();
-      this.setNewTasksDataToLocal();
+      // this.setNewTasksDataToLocal();
       this.updateSingleTaskBackend();
       this.boardCommService.subTaskCompletedChange = false;
     }
