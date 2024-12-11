@@ -20,11 +20,11 @@
 
       <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <div class="input__container">
-          <span style="color: #29abe3">
+          <!-- <span style="color: #29abe3">
             Bitte nicht böse sein :-). Sign up ist deaktiviert, weil User authentication in Django erst im nächsten
             Modul eingeführt wird. Im finalen JOIN wird es implementiert sein.
-          </span>
-          <!-- <span (click)="signUpUserName.focus()" class="material__symbols__outlined">person</span>
+          </span> -->
+          <span (click)="signUpUserName.focus()" class="material__symbols__outlined">person</span>
           <input
             [attr.disabled]="isSubmitted ? true : null"
             [(ngModel)]="user.userName"
@@ -33,7 +33,7 @@
             formControlName="signUpUserName"
             placeholder="First and last name"
             type="text"
-            autocomplete="false" /> -->
+            autocomplete="false" />
         </div>
         <div class="incorrect__input">
           <span
@@ -47,7 +47,7 @@
         </div>
 
         <div class="input__container">
-          <!-- <span (click)="signUpEmail.focus()" class="material__symbols__outlined">mail</span>
+          <span (click)="signUpEmail.focus()" class="material__symbols__outlined">mail</span>
           <input
             (focus)="mailFocus()"
             [attr.disabled]="isSubmitted ? true : null"
@@ -56,7 +56,7 @@
             id="signUpEmail"
             formControlName="signUpEmail"
             placeholder="Email"
-            type="email" /> -->
+            type="email" />
         </div>
         <div class="incorrect__input">
           <span
@@ -71,14 +71,14 @@
         </div>
 
         <div class="input__container">
-          <!-- <span (click)="signUpPassword.focus()" class="material__symbols__outlined">lock</span> -->
-          <!-- <input
+          <span (click)="signUpPassword.focus()" class="material__symbols__outlined">lock</span>
+          <input
             [attr.disabled]="isSubmitted ? true : null"
             #signUpPassword
             id="signUpPassword"
             formControlName="signUpPassword"
             placeholder="Password"
-            type="password" /> -->
+            type="password" />
         </div>
         <div class="incorrect__input">
           <span
@@ -91,9 +91,9 @@
           </span>
         </div>
 
-        <!-- <div class="signup__btns">
+        <div class="signup__btns">
           <button [disabled]="signUpForm.invalid" type="submit" class="btn__primary">Sign up</button>
-        </div> -->
+        </div>
       </form>
     </div>
   </main>
