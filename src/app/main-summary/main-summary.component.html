@@ -73,7 +73,7 @@
 
         <div class="main__right">
             <span *ngIf="currenUserIsGuest">{{ getGreeting() }}</span>
-            <span *ngIf="!currenUserIsGuest">Good morning,<br>
+            <span *ngIf="!currenUserIsGuest">{{ getGreeting() }},<br>
                 <b class="name">{{currentUserData.userName}}</b></span>
         </div>
     </main>
