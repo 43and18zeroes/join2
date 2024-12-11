@@ -162,6 +162,10 @@
                     margin-top: 8px;
                     display: flex;
                     justify-content: center;
+
+                    button:disabled {
+                        background-color: #7F8A99;
+                    }
                 }
             }
         }
