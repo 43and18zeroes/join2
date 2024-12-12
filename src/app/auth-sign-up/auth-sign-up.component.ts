@@ -1,11 +1,12 @@
 import { USERCOLORS } from '../usercolors.constant';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { User } from 'src/models/user.class';
+import { User } from 'src/models/user_drf.class';
 // import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { emailValidator, signUpUserNameValidator } from '../shared/validators/custom-validators';
+
 
 @Component({
   selector: 'auth-app-sign-up',
@@ -43,11 +44,22 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    this.signUp();
+    // this.signUp();
+    this.getUserData()
+  }
+
+  getUserData() {
+    this.user.first_name = this.user.user_name.split(' ')[0];
+    this.user.last_name = this.user.user_name.split(' ')[1];
+    this.user.initials = this.user.first_name.charAt(0).toUpperCase() + this.user.last_name.charAt(0).toUpperCase();
+    this.user.user_color = this.generateColorFromInitials(this.user.initials);
+    this.user.phone_number = '';
+    this.user.type = "user_from_signup";
+    console.log('this.user', this.user);
   }
 
   signUp() {
-    const userData = this.getUserData();
+    // const userData = this.getUserData();
     // this.authService.signUp(userData).then((res: any) => {
     //   this.populateUser(userData);
     //   this.processSuccessfulSignup();
@@ -56,16 +68,16 @@ export class AuthSignUpComponent implements OnInit {
     // });
   }
 
-  populateUser(userData) {
-    this.user.userName = userData.userName;
-    this.user.userFirstName = userData.userFirstName;
-    this.user.userSurName = userData.userSurName;
-    this.user.userInitials = userData.userInitials;
-    this.user.userEmailAddress = userData.email;
-    this.user.userColor = this.generateColorFromInitials(this.user.userInitials);
-    this.user.userPhoneNumber = "";
-    this.user.type = "userSignUp";
-  }
+  // populateUser(userData) {
+  //   this.user.userName = userData.userName;
+  //   this.user.userFirstName = userData.userFirstName;
+  //   this.user.userSurName = userData.userSurName;
+  //   this.user.userInitials = userData.userInitials;
+  //   this.user.userEmailAddress = userData.email;
+  //   this.user.userColor = this.generateColorFromInitials(this.user.userInitials);
+  //   this.user.userPhoneNumber = "";
+  //   this.user.type = "userSignUp";
+  // }
 
   processSuccessfulSignup() {
     this.isSubmitted = true;
@@ -102,9 +114,9 @@ export class AuthSignUpComponent implements OnInit {
     };
   }
   
-  getUserData() {
-    return this.createUserDataObject();
-  }
+  // getUserData() {
+  //   return this.createUserDataObject();
+  // }
 
   private generateColorFromInitials(initials: string): string {
     const colorIndex = this.calculateColorIndex(initials);
@@ -125,7 +137,7 @@ export class AuthSignUpComponent implements OnInit {
 
   prepareUserData() {
     const userData = this.user.toJSON();
-    delete userData.firebaseId;
+    // delete userData.firebaseId;
     return userData;
   }
   

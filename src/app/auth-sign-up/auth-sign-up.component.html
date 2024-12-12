@@ -27,7 +27,7 @@
           <span (click)="signUpUserName.focus()" class="material__symbols__outlined">person</span>
           <input
             [attr.disabled]="isSubmitted ? true : null"
-            [(ngModel)]="user.userName"
+            [(ngModel)]="user.user_name"
             #signUpUserName
             id="signUpUserName"
             formControlName="signUpUserName"
@@ -51,7 +51,7 @@
           <input
             (focus)="mailFocus()"
             [attr.disabled]="isSubmitted ? true : null"
-            [(ngModel)]="user.userEmailAddress"
+            [(ngModel)]="user.email"
             #signUpEmail
             id="signUpEmail"
             formControlName="signUpEmail"
