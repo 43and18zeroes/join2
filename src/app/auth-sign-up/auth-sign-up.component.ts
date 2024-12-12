@@ -198,8 +198,3 @@ export class AuthSignUpComponent implements OnInit {
 //       console.error("Error adding or updating document: ", error);
 //     });
 // }
-
-// createNewUserData() {
-//   const userData = this.prepareUserData();
-//   // this.addUserToFirestore(userData);
-// }
