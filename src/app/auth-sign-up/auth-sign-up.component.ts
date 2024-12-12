@@ -1,12 +1,10 @@
-import { USERCOLORS } from "../usercolors.constant";
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { USERCOLORS } from "../usercolors.constant";
 import { User } from "src/models/user_drf.class";
 import { BackendService } from "../services/drf/backend-service.service";
 import { BackendUserDataService } from "../services/drf/backend-user-data.service";
-// import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Router } from "@angular/router";
-// import { AuthService } from "../services/auth.service";
 import { emailValidator, signUpUserNameValidator } from "../shared/validators/custom-validators";
 
 @Component({
@@ -15,50 +13,50 @@ import { emailValidator, signUpUserNameValidator } from "../shared/validators/cu
   styleUrls: ["./auth-sign-up.component.scss"],
 })
 export class AuthSignUpComponent implements OnInit {
-  user = new User();
+  @ViewChild("authSuccess", { static: false }) authSuccess: ElementRef;
 
-  signUpForm = new FormGroup({
-    signUpUserName: new FormControl("", [Validators.required, signUpUserNameValidator]),
-    signUpEmail: new FormControl("", [Validators.required, emailValidator]),
-    signUpPassword: new FormControl("", [Validators.required, Validators.minLength(6)]),
-  });
-
+  signUpForm: FormGroup;
+  user: User = new User();
+  userColors: string[] = USERCOLORS;
   isSubmitted = false;
   emailAdressAlreadyExists = false;
 
-  private userColors: string[] = USERCOLORS;
-
-  @ViewChild("authSuccess", { static: false }) authSuccess: ElementRef;
-
   constructor(
-    // private firestore: AngularFirestore,
     private router: Router,
-    // private authService: AuthService,
-    // private fb: FormBuilder,
     private backendService: BackendService,
     private backendUserDataService: BackendUserDataService
-  ) {}
+  ) {
+    this.signUpForm = this.initializeForm();
+  }
 
   ngOnInit(): void {}
 
-  mailFocus() {
+  private initializeForm(): FormGroup {
+    return new FormGroup({
+      signUpUserName: new FormControl("", [Validators.required, signUpUserNameValidator]),
+      signUpEmail: new FormControl("", [Validators.required, emailValidator]),
+      signUpPassword: new FormControl("", [Validators.required, Validators.minLength(6)]),
+    });
+  }
+
+  mailFocus(): void {
     this.emailAdressAlreadyExists = false;
   }
 
-  onSubmit() {
-    this.getUserData();
-    this.sendUserToBackend();
+  onSubmit(): void {
+    if (this.signUpForm.valid) {
+      this.populateUserData();
+      this.createUserInBackend();
+    } else {
+      console.warn("Form is invalid.");
+    }
   }
 
-  sendUserToBackend() {
+  private createUserInBackend(): void {
     this.backendService.createItem(this.user, "users").subscribe(
       (response) => {
         console.log("User created successfully:", response);
-        this.backendUserDataService.lastUserAdded = response;
-        this.backendUserDataService.lastUserAddedId = response.id.toString();
-        this.backendUserDataService.userAddedSuccessfully = true;
-        this.authSuccessAnimation();
-        this.navigateHome();
+        this.handleSuccessfulUserCreation(response);
       },
       (error) => {
         console.error("Error creating user:", error);
@@ -66,13 +64,33 @@ export class AuthSignUpComponent implements OnInit {
     );
   }
 
-  getUserData() {
-    this.user.first_name = this.user.user_name.split(" ")[0];
-    this.user.last_name = this.user.user_name.split(" ")[1];
-    this.user.initials = this.user.first_name.charAt(0).toUpperCase() + this.user.last_name.charAt(0).toUpperCase();
+  private handleSuccessfulUserCreation(response: any): void {
+    this.backendUserDataService.lastUserAdded = response;
+    this.backendUserDataService.lastUserAddedId = response.id.toString();
+    this.backendUserDataService.userAddedSuccessfully = true;
+    this.triggerAuthSuccessAnimation();
+    this.redirectToHome();
+  }
+
+  private populateUserData(): void {
+    const [firstName, lastName] = this.extractNameParts(this.user.user_name);
+    this.user.first_name = firstName;
+    this.user.last_name = lastName;
+    this.user.initials = this.generateInitials(firstName, lastName);
     this.user.user_color = this.generateColorFromInitials(this.user.initials);
     this.user.phone_number = null;
     this.user.type = "user_from_signup";
+  }
+
+  private extractNameParts(userName: string): [string, string] {
+    const parts = userName.split(" ");
+    return [parts[0] || "", parts[1] || ""];
+  }
+
+  private generateInitials(firstName: string, lastName: string): string {
+    return (
+      firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase()
+    );
   }
 
   private generateColorFromInitials(initials: string): string {
@@ -81,24 +99,27 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   private calculateColorIndex(initials: string): number {
-    const charCodes = initials.split("").map((char) => char.charCodeAt(0));
-    const sum = charCodes.reduce((acc, curr) => acc + curr, 0);
-    return sum % this.userColors.length;
+    const charCodesSum = initials
+      .split("")
+      .reduce((sum, char) => sum + char.charCodeAt(0), 0);
+    return charCodesSum % this.userColors.length;
   }
 
-  navigateHome() {
+  private redirectToHome(): void {
     setTimeout(() => {
       this.router.navigate(["/"]);
     }, 1600);
   }
 
-  authSuccessAnimation() {
-    this.authSuccess.nativeElement.classList.add("is__active");
+  private triggerAuthSuccessAnimation(): void {
+    const authSuccessElement = this.authSuccess.nativeElement;
+    authSuccessElement.classList.add("is__active");
     setTimeout(() => {
-      this.authSuccess.nativeElement.style.display = "none";
+      authSuccessElement.style.display = "none";
     }, 1450);
   }
 }
+
 
 // signUp() {
 // const userData = this.getUserData();

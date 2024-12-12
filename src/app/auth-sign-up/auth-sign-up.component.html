@@ -38,9 +38,9 @@
         <div class="incorrect__input">
           <span
             *ngIf="
-              signUpForm.controls.signUpUserName.invalid &&
-              signUpForm.controls.signUpUserName.dirty &&
-              signUpForm.controls.signUpUserName.value
+              signUpForm.controls['signUpUserName'].invalid &&
+              signUpForm.controls['signUpUserName'].dirty &&
+              signUpForm.controls['signUpUserName'].value
             ">
             Separate first and last name with a space.
           </span>
@@ -61,9 +61,9 @@
         <div class="incorrect__input">
           <span
             *ngIf="
-              signUpForm.controls.signUpEmail.invalid &&
-              signUpForm.controls.signUpEmail.dirty &&
-              signUpForm.controls.signUpEmail.value
+              signUpForm.controls['signUpEmail'].invalid &&
+              signUpForm.controls['signUpEmail'].dirty &&
+              signUpForm.controls['signUpEmail'].value
             ">
             Invalid email address.
           </span>
@@ -83,9 +83,9 @@
         <div class="incorrect__input">
           <span
             *ngIf="
-              signUpForm.controls.signUpPassword.invalid &&
-              signUpForm.controls.signUpPassword.dirty &&
-              signUpForm.controls.signUpPassword.value
+              signUpForm.controls['signUpPassword'].invalid &&
+              signUpForm.controls['signUpPassword'].dirty &&
+              signUpForm.controls['signUpPassword'].value
             ">
             Password must be at least 6 characters long.
           </span>
