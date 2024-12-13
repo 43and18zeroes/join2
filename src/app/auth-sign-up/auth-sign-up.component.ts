@@ -52,8 +52,20 @@ export class AuthSignUpComponent implements OnInit {
     }
   }
 
+  // private createUserInBackend(): void {
+  //   this.backendService.createItem(this.user, "users").subscribe(
+  //     (response) => {
+  //       console.log("User created successfully:", response);
+  //       this.handleSuccessfulUserCreation(response);
+  //     },
+  //     (error) => {
+  //       console.error("Error creating user:", error);
+  //     }
+  //   );
+  // }
+
   private createUserInBackend(): void {
-    this.backendService.createItem(this.user, "users").subscribe(
+    this.backendService.createItem(this.user, "auth/registration").subscribe(
       (response) => {
         console.log("User created successfully:", response);
         this.handleSuccessfulUserCreation(response);

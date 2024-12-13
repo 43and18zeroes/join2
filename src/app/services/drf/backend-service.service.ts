@@ -8,7 +8,8 @@ import { tap, shareReplay } from 'rxjs/operators';
 })
 export class BackendService {
 
-  private apiUrl = 'http://127.0.0.1:8000/kanban/';
+  // private apiUrl = 'http://127.0.0.1:8000/kanban/';
+  private apiUrl = 'http://127.0.0.1:8000/';
   private tasksCache$: Observable<any>;
   private usersCache$: Observable<any>;
   private subtasksCache$: Observable<any>;
