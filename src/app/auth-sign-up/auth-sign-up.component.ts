@@ -77,9 +77,10 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   private handleSuccessfulUserCreation(response: any): void {
-    this.backendUserDataService.lastUserAdded = response;
-    this.backendUserDataService.lastUserAddedId = response.id.toString();
-    this.backendUserDataService.userAddedSuccessfully = true;
+
+    // this.backendUserDataService.lastUserAdded = response;
+    // this.backendUserDataService.lastUserAddedId = response.id.toString();
+    // this.backendUserDataService.userAddedSuccessfully = true;
     this.triggerAuthSuccessAnimation();
     this.redirectToHome();
   }
@@ -90,8 +91,9 @@ export class AuthSignUpComponent implements OnInit {
     this.user.last_name = lastName;
     this.user.initials = this.generateInitials(firstName, lastName);
     this.user.user_color = this.generateColorFromInitials(this.user.initials);
-    this.user.phone_number = null;
+    this.user.phone_number = "";
     this.user.type = "user_from_signup";
+    this.user.password = this.signUpForm.value.signUpPassword;
   }
 
   private extractNameParts(userName: string): [string, string] {

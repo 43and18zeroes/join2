@@ -7,6 +7,7 @@ export class User {
     public user_color: string;
     public phone_number: string;
     public type: string;
+    public password: string;
     // public firebaseId: string;
 
     constructor() {
@@ -18,6 +19,7 @@ export class User {
         this.user_color = this.user_color;
         this.phone_number = this.phone_number;
         this.type = this.type;
+        this.password = this.password;
         // this.firebaseId = this.firebaseId;
     }
 
@@ -31,6 +33,7 @@ export class User {
             user_color: this.user_color,
             phone_number: this.phone_number,
             type: this.type,
+            password: this.password,
             // firebaseId: this.firebaseId
         }
     }
