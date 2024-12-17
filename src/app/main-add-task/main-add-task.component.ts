@@ -24,7 +24,7 @@ export class MainAddTaskComponent {
   @ViewChildren("subtaskEditInput") subtaskEditInputs!: QueryList<ElementRef>;
 
   allUsersData;
-  currentUserData;
+  // currentUserData;
   addTaskForm: FormGroup;
   showAssignedDropdown: boolean = false;
   selectedUsers: any[] = [];
@@ -78,7 +78,7 @@ export class MainAddTaskComponent {
 
   ngOnInit(): void {
     this.getUsersData();
-    this.currentUserData = this.userService.currentUserData;
+    // this.currentUserData = this.userService.currentUserData;
     this.initListeners();
   }
 
@@ -295,7 +295,7 @@ export class MainAddTaskComponent {
 
   clearForm() {
     this.resetFormModel();
-    this.currentUserData.selected = false;
+    // this.currentUserData.selected = false;
     this.allUsersData.forEach((user) => (user.selected = false));
     this.selectedUsers = [];
     this.selectedPriority = "undefined";

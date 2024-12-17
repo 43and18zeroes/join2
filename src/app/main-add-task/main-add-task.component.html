@@ -48,11 +48,16 @@
                 </div> -->
                 <ng-container *ngFor="let user of allUsersData">
                   <div
-                    *ngIf="user.user_mail !== currentUserData.userEmailAddress"
                     class="option__container"
                     (click)="assignSelectOption(user)"
                     (mousedown)="assignPreventFocusLoss($event)"
                     [class.selected]="user.selected">
+                  <!-- <div
+                    *ngIf="user.user_mail !== currentUserData.userEmailAddress"
+                    class="option__container"
+                    (click)="assignSelectOption(user)"
+                    (mousedown)="assignPreventFocusLoss($event)"
+                    [class.selected]="user.selected"> -->
                     <div class="option__left">
                       <span class="initials" [ngStyle]="{ 'background-color': user.user_color }">
                         {{ user.initials }}
