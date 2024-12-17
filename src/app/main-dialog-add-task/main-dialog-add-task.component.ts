@@ -27,7 +27,7 @@ export class MainDialogAddTaskComponent {
   @ViewChild('submitBtn') submitBtn: ElementRef;
 
   allUsersData;
-  currentUserData;
+  // currentUserData;
   addTaskForm: FormGroup;
   showAssignedDropdown: boolean = false;
   selectedUsers: any[] = [];
@@ -107,7 +107,7 @@ export class MainDialogAddTaskComponent {
     // this.currentUserData = this.userService.currentUserData;
     // this.initListeners();
     this.getUsersData();
-    this.currentUserData = this.userService.currentUserData;
+    // this.currentUserData = this.userService.currentUserData;
     this.initListeners();
   }
 
@@ -329,7 +329,7 @@ export class MainDialogAddTaskComponent {
 
   clearForm() {
     this.resetFormModel();
-    this.currentUserData.selected = false;
+    // this.currentUserData.selected = false;
     this.allUsersData.forEach(user => user.selected = false);
     this.selectedUsers = [];
     this.selectedPriority = 'undefined';
