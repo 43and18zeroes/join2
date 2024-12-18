@@ -52,7 +52,7 @@ export class AuthLogInComponent implements OnInit {
       password: this.logInForm.value.logInPassword,
     };
 
-    this.onSignIn(userData);
+    this.signIn(userData);
 
     // const userData = Object.assign(this.logInForm, { email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword });
 
@@ -72,7 +72,7 @@ export class AuthLogInComponent implements OnInit {
       email: "gast@gast.de",
       password: "123456",
     };
-    this.onSignIn(userData);
+    this.signIn(userData);
     // this.authService.signIn(userData).then((res: any) => {
     //   this.identifyCurrentUserData();
     //   this.isSubmitted = true;
@@ -83,7 +83,7 @@ export class AuthLogInComponent implements OnInit {
     // });
   }
 
-  onSignIn(userData) {
+  signIn(userData) {
     this.authService.signIn(userData).subscribe({
       next: (res: any) => {
         this.isSubmitted = true;
