@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { emailValidator } from "../shared/validators/custom-validators";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { UserService } from "../services/user-data.service";
+// import { UserService } from "../services/user-data.service";
 import { AuthService } from "../services/drf/auth.service";
 
 @Component({
@@ -26,12 +26,12 @@ export class AuthLogInComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-    private router: Router,
-    private userService: UserService
+    private router: Router
+    // private userService: UserService
   ) {}
 
   ngOnInit(): void {
-    this.userService.setAllDataToVarAndLocal();
+    // this.userService.setAllDataToVarAndLocal();
     if (sessionStorage.getItem("appLoaded")) {
       this.showLoadingScreen = false;
     } else {
@@ -102,7 +102,7 @@ export class AuthLogInComponent implements OnInit {
 
   async identifyCurrentUserData() {
     // await this.userService.getCurrentUserAuth();
-    this.userService.filterCurrentUserData();
+    // this.userService.filterCurrentUserData();
     // this.userService.setCurrentUserDataToLocal();
   }
 }
