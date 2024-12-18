@@ -6,6 +6,7 @@ import { User } from "src/models/user_drf.class";
 import { BackendService } from "../services/drf/backend-service.service";
 import { BackendUserDataService } from "../services/drf/backend-user-data.service";
 import { emailValidator, signUpUserNameValidator } from "../shared/validators/custom-validators";
+import { SignupService } from "../services/drf/signup.service";
 
 @Component({
   selector: "auth-app-sign-up",
@@ -24,7 +25,8 @@ export class AuthSignUpComponent implements OnInit {
   constructor(
     private router: Router,
     private backendService: BackendService,
-    private backendUserDataService: BackendUserDataService
+    private backendUserDataService: BackendUserDataService,
+    private signupService: SignupService
   ) {
     this.signUpForm = this.initializeForm();
   }
@@ -65,7 +67,7 @@ export class AuthSignUpComponent implements OnInit {
   // }
 
   private createUserInBackend(): void {
-    this.backendService.createItem(this.user, "auth/registration").subscribe(
+    this.signupService.createItem(this.user, "auth/registration").subscribe(
       (response) => {
         console.log("User created successfully:", response);
         this.handleSuccessfulUserCreation(response);

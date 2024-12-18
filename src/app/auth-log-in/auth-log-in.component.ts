@@ -52,20 +52,7 @@ export class AuthLogInComponent implements OnInit {
       password: this.logInForm.value.logInPassword,
     };
 
-    this.authService.signIn(userData).subscribe({
-      next: (res: any) => {
-        this.isSubmitted = true;
-        this.logInFailed = false;
-
-        // Speichere Token und navigiere zur Hauptseite
-        localStorage.setItem("authToken", res.token);
-        this.router.navigateByUrl("/main");
-      },
-      error: (err) => {
-        console.error("Login-Fehler:", err);
-        this.logInFailed = true;
-      },
-    });
+    this.onSignIn(userData);
 
     // const userData = Object.assign(this.logInForm, { email: this.logInForm.value.logInEmail, password: this.logInForm.value.logInPassword });
 
@@ -80,7 +67,12 @@ export class AuthLogInComponent implements OnInit {
   }
 
   logInGuest() {
-    const userData = Object.assign(this.logInForm, { email: "gast@gast.de", password: "123456" });
+    // const userData = Object.assign(this.logInForm, { email: "gast@gast.de", password: "123456" });
+    const userData = {
+      email: "gast@gast.de",
+      password: "123456",
+    };
+    this.onSignIn(userData);
     // this.authService.signIn(userData).then((res: any) => {
     //   this.identifyCurrentUserData();
     //   this.isSubmitted = true;
@@ -89,6 +81,23 @@ export class AuthLogInComponent implements OnInit {
     // }).catch((error: any) => {
     //   this.logInFailed = true;
     // });
+  }
+
+  onSignIn(userData) {
+    this.authService.signIn(userData).subscribe({
+      next: (res: any) => {
+        this.isSubmitted = true;
+        this.logInFailed = false;
+
+        // Speichere Token und navigiere zur Hauptseite
+        localStorage.setItem("authToken", res.token);
+        this.router.navigateByUrl("/main");
+      },
+      error: (err) => {
+        console.error("Login-Fehler:", err);
+        this.logInFailed = true;
+      },
+    });
   }
 
   async identifyCurrentUserData() {
