@@ -40,7 +40,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadUserData();
+    // this.loadUserData();
     // this.userService.getUsersDataMain();
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
