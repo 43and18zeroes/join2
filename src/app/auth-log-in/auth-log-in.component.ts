@@ -69,7 +69,7 @@ export class AuthLogInComponent implements OnInit {
   logInGuest() {
     // const userData = Object.assign(this.logInForm, { email: "gast@gast.de", password: "123456" });
     const userData = {
-      email: "gast@gast.de",
+      username: "gast@gast.de",
       password: "123456",
     };
     this.signIn(userData);
