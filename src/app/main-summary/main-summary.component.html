@@ -1,7 +1,7 @@
 <div class="greeting__screen__mobile" id="greetingScreenMobile" *ngIf="showGreetingScreenMobile"
     style="position:absolute;width:100%;height:calc(100% - 159px);background-color:#F6F7F8;">
-    <span *ngIf="currenUserIsGuest" class="greeting">Good morning!</span>
-    <span *ngIf="!currenUserIsGuest" class="greeting">Good morning,<br>
+    <span *ngIf="currenUserIsGuest" class="greeting">{{ getGreeting() }}</span>
+    <span *ngIf="!currenUserIsGuest" class="greeting">{{ getGreeting() }}<br>
         <b class="name">{{currentUserData.userName}}</b></span>
 </div>
 
