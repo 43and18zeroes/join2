@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { emailValidator } from '../shared/validators/custom-validators';
-import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-auth-password-mail',
@@ -18,7 +17,6 @@ export class AuthPasswordMailComponent implements OnInit {
   @ViewChild('authSuccess', { static: false }) authSuccess: ElementRef;
 
   constructor(
-    private authService: AuthService,
     private router: Router
   ) { }
 
