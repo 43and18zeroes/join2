@@ -7,8 +7,12 @@ export const authGuard: CanActivateFn = (
   state: RouterStateSnapshot
 ) => {
   const router: Router = inject(Router);
+  const token = localStorage.getItem("authToken");
+
+  console.log('token', token);
+
   const protectedRoutes: string[] = ['/main'];
-  return protectedRoutes.includes(state.url) && !session
+  return protectedRoutes.includes(state.url) && token === 'undefined'
   ? router.navigate(['/'])
   : true;
 };
