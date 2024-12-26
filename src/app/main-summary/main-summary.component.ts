@@ -3,6 +3,7 @@ import { MainComponent } from '../main/main.component';
 import { UserService } from '../services/user-data.service';
 import { TaskDataService } from '../services/task-data.service';
 import { BackendService } from '../services/drf/backend-service.service';
+import { BackendUserDataService } from '../services/drf/backend-user-data.service';
 
 @Component({
   selector: 'app-main-summary',
@@ -11,6 +12,7 @@ import { BackendService } from '../services/drf/backend-service.service';
 })
 export class MainSummaryComponent implements OnInit {
 
+  userData: any = null;
   allUsersData;
   showGreetingScreenMobile = true;
   currenUserIsGuest = true;
@@ -26,6 +28,7 @@ export class MainSummaryComponent implements OnInit {
   items: any[] = [];
 
   constructor(
+    private backendUserDataService: BackendUserDataService,
     public mainComponent: MainComponent,
     public taskDataService: TaskDataService,
     private userService: UserService,
@@ -33,6 +36,11 @@ export class MainSummaryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.backendUserDataService.getUserDataObservable().subscribe((data) => {
+      this.userData = data;
+      console.log('this.userData:', this.userData);
+    });
+    
     this.backendService.getTasks().subscribe(data => {
       this.allTasksData = data;
       this.determineMainNumbers();

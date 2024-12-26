@@ -73,8 +73,8 @@
 
         <div class="main__right">
             <span *ngIf="currenUserIsGuest">{{ getGreeting() }}</span>
-            <span *ngIf="!currenUserIsGuest">{{ getGreeting() }},<br>
-                <b class="name">{{currentUserData.userName}}</b></span>
+            <span *ngIf="!currenUserIsGuest">{{ getGreeting() }},</span>
+                <b class="name">{{ userData.first_name }} {{ userData.last_name }}</b>
         </div>
     </main>
 </div>

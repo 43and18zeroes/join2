@@ -53,7 +53,7 @@ export class MainComponent implements OnInit {
     this.backendUserDataService.getUserData().subscribe({
       next: (data) => {
         this.userData = data;
-        // console.log('this.userData', this.userData);
+        this.backendUserDataService.setUserData(data); // Benutzerdaten im Service speichern
       },
       error: (err) => {
         console.error('Fehler beim Abrufen der User-Daten:', err);

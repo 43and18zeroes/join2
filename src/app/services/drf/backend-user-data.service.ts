@@ -1,15 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendUserDataService {
-
+  private userDataSubject = new BehaviorSubject<any>(null);
   userAddedSuccessfully = false;
   lastUserAdded: Object;
   lastUserAddedId: string;
+  private userData: any = null;
 
   constructor(private http: HttpClient) {}
 
@@ -20,6 +21,14 @@ export class BackendUserDataService {
     });
 
     return this.http.get(`http://127.0.0.1:8000/auth/current-user/`, { headers });
+  }
+
+  setUserData(data: any) {
+    this.userDataSubject.next(data); // Wert im Subject setzen
+  }
+
+  getUserDataObservable(): Observable<any> {
+    return this.userDataSubject.asObservable(); // Observable für Abonnements
   }
 
 }
