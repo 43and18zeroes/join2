@@ -46,6 +46,7 @@ export class MainComponent implements OnInit {
       this.showGreetingScreenMobile = false;
     }, 2500);
     this.implementAndroidHeight();
+    this.loadUserData();
   }
 
   loadUserData() {
