@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../services/user-data.service';
 import { MainCommunicationService } from '../services/main-communication.service';
 import { TaskDataService } from '../services/task-data.service';
-import { AuthService } from '../services/drf/auth.service';
+import { BackendUserDataService } from '../services/drf/backend-user-data.service';
 
 @Component({
   selector: 'app-main',
@@ -29,7 +29,7 @@ export class MainComponent implements OnInit {
   }
 
   constructor(
-    private authService: AuthService,
+    private backendUserDataService: BackendUserDataService,
     private userService: UserService,
     private mainCommService: MainCommunicationService,
     public taskDataService: TaskDataService
@@ -50,7 +50,7 @@ export class MainComponent implements OnInit {
   }
 
   loadUserData() {
-    this.authService.getUserData().subscribe({
+    this.backendUserDataService.getUserData().subscribe({
       next: (data) => {
         this.userData = data;
         // console.log('this.userData', this.userData);
