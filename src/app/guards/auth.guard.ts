@@ -9,7 +9,7 @@ export const authGuard: CanActivateFn = (
   const router: Router = inject(Router);
   const token = localStorage.getItem("authToken");
 
-  console.log('token', token);
+  // console.log('token', token);
 
   const protectedRoutes: string[] = ['/main'];
   return protectedRoutes.includes(state.url) && token === 'undefined'
