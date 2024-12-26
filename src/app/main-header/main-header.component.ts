@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../services/user-data.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MainHeaderProfileDialogComponent } from '../main-header-profile-dialog/main-header-profile-dialog.component';
+import { BackendUserDataService } from '../services/drf/backend-user-data.service';
 
 @Component({
   selector: 'app-main-header',
@@ -18,10 +19,12 @@ export class MainHeaderComponent implements OnInit {
     this.updateBreakpoint();
   }
 
+  userData: any = null;
   currentUserInitials;
   isSmallScreen = this.breakpointObserver.isMatched('(max-width: 992px)');
 
   constructor(
+    private backendUserDataService: BackendUserDataService,
     public breakpointObserver: BreakpointObserver,
     public dialog: MatDialog,
     public mainComponent: MainComponent,
@@ -29,7 +32,12 @@ export class MainHeaderComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-    // this.currentUserInitials = this.userService.currentUserData.userInitials;
+    this.backendUserDataService.getUserDataObservable().subscribe((data) => {
+      this.userData = data;
+      // if (this.userData) {
+      //   console.log('this.userData:', this.userData);
+      // }
+    });
   }
 
   displayHelp() {

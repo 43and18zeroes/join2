@@ -1,8 +1,8 @@
 <h1>Kanban Project Management Tool</h1>
-<img class="no__select" src="assets/img/auth/intro-j.webp" alt="">
+<img class="no__select" src="assets/img/auth/intro-j.webp" alt="" />
 <div class="header__right no__select">
-    <span (click)="displayHelp()" class="material__symbols__outlined help">
-        help
-    </span>
-    <div (click)="openProfileDialog()" class="initial no__select">{{currentUserInitials}}</div>
+  <span (click)="displayHelp()" class="material__symbols__outlined help">help</span>
+  <div (click)="openProfileDialog()" class="initial no__select">
+    <span *ngIf="userData">{{ userData.initials }}</span>
+  </div>
 </div>
