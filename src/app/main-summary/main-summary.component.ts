@@ -36,18 +36,7 @@ export class MainSummaryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.backendUserDataService.getUserDataObservable().subscribe((data) => {
-      this.userData = data;
-      console.log('this.userData:', this.userData);
-    });
-    
-    this.backendService.getTasks().subscribe(data => {
-      this.allTasksData = data;
-      this.determineMainNumbers();
-    });
-    this.backendService.getUsers().subscribe(data => {
-      this.allUsersData = data;
-    });
+    this.getData();
     this.showGreetingScreenMobile = this.mainComponent.showGreetingScreenMobile;
     this.currentUserData = this.userService.currentUserData;
     // if (this.currentUserData.userName !== "Gast") {
@@ -56,6 +45,22 @@ export class MainSummaryComponent implements OnInit {
 
     // this.allTasksData = this.taskDataService.allTasksData;
     
+  }
+
+  getData() {
+    this.backendUserDataService.getUserDataObservable().subscribe((data) => {
+      this.userData = data;
+      // if (this.userData) {
+      //   console.log('this.userData:', this.userData);
+      // }
+    });
+    this.backendService.getTasks().subscribe(data => {
+      this.allTasksData = data;
+      this.determineMainNumbers();
+    });
+    this.backendService.getUsers().subscribe(data => {
+      this.allUsersData = data;
+    });
   }
 
   determineMainNumbers() {
