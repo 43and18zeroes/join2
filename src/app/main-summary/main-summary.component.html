@@ -1,80 +1,96 @@
-<div class="greeting__screen__mobile" id="greetingScreenMobile" *ngIf="showGreetingScreenMobile"
-    style="position:absolute;width:100%;height:calc(100% - 159px);background-color:#F6F7F8;">
-    <span *ngIf="currenUserIsGuest" class="greeting">{{ getGreeting() }}</span>
-    <span *ngIf="!currenUserIsGuest" class="greeting">{{ getGreeting() }}<br>
-        <b class="name">{{currentUserData.userName}}</b></span>
+<div
+  class="greeting__screen__mobile"
+  id="greetingScreenMobile"
+  *ngIf="showGreetingScreenMobile && userData"
+  style="position: absolute; width: 100%; height: calc(100% - 159px); background-color: #f6f7f8">
+  <span class="greeting">
+    {{ getGreeting() }}
+    <br />
+    <b class="name">{{ userData.first_name }} {{ userData.last_name }}</b>
+  </span>
 </div>
 
 <div class="summary__container no__select">
-    <header class="header__desktop">
-        <h2>Join 360</h2>
-        <div class="hr__container">
-            <hr>
+  <header class="header__desktop">
+    <h2>Join 360</h2>
+    <div class="hr__container">
+      <hr />
+    </div>
+    <span>Key Metrics at a Glance</span>
+  </header>
+  <header class="header__mobile">
+    <h2>Join 360</h2>
+    <span>Key Metrics at a Glance</span>
+    <div></div>
+  </header>
+  <main>
+    <div class="main__left no__select">
+      <div class="row1">
+        <div (click)="displayBoard()" class="box">
+          <div class="material__symbols__outlined box__left">edit</div>
+          <div class="box__right">
+            <div class="number">{{ amountTodo }}</div>
+            <div class="text">To-do</div>
+          </div>
         </div>
-        <span>Key Metrics at a Glance</span>
-    </header>
-    <header class="header__mobile">
-        <h2>Join 360</h2>
-        <span>Key Metrics at a Glance</span>
-        <div></div>
-    </header>
-    <main>
-
-        <div class="main__left no__select">
-
-            <div class="row1">
-                <div (click)="displayBoard()" class="box">
-                    <div class="material__symbols__outlined box__left">edit</div>
-                    <div class="box__right">
-                        <div class="number">{{ amountTodo }}</div>
-                        <div class="text">To-do</div>
-                    </div>
-                </div>
-                <div (click)="displayBoard()" class="box">
-                    <div class="material__symbols__outlined box__left done">done</div>
-                    <div class="box__right">
-                        <div class="number">{{ amountDone }}</div>
-                        <div class="text">Done</div>
-                    </div>
-                </div>
-            </div>
-
-            <div (click)="displayBoard()" class="row2">
-                <div class="box urgent">
-                    <div class="material__symbols__outlined box__left">keyboard_double_arrow_up</div>
-                    <div class="box__right">
-                        <div class="number">{{ amountUrgent }}</div>
-                        <div class="text">Urgent</div>
-                    </div>
-                </div>
-                <div class="spacer">
-                </div>
-                <div class="box box__date">
-                    <div class="date">{{ upcomingDeadline }}</div>
-                    <div class="date__text">Upcoming Deadline</div>
-                </div>
-            </div>
-
-            <div class="row3">
-                <div (click)="displayBoard()" class="board row3__box">
-                    <div class="number">{{ amountTasks }}</div>
-                    <div class="text">Tasks in<br>Board</div>
-                </div>
-                <div (click)="displayBoard()" class="progress row3__box">
-                    <div class="number">{{ amountInProgress }}</div>
-                    <div class="text">Tasks in<br>Progress</div>
-                </div>
-                <div (click)="displayBoard()" class="feedback row3__box">
-                    <div class="number">{{ amountAwaitFeedback }}</div>
-                    <div class="text">Awaiting<br>Feedback</div>
-                </div>
-            </div>
+        <div (click)="displayBoard()" class="box">
+          <div class="material__symbols__outlined box__left done">done</div>
+          <div class="box__right">
+            <div class="number">{{ amountDone }}</div>
+            <div class="text">Done</div>
+          </div>
         </div>
+      </div>
 
-        <div class="main__right">
-            <span *ngIf="currenUserIsGuest">{{ getGreeting() }}</span>
-            <span *ngIf="!currenUserIsGuest">{{ getGreeting() }},</span>
-                <b class="name">{{ userData.first_name }} {{ userData.last_name }}</b>
+      <div (click)="displayBoard()" class="row2">
+        <div class="box urgent">
+          <div class="material__symbols__outlined box__left">keyboard_double_arrow_up</div>
+          <div class="box__right">
+            <div class="number">{{ amountUrgent }}</div>
+            <div class="text">Urgent</div>
+          </div>
         </div>
-    </main>
+        <div class="spacer"></div>
+        <div class="box box__date">
+          <div class="date">{{ upcomingDeadline }}</div>
+          <div class="date__text">Upcoming Deadline</div>
+        </div>
+      </div>
+
+      <div class="row3">
+        <div (click)="displayBoard()" class="board row3__box">
+          <div class="number">{{ amountTasks }}</div>
+          <div class="text">
+            Tasks in
+            <br />
+            Board
+          </div>
+        </div>
+        <div (click)="displayBoard()" class="progress row3__box">
+          <div class="number">{{ amountInProgress }}</div>
+          <div class="text">
+            Tasks in
+            <br />
+            Progress
+          </div>
+        </div>
+        <div (click)="displayBoard()" class="feedback row3__box">
+          <div class="number">{{ amountAwaitFeedback }}</div>
+          <div class="text">
+            Awaiting
+            <br />
+            Feedback
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main__right">
+      <span *ngIf="userData">
+        {{ getGreeting() }},
+        <br />
+        <b class="name">{{ userData.first_name }} {{ userData.last_name }}</b>
+      </span>
+    </div>
+  </main>
 </div>
