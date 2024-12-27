@@ -4,7 +4,7 @@ import { MainComponent } from '../main/main.component';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user-data.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { MainHeaderProfileDialogComponent } from '../main-header-profile-dialog/main-header-profile-dialog.component';
+import { MainHeaderProfileDialogComponent } from './main-header-profile-dialog/main-header-profile-dialog.component';
 import { BackendUserDataService } from '../services/drf/backend-user-data.service';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 // import { getAuth, signOut } from "firebase/auth";
 import { Router } from '@angular/router';
-import { MainCommunicationService } from '../services/main-communication.service';
+import { MainCommunicationService } from '../../services/main-communication.service';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
