@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,4 +16,18 @@ export class AuthService {
     return this.http.post<any>(this.apiUrl, userData);
   }
 
+  logOut(): Observable<any> {
+    // const authToken = localStorage.getItem("authToken");
+
+    // if (this.logoutUrl) {
+    //   // Backend-Logout
+    //   return this.http.post<any>(this.logoutUrl, {}, {
+    //     headers: { Authorization: `Bearer ${authToken}` }
+    //   });
+    // }
+
+    // Clientseitiger Logout
+    localStorage.removeItem("authToken");
+    return of({ success: true }); // Gibt ein Observable zurück
+  }
 }
