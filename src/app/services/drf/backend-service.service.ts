@@ -29,7 +29,7 @@ export class BackendService {
   // Methode zum Abrufen von Users
   getUsers(): Observable<any> {
     if (!this.usersCache$) {
-      this.usersCache$ = this.http.get(`${this.apiUrl}users/`).pipe(
+      this.usersCache$ = this.http.get(`http://127.0.0.1:8000/auth/profiles/`).pipe(
         shareReplay(1) // Zwischenspeichern der Daten
       );
     }
