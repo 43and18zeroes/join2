@@ -58,7 +58,7 @@ export class MainSummaryComponent implements OnInit {
       this.allTasksData = data;
       this.determineMainNumbers();
     });
-    this.backendService.getUsers().subscribe(data => {
+    this.backendUserDataService.getUsers().subscribe(data => {
       this.allUsersData = data;
     });
   }

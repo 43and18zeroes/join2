@@ -7,6 +7,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { UserService } from "../services/user-data.service";
 import { TaskDataService } from "../services/task-data.service";
 import { BackendService } from "../services/drf/backend-service.service";
+import { BackendUserDataService } from "../services/drf/backend-user-data.service";
 
 @Component({
   selector: "app-main-add-task",
@@ -53,6 +54,7 @@ export class MainAddTaskComponent {
     public dialog: MatDialog,
     private userService: UserService,
     private backendService: BackendService,
+    private backendUserDataService: BackendUserDataService,
     public taskDataService: TaskDataService
   ) {
     this.initializeTaskForm();
@@ -83,7 +85,7 @@ export class MainAddTaskComponent {
   }
 
   getUsersData() {
-    this.backendService.getUsers().subscribe((data) => {
+    this.backendUserDataService.getUsers().subscribe((data) => {
       this.allUsersData = data;
       this.sortUsersData();
     });

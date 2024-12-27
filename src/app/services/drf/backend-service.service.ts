@@ -11,7 +11,7 @@ export class BackendService {
   private apiUrl = 'http://127.0.0.1:8000/kanban/';
   // private apiUrl = 'http://127.0.0.1:8000/';
   private tasksCache$: Observable<any>;
-  private usersCache$: Observable<any>;
+  // private usersCache$: Observable<any>;
   private subtasksCache$: Observable<any>;
 
   constructor(private http: HttpClient) { }
@@ -27,14 +27,14 @@ export class BackendService {
   }
 
   // Methode zum Abrufen von Users
-  getUsers(): Observable<any> {
-    if (!this.usersCache$) {
-      this.usersCache$ = this.http.get(`http://127.0.0.1:8000/auth/profiles/`).pipe(
-        shareReplay(1) // Zwischenspeichern der Daten
-      );
-    }
-    return this.usersCache$;
-  }
+  // getUsers(): Observable<any> {
+  //   if (!this.usersCache$) {
+  //     this.usersCache$ = this.http.get(`${this.apiUrl}users/`).pipe(
+  //       shareReplay(1) // Zwischenspeichern der Daten
+  //     );
+  //   }
+  //   return this.usersCache$;
+  // }
 
   // Methode zum Abrufen von Subtasks
   getSubtasks(): Observable<any> {
@@ -84,9 +84,9 @@ export class BackendService {
       case 'tasks':
         this.tasksCache$ = null;
         break;
-      case 'users':
-        this.usersCache$ = null;
-        break;
+      // case 'users':
+      //   this.usersCache$ = null;
+      //   break;
       case 'subtasks':
         this.subtasksCache$ = null;
         break;

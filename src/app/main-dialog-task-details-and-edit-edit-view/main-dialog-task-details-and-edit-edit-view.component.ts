@@ -11,6 +11,7 @@ import { TaskDataService } from "../services/task-data.service";
 import { MainDialogAddTaskComponent } from "../main-dialog-add-task/main-dialog-add-task.component";
 import { MainDialogAddContactComponent } from "../main-dialog-add-contact/main-dialog-add-contact.component";
 import { BackendService } from "../services/drf/backend-service.service";
+import { BackendUserDataService } from "../services/drf/backend-user-data.service";
 
 @Component({
   selector: "app-main-dialog-task-details-and-edit-edit-view",
@@ -50,6 +51,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   private globalClickListener: Function;
 
   constructor(
+    private backendUserDataService: BackendUserDataService,
     private taskDetailsCommService: TaskDetailsCommService,
     public mainDialogTaskDetailsAndEditComponent: MainDialogTaskDetailsAndEditComponent,
     private fb: FormBuilder,
@@ -111,7 +113,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   getUsersData() {
-    this.backendService.getUsers().subscribe((data) => {
+    this.backendUserDataService.getUsers().subscribe((data) => {
       this.allUsersData = data;
       this.sortUsersData();
     });

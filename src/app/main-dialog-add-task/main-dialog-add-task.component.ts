@@ -9,6 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { BoardCommService } from '../services/board-comm.service';
 import { TaskDataService } from '../services/task-data.service';
 import { BackendService } from '../services/drf/backend-service.service';
+import { BackendUserDataService } from '../services/drf/backend-user-data.service';
 
 @Component({
   selector: 'app-main-dialog-add-task',
@@ -49,6 +50,7 @@ export class MainDialogAddTaskComponent {
 
   constructor(
     // private firestore: AngularFirestore,
+    private backendUserDataService: BackendUserDataService,
     private fb: FormBuilder,
     private mainCommService: MainCommunicationService,
     private renderer: Renderer2,
@@ -112,7 +114,7 @@ export class MainDialogAddTaskComponent {
   }
 
   getUsersData() {
-    this.backendService.getUsers().subscribe(data => {
+    this.backendUserDataService.getUsers().subscribe(data => {
       this.allUsersData = data;
       this.sortUsersData();
     });

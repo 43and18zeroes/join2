@@ -43,7 +43,7 @@ export class MainContactsComponent {
   }
 
   fetchUsers() {
-    this.backendService.getUsers().subscribe(data => {
+    this.backendUserDataService.getUsers().subscribe(data => {
       this.allUsersData = data;
       this.generateUsersLists();
     });
