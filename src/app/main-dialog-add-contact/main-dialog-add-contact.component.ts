@@ -51,9 +51,9 @@ export class MainDialogAddContactComponent {
     if (this.addUserForm.valid) {
       this.addUserFormSubmitted = true;
       this.getUserData();
-      this.backendUserDataService.createUser(this.user).subscribe(
+      this.backendUserDataService.createContact(this.user).subscribe(
         (response) => {
-          console.log('User created successfully:', response);
+          console.log('Contact created successfully:', response);
           this.backendUserDataService.lastUserAdded = response;
           this.backendUserDataService.lastUserAddedId = response.id.toString();
           this.backendUserDataService.userAddedSuccessfully = true;

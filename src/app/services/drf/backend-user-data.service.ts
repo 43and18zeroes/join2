@@ -43,12 +43,12 @@ export class BackendUserDataService {
     return this.usersCache$;
   }
 
-  createUser(item: any): Observable<any> {
+  createContact(item: any): Observable<any> {
     const headers = new HttpHeaders({ "Content-Type": "application/json" });
-    return this.http.post(`${this.apiUrl}create-user/`, item, { headers: headers }).pipe(
+    return this.http.post(`${this.apiUrl}create-contact/`, item, { headers: headers }).pipe(
       tap(() => {
         // Nach dem Erstellen eines neuen Items, das Cache leeren
-        this.clearCache("create-user/");
+        this.clearCache("create-contact/");
       })
     );
   }
