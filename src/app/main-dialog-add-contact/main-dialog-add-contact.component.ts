@@ -51,7 +51,7 @@ export class MainDialogAddContactComponent {
     if (this.addUserForm.valid) {
       this.addUserFormSubmitted = true;
       this.getUserData();
-      this.backendService.createItem(this.user, 'users').subscribe(
+      this.backendUserDataService.createUser(this.user).subscribe(
         (response) => {
           console.log('User created successfully:', response);
           this.backendUserDataService.lastUserAdded = response;
@@ -65,6 +65,26 @@ export class MainDialogAddContactComponent {
       );
     }
   }
+
+  // onSubmit() {
+  //   this.checkSingleInputs();
+  //   if (this.addUserForm.valid) {
+  //     this.addUserFormSubmitted = true;
+  //     this.getUserData();
+  //     this.backendService.createItem(this.user, 'users').subscribe(
+  //       (response) => {
+  //         console.log('User created successfully:', response);
+  //         this.backendUserDataService.lastUserAdded = response;
+  //         this.backendUserDataService.lastUserAddedId = response.id.toString();
+  //         this.backendUserDataService.userAddedSuccessfully = true;
+  //         this.addNewUserOutro();
+  //       },
+  //       (error) => {
+  //         console.error('Error creating user:', error);
+  //       }
+  //     );
+  //   }
+  // }
 
   checkSingleInputs() {
     if (!this.user.user_name) this.userNameValid = false;

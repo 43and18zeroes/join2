@@ -1,10 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+import { shareReplay, tap } from "rxjs/operators";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class BackendUserDataService {
   private userDataSubject = new BehaviorSubject<any>(null);
@@ -13,12 +13,12 @@ export class BackendUserDataService {
   lastUserAddedId: string;
   private userData: any = null;
   private usersCache$: Observable<any>;
-  private apiUrl = 'http://127.0.0.1:8000/auth/';
+  private apiUrl = "http://127.0.0.1:8000/auth/";
 
   constructor(private http: HttpClient) {}
 
   getUserData(): Observable<any> {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem("authToken");
     const headers = new HttpHeaders({
       Authorization: `Token ${token}`,
     });
@@ -43,13 +43,23 @@ export class BackendUserDataService {
     return this.usersCache$;
   }
 
-  // private clearCache(endpoint: string): void {
-  //   switch (endpoint) {
-  //     case 'users':
-  //       this.usersCache$ = null;
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }
+  createUser(item: any): Observable<any> {
+    const headers = new HttpHeaders({ "Content-Type": "application/json" });
+    return this.http.post(`${this.apiUrl}create-user/`, item, { headers: headers }).pipe(
+      tap(() => {
+        // Nach dem Erstellen eines neuen Items, das Cache leeren
+        this.clearCache("create-user/");
+      })
+    );
+  }
+
+  private clearCache(endpoint: string): void {
+    switch (endpoint) {
+      case "users":
+        this.usersCache$ = null;
+        break;
+      default:
+        break;
+    }
+  }
 }
