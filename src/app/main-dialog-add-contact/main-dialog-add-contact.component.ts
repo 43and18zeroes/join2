@@ -1,12 +1,10 @@
 import { USERCOLORS } from '../usercolors.constant';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user_drf.class';
 import { emailValidator, signUpUserNameValidator, phoneValidator } from '../shared/validators/custom-validators';
-import { UserService } from '../services/user-data.service';
 import { BackendService } from '../services/drf/backend-service.service';
 import { BackendUserDataService } from '../services/drf/backend-user-data.service';
 
@@ -37,8 +35,6 @@ export class MainDialogAddContactComponent {
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<MainDialogAddContactComponent>,
     private fb: FormBuilder,
-    // private firestore: AngularFirestore,
-    private userService: UserService,
     private backendService: BackendService,
     private backendUserDataService: BackendUserDataService
   ) { }
@@ -55,8 +51,6 @@ export class MainDialogAddContactComponent {
     if (this.addUserForm.valid) {
       this.addUserFormSubmitted = true;
       this.getUserData();
-      // this.userService.addUser(this.user);
-      // this.addNewUserOutro();
       this.backendService.createItem(this.user, 'users').subscribe(
         (response) => {
           console.log('User created successfully:', response);
