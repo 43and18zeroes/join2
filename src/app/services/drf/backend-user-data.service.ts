@@ -48,7 +48,7 @@ export class BackendUserDataService {
     return this.http.post(`${this.apiUrl}create-contact/`, item, { headers: headers }).pipe(
       tap(() => {
         // Nach dem Erstellen eines neuen Items, das Cache leeren
-        this.clearCache("create-contact/");
+        this.clearCache("users");
       })
     );
   }

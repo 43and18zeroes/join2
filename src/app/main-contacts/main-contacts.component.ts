@@ -89,6 +89,7 @@ export class MainContactsComponent {
       panelClass: 'popup__contact__add'
     });
     dialogRef.afterClosed().subscribe((result) => {
+      debugger
       if (this.backendUserDataService.userAddedSuccessfully) {
         this.fetchUsers();
         // this.highlightNewContact(this.userService.lastUserAdded.firebaseId);
