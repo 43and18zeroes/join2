@@ -24,7 +24,7 @@ import { MainContactsComponent } from './main-contacts/main-contacts.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MainDialogAddContactComponent } from './main-dialog-add-contact/main-dialog-add-contact.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MainDialogEditContactComponent } from './main-dialog-edit-contact/main-dialog-edit-contact.component';
+import { MainDialogEditContactComponent } from './main-contacts/main-dialog-edit-contact/main-dialog-edit-contact.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MainDialogAddTaskComponent } from './main-dialog-add-task/main-dialog-add-task.component';
 import { MainDialogTaskDetailsAndEditComponent } from './main-dialog-task-details-and-edit/main-dialog-task-details-and-edit.component';

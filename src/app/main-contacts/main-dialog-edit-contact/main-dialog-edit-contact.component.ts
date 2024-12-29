@@ -1,12 +1,12 @@
-import { USERCOLORS } from '../usercolors.constant';
+import { USERCOLORS } from '../../usercolors.constant';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 // import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/models/user_drf.class';
-import { signUpUserNameValidator } from '../shared/validators/custom-validators';
-import { UserService } from '../services/user-data.service';
-import { BackendService } from '../services/drf/backend-service.service';
+import { signUpUserNameValidator } from '../../shared/validators/custom-validators';
+import { UserService } from '../../services/user-data.service';
+import { BackendService } from '../../services/drf/backend-service.service';
 
 @Component({
   selector: 'app-main-dialog-edit-contact',
@@ -17,7 +17,9 @@ export class MainDialogEditContactComponent {
 
   @ViewChild('saveChangesSubmitBtn') saveChangesSubmitBtn: ElementRef;
 
-  user = new User(); 
+  user = new User();
+  userFullNameDisplay: string;
+  userEmailDisplay: string;
   userNameValid: boolean = true;
   userEmailAddressValid: boolean = true;
   userPhoneNumberValid: boolean = true;
@@ -38,6 +40,12 @@ export class MainDialogEditContactComponent {
     private userService: UserService,
     private backendService: BackendService,
   ) { }
+
+  ngOnInit() {
+    console.log('this.user', this.user);
+    this.userFullNameDisplay = `${this.user.first_name} ${this.user.last_name}`
+    this.userEmailDisplay = this.user.email;
+  }
 
   closeDialog() {
     this.dialog.closeAll();
@@ -75,11 +83,8 @@ export class MainDialogEditContactComponent {
     this.user.last_name = this.user.user_name.split(' ')[1];
     this.user.initials = this.user.first_name.charAt(0).toUpperCase() + this.user.last_name.charAt(0).toUpperCase();
     this.user.user_color = this.generateColorFromInitials(this.user.initials);
-    if(this.user.phone_number) {
-      this.user.phone_number = this.user.phone_number.replace(/\s/g, '');
-    } else {
-      this.user.phone_number = '';
-    }
+    if (this.user.phone_number) this.user.phone_number = this.user.phone_number.replace(/\s/g, '');
+    else this.user.phone_number = '';
   }
 
   private generateColorFromInitials(initials: string): string {

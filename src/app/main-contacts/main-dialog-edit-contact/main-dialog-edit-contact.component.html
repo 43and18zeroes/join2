@@ -31,13 +31,7 @@
       <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()" [ngClass]="{ form__disabled: editUserFormSubmitted }">
         <div class="input__container">
           <span (click)="userName.focus()" class="material__symbols__outlined">person</span>
-          <input
-            [(ngModel)]="user.user_name"
-            id="userName"
-            formControlName="userName"
-            placeholder="Name"
-            #userName
-            placeholder="Name" />
+          <input [(ngModel)]="userFullNameDisplay" id="userName" formControlName="userName" placeholder="Name" #userName />
         </div>
         <div class="incorrect__input">
           <span
@@ -49,11 +43,10 @@
         <div class="input__container">
           <span (click)="userEmailAddress.focus()" class="material__symbols__outlined">mail</span>
           <input
-            [(ngModel)]="user.email"
+            [(ngModel)]="userEmailDisplay"
             formControlName="userEmailAddress"
             placeholder="Email"
             #userEmailAddress
-            placeholder="Email"
             class="email__input" />
         </div>
         <div class="incorrect__input">
