@@ -89,7 +89,6 @@ export class MainContactsComponent {
       panelClass: 'popup__contact__add'
     });
     dialogRef.afterClosed().subscribe((result) => {
-      debugger
       if (this.backendUserDataService.userAddedSuccessfully) {
         this.fetchUsers();
         // this.highlightNewContact(this.userService.lastUserAdded.firebaseId);
@@ -104,17 +103,22 @@ export class MainContactsComponent {
   }
 
   highlightNewContact(newContactId: string) {
-    for (const key in this.groupedContacts) {
-      if (this.groupedContacts.hasOwnProperty(key)) {
-        const entries = this.groupedContacts[key];
-        let foundEntry = entries.find(entry => entry.id === newContactId);
-        if (foundEntry) {
-          this.selectedContactId = `${key}-${entries.indexOf(foundEntry)}`;
-          this.clickedContactData = foundEntry; // Optional, wenn Sie die Kontaktdetails auch anzeigen möchten
-          return;
+    setTimeout(() => {
+      for (const key in this.groupedContacts) {
+        if (this.groupedContacts.hasOwnProperty(key)) {
+          const entries = this.groupedContacts[key];
+          let foundEntry = entries.find(entry => entry.id == newContactId);
+          if (foundEntry) {
+            this.selectedContactId = `${key}-${entries.indexOf(foundEntry)}`;
+            this.clickedContactData = foundEntry; // Optional, wenn die Kontaktdetails angezeigt werden sollen
+            this.showContactDetails = true;
+            return;
+          }
         }
       }
-    }
+      console.error('New contact not found in groupedContacts.');
+    }, 100); // Verzögerung von 100ms
+  
     // for (const key in this.groupedContacts) {
     //   if (this.groupedContacts.hasOwnProperty(key)) {
     //     const elementArray = this.groupedContacts[key];
