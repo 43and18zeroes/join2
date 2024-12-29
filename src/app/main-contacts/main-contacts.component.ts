@@ -1,24 +1,24 @@
-import { Component, HostListener, ElementRef, Renderer2 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MainDialogAddContactComponent } from '../main-dialog-add-contact/main-dialog-add-contact.component';
-import { UserService } from '../services/user-data.service';
-import { MainDialogEditContactComponent } from './main-dialog-edit-contact/main-dialog-edit-contact.component';
-import { BackendService } from '../services/drf/backend-service.service';
-import { BackendUserDataService } from '../services/drf/backend-user-data.service';
+import { Component, HostListener, ElementRef, Renderer2 } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { MainDialogAddContactComponent } from "../main-dialog-add-contact/main-dialog-add-contact.component";
+import { UserService } from "../services/user-data.service";
+import { MainDialogEditContactComponent } from "./main-dialog-edit-contact/main-dialog-edit-contact.component";
+import { BackendService } from "../services/drf/backend-service.service";
+import { BackendUserDataService } from "../services/drf/backend-user-data.service";
 
 @Component({
-  selector: 'app-main-contacts',
-  templateUrl: './main-contacts.component.html',
-  styleUrls: ['./main-contacts.component.scss']
+  selector: "app-main-contacts",
+  templateUrl: "./main-contacts.component.html",
+  styleUrls: ["./main-contacts.component.scss"],
 })
 export class MainContactsComponent {
-
-  @HostListener('window:resize', ['$event'])
+  @HostListener("window:resize", ["$event"])
   onResize(event) {
     this.isLargeScreen = window.innerWidth > 1100;
   }
 
-  alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');;
+  userData: any = null;
+  alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
   groupedContacts;
   currentUserData;
   allUsersData;
@@ -26,7 +26,7 @@ export class MainContactsComponent {
   showContactDetails: boolean = false;
   clickedContactData;
   displayDeletionAnimation: boolean = false;
-  isLargeScreen: boolean = window.innerWidth > 1100;  
+  isLargeScreen: boolean = window.innerWidth > 1100;
 
   constructor(
     public dialog: MatDialog,
@@ -35,15 +35,19 @@ export class MainContactsComponent {
     private backendUserDataService: BackendUserDataService,
     private el: ElementRef,
     private renderer: Renderer2
-    ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.currentUserData = this.userService.currentUserData;
+    // this.currentUserData = this.userService.currentUserData;
+    this.backendUserDataService.getUserDataObservable().subscribe((data) => {
+      this.userData = data;
+      console.log("userData", this.userData);
+    });
     this.fetchUsers();
   }
 
   fetchUsers() {
-    this.backendUserDataService.getUsers().subscribe(data => {
+    this.backendUserDataService.getUsers().subscribe((data) => {
       this.allUsersData = data;
       this.generateUsersLists();
     });
@@ -51,12 +55,11 @@ export class MainContactsComponent {
 
   generateUsersLists() {
     this.groupedContacts = {};
-    this.allUsersData.forEach(index => {
-        const firstLetter = index.first_name.charAt(0).toUpperCase();
-        if (!this.groupedContacts[firstLetter]) {
-          this.groupedContacts[firstLetter] = [];
-        }
-        this.groupedContacts[firstLetter].push(index);
+    this.allUsersData.forEach((index) => {
+      if (index.id === this.userData.id) return;
+      const firstLetter = index.first_name.charAt(0).toUpperCase();
+      if (!this.groupedContacts[firstLetter]) this.groupedContacts[firstLetter] = [];
+      this.groupedContacts[firstLetter].push(index);
     });
     this.sortGroupedContacts(this.groupedContacts);
   }
@@ -81,7 +84,7 @@ export class MainContactsComponent {
 
   openAddUserDialog(): void {
     const dialogRef = this.dialog.open(MainDialogAddContactComponent, {
-      panelClass: 'popup__contact__add'
+      panelClass: "popup__contact__add",
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (this.backendUserDataService.userAddedSuccessfully) {
@@ -102,7 +105,7 @@ export class MainContactsComponent {
       for (const key in this.groupedContacts) {
         if (this.groupedContacts.hasOwnProperty(key)) {
           const entries = this.groupedContacts[key];
-          let foundEntry = entries.find(entry => entry.id == newContactId);
+          let foundEntry = entries.find((entry) => entry.id == newContactId);
           if (foundEntry) {
             this.selectedContactId = `${key}-${entries.indexOf(foundEntry)}`;
             this.clickedContactData = foundEntry; // Optional, wenn die Kontaktdetails angezeigt werden sollen
@@ -111,9 +114,9 @@ export class MainContactsComponent {
           }
         }
       }
-      console.error('New contact not found in groupedContacts.');
+      console.error("New contact not found in groupedContacts.");
     }, 100); // Verzögerung von 100ms
-  
+
     // for (const key in this.groupedContacts) {
     //   if (this.groupedContacts.hasOwnProperty(key)) {
     //     const elementArray = this.groupedContacts[key];
@@ -148,7 +151,7 @@ export class MainContactsComponent {
   editContact(clickedContactData) {
     const clickedContactDataID = clickedContactData.id;
     const dialogRef = this.dialog.open(MainDialogEditContactComponent, {
-      panelClass: 'popup__contact__add'
+      panelClass: "popup__contact__add",
     });
     dialogRef.componentInstance.user = { ...clickedContactData };
     dialogRef.afterClosed().subscribe((result) => {
@@ -174,15 +177,15 @@ export class MainContactsComponent {
 
   deleteContact(clickedContactData) {
     // this.userService.deleteContact(clickedContactData);
-    this.backendService.deleteItem(clickedContactData.id, 'users').subscribe(
+    this.backendService.deleteItem(clickedContactData.id, "users").subscribe(
       (response) => {
-        console.log('User deleted successfully:', response);
+        console.log("User deleted successfully:", response);
         this.fetchUsers();
       },
       (error) => {
-        console.error('Error deleting user:', error);
+        console.error("Error deleting user:", error);
       }
-    )
+    );
     // this.generateUsersLists();
     this.showContactDetails = false;
     this.selectedContactId = null;
@@ -215,11 +218,11 @@ export class MainContactsComponent {
   removeHighlight() {
     this.showContactDetails = false;
     this.selectedContactId = null;
-  
+
     // Entferne die Klasse active__class aus allen Elementen
-    const activeElements = this.el.nativeElement.querySelectorAll('.active__class');
-    activeElements.forEach(element => {
-      this.renderer.removeClass(element, 'active__class');
+    const activeElements = this.el.nativeElement.querySelectorAll(".active__class");
+    activeElements.forEach((element) => {
+      this.renderer.removeClass(element, "active__class");
     });
   }
 }

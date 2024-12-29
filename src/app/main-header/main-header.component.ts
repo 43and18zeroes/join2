@@ -34,9 +34,6 @@ export class MainHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.backendUserDataService.getUserDataObservable().subscribe((data) => {
       this.userData = data;
-      // if (this.userData) {
-      //   console.log('this.userData:', this.userData);
-      // }
     });
   }
 
