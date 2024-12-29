@@ -50,18 +50,13 @@ export class MainContactsComponent {
   }
 
   generateUsersLists() {
-    // this.userService.sortUsersData();
-    // this.allUsersData = this.userService.allUsersData;
     this.groupedContacts = {};
     this.allUsersData.forEach(index => {
-      console.log('this.currentUserData', this.currentUserData);
-      // if (index.email !== this.currentUserData.userEmailAddress) {
         const firstLetter = index.first_name.charAt(0).toUpperCase();
         if (!this.groupedContacts[firstLetter]) {
           this.groupedContacts[firstLetter] = [];
         }
         this.groupedContacts[firstLetter].push(index);
-      // }
     });
     this.sortGroupedContacts(this.groupedContacts);
   }
