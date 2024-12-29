@@ -5,6 +5,7 @@ import { FormBuilder, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 // import { UserService } from "../services/user-data.service";
 import { AuthService } from "../services/drf/auth.service";
+import { BackendUserDataService } from "../services/drf/backend-user-data.service";
 
 @Component({
   selector: "auth-app-log-in",
@@ -24,6 +25,7 @@ export class AuthLogInComponent implements OnInit {
   isSubmitted = false;
 
   constructor(
+    private backendUserDataService: BackendUserDataService,
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router
@@ -31,6 +33,7 @@ export class AuthLogInComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.backendUserDataService.clearUserCache();
     // this.userService.setAllDataToVarAndLocal();
     if (sessionStorage.getItem("appLoaded")) {
       this.showLoadingScreen = false;
