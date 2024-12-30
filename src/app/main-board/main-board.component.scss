@@ -441,6 +441,14 @@
         }
       }
 
+      .section__body:empty::before {
+        content: "Hier ablegen";
+        display: block;
+        text-align: center;
+        height: 50px;
+        background: #f0f0f0;
+      }
+
       .section__body {
         height: calc(100vh - 330px);
         overflow-y: auto;

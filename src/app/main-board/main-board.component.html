@@ -51,9 +51,6 @@
         (cdkDropListDropped)="drop($event)"
         class="section__body"
         #sectionBody>
-        <div *ngIf="!todo || todo.length === 0" class="no__task__message">
-          No tasks in this category
-        </div>
         <div
           (click)="openTaskDetails(item)"
           cdkDrag
