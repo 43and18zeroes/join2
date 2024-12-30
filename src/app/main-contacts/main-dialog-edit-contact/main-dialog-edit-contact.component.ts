@@ -7,6 +7,7 @@ import { User } from 'src/models/user_drf.class';
 import { signUpUserNameValidator } from '../../shared/validators/custom-validators';
 import { UserService } from '../../services/user-data.service';
 import { BackendService } from '../../services/drf/backend-service.service';
+import { BackendUserDataService } from 'src/app/services/drf/backend-user-data.service';
 
 @Component({
   selector: 'app-main-dialog-edit-contact',
@@ -39,6 +40,7 @@ export class MainDialogEditContactComponent {
     // private firestore: AngularFirestore,
     private userService: UserService,
     private backendService: BackendService,
+    private backendUserDataService: BackendUserDataService,
   ) { }
 
   ngOnInit() {
@@ -58,7 +60,7 @@ export class MainDialogEditContactComponent {
       this.getUserData();
       // this.userService.updateUser(this.user);
 
-      this.backendService.updateItem(this.user, 'users').subscribe(
+      this.backendUserDataService.updateUserData(this.user).subscribe(
         (response) => {
           console.log('User updated successfully:', response);
           // this.backendUserDataService.lastUserAdded = response;
@@ -79,8 +81,10 @@ export class MainDialogEditContactComponent {
   }
 
   getUserData() {
-    this.user.first_name = this.user.user_name.split(' ')[0];
-    this.user.last_name = this.user.user_name.split(' ')[1];
+    this.user.first_name = this.user.first_name;
+    this.user.last_name = this.user.last_name;
+    // this.user.first_name = this.user.user_name.split(' ')[0];
+    // this.user.last_name = this.user.user_name.split(' ')[1];
     this.user.initials = this.user.first_name.charAt(0).toUpperCase() + this.user.last_name.charAt(0).toUpperCase();
     this.user.user_color = this.generateColorFromInitials(this.user.initials);
     if (this.user.phone_number) this.user.phone_number = this.user.phone_number.replace(/\s/g, '');
