@@ -177,17 +177,19 @@ export class MainContactsComponent {
 
   deleteContact(clickedContactData) {
     // this.userService.deleteContact(clickedContactData);
-    this.backendService.deleteItem(clickedContactData.id, "users").subscribe(
+    this.backendUserDataService.deleteUser(clickedContactData.id).subscribe(
       (response) => {
-        console.log("User deleted successfully:", response);
         this.fetchUsers();
+        console.log("User deleted successfully:", response);
       },
       (error) => {
         console.error("Error deleting user:", error);
       }
     );
     // this.generateUsersLists();
-    this.showContactDetails = false;
+    setTimeout(() => {
+      this.showContactDetails = false;
+    }, 100);
     this.selectedContactId = null;
     this.displayDeletionSuccessfulAnimation();
     this.userService.userDeletedSuccessfully = false;
