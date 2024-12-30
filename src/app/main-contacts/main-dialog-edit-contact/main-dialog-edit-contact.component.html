@@ -34,8 +34,12 @@
           <input [(ngModel)]="userFullNameDisplay" id="userName" formControlName="userName" placeholder="Name" #userName />
         </div>
         <div class="incorrect__input">
-          <span
+          <!-- <span
             *ngIf="(editUserForm.controls.userName.invalid && editUserForm.controls.userName.dirty) || !userNameValid">
+            Separate first and last name with a space.
+          </span> -->
+          <span
+            *ngIf="(editUserForm.controls.userName.invalid)">
             Separate first and last name with a space.
           </span>
         </div>
