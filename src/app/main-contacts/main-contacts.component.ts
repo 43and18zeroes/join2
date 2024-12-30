@@ -88,13 +88,13 @@ export class MainContactsComponent {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (this.backendUserDataService.userAddedSuccessfully) {
-        this.fetchUsers();
-        // this.highlightNewContact(this.userService.lastUserAdded.firebaseId);
-        this.highlightNewContact(this.backendUserDataService.lastUserAddedId);
-        this.showContactDetails = true;
+        setTimeout(() => {
+          this.fetchUsers();
+          this.highlightNewContact(this.backendUserDataService.lastUserAddedId);
+          this.showContactDetails = true;
+        });
         this.clickedContactData = this.backendUserDataService.lastUserAdded;
         this.backendUserDataService.userAddedSuccessfully = false;
-        // this.userService.userAddedSuccessfully = false;
         this.removeHighlight();
       }
     });
