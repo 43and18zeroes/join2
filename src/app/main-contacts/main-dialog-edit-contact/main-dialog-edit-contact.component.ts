@@ -81,10 +81,11 @@ export class MainDialogEditContactComponent {
   }
 
   getUserData() {
-    this.user.first_name = this.user.first_name;
-    this.user.last_name = this.user.last_name;
-    // this.user.first_name = this.user.user_name.split(' ')[0];
-    // this.user.last_name = this.user.user_name.split(' ')[1];
+    console.log('editUserForm', this.editUserForm);
+    // this.user.first_name = this.user.first_name;
+    // this.user.last_name = this.user.last_name;
+    this.user.first_name = this.editUserForm.value.userName.split(' ')[0];
+    this.user.last_name = this.editUserForm.value.userName.split(' ')[1];
     this.user.initials = this.user.first_name.charAt(0).toUpperCase() + this.user.last_name.charAt(0).toUpperCase();
     this.user.user_color = this.generateColorFromInitials(this.user.initials);
     if (this.user.phone_number) this.user.phone_number = this.user.phone_number.replace(/\s/g, '');

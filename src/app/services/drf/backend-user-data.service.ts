@@ -55,7 +55,6 @@ export class BackendUserDataService {
 
   updateUserData(item: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    debugger
     return this.http.put(`${this.apiUrl}profiles/${item.id}/`, item, { headers: headers }).pipe(
       tap(() => {
         // Nach dem Aktualisieren eines Items, das Cache leeren
