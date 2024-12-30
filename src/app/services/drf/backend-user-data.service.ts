@@ -63,6 +63,14 @@ export class BackendUserDataService {
     );
   }
 
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}profiles/${id}/`).pipe(
+      tap(() => {
+        this.usersCache$ = null;
+      })
+    );
+  }
+
   clearUserCache() {
     this.usersCache$ = null;
   }

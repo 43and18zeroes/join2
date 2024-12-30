@@ -104,8 +104,7 @@ export class MainDialogEditContactComponent {
   }
 
   deleteContact(userToDelete) {
-    // this.userService.deleteContact(userToDelete);
-    this.backendService.deleteItem(userToDelete.id, 'users').subscribe(
+    this.backendUserDataService.deleteUser(userToDelete.id).subscribe(
       (response) => {
         console.log('User deleted successfully:', response);
       },
@@ -113,7 +112,6 @@ export class MainDialogEditContactComponent {
         console.error('Error deleting user:', error);
       }
     )
-
     this.closeDialog();
   }
 
