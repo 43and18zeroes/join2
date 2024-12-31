@@ -258,9 +258,9 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
         if (selectedUser.email === user.email) {
           user.selected = true;
         }
-        if (selectedUser.email === this.currentUserData.email) {
-          this.currentUserData.selected = true;
-        }
+        // if (selectedUser.email === this.currentUserData.email) {
+        //   this.currentUserData.selected = true;
+        // }
       }
     }
   }
