@@ -113,7 +113,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   }
 
   getUsersData() {
-    this.backendUserDataService.clearUserCache()
+    this.backendUserDataService.clearUserCache();
     this.backendUserDataService.getUsers().subscribe((data) => {
       this.allUsersData = data;
       console.log('this.allUsersData', this.allUsersData);
