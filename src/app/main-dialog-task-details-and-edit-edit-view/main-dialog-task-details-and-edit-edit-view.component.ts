@@ -252,14 +252,11 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     // }
 
     // this.allUsersData = this.taskData?.users || [];
-    console.log('allUsersData', this.allUsersData);
     this.showAssignedDropdown = !this.showAssignedDropdown;
     for (let i = 0; i < this.selectedUsers.length; i++) {
       const selectedUser = this.selectedUsers[i];
-      console.log('selectedUser', selectedUser);
       for (let j = 0; j < this.allUsersData.length; j++) {
         const user = this.allUsersData[j];
-        console.log('user', user);
         if (selectedUser.email === user.email) {
           user.selected = true;
         }
