@@ -116,7 +116,7 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
     this.backendUserDataService.clearUserCache();
     this.backendUserDataService.getUsers().subscribe((data) => {
       this.allUsersData = data;
-      console.log('this.allUsersData', this.allUsersData);
+      console.log("this.allUsersData", this.allUsersData);
       this.sortUsersData();
     });
   }
@@ -281,18 +281,21 @@ export class MainDialogTaskDetailsAndEditEditViewComponent {
   // }
 
   assignSelectOption(user: any) {
+    console.log("this.selectedUsers", this.selectedUsers);
     if (user) {
       user.selected = !user.selected;
       if (user.selected) {
         this.selectedUsers.push(user);
       } else {
-        const index = this.selectedUsers.indexOf(user);
+        // const index = this.selectedUsers.indexOf(user);
+        const index = this.selectedUsers.findIndex((u) => u.id === user.id);
         if (index !== -1) {
           this.selectedUsers.splice(index, 1);
         }
       }
     }
     this.assignSelectedOptionRef.nativeElement.focus();
+    console.log("this.selectedUsers", this.selectedUsers);
   }
 
   assignPreventFocusLoss(event: MouseEvent) {
