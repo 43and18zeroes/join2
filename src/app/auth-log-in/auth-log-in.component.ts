@@ -29,8 +29,8 @@ export class AuthLogInComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router
-    // private userService: UserService
-  ) {}
+  ) // private userService: UserService
+  {}
 
   ngOnInit(): void {
     this.backendUserDataService.clearUserCache();
@@ -44,9 +44,9 @@ export class AuthLogInComponent implements OnInit {
       }, 1500);
     }
 
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem("authToken");
     if (token) {
-      this.router.navigate(['/main']); // Benutzer ist bereits eingeloggt
+      this.router.navigate(["/main"]); // Benutzer ist bereits eingeloggt
       return;
     }
   }
@@ -94,28 +94,59 @@ export class AuthLogInComponent implements OnInit {
 
   signIn(userData) {
     this.authService.signIn(userData).subscribe({
-      next: (res: any) => {
-        this.isSubmitted = true;
-        this.logInFailed = false;
-  
-        const rememberMe = this.logInForm.value.logInRememberMe;
-        // const tokenExpiry = rememberMe ? Date.now() + 15 * 60 * 1000 : null;
-        const tokenExpiry = rememberMe ? Date.now() + 15 * 60 * 1000 : null;
-  
-        const storage = rememberMe ? localStorage : sessionStorage;
-        storage.setItem('authToken', res.token);
-        if (tokenExpiry) {
-          storage.setItem('authTokenExpiry', tokenExpiry.toString());
-        }
-  
-        this.router.navigateByUrl('/main');
-      },
-      error: (err) => {
-        console.error('Login-Fehler:', err);
-        this.logInFailed = true;
-      },
+      next: (res: any) => this.handleSignInSuccess(res),
+      error: (err) => this.handleSignInError(err),
     });
   }
+
+  private handleSignInSuccess(res: any): void {
+    this.isSubmitted = true;
+    this.logInFailed = false;
+
+    const rememberMe = this.logInForm.value.logInRememberMe;
+    this.storeToken(res.token, rememberMe);
+
+    this.router.navigateByUrl("/main");
+  }
+
+  private handleSignInError(err: any): void {
+    console.error("Login-Fehler:", err);
+    this.logInFailed = true;
+  }
+
+  private storeToken(token: string, rememberMe: boolean): void {
+    const storage = rememberMe ? localStorage : sessionStorage;
+    storage.setItem("authToken", token);
+
+    if (rememberMe) {
+      const tokenExpiry = Date.now() + 15 * 60 * 1000;
+      storage.setItem("authTokenExpiry", tokenExpiry.toString());
+    }
+  }
+
+  // signIn(userData) {
+  //   this.authService.signIn(userData).subscribe({
+  //     next: (res: any) => {
+  //       this.isSubmitted = true;
+  //       this.logInFailed = false;
+
+  //       const rememberMe = this.logInForm.value.logInRememberMe;
+  //       const tokenExpiry = rememberMe ? Date.now() + 15 * 60 * 1000 : null;
+
+  //       const storage = rememberMe ? localStorage : sessionStorage;
+  //       storage.setItem('authToken', res.token);
+  //       if (tokenExpiry) {
+  //         storage.setItem('authTokenExpiry', tokenExpiry.toString());
+  //       }
+
+  //       this.router.navigateByUrl('/main');
+  //     },
+  //     error: (err) => {
+  //       console.error('Login-Fehler:', err);
+  //       this.logInFailed = true;
+  //     },
+  //   });
+  // }
 
   async identifyCurrentUserData() {
     // await this.userService.getCurrentUserAuth();
