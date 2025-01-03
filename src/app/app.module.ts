@@ -36,6 +36,8 @@ import { InfoLegalNoticeComponent } from './info-legal-notice/info-legal-notice.
 import { MainHeaderProfileDialogComponent } from './main-header/main-header-profile-dialog/main-header-profile-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/drf/auth.interceptor';
 
 
 @NgModule({
@@ -78,7 +80,10 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     DragDropModule,
     HttpClientModule
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
