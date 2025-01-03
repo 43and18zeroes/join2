@@ -97,13 +97,21 @@ export class AuthLogInComponent implements OnInit {
       next: (res: any) => {
         this.isSubmitted = true;
         this.logInFailed = false;
-
-        // Speichere Token und navigiere zur Hauptseite
-        localStorage.setItem("authToken", res.token);
-        this.router.navigateByUrl("/main");
+  
+        const rememberMe = this.logInForm.value.logInRememberMe;
+        // const tokenExpiry = rememberMe ? Date.now() + 15 * 60 * 1000 : null;
+        const tokenExpiry = rememberMe ? Date.now() + 15 * 60 * 1000 : null;
+  
+        const storage = rememberMe ? localStorage : sessionStorage;
+        storage.setItem('authToken', res.token);
+        if (tokenExpiry) {
+          storage.setItem('authTokenExpiry', tokenExpiry.toString());
+        }
+  
+        this.router.navigateByUrl('/main');
       },
       error: (err) => {
-        console.error("Login-Fehler:", err);
+        console.error('Login-Fehler:', err);
         this.logInFailed = true;
       },
     });
