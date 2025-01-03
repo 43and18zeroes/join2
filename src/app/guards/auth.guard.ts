@@ -1,6 +1,5 @@
 import { CanActivateFn, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { inject } from '@angular/core';
-import { session } from '../utils/session'
 
 export const authGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
@@ -9,10 +8,20 @@ export const authGuard: CanActivateFn = (
   const router: Router = inject(Router);
   const token = localStorage.getItem("authToken");
 
-  // console.log('token', token);
+  const isProtectedRoute = state.url.startsWith('/main');
+  const isLoginRoute = state.url === '/';
 
-  const protectedRoutes: string[] = ['/main'];
-  return protectedRoutes.includes(state.url) && token === 'undefined'
-  ? router.navigate(['/'])
-  : true;
+  if (isProtectedRoute && (!token || token === 'undefined')) {
+    // Benutzer hat kein gültiges Token, leite zum Login-Bereich um
+    router.navigate(['/']);
+    return false;
+  }
+
+  if (isLoginRoute && token && token !== 'undefined') {
+    // Benutzer ist bereits eingeloggt, leite zum Hauptbereich um
+    router.navigate(['/main']);
+    return false;
+  }
+
+  return true; // Zugriff erlaubt
 };

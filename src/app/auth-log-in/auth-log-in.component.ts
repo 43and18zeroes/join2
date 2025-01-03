@@ -43,6 +43,12 @@ export class AuthLogInComponent implements OnInit {
         this.showLoadingScreen = false;
       }, 1500);
     }
+
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      this.router.navigate(['/main']); // Benutzer ist bereits eingeloggt
+      return;
+    }
   }
 
   onSubmit() {
