@@ -152,19 +152,19 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-        }
 
-        @media (width <=412px) {
-          .css-checkbox + label {
-            width: 243px;
-            margin-left: 8px;
-            display: flex;
-            flex-wrap: wrap;
-            height: auto;
-          }
-
-          .auth__textlink {
-            margin: 8px 0 0 28px;
+          @media (width <=412px) {
+            .css-checkbox + label {
+              width: 243px;
+              margin-left: 8px;
+              display: flex;
+              flex-wrap: wrap;
+              height: auto;
+            }
+  
+            .auth__textlink {
+              margin: 8px 0 0 28px;
+            }
           }
         }
 
