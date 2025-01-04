@@ -151,7 +151,8 @@
 
                 .checkbox {
                     display: flex;
-                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
                 }
 
                 .incorrect__input {

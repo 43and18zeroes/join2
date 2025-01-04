@@ -91,27 +91,28 @@
           </span>
         </div>
         <div class="auth__checkbox checkbox">
-          <input
-            [attr.disabled]="isSubmitted ? true : null"
-            name="cssCheckbox"
-            id="privacyCheckbox"
-            type="checkbox"
-            class="css-checkbox"
-            formControlName="privacyCheckbox" />
-          <label for="privacyCheckbox">
-            I have read and accept the&nbsp;
-            <a href="http://" class="auth__textlink">Privacy Policy</a>
-            .
-          </label>
+          <div>
+            <input
+              [attr.disabled]="isSubmitted ? true : null"
+              name="cssCheckbox"
+              id="privacyCheckbox"
+              type="checkbox"
+              class="css-checkbox"
+              formControlName="privacyCheckbox" />
+            <label for="privacyCheckbox">
+              I have read and accept the&nbsp;
+              <span href="http://" class="auth__textlink">Privacy Policy</span>
+              .
+            </label>
+
+            <div class="incorrect__input">
+              <span *ngIf="signUpForm.controls['privacyCheckbox'].value === false">
+                Please accept the Privacy Policy before continuing.
+              </span>
+            </div>
+          </div>
         </div>
-        <div class="incorrect__input">
-          <span
-            *ngIf="
-              signUpForm.controls['privacyCheckbox'].value === false
-            ">
-            Please accept the Privacy Policy before continuing.
-          </span>
-        </div>
+
         <div class="signup__btns">
           <button [disabled]="signUpForm.invalid" type="submit" class="btn__primary">Sign up</button>
         </div>

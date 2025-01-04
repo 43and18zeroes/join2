@@ -1,364 +1,368 @@
 .intro__overlay {
+  img {
+    animation: moveToCorner 500ms ease-in-out 500ms forwards;
+    // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+  }
 
+  @keyframes moveToCorner {
+    0% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: auto;
+    }
+
+    30% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: auto;
+    }
+
+    100% {
+      top: 75px;
+      left: 75px;
+      width: 100px;
+      height: auto;
+      transform: none;
+    }
+  }
+
+  @media (width <=992px) {
     img {
-        animation: moveToCorner 500ms ease-in-out 500ms forwards;
-        // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+      animation: moveToCorner 500ms ease-in-out 500ms forwards;
+      // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
     }
 
     @keyframes moveToCorner {
-        0% {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: auto;
-        }
+      0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: auto;
+      }
 
-        30% {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: auto;
-        }
+      30% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: auto;
+      }
 
-        100% {
-            top: 75px;
-            left: 75px;
-            width: 100px;
-            height: auto;
-            transform: none;
-        }
+      100% {
+        top: 32px;
+        left: 32px;
+        width: 100px;
+        height: auto;
+        transform: none;
+      }
+    }
+  }
+
+  @media (width <=576px) {
+    img {
+      animation: moveToCorner 500ms ease-in-out 500ms forwards;
+      // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
     }
 
-    @media (width <=992px) {
-        img {
-            animation: moveToCorner 500ms ease-in-out 500ms forwards;
-            // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
-        }
+    @keyframes moveToCorner {
+      0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: auto;
+      }
 
-        @keyframes moveToCorner {
-            0% {
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 200px;
-                height: auto;
-            }
+      30% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: auto;
+      }
 
-            30% {
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 200px;
-                height: auto;
-            }
-
-            100% {
-                top: 32px;
-                left: 32px;
-                width: 100px;
-                height: auto;
-                transform: none;
-            }
-        }
+      100% {
+        top: 16px;
+        left: 16px;
+        width: 64px;
+        height: auto;
+        transform: none;
+      }
     }
-
-    @media (width <=576px) {
-        img {
-            animation: moveToCorner 500ms ease-in-out 500ms forwards;
-            // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
-        }
-
-        @keyframes moveToCorner {
-            0% {
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 200px;
-                height: auto;
-            }
-
-            30% {
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 200px;
-                height: auto;
-            }
-
-            100% {
-                top: 16px;
-                left: 16px;
-                width: 64px;
-                height: auto;
-                transform: none;
-            }
-        }
-    }
+  }
 }
 
 .fade__out__after__animation {
-    animation: fadeOut 500ms ease 1000ms forwards;
-    // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+  animation: fadeOut 500ms ease 1000ms forwards;
+  // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-        display: none;
-    }
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }
 
 .display__after__animation {
-    animation: display 0ms ease 0ms forwards;
-    // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
+  animation: display 0ms ease 0ms forwards;
+  // The first time unit corresponds to the animation duration, the second to the delay after which the animation starts
 }
 
 @keyframes display {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 .auth__container {
-    position: relative;
-    height: calc(100vh - 150px);
-    padding: 75px;
+  position: relative;
+  height: calc(100vh - 150px);
+  padding: 75px;
+  display: flex;
+  flex-direction: column;
+
+  @media (width <=1200px) {
+    position: static;
+  }
+
+  @media (width <=992px) {
+    padding: 32px;
+  }
+
+  @media (width <=576px) {
+    padding: 16px;
+  }
+
+  header {
+    position: absolute;
+    width: calc(100% - 150px);
+    height: 122.25px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
 
     @media (width <=1200px) {
-        position: static;
-    }
-
-    @media (width <=992px) {
-        padding: 32px;
+      position: static;
+      width: 100%;
     }
 
     @media (width <=576px) {
-        padding: 16px;
+      height: 78.234px;
+      margin-bottom: 32px;
     }
 
-    header {
-        position: absolute;
-        width: calc(100% - 150px);
-        height: 122.25px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
+    img {
+      width: 100px;
+      height: auto;
 
-        @media (width <=1200px) {
-            position: static;
-            width: 100%;
+      @media (width <=576px) {
+        width: 64px;
+      }
+    }
+
+    .signup__cta {
+      display: flex;
+      align-items: center;
+
+      button {
+        font-size: 16px;
+        margin-left: 35px;
+      }
+    }
+  }
+
+  main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media (width <=576px) {
+      height: auto;
+      margin-bottom: 32px;
+    }
+
+    .window {
+      width: 568px;
+      height: fit-content;
+      background-color: var(--window-white);
+      padding: 48px;
+      border-radius: 30px;
+      box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      @media (width <=768px) {
+        width: calc(100% - 2 * 48px);
+      }
+
+      @media (width <=576px) {
+        width: calc(100% - 2 * 16px);
+        padding: 32px 16px;
+      }
+
+      h1 {
+        font-size: var(--fontsize-auth-headline);
+        font-weight: 700;
+        margin: 0;
+
+        @media (width <=768px) {
+          font-size: 40px;
         }
+      }
 
+      hr {
+        width: 150px;
+        height: 1px;
+        background-color: var(--accent-cyan);
+        border: 1px solid var(--accent-cyan);
+        border-radius: 4px;
+        margin-bottom: 32px;
+      }
+
+      form {
         @media (width <=576px) {
-            height: 78.234px;
-            margin-bottom: 32px;
+          width: 100%;
         }
 
-        img {
-            width: 100px;
-            height: auto;
+        .input__container {
+          position: relative;
+
+          .material__symbols__outlined {
+            position: absolute;
+            top: 50%;
+            transform: translate(0%, -50%);
+            right: 21px;
+            font-size: var(--fontsize-input-symbol);
+            color: var(--inactive-lite-grey);
+            cursor: text;
+          }
+
+          input {
+            width: 354px;
+            padding: 10px 57px 10px 21px;
+            border-radius: 10px;
+            font-size: var(--fontsize-body);
+            border: 1px solid var(--inactive-lite-grey);
+            outline: 0;
+            color: var(--input-text-black);
+            font-family: inherit;
 
             @media (width <=576px) {
-                width: 64px;
+              width: calc(100% - 78px);
+              font-size: var(--fontsize-body-mobile);
             }
-        }
 
-        .signup__cta {
-            display: flex;
-            align-items: center;
-
-            button {
-                font-size: 16px;
-                margin-left: 35px;
+            &::placeholder {
+              color: var(--inactive-lite-grey);
             }
-        }
-    }
 
-    main {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        @media (width <=576px) {
-            height: auto;
-            margin-bottom: 32px;
+            &:focus {
+              border: 1px solid var(--accent-cyan);
+            }
+          }
         }
 
-        .window {
-            width: 568px;
-            height: fit-content;
-            background-color: var(--window-white);
-            padding: 48px;
-            border-radius: 30px;
-            box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+        .incorrect__input {
+          height: 32px;
+
+          span {
+            font-size: var(--fontsize-incorrect-input);
+            color: var(--invalid-red);
+          }
+        }
+
+        .auxiliaries {
+          display: flex;
+          justify-content: center;
+          font-size: 16px;
+
+          @media (width <=576px) {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            margin-left: 8px;
+          }
+
+          > div {
+            flex-basis: 50%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
+          }
 
-            @media (width <=768px) {
-                width: calc(100% - 2 * 48px);
-            }
-
+          .forgot__password {
             @media (width <=576px) {
-                width: calc(100% - 2 * 16px);
-                padding: 32px 16px;
+              margin-bottom: 16px;
             }
-
-            h1 {
-                font-size: var(--fontsize-auth-headline);
-                font-weight: 700;
-                margin: 0;
-
-                @media (width <=768px) {
-                    font-size: 40px;
-                }
-            }
-
-            hr {
-                width: 150px;
-                height: 1px;
-                background-color: var(--accent-cyan);
-                border: 1px solid var(--accent-cyan);
-                border-radius: 4px;
-                margin-bottom: 32px;
-            }
-
-            form {
-
-                @media (width <=576px) {
-                    width: 100%;
-                }
-
-                .input__container {
-                    position: relative;
-
-                    .material__symbols__outlined {
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(0%, -50%);
-                        right: 21px;
-                        font-size: var(--fontsize-input-symbol);
-                        color: var(--inactive-lite-grey);
-                        cursor: text;
-                    }
-
-                    input {
-                        width: 354px;
-                        padding: 10px 57px 10px 21px;
-                        border-radius: 10px;
-                        font-size: var(--fontsize-body);
-                        border: 1px solid var(--inactive-lite-grey);
-                        outline: 0;
-                        color: var(--input-text-black);
-                        font-family: inherit;
-
-                        @media (width <=576px) {
-                            width: calc(100% - 78px);
-                            font-size: var(--fontsize-body-mobile);
-                        }
-
-                        &::placeholder {
-                            color: var(--inactive-lite-grey);
-                        }
-
-                        &:focus {
-                            border: 1px solid var(--accent-cyan);
-                        }
-                    }
-                }
-
-                .incorrect__input {
-                    height: 32px;
-
-                    span {
-                        font-size: var(--fontsize-incorrect-input);
-                        color: var(--invalid-red);
-                    }
-                }
-
-                .auxiliaries {
-                    display: flex;
-                    justify-content: center;
-                    font-size: 16px;
-
-                    @media (width <=576px) {
-                        flex-direction: column-reverse;
-                        align-items: flex-start;
-                        margin-left: 8px;
-                    }
-
-                    >div {
-                        flex-basis: 50%;
-                        display: flex;
-                        justify-content: center;
-                    }
-                }
-
-                .login__btns {
-                    margin-top: 32px;
-                    display: flex;
-                    justify-content: center;
-
-                    .btn__primary {
-                        margin-right: 35px;
-                    }
-
-                    .user__attention {
-                        animation: pulse 1.5s infinite;
-                    }
-
-                    @keyframes pulse {
-                        0% {
-                            transform: scale(1);
-                        }
-
-                        50% {
-                            transform: scale(1.05);
-                        }
-
-                        100% {
-                            transform: scale(1);
-                        }
-                    }
-
-                    .user__attention:hover {
-                        animation-play-state: paused;
-                    }
-                }
-            }
-        }
-    }
-
-    footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        @media (width <=576px) {
-            padding-bottom: 32px;
+          }
         }
 
-        div {
+        .login__btns {
+          margin-top: 32px;
+          display: flex;
+          justify-content: center;
+
+          .btn__primary {
             margin-right: 35px;
-        }
+          }
 
-        button {
-            font-size: var(--fontsize-btn-mobile);
+          .user__attention {
+            animation: pulse 1.5s infinite;
+          }
+
+          @keyframes pulse {
+            0% {
+              transform: scale(1);
+            }
+
+            50% {
+              transform: scale(1.05);
+            }
+
+            100% {
+              transform: scale(1);
+            }
+          }
+
+          .user__attention:hover {
+            animation-play-state: paused;
+          }
         }
+      }
     }
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (width <=576px) {
+      padding-bottom: 32px;
+    }
+
+    div {
+      margin-right: 35px;
+    }
+
+    button {
+      font-size: var(--fontsize-btn-mobile);
+    }
+  }
 }
