@@ -307,21 +307,6 @@
                         display: flex;
                         justify-content: center;
                     }
-
-                    .forgot__password {
-                        color: var(--accent-cyan);
-                        cursor: pointer;
-                        transition: all 100ms ease-in;
-
-                        @media (width <=576px) {
-                            margin-bottom: 16px;
-                        }
-
-                        &:hover {
-                            text-decoration: underline;
-                            transform: scale(1.02);
-                        }
-                    }
                 }
 
                 .login__btns {

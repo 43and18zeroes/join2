@@ -479,66 +479,81 @@ body {
 }
 
 .auth__checkbox {
-
   .css-checkbox {
-      position: absolute;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      width: 1px;
-      margin: -1px;
-      padding: 0;
-      border: 0;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
   }
 
   #inputPreview {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
   }
 
-  .css-checkbox+label {
-      position: relative;
-      font-size: 16px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      height: 20px;
-      color: var(--general-text-black);
+  .css-checkbox + label {
+    position: relative;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+    color: var(--general-text-black);
   }
 
-  .css-checkbox+label::before {
-      content: " ";
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: 8px;
-      width: 16px;
-      height: 16px;
-      background-color: white;
-      border-width: 2px;
-      border-style: solid;
-      border-color: var(--main-slate);
-      border-radius: 3px;
-      box-shadow: none;
+  .css-checkbox + label::before {
+    content: " ";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--main-slate);
+    border-radius: 3px;
+    box-shadow: none;
   }
 
-  .css-checkbox:checked+label::after {
-      content: " ";
-      background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMmEzNjQ3IiBkPSJNMTczLjg5OCA0MzkuNDA0bC0xNjYuNC0xNjYuNGMtOS45OTctOS45OTctOS45OTctMjYuMjA2IDAtMzYuMjA0bDM2LjIwMy0zNi4yMDRjOS45OTctOS45OTggMjYuMjA3LTkuOTk4IDM2LjIwNCAwTDE5MiAzMTIuNjkgNDMyLjA5NSA3Mi41OTZjOS45OTctOS45OTcgMjYuMjA3LTkuOTk3IDM2LjIwNCAwbDM2LjIwMyAzNi4yMDRjOS45OTcgOS45OTcgOS45OTcgMjYuMjA2IDAgMzYuMjA0bC0yOTQuNCAyOTQuNDAxYy05Ljk5OCA5Ljk5Ny0yNi4yMDcgOS45OTctMzYuMjA0LS4wMDF6Ii8+PC9zdmc+");
-      background-repeat: no-repeat;
-      background-size: 16px 16px;
-      background-position: center center;
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 0px;
-      left: 0px;
-      top: 0px;
-      text-align: center;
-      background-color: transparent;
-      font-size: 10px;
-      height: 20px;
-      width: 20px;
+  .css-checkbox:checked + label::after {
+    content: " ";
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMmEzNjQ3IiBkPSJNMTczLjg5OCA0MzkuNDA0bC0xNjYuNC0xNjYuNGMtOS45OTctOS45OTctOS45OTctMjYuMjA2IDAtMzYuMjA0bDM2LjIwMy0zNi4yMDRjOS45OTctOS45OTggMjYuMjA3LTkuOTk4IDM2LjIwNCAwTDE5MiAzMTIuNjkgNDMyLjA5NSA3Mi41OTZjOS45OTctOS45OTcgMjYuMjA3LTkuOTk3IDM2LjIwNCAwbDM2LjIwMyAzNi4yMDRjOS45OTcgOS45OTcgOS45OTcgMjYuMjA2IDAgMzYuMjA0bC0yOTQuNCAyOTQuNDAxYy05Ljk5OCA5Ljk5Ny0yNi4yMDcgOS45OTctMzYuMjA0LS4wMDF6Ii8+PC9zdmc+");
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: center center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0px;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+    background-color: transparent;
+    font-size: 10px;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.auth__textlink {
+  text-decoration: none;
+  color: var(--accent-cyan);
+  cursor: pointer;
+  transition: all 100ms ease-in;
+
+  @media (width <=576px) {
+    margin-bottom: 16px;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    transform: scale(1.02);
   }
 }

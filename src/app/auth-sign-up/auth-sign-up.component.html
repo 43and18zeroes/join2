@@ -90,7 +90,6 @@
             Password must be at least 6 characters long.
           </span>
         </div>
-
         <div class="auth__checkbox checkbox">
           <input
             [attr.disabled]="isSubmitted ? true : null"
@@ -99,9 +98,22 @@
             type="checkbox"
             class="css-checkbox"
             formControlName="privacyCheckbox" />
-          <label for="privacyCheckbox">I have read and accept the <a href="http://">Privacy Policy</a>.</label>
+          <label for="privacyCheckbox">
+            I have read and accept the&nbsp;
+            <a href="http://" class="auth__textlink">Privacy Policy</a>
+            .
+          </label>
         </div>
-
+        <div class="incorrect__input">
+          <span
+            *ngIf="
+              signUpForm.controls['signUpPassword'].invalid &&
+              signUpForm.controls['signUpPassword'].dirty &&
+              signUpForm.controls['signUpPassword'].value
+            ">
+            Please accept the Privacy Policy before continuing.
+          </span>
+        </div>
         <div class="signup__btns">
           <button [disabled]="signUpForm.invalid" type="submit" class="btn__primary">Sign up</button>
         </div>
