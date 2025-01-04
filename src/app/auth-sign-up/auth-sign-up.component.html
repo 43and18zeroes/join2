@@ -91,6 +91,17 @@
           </span>
         </div>
 
+        <div class="auth__checkbox checkbox">
+          <input
+            [attr.disabled]="isSubmitted ? true : null"
+            name="cssCheckbox"
+            id="privacyCheckbox"
+            type="checkbox"
+            class="css-checkbox"
+            formControlName="privacyCheckbox" />
+          <label for="privacyCheckbox">I have read and accept the Privacy Policy.</label>
+        </div>
+
         <div class="signup__btns">
           <button [disabled]="signUpForm.invalid" type="submit" class="btn__primary">Sign up</button>
         </div>
