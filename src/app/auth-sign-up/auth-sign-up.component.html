@@ -107,9 +107,7 @@
         <div class="incorrect__input">
           <span
             *ngIf="
-              signUpForm.controls['signUpPassword'].invalid &&
-              signUpForm.controls['signUpPassword'].dirty &&
-              signUpForm.controls['signUpPassword'].value
+              signUpForm.controls['privacyCheckbox'].value === false
             ">
             Please accept the Privacy Policy before continuing.
           </span>

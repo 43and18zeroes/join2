@@ -38,6 +38,7 @@ export class AuthSignUpComponent implements OnInit {
       signUpUserName: new FormControl("", [Validators.required, signUpUserNameValidator]),
       signUpEmail: new FormControl("", [Validators.required, emailValidator]),
       signUpPassword: new FormControl("", [Validators.required, Validators.minLength(6)]),
+      privacyCheckbox: new FormControl("", [Validators.required])
     });
   }
 
