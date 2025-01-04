@@ -154,6 +154,8 @@
           align-items: center;
 
           @media (width <=412px) {
+            margin-bottom: 24px;
+
             .css-checkbox + label {
               width: 243px;
               margin-left: 8px;
@@ -164,6 +166,11 @@
   
             .auth__textlink {
               margin: 8px 0 0 28px;
+            }
+
+            .incorrect__input {
+                max-width: 243px;
+                padding-left: 8px;
             }
           }
         }
