@@ -38,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/drf/auth.interceptor';
+import { PrivacyPolicyComponent } from './auth-sign-up/privacy-policy/privacy-policy.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { AuthInterceptor } from './services/drf/auth.interceptor';
     InfoPrivacyPolicyComponent,
     InfoLegalNoticeComponent,
     MainHeaderProfileDialogComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,

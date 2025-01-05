@@ -7,6 +7,8 @@ import { BackendService } from "../services/drf/backend-service.service";
 import { BackendUserDataService } from "../services/drf/backend-user-data.service";
 import { emailValidator, signUpUserNameValidator } from "../shared/validators/custom-validators";
 import { SignupService } from "../services/drf/signup.service";
+import { MatDialog } from "@angular/material/dialog";
+import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.component";
 
 @Component({
   selector: "auth-app-sign-up",
@@ -26,7 +28,8 @@ export class AuthSignUpComponent implements OnInit {
     private router: Router,
     private backendService: BackendService,
     private backendUserDataService: BackendUserDataService,
-    private signupService: SignupService
+    private signupService: SignupService,
+    public dialog: MatDialog
   ) {
     this.signUpForm = this.initializeForm();
   }
@@ -134,6 +137,14 @@ export class AuthSignUpComponent implements OnInit {
     setTimeout(() => {
       authSuccessElement.style.display = "none";
     }, 1450);
+  }
+
+  openPrivacyDialog(event: Event): void {
+    event.preventDefault();
+    this.dialog.open(PrivacyPolicyComponent, {
+      width: '600px',
+      data: { message: 'Hier ist Ihre Datenschutzerklärung.' }
+    });
   }
 }
 
