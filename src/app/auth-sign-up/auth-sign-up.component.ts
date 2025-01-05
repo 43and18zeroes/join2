@@ -34,23 +34,14 @@ export class AuthSignUpComponent implements OnInit {
     this.signUpForm = this.initializeForm();
   }
 
-  ngOnInit(): void {
-    this.openPrivacyDialogOnLoad();
-  }
-
-  private openPrivacyDialogOnLoad(): void {
-    this.dialog.open(PrivacyPolicyComponent, {
-      // width: '600px',
-      // data: { message: 'Hier ist Ihre Datenschutzerklärung.' }
-    });
-  }
+  ngOnInit(): void {}
 
   private initializeForm(): FormGroup {
     return new FormGroup({
       signUpUserName: new FormControl("", [Validators.required, signUpUserNameValidator]),
       signUpEmail: new FormControl("", [Validators.required, emailValidator]),
       signUpPassword: new FormControl("", [Validators.required, Validators.minLength(6)]),
-      privacyCheckbox: new FormControl("", [Validators.required])
+      privacyCheckbox: new FormControl("", [Validators.required]),
     });
   }
 
@@ -92,7 +83,6 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   private handleSuccessfulUserCreation(response: any): void {
-
     // this.backendUserDataService.lastUserAdded = response;
     // this.backendUserDataService.lastUserAddedId = response.id.toString();
     // this.backendUserDataService.userAddedSuccessfully = true;
@@ -117,9 +107,7 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   private generateInitials(firstName: string, lastName: string): string {
-    return (
-      firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase()
-    );
+    return firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase();
   }
 
   private generateColorFromInitials(initials: string): string {
@@ -128,9 +116,7 @@ export class AuthSignUpComponent implements OnInit {
   }
 
   private calculateColorIndex(initials: string): number {
-    const charCodesSum = initials
-      .split("")
-      .reduce((sum, char) => sum + char.charCodeAt(0), 0);
+    const charCodesSum = initials.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0);
     return charCodesSum % this.userColors.length;
   }
 
@@ -156,7 +142,6 @@ export class AuthSignUpComponent implements OnInit {
     });
   }
 }
-
 
 // signUp() {
 // const userData = this.getUserData();
