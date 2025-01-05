@@ -34,7 +34,16 @@ export class AuthSignUpComponent implements OnInit {
     this.signUpForm = this.initializeForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.openPrivacyDialogOnLoad();
+  }
+
+  private openPrivacyDialogOnLoad(): void {
+    this.dialog.open(PrivacyPolicyComponent, {
+      // width: '600px',
+      // data: { message: 'Hier ist Ihre Datenschutzerklärung.' }
+    });
+  }
 
   private initializeForm(): FormGroup {
     return new FormGroup({
@@ -142,8 +151,8 @@ export class AuthSignUpComponent implements OnInit {
   openPrivacyDialog(event: Event): void {
     event.preventDefault();
     this.dialog.open(PrivacyPolicyComponent, {
-      width: '600px',
-      data: { message: 'Hier ist Ihre Datenschutzerklärung.' }
+      // width: '600px',
+      // data: { message: 'Hier ist Ihre Datenschutzerklärung.' }
     });
   }
 }
