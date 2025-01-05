@@ -442,11 +442,11 @@
       }
 
       .section__body:empty::before {
-        content: "Hier ablegen";
+        content: "No task here. Add one or drag and drop it.";
         display: block;
-        text-align: center;
+        // text-align: center;
         height: 50px;
-        background: #f0f0f0;
+        background: #f6f7f8;
       }
 
       .section__body {
