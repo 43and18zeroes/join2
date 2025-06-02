@@ -39,7 +39,7 @@
         <app-info-legal-notice *ngIf="currentlyDisplayed === 'legalNotice'"></app-info-legal-notice>
     </section>
 </main>
-<footer>
+<footer id="main-footer">
     <div class="point no__select" [class.active]="currentlyClicked === 'summary'"
         (click)="displayMainSection('summary')"><span class="material__symbols__outlined">space_dashboard</span>Summary
     </div>

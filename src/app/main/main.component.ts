@@ -2,25 +2,33 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../services/user-data.service';
 import { MainCommunicationService } from '../services/main-communication.service';
 import { TaskDataService } from '../services/task-data.service';
+import { DeviceService } from '../services/device.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-
   showGreetingScreenMobile = true;
   currentUserData;
   allUsersData;
   allContactsData;
   allTasksData;
-  
+
   @ViewChild('mainSection') mainSection: ElementRef;
 
   currentlyDisplayed: string = 'summary';
   currentlyClicked: string = 'summary';
-  displayMainSection(condition: 'summary' | 'board' | 'addTask' | 'contacts' | 'privacyPolicy' | 'legalNotice') {
+  displayMainSection(
+    condition:
+      | 'summary'
+      | 'board'
+      | 'addTask'
+      | 'contacts'
+      | 'privacyPolicy'
+      | 'legalNotice'
+  ) {
     this.currentlyDisplayed = condition;
     this.currentlyClicked = condition;
   }
@@ -28,7 +36,8 @@ export class MainComponent implements OnInit {
   constructor(
     private userService: UserService,
     private mainCommService: MainCommunicationService,
-    public taskDataService: TaskDataService
+    public taskDataService: TaskDataService,
+    private deviceService: DeviceService
   ) {
     this.subscribeBoardObservable();
     this.subscribePrivacyPolicyServiceObservable();
@@ -37,26 +46,30 @@ export class MainComponent implements OnInit {
 
   subscribeBoardObservable() {
     this.mainCommService.displayBoardObservable.subscribe((section) => {
-      if  (section !== 'default') {
+      if (section !== 'default') {
         this.displayMainSection('board');
       }
     });
   }
 
   subscribePrivacyPolicyServiceObservable() {
-    this.mainCommService.displayPrivacyPolicyServiceObservable.subscribe((section) => {
-      if  (section !== 'default') {
-        this.displayMainSection('privacyPolicy');
+    this.mainCommService.displayPrivacyPolicyServiceObservable.subscribe(
+      (section) => {
+        if (section !== 'default') {
+          this.displayMainSection('privacyPolicy');
+        }
       }
-    });
+    );
   }
 
   subscribeSummaryServiceObservable() {
-    this.mainCommService.displaySummaryServiceObservable.subscribe((section) => {
-      if  (section !== 'default') {
-        this.displayMainSection('summary');
+    this.mainCommService.displaySummaryServiceObservable.subscribe(
+      (section) => {
+        if (section !== 'default') {
+          this.displayMainSection('summary');
+        }
       }
-    });
+    );
   }
 
   ngOnInit(): void {
@@ -75,5 +88,11 @@ export class MainComponent implements OnInit {
         this.mainSection.nativeElement.classList.add('android__height');
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    // Diese Lifecycle-Hook wird aufgerufen, NACHDEM die View initialisiert wurde
+    // und die HTML-Elemente im DOM verfügbar sind.
+    this.deviceService.applyDeviceClassesToFooter();
   }
 }
