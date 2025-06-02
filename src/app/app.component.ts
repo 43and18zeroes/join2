@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
+import { DeviceService } from './services/device.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { Firestore } from '@angular/fire/firestore';
 export class AppComponent {
   firestore: Firestore = inject(Firestore);
 
-  constructor() {
+  constructor(private deviceService: DeviceService) {
 
   }
 }
