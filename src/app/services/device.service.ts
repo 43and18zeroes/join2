@@ -14,25 +14,18 @@ export class DeviceService {
     this.isAndroid = /Android/i.test(userAgent);
     this.isiPhone =
       /iPhone|iPad|iPod/i.test(userAgent) || /iOS/i.test(userAgent);
-
-    // HINWEIS: Hier KEINE DOM-Manipulationen mehr!
-    // Die Erkennung des Gerätyps ist hier aber weiterhin in Ordnung.
   }
 
-  // Neue Methode zur Anwendung von CSS-Klassen
   applyDeviceClassesToFooter(): void {
     const mainFooter = document.getElementById('main-footer');
 
-    if (mainFooter) { // Wichtig: Prüfen, ob das Element existiert!
+    if (mainFooter) {
       if (this.isAndroid) {
-        console.log('android 2025-06-02');
-        // this.renderer.addClass(mainFooter, 'android__footer');
         const mainSection = document.getElementById('main-section');
         mainSection.classList.add('android__height');
 
       }
       if (this.isiPhone) {
-        console.log('iphone 2025-06-02');
         this.renderer.addClass(mainFooter, 'iphone__footer');
       }
     }
