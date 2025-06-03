@@ -26,14 +26,15 @@ export class DeviceService {
     if (mainFooter) { // Wichtig: Prüfen, ob das Element existiert!
       if (this.isAndroid) {
         console.log('android 2025-06-02');
-        this.renderer.addClass(mainFooter, 'android__footer');
+        // this.renderer.addClass(mainFooter, 'android__footer');
+        const mainSection = document.getElementById('main-section');
+        mainSection.classList.add('android__height');
+
       }
       if (this.isiPhone) {
         console.log('iphone 2025-06-02');
         this.renderer.addClass(mainFooter, 'iphone__footer');
       }
-    } else {
-      console.warn("Element mit ID 'main-footer' nicht gefunden. Klassen konnten nicht angewendet werden.");
     }
   }
 }

@@ -78,7 +78,8 @@ export class MainComponent implements OnInit {
     setTimeout(() => {
       this.showGreetingScreenMobile = false;
     }, 2500);
-    this.implementAndroidHeight();
+    // this.implementAndroidHeight();
+
   }
 
   implementAndroidHeight() {
